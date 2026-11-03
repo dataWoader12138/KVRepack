@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-03T09:46:24.144903+00:00",
+  "base_commit": "fba9c680c55c5911e7b064a3b1e68f6606349851",
+  "delivery_branch": "feat/milebench-integration",
+  "status": "cpu_checks_passed_gpu_unverified",
+  "original_sources_modified": false,
+  "gpu_or_model_execution": false,
+  "cuda_build_performed": false,
+  "scope": {
+    "video_family_method_combinations": 19,
+    "milebench_family_method_combinations": 20,
+    "milebench_model_size_method_combinations": 30,
+    "tasks_main11": 11,
+    "tasks_image8": 8,
+    "excluded": [
+      "OCR",
+      "threshold",
+      "randomkv image",
+      "asymkv image",
+      "lookm_kvrepack image",
+      "historical ablations"
+    ]
+  },
+  "environment": {
+    "python": "3.12.9",
+    "versions": {
+      "torch": "2.6.0+cu124",
+      "transformers": "4.52.3",
+      "numpy": "1.26.4",
+      "accelerate": "1.13.0",
+      "Pillow": "12.1.1",
+      "rouge": "1.0.1",
+      "flash-attn": "2.7.4.post1",
+      "setuptools": "70.2.0",
+      "wheel": "0.46.3"
+    },
+    "cuda_visible_devices_during_checks": ""
+  },
+  "unit_tests": {
+    "tests_run": 93,
+    "passed": 92,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "elapsed_seconds": 64.604,
+    "skip_reason": "Original artifact numerical differential requires a missing HybridKV-artifact tree; it was not claimed as revalidated.",
+    "command": "CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src KVREPACK_MILEBENCH_SOURCE=<HybridKV-opensource> python -m unittest discover -s tests -v"
+  },
+  "source_checks": {
+    "core": {
+      "status": "passed",
+      "targets": 35,
+      "python_and_adapters": 47,
+      "vendor_python": 329,
+      "vendor_build_inputs": 2382,
+      "original_source_comparison": false
+    },
+    "milebench": {
+      "status": "passed",
+      "targets": 17,
+      "source_snapshots": 19,
+      "preserved_protocol_ast": [
+        "MileBenchDataset",
+        "Eval"
+      ],
+      "original_source_comparison": true
+    },
+    "llava_ports": {
+      "status": "passed",
+      "modules": 5,
+      "original_source_comparison": true
+    }
+  },
+  "dispatch": {
+    "video_combinations": 19,
+    "video_passed": true,
+    "llava_image_upgrade_combinations": 4,
+    "llava_image_passed": true,
+    "boundary": "Executes actual adapter AST dispatch, monkeypatch assignments, official AsymKV installer, prepare-input forwarding/reset, and selected Hybrid cache switches. Compression functions, model loading, attention, tensors and CUDA are NOT executed. Transformers class/method existence and selected model construction links are checked against the supplied installed source, without importing transformers."
+  },
+  "static_call_graph": {
+    "passed": true,
+    "python_files": 47,
+    "function_definitions": 723,
+    "verified_unique_local_import_bindings": 155,
+    "resolved_local_call_sites": 653,
+    "argument_binding_checked": 652,
+    "external_or_dynamic_call_sites": 8780,
+    "kernel_call_sites": 11,
+    "kernel_exports": 5,
+    "errors": 0,
+    "boundary": "AST/import/call-signature/kernel-export checks. Dynamic receiver, inheritance, PyTorch __call__, tensor shapes and CUDA execution are not proven by this graph."
+  },
+  "legacy_cpu_compression": {
+    "tests_run": 15,
+    "passed": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": [
+      "Use --source-root to compare the original artifact on identical CPU inputs"
+    ],
+    "cuda_entry_point_attempts": [],
+    "note": "Historical stale-budget helper finding is intentionally still reproduced without rebuild; current LLaVA caller fix is separately tested, not inferred from this legacy reproducer."
+  },
+  "llava_image_cpu": {
+    "tests_run": 4,
+    "passed": true,
+    "cuda_entry_point_attempts": [],
+    "boundary": "Extracted real function ASTs with tiny CPU tensors, not complete model construction/forward, attention kernels, generation, datasets, scores, GPU numerics, memory or latency. CUDA calls are blocked. Missing dependencies are skips, never success."
+  },
+  "data_preflight": {
+    "tasks": 11,
+    "samples": 2200,
+    "image_references": 9504,
+    "unique_images": 9010,
+    "errors": 0,
+    "verification": "Existence, nonempty, readability and Pillow.Image.verify, all selected data; no processor/model run."
+  },
+  "packaging": {
+    "status": "passed",
+    "command": "python -m pip wheel --no-deps --no-build-isolation .",
+    "wheel": "KVRepack-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "ac6d95e678a1584431d6dd4da0d37c4b1c481692b770b8b767502d766e0606c6",
+    "wheel_members": 56,
+    "nested_profiles_and_head_scores_included": true,
+    "boundary": "Core Python wheel and resources checked; full runtime still uses source checkout, provenance, vendor and separately built CUDA extension."
+  },
+  "matrix_planning": {
+    "plans": 44,
+    "executed": false,
+    "scope": "LLaVA four improvements x eleven image tasks; pure no-write/no-model planning"
+  },
+  "important_changes": [
+    "LLaVA SparseMM baseline prefill rebuilds per-prompt budgets while decode preserves cluster metadata.",
+    "All Qwen image baselines/upgrades default uniformly to 3B; 7B must be selected explicitly. Video defaults unchanged.",
+    "Image RATIO remains independent of BUDGET_RATIO; effective pixel floors and generation length recorded.",
+    "LLaVA fixed budget allocation shares target0.1, not source0.5; original numerical equivalence is unverified.",
+    "Existing Qwen cores are reused rather than replaced with differing current opensource versions."
+  ],
+  "not_verified": [
+    "Full model construction/forward/generation",
+    "FlashAttention and custom CUDA kernels",
+    "Original Qwen image-source full-model numerical equivalence",
+    "Benchmark scores or baseline/improvement quality",
+    "GPU memory, latency and throughput"
+  ],
+  "remaining_known_issues": [
+    "AsymKV official chunk-boundary final-token omission remains outside image scope.",
+    "Previously documented direct input_ids-only/inputs_embeds-only API boundaries are not fixed; normal token+image adapters avoid those paths."
+  ],
+  "evidence_sha256": {
+    "provenance/core_sources.json": "2960eecf7da0d54816eda4ed525040c999a2deabc419f590000dfb6ad118757f",
+    "provenance/milebench_sources.json": "08ddc79f74e95f1546413b7a81f552f1451d5b3e917d7061b79c9dac284ab188",
+    "provenance/milebench_data_cpu_audit.json": "96a6df3d80f6bb50bb5c4cd42f17251223f5cd922be86df9be5ce061994b596c",
+    "provenance/llava_image_sources.json": "ee89d4ebaf86b8cb27c9a068bc386932a7dac98e47eeaeaa790922c83b866083",
+    "provenance/llava_image_cpu_audit.json": "748e6848f74879611725360662a43b1d85d7b77c81b28cb8ccd7544e83dc8dfc",
+    "provenance/llava_image_dispatch_audit.json": "857ca1fda158ef2dca728c7e7c40e209b277d5e98b46777085fa6cd5e97e74f7"
+  },
+  "diff_checks": {
+    "all_except_inherited_hybrid_helper": "passed",
+    "all_files_with_blank_at_eol_disabled": "passed",
+    "inherited_formatting": "hybridkv_utils_llava.py preserves source trailing whitespace for exact byte recovery/replay; no algorithm edit was made merely to reformat inherited code."
+  }
+}

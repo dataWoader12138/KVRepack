@@ -1,5 +1,7 @@
 # 文件整理与实现选择
 
+本页保留首版文件整理与命名证据。后续MileBench后端、五个LLaVA port模块、共享模型外壳适配与SparseMM修复见 [MILEBENCH_SOURCE_DIFF.md](MILEBENCH_SOURCE_DIFF.md) 和 [LLAVA_MIGRATION.md](LLAVA_MIGRATION.md)；“首版范围”不代表图片扩展未完成。新增变换及旧证据通过可逆记录分别保留。
+
 本项目在原工作区旁新建，保留两个原目录。执行来源以 `HybridKV-artifact/scripts/eval` 中的脚本为依据；这些原入口的完整文本作为 JSON 数据保存在 `provenance/reference_entrypoints.json`，不会作为可运行的旧路径入口保留。
 
 ## 收敛后的文件

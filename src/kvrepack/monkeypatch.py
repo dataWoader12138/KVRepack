@@ -175,5 +175,26 @@ def replace_llava_onevision(method):
         transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = madakv_qwen2_forward # past vision mask & next-layer budget
         transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward = decoder_qwen2_forward_madakv # past vision mask & next-layer budget
         transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen2_flash_attn2_forward_MadaKV # past vision mask & next-layer budget with updating
+    elif method == "snapkv_kvrepack":
+        from kvrepack.qwen2_model_snapkv_kvrepack import (
+            snapkv_kvrepack_qwen2_forward,
+            qwen_flash_attn2_forward_SnapKVKVRepack,
+        )
+        transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = snapkv_kvrepack_qwen2_forward
+        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen_flash_attn2_forward_SnapKVKVRepack
+
+    elif method == "sparsemm_kvrepack":
+        from kvrepack.qwen2_model_sparsemm_kvrepack import qwen_flash_attn2_forward_SparseMMKVRepack
+        transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = sparsemm_qwen2_forward
+        transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward = decoder_qwen2_forward_sparsemm
+        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen_flash_attn2_forward_SparseMMKVRepack
+
+    elif method == "madakv_kvrepack":
+        from kvrepack.qwen2_model_madakv_kvrepack import qwen_flash_attn2_forward_MadaKVKVRepack
+        transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionModel.forward = LlavaOnevisionModel.forward
+        transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = madakv_qwen2_forward
+        transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward = decoder_qwen2_forward_madakv
+        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen_flash_attn2_forward_MadaKVKVRepack
+
     else:
         raise NotImplementedError(f"Unsupported LlavaOnevision method: {method}")

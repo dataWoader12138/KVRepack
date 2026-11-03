@@ -116,8 +116,10 @@ def qwen2_flash_attn2_forward_SparseMM(
     position_embeddings: Optional[Tuple[torch.Tensor, torch.Tensor]] = None,  # will become mandatory in v4.46
     **kwargs,
 ):  
-    init_sparsemm(self)
     bsz, q_len, _ = hidden_states.size()
+    # Prompt-specific head capacities must not leak into the next prefill.
+    # Decode keeps the same cluster and its incremented varlen metadata.
+    init_sparsemm(self, rebuild_cluster=(q_len != 1))
 
     num_attention_heads = self.config.num_attention_heads
     num_key_value_heads = self.config.num_key_value_heads

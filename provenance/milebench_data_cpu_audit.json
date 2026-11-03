@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-03T09:29:29.411166+00:00",
+  "scope": "MileBench dataset, scoring and aggregation; no model execution",
+  "gpu_or_model_execution": false,
+  "original_source_modified": false,
+  "source_transforms": [
+    {
+      "source": "HybridKV-opensource/hybridkv/utils.py",
+      "source_sha256": "a05c7fe20a78b469b76b6a55e2850eacf9b4b83ee5f51947c533880099b04f13",
+      "source_lines": [
+        32,
+        228
+      ],
+      "target": "src/kvrepack/benchmarks/milebench/dataset.py",
+      "target_sha256": "1eae65499c9aa4f8c4fb5ca70d5e7f6b83d9916a0dea63577a909dff52ceb55c",
+      "extracted_class": "MileBenchDataset",
+      "normalized_class_ast_equal": true,
+      "normalization": [
+        "Ignore AST location attributes.",
+        "Remove standalone string-expression documentation nodes on both sides; mechanically stripped trailing whitespace otherwise changes docstring constants.",
+        "Require source Dataset base and target no base, then remove source Dataset base."
+      ],
+      "transformations": [
+        "Remove torch Dataset base; preserve class body and data/prompt/truncation/collate algorithm.",
+        "Add read-only schema, ID, selection and full referenced-image integrity checks without inference imports."
+      ],
+      "wrapper_behavior_changes": [
+        "Normalize integer string IDs; reject duplicate IDs and image path traversal; check every referenced image."
+      ]
+    },
+    {
+      "source": "HybridKV-opensource/hybridkv/evaluate.py",
+      "source_sha256": "86e26d3b7b3635060f5e479687aabca82e1c0d1ff06234bf17e1d3f6f208b17c",
+      "source_lines": [
+        11,
+        253
+      ],
+      "target": "src/kvrepack/benchmarks/milebench/evaluate.py",
+      "target_sha256": "ce724b94ec19a42a0d388a42c9c269395183cd2cf6ea68d0a8271d2bc63c3e96",
+      "extracted_class": "Eval",
+      "normalized_class_ast_equal": true,
+      "normalization": [
+        "Ignore AST location attributes.",
+        "Remove standalone string-expression documentation nodes on both sides; mechanically stripped trailing whitespace otherwise changes docstring constants.",
+        "Remove only exact import numpy as np and from rouge import Rouge nodes, inserted lazily into metric methods."
+      ],
+      "transformations": [
+        "Move numpy/rouge metric imports inside methods; drop unused top-level sklearn imports; preserve Eval scoring algorithms.",
+        "Add exact selected-ID coverage, duplicate detection, authoritative annotation ground truth, caller-input copying, limit-aware completion metadata and offline exclusive-output CLI."
+      ],
+      "wrapper_behavior_changes": [
+        "Reject missing, extra and duplicate prediction IDs; count equality alone is insufficient.",
+        "Score in annotation selection order; fill ground truth from annotations and reject supplied mismatches.",
+        "Derive absent image_quantity_level metadata from image count; original metric still uses image count."
+      ]
+    },
+    {
+      "source": "HybridKV-opensource/hybridkv/score.py",
+      "source_sha256": "55d1449d6c4a420a016e7f6c44ca7356427925a8e7fd892de87ad3886ff3c930",
+      "source_lines": [
+        1,
+        96
+      ],
+      "target": "src/kvrepack/benchmarks/milebench/score.py",
+      "target_sha256": "c8b4624f423de3cfd6e5cd1f7328fd5e9aa2ab89c92346bddc7ba49c74371b00",
+      "transformations": [
+        "Retain primary metric 0–1 to percent conversion; replace pandas formatting with standard-library JSON/CSV.",
+        "Require an explicit experiment task set; report missing tasks without zero-fill; macro mean covers available tasks only.",
+        "Record partial/unverified/full sample coverage separately and expose full-dataset macro only with full evidence.",
+        "Select exact per-task run/scoring directories; reject multiple candidate results and unexpected tasks."
+      ]
+    }
+  ],
+  "new_files": {
+    "src/kvrepack/benchmarks/__init__.py": "076f2ddb7e1457209c4e4dc35235876a5c14e0073c43ee862f34c75c5f584b20",
+    "src/kvrepack/benchmarks/milebench/__init__.py": "bf47db1838ddeda80d1af53b1643ae39744582601ce8820c11319ad2a2991aa0",
+    "src/kvrepack/benchmarks/milebench/dataset.py": "1eae65499c9aa4f8c4fb5ca70d5e7f6b83d9916a0dea63577a909dff52ceb55c",
+    "src/kvrepack/benchmarks/milebench/evaluate.py": "ce724b94ec19a42a0d388a42c9c269395183cd2cf6ea68d0a8271d2bc63c3e96",
+    "src/kvrepack/benchmarks/milebench/score.py": "c8b4624f423de3cfd6e5cd1f7328fd5e9aa2ab89c92346bddc7ba49c74371b00",
+    "tests/test_milebench_data.py": "eb721a28db997f984893578b570e77eef5fadba96fe9ea5d6d3d7b9e08d722bb"
+  },
+  "cpu_tests": {
+    "command": "CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src KVREPACK_MILEBENCH_SOURCE=<explicit-original-root> python -m unittest discover -s tests -p test_milebench_data.py -v",
+    "tests_run": 18,
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "source_prompt_differential": "passed: original/new fixed prompts, options, image order, truncation at 35/60/1000 character-token fixture context lengths",
+    "source_metric_differential": "passed: original/new Rouge-L, multichoice/extraction and MMCoQA fixed predictions exactly equal",
+    "system_python_tests": {
+      "tests_run": 18,
+      "passed": 15,
+      "skipped": 3,
+      "skip_reasons": [
+        "Rouge-L requires rouge, absent in system Python.",
+        "Original metric differential requires explicit source root and rouge.",
+        "Original prompt differential requires explicit source root."
+      ]
+    }
+  },
+  "versions": {
+    "numpy": "1.26.4",
+    "rouge": "1.0.1",
+    "Pillow": "12.1.1"
+  },
+  "data_preflight": {
+    "schema_version": 1,
+    "created_at_utc": "2026-11-03T09:26:14.116418+00:00",
+    "scope": "main11_all_annotations_and_referenced_images",
+    "check": "all selected image paths exist, readable, nonempty; Pillow.Image.verify() for every unique image",
+    "gpu_or_model_execution": false,
+    "data_downloaded": false,
+    "source_modified": false,
+    "tasks": [
+      {
+        "task": "CLEVR-Change",
+        "annotation_sha256": "f62db4148c9ccc652ed0a05ce37dfcfc46fd549c6fba3ded2150b163bb31a6b1",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 400,
+        "unique_images": 400,
+        "images_checked": 400,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "Spot-the-Diff",
+        "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 400,
+        "unique_images": 400,
+        "images_checked": 400,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "MMCoQA",
+        "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 1104,
+        "unique_images": 610,
+        "images_checked": 610,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "IEdit",
+        "annotation_sha256": "494ceef397a14ffa5ffdcc010a0fbce01cfce7922cec517e8d0e1fbf0a574996",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 400,
+        "unique_images": 400,
+        "images_checked": 400,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "ALFRED",
+        "annotation_sha256": "30c97844cc25f62912b11ea762bb15e3b4cb4aac94e4f6c73e62e975dc10e2ed",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 683,
+        "unique_images": 683,
+        "images_checked": 683,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "SceneTransition",
+        "annotation_sha256": "d6c3e1b5a22c0ccca40aa86ffd790f31a8747bbd72843e54e1cd8f817ec338ce",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 3983,
+        "unique_images": 3983,
+        "images_checked": 3983,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "DocVQA",
+        "annotation_sha256": "1d4ca1327bde08cee18c9c7b5f5504b7de84035ec5ea150b3d89fc2897067660",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 702,
+        "unique_images": 702,
+        "images_checked": 702,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "MultiModalQA",
+        "annotation_sha256": "19af6f97dc53cecc9a49c9c312cc74f9db1f2a6a3b9d8203c46b90f96cf38ee0",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 429,
+        "unique_images": 429,
+        "images_checked": 429,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "SlideVQA",
+        "annotation_sha256": "0c5671c757fb09f24f865526435604022ecc8ea36d7a2ac83fbb349b47a87b62",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 402,
+        "unique_images": 402,
+        "images_checked": 402,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "WebQA",
+        "annotation_sha256": "c6a61fea0c77af5342a1f98a50bea614c891dc0d2009a443cff858e9f3c8eb6c",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 400,
+        "unique_images": 400,
+        "images_checked": 400,
+        "valid": true,
+        "error_count": 0
+      },
+      {
+        "task": "WikiVQA",
+        "annotation_sha256": "0b3a430620ca292ab310b3b9417a0c4cdbd8f0648f3e7e976ed392b92d3fd072",
+        "selected_samples": 200,
+        "total_samples": 200,
+        "image_references": 601,
+        "unique_images": 601,
+        "images_checked": 601,
+        "valid": true,
+        "error_count": 0
+      }
+    ],
+    "total_selected_samples": 2200,
+    "total_image_references": 9504,
+    "total_unique_images_checked": 9010,
+    "total_errors": 0,
+    "valid": true,
+    "elapsed_seconds": 9.705,
+    "limitations": [
+      "Pillow verification checks image format integrity; it is not a GPU processor/model execution or a proof of experimental correctness.",
+      "No images, question text, responses or absolute local data paths are included in this report."
+    ]
+  },
+  "limitations": [
+    "CPU fixtures and image format verification do not establish model generation quality or GPU numerical/performance correctness.",
+    "AST equality covers the two extracted classes after the exact declared normalization; newly added wrappers intentionally enforce stronger validation."
+  ]
+}

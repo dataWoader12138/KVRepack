@@ -1,6 +1,8 @@
 # 验证阶段
 
-本次完成了 CPU 可运行的结构、来源、配置、动态分派与原函数小张量验证；未调用 GPU、未编译 CUDA、未下载权重或数据、未运行外部评分。2026-11-03 的检查复现了两项行为问题，尚未修复，见 [CPU 调用关系审计](CPU_CALL_AUDIT.md)。
+本项目完成了CPU结构、来源、配置、动态分派与原函数小张量检查；未运行GPU模型、编译CUDA、下载权重/数据或运行外部评分。首版复现的两项问题中，LLaVA SparseMM跨prompt预算在图片扩展中已修复并加入回归，AsymKV边界仍未修复。首版历史证据见 [CPU调用关系审计](CPU_CALL_AUDIT.md)，本次MileBench实际结果见 [milebench_validation.json](../provenance/milebench_validation.json)。
+
+新增 `check_milebench_sources.py`、`check_llava_sources.py`、`check_llava_dispatch.py`、`check_llava_cpu.py` 以及图片数据/评分/假模型运行测试。图片协议、预检、离线评分与后续GPU验收命令见 [MILEBENCH.md](MILEBENCH.md)。
 
 ## 当前可复查的检查
 

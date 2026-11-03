@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "KVRepack"
 version = "0.1.0"
-description = "Canonical Qwen2.5-VL KVRepack improvements and LLaVA-OneVision KV-cache baselines"
+description = "Canonical multimodal KV-cache methods with video and MileBench image experiment backends"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
@@ -19,6 +19,9 @@ dependencies = [
     "packaging",
 ]
 
+[project.optional-dependencies]
+images = ["Pillow>=10", "rouge==1.0.1"]
+
 [project.scripts]
 kvrepack = "kvrepack.run:main"
 
@@ -28,4 +31,4 @@ include = ["kvrepack*"]
 namespaces = false
 
 [tool.setuptools.package-data]
-kvrepack = ["configs/*.json", "data/head_score/*.json"]
+kvrepack = ["configs/*.json", "configs/milebench/*.json", "data/head_score/*.json"]

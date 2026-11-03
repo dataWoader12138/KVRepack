@@ -7,6 +7,7 @@ import argparse
 import copy
 import ast
 import hashlib
+import importlib.util
 import json
 import re
 from pathlib import Path
@@ -121,17 +122,32 @@ def normalized_llava_function(tree):
     return result
 
 
+def llava_migration_checker():
+    spec = importlib.util.spec_from_file_location("kvrepack_llava_source_check", ROOT / "scripts/check_llava_sources.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def check_core(source_root):
     manifest = json.loads((ROOT / "provenance/core_sources.json").read_text())
+    llava_checker = llava_migration_checker()
+    llava_checker.check()
     count = 0
     for e in manifest["entries"]:
         target = ROOT / e["target_path"]
         assert target.is_file(), f"Missing {e['target_path']}"
         assert digest(target.read_bytes()) == e["target_sha256"], f"Changed target: {target}"
-        target_tree = ast.parse(target.read_text()) if target.suffix == ".py" else None
+        target_text = target.read_text()
+        # Preserve all earlier source/branding proofs, then validate the exact
+        # reviewed delta separately. Never pretend a behavioral fix was a rename.
+        if "post_migration" in e:
+            assert e["post_migration"]["reason"]
+            target_text = llava_checker.restore_recorded_edits(target_text, e["post_migration"])
+        target_tree = ast.parse(target_text) if target.suffix == ".py" else None
         previous_tree = target_tree
         if "branding" in e:
-            previous_tree = verify_branding_record(target.read_text(), e["branding"])
+            previous_tree = verify_branding_record(target_text, e["branding"])
         source_tree = renamed_tree = None
         if source_root:
             source = source_root / e["source_path"]
@@ -197,6 +213,12 @@ def check_core(source_root):
                     assert ast_digest(function(original_llava, "replace_llava_onevision")) == llava["source_function_ast_sha256"]
                 assert ast_digest(function(previous_tree, "replace_qwen")) == llava["qwen_function_before_ast_sha256"]
                 assert ast_digest(function(target_tree, "replace_qwen")) == llava["renamed_qwen_function_ast_sha256"]
+        elif e["kind"] == "llava_port":
+            recovered = llava_checker.restore_recorded_edits(target_text, e["port_replay"])
+            assert digest(recovered.encode()) == e["source_sha256"]
+            assert llava_checker.transform_port_source(Path(e["source_path"]).name, recovered) == target_text
+        else:
+            raise AssertionError(f"Unknown source verification kind: {e['kind']}")
         count += 1
     frontend = manifest["frontend_integration"]
     for relative, expected in frontend["files_sha256"].items():

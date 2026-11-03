@@ -1,0 +1,200 @@
+历史计划快照：用户已批准实施无GPU整理、测试与上传。当前实现与验证状态以 MILEBENCH.md 及 provenance/milebench_validation.json 为准。
+
+KVRepack：MileBench 多图主实验合入计划
+日期：2026-11-03
+
+本计划依据用户确认的“MileBench 多图主实验”范围编写。本轮完成拉取、阅读、静态比较及部分 CPU 检查，尚未迁移项目代码、提交或推送，也没有运行 GPU 实验。本文件保存在仓库外，供合入前审阅。
+
+1. 基准与合入目标
+
+目标仓库：https://github.com/dataWoader12138/KVRepack.git
+本地目录：/root/autodl-tmp/KVRepack
+分支：main
+基准提交：fba9c680c55c5911e7b064a3b1e68f6606349851
+图片代码来源：/root/autodl-tmp/HybridKV-opensource
+
+目标是让独立 KVRepack 仓库能够完成“读取 MileBench → 多图生成 → 原协议评分 → JSON/CSV 汇总”，运行时不再依赖 HybridKV-opensource 的导入路径、软链接或二进制文件。图片与视频共享每种方法的唯一核心实现，分别记录实验配置及来源。
+
+当前目标已整理 Qwen2.5-VL 的 13 种方法及 LLaVA-OneVision 的 6 种基线，任务入口主要覆盖 NextQA、VATEX、VideoChatGPT。MileBench 所缺的不只是 shell 文件，还包括独立的数据、prompt、图片预处理、生成和评分流程。
+
+本次不纳入 OCR 单图链路、threshold 支线、历史大规模调参、消融支线、注意力可视化、视觉头重新训练/校准，以及未有对应图片实验入口的方法。已存在的 head-score 资源继续复用。
+
+2. 任务与模型方法范围
+
+保留两套明确命名的任务清单：
+  image8：原 README 图片入口的 8 项任务。
+  main11：在 image8 基础上加入 IEdit、ALFRED、SceneTransition，作为当前多图主实验完整任务清单。
+
+main11 为：
+  CLEVR-Change、Spot-the-Diff、MMCoQA、IEdit、ALFRED、SceneTransition、DocVQA、MultiModalQA、SlideVQA、WebQA、WikiVQA。
+SceneTransition 在这里按原图片 runner 的图片序列输入协议执行。
+
+本地这 11 项标注均为每任务 200 条。已抽查每项第一样本的第一张图片存在，尚未完成所有图片路径、损坏文件及全部样本的完整性检查；完整运行前必须完成检查。
+
+候选支持矩阵：
+  Qwen2.5-VL-3B/7B：fullkv、hybridkv、snapkv、sparsemm、madakv、lookm，以及 hybridkv_kvrepack、snapkv_kvrepack、sparsemm_kvrepack、madakv_kvrepack，共 10 种。
+  LLaVA-OneVision-Qwen2-7B：先接入目标已有的上述 6 种基线；再独立迁入 HybridKV/SnapKV/SparseMM/MadaKV 的 4 种 KVRepack 改进。
+
+图片能力矩阵独立登记，不因视频 registry 有某方法就自动开放。randomkv、asymkv、lookm_kvrepack 暂不列入本轮图片主入口，未知组合在生成计划时明确拒绝。
+上面的矩阵是计划验收范围，不代表已经通过图片推理验证。每个组合只有完成对应检查后才标为可运行/已验证。
+
+3. 已确认的迁移难点与处理决定
+
+3.1 核心源码并非完全相同。
+目标主要来自此前选择的 artifact 调用链；当前 opensource 图片 worker 还含有后续修改。Hybrid 的若干差异只是命名、日志、未启用分支或运算重排，不能根据 AST 不同就断言默认结果不同。SnapKV 当前来源增加了专用 cache 与 text-model forward，SparseMM/MadaKV 也存在初始化、缓存收尾和 forward 差异。
+
+处理顺序：先逐方法列出“来源文件/函数、实际 patch、缓存生命周期、预算、RoPE、默认活跃分支”的差异表，再做小张量差分。已相同的路径直接复用目标核心。需要迁入的功能通过独立核心变更进入同一实现，记录语义变化并回归视频入口；不能另复制一套 *_image 核心或按工作目录切换导入来源。无法证明等价的结果标记为“当前目标实现的 MileBench 结果”，不能称为原历史实验的等价复现。
+
+Hybrid 默认 combined 与目标 full 评分公式可对应；来源 difference 与目标 difference_only 并非严格同一公式。本轮只开放已核对的主实验模式，不直接搬入这些消融别名。
+
+3.2 图片参数与视频默认值不同。
+原 Qwen 图片 YAML 使用 max_new_tokens=512、min_new_tokens=1；目标视频 adapter 的默认长度通常是 128。较早 Hybrid 图片 Repack 脚本的 simhead 比例为 0.50，而目标视频 registry 默认为 0.30。不同后期脚本还使用其他参数。
+
+新增图片 profile，逐份记录选中来源脚本及最终生效参数；保持原有视频默认值。提供 image8 原入口配置和 main11 当前主实验配置，所有 model/method 对应的具体数值均显式保存，不能把某个名为 best 的脚本推广为所有模型通用最优配置。公开运行名统一为 *_kvrepack，原 repackKV/decouple 历史名称仅留在来源映射中。
+
+3.3 必须记录实际生效的预处理及预算。
+原 Qwen worker 将图片转 RGB 后重新编码 JPEG，删除 <ImageHere>，再将全部图片放到文字前；这属于原实验输入协议，先保持原样。图片顺序、任务指令、选择项和截断规则均需固定。
+原 YAML min_pixels=7168，但消息内硬编码 min_pixels=256*28*28=200704；迁移配置要把实际优先级和最终有效值写清楚，不能仅复制 YAML 后声称输入相同。
+max_context_len=32768 与每图估计 256 token 属于旧截断协议，实际视觉 token 数可能更多。先保留协议并记录 processor 后真实 token 数，不暗中改分辨率或截断策略。
+generate.py 将 RATIO 固定为 0.1；BUDGET_RATIO 来自命令行。默认 BUDGET=512，而部分脚本显式传入 1024。参数 profile 以实际命令和最终环境为准，不把这几个量自动等同或联动。每次运行记录预算公式和实际缓存大小。
+
+3.4 已知行为问题必须单独处理。
+目标 LLaVA SparseMM 在同一模型进程连续处理不同长度 prompt 时会复用旧容量表，多图实验容易触发。启用该图片组合前，单独提交最小修复并加入“两个不同长度 prompt 与新对象”的对照测试；prefill 重算当前预算，decode 不重置当前缓存。如果尚未修好，该组合保持 pending，不能被主实验脚本当作正常支持。
+AsymKV 的已知分块末 token 问题不在本轮图片范围；保留问题记录，不借此次迁移顺便扩大支持范围。
+
+4. 逐文件合入方案
+
+新增 src/kvrepack/benchmarks/milebench/ 包，建议包含以下文件：
+  dataset.py：从 hybridkv/utils.py 抽取 MileBenchDataset、指令/选项/图片路径处理、截断及 collate；去除对全局 worker 的反向导入。
+  workers.py：从 workers/model_workers.py、baseworker.py 抽取 Qwen/LLaVA 图片预处理和生成输出协议；从目标 registry 所选择的模型及 patch 加载，不导入 hybridkv。
+  generate.py：从原 generate.py 抽取样本读取、分组、逐条生成和 pred.json 写入，接收已解析配置。
+  evaluate.py：保留原 evaluate.py 的清洗、选择题匹配、Rouge-L、MMCoQA 特殊评分和逐样本得分。
+  score.py：保留原 score.py 的任务汇总口径，输出机器可读 JSON 和 CSV，并显式标注未完成任务。
+  __init__.py：避免在纯配置/计划阶段导入 torch、processor 或 CUDA 依赖。
+
+修改 src/kvrepack/experiments/registry.py，必要时拆出 benchmark_registry.py：
+  登记 benchmark、任务清单、图片支持矩阵、profile、参数白名单、来源脚本及资源。
+  核心方法选择仍只有一份，图片 profile 只覆盖明确的实验参数。
+
+修改 src/kvrepack/experiments/runner.py：
+  按 benchmark 构造 lmms_eval 或 MileBench 命令。
+  复用现有环境隔离、来源核验、独立进程、配置及状态记录。
+  图片任务不再强带 frames；数据根目录显式传入，模型仍通过 --pretrained 指定。
+  将新增后端、profile 和评分文件纳入计划/执行前的哈希检查，不能只检查旧视频 adapter。
+
+修改 src/kvrepack/run.py：
+  提供 --benchmark milebench、--data-root、--profile，以及图片所需的上下文/生成参数。
+  继续使用 --model、--method、--task、--pretrained、--budget-ratio、--device、--limit、--output 和受控 --set。
+  旧视频命令的默认行为保留。--dry-run 只解析配置和展示命令，不读取大数据、不导入推理包、不下载、不建输出目录。
+  另提供显式只读数据预检和独立离线评分入口，评分无需加载模型或再次生成。
+
+新增 src/kvrepack/configs/milebench/*.json：
+  存任务清单、Qwen3B/7B 与 LLaVA7B 模型参数、各方法图片 profile。
+  显式记录 seed=42、生成长度、dtype 加载政策、像素限制、上下文估算、预算和合并参数。
+  以实际源脚本为来源快照，允许使用者显式选择；不把历史调参脚本全搬为运行入口。
+
+修改 pyproject.toml / requirements：
+  保持当前 Python3.12、Torch2.6、Transformers4.52.3 等核心约束，明确声明图片链路直接需要的 Pillow、rouge、pandas 等依赖；按迁移后的实际导入决定是否还需要 OmegaConf。
+  扩展 package-data 规则使嵌套图片配置随包分发，验证现有 head-score 和 param_config 资源齐全。
+  原来源 .gitignore 全局忽略 JSON，目标仓库已有自己的规则，不能照搬来源规则。
+
+维护 provenance/、scripts/check_sources.py 及 docs/：
+  对每个来源文件记录原 SHA-256、目标 SHA-256、抽取范围、改名/导入/资源位置变换及行为变更。
+  当前 opensource 没有 Git 元数据，用内容哈希冻结本次来源。
+  扩展来源、分派、调用关系及必要 CPU 检查；不要通过只更新哈希掩盖核心行为变化。
+  更新 README、METHODS、REPACKING、VALIDATION、HANDOFF、第三方来源说明，新增 MileBench 使用与复现说明。
+
+5. LLaVA 四种改进的独立迁入
+
+在图片链路能够调用目标已有方法后，逐方法迁入并单独审查：
+  hybridkv/qwen2_model_snapkv_repackkv.py
+  hybridkv/qwen2_model_sparsemm_repackkv.py
+  hybridkv/qwen2_model_madakv_repackkv.py
+  hybridkv/modeling_llava_onevision_repack.py
+  hybridkv/modeling_qwen2_repack.py
+  hybridkv/hybridkv_repack_utils_llava.py
+
+目标命名遵循 KVRepack 规范；优先只抽取缺失实现及适配，复用已有 outer-model/helper 中已核对相同的代码，每个模型/方法保持唯一分派。普通 Qwen2 RoPE 与 Qwen2.5-VL mRoPE、raw K 重施位置编码、按头预算、跨图合并边界及多 prompt 缓存生命周期分别验证，不通过简单替换类名迁移。
+四种方法各自通过分派和小张量检查后才开放；不得静默回退到相应基线。此阶段可以独立提交、审阅和撤回，不阻塞已验证的 Qwen 图片主链路。
+
+6. 运行结构与产物约定
+
+首版固定单 GPU、单进程、实际模型 batch=1、greedy generation、use_cache=True；每种模型/方法使用独立进程，防止 monkeypatch 污染。原 batch-image 主要影响 DataLoader 分组，worker 实际仍逐样本生成，暂不扩展真正的多样本模型 batch。
+
+原 generate 无条件访问 DeepSpeed plugin 和已初始化分布式进程组；新图片入口需要移除这些无条件假设，使用单进程 Accelerate 路径并检查可选 plugin 状态。该启动结构变化单独记录和测试，不直接复制含 use_cpu=true 却加载 CUDA 模型的旧配置。不要求激活硬编码 conda 环境、设置固定 HF mirror 或复制旧 LD_LIBRARY_PATH。
+
+建议每次运行目录为：
+  outputs/milebench/<model>/<method>/<profile>/<dataset>/<run_id>/
+目录内包括：
+  resolved_config.json、provenance.json、run_state.json、run.log
+  selected_samples.json（精确样本 ID 及标注校验信息）
+  pred.json、eval.json、eval_score.json（多选另有 pred_with_extracted.json）
+跨任务汇总单独输出 summary.json/summary.csv，按同一实验组收集。
+
+默认拒绝覆盖非空运行目录。输入缺图、重复 ID、生成失败或预测缺失时记录失败，不产出看似完整的主实验结果。--limit 在分组前选择确定样本，并让评分使用同一 ID 子集；不能把少量预测直接交给要求完整200条的旧评分主函数，也不能自动给缺失预测补零伪装完成。
+保留原 pred 字段及任务评分：MMCoQA 使用答案子串命中，其他开放式用 Rouge-L F，多选用原选项匹配 Accuracy。eval.json 保存0—1值，CSV百分制只转换一次。任务宏平均的纳入集合与缺失状态显式记录。
+
+模型权重、图片数据、HF缓存、完整历史输出、backups、PID/logpath、tar包、旧 .so/.o 及 CUTLASS 工作树不进入 Git。复用目标已有 kvrepack_kernel 源码与固定头文件；不从当前机器拷贝已编译扩展。
+
+7. 验证与验收条件
+
+CPU/无 GPU 阶段：
+  a. 原视频配置、19个模型/方法分派、来源核验及已有必要测试保持通过。
+  b. 图片计划生成不导入推理依赖、不启动子模型、不联网、不写输出；不支持的模型/方法在启动前失败。
+  c. 小型固定标注验证图片顺序、任务指令、选项、上下文截断、sample_id、输出字段；分组和 --limit 不改变选定样本集合。
+  d. 固定预测与原评分函数差分，覆盖开放式、多选、MMCoQA、空答案、重复/缺失/乱序ID以及百分制汇总。
+  e. 必要核心差异用真实 CPU 小张量验证预算、合并、位置和缓存生命周期；LLaVA SparseMM 的已知问题加入独立回归。
+  f. 数据预检遍历所有计划样本图片，检查路径/可读性/标注结构，记录标注哈希和选定ID；配置、head-score及嵌套package-data齐全。
+
+GPU 阶段属于后续验收，仓库 AGENTS.md 要求用户明确授权后才能执行，本轮不运行：
+  a. 在独立环境构建目标内核，记录 Python、CUDA/toolkit、GPU、Torch wheel、FA2 等版本。
+  b. 先做 FullKV 的旧/新图片预处理和输入 token 对照，再逐方法运行1—2条固定多图样本，覆盖2图及更多图、连续两个不同长度prompt和多步decode。
+  c. 对照来源/目标实际选中的核心，比较输入token/图片网格/位置、各层KV长度/预算、有效缓存和生成tokens；记录差异，greedy输出不一致时调查首个分歧，不能凭最终分数接近就称等价。
+  d. 验证同模型基线与改进使用相同权重版本、样本、像素、dtype、生成参数及预算口径，再跑开放式、特殊评分、多选和长多图的小规模任务子集。
+  e. 最后扩展main11完整200条任务；任务质量验证完成后才测显存、时延/吞吐。CPU检查不作为GPU正确性和性能证据。
+
+FullKV输入协议要求保持一致；原评分器在固定预测上应给相同逐样本与汇总结果，浮点比较使用事先记录的容差。不同算法来源存在真实变化的组合，需单列为新实现结果并说明变更，不能通过事后放宽精度阈值称复现。
+Hybrid 中名称为 offload 的完整 KV 可能仍存于 GPU，不能把活动 attention KV 的缩减直接解释为总 GPU 内存同比下降；性能记录同时区分分配、保留和活动缓存。
+
+完整候选矩阵若覆盖 Qwen3B/7B 各10方法和 LLaVA7B 的10方法，单一预算下为30个模型规模/方法组合×11任务×200条，即66,000次样本生成，预算扫描另乘预算点数。因此 GPU 验收先逐步展开，不默认启动全矩阵。
+
+8. 建议实施/提交顺序与交付门槛
+
+第1步：冻结来源和配置，提交逐方法实际调用链及差异表。交付输入/参数/方法映射，明确哪些能沿用目标核心、哪些需要独立核心变更。
+第2步：迁入 dataset、评分、汇总及其固定样例差分检查。交付可以在无模型情况下读取小样本、评分既有预测的后端。
+第3步：接入 benchmark registry、图片 profile、统一 CLI、生成worker、来源记录与输出隔离。先接入通过CPU检查的 Qwen 10种候选及已有LLaVA基线；LLaVA SparseMM 在第4步修复并通过对应检查前保持pending。状态区分“配置可规划/待GPU验证”与“图片推理已验证”，不能把CPU检查完成写成推理验收完成。
+第4步：独立处理 LLaVA SparseMM 问题及确有需要的 Qwen缓存适配，维持共享核心与视频回归。未验证组合继续pending。
+第5步：分方法迁入 LLaVA四改进，完成 RoPE/缓存/预算检查和命名收敛；所有支持范围同步更新。
+第6步：补齐安装/资源打包检查、MileBench说明、provenance和交接；在获准GPU验证后按上节执行，记录通过/失败/未测范围。
+
+每步保持可独立审阅的提交，不直接向 main 覆盖搬运。后续实现使用专用集成分支；最终交付代码diff、完整方法/profile清单、CPU报告、GPU实测或明确未测说明、运行命令及回退方式。推送/合入进度按用户接受的计划执行；本轮交付到此计划，不做代码合入。
+
+9. 预期使用方式（下面是拟实现接口，当前仓库尚不支持）
+
+在目标环境中，以当前激活的Python执行：
+  python -m kvrepack.run --benchmark milebench --model qwen2_5_vl --method hybridkv_kvrepack --profile main11 --task CLEVR-Change --pretrained Qwen/Qwen2.5-VL-3B-Instruct --data-root /path/to/milebench --budget-ratio 0.1 --limit 2 --dry-run
+
+另提供只做数据预检、只对 pred.json 评分，以及按模型/方法/任务列表生成或顺序执行计划的命令。正式生成与离线评分均记录同一份样本及配置来源。具体命令在实现后写入README并验证，不能把本节示例当作已可运行功能。
+
+10. 本轮实际验证证据与边界
+
+目标来源检查：python scripts/check_sources.py 通过；核对30个核心目标、33个本地模块/adapter、329个vendor Python文件、2382个vendor构建输入。original_source_comparison=false；这是已保存来源清单与当前仓库的完整性检查，未完成对缺失旧artifact目录的逐字节原文件复查。
+目标配置测试：test_experiments.py 的23项全部通过。本轮没有重跑完整49项历史测试套件，仓库既有报告中的统计不能当作本轮实测。
+来源静态检查：33个顶层/worker Python文件ast.parse通过，52个相关shell脚本bash -n通过。
+数据检查：11项各200条标注及每项首图抽查；全图完整性待执行。
+未做模型加载、GPU/CUDA运行、任务分数复现、显存或性能测量。
+
+关键阅读依据（行号以本轮读取版本为准）：
+  KVRepack/AGENTS.md:3；docs/HANDOFF.md:9；README.md:5
+  KVRepack/src/kvrepack/experiments/registry.py:16、197
+  KVRepack/src/kvrepack/experiments/runner.py:92、103、133
+  HybridKV-opensource/README.md:53
+  HybridKV-opensource/hybridkv/generate.py:32、61、104、115、124
+  HybridKV-opensource/hybridkv/utils.py:32、94、139
+  HybridKV-opensource/hybridkv/workers/model_workers.py:19、89、94、105、175
+  HybridKV-opensource/hybridkv/evaluate.py:80、185、274
+  HybridKV-opensource/hybridkv/score.py:44、76
+  HybridKV-opensource/hybridkv/configs/qwen2_5_vl_model_configs.yaml:4
+  HybridKV-opensource/hybridkv/configs/llava_onevision_configs.yaml:3
+  HybridKV-opensource/hybridkv/eval_mile_hybridkv_repackKV_3b.sh:42、52
+  HybridKV-opensource/scripts/run_llavaov7b_four_repack_methods_qwen7b_best.sh:55、64、362

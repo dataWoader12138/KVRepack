@@ -1,5 +1,7 @@
 # 方法选择与默认配置
 
+下列表格描述默认视频入口。新增MileBench图片范围、统一Qwen3B默认模型、512-token生成与独立参数配方见 [MILEBENCH.md](MILEBENCH.md)；四种LLaVA改进已接入图片能力表。`--benchmark milebench --list-methods` 展示当前图片配置。
+
 每个模型/公开方法组合只保留一条实现路径。来源脚本是证据标签，运行时不读取旧目录。默认值来自所选脚本当前配置，不能直接视为历史最优参数。完整机器可读快照见 [method_registry.json](../provenance/method_registry.json)。
 
 ## qwen2_5_vl
@@ -33,7 +35,7 @@
 | `lookm` | `lookm` | — | llava-onevision-qwen2-7b-ov-hf | 200 | `llava_ov_ratio.sh` |
 | `hybridkv` | `hybridkv` | — | llava-onevision-qwen2-7b-ov-hf | 200 | `llava_ov_hybridkv.sh` |
 
-上述 LLaVA 基线已经纳入。工作区另有四种 LLaVA 改进源码（SnapKV、SparseMM、MadaKV、HybridKV），尚未迁入本版；这些组合会在 CPU 规划阶段拒绝。SparseMM/MadaKV 的基线分支来自同源 dispatcher，原 ratio 脚本当前数组没有激活这两项。
+上述 LLaVA 基线已纳入视频入口。SnapKV、SparseMM、MadaKV、HybridKV四种LLaVA改进另由MileBench图片入口选择，默认视频规划仍拒绝这些额外组合。SparseMM/MadaKV 的基线分支来自同源 dispatcher，原 ratio 脚本当前数组没有激活这两项。
 
 ## 默认值与公平对照
 

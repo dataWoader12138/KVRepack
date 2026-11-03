@@ -307,6 +307,13 @@ def resolve_experiment(method: str, overrides: Sequence[str] = (), *,
     if method not in METHODS_BY_MODEL[model]:
         raise ValueError(f"{method} for {model} is not included: no selected target experiment implements this combination")
     spec = METHODS_BY_MODEL[model][method]
+    return resolve_spec(spec, overrides, budget_ratio=budget_ratio)
+
+
+def resolve_spec(spec: MethodSpec, overrides: Sequence[str] = (), *,
+                 budget_ratio: float | None = None) -> tuple[MethodSpec, dict[str, str], dict[str, str]]:
+    """Resolve one selected spec; shared by the video and image registries."""
+    method = spec.name
     env = {key: param.default for key, param in spec.parameters.items()}
     explicit: dict[str, str] = {}
     for item in overrides:

@@ -342,7 +342,12 @@ class LlavaOnevisionModel(LlavaOnevisionPreTrainedModel):
 
         self.vocab_size = config.text_config.vocab_size
         # self.language_model = AutoModel.from_config(config.text_config)
-        self.language_model = Qwen2Model._from_config(config.text_config)
+        import os
+        if os.environ.get("METHOD") == "hybridkv_kvrepack":
+            from kvrepack.modeling_qwen2_kvrepack import Qwen2Model as HybridKVRepackQwen2Model
+            self.language_model = HybridKVRepackQwen2Model._from_config(config.text_config)
+        else:
+            self.language_model = Qwen2Model._from_config(config.text_config)
         self.pad_token_id = self.config.pad_token_id if self.config.pad_token_id is not None else -1
         self.post_init()
 

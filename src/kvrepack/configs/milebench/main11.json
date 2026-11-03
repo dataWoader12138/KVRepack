@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "name": "main11",
+  "description": "Eleven-task image suite; Qwen uses explicit image8 method recipes, LLaVA uses the current eleven-task scripts; not historical-best reproduction",
+  "tasks": [
+    "CLEVR-Change",
+    "Spot-the-Diff",
+    "MMCoQA",
+    "IEdit",
+    "ALFRED",
+    "SceneTransition",
+    "DocVQA",
+    "MultiModalQA",
+    "SlideVQA",
+    "WebQA",
+    "WikiVQA"
+  ],
+  "default_limit": 200,
+  "seed": 42,
+  "generation": {
+    "max_new_tokens": 512,
+    "min_new_tokens": 1,
+    "do_sample": false,
+    "temperature": 0.0,
+    "top_p": null,
+    "num_beams": 1
+  },
+  "image": {
+    "max_context_len": 32768,
+    "n_tokens_per_image": 256,
+    "max_pixels": 1605632,
+    "min_pixels": 7168,
+    "message_min_pixels": 200704,
+    "system_prompt": "You are a helpful assistant.",
+    "torch_dtype": "auto"
+  },
+  "methods": {
+    "qwen2_5_vl": {
+      "fullkv": {
+        "source_script": "HybridKV-opensource/hybridkv/generate.py",
+        "env": {}
+      },
+      "hybridkv": {
+        "source_script": "HybridKV-opensource/hybridkv/eval_mile_hybridkv.sh",
+        "env": {
+          "BUDGET": "512",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "snapkv": {
+        "source_script": "HybridKV-opensource/hybridkv/eval_mile_snapkv_3b.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "sparsemm": {
+        "source_script": "HybridKV-opensource/hybridkv/eval_mile_sparsemm_3b.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "madakv": {
+        "source_script": "HybridKV-opensource/hybridkv/generate.py",
+        "env": {
+          "BUDGET": "512",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "lookm": {
+        "source_script": "HybridKV-opensource/hybridkv/generate.py",
+        "env": {
+          "BUDGET": "512",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "hybridkv_kvrepack": {
+        "source_script": "HybridKV-opensource/hybridkv/eval_mile_hybridkv_repackKV_3b.sh",
+        "env": {
+          "BUDGET": "512",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "HYBRID_KVREPACK_SIMHEAD_MERGE_RATIO": "0.50",
+          "HYBRID_KVREPACK_COMPRESS_RATIO": "0.50",
+          "K_DIFF_ALPHA": "2",
+          "HYBRID_KVREPACK_K_DIFF_ALPHA": "2"
+        }
+      },
+      "snapkv_kvrepack": {
+        "source_script": "HybridKV-opensource/hybridkv/eval_mile_snapkv_repackKV_3b.sh",
+        "env": {
+          "BUDGET": "512",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "SNAPKV_SIMHEAD_MERGE_RATIO": "0.50",
+          "SNAPKV_KVREPACK_COMPRESS_RATIO": "0.50",
+          "K_DIFF_ALPHA": "2"
+        }
+      },
+      "sparsemm_kvrepack": {
+        "source_script": "HybridKV-opensource/hybridkv/eval_mile_sparsemm_repackKV_3b.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "SPARSEMM_SIMHEAD_MERGE_RATIO": "0.5",
+          "SPARSEMM_KVREPACK_COMPRESS_RATIO": "0.8",
+          "K_DIFF_ALPHA": "0",
+          "SPARSEMM_KVREPACK_K_DIFF_ALPHA": "0"
+        }
+      },
+      "madakv_kvrepack": {
+        "source_script": "HybridKV-opensource/hybridkv/eval_mile_madakv_repackKV_3b.sh",
+        "env": {
+          "BUDGET": "512",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "MADAKV_SIMHEAD_MERGE_RATIO": "0.1",
+          "MADAKV_KVREPACK_COMPRESS_RATIO": "0.8",
+          "K_DIFF_ALPHA": "1",
+          "MADAKV_KVREPACK_K_DIFF_ALPHA": "1"
+        }
+      }
+    },
+    "llava_ov": {
+      "fullkv": {
+        "source_script": "HybridKV-opensource/hybridkv/generate.py",
+        "env": {}
+      },
+      "hybridkv": {
+        "source_script": "HybridKV-opensource/scripts/run_llavaov7b_four_base_methods.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "snapkv": {
+        "source_script": "HybridKV-opensource/scripts/run_llavaov7b_four_base_methods.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "sparsemm": {
+        "source_script": "HybridKV-opensource/scripts/run_llavaov7b_four_base_methods.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "madakv": {
+        "source_script": "HybridKV-opensource/scripts/run_llavaov7b_four_base_methods.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "lookm": {
+        "source_script": "HybridKV-opensource/hybridkv/generate.py",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        }
+      },
+      "hybridkv_kvrepack": {
+        "source_script": "HybridKV-opensource/scripts/run_llavaov7b_four_repack_methods_qwen7b_best.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "HYBRID_KVREPACK_SIMHEAD_MERGE_RATIO": "0.30",
+          "HYBRID_KVREPACK_COMPRESS_RATIO": "0.50",
+          "K_DIFF_ALPHA": "2",
+          "HYBRID_KVREPACK_K_DIFF_ALPHA": "2"
+        }
+      },
+      "snapkv_kvrepack": {
+        "source_script": "HybridKV-opensource/scripts/run_llavaov7b_four_repack_methods_qwen7b_best.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "SNAPKV_SIMHEAD_MERGE_RATIO": "0.30",
+          "SNAPKV_KVREPACK_COMPRESS_RATIO": "0.70",
+          "K_DIFF_ALPHA": "2",
+          "SNAPKV_KVREPACK_K_DIFF_ALPHA": "2"
+        }
+      },
+      "sparsemm_kvrepack": {
+        "source_script": "HybridKV-opensource/scripts/run_llavaov7b_four_repack_methods_qwen7b_best.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "SPARSEMM_SIMHEAD_MERGE_RATIO": "0.30",
+          "SPARSEMM_KVREPACK_COMPRESS_RATIO": "0.70",
+          "K_DIFF_ALPHA": "2",
+          "SPARSEMM_KVREPACK_K_DIFF_ALPHA": "2"
+        }
+      },
+      "madakv_kvrepack": {
+        "source_script": "HybridKV-opensource/scripts/run_llavaov7b_four_repack_methods_qwen7b_best.sh",
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "MADAKV_SIMHEAD_MERGE_RATIO": "0.70",
+          "MADAKV_KVREPACK_COMPRESS_RATIO": "0.70",
+          "K_DIFF_ALPHA": "1",
+          "MADAKV_KVREPACK_K_DIFF_ALPHA": "1"
+        }
+      }
+    }
+  },
+  "notes": [
+    "Qwen 3B recipes are also available for 7B as explicit configuration reuse, not a claim of historical 7B equivalence.",
+    "Qwen images are RGB JPEG and precede text; LLaVA images remain RGB PIL, following the original workers.",
+    "RATIO remains 0.1 independently of BUDGET_RATIO unless explicitly overridden.",
+    "All inference, quality and CUDA performance validation is pending.",
+    "The image backend defaults to Qwen3B consistently across baselines and upgrades; original 7B-only examples require explicit --pretrained to reproduce their model choice.",
+    "LLaVA shares target param_config budget_fixed_ratio=0.1 for baseline and upgrade; opensource currently uses 0.5. This is not source numerical-equivalence validation."
+  ],
+  "default_pretrained": {
+    "qwen2_5_vl": "Qwen/Qwen2.5-VL-3B-Instruct",
+    "llava_ov": "llava-hf/llava-onevision-qwen2-7b-ov-hf"
+  }
+}

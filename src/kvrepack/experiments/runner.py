@@ -94,8 +94,25 @@ def build_plan(method: str, *, model: str = "qwen2_5_vl", task: str | None = Non
                limit: int | None = None, budget_ratio: float | None = None,
                device: str = "0", output: str | Path | None = None,
                overrides: Sequence[str] = (), environ: Mapping[str, str] | None = None,
-               repo_root: str | Path | None = None) -> ExperimentPlan:
+               repo_root: str | Path | None = None, benchmark: str = "video",
+               data_root: str | Path | None = None, profile: str | None = None,
+               seed: int | None = None, max_new_tokens: int | None = None,
+               max_context_len: int | None = None, min_pixels: int | None = None,
+               max_pixels: int | None = None) -> ExperimentPlan:
     """Pure planning: no imports of inference packages, network access, or file writes."""
+    if benchmark == "milebench":
+        return build_milebench_plan(
+            method, model=model, task=task, pretrained=pretrained, model_type=model_type,
+            frames=frames, limit=limit, budget_ratio=budget_ratio, device=device,
+            output=output, overrides=overrides, environ=environ, repo_root=repo_root,
+            data_root=data_root, profile=profile or "main11", seed=seed,
+            max_new_tokens=max_new_tokens, max_context_len=max_context_len,
+            min_pixels=min_pixels, max_pixels=max_pixels,
+        )
+    if benchmark != "video":
+        raise ValueError(f"Unsupported benchmark {benchmark!r}")
+    if any(value is not None for value in (data_root, profile, seed, max_new_tokens, max_context_len, min_pixels, max_pixels)):
+        raise ValueError("Image profile/data/processor options require --benchmark milebench")
     spec, algorithm, explicit = resolve_experiment(method, overrides, budget_ratio=budget_ratio, model=model)
     root = Path(repo_root).resolve() if repo_root is not None else _root()
     ambient = os.environ if environ is None else environ
@@ -194,6 +211,140 @@ def build_plan(method: str, *, model: str = "qwen2_5_vl", task: str | None = Non
     return ExperimentPlan(root, out, command, env, config, provenance)
 
 
+def build_milebench_plan(method: str, *, model: str = "qwen2_5_vl", task: str | None = None,
+                        pretrained: str | None = None, model_type: str | None = None,
+                        frames: int | None = None, limit: int | None = None,
+                        budget_ratio: float | None = None, device: str = "0",
+                        output: str | Path | None = None, overrides: Sequence[str] = (),
+                        environ: Mapping[str, str] | None = None,
+                        repo_root: str | Path | None = None, data_root: str | Path | None = None,
+                        profile: str = "main11", seed: int | None = None,
+                        max_new_tokens: int | None = None, max_context_len: int | None = None,
+                        min_pixels: int | None = None, max_pixels: int | None = None) -> ExperimentPlan:
+    from .milebench import describe_spec, load_profile, profile_path, resolve_image_experiment
+
+    recipe = load_profile(profile)
+    spec, algorithm, explicit = resolve_image_experiment(
+        method, overrides, model=model, profile=profile, budget_ratio=budget_ratio,
+    )
+    if frames is not None:
+        raise ValueError("--frames is only used by video experiments")
+    if data_root is None:
+        raise ValueError("MileBench requires an explicit --data-root")
+    root = Path(repo_root).resolve() if repo_root is not None else _root()
+    ambient = os.environ if environ is None else environ
+    task = task or recipe["tasks"][0]
+    if task not in recipe["tasks"]:
+        raise ValueError(f"Unsupported task {task!r} for MileBench profile {profile}")
+    pretrained = pretrained or spec.default_pretrained
+    if not pretrained or any(c in pretrained for c in ",\r\n\x00"):
+        raise ValueError("--pretrained must be a model ID or local path without commas or newlines")
+    model_type = _infer_model_type(pretrained, model_type, model)
+    limit = _positive_integer("limit", limit if limit is not None else recipe["default_limit"])
+    gpu = _device(device)
+    seed = recipe["seed"] if seed is None else seed
+    if isinstance(seed, bool) or not isinstance(seed, int) or seed < 0 or seed >= 2**32:
+        raise ValueError("--seed must be an integer in [0, 2**32)")
+    generation, image = dict(recipe["generation"]), dict(recipe["image"])
+    if model == "llava_ov" and any(value is not None for value in (min_pixels, max_pixels)):
+        raise ValueError("--min-pixels/--max-pixels are Qwen image options; LLaVA uses its processor defaults")
+    image["pixel_settings_effective"] = model == "qwen2_5_vl"
+    if max_new_tokens is not None:
+        generation["max_new_tokens"] = _positive_integer("max-new-tokens", max_new_tokens)
+    if max_context_len is not None:
+        image["max_context_len"] = _positive_integer("max-context-len", max_context_len)
+    if min_pixels is not None:
+        image["min_pixels"] = image["message_min_pixels"] = _positive_integer("min-pixels", min_pixels)
+    if max_pixels is not None:
+        image["max_pixels"] = _positive_integer("max-pixels", max_pixels)
+    if max(image["min_pixels"], image["message_min_pixels"]) > image["max_pixels"]:
+        raise ValueError("Effective minimum image pixels must not exceed maximum pixels")
+    run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    out = (Path(output).expanduser().resolve() if output is not None
+           else root / "outputs" / "milebench" / model_type / method / profile / task / run_id)
+    protected = ("src", "vendor", "csrc", "provenance", "tests", "scripts", "docs", "requirements", ".git", ".github")
+    if out == root or out in root.parents or any(out.is_relative_to(root / part) for part in protected):
+        raise ValueError("--output must be outside the repository's source and metadata directories")
+    if out.is_relative_to(root) and not out.is_relative_to(root / "outputs"):
+        raise ValueError("Output within the repository must be under outputs/")
+    external_data = Path(data_root).expanduser().resolve()
+    if out == external_data or out.is_relative_to(external_data):
+        raise ValueError("--output must be outside the MileBench data directory")
+    env = {
+        **algorithm, **spec.runtime_defaults, "METHOD": spec.internal_method, "MODEL_TYPE": model_type,
+        "CUDA_VISIBLE_DEVICES": gpu, "PYTHONNOUSERSITE": "1", "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPATH": os.pathsep.join(map(str, (root / "src", root / "csrc"))),
+    }
+    if spec.method_name:
+        env["METHOD_NAME"] = spec.method_name
+    hf_home = Path(ambient.get("HF_HOME") or str(root / ".cache/huggingface")).expanduser().resolve()
+    env.update(HF_HOME=str(hf_home), HF_DATASETS_CACHE=ambient.get("HF_DATASETS_CACHE") or str(hf_home / "datasets"))
+    env["HUGGINGFACE_HUB_CACHE"] = ambient.get("HUGGINGFACE_HUB_CACHE") or ambient.get("HF_HUB_CACHE") or str(hf_home / "hub")
+    env["HF_HUB_CACHE"] = env["HUGGINGFACE_HUB_CACHE"]
+    config = {
+        "schema_version": 1, "benchmark": "milebench", "profile": profile, "run_id": run_id,
+        "public_method": method, "internal_method": spec.internal_method, "model": model,
+        "model_type": model_type, "pretrained": pretrained, "task": task, "limit": limit,
+        "data_root": str(external_data), "output": str(out),
+        "seed": seed, "batch_size": 1, "generation": generation, "image": image,
+        "device": gpu, "attention": "flash_attention_2", "algorithm_env": algorithm,
+        "explicit_env_overrides": explicit, "baseline": spec.baseline,
+        "validation_status": "cpu_integration_only_gpu_unverified",
+    }
+    command = (sys.executable, "-m", "kvrepack.benchmarks.milebench.generate", "--config", str(out / "resolved_config.json"))
+    source_files = ["src/kvrepack/experiments/registry.py", "src/kvrepack/experiments/milebench.py",
+                    "src/kvrepack/experiments/runner.py", "src/kvrepack/run.py",
+                    f"src/kvrepack/configs/milebench/{profile}.json"]
+    config_sources = {relative: hashlib.sha256((root / relative).read_bytes()).hexdigest()
+                      for relative in source_files if (root / relative).is_file()}
+    def manifest_hash(name):
+        path = root / "provenance" / name
+        return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+    provenance = {
+        "schema_version": 1, "selected_method": describe_spec(spec, profile),
+        "core_manifest_sha256": manifest_hash("core_sources.json"),
+        "milebench_manifest_sha256": manifest_hash("milebench_sources.json"),
+        "configuration_sources_sha256": config_sources,
+        "profile_sha256": hashlib.sha256(profile_path(profile).read_bytes()).hexdigest(),
+        "source_policy": "Only this checkout's canonical core is loaded; current opensource numerical equivalence is unverified.",
+        "environment_policy": "Only infrastructure variables inherited; image algorithm parameters resolved explicitly.",
+        "discarded_environment_names": sorted(key for key in ambient if not _infrastructure(key)),
+            "inherited_infrastructure_names": sorted(key for key in ambient if _infrastructure(key)),
+        "validation_status": "CPU integration only; GPU, model quality and performance unverified",
+        "python_executable": sys.executable,
+    }
+    shared = root / "src/kvrepack/configs/param_config.json"
+    if shared.is_file():
+        provenance["shared_param_config"] = {
+            "path": str(shared.relative_to(root)), "sha256": hashlib.sha256(shared.read_bytes()).hexdigest(),
+            "values": json.loads(shared.read_text(encoding="utf-8")),
+            "policy": "Target canonical config shared by baseline and upgrade; source LLaVA budget_fixed_ratio=0.5 differs from target 0.1.",
+        }
+    return ExperimentPlan(root, out, command, env, config, provenance)
+
+
+def verify_milebench_sources(root: Path) -> dict:
+    path = root / "provenance/milebench_sources.json"
+    try:
+        raw = path.read_bytes()
+        manifest = json.loads(raw)
+        entries = manifest["targets"]
+    except (OSError, ValueError, KeyError) as exc:
+        raise ValueError("Missing or invalid MileBench source manifest") from exc
+    if manifest.get("schema_version") != 1 or not entries:
+        raise ValueError("Unsupported or empty MileBench source manifest")
+    checked = []
+    for entry in entries:
+        target = (root / entry["path"]).resolve()
+        if not target.is_relative_to(root) or not target.is_file():
+            raise ValueError(f"Missing local MileBench source: {entry['path']}")
+        actual = hashlib.sha256(target.read_bytes()).hexdigest()
+        if actual != entry["sha256"]:
+            raise ValueError(f"MileBench source hash mismatch: {entry['path']}")
+        checked.append({"target_path": entry["path"], "sha256": actual})
+    return {"manifest_sha256": hashlib.sha256(raw).hexdigest(), "verified_targets": checked}
+
+
 def child_environment(plan: ExperimentPlan, environ: Mapping[str, str] | None = None) -> dict[str, str]:
     """Build the private child environment; callers must not serialize its values."""
     ambient = os.environ if environ is None else environ
@@ -252,8 +403,9 @@ def verify_vendor_sources(root: Path, adapter: str = "qwen2_5_vl") -> dict:
 
 def verify_import_sources(plan: ExperimentPlan, env: Mapping[str, str]) -> dict:
     """Inspect import specs in the actual child interpreter without importing torch."""
-    expected = {"kvrepack": str(plan.repo_root / "src" / "kvrepack"),
-                "lmms_eval": str(plan.repo_root / "vendor" / "lmms-eval" / "lmms_eval")}
+    expected = {"kvrepack": str(plan.repo_root / "src" / "kvrepack")}
+    if plan.resolved_config.get("benchmark") != "milebench":
+        expected["lmms_eval"] = str(plan.repo_root / "vendor" / "lmms-eval" / "lmms_eval")
     if plan.provenance["selected_method"]["kernel"]:
         expected["kvrepack_kernel"] = str(plan.repo_root / "csrc")
     script = """
@@ -329,9 +481,15 @@ def run_plan(plan: ExperimentPlan) -> int:
     manifest = verify_manifest(plan.repo_root)
     if plan.provenance["core_manifest_sha256"] != manifest["manifest_sha256"]:
         raise ValueError("Core manifest changed after this plan was built; rebuild the plan")
-    vendor = verify_vendor_sources(plan.repo_root, plan.resolved_config["lmms_adapter"])
-    if plan.provenance["vendor_manifest_sha256"] != vendor["manifest_sha256"]:
-        raise ValueError("Vendor manifest changed after this plan was built; rebuild the plan")
+    image = plan.resolved_config.get("benchmark") == "milebench"
+    if image:
+        vendor = verify_milebench_sources(plan.repo_root)
+        if plan.provenance["milebench_manifest_sha256"] != vendor["manifest_sha256"]:
+            raise ValueError("MileBench manifest changed after this plan was built; rebuild the plan")
+    else:
+        vendor = verify_vendor_sources(plan.repo_root, plan.resolved_config["lmms_adapter"])
+        if plan.provenance["vendor_manifest_sha256"] != vendor["manifest_sha256"]:
+            raise ValueError("Vendor manifest changed after this plan was built; rebuild the plan")
     for relative, expected in plan.provenance["configuration_sources_sha256"].items():
         target = (plan.repo_root / relative).resolve()
         if not target.is_relative_to(plan.repo_root) or hashlib.sha256(target.read_bytes()).hexdigest() != expected:
@@ -342,7 +500,7 @@ def run_plan(plan: ExperimentPlan) -> int:
         raise ValueError(f"Output directory is not empty; select a fresh --output: {plan.output}")
     plan.output.mkdir(parents=True, exist_ok=True)
     provenance = {**plan.provenance, **imports, "source_verification": manifest,
-                  "vendor_source_verification": vendor,
+                  ("milebench_source_verification" if image else "vendor_source_verification"): vendor,
                   "git_commit": _git_commit(plan.repo_root), "command": list(plan.command)}
     for name, payload in (("resolved_config.json", plan.resolved_config), ("provenance.json", provenance)):
         (plan.output / name).write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -355,6 +513,10 @@ def run_plan(plan: ExperimentPlan) -> int:
                                     stdout=log, stderr=subprocess.STDOUT, check=False)
         state["returncode"] = result.returncode
         return result.returncode
+    except BaseException as exc:
+        state["returncode"] = -1
+        state["error_type"] = type(exc).__name__
+        raise
     finally:
         state["finished_at"] = datetime.now(timezone.utc).isoformat()
         state_path.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")

@@ -2,11 +2,11 @@
 
 项目交接摘要与后续工作入口：[docs/HANDOFF.md](docs/HANDOFF.md)。
 
-将 Qwen2.5-VL 的 KV cache 基线及其 KVRepack 改进整理到一个独立项目，同时纳入 LLaVA-OneVision-Qwen2-7B 的原有基线。任务包括 NextQA、VATEX、VideoChatGPT。多图 MileBench、历史参数搜索和诊断支线尚未纳入首版。
+将 Qwen2.5-VL 与 LLaVA-OneVision 的 KV cache 基线及 KVRepack 改进整理到一个独立项目。视频入口包括 NextQA、VATEX、VideoChatGPT；新增 [MileBench 多图主实验](docs/MILEBENCH.md)，包含数据预检、图片生成、原协议评分和 JSON/CSV 汇总。图片配置与视频默认值分别管理，共享核心实现。
 
 本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。当前状态为**整理和 CPU 静态验证阶段，GPU 正确性、数值一致性和速度尚待验证**。
 
-2026-11-03 的无 GPU 调用关系审计覆盖了19个组合，并执行原压缩函数的CPU小张量检查；已复现 **LLaVA SparseMM 跨视频复用旧预算**及 **AsymKV 特定分块边界遗漏末 token** 两项问题，核心代码尚未修复。详细调用图、触发条件和复查命令见 [CPU 调用关系审计](docs/CPU_CALL_AUDIT.md)。分派与源码检查通过不能替代这些行为问题的处理。
+首版无 GPU 审计覆盖19个组合，并复现 LLaVA SparseMM 跨 prompt 预算复用及 AsymKV 分块边界末 token 遗漏。本次已单独修复前者并新增 CPU 回归；AsymKV 问题仍未修复且不在图片入口范围。历史证据见 [CPU 调用关系审计](docs/CPU_CALL_AUDIT.md)，图片扩展与本次实测范围见 [MileBench 验证报告](provenance/milebench_validation.json)。**GPU 模型生成、分数与性能仍未验证**。
 
 ## 文件组织
 
@@ -45,7 +45,19 @@ KVRepack/
 | `--model qwen2_5_vl`（默认） | 上述13种方法，3B/7B |
 | `--model llava_ov` | FullKV、HybridKV、SnapKV、SparseMM、MadaKV、LookM，OV-7B |
 
-LLaVA 的六种基线已纳入本版。工作区另已找到 SnapKV、SparseMM、MadaKV、HybridKV 的 LLaVA 改进源码，尚未迁入；这些改进组合在生成计划时会明确拒绝。详见 [迁移范围](docs/REPACKING.md#首版范围)。
+上表为默认视频入口范围。使用 `--benchmark milebench` 时，Qwen和LLaVA各提供六种基线及 HybridKV/SnapKV/SparseMM/MadaKV 四种 KVRepack 改进；新增四个 LLaVA 改进只从图片能力表选择。图片所有 Qwen 方法统一默认3B，7B通过 `--pretrained` 显式选择。详见 [MileBench](docs/MILEBENCH.md) 与 [LLaVA 迁移](docs/LLAVA_MIGRATION.md)。
+
+图片数据预检、无副作用计划和离线评分均可在没有 GPU 时运行：
+
+```bash
+PYTHONPATH=src python -m kvrepack.run --benchmark milebench --list-methods
+PYTHONPATH=src python -m kvrepack.run --benchmark milebench --method hybridkv_kvrepack \
+  --profile main11 --task CLEVR-Change --data-root /path/to/milebench --limit 2 --dry-run
+PYTHONPATH=src python -m kvrepack.run --benchmark milebench \
+  --task CLEVR-Change --data-root /path/to/milebench --preflight
+```
+
+图片附加依赖安装为 `python -m pip install -e '.[images]'`；依赖约束与完整评分/汇总命令见 [使用说明](docs/MILEBENCH.md)。当前目标核心和部分 opensource 历史图片实现有差异，LLaVA共享预算配置也不同，详见 [来源差异](docs/MILEBENCH_SOURCE_DIFF.md)，不能仅凭入口迁移称已复现历史分数。
 
 ## 安装（待 GPU 阶段实际验证）
 

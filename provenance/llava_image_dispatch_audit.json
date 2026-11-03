@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "scope": "Four image-only LLaVA upgrades; real loader/patch/cache selection with dependency doubles. No model/CPU tensor/GPU execution.",
+  "combinations": [
+    {
+      "method": "hybridkv_kvrepack",
+      "worker_pid": 4942,
+      "passed": true,
+      "errors": [],
+      "adapter_class": "kvrepack.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "patch_targets": [],
+      "hybrid_cache_check": {
+        "language_backbone": "kvrepack.modeling_qwen2_kvrepack",
+        "cache_class": "kvrepack.hybridkv_utils_llava.HybridKVCache",
+        "kvrepack_enabled": true,
+        "chunk_size": 8
+      },
+      "algorithm_functions_executed": 0,
+      "dispatch_stdout": []
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "worker_pid": 4949,
+      "passed": true,
+      "errors": [],
+      "adapter_class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward",
+          "target": "kvrepack.qwen2_model_snapkv_kvrepack.snapkv_kvrepack_qwen2_forward",
+          "source_path": "src/kvrepack/qwen2_model_snapkv_kvrepack.py",
+          "line": 182,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 183
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward",
+          "target": "kvrepack.qwen2_model_snapkv_kvrepack.qwen_flash_attn2_forward_SnapKVKVRepack",
+          "source_path": "src/kvrepack/qwen2_model_snapkv_kvrepack.py",
+          "line": 654,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 184
+        }
+      ],
+      "algorithm_functions_executed": 0,
+      "dispatch_stdout": []
+    },
+    {
+      "method": "sparsemm_kvrepack",
+      "worker_pid": 4950,
+      "passed": true,
+      "errors": [],
+      "adapter_class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward",
+          "target": "kvrepack.qwen2_model.sparsemm_qwen2_forward",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 437,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 188
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward",
+          "target": "kvrepack.qwen2_model.decoder_qwen2_forward_sparsemm",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 749,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 189
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward",
+          "target": "kvrepack.qwen2_model_sparsemm_kvrepack.qwen_flash_attn2_forward_SparseMMKVRepack",
+          "source_path": "src/kvrepack/qwen2_model_sparsemm_kvrepack.py",
+          "line": 692,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 190
+        }
+      ],
+      "algorithm_functions_executed": 0,
+      "dispatch_stdout": []
+    },
+    {
+      "method": "madakv_kvrepack",
+      "worker_pid": 4952,
+      "passed": true,
+      "errors": [],
+      "adapter_class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionModel.forward",
+          "target": "kvrepack.modeling_llava_onevision.LlavaOnevisionModel.forward",
+          "source_path": "src/kvrepack/modeling_llava_onevision.py",
+          "line": 497,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 194
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward",
+          "target": "kvrepack.qwen2_model.madakv_qwen2_forward",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 649,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 195
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward",
+          "target": "kvrepack.qwen2_model.decoder_qwen2_forward_madakv",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 837,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 196
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward",
+          "target": "kvrepack.qwen2_model_madakv_kvrepack.qwen_flash_attn2_forward_MadaKVKVRepack",
+          "source_path": "src/kvrepack/qwen2_model_madakv_kvrepack.py",
+          "line": 709,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 197
+        }
+      ],
+      "algorithm_functions_executed": 0,
+      "dispatch_stdout": []
+    }
+  ],
+  "passed": true
+}

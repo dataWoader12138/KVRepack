@@ -1,0 +1,3448 @@
+{
+  "schema_version": 1,
+  "source_root_hint": "HybridKV-opensource is a sibling of the checkout; optional only for source comparison",
+  "gpu_or_model_execution": false,
+  "scope": "Four LLaVA image upgrades; original method support matrix remains unchanged.",
+  "entries": [
+    {
+      "source_path": "HybridKV-opensource/hybridkv/qwen2_model_snapkv_repackkv.py",
+      "source_sha256": "98bbf0f9ecfaed542f868095b7b7678febdb4d7d3238d32bad5bfda7598cc662",
+      "target_path": "src/kvrepack/qwen2_model_snapkv_kvrepack.py",
+      "target_sha256": "72de1e37446ab49aa8a606c4ac00193fd1889829275514eba3bfbe6c1fc5488b",
+      "kind": "llava_port",
+      "source_ast_sha256": "f55595b5a08631d84a425edc73e9a1abb5880f1407ed997ab3f6593ea71e38b4",
+      "renamed_source_ast_sha256": "ec728fd5b1eab1fa88fe0b8ef55001de664ad6df8ad1edfe7a4ba79cc98d8779",
+      "transformations": [
+        "llava_port_names_imports_and_aliases",
+        "snapkv_prefixed_alpha_adapter"
+      ],
+      "port_replay": {
+        "previous_target_sha256": "98bbf0f9ecfaed542f868095b7b7678febdb4d7d3238d32bad5bfda7598cc662",
+        "reversible_edits": [
+          {
+            "target_start": 1894,
+            "target_end": 1894,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 1896,
+            "target_end": 1902,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 4213,
+            "target_end": 4213,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 4215,
+            "target_end": 4221,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 5338,
+            "target_end": 5346,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 5424,
+            "target_end": 5424,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 5426,
+            "target_end": 5432,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 5481,
+            "target_end": 5481,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 5483,
+            "target_end": 5489,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 5592,
+            "target_end": 5592,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 5594,
+            "target_end": 5600,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 5809,
+            "target_end": 5809,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 5811,
+            "target_end": 5817,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 6247,
+            "target_end": 6247,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 6249,
+            "target_end": 6255,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 6409,
+            "target_end": 6417,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6660,
+            "target_end": 6668,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6767,
+            "target_end": 6775,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6823,
+            "target_end": 6831,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6874,
+            "target_end": 6882,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6937,
+            "target_end": 6940,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 6941,
+            "target_end": 6943,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 6944,
+            "target_end": 6945,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 7071,
+            "target_end": 7079,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 7122,
+            "target_end": 7130,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 7185,
+            "target_end": 7188,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 7189,
+            "target_end": 7191,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 7192,
+            "target_end": 7193,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 7318,
+            "target_end": 7326,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 7365,
+            "target_end": 7373,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 7415,
+            "target_end": 7418,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 7419,
+            "target_end": 7421,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 7422,
+            "target_end": 7423,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 7528,
+            "target_end": 7536,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 7576,
+            "target_end": 7584,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 7627,
+            "target_end": 7630,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 7631,
+            "target_end": 7633,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 7634,
+            "target_end": 7635,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 7739,
+            "target_end": 7747,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 7847,
+            "target_end": 7855,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8019,
+            "target_end": 8027,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8118,
+            "target_end": 8126,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8249,
+            "target_end": 8257,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8320,
+            "target_end": 8323,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 8324,
+            "target_end": 8326,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 8327,
+            "target_end": 8328,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 8413,
+            "target_end": 8413,
+            "before": "DECOUPLE",
+            "after": ""
+          },
+          {
+            "target_start": 8415,
+            "target_end": 8421,
+            "before": "",
+            "after": "REPACK"
+          },
+          {
+            "target_start": 8466,
+            "target_end": 8474,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8572,
+            "target_end": 8580,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8659,
+            "target_end": 8662,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 8663,
+            "target_end": 8665,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 8666,
+            "target_end": 8667,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 8746,
+            "target_end": 8754,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8828,
+            "target_end": 8836,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8878,
+            "target_end": 8878,
+            "before": "_env_float(\"K_DIFF_ALPHA\")\n        self.config.snapkv_decouple_k_diff_alpha = 2.0 if alpha is None else alpha\n\n    if not hasattr(self.config, \"snapkv_simhead_merge_ratio\"):\n        self.config.snapkv_simhead_merge_ratio = ",
+            "after": ""
+          },
+          {
+            "target_start": 8897,
+            "target_end": 9218,
+            "before": "",
+            "after": "KVREPACK_K_DIFF_ALPHA\")\n        if alpha is None:\n            alpha = _safe_get_env_float(\"K_DIFF_ALPHA\")\n        self.config.snapkv_kvrepack_k_diff_alpha = 2.0 if alpha is None else alpha\n\n    if not hasattr(self.config, \"snapkv_simhead_merge_ratio\"):\n        self.config.snapkv_simhead_merge_ratio = _env_float(\"SNAPKV_"
+          },
+          {
+            "target_start": 9532,
+            "target_end": 9540,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9608,
+            "target_end": 9616,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9654,
+            "target_end": 9662,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9690,
+            "target_end": 9693,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 9694,
+            "target_end": 9696,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 9697,
+            "target_end": 9698,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 10006,
+            "target_end": 10014,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10267,
+            "target_end": 10275,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14122,
+            "target_end": 14125,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 14126,
+            "target_end": 14128,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 14129,
+            "target_end": 14130,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 14613,
+            "target_end": 14616,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 14617,
+            "target_end": 14619,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 14620,
+            "target_end": 14621,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 17911,
+            "target_end": 17919,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18236,
+            "target_end": 18244,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18437,
+            "target_end": 18445,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22385,
+            "target_end": 22385,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 22387,
+            "target_end": 22393,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 22460,
+            "target_end": 22468,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 24952,
+            "target_end": 24960,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26377,
+            "target_end": 26377,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 26379,
+            "target_end": 26385,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 26779,
+            "target_end": 26779,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 26781,
+            "target_end": 26787,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 27021,
+            "target_end": 27029,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27248,
+            "target_end": 27256,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27321,
+            "target_end": 27329,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27674,
+            "target_end": 27682,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27733,
+            "target_end": 27733,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 27735,
+            "target_end": 27741,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 27925,
+            "target_end": 27925,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 27927,
+            "target_end": 27933,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 28179,
+            "target_end": 28230,
+            "before": "decouplekv(self)\n    past_key_value = ensure_decouplekv",
+            "after": "kvrepack(self)\n    past_key_value = ensure_kvrepack"
+          },
+          {
+            "target_start": 29061,
+            "target_end": 29061,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 29063,
+            "target_end": 29069,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 29388,
+            "target_end": 29396,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29707,
+            "target_end": 29715,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29772,
+            "target_end": 29780,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29833,
+            "target_end": 29841,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29891,
+            "target_end": 29899,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 30380,
+            "target_end": 30388,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      }
+    },
+    {
+      "source_path": "HybridKV-opensource/hybridkv/qwen2_model_sparsemm_repackkv.py",
+      "source_sha256": "9fbf0b9b7415ac431260c686fb05603f482aa99af48a37f9f4132e79607ecbae",
+      "target_path": "src/kvrepack/qwen2_model_sparsemm_kvrepack.py",
+      "target_sha256": "6ac7c67893b18c312f911a557858f6454a1d066df0c49fb8e18805182a36591c",
+      "kind": "llava_port",
+      "source_ast_sha256": "647b21be978be8324dab8ad994a766ca802099670331177bc5c99299f95dda91",
+      "renamed_source_ast_sha256": "7e718a3927b010cfd599f999ce8cad74c70ec9bf2a2d069a9b7589dba44c0184",
+      "transformations": [
+        "llava_port_names_imports_and_aliases"
+      ],
+      "port_replay": {
+        "previous_target_sha256": "9fbf0b9b7415ac431260c686fb05603f482aa99af48a37f9f4132e79607ecbae",
+        "reversible_edits": [
+          {
+            "target_start": 507,
+            "target_end": 507,
+            "before": "repack",
+            "after": ""
+          },
+          {
+            "target_start": 509,
+            "target_end": 515,
+            "before": "",
+            "after": "repack"
+          },
+          {
+            "target_start": 1434,
+            "target_end": 1437,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 1438,
+            "target_end": 1440,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 1441,
+            "target_end": 1442,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 5825,
+            "target_end": 5828,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 5829,
+            "target_end": 5831,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 5832,
+            "target_end": 5833,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 6098,
+            "target_end": 6106,
+            "before": "Decouple",
+            "after": "KVRepack"
+          },
+          {
+            "target_start": 9263,
+            "target_end": 9266,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 9267,
+            "target_end": 9269,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 9270,
+            "target_end": 9271,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 9834,
+            "target_end": 9837,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 9838,
+            "target_end": 9840,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 9841,
+            "target_end": 9842,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 13421,
+            "target_end": 13421,
+            "before": "decouple",
+            "after": ""
+          },
+          {
+            "target_start": 13423,
+            "target_end": 13429,
+            "before": "",
+            "after": "repack"
+          },
+          {
+            "target_start": 13487,
+            "target_end": 13495,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 13540,
+            "target_end": 13548,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 13582,
+            "target_end": 13585,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 13586,
+            "target_end": 13588,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 13589,
+            "target_end": 13590,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 13651,
+            "target_end": 13659,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 13704,
+            "target_end": 13712,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 13746,
+            "target_end": 13749,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 13750,
+            "target_end": 13752,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 13753,
+            "target_end": 13754,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 13814,
+            "target_end": 13822,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 13863,
+            "target_end": 13871,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 13902,
+            "target_end": 13905,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 13906,
+            "target_end": 13908,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 13909,
+            "target_end": 13910,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 13974,
+            "target_end": 13982,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14028,
+            "target_end": 14036,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14086,
+            "target_end": 14089,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 14090,
+            "target_end": 14092,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 14093,
+            "target_end": 14094,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 14208,
+            "target_end": 14216,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14255,
+            "target_end": 14263,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14306,
+            "target_end": 14309,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 14310,
+            "target_end": 14312,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 14313,
+            "target_end": 14314,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 14414,
+            "target_end": 14422,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14466,
+            "target_end": 14474,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14508,
+            "target_end": 14511,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 14512,
+            "target_end": 14514,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 14515,
+            "target_end": 14516,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 14582,
+            "target_end": 14590,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14632,
+            "target_end": 14640,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14672,
+            "target_end": 14675,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 14676,
+            "target_end": 14678,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 14679,
+            "target_end": 14680,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 14742,
+            "target_end": 14750,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14798,
+            "target_end": 14806,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14845,
+            "target_end": 14848,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 14849,
+            "target_end": 14851,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 14852,
+            "target_end": 14853,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 14926,
+            "target_end": 14934,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 15016,
+            "target_end": 15019,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 15020,
+            "target_end": 15022,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 15023,
+            "target_end": 15024,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 15105,
+            "target_end": 15113,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 15188,
+            "target_end": 15196,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 15235,
+            "target_end": 15243,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 15286,
+            "target_end": 15289,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 15290,
+            "target_end": 15292,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 15293,
+            "target_end": 15294,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 15407,
+            "target_end": 15415,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 15466,
+            "target_end": 15474,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 15557,
+            "target_end": 15560,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 15561,
+            "target_end": 15563,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 15564,
+            "target_end": 15565,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 15962,
+            "target_end": 15962,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 15964,
+            "target_end": 15970,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 16199,
+            "target_end": 16207,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 16451,
+            "target_end": 16459,
+            "before": "Decouple",
+            "after": "KVRepack"
+          },
+          {
+            "target_start": 16513,
+            "target_end": 16521,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 16580,
+            "target_end": 16588,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 16643,
+            "target_end": 16651,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 16707,
+            "target_end": 16715,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 16769,
+            "target_end": 16837,
+            "before": "decouple_ratio,\n            head_score=self.config.sparsemm_decouple",
+            "after": "kvrepack_ratio,\n            head_score=self.config.sparsemm_kvrepack"
+          },
+          {
+            "target_start": 17157,
+            "target_end": 17165,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 17464,
+            "target_end": 17464,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 17466,
+            "target_end": 17472,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 19943,
+            "target_end": 19943,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 19945,
+            "target_end": 19951,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 20208,
+            "target_end": 20216,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20343,
+            "target_end": 20351,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21090,
+            "target_end": 21098,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23613,
+            "target_end": 23621,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23847,
+            "target_end": 23855,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 24343,
+            "target_end": 24351,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 24451,
+            "target_end": 24459,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 24726,
+            "target_end": 24726,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 24728,
+            "target_end": 24734,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 26624,
+            "target_end": 26632,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27466,
+            "target_end": 27466,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 27468,
+            "target_end": 27474,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 28090,
+            "target_end": 28177,
+            "before": "decouple_merge_head_mask = actual_merge_mask.detach()\n        module._sparsemm_decouple",
+            "after": "kvrepack_merge_head_mask = actual_merge_mask.detach()\n        module._sparsemm_kvrepack"
+          },
+          {
+            "target_start": 28518,
+            "target_end": 28518,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 28520,
+            "target_end": 28526,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 28764,
+            "target_end": 28772,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 28848,
+            "target_end": 28856,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 28923,
+            "target_end": 28931,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 28998,
+            "target_end": 29006,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29462,
+            "target_end": 29470,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 30458,
+            "target_end": 30458,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 30460,
+            "target_end": 30466,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 31138,
+            "target_end": 31138,
+            "before": "decouple",
+            "after": ""
+          },
+          {
+            "target_start": 31140,
+            "target_end": 31146,
+            "before": "",
+            "after": "repack"
+          },
+          {
+            "target_start": 31280,
+            "target_end": 31280,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 31282,
+            "target_end": 31288,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 32079,
+            "target_end": 32079,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 32081,
+            "target_end": 32087,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 32488,
+            "target_end": 32496,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 32976,
+            "target_end": 32984,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      }
+    },
+    {
+      "source_path": "HybridKV-opensource/hybridkv/qwen2_model_madakv_repackkv.py",
+      "source_sha256": "8a50ec244e4721370cb0e55ab00699edd79719a78bac752a7f277213a77453fb",
+      "target_path": "src/kvrepack/qwen2_model_madakv_kvrepack.py",
+      "target_sha256": "e6e3b0433ac80ba59c415326cd5d3947f71eb2037c0f5e397955ef6d2ccf756d",
+      "kind": "llava_port",
+      "source_ast_sha256": "31318e557b2e9521f8f3118896db2c3789c0cd8fb13eaedac7647c29c98cd205",
+      "renamed_source_ast_sha256": "255c00ce5c039a7e9cd71ee020920c6dfa7f49dbcce618d3a8ddd0d43a1f4830",
+      "transformations": [
+        "llava_port_names_imports_and_aliases"
+      ],
+      "port_replay": {
+        "previous_target_sha256": "8a50ec244e4721370cb0e55ab00699edd79719a78bac752a7f277213a77453fb",
+        "reversible_edits": [
+          {
+            "target_start": 2127,
+            "target_end": 2135,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2191,
+            "target_end": 2199,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2242,
+            "target_end": 2250,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2282,
+            "target_end": 2285,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 2286,
+            "target_end": 2288,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 2289,
+            "target_end": 2290,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 2349,
+            "target_end": 2357,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2401,
+            "target_end": 2409,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2457,
+            "target_end": 2460,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 2461,
+            "target_end": 2463,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 2464,
+            "target_end": 2465,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 2577,
+            "target_end": 2585,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2626,
+            "target_end": 2634,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2679,
+            "target_end": 2682,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 2683,
+            "target_end": 2685,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 2686,
+            "target_end": 2687,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 2792,
+            "target_end": 2800,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2840,
+            "target_end": 2848,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2878,
+            "target_end": 2881,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 2882,
+            "target_end": 2884,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 2885,
+            "target_end": 2886,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 2946,
+            "target_end": 2954,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3000,
+            "target_end": 3008,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3045,
+            "target_end": 3048,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3049,
+            "target_end": 3051,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3052,
+            "target_end": 3053,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3124,
+            "target_end": 3132,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3212,
+            "target_end": 3215,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3216,
+            "target_end": 3218,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3219,
+            "target_end": 3220,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3299,
+            "target_end": 3307,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3380,
+            "target_end": 3388,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3425,
+            "target_end": 3433,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3474,
+            "target_end": 3477,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3478,
+            "target_end": 3480,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3481,
+            "target_end": 3482,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3996,
+            "target_end": 4004,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4071,
+            "target_end": 4079,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4117,
+            "target_end": 4125,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4153,
+            "target_end": 4156,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4157,
+            "target_end": 4159,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4160,
+            "target_end": 4161,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 8176,
+            "target_end": 8179,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 8180,
+            "target_end": 8182,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 8183,
+            "target_end": 8184,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 16876,
+            "target_end": 16876,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 16878,
+            "target_end": 16884,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 16987,
+            "target_end": 16995,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 17241,
+            "target_end": 17249,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 17416,
+            "target_end": 17424,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19360,
+            "target_end": 19368,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19422,
+            "target_end": 19430,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20202,
+            "target_end": 20210,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23514,
+            "target_end": 23522,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23956,
+            "target_end": 23964,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 24141,
+            "target_end": 24141,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 24143,
+            "target_end": 24149,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 25942,
+            "target_end": 25950,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27457,
+            "target_end": 27457,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 27459,
+            "target_end": 27465,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 27593,
+            "target_end": 27601,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27915,
+            "target_end": 27915,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 27917,
+            "target_end": 27923,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 28165,
+            "target_end": 28173,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 28245,
+            "target_end": 28253,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 28385,
+            "target_end": 28393,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 28731,
+            "target_end": 28739,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 28931,
+            "target_end": 28939,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29395,
+            "target_end": 29403,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29487,
+            "target_end": 29487,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 29489,
+            "target_end": 29495,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 30082,
+            "target_end": 30090,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 30906,
+            "target_end": 30906,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 30908,
+            "target_end": 30914,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 31313,
+            "target_end": 31321,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 31626,
+            "target_end": 31634,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 31688,
+            "target_end": 31696,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 32357,
+            "target_end": 32365,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      }
+    },
+    {
+      "source_path": "HybridKV-opensource/hybridkv/modeling_qwen2_repack.py",
+      "source_sha256": "15f747398fbaa9e4d543bfc4208aa5321963f4eddd0c5e57ca5d82773e2e6986",
+      "target_path": "src/kvrepack/modeling_qwen2_kvrepack.py",
+      "target_sha256": "36bbb49a30c485401574e3934263bd9e7bd8e28faac093dff59aeff0bbf40396",
+      "kind": "llava_port",
+      "source_ast_sha256": "a646bc386724a5f5d0b224283e570bd66276b4ba2d58b0438f55342df7ca090b",
+      "renamed_source_ast_sha256": "b87d03b3bebe3bfa7478ae4dca7ec608100ae96acac4f9d16a8d03bc1a595267",
+      "transformations": [
+        "llava_port_names_imports_and_aliases"
+      ],
+      "port_replay": {
+        "previous_target_sha256": "15f747398fbaa9e4d543bfc4208aa5321963f4eddd0c5e57ca5d82773e2e6986",
+        "reversible_edits": [
+          {
+            "target_start": 1713,
+            "target_end": 1713,
+            "before": "repack_",
+            "after": ""
+          },
+          {
+            "target_start": 10538,
+            "target_end": 10538,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 10540,
+            "target_end": 10549,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 10611,
+            "target_end": 10619,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 12799,
+            "target_end": 12799,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 12801,
+            "target_end": 12807,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 25590,
+            "target_end": 25590,
+            "before": "repackKV', 'hybrid",
+            "after": ""
+          },
+          {
+            "target_start": 25592,
+            "target_end": 25592,
+            "before": "_",
+            "after": ""
+          },
+          {
+            "target_start": 25598,
+            "target_end": 25598,
+            "before": "kv', 'hybrid_decouplekv",
+            "after": ""
+          }
+        ]
+      }
+    },
+    {
+      "source_path": "HybridKV-opensource/hybridkv/hybridkv_repack_utils_llava.py",
+      "source_sha256": "1efaf099ab009b403cc786e288ca9d0e1a8dce365980aa4b661b6ce31d01860b",
+      "target_path": "src/kvrepack/hybridkv_utils_llava.py",
+      "target_sha256": "75385447a74a8c174f1c8e83af947b082780bbe851519558b9853bdeda04e6f6",
+      "kind": "llava_port",
+      "source_ast_sha256": "ea4b657735b0ce4b2701a7f1a057fb88a234b1048ed9e6a84c9787d5dacf6c4a",
+      "renamed_source_ast_sha256": "03956ef93e714d09671fa82cd481a2080fb5f8e9fa0fab3f742d05c5a73f6b3f",
+      "transformations": [
+        "llava_port_names_imports_and_aliases"
+      ],
+      "port_replay": {
+        "previous_target_sha256": "1efaf099ab009b403cc786e288ca9d0e1a8dce365980aa4b661b6ce31d01860b",
+        "reversible_edits": [
+          {
+            "target_start": 464,
+            "target_end": 464,
+            "before": "hybrid",
+            "after": ""
+          },
+          {
+            "target_start": 466,
+            "target_end": 472,
+            "before": "",
+            "after": "repack"
+          },
+          {
+            "target_start": 588,
+            "target_end": 588,
+            "before": "Repack",
+            "after": ""
+          },
+          {
+            "target_start": 590,
+            "target_end": 596,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 13135,
+            "target_end": 13143,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14193,
+            "target_end": 14201,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14235,
+            "target_end": 14238,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 14239,
+            "target_end": 14241,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 14242,
+            "target_end": 14243,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 15360,
+            "target_end": 15360,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 15362,
+            "target_end": 15371,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 15410,
+            "target_end": 15410,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 15412,
+            "target_end": 15413,
+            "before": "\", \"hybrid",
+            "after": "_"
+          },
+          {
+            "target_start": 15415,
+            "target_end": 15421,
+            "before": "_repackKV\", \"hybridkv_repackkv",
+            "after": "repack"
+          },
+          {
+            "target_start": 15477,
+            "target_end": 15480,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 15481,
+            "target_end": 15483,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 15484,
+            "target_end": 15485,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 15517,
+            "target_end": 15517,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 15519,
+            "target_end": 15528,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 18031,
+            "target_end": 18039,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18099,
+            "target_end": 18102,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 18103,
+            "target_end": 18105,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 18106,
+            "target_end": 18107,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 18176,
+            "target_end": 18184,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18263,
+            "target_end": 18266,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 18267,
+            "target_end": 18269,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 18270,
+            "target_end": 18271,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 18343,
+            "target_end": 18351,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18404,
+            "target_end": 18412,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18487,
+            "target_end": 18490,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 18491,
+            "target_end": 18493,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 18494,
+            "target_end": 18495,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 18610,
+            "target_end": 18618,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18676,
+            "target_end": 18679,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 18680,
+            "target_end": 18682,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 18683,
+            "target_end": 18684,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 18740,
+            "target_end": 18748,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18823,
+            "target_end": 18826,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 18827,
+            "target_end": 18829,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 18830,
+            "target_end": 18831,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 18898,
+            "target_end": 18906,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18969,
+            "target_end": 18969,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 18971,
+            "target_end": 18977,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 19125,
+            "target_end": 19133,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19180,
+            "target_end": 19188,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19243,
+            "target_end": 19246,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19247,
+            "target_end": 19249,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19250,
+            "target_end": 19251,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19361,
+            "target_end": 19369,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19434,
+            "target_end": 19437,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19438,
+            "target_end": 19440,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19441,
+            "target_end": 19442,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19502,
+            "target_end": 19510,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19567,
+            "target_end": 19570,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19571,
+            "target_end": 19573,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19574,
+            "target_end": 19575,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19640,
+            "target_end": 19648,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19819,
+            "target_end": 19822,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19823,
+            "target_end": 19825,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19826,
+            "target_end": 19827,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 20016,
+            "target_end": 20024,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20150,
+            "target_end": 20158,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20250,
+            "target_end": 20253,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 20254,
+            "target_end": 20256,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 20257,
+            "target_end": 20258,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 20436,
+            "target_end": 20439,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 20440,
+            "target_end": 20442,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 20443,
+            "target_end": 20444,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 20592,
+            "target_end": 20600,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20726,
+            "target_end": 20734,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20836,
+            "target_end": 20839,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 20840,
+            "target_end": 20842,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 20843,
+            "target_end": 20844,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 21006,
+            "target_end": 21009,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 21010,
+            "target_end": 21012,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 21013,
+            "target_end": 21014,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 21151,
+            "target_end": 21159,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21274,
+            "target_end": 21282,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21378,
+            "target_end": 21381,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 21382,
+            "target_end": 21384,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 21385,
+            "target_end": 21386,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 21510,
+            "target_end": 21518,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21575,
+            "target_end": 21583,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21667,
+            "target_end": 21670,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 21671,
+            "target_end": 21673,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 21674,
+            "target_end": 21675,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 21752,
+            "target_end": 21760,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21820,
+            "target_end": 21820,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 21822,
+            "target_end": 21831,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 21907,
+            "target_end": 21907,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 21909,
+            "target_end": 21915,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 22036,
+            "target_end": 22044,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22108,
+            "target_end": 22116,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22184,
+            "target_end": 22192,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22255,
+            "target_end": 22263,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22427,
+            "target_end": 22435,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22507,
+            "target_end": 22515,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22620,
+            "target_end": 22628,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 25253,
+            "target_end": 25261,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 25362,
+            "target_end": 25370,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 25433,
+            "target_end": 25441,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 25543,
+            "target_end": 25551,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 25598,
+            "target_end": 25606,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 25648,
+            "target_end": 25651,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 25652,
+            "target_end": 25654,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 25655,
+            "target_end": 25656,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 27230,
+            "target_end": 27230,
+            "before": "hybrid",
+            "after": ""
+          },
+          {
+            "target_start": 27232,
+            "target_end": 27238,
+            "before": "",
+            "after": "repack"
+          },
+          {
+            "target_start": 34753,
+            "target_end": 34761,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 34920,
+            "target_end": 34928,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 35045,
+            "target_end": 35053,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 35139,
+            "target_end": 35147,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 35313,
+            "target_end": 35321,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 35475,
+            "target_end": 35483,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 35581,
+            "target_end": 35589,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 35703,
+            "target_end": 35711,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 36004,
+            "target_end": 36012,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 37216,
+            "target_end": 37224,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 37376,
+            "target_end": 37384,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 37864,
+            "target_end": 37872,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38166,
+            "target_end": 38174,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38280,
+            "target_end": 38288,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38682,
+            "target_end": 38690,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38895,
+            "target_end": 38895,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 38897,
+            "target_end": 38906,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 38926,
+            "target_end": 38934,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 39017,
+            "target_end": 39025,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 39120,
+            "target_end": 39128,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 39164,
+            "target_end": 39172,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 39272,
+            "target_end": 39280,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 39464,
+            "target_end": 39464,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 39466,
+            "target_end": 39475,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 39507,
+            "target_end": 39515,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 40049,
+            "target_end": 40057,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 40115,
+            "target_end": 40123,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 40365,
+            "target_end": 40373,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 40408,
+            "target_end": 40416,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 40668,
+            "target_end": 40676,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 41131,
+            "target_end": 41139,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 42188,
+            "target_end": 42196,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 43137,
+            "target_end": 43145,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 43367,
+            "target_end": 43375,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 43801,
+            "target_end": 43809,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 43989,
+            "target_end": 43997,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 44066,
+            "target_end": 44074,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 44177,
+            "target_end": 44185,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 44243,
+            "target_end": 44251,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 44535,
+            "target_end": 44543,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 44920,
+            "target_end": 44928,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 44981,
+            "target_end": 44989,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 47067,
+            "target_end": 47075,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48024,
+            "target_end": 48032,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48104,
+            "target_end": 48112,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48238,
+            "target_end": 48246,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48322,
+            "target_end": 48330,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48405,
+            "target_end": 48413,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48712,
+            "target_end": 48720,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48795,
+            "target_end": 48795,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 48797,
+            "target_end": 48806,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 48838,
+            "target_end": 48846,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48889,
+            "target_end": 48897,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 49001,
+            "target_end": 49009,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 49103,
+            "target_end": 49111,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 49259,
+            "target_end": 49267,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 49828,
+            "target_end": 49836,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 49920,
+            "target_end": 49928,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 50058,
+            "target_end": 50066,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 50374,
+            "target_end": 50382,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 50494,
+            "target_end": 50502,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 50583,
+            "target_end": 50591,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 50718,
+            "target_end": 50718,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 50720,
+            "target_end": 50726,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 50795,
+            "target_end": 50803,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51167,
+            "target_end": 51175,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51222,
+            "target_end": 51230,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51337,
+            "target_end": 51337,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 51339,
+            "target_end": 51348,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 51402,
+            "target_end": 51410,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51472,
+            "target_end": 51480,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51525,
+            "target_end": 51533,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51610,
+            "target_end": 51618,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51687,
+            "target_end": 51695,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 52949,
+            "target_end": 52957,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 53730,
+            "target_end": 53738,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 53916,
+            "target_end": 53924,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 54547,
+            "target_end": 54555,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 54684,
+            "target_end": 54692,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 55615,
+            "target_end": 55623,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 55734,
+            "target_end": 55734,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 55736,
+            "target_end": 55742,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 57097,
+            "target_end": 57105,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 57750,
+            "target_end": 57758,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 57934,
+            "target_end": 57934,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 57936,
+            "target_end": 57942,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 58199,
+            "target_end": 58207,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 58714,
+            "target_end": 58722,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 61098,
+            "target_end": 61106,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 63022,
+            "target_end": 63030,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 64199,
+            "target_end": 64199,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 64201,
+            "target_end": 64210,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 64250,
+            "target_end": 64258,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 64526,
+            "target_end": 64534,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 65191,
+            "target_end": 65199,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 65434,
+            "target_end": 65442,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 67072,
+            "target_end": 67080,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 67316,
+            "target_end": 67324,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 67386,
+            "target_end": 67386,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 67388,
+            "target_end": 67394,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 67820,
+            "target_end": 67828,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 69830,
+            "target_end": 69838,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 70868,
+            "target_end": 70876,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 71140,
+            "target_end": 71148,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 71202,
+            "target_end": 71202,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 71204,
+            "target_end": 71210,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 71677,
+            "target_end": 71685,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 71740,
+            "target_end": 71748,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 71812,
+            "target_end": 71812,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 71814,
+            "target_end": 71823,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 71855,
+            "target_end": 71863,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 71906,
+            "target_end": 71914,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 71984,
+            "target_end": 71992,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 72055,
+            "target_end": 72063,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 72108,
+            "target_end": 72116,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 72212,
+            "target_end": 72220,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 72455,
+            "target_end": 72463,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 72587,
+            "target_end": 72595,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 73442,
+            "target_end": 73450,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 73706,
+            "target_end": 73714,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 73759,
+            "target_end": 73767,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 73810,
+            "target_end": 73818,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 73879,
+            "target_end": 73887,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 75225,
+            "target_end": 75233,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 75965,
+            "target_end": 75973,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 77501,
+            "target_end": 77509,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 78297,
+            "target_end": 78305,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 78939,
+            "target_end": 78947,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 87462,
+            "target_end": 87462,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 87464,
+            "target_end": 87473,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 89993,
+            "target_end": 89993,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 89995,
+            "target_end": 90004,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 107670,
+            "target_end": 107670,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 107672,
+            "target_end": 107681,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 109143,
+            "target_end": 109151,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 109499,
+            "target_end": 109507,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 109939,
+            "target_end": 109947,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 110890,
+            "target_end": 110898,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 112579,
+            "target_end": 112587,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 115715,
+            "target_end": 115723,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 116205,
+            "target_end": 116213,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 116910,
+            "target_end": 116910,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 116912,
+            "target_end": 116921,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 118144,
+            "target_end": 118152,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 118232,
+            "target_end": 118240,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      }
+    }
+  ],
+  "resource_adaptations": [
+    {
+      "source_path": "HybridKV-opensource/hybridkv/configs/param_config.json",
+      "source_sha256": "1d64460d0818016436f81b0c9f64ff06219cc482f042979535c2c5da8f3cb263",
+      "target_path": "src/kvrepack/configs/param_config.json",
+      "target_sha256": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+      "source_llava_ov": {
+        "score_threshold": 0.9,
+        "budget_fixed_ratio": 0.5
+      },
+      "target_llava_ov": {
+        "score_threshold": 0.9,
+        "budget_fixed_ratio": 0.1
+      },
+      "policy": "Use the existing target shared config for both LLaVA baseline and image upgrade. Preserve target llava_ov.budget_fixed_ratio=0.1; current opensource source has 0.5. This is an explicit resource/input adaptation, not source numerical equivalence or a video-config change."
+    }
+  ],
+  "reused_identical_resources": [
+    {
+      "source_path": "HybridKV-opensource/visual_head/head_score/llava-ov.json",
+      "target_path": "src/kvrepack/data/head_score/llava-ov.json",
+      "sha256": "85c6fa21d42696291de3c964db18afef6bb0dc600a99daff5947e73e437ded17"
+    }
+  ]
+}
