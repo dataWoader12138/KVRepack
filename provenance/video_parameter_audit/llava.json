@@ -1,0 +1,2925 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-03T09:17:01.312571+00:00",
+  "scope": "LLaVA-OneVision Qwen2 7B: best observed completed prefix200 runs for each video dataset and method, not universal optimal settings.",
+  "source_implementation": {
+    "root": "HybridKV-llava-ov-decouple-port-20260708",
+    "status": "LLaVA four improved methods are still not integrated into current KVRepack; table rows reference the historical port implementation.",
+    "method_aliases": {
+      "hybrid_decouplekv": "hybridkv_kvrepack",
+      "snapkv_decouplekv": "snapkv_kvrepack",
+      "sparsemm_decouplekv": "sparsemm_kvrepack",
+      "madakv_decouplekv": "madakv_kvrepack"
+    },
+    "current_source_files": [
+      {
+        "path": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/monkeypatch.py",
+        "sha256": "9fc9d1de1ec5c05d2b7bd4cd3a0b1c22bd368ad00b2ac044e935482aa844c70c"
+      },
+      {
+        "path": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/qwen2_model_snapkv_repackkv.py",
+        "sha256": "98bbf0f9ecfaed542f868095b7b7678febdb4d7d3238d32bad5bfda7598cc662"
+      },
+      {
+        "path": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/qwen2_model_sparsemm_repackkv.py",
+        "sha256": "9fbf0b9b7415ac431260c686fb05603f482aa99af48a37f9f4132e79607ecbae"
+      },
+      {
+        "path": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/qwen2_model_madakv_repackkv.py",
+        "sha256": "8a50ec244e4721370cb0e55ab00699edd79719a78bac752a7f277213a77453fb"
+      },
+      {
+        "path": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/hybridkv_repack_utils_llava.py",
+        "sha256": "1efaf099ab009b403cc786e288ca9d0e1a8dce365980aa4b661b6ce31d01860b"
+      },
+      {
+        "path": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/modeling_qwen2_repack.py",
+        "sha256": "15f747398fbaa9e4d543bfc4208aa5321963f4eddd0c5e57ca5d82773e2e6986"
+      },
+      {
+        "path": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/modeling_llava_onevision_repack.py",
+        "sha256": "a701c67ec21ee6060b997b2212ab271cfd32edccd79a8c9a9ef06ed41a5cbc83"
+      },
+      {
+        "path": "HybridKV-llava-ov-decouple-port-20260708/lmms-eval/lmms_eval/models/llava_hf.py",
+        "sha256": "fd411ea9074b60e9970b289cb48c3edf17c688981a4c18a0d34605069d54f896"
+      }
+    ]
+  },
+  "selection_policies": {
+    "NExTQA": "Maximize recorded WUPS (already 0-100); require effective sample count200.",
+    "VATEX": "Maximize arithmetic mean of raw fractional BLEU-4/METEOR/ROUGE-L/CIDEr; all display values may multiply by100 together. This follows original tuner selection, not CIDEr-only selection.",
+    "VideoChatGPT": "Maximize arithmetic mean of five 0-5 metric means; require counts200/200/200/200/100, same response model gpt-5.4-mini-2026-03-17, no cross-output judge-cache reuse. The 100 consistency units pair the200 consistency question rows.",
+    "comparability": "64 frames, budget ratio0.10, BUDGET1024 for all selected runs. Limit200 is the recorded experimental prefix, not the full benchmark population."
+  },
+  "best_records": [
+    {
+      "task": "nextqa_oe_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 19.643071015197815,
+      "metrics": {
+        "WUPS,none": 19.643071015197815
+      },
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "3b3bf840c54786931d0eccf1719a74f8f855e131329c93f0cb432a95f7e5e4c6",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "dataset": "nextqa_oe_test",
+      "public_method": "hybridkv_kvrepack",
+      "source_method": "hybrid_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "metric": "WUPS",
+      "metric_raw": 19.643071015197815,
+      "metric_display": 19.643071015197815,
+      "metric_display_scale": 1,
+      "judge": null,
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "candidate_count_same_protocol": 4,
+      "confidence": "high_for_observed_prefix200_ranking; not a full-benchmark/global optimum claim",
+      "selection_basis": "Maximum WUPS among completed same-model same-budget prefix200 runs",
+      "sourcepaths": {
+        "result_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_140221_results.json",
+        "result_json_sha256": "3b3bf840c54786931d0eccf1719a74f8f855e131329c93f0cb432a95f7e5e4c6",
+        "launcher_script": "/root/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.sh",
+        "generation_log": "/tmp/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.log",
+        "task_hash": "20d7fe083708abe95f208683d6f6f92508073575b298ccd79f8a3fbfbe397199"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_140221_samples_nextqa_oe_test.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "566796b80e7a69d61804f05e9d456090299551010b72458c2e84b82a90c61e0a"
+        }
+      ]
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 19.00935547115045,
+      "metrics": {
+        "WUPS,none": 19.00935547115045
+      },
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "35a91e9bc01861a5b4fdd2748e200f683da2df27c554bc62d7f89e817649befb",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "dataset": "nextqa_oe_test",
+      "public_method": "snapkv_kvrepack",
+      "source_method": "snapkv_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "metric": "WUPS",
+      "metric_raw": 19.00935547115045,
+      "metric_display": 19.00935547115045,
+      "metric_display_scale": 1,
+      "judge": null,
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "candidate_count_same_protocol": 7,
+      "confidence": "high_for_observed_prefix200_ranking; not a full-benchmark/global optimum claim",
+      "selection_basis": "Maximum WUPS among completed same-model same-budget prefix200 runs",
+      "sourcepaths": {
+        "result_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha1_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_012855_results.json",
+        "result_json_sha256": "35a91e9bc01861a5b4fdd2748e200f683da2df27c554bc62d7f89e817649befb",
+        "launcher_script": "/root/run_llava_ov7b_snapkv_truealpha_tune_20260710.sh",
+        "generation_log": "/tmp/run_llava_ov7b_snapkv_truealpha_tune_20260710.log",
+        "task_hash": "20d7fe083708abe95f208683d6f6f92508073575b298ccd79f8a3fbfbe397199",
+        "effective_alpha_log_line": 3714,
+        "effective_alpha_reader": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/qwen2_model_snapkv_repackkv.py:234",
+        "both_alpha_exports": "/root/run_llava_ov7b_snapkv_truealpha_tune_20260710.sh:82"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha1_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_012855_samples_nextqa_oe_test.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "566796b80e7a69d61804f05e9d456090299551010b72458c2e84b82a90c61e0a"
+        }
+      ]
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 19.01220920800744,
+      "metrics": {
+        "WUPS,none": 19.01220920800744
+      },
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "b660e526c58d240e99e54e7e9e246155130c0af056648fd80a32c56d80de78b9",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "dataset": "nextqa_oe_test",
+      "public_method": "sparsemm_kvrepack",
+      "source_method": "sparsemm_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "metric": "WUPS",
+      "metric_raw": 19.01220920800744,
+      "metric_display": 19.01220920800744,
+      "metric_display_scale": 1,
+      "judge": null,
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "candidate_count_same_protocol": 4,
+      "confidence": "high_for_observed_prefix200_ranking; not a full-benchmark/global optimum claim",
+      "selection_basis": "Maximum WUPS among completed same-model same-budget prefix200 runs",
+      "sourcepaths": {
+        "result_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.70_cr0.70_alpha1_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_180825_results.json",
+        "result_json_sha256": "b660e526c58d240e99e54e7e9e246155130c0af056648fd80a32c56d80de78b9",
+        "launcher_script": "/root/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.sh",
+        "generation_log": "/tmp/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.log",
+        "task_hash": "20d7fe083708abe95f208683d6f6f92508073575b298ccd79f8a3fbfbe397199"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.70_cr0.70_alpha1_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_180825_samples_nextqa_oe_test.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "566796b80e7a69d61804f05e9d456090299551010b72458c2e84b82a90c61e0a"
+        }
+      ]
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.716943228913955,
+      "metrics": {
+        "WUPS,none": 18.716943228913955
+      },
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "323aac534ecce8ae3fdf111a1159a1a7d27165b16b4acfdd694e1c16550901ee",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "dataset": "nextqa_oe_test",
+      "public_method": "madakv_kvrepack",
+      "source_method": "madakv_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "metric": "WUPS",
+      "metric_raw": 18.716943228913955,
+      "metric_display": 18.716943228913955,
+      "metric_display_scale": 1,
+      "judge": null,
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "candidate_count_same_protocol": 3,
+      "confidence": "high_for_observed_prefix200_ranking; not a full-benchmark/global optimum claim",
+      "selection_basis": "Maximum WUPS among completed same-model same-budget prefix200 runs",
+      "sourcepaths": {
+        "result_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/madakv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_153451_results.json",
+        "result_json_sha256": "323aac534ecce8ae3fdf111a1159a1a7d27165b16b4acfdd694e1c16550901ee",
+        "launcher_script": "/root/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.sh",
+        "generation_log": "/tmp/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.log",
+        "task_hash": "20d7fe083708abe95f208683d6f6f92508073575b298ccd79f8a3fbfbe397199"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/madakv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_153451_samples_nextqa_oe_test.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "566796b80e7a69d61804f05e9d456090299551010b72458c2e84b82a90c61e0a"
+        }
+      ]
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.22290792952038682,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.1267468164402448,
+        "vatex_METEOR,none": 0.17940234080816375,
+        "vatex_ROUGE_L,none": 0.36782491823191094,
+        "vatex_CIDEr,none": 0.21765764260122783
+      },
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "db29078358ea85842ba5621b8d6dc59014e7a50b4805f85d537c266601ca1ae5",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "dataset": "vatex_test",
+      "public_method": "hybridkv_kvrepack",
+      "source_method": "hybrid_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "metric": "mean(BLEU-4,METEOR,ROUGE-L,CIDEr)",
+      "metric_raw": 0.22290792952038682,
+      "metric_display": 22.290792952038682,
+      "metric_display_scale": 100,
+      "judge": null,
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "candidate_count_same_protocol": 4,
+      "confidence": "high_for_observed_prefix200_ranking; not a full-benchmark/global optimum claim",
+      "selection_basis": "Maximum equal-weight mean of the four raw fractional VATEX metrics among completed same-model same-budget prefix200 runs",
+      "sourcepaths": {
+        "result_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260709_225619_results.json",
+        "result_json_sha256": "db29078358ea85842ba5621b8d6dc59014e7a50b4805f85d537c266601ca1ae5",
+        "launcher_script": "/root/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.sh",
+        "generation_log": "/tmp/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.log",
+        "task_hash": "0deaaa7e9bbf47d62856a75a21a9360f3cf228c7e11c37637b156f433d522fe1"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260709_225619_samples_vatex_test.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "4ea8ecb345d1a4208934edf6b7a4220bf9a74816663e4131cd8e0e8c87ed0cba"
+        }
+      ]
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 0.5,
+      "n": 200,
+      "score": 0.2056024921916731,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.1139609374682549,
+        "vatex_METEOR,none": 0.17125493398785047,
+        "vatex_ROUGE_L,none": 0.3580335994498283,
+        "vatex_CIDEr,none": 0.17916049786075863
+      },
+      "nominal_alpha": 0.5,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "0d7f0aad67fc470255150bc6737fb4486076675919270db494553ead5965e8fa",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "dataset": "vatex_test",
+      "public_method": "snapkv_kvrepack",
+      "source_method": "snapkv_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "metric": "mean(BLEU-4,METEOR,ROUGE-L,CIDEr)",
+      "metric_raw": 0.2056024921916731,
+      "metric_display": 20.56024921916731,
+      "metric_display_scale": 100,
+      "judge": null,
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "candidate_count_same_protocol": 8,
+      "confidence": "high_for_observed_prefix200_ranking; not a full-benchmark/global optimum claim",
+      "selection_basis": "Maximum equal-weight mean of the four raw fractional VATEX metrics among completed same-model same-budget prefix200 runs",
+      "sourcepaths": {
+        "result_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha0.5_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_004229_results.json",
+        "result_json_sha256": "0d7f0aad67fc470255150bc6737fb4486076675919270db494553ead5965e8fa",
+        "launcher_script": "/root/run_llava_ov7b_snapkv_truealpha_tune_20260710.sh",
+        "generation_log": "/tmp/run_llava_ov7b_snapkv_truealpha_tune_20260710.log",
+        "task_hash": "0deaaa7e9bbf47d62856a75a21a9360f3cf228c7e11c37637b156f433d522fe1",
+        "effective_alpha_log_line": 386,
+        "effective_alpha_reader": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/qwen2_model_snapkv_repackkv.py:234",
+        "both_alpha_exports": "/root/run_llava_ov7b_snapkv_truealpha_tune_20260710.sh:82"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha0.5_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_004229_samples_vatex_test.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "4ea8ecb345d1a4208934edf6b7a4220bf9a74816663e4131cd8e0e8c87ed0cba"
+        }
+      ]
+    },
+    {
+      "task": "vatex_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.20914935833189457,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.12057125849135623,
+        "vatex_METEOR,none": 0.1707426652231088,
+        "vatex_ROUGE_L,none": 0.36176645925686024,
+        "vatex_CIDEr,none": 0.18351705035625307
+      },
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "265fc6ef7809759edf617ee3f8f112f5024592933b358c8b500a33fdab78944b",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "dataset": "vatex_test",
+      "public_method": "sparsemm_kvrepack",
+      "source_method": "sparsemm_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "metric": "mean(BLEU-4,METEOR,ROUGE-L,CIDEr)",
+      "metric_raw": 0.20914935833189457,
+      "metric_display": 20.914935833189457,
+      "metric_display_scale": 100,
+      "judge": null,
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "candidate_count_same_protocol": 4,
+      "confidence": "high_for_observed_prefix200_ranking; not a full-benchmark/global optimum claim",
+      "selection_basis": "Maximum equal-weight mean of the four raw fractional VATEX metrics among completed same-model same-budget prefix200 runs",
+      "sourcepaths": {
+        "result_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.50_cr0.70_alpha2_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260709_224136_results.json",
+        "result_json_sha256": "265fc6ef7809759edf617ee3f8f112f5024592933b358c8b500a33fdab78944b",
+        "launcher_script": "/root/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.sh",
+        "generation_log": "/tmp/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.log",
+        "task_hash": "0deaaa7e9bbf47d62856a75a21a9360f3cf228c7e11c37637b156f433d522fe1"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.50_cr0.70_alpha2_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260709_224136_samples_vatex_test.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "4ea8ecb345d1a4208934edf6b7a4220bf9a74816663e4131cd8e0e8c87ed0cba"
+        }
+      ]
+    },
+    {
+      "task": "vatex_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.2032041003180842,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11129216598441492,
+        "vatex_METEOR,none": 0.16872724961345556,
+        "vatex_ROUGE_L,none": 0.3552458962239223,
+        "vatex_CIDEr,none": 0.17755108945054407
+      },
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "0bed6a8d25438b3545d448967a13cc23ab1e7ce2b89031d99f60eb2061494376",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "dataset": "vatex_test",
+      "public_method": "madakv_kvrepack",
+      "source_method": "madakv_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "metric": "mean(BLEU-4,METEOR,ROUGE-L,CIDEr)",
+      "metric_raw": 0.2032041003180842,
+      "metric_display": 20.320410031808418,
+      "metric_display_scale": 100,
+      "judge": null,
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "candidate_count_same_protocol": 4,
+      "confidence": "high_for_observed_prefix200_ranking; not a full-benchmark/global optimum claim",
+      "selection_basis": "Maximum equal-weight mean of the four raw fractional VATEX metrics among completed same-model same-budget prefix200 runs",
+      "sourcepaths": {
+        "result_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/madakv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_144558_results.json",
+        "result_json_sha256": "0bed6a8d25438b3545d448967a13cc23ab1e7ce2b89031d99f60eb2061494376",
+        "launcher_script": "/root/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.sh",
+        "generation_log": "/tmp/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.log",
+        "task_hash": "0deaaa7e9bbf47d62856a75a21a9360f3cf228c7e11c37637b156f433d522fe1"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/madakv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_144558_samples_vatex_test.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "4ea8ecb345d1a4208934edf6b7a4220bf9a74816663e4131cd8e0e8c87ed0cba"
+        }
+      ]
+    },
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.042,
+      "metrics": {
+        "correctness": 3.28,
+        "detailed_orientation": 2.895,
+        "context": 3.59,
+        "temporal": 2.235,
+        "consistency": 3.21
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "independent_output_isolated_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/independent_judges_20260718/hybrid_050_070_a2_fresh/summary.json",
+      "source_json_sha256": "c6f560e8a64d0a27c049aafd390c57a0ff28f399ff80628a464d914055e97418",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null,
+      "dataset": "videochatgpt",
+      "public_method": "hybridkv_kvrepack",
+      "source_method": "hybrid_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "metric": "mean(correctness,detailed_orientation,context,temporal,consistency)",
+      "metric_raw": 3.042,
+      "metric_display": 3.042,
+      "metric_display_scale": 1,
+      "metric_units": "Judge scores on the original 0-5 scale, five metric averages weighted equally; no percent scaling.",
+      "judge": {
+        "requested": "gpt-5.4-mini",
+        "response_models": {
+          "gpt-5.4-mini-2026-03-17": 900
+        },
+        "protocol": "independent_output_isolated_cache",
+        "external_cache_reused": false,
+        "protocol_equivalence_note": "Both generic and explicit independent wrappers use the same generic_messages/consistency_messages and score parser from judge_videochatgpt_posthoc_lmms_codex_generic.py. Generic outputs resume only their own per-output result files; independent wrapper has isolated_judge_cache.jsonl. No cross-output score reuse in either eligible protocol."
+      },
+      "candidate_count_same_protocol": 4,
+      "confidence": "high_for_existing_full200_independent_scores; one judge draw per output; no statistical superiority claim",
+      "selection_basis": "Maximum five-metric mean among completed full200 output-isolated gpt-5.4-mini scores for this method; exclude selected6/16 subsets and shared/paired-cache scores.",
+      "sourcepaths": {
+        "judge_summary_json": "llava-video-param-tune-20260718/independent_judges_20260718/hybrid_050_070_a2_fresh/summary.json",
+        "judge_summary_sha256": "c6f560e8a64d0a27c049aafd390c57a0ff28f399ff80628a464d914055e97418",
+        "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "launcher_script": "/root/run_llava_ov7b_videochatgpt_decouple_20260714.sh",
+        "judge_script": "llava-video-param-tune-20260718/judge_videochatgpt_independent_parallel.py"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260714_144748_samples_videochatgpt_consistency.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "452c9a94d8f3919ee440c194d48b9ce6b57649420f0c9f12e5095b9a9fe268bd"
+        },
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260714_144748_samples_videochatgpt_gen.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "0ac1f86e93f4e3e7537194a9d4ec1da2dcead4c85deaca02f063322dd458e38c"
+        },
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260714_144748_samples_videochatgpt_temporal.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "ba5a2e0c1c86cd28a24c0a197fc10ff1267a096279c93ea9955c005c7bb42783"
+        }
+      ],
+      "runner_up": {
+        "simtop": 0.5,
+        "cr": 0.7,
+        "alpha": 2.0,
+        "score": 3.033,
+        "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260714_201915/summary.json",
+        "protocol": "generic_posthoc_per_output_resume_only_no_external_cache"
+      }
+    },
+    {
+      "task": "videochatgpt",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.057,
+      "metrics": {
+        "correctness": 3.27,
+        "detailed_orientation": 2.86,
+        "context": 3.655,
+        "temporal": 2.32,
+        "consistency": 3.18
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260715_002810/summary.json",
+      "source_json_sha256": "d5ed85d25392c3e302408ac5232596455d7752dcdaf6673f5e147aae01bf23f4",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null,
+      "dataset": "videochatgpt",
+      "public_method": "snapkv_kvrepack",
+      "source_method": "snapkv_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "metric": "mean(correctness,detailed_orientation,context,temporal,consistency)",
+      "metric_raw": 3.057,
+      "metric_display": 3.057,
+      "metric_display_scale": 1,
+      "metric_units": "Judge scores on the original 0-5 scale, five metric averages weighted equally; no percent scaling.",
+      "judge": {
+        "requested": "gpt-5.4-mini",
+        "response_models": {
+          "gpt-5.4-mini-2026-03-17": 900
+        },
+        "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+        "external_cache_reused": false,
+        "protocol_equivalence_note": "Both generic and explicit independent wrappers use the same generic_messages/consistency_messages and score parser from judge_videochatgpt_posthoc_lmms_codex_generic.py. Generic outputs resume only their own per-output result files; independent wrapper has isolated_judge_cache.jsonl. No cross-output score reuse in either eligible protocol."
+      },
+      "candidate_count_same_protocol": 2,
+      "confidence": "high_for_existing_full200_independent_scores; one judge draw per output; no statistical superiority claim",
+      "selection_basis": "Maximum five-metric mean among completed full200 output-isolated gpt-5.4-mini scores for this method; exclude selected6/16 subsets and shared/paired-cache scores.",
+      "sourcepaths": {
+        "judge_summary_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260715_002810/summary.json",
+        "judge_summary_sha256": "d5ed85d25392c3e302408ac5232596455d7752dcdaf6673f5e147aae01bf23f4",
+        "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "launcher_script": "/root/run_llava_ov7b_videochatgpt_decouple_20260714.sh",
+        "judge_script": "/root/judge_videochatgpt_posthoc_lmms_codex_generic.py"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260714_232959_samples_videochatgpt_consistency.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "452c9a94d8f3919ee440c194d48b9ce6b57649420f0c9f12e5095b9a9fe268bd"
+        },
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260714_232959_samples_videochatgpt_gen.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "0ac1f86e93f4e3e7537194a9d4ec1da2dcead4c85deaca02f063322dd458e38c"
+        },
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260714_232959_samples_videochatgpt_temporal.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "ba5a2e0c1c86cd28a24c0a197fc10ff1267a096279c93ea9955c005c7bb42783"
+        }
+      ],
+      "runner_up": {
+        "simtop": 0.5,
+        "cr": 0.5,
+        "alpha": 0.5,
+        "score": 3.026,
+        "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.50_alpha0.5_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260714_113724/summary.json",
+        "protocol": "generic_posthoc_per_output_resume_only_no_external_cache"
+      },
+      "alpha_evidence": "VideoChatGPT launcher explicitly sets K_DIFF_ALPHA as well as SNAPKV_DECOUPLE_K_DIFF_ALPHA at lines118-119; port reads the former."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.8,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.034,
+      "metrics": {
+        "correctness": 3.205,
+        "detailed_orientation": 2.855,
+        "context": 3.58,
+        "temporal": 2.34,
+        "consistency": 3.19
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_cr0.80_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260715_040015/summary.json",
+      "source_json_sha256": "bc7f3ba5909a65713232674d3c899f70d27191cd93a290ef1d3e5206b8dcb69a",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_cr0.80_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null,
+      "dataset": "videochatgpt",
+      "public_method": "sparsemm_kvrepack",
+      "source_method": "sparsemm_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "metric": "mean(correctness,detailed_orientation,context,temporal,consistency)",
+      "metric_raw": 3.034,
+      "metric_display": 3.034,
+      "metric_display_scale": 1,
+      "metric_units": "Judge scores on the original 0-5 scale, five metric averages weighted equally; no percent scaling.",
+      "judge": {
+        "requested": "gpt-5.4-mini",
+        "response_models": {
+          "gpt-5.4-mini-2026-03-17": 900
+        },
+        "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+        "external_cache_reused": false,
+        "protocol_equivalence_note": "Both generic and explicit independent wrappers use the same generic_messages/consistency_messages and score parser from judge_videochatgpt_posthoc_lmms_codex_generic.py. Generic outputs resume only their own per-output result files; independent wrapper has isolated_judge_cache.jsonl. No cross-output score reuse in either eligible protocol."
+      },
+      "candidate_count_same_protocol": 2,
+      "confidence": "high_for_existing_full200_independent_scores; one judge draw per output; no statistical superiority claim",
+      "selection_basis": "Maximum five-metric mean among completed full200 output-isolated gpt-5.4-mini scores for this method; exclude selected6/16 subsets and shared/paired-cache scores.",
+      "sourcepaths": {
+        "judge_summary_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_cr0.80_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260715_040015/summary.json",
+        "judge_summary_sha256": "bc7f3ba5909a65713232674d3c899f70d27191cd93a290ef1d3e5206b8dcb69a",
+        "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_cr0.80_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "launcher_script": "/root/run_llava_ov7b_videochatgpt_decouple_20260714.sh",
+        "judge_script": "/root/judge_videochatgpt_posthoc_lmms_codex_generic.py"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_cr0.80_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260715_030235_samples_videochatgpt_consistency.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "452c9a94d8f3919ee440c194d48b9ce6b57649420f0c9f12e5095b9a9fe268bd"
+        },
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_cr0.80_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260715_030235_samples_videochatgpt_gen.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "0ac1f86e93f4e3e7537194a9d4ec1da2dcead4c85deaca02f063322dd458e38c"
+        },
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_cr0.80_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260715_030235_samples_videochatgpt_temporal.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "ba5a2e0c1c86cd28a24c0a197fc10ff1267a096279c93ea9955c005c7bb42783"
+        }
+      ],
+      "runner_up": {
+        "simtop": 0.5,
+        "cr": 0.7,
+        "alpha": 2.0,
+        "score": 3.009,
+        "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_cr0.70_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260714_172605/summary.json",
+        "protocol": "generic_posthoc_per_output_resume_only_no_external_cache"
+      }
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.85,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.0469999999999997,
+      "metrics": {
+        "correctness": 3.22,
+        "detailed_orientation": 2.86,
+        "context": 3.62,
+        "temporal": 2.315,
+        "consistency": 3.22
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "independent_output_isolated_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/independent_judges_20260718/mada_030_085_a2_fresh/summary.json",
+      "source_json_sha256": "0192de6bd53ae1f3bc04d0dda9042ca43aa8e5a28e87f70f798e240bb00dcf6f",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.85_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_mada030085a2_formal_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null,
+      "dataset": "videochatgpt",
+      "public_method": "madakv_kvrepack",
+      "source_method": "madakv_decouplekv",
+      "model": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "score_correction": "none",
+      "sim_space": "raw",
+      "runnable_in_current_KVRepack": false,
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack",
+      "metric": "mean(correctness,detailed_orientation,context,temporal,consistency)",
+      "metric_raw": 3.0469999999999997,
+      "metric_display": 3.0469999999999997,
+      "metric_display_scale": 1,
+      "metric_units": "Judge scores on the original 0-5 scale, five metric averages weighted equally; no percent scaling.",
+      "judge": {
+        "requested": "gpt-5.4-mini",
+        "response_models": {
+          "gpt-5.4-mini-2026-03-17": 900
+        },
+        "protocol": "independent_output_isolated_cache",
+        "external_cache_reused": false,
+        "protocol_equivalence_note": "Both generic and explicit independent wrappers use the same generic_messages/consistency_messages and score parser from judge_videochatgpt_posthoc_lmms_codex_generic.py. Generic outputs resume only their own per-output result files; independent wrapper has isolated_judge_cache.jsonl. No cross-output score reuse in either eligible protocol."
+      },
+      "candidate_count_same_protocol": 4,
+      "confidence": "high_for_existing_full200_independent_scores; one judge draw per output; no statistical superiority claim",
+      "selection_basis": "Maximum five-metric mean among completed full200 output-isolated gpt-5.4-mini scores for this method; exclude selected6/16 subsets and shared/paired-cache scores.",
+      "sourcepaths": {
+        "judge_summary_json": "llava-video-param-tune-20260718/independent_judges_20260718/mada_030_085_a2_fresh/summary.json",
+        "judge_summary_sha256": "0192de6bd53ae1f3bc04d0dda9042ca43aa8e5a28e87f70f798e240bb00dcf6f",
+        "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.85_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_mada030085a2_formal_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "launcher_script": "/root/run_llava_ov7b_videochatgpt_decouple_20260714.sh",
+        "judge_script": "llava-video-param-tune-20260718/judge_videochatgpt_independent_parallel.py"
+      },
+      "sample_metadata": [
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.85_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_mada030085a2_formal_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260718_034700_samples_videochatgpt_consistency.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "452c9a94d8f3919ee440c194d48b9ce6b57649420f0c9f12e5095b9a9fe268bd"
+        },
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.85_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_mada030085a2_formal_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260718_034700_samples_videochatgpt_gen.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "0ac1f86e93f4e3e7537194a9d4ec1da2dcead4c85deaca02f063322dd458e38c"
+        },
+        {
+          "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.85_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_mada030085a2_formal_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260718_034700_samples_videochatgpt_temporal.jsonl",
+          "rows": 200,
+          "unique_doc_ids": 200,
+          "doc_ids_sha256": "050029a81b691389bb405be74dd4d2c17838c422c8de0972a1fb21e62b9b13cc",
+          "doc_payload_sha256": "ba5a2e0c1c86cd28a24c0a197fc10ff1267a096279c93ea9955c005c7bb42783"
+        }
+      ],
+      "runner_up": {
+        "simtop": 0.5,
+        "cr": 0.7,
+        "alpha": 2.0,
+        "score": 3.0460000000000003,
+        "source_json": "llava-video-param-tune-20260718/independent_judges_20260718/mada_050_070_a2_fresh/summary.json",
+        "protocol": "independent_output_isolated_cache"
+      },
+      "uncertainty_note": "3.047 versus runner-up 3.046 differs by only 0.001/5; this is an observed maximum, not evidence of a reliable improvement."
+    }
+  ],
+  "deterministic_candidate_inventory": [
+    {
+      "task": "nextqa_oe_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 19.260711413113903,
+      "metrics": {
+        "WUPS,none": 19.260711413113903
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_logs/nextqa_oe_test/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.50_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_qwen7bbest_nextqa_oe_test_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_054047_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "dd666b3a9f17cfc89007243e7ea164e082c5a5f57116cf9f3423b662db114e97",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 18.671485158780072,
+      "metrics": {
+        "WUPS,none": 18.671485158780072
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_logs/nextqa_oe_test/madakv_decouplekv/64/budget0.10_b1024_simtop0.70_cr0.70_alpha1_simraw_corrnone_th0.8_qwen7bbest_nextqa_oe_test_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_044626_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "01ba6a97bbdb1955bed258b36833ecabcb31da5797460983bd575686af3ed6db",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.9,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.94334479735675,
+      "metrics": {
+        "WUPS,none": 18.94334479735675
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_logs/nextqa_oe_test/snapkv_decouplekv/64/budget0.10_b1024_simtop0.70_cr0.90_alpha2_simraw_corrnone_qwen7bbest_nextqa_oe_test_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_042941_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "ef69f35c1c380c7fed475eaef83384d6082c76d37a5430290083aad65806b950",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.97160937363909,
+      "metrics": {
+        "WUPS,none": 18.97160937363909
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_logs/nextqa_oe_test/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_cr0.70_alpha2_simraw_corrnone_attnflash_qwen7bbest_nextqa_oe_test_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_053040_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "db477321d335bf5b2b40626ea4a2461d2ee8859fc1a935bc9ca1c1b33f0ee0b0",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.21562708233284736,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.12369724006577006,
+        "vatex_METEOR,none": 0.17517336729539065,
+        "vatex_ROUGE_L,none": 0.3662069217881374,
+        "vatex_CIDEr,none": 0.19743080018209128
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_logs/vatex_test/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.50_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_qwen7bbest_vatex_test_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_041322_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "c315a853fb85d94813fe905b651f8bf103c456eff761a0ca17d6cee2f69d7865",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.1991101500229132,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.10591485915639003,
+        "vatex_METEOR,none": 0.1676612741703659,
+        "vatex_ROUGE_L,none": 0.3534983787073615,
+        "vatex_CIDEr,none": 0.16936608805753545
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_logs/vatex_test/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_th0.8_qwen7bbest_vatex_test_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_030946_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "02bf271dcf1b689224a122be822d521e7ffa5aa338c99905bb4608dd593ae374",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.19992078923581474,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11150514442916315,
+        "vatex_METEOR,none": 0.16890499529260436,
+        "vatex_ROUGE_L,none": 0.35528078737329577,
+        "vatex_CIDEr,none": 0.16399222984819573
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_logs/vatex_test/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_qwen7bbest_vatex_test_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_025444_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "efa922b18a9b948ded8f57d72f32a6477898f59cba61ff8e64a46ff24c99bb50",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.20279482903048637,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11494769985295188,
+        "vatex_METEOR,none": 0.16890269467108598,
+        "vatex_ROUGE_L,none": 0.3578467532344486,
+        "vatex_CIDEr,none": 0.16948216836345906
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_logs/vatex_test/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_cr0.50_alpha2_simraw_corrnone_attnflash_qwen7bbest_vatex_test_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_035827_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "81d12c2cbd21fbbe2e84766f8a0392e12bfa97fb827be42e12aed6dad5884c5b",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 1,
+      "score": 0.26764309896460625,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.3682983651158203,
+        "vatex_METEOR,none": 0.2451549632988078,
+        "vatex_ROUGE_L,none": 0.4571190674437968,
+        "vatex_CIDEr,none": 0.0
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_smoke_logs/vatex_test/hybrid_decouplekv/64/limit1_simtop0.50_cr0.50_alpha2_budget0.10_b1024/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_021749_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "4ced89572737b3641ce8e48872c70303987e94024df5bc4d5b8da95115a6bb18",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 1,
+      "score": 0.14119251407196545,
+      "metrics": {
+        "vatex_Bleu_4,none": 3.294791209988062e-05,
+        "vatex_METEOR,none": 0.14807044170909522,
+        "vatex_ROUGE_L,none": 0.4166666666666667,
+        "vatex_CIDEr,none": 0.0
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_smoke_logs/vatex_test/madakv_decouplekv/64/limit1_simtop0.30_cr0.70_alpha2_budget0.10_b1024/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_021557_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "0bd80e192b6344b680b8668e6b16db79b58d6f4bf1fcc4e9c1e87a0fd57573b8",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 1,
+      "score": 0.14119251407196545,
+      "metrics": {
+        "vatex_Bleu_4,none": 3.294791209988062e-05,
+        "vatex_METEOR,none": 0.14807044170909522,
+        "vatex_ROUGE_L,none": 0.4166666666666667,
+        "vatex_CIDEr,none": 0.0
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_smoke_logs/vatex_test/snapkv_decouplekv/64/limit1_simtop0.30_cr0.70_alpha2_budget0.10_b1024/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_021508_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "c840d8e624e7aff884c3803b41877f490f52f24080686453656811812be42e61",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 1,
+      "score": 0.2966011520451553,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.3874258402460563,
+        "vatex_METEOR,none": 0.2910686929970128,
+        "vatex_ROUGE_L,none": 0.507910074937552,
+        "vatex_CIDEr,none": 0.0
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_smoke_logs/vatex_test/sparsemm_decouplekv/64/limit1_simtop0.50_cr0.50_alpha2_budget0.10_b1024/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_021658_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "789a39e8a17d7eafa15e717956fb0a7e52315554e7242c44233285228063e493",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 19.643071015197815,
+      "metrics": {
+        "WUPS,none": 19.643071015197815
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_140221_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "3b3bf840c54786931d0eccf1719a74f8f855e131329c93f0cb432a95f7e5e4c6",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 19.598069283688567,
+      "metrics": {
+        "WUPS,none": 19.598069283688567
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260709_231442_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "cff9a099f4fd036bdbfc86bdf6cc49fa22bbe2cecb7b90355a2f73e2514940fe",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 19.59280571558712,
+      "metrics": {
+        "WUPS,none": 19.59280571558712
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.70_chunk8_cr0.70_alpha1_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_183512_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "170c440e38544deb7b6a0aef44d0d3dacc8f0cdcf1e10ab94aa9a59e1da55c51",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.694969795762113,
+      "metrics": {
+        "WUPS,none": 18.694969795762113
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/madakv_decouplekv/64/tune_budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_th0.8_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_122723_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "db117746e74ee155079e4bf86e0abb0cb41f3f76e09a8e63c60995f818b3e7c7",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.716943228913955,
+      "metrics": {
+        "WUPS,none": 18.716943228913955
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/madakv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_153451_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "323aac534ecce8ae3fdf111a1159a1a7d27165b16b4acfdd694e1c16550901ee",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 0.5,
+      "n": 200,
+      "score": 19.007389996580773,
+      "metrics": {
+        "WUPS,none": 19.007389996580773
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha0.5_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_005719_results.json",
+      "nominal_alpha": 0.5,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "df0cdabbcf55faa4ca675fdcbb3f9ef648c6d05ad7c7cf58d66d36c3b5f78e3a",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 19.00935547115045,
+      "metrics": {
+        "WUPS,none": 19.00935547115045
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha1_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_012855_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "35a91e9bc01861a5b4fdd2748e200f683da2df27c554bc62d7f89e817649befb",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.98694162034704,
+      "metrics": {
+        "WUPS,none": 18.98694162034704
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/snapkv_decouplekv/64/tune_budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_121701_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "f64d858772118e95d98f9248919fe09cc36e615a743d5c65000d54a5df539bb2",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.909441550830472,
+      "metrics": {
+        "WUPS,none": 18.909441550830472
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/snapkv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_142856_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "f3a3447d6032b6fbc21d4946364ba1d15dc2b0afb8e1e21fc868f1a73bde9881",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 19.000455659605947,
+      "metrics": {
+        "WUPS,none": 19.000455659605947
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/snapkv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.70_alpha2_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_190107_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "c3ce4cb8001b75c55fbe3042d9b937d01eea2a21920e2ed14953f24951848565",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.96503179239998,
+      "metrics": {
+        "WUPS,none": 18.96503179239998
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/snapkv_decouplekv/64/tune_budget0.10_b1024_simtop0.70_cr0.70_alpha1_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_165413_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "edcc28b44675c996bb8512d7915f6d5d4e39b983913b6a38a2048275aa5a6f42",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.789733969358245,
+      "metrics": {
+        "WUPS,none": 18.789733969358245
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.30_cr0.70_alpha2_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_133418_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "7c05b1da0d897a56d9aeebd20ef552f79b22e875ea7b9564e185303fa73bc046",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 18.7357518887693,
+      "metrics": {
+        "WUPS,none": 18.7357518887693
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.50_cr0.50_alpha2_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_161942_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "33594ffd2b760f927fe2c6ccc13f21f61895446d8f3f1520eb816ec5f65f4850",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 19.01220920800744,
+      "metrics": {
+        "WUPS,none": 19.01220920800744
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/nextqa_oe_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.70_cr0.70_alpha1_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_180825_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "b660e526c58d240e99e54e7e9e246155130c0af056648fd80a32c56d80de78b9",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "WUPS as already recorded on 0-100 scale",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.21672426069167178,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.12743945906309345,
+        "vatex_METEOR,none": 0.17517325491426491,
+        "vatex_ROUGE_L,none": 0.36497620292678185,
+        "vatex_CIDEr,none": 0.19930812586254693
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_134541_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "2b05621c313c73935de6ed4f732d9b2b3e71ae8c77be0a362562e5f6b330cc54",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.22290792952038682,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.1267468164402448,
+        "vatex_METEOR,none": 0.17940234080816375,
+        "vatex_ROUGE_L,none": 0.36782491823191094,
+        "vatex_CIDEr,none": 0.21765764260122783
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260709_225619_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "db29078358ea85842ba5621b8d6dc59014e7a50b4805f85d537c266601ca1ae5",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 0.2143564251364244,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.12237508901718122,
+        "vatex_METEOR,none": 0.17882405931433173,
+        "vatex_ROUGE_L,none": 0.3622850130525483,
+        "vatex_CIDEr,none": 0.19394153916163626
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/hybrid_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.70_chunk8_cr0.70_alpha1_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_181847_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "0942eda36d14be3e41a8a0b64d9b45386749d5127941b92db3fbb3f1da6a9404",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.2032041003180842,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11129216598441492,
+        "vatex_METEOR,none": 0.16872724961345556,
+        "vatex_ROUGE_L,none": 0.3552458962239223,
+        "vatex_CIDEr,none": 0.17755108945054407
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/madakv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_144558_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "0bed6a8d25438b3545d448967a13cc23ab1e7ce2b89031d99f60eb2061494376",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.1999684129144807,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11006123917811919,
+        "vatex_METEOR,none": 0.16861988327290978,
+        "vatex_ROUGE_L,none": 0.3523217282876307,
+        "vatex_CIDEr,none": 0.1688708009192631
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/madakv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.70_alpha2_simraw_corrnone_th0.8_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_191116_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "b77fbdb3652068cdeac319892f9a950e5f74d486c598c59b1cbbceb49f2ca110",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "madakv_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 0.1971897545564876,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.10661694724477379,
+        "vatex_METEOR,none": 0.16566066612937397,
+        "vatex_ROUGE_L,none": 0.3523603090496664,
+        "vatex_CIDEr,none": 0.16412109580213624
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/madakv_decouplekv/64/tune_budget0.10_b1024_simtop0.70_cr0.70_alpha1_simraw_corrnone_th0.8_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_170437_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "6d66895286b43419657ee0c43842210ea534d04e05220b4032499561d241696f",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 0.5,
+      "n": 200,
+      "score": 0.2056024921916731,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.1139609374682549,
+        "vatex_METEOR,none": 0.17125493398785047,
+        "vatex_ROUGE_L,none": 0.3580335994498283,
+        "vatex_CIDEr,none": 0.17916049786075863
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha0.5_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_004229_results.json",
+      "nominal_alpha": 0.5,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "0d7f0aad67fc470255150bc6737fb4486076675919270db494553ead5965e8fa",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 0.0,
+      "n": 1,
+      "score": 0.14119251407196545,
+      "metrics": {
+        "vatex_Bleu_4,none": 3.294791209988062e-05,
+        "vatex_METEOR,none": 0.14807044170909522,
+        "vatex_ROUGE_L,none": 0.4166666666666667,
+        "vatex_CIDEr,none": 0.0
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha0_simraw_corrnone_limit1/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_003609_results.json",
+      "nominal_alpha": 0.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "509a623ae96a07301b38864bd705947085c58d29b27f9bb50f529cc35851e4e1",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 1.5,
+      "n": 200,
+      "score": 0.2032250203547154,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.1117735532620907,
+        "vatex_METEOR,none": 0.1693718189565173,
+        "vatex_ROUGE_L,none": 0.35614047723777204,
+        "vatex_CIDEr,none": 0.17561423196248163
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha1.5_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_014557_results.json",
+      "nominal_alpha": 1.5,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "d623b986c3e897fb6ccd52941af382a73c28711fd59a1a3ef47cd7e5960d10fe",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 0.20308984851528036,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11427908097565444,
+        "vatex_METEOR,none": 0.17067994003869685,
+        "vatex_ROUGE_L,none": 0.3549247045340243,
+        "vatex_CIDEr,none": 0.1724756685127459
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/truealpha_budget0.10_b1024_simtop0.50_cr0.50_alpha1_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260710_011425_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "3b3d69f8bca175e4d5dd767415b6d952f3f389e35fa3114f9154d913094e9cb2",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.2023053169991753,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11195051416834002,
+        "vatex_METEOR,none": 0.16907754734497615,
+        "vatex_ROUGE_L,none": 0.3567240698791544,
+        "vatex_CIDEr,none": 0.17146913660423066
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_141332_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "6fca0b46d657ba8dbd648c153fd7c8278c265a32b6d02b53f628c7148b149b67",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.20039571889303545,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11302578639237318,
+        "vatex_METEOR,none": 0.16874826087137745,
+        "vatex_ROUGE_L,none": 0.3557761557984644,
+        "vatex_CIDEr,none": 0.1640326725099268
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/tune_budget0.10_b1024_simtop0.50_cr0.70_alpha2_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_184611_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "e4cd4c68711ca561ef4ea06f5e884a465d4854ea6c5afd33e0a8662deaae84db",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.1997371393490873,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.1116702559844553,
+        "vatex_METEOR,none": 0.16949792253613646,
+        "vatex_ROUGE_L,none": 0.3532012649266288,
+        "vatex_CIDEr,none": 0.16457911394912864
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/tune_budget0.10_b1024_simtop0.70_cr0.70_alpha1_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_163845_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "f097eeb4c87e39175f5e247c0347b7ac297d42a00d706e488482800de786cca4",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.9,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.20095511252104845,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.1112836533998348,
+        "vatex_METEOR,none": 0.1693862279776692,
+        "vatex_ROUGE_L,none": 0.3549553092162596,
+        "vatex_CIDEr,none": 0.16819525949043018
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/snapkv_decouplekv/64/tune_budget0.10_b1024_simtop0.70_cr0.90_alpha2_simraw_corrnone_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260709_222637_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Port reads K_DIFF_ALPHA only, default 2.0; old tuner clears it and sets only prefixed SNAPKV_DECOUPLE_K_DIFF_ALPHA. Runtime logs confirm 2.0.",
+      "source_json_sha256": "df0b2a4bf20726b25380f7b6ff7bd7e842f84067328430992beb0186757474ee",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.20308217463737802,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11485545213158321,
+        "vatex_METEOR,none": 0.16907847810523355,
+        "vatex_ROUGE_L,none": 0.3569526160828646,
+        "vatex_CIDEr,none": 0.17144215222983072
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.30_cr0.70_alpha2_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_131901_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "eb341e54f7e40d887d93b62fb1f085bfa6893038ca975d84bf5cbbec035e9767",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "n": 200,
+      "score": 0.20914935833189457,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.12057125849135623,
+        "vatex_METEOR,none": 0.1707426652231088,
+        "vatex_ROUGE_L,none": 0.36176645925686024,
+        "vatex_CIDEr,none": 0.18351705035625307
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.50_cr0.70_alpha2_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260709_224136_results.json",
+      "nominal_alpha": 2.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "265fc6ef7809759edf617ee3f8f112f5024592933b358c8b500a33fdab78944b",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    },
+    {
+      "task": "vatex_test",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 1.0,
+      "n": 200,
+      "score": 0.19873908482694702,
+      "metrics": {
+        "vatex_Bleu_4,none": 0.11175518647172604,
+        "vatex_METEOR,none": 0.16650848504047358,
+        "vatex_ROUGE_L,none": 0.3538203052094599,
+        "vatex_CIDEr,none": 0.16287236258612858
+      },
+      "path": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_tune_logs/vatex_test/sparsemm_decouplekv/64/tune_budget0.10_b1024_ratio0.10_simtop0.70_cr0.70_alpha1_simraw_corrnone_attnflash_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/20260708_175319_results.json",
+      "nominal_alpha": 1.0,
+      "alpha_evidence": "Actual reader and matching source launcher; SnapKV truealpha launcher sets both alpha names and runtime log confirms it.",
+      "source_json_sha256": "660d9d4c9e0a504b4b39f0f849be6258fdc86be7b1cca385aa82d322e7f38f47",
+      "protocol": "deterministic_lmms_prefix200",
+      "metric_units": "All four recorded metrics are raw fractional values; selection mean uses all raw values, display mean and metrics may uniformly multiply by 100.",
+      "source_implementation_status": "original_port_not_integrated_into_current_KVRepack"
+    }
+  ],
+  "videochatgpt_full_judge_inventory": [
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.8,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.027,
+      "metrics": {
+        "correctness": 3.205,
+        "detailed_orientation": 2.88,
+        "context": 3.575,
+        "temporal": 2.245,
+        "consistency": 3.23
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.80_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260715_050218/summary.json",
+      "source_json_sha256": "0848c3a066053a72c14e25b46b0945a5570e24d7aeac3c1db36bac0d034d2652",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.80_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.033,
+      "metrics": {
+        "correctness": 3.21,
+        "detailed_orientation": 2.855,
+        "context": 3.63,
+        "temporal": 2.22,
+        "consistency": 3.25
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260714_201915/summary.json",
+      "source_json_sha256": "f14ae45f1da35ff9443c9adad07ec4c0ec850bdceb3ccdc6afcf72e2f9cfc1ec",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.0309999999999997,
+      "metrics": {
+        "correctness": 3.245,
+        "detailed_orientation": 2.88,
+        "context": 3.59,
+        "temporal": 2.36,
+        "consistency": 3.08
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260715_030413/summary.json",
+      "source_json_sha256": "ff47afa04f0f0823e7518933166f9a4b6ccf5d661391d434e670b58816f8ca4a",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.024,
+      "metrics": {
+        "correctness": 3.26,
+        "detailed_orientation": 2.86,
+        "context": 3.55,
+        "temporal": 2.3,
+        "consistency": 3.15
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 899,
+        "": 1
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260714_144422/summary.json",
+      "source_json_sha256": "e7e02382fdc5f179e7149db0a7e2b80386f67f035f53e9adf3e360d1c8012bc8",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.057,
+      "metrics": {
+        "correctness": 3.27,
+        "detailed_orientation": 2.86,
+        "context": 3.655,
+        "temporal": 2.32,
+        "consistency": 3.18
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260715_002810/summary.json",
+      "source_json_sha256": "d5ed85d25392c3e302408ac5232596455d7752dcdaf6673f5e147aae01bf23f4",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.70_alpha2_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "snapkv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 0.5,
+      "nominal_alpha": 0.5,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.026,
+      "metrics": {
+        "correctness": 3.235,
+        "detailed_orientation": 2.915,
+        "context": 3.645,
+        "temporal": 2.265,
+        "consistency": 3.07
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.50_alpha0.5_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260714_113724/summary.json",
+      "source_json_sha256": "03926302d79856ad0ce432f546210149ac5756cd8345521358a7c14807cfcd38",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/snapkv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.50_alpha0.5_simraw_corrnone_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.8,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.034,
+      "metrics": {
+        "correctness": 3.205,
+        "detailed_orientation": 2.855,
+        "context": 3.58,
+        "temporal": 2.34,
+        "consistency": 3.19
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_cr0.80_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260715_040015/summary.json",
+      "source_json_sha256": "bc7f3ba5909a65713232674d3c899f70d27191cd93a290ef1d3e5206b8dcb69a",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_cr0.80_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_priority1_20260714/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "sparsemm_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.009,
+      "metrics": {
+        "correctness": 3.195,
+        "detailed_orientation": 2.805,
+        "context": 3.565,
+        "temporal": 2.4,
+        "consistency": 3.08
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "generic_posthoc_per_output_resume_only_no_external_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_cr0.70_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf/posthoc_gpt_judge_codex_gpt_5_4_mini_20260714_172605/summary.json",
+      "source_json_sha256": "cfaf8a6c323d5e9292244755cc45d5a5f4b1c1a38908882e3f0dfa50c4e43cfc",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/sparsemm_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_cr0.70_alpha2_simraw_corrnone_uniform_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.016,
+      "metrics": {
+        "correctness": 3.2,
+        "detailed_orientation": 2.83,
+        "context": 3.575,
+        "temporal": 2.215,
+        "consistency": 3.26
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "hybrid-preservation-tune-20260716/formal_judges/approved_crossdataset/hybrid_llava7b_030_070_a2/summary.json",
+      "source_json_sha256": "fa5baf85fbc34ec87faf365629463d5b9b363b04f11a9e642d4f5e545875c2ec",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_crossdata_hybrid_llava_030_070_a2_20260717/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 2.994,
+      "metrics": {
+        "correctness": 3.185,
+        "detailed_orientation": 2.83,
+        "context": 3.515,
+        "temporal": 2.23,
+        "consistency": 3.21
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "hybrid-preservation-tune-20260716/formal_judges/approved_crossdataset/hybrid_llava7b_050_050_a2/summary.json",
+      "source_json_sha256": "d1a82786f3fd7c0ac31a2ef6b96fa07c93d0aea3798d9b58bff50dc1372df849",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.50_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_llava_hybrid_050_050_a2_video_20260717/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.7,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.0,
+      "metrics": {
+        "correctness": 3.17,
+        "detailed_orientation": 2.86,
+        "context": 3.605,
+        "temporal": 2.195,
+        "consistency": 3.17
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "hybrid-preservation-tune-20260716/formal_judges/approved_crossdataset/hybrid_llava7b_070_070_a2/summary.json",
+      "source_json_sha256": "0882d8711ebcc7bf8abc4726046aa28adf2098dadbbe5f1782d6a217e8149362",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.70_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_llava_hybrid_070_070_a2_video_20260717/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.043,
+      "metrics": {
+        "correctness": 3.18,
+        "detailed_orientation": 2.885,
+        "context": 3.605,
+        "temporal": 2.365,
+        "consistency": 3.18
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "hybrid-preservation-tune-20260716/formal_judges/approved_crossdataset/mada_llava7b_050_070_a2/summary.json",
+      "source_json_sha256": "627580a584d75a7eebc4aa963ac25e1f3ca2ec1e0733f0d464d16f157567279b",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.70_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_crossdata_mada_llava_050_070_a2_20260717/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.041,
+      "metrics": {
+        "correctness": 3.205,
+        "detailed_orientation": 2.865,
+        "context": 3.6,
+        "temporal": 2.315,
+        "consistency": 3.22
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "hybrid-preservation-tune-20260716/formal_judges/llavaov7b_madakv/budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_rerun_unified_20260717/summary.json",
+      "source_json_sha256": "8a6cbfe97c53fdd18d77302e1d910b1c48c5996ae8be4614e733b0bc23c5f5b2",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_rerun_unified_20260717/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.85,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.023,
+      "metrics": {
+        "correctness": 3.195,
+        "detailed_orientation": 2.89,
+        "context": 3.62,
+        "temporal": 2.23,
+        "consistency": 3.18
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "independent_output_isolated_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/independent_judges_20260718/hybrid_030_085_a2_fresh/summary.json",
+      "source_json_sha256": "7089b582526f37684650fa4fda03ef2ad1bf9874b621c8a82bb7dcba32065bb7",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.85_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_balanced_promoted_hybrid_s0.30_c0.85_a2_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.042,
+      "metrics": {
+        "correctness": 3.28,
+        "detailed_orientation": 2.895,
+        "context": 3.59,
+        "temporal": 2.235,
+        "consistency": 3.21
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "independent_output_isolated_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/independent_judges_20260718/hybrid_050_070_a2_fresh/summary.json",
+      "source_json_sha256": "c6f560e8a64d0a27c049aafd390c57a0ff28f399ff80628a464d914055e97418",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.85,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.0469999999999997,
+      "metrics": {
+        "correctness": 3.22,
+        "detailed_orientation": 2.86,
+        "context": 3.62,
+        "temporal": 2.315,
+        "consistency": 3.22
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "independent_output_isolated_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/independent_judges_20260718/mada_030_085_a2_fresh/summary.json",
+      "source_json_sha256": "0192de6bd53ae1f3bc04d0dda9042ca43aa8e5a28e87f70f798e240bb00dcf6f",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.85_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_mada030085a2_formal_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 1.0,
+      "nominal_alpha": 1.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.029,
+      "metrics": {
+        "correctness": 3.2,
+        "detailed_orientation": 2.91,
+        "context": 3.645,
+        "temporal": 2.27,
+        "consistency": 3.12
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "independent_output_isolated_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/independent_judges_20260718/mada_050_070_a1_fresh/summary.json",
+      "source_json_sha256": "22db680981d80b947aa7de75c9e82b52c3718eb23583e61cc5c26d6ae396c48b",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.70_alpha1_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_balanced_promoted_madakv_s0.50_c0.70_a1_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.0460000000000003,
+      "metrics": {
+        "correctness": 3.225,
+        "detailed_orientation": 2.885,
+        "context": 3.63,
+        "temporal": 2.33,
+        "consistency": 3.16
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "independent_output_isolated_cache",
+      "isolated_output_judge": true,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/independent_judges_20260718/mada_050_070_a2_fresh/summary.json",
+      "source_json_sha256": "d8b3ba0d6f7d0e32887d21ef22bdc4801d75f68916cbe324df8d5855cf9e97de",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.70_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_crossdata_mada_llava_050_070_a2_20260717/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": true,
+      "exclusion_reason": null
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.85,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.041,
+      "metrics": {
+        "correctness": 3.175,
+        "detailed_orientation": 2.9,
+        "context": 3.605,
+        "temporal": 2.305,
+        "consistency": 3.22
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/judges/llavaov7b_madakv/budget0.10_b1024_simtop0.30_cr0.85_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_mada030085a2_formal_20260718/summary.json",
+      "source_json_sha256": "132ebc48f1915e683981491ef0c6115121baaee2178339651c96455722707a91",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.85_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_mada030085a2_formal_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.85,
+      "alpha": 2.0,
+      "nominal_alpha": 2.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.045,
+      "metrics": {
+        "correctness": 3.22,
+        "detailed_orientation": 2.89,
+        "context": 3.6,
+        "temporal": 2.255,
+        "consistency": 3.26
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/promoted_judges/hybrid_decouplekv/budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.85_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_balanced_promoted_hybrid_s0.30_c0.85_a2_20260718/summary.json",
+      "source_json_sha256": "816059c77fe3726be1e54d4d22269aabc97e02e8439095b4d374dab984ed75cf",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.30_chunk8_cr0.85_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_balanced_promoted_hybrid_s0.30_c0.85_a2_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.5,
+      "cr": 0.7,
+      "alpha": 1.0,
+      "nominal_alpha": 1.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.022,
+      "metrics": {
+        "correctness": 3.2,
+        "detailed_orientation": 2.885,
+        "context": 3.6,
+        "temporal": 2.305,
+        "consistency": 3.12
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "llava-video-param-tune-20260718/promoted_judges/madakv_decouplekv/budget0.10_b1024_simtop0.50_cr0.70_alpha1_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_balanced_promoted_madakv_s0.50_c0.70_a1_20260718/summary.json",
+      "source_json_sha256": "848b62278094d7d6257b3df55626a7d4840f61361802fa81e88d4107822420ce",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.70_alpha1_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_balanced_promoted_madakv_s0.50_c0.70_a1_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "hybrid_decouplekv",
+      "simtop": 0.2,
+      "cr": 0.9,
+      "alpha": 3.0,
+      "nominal_alpha": 3.0,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.015,
+      "metrics": {
+        "correctness": 3.18,
+        "detailed_orientation": 2.805,
+        "context": 3.595,
+        "temporal": 2.275,
+        "consistency": 3.22
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "targeted-videochatgpt-tune-20260715/full_selected_judges/llavaov7b_hybridkv/summary.json",
+      "source_json_sha256": "ce7c0a6f45447738b7fde52062fca5becbd1d992d16e63b31750a985c0fa2310",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.20_chunk8_cr0.90_alpha3_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_tuned_multibackbone_20260716/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    },
+    {
+      "task": "videochatgpt",
+      "method": "madakv_decouplekv",
+      "simtop": 0.3,
+      "cr": 0.85,
+      "alpha": 0.5,
+      "nominal_alpha": 0.5,
+      "n": 200,
+      "counts": {
+        "correctness": 200,
+        "detailed_orientation": 200,
+        "context": 200,
+        "temporal": 200,
+        "consistency": 100
+      },
+      "score": 3.041,
+      "metrics": {
+        "correctness": 3.2,
+        "detailed_orientation": 2.86,
+        "context": 3.61,
+        "temporal": 2.365,
+        "consistency": 3.17
+      },
+      "judge_requested": "gpt-5.4-mini",
+      "judge_response_models": {
+        "gpt-5.4-mini-2026-03-17": 900
+      },
+      "protocol": "single_output_shared_prompt_cache",
+      "isolated_output_judge": false,
+      "full200_complete": true,
+      "source_json": "targeted-videochatgpt-tune-20260715/full_selected_judges/llavaov7b_madakv/summary.json",
+      "source_json_sha256": "10087a29d8e45bc6cad804b3dd964e824a0fbc2183610718ab0d04c2c120f87f",
+      "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.85_alpha0.5_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_tuned_multibackbone_20260716/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+      "eligible_for_main_table": false,
+      "exclusion_reason": "Shared-prompt-cache protocol, incomplete counts, or unverified response-model tags; retained separately, not mixed into independent full200 ranking."
+    }
+  ],
+  "excluded_screens": {
+    "balanced16_scores": [
+      {
+        "method": "hybrid_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.7,
+        "alpha": 2.0,
+        "candidate": "existing_050_070_a2",
+        "n_per_scored_metric": {
+          "correctness": 16,
+          "detailed_orientation": 16,
+          "context": 16,
+          "temporal": 16
+        },
+        "score_average_4_metrics": 3.15625,
+        "protocol": "balanced_subset_fixed_original_baseline",
+        "source_json": "llava-video-param-tune-20260718/screen_judges/hybrid_decouplekv/existing_050_070_a2/summary.json",
+        "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/hybrid_decouplekv/64/budget0.10_b1024_ratio0.10_simtop0.50_chunk8_cr0.70_alpha2_corrnone_kraw_reapply_scopevisual_headhead_ada_allochead_ada_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "eligible_for_main_table": false,
+        "exclusion_reason": "Selected balanced16 subset, four metrics only; cannot rank against full200 five-metric scores.",
+        "full200_evaluated_elsewhere": true
+      },
+      {
+        "method": "hybrid_decouplekv",
+        "simtop": 0.3,
+        "cr": 0.85,
+        "alpha": 2.0,
+        "candidate": "simtop0.30_cr0.85_alpha2",
+        "n_per_scored_metric": {
+          "correctness": 16,
+          "detailed_orientation": 16,
+          "context": 16,
+          "temporal": 16
+        },
+        "score_average_4_metrics": 3.296875,
+        "protocol": "balanced_subset_fixed_original_baseline",
+        "source_json": "llava-video-param-tune-20260718/screen_judges/hybrid_decouplekv/simtop0.30_cr0.85_alpha2/summary.json",
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/hybrid_decouplekv/simtop0.30_cr0.85_alpha2_budget0.10_b1024_flash_nolog_balanced16/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "eligible_for_main_table": false,
+        "exclusion_reason": "Selected balanced16 subset, four metrics only; cannot rank against full200 five-metric scores.",
+        "full200_evaluated_elsewhere": true
+      },
+      {
+        "method": "hybrid_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.7,
+        "alpha": 1.0,
+        "candidate": "simtop0.50_cr0.70_alpha1",
+        "n_per_scored_metric": {
+          "correctness": 16,
+          "detailed_orientation": 16,
+          "context": 16,
+          "temporal": 16
+        },
+        "score_average_4_metrics": 3.015625,
+        "protocol": "balanced_subset_fixed_original_baseline",
+        "source_json": "llava-video-param-tune-20260718/screen_judges/hybrid_decouplekv/simtop0.50_cr0.70_alpha1/summary.json",
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/hybrid_decouplekv/simtop0.50_cr0.70_alpha1_budget0.10_b1024_flash_nolog_balanced16/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "eligible_for_main_table": false,
+        "exclusion_reason": "Selected balanced16 subset, four metrics only; cannot rank against full200 five-metric scores.",
+        "full200_evaluated_elsewhere": false
+      },
+      {
+        "method": "hybrid_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.85,
+        "alpha": 2.0,
+        "candidate": "simtop0.50_cr0.85_alpha2",
+        "n_per_scored_metric": {
+          "correctness": 16,
+          "detailed_orientation": 16,
+          "context": 16,
+          "temporal": 16
+        },
+        "score_average_4_metrics": 3.109375,
+        "protocol": "balanced_subset_fixed_original_baseline",
+        "source_json": "llava-video-param-tune-20260718/screen_judges/hybrid_decouplekv/simtop0.50_cr0.85_alpha2/summary.json",
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/hybrid_decouplekv/simtop0.50_cr0.85_alpha2_budget0.10_b1024_flash_nolog_balanced16/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "eligible_for_main_table": false,
+        "exclusion_reason": "Selected balanced16 subset, four metrics only; cannot rank against full200 five-metric scores.",
+        "full200_evaluated_elsewhere": false
+      },
+      {
+        "method": "madakv_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.7,
+        "alpha": 2.0,
+        "candidate": "existing_050_070_a2",
+        "n_per_scored_metric": {
+          "correctness": 16,
+          "detailed_orientation": 16,
+          "context": 16,
+          "temporal": 16
+        },
+        "score_average_4_metrics": 3.5,
+        "protocol": "balanced_subset_fixed_original_baseline",
+        "source_json": "llava-video-param-tune-20260718/screen_judges/madakv_decouplekv/existing_050_070_a2/summary.json",
+        "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.50_cr0.70_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_crossdata_mada_llava_050_070_a2_20260717/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "eligible_for_main_table": false,
+        "exclusion_reason": "Selected balanced16 subset, four metrics only; cannot rank against full200 five-metric scores.",
+        "full200_evaluated_elsewhere": true
+      },
+      {
+        "method": "madakv_decouplekv",
+        "simtop": 0.3,
+        "cr": 0.85,
+        "alpha": 2.0,
+        "candidate": "initial_030_085_a2",
+        "n_per_scored_metric": {
+          "correctness": 16,
+          "detailed_orientation": 16,
+          "context": 16,
+          "temporal": 16
+        },
+        "score_average_4_metrics": 3.484375,
+        "protocol": "balanced_subset_fixed_original_baseline",
+        "source_json": "llava-video-param-tune-20260718/screen_judges/madakv_decouplekv/initial_030_085_a2/summary.json",
+        "sample_dir": "HybridKV-llava-ov-decouple-port-20260708/scripts/llava_decouple_videochatgpt_logs/videochatgpt/madakv_decouplekv/64/budget0.10_b1024_simtop0.30_cr0.85_alpha2_simraw_corrnone_th0.8_flash_nolog_llavaov7b_vatexbest_predictonly1_limit200_mada030085a2_formal_20260718/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "eligible_for_main_table": false,
+        "exclusion_reason": "Selected balanced16 subset, four metrics only; cannot rank against full200 five-metric scores.",
+        "full200_evaluated_elsewhere": true
+      },
+      {
+        "method": "madakv_decouplekv",
+        "simtop": 0.2,
+        "cr": 0.9,
+        "alpha": 2.0,
+        "candidate": "simtop0.20_cr0.90_alpha2",
+        "n_per_scored_metric": {
+          "correctness": 16,
+          "detailed_orientation": 16,
+          "context": 16,
+          "temporal": 16
+        },
+        "score_average_4_metrics": 3.546875,
+        "protocol": "balanced_subset_fixed_original_baseline",
+        "source_json": "llava-video-param-tune-20260718/screen_judges/madakv_decouplekv/simtop0.20_cr0.90_alpha2/summary.json",
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/madakv_decouplekv/simtop0.20_cr0.90_alpha2_budget0.10_b1024_flash_nolog_balanced16/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "eligible_for_main_table": false,
+        "exclusion_reason": "Selected balanced16 subset, four metrics only; cannot rank against full200 five-metric scores.",
+        "full200_evaluated_elsewhere": false
+      },
+      {
+        "method": "madakv_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.7,
+        "alpha": 1.0,
+        "candidate": "simtop0.50_cr0.70_alpha1",
+        "n_per_scored_metric": {
+          "correctness": 16,
+          "detailed_orientation": 16,
+          "context": 16,
+          "temporal": 16
+        },
+        "score_average_4_metrics": 3.5625,
+        "protocol": "balanced_subset_fixed_original_baseline",
+        "source_json": "llava-video-param-tune-20260718/screen_judges/madakv_decouplekv/simtop0.50_cr0.70_alpha1/summary.json",
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/madakv_decouplekv/simtop0.50_cr0.70_alpha1_budget0.10_b1024_flash_nolog_balanced16/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "eligible_for_main_table": false,
+        "exclusion_reason": "Selected balanced16 subset, four metrics only; cannot rank against full200 five-metric scores.",
+        "full200_evaluated_elsewhere": true
+      },
+      {
+        "method": "madakv_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.85,
+        "alpha": 2.0,
+        "candidate": "simtop0.50_cr0.85_alpha2",
+        "n_per_scored_metric": {
+          "correctness": 16,
+          "detailed_orientation": 16,
+          "context": 16,
+          "temporal": 16
+        },
+        "score_average_4_metrics": 3.46875,
+        "protocol": "balanced_subset_fixed_original_baseline",
+        "source_json": "llava-video-param-tune-20260718/screen_judges/madakv_decouplekv/simtop0.50_cr0.85_alpha2/summary.json",
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/madakv_decouplekv/simtop0.50_cr0.85_alpha2_budget0.10_b1024_flash_nolog_balanced16/eval_outputs/llava-hf__llava-onevision-qwen2-7b-ov-hf",
+        "eligible_for_main_table": false,
+        "exclusion_reason": "Selected balanced16 subset, four metrics only; cannot rank against full200 five-metric scores.",
+        "full200_evaluated_elsewhere": false
+      }
+    ],
+    "screen_generation_candidates": [
+      {
+        "method": "hybrid_decouplekv",
+        "simtop": 0.3,
+        "cr": 0.85,
+        "alpha": 2.0,
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/hybrid_decouplekv/simtop0.30_cr0.85_alpha2_budget0.10_b1024_flash_nolog_balanced16",
+        "full200_judged": true,
+        "eligible_for_main_table": false
+      },
+      {
+        "method": "hybrid_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.7,
+        "alpha": 1.0,
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/hybrid_decouplekv/simtop0.50_cr0.70_alpha1_budget0.10_b1024_flash_nolog_balanced16",
+        "full200_judged": false,
+        "eligible_for_main_table": false
+      },
+      {
+        "method": "hybrid_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.85,
+        "alpha": 2.0,
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/hybrid_decouplekv/simtop0.50_cr0.85_alpha2_budget0.10_b1024_flash_nolog_balanced16",
+        "full200_judged": false,
+        "eligible_for_main_table": false
+      },
+      {
+        "method": "madakv_decouplekv",
+        "simtop": 0.2,
+        "cr": 0.9,
+        "alpha": 2.0,
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/madakv_decouplekv/simtop0.20_cr0.90_alpha2_budget0.10_b1024_flash_nolog_balanced16",
+        "full200_judged": false,
+        "eligible_for_main_table": false
+      },
+      {
+        "method": "madakv_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.7,
+        "alpha": 1.0,
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/madakv_decouplekv/simtop0.50_cr0.70_alpha1_budget0.10_b1024_flash_nolog_balanced16",
+        "full200_judged": true,
+        "eligible_for_main_table": false
+      },
+      {
+        "method": "madakv_decouplekv",
+        "simtop": 0.5,
+        "cr": 0.85,
+        "alpha": 2.0,
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/madakv_decouplekv/simtop0.50_cr0.85_alpha2_budget0.10_b1024_flash_nolog_balanced16",
+        "full200_judged": false,
+        "eligible_for_main_table": false
+      },
+      {
+        "method": "madakv_decouplekv",
+        "simtop": 0.7,
+        "cr": 0.85,
+        "alpha": 2.0,
+        "sample_dir": "llava-video-param-tune-20260718/screen_outputs/madakv_decouplekv/simtop0.70_cr0.85_alpha2_budget0.10_b1024_flash_nolog_balanced16",
+        "full200_judged": false,
+        "eligible_for_main_table": false
+      }
+    ],
+    "selected6_rankings_source": "targeted-videochatgpt-tune-20260715/llavaov7b_targeted_ranked_summary.json",
+    "selected6_note": "Targeted selected6 gen/temporal subsets have12 output rows and reference/string-similarity ranking; never compare these scores with full200 five-metric judging."
+  },
+  "alpha_audit": {
+    "reader": "HybridKV-llava-ov-decouple-port-20260708/hybridkv/qwen2_model_snapkv_repackkv.py:234",
+    "old_tuner_clear_global_alpha": "/root/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.sh:61",
+    "old_tuner_sets_only_ignored_prefixed_alpha": "/root/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.sh:82",
+    "truealpha_tuner_sets_both": "/root/run_llava_ov7b_snapkv_truealpha_tune_20260710.sh:82",
+    "runtime_mismatch_examples": [
+      {
+        "dataset": "vatex_test",
+        "simtop": 0.7,
+        "cr": 0.7,
+        "nominal_alpha": 1,
+        "effective_alpha": 2,
+        "log": "/tmp/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.log",
+        "line": 12559
+      },
+      {
+        "dataset": "nextqa_oe_test",
+        "simtop": 0.7,
+        "cr": 0.7,
+        "nominal_alpha": 1,
+        "effective_alpha": 2,
+        "log": "/tmp/run_llava_ov7b_decouple_param_tune_vatex_nextqa_20260708.log",
+        "line": 13689
+      }
+    ],
+    "policy": "alpha in best_records and inventories is effective alpha; nominal_alpha retains historical path labels. Both selected SnapKV deterministic bests come from truealpha runs."
+  },
+  "warnings": [
+    "Best means best among located completed comparable candidates, not a global optimum or held-out parameter search.",
+    "The vatexbest text in VideoChatGPT output directories is only a historical label; VideoChatGPT rows are selected using their own independent five-metric scores.",
+    "Shared-prompt/paired-cache full200 scores are retained in a separate inventory and excluded from independent ranking.",
+    "All LLaVA improved-method rows are historical source-port records and are not runnable by the current KVRepack launcher until that port is migrated.",
+    "No GPU/model run, API call, judging, download or repository modification was performed; this report only reads existing metadata and score artifacts.",
+    "K-similarity ablations from later July/August are a separate method family and excluded."
+  ],
+  "sample_comparability_verified": {
+    "nextqa_oe_test": {
+      "nextqa_oe_test.jsonl": true
+    },
+    "vatex_test": {
+      "vatex_test.jsonl": true
+    },
+    "videochatgpt": {
+      "videochatgpt_consistency.jsonl": true,
+      "videochatgpt_gen.jsonl": true,
+      "videochatgpt_temporal.jsonl": true
+    }
+  }
+}

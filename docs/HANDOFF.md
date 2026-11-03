@@ -6,6 +6,8 @@
 
 用户指定的目标为公开仓库 `https://github.com/dataWoader12138/KVRepack`。提交作者为 `dataWoader12138`；Git 的身份和 SSH 凭证在各机器本地配置。
 
+初始版本已推送到 `main`，提交为 `fba9c68`。后续视频参数核查见 [VIDEO_BEST_PARAMETERS.md](VIDEO_BEST_PARAMETERS.md)、[CSV](video_best_parameters.csv) 和 [机器可读证据](../provenance/video_best_parameters.json)：主表45个数据集/模型/方法格，36格有完成记录、9格明确缺失；独立评分与共享/配对缓存分开，历史 `log_count` 不混入当前 `none` 表。部分配置只有一个已完成候选，不能称充分寻优。此次发布只新增参数和证据文档，未改变算法或CLI默认值。
+
 ## 目标与已接受的约束
 
 用户希望把原工作区中用于主实验的代码整理成一个独立、可上传 GitHub、可在其他机器使用的版本。主实验原先以 `HybridKV-opensource` 运行，部分扩展、入口或导入与 `HybridKV-artifact` 有关联，因此必须追踪实际调用关系，不能仅凭同名文件选择来源。
@@ -41,6 +43,8 @@ LLaVA 的 SnapKV、SparseMM、MadaKV、HybridKV 四种改进源码已经找到�
 port 和当前 Qwen 改进共享候选选择、相邻合并、raw K 重施 RoPE 等思路，但同时存在预算边界、score 数值路径、SparseMM 缓存生命周期及额外加权合并选项的差异，不能当作纯架构改名直接拼接。LLaVA 使用普通 Qwen2 RoPE，Qwen2.5-VL 使用 mRoPE；后续迁入需单独记录这些适配和语义差异。
 
 当前任务范围为 NextQA、VATEX、VideoChatGPT。多图 MileBench、历史参数搜索、效率诊断、旧 adjacent/base/blacklist、独立 headsplit 和 AsymKV paper 路线不作为首版可运行方法。
+
+后续已在原工作区 `HybridKV-artifact/hybridkv (1).tar` 找到真实 MileBench 图片实验结果：770份预测、768组完整评分文件，覆盖16任务和Qwen3B/7B，含参数组及备份。图片脚本和四种改进也在归档；当前展开目录的脚本不代表归档版本，尤其Snap预算取整/缓存协议有差异。图片入口仍未迁入本仓库；不能因当前目录无输出而再次断言没有图片运行记录。
 
 ## 最新验证结论
 

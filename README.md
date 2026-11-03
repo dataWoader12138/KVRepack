@@ -2,6 +2,8 @@
 
 项目交接摘要与后续工作入口：[docs/HANDOFF.md](docs/HANDOFF.md)。
 
+视频实验参数：[按数据集核对的最佳参数表](docs/VIDEO_BEST_PARAMETERS.md) · [CSV](docs/video_best_parameters.csv)。表格区分实际完成记录、单一候选、历史变体及不同复评协议，不修改运行入口的默认值。
+
 将 Qwen2.5-VL 的 KV cache 基线及其 KVRepack 改进整理到一个独立项目，同时纳入 LLaVA-OneVision-Qwen2-7B 的原有基线。任务包括 NextQA、VATEX、VideoChatGPT。多图 MileBench、历史参数搜索和诊断支线尚未纳入首版。
 
 本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。当前状态为**整理和 CPU 静态验证阶段，GPU 正确性、数值一致性和速度尚待验证**。
