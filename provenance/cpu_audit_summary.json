@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-03T04:14:22.324937+00:00",
+  "status": "completed_with_confirmed_issues",
+  "all_supported_methods_correct": false,
+  "scope": {
+    "qwen2_5_vl": 13,
+    "llava_ov": 6,
+    "llava_improvements_integrated": false
+  },
+  "core_implementation_modified": false,
+  "original_sources_modified": false,
+  "gpu_or_model_execution": false,
+  "dispatch": {
+    "status": "passed",
+    "combinations": 19,
+    "independent_workers": 19,
+    "patch_assignments": 49,
+    "prepare_wrappers": 9,
+    "prepare_cache_cases_per_wrapper": 4,
+    "installed_transformers_version": "4.52.3",
+    "source_structure_checks": 8,
+    "compression_functions_executed_in_dispatch": 0
+  },
+  "static_call_graph": {
+    "status": "passed",
+    "python_files": 33,
+    "function_definitions": 498,
+    "verified_unique_local_import_bindings": 111,
+    "resolved_local_call_sites": 393,
+    "argument_binding_checked": 392,
+    "external_or_dynamic_call_sites": 5783,
+    "kernel_call_sites": 9,
+    "kernel_exports": 5,
+    "errors": 0,
+    "per_method_graphs": 19
+  },
+  "decoder_attention_interfaces": {
+    "explicit_edges": 16,
+    "compatible": 16,
+    "method": "pinned HF and local source AST/signature inspection"
+  },
+  "cpu_function_execution": {
+    "tests_run": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": [],
+    "torch_version": "2.6.0+cu124",
+    "device": "cpu",
+    "threads": 1,
+    "source_files": 14,
+    "source_definitions": 91,
+    "cuda_entry_point_attempts": [],
+    "original_source_same_input_differential": "passed",
+    "confirmed_behavioral_findings": 2
+  },
+  "unit_tests": {
+    "tests_run": 49,
+    "passed": 48,
+    "failed": 0,
+    "skipped": 1,
+    "skip_reason": "Original-source numerical differential requires explicit --source-root; it passed separately in the 15-case CPU CLI run.",
+    "command": "CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m unittest discover -s tests -v"
+  },
+  "source_provenance": {
+    "status": "passed",
+    "original_source_comparison": true,
+    "core_targets": 30,
+    "local_python_and_adapters": 33,
+    "vendor_python": 329,
+    "vendor_build_inputs": 2382
+  },
+  "findings": [
+    {
+      "id": "LLAVA-SPARSE-STATE",
+      "severity": "medium",
+      "affected_combinations": [
+        "llava_ov/sparsemm"
+      ],
+      "trigger": "Run two prompts of different sequence lengths in one model process, with the default SparseMM ratio budget.",
+      "result": "The second prefill uses head_adaptive_capacity computed from the first prompt length. If the first prompt is shorter, the second is over-compressed relative to configured ratio. No first-prompt blocker is implied.",
+      "origin": {
+        "artifact_pair": "Already present when artifact qwen2_model.py and artifact baseline_utils.py are used together: qwen2 attention calls init_sparsemm without rebuild_cluster, while the common helper only creates a missing cluster.",
+        "opensource_pair": "The opensource LLaVA attention calls init_sparsemm only on prefill; its helper unconditionally creates SparseMM. That pair recomputes prompt-specific capacity each prefill.",
+        "migration_assessment": "The chosen artifact files preserve this artifact interaction. Relative to the old executable opensource LLaVA route, selecting the artifact pair is a migration-composition regression. Per-file AST equality does not establish equivalence to the old executable baseline. SparseMM was not active in the supplied llava_ov_ratio.sh loop; it is an additionally exposed dispatcher branch.",
+        "first_sample_scope": "Not known to prevent the first supported video generation."
+      },
+      "resolution": "unfixed; audited core is preserved",
+      "cpu_reproduction_key": "llava_sparsemm_stale_prompt_budget",
+      "confidence": "reproduced_on_cpu"
+    },
+    {
+      "id": "ASYM-PREFILL-BOUNDARY",
+      "severity": "high",
+      "affected_combinations": [
+        "qwen2_5_vl/asymkv"
+      ],
+      "trigger": "prompt_length = n*ASYMKV_CHUNK_SIZE + 1; e.g. 513 or 1025 for the default chunk size 512.",
+      "result": "range(0,prompt_length-1,chunk_size) omits the final one-token chunk. Final logits are based on a prefix that excludes the last prompt token, and original_seen_tokens is one short. For prompt_length=1 the loop is empty; configured sink/budget constraints may raise before reaching it.",
+      "origin": {
+        "classification": "inherited_selected_implementation",
+        "source": "HybridKV-artifact/hybridkv/asymkv_official/generation.py",
+        "note": "The source explicitly documents the range as matching the released upstream driver. This is not introduced by package/kernel/naming transformations."
+      },
+      "resolution": "unfixed; audited core is preserved",
+      "cpu_reproduction_key": "asymkv_prefill_chunk_boundary_omission",
+      "confidence": "reproduced_on_cpu"
+    },
+    {
+      "id": "HYBRID-TEXT-INPUTIDS-ONLY",
+      "severity": "low",
+      "affected_combinations": [
+        "qwen2_5_vl/hybridkv",
+        "qwen2_5_vl/hybridkv_kvrepack"
+      ],
+      "trigger": "Call the custom text model directly with input_ids, use_cache=True, past_key_values=None and inputs_embeds=None.",
+      "result": "AttributeError: 'NoneType' object has no attribute 'shape' at MAX_LEN = inputs_embeds.shape[1], before the later embedding lookup.",
+      "origin": {
+        "classification": "inherited_selected_implementation",
+        "source": "HybridKV-artifact/hybridkv/modeling_qwen2_5_vl.py",
+        "normal_runner_impact": "The standard outer multimodal model constructs inputs_embeds before invoking the text model, so the supported adapter generate path bypasses this failure."
+      },
+      "resolution": "unfixed; audited core is preserved",
+      "confidence": "reproduced_without_torch_import"
+    },
+    {
+      "id": "MASK-INPUTEMBEDS-ONLY",
+      "severity": "low",
+      "affected_combinations": [
+        "qwen2_5_vl/lookm",
+        "qwen2_5_vl/lookm_kvrepack",
+        "qwen2_5_vl/madakv",
+        "qwen2_5_vl/madakv_kvrepack",
+        "qwen2_5_vl/hybridkv",
+        "qwen2_5_vl/hybridkv_kvrepack",
+        "llava_ov/lookm",
+        "llava_ov/madakv",
+        "llava_ov/hybridkv"
+      ],
+      "trigger": "Invoke a mask-producing outer model forward with only inputs_embeds and input_ids=None.",
+      "result": "The forward signatures accept embeddings, but mask construction dereferences input_ids.device (and token positions), raising AttributeError before the embedding-only path can run.",
+      "origin": {
+        "classification": "inherited_selected_implementation",
+        "normal_runner_impact": "Selected evaluation adapters pass input_ids and visual tensors; this boundary is not a blocker for the intended token-based video generation. The Qwen cross-attention path was reproduced with an isolated real AST; the analogous custom/LLaVA paths were inspected statically."
+      },
+      "resolution": "unfixed; audited core is preserved",
+      "confidence": "reproduced_without_torch_import_for_qwen_cross_attention"
+    }
+  ],
+  "not_verified": [
+    "Full model construction and model generation",
+    "FlashAttention or custom CUDA kernels",
+    "Full-model numerical equivalence",
+    "Dataset metrics",
+    "GPU memory, latency and throughput"
+  ],
+  "evidence_sha256": {
+    "provenance/dispatch_audit.json": "085d55c271dff5abe7f774b6d31b0cf9c11dab4294e1bac57a3e1e4b27aa6b2c",
+    "provenance/call_graph.json": "de7d92ae9d6481bbf7d5235b098825220cc127a330c54bb077dc0d6dfea70f09",
+    "provenance/cpu_compression_audit.json": "da7652af06fe921c6430371043ed82f43cd1456c63e6e50780639265f59bcfae",
+    "provenance/cache_interface_audit.json": "29aecf2fa5325cd07ded968967fd70691084672c51f76805fae3a63d635fc473",
+    "scripts/check_dispatch.py": "02ac72088bfc64c6e16dfe10f24c81f2d76240219962a4d4a1e78ae0eeb9c8b7",
+    "scripts/check_call_graph.py": "b5c481e1c79e67663dd697c44e73f00af67b5da6315bdc83614a7077d64fae0d",
+    "scripts/check_cpu_compression.py": "2d006e5f1a68081e2bd5227196308ab4059dde815e52290c194d7ccc18b5ceb6",
+    "tests/test_dispatch.py": "057f58eea02f250d7ce6afa5be0170b70cdbce57718aeb442d957cec1e0b17d7",
+    "tests/test_call_graph.py": "77341ec9b8b3004d251cad74a0d35e1d219b25ea869b185590f233c2e81c2fff",
+    "tests/test_cpu_compression.py": "3ce4ddb1188c6df4e084db81b42b038459683d84e82b5380e9f022d62efff52b",
+    "docs/CPU_CALL_AUDIT.md": "96dbffba55970cc5925c93ea822102e1ba45a8ac2742b0acb8f96db26c1881ce"
+  }
+}

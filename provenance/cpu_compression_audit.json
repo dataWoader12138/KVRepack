@@ -1,0 +1,676 @@
+{
+  "status": "completed_with_findings",
+  "validation_kind": "real_cpu_small_tensors_with_ast_extracted_original_definitions",
+  "tests_run": 15,
+  "failures": 0,
+  "errors": 0,
+  "skipped": [],
+  "torch_version": "2.6.0+cu124",
+  "cuda_visible_devices_during_checks": "",
+  "tensor_device": "cpu",
+  "torch_threads_during_checks": 1,
+  "cuda_entry_point_attempts": [],
+  "original_source_differential_requested": true,
+  "findings": {
+    "llava_sparsemm_stale_prompt_budget": {
+      "status": "reproduced",
+      "source": "src/kvrepack/baseline_utils.py",
+      "functions": [
+        "init_sparsemm",
+        "SparseMM.update_kv"
+      ],
+      "prompt_lengths": [
+        8,
+        16
+      ],
+      "same_cluster_reused": true,
+      "second_budget_equals_first": true,
+      "second_budget_differs_from_fresh_same_length": true,
+      "layer0_reused_capacity": [
+        1,
+        1,
+        8,
+        0
+      ],
+      "layer0_fresh_capacity": [
+        2,
+        1,
+        16,
+        0
+      ],
+      "boundary": "Real baseline init/update/attention-score/metadata code; tiny CPU tensors and bundled visual-head scores. No full LLaVA model or CUDA kernel."
+    },
+    "asymkv_prefill_chunk_boundary_omission": {
+      "status": "reproduced",
+      "source": "src/kvrepack/asymkv_official/generation.py",
+      "function": "_prefill_like_upstream",
+      "cases": [
+        {
+          "prompt_length": 1,
+          "forwarded_tokens": 0,
+          "missing_positions": [
+            0
+          ],
+          "chunks": [],
+          "probe_calls": 0,
+          "error": "Official AsymKV prefill did not process any prompt chunk"
+        },
+        {
+          "prompt_length": 2,
+          "forwarded_tokens": 2,
+          "missing_positions": [],
+          "chunks": [
+            [
+              0,
+              2
+            ]
+          ],
+          "probe_calls": 0,
+          "error": null
+        },
+        {
+          "prompt_length": 511,
+          "forwarded_tokens": 511,
+          "missing_positions": [],
+          "chunks": [
+            [
+              0,
+              511
+            ]
+          ],
+          "probe_calls": 0,
+          "error": null
+        },
+        {
+          "prompt_length": 512,
+          "forwarded_tokens": 512,
+          "missing_positions": [],
+          "chunks": [
+            [
+              0,
+              512
+            ]
+          ],
+          "probe_calls": 0,
+          "error": null
+        },
+        {
+          "prompt_length": 513,
+          "forwarded_tokens": 512,
+          "missing_positions": [
+            512
+          ],
+          "chunks": [
+            [
+              0,
+              512
+            ]
+          ],
+          "probe_calls": 0,
+          "error": null
+        },
+        {
+          "prompt_length": 1024,
+          "forwarded_tokens": 1024,
+          "missing_positions": [],
+          "chunks": [
+            [
+              0,
+              512
+            ],
+            [
+              512,
+              1024
+            ]
+          ],
+          "probe_calls": 1,
+          "error": null
+        },
+        {
+          "prompt_length": 1025,
+          "forwarded_tokens": 1024,
+          "missing_positions": [
+            1024
+          ],
+          "chunks": [
+            [
+              0,
+              512
+            ],
+            [
+              512,
+              1024
+            ]
+          ],
+          "probe_calls": 1,
+          "error": null
+        }
+      ],
+      "boundary": "Original function/control flow and runtime budget resolver on real CPU input tensors. Cache, model forwarding and gradient/compression probe are recording fixtures; no gradient/compression correctness claim."
+    }
+  },
+  "boundaries": [
+    "Complete GPU-dependent core modules and full model attention forwards were not imported/executed.",
+    "No replacement compression formula: unchanged source definition ASTs and their local dependencies execute on torch CPU.",
+    "Selected class shells omit unrelated constructors/bases; explicit tiny fixture state is recorded in the checks.",
+    "SnapKV prefill uses a key/value-list cache fixture; LookM decode checks the original group-metadata helper, not FlashAttention decode.",
+    "AsymKV boundary reproduction replaces model forward/cache/probe operations with recorders and validates only real prefill control flow.",
+    "Original artifact comparison, when requested, applies only the recorded naming transformation and verifies original source SHA-256.",
+    "No GPU kernels, numerical full-model equivalence, memory/latency, datasets or scores are validated."
+  ],
+  "source_files": {
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py": {
+      "sha256": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+      "branding_normalized": false
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py": {
+      "sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+      "branding_normalized": false
+    },
+    "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py": {
+      "sha256": "820feb130918d50c9cfad2a3853dc0cffa760da698be7416603ecd242f648ba6",
+      "branding_normalized": false
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py": {
+      "sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+      "branding_normalized": false
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py": {
+      "sha256": "59ddc9cd387293e0bba05ad7cbd20bb921ff9119121369f1ae27a7d99540ed4b",
+      "branding_normalized": false
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py": {
+      "sha256": "7a2ce16742e3d7f959417d0281c3e58faa1ec9426cba0c66ab14aa9007f92a1b",
+      "branding_normalized": false
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py": {
+      "sha256": "df69b680c900316145bb5b7ceb1191384f1fe3a64338bd1201d50b3094fbca2f",
+      "branding_normalized": false
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py": {
+      "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+      "branding_normalized": false
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/merge_score.py": {
+      "sha256": "c7b51e8c2632324452cc10c2ad7344599d6b24eabf3d44bbe2476691ef7c713e",
+      "branding_normalized": true
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py": {
+      "sha256": "a995a055acd0dd73de8e183ff11ac270d250d0194fcb06f3028f4c10b48ad275",
+      "branding_normalized": true
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_lookm_decouplekv.py": {
+      "sha256": "c97e8b0ad9f49f07ba6cb3f8b5c6eb0a7e59660fbf9839e7f3c560f36fdd90a1",
+      "branding_normalized": true
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py": {
+      "sha256": "1c49a11eb3823c78ce3efd2046aff466a0f50447c83afbd9b89ce0bb2ea9dc87",
+      "branding_normalized": true
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/hybridkv_utils.py": {
+      "sha256": "8561262f87e1373c47a66b1dbc90020da80f47d02ae82be7cba1355c74b9c100",
+      "branding_normalized": true
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/asymkv_official/generation.py": {
+      "sha256": "f68dbd411938f9fef3fac74a57a9057e026ce1583667a5f23bdaef379d720508",
+      "branding_normalized": false
+    }
+  },
+  "extracted_definitions": {
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py:merge_score_from_importance": {
+      "source_start_line": 19,
+      "source_end_line": 38,
+      "executed_definition_ast_sha256": "311b8236e90ad6a6fcd605488f5130c551713d4363317d796d5446979f6521c4"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py:normalize_merge_score_mode": {
+      "source_start_line": 11,
+      "source_end_line": 16,
+      "executed_definition_ast_sha256": "ff102d0f16e34f3fdfaa30b164531bff08da452c32d17f5747f73fb3b2bdb2f3"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py:load_head_score": {
+      "source_start_line": 18,
+      "source_end_line": 38,
+      "executed_definition_ast_sha256": "da3beaa8c302ed3c28f3629b5adacf4f9aeec4d75396fcc6e8920c4f4a4c5f7f"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py:repeat_kv": {
+      "source_start_line": 40,
+      "source_end_line": 49,
+      "executed_definition_ast_sha256": "d769c2d7ee1ceb6ee2618390972632664499dc562b65a9271d3f0f60db3982b5"
+    },
+    "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py:repeat_kv": {
+      "source_start_line": 672,
+      "source_end_line": 681,
+      "executed_definition_ast_sha256": "d769c2d7ee1ceb6ee2618390972632664499dc562b65a9271d3f0f60db3982b5"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_history_budget": {
+      "source_start_line": 176,
+      "source_end_line": 186,
+      "executed_definition_ast_sha256": "b99694ef3a6566a545d0ff16f23619d3c63d83f8f4b7a45e70f1897bf274f8da"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_candidate_len": {
+      "source_start_line": 189,
+      "source_end_line": 194,
+      "executed_definition_ast_sha256": "7408159ac238d4dd6b57bb378260657d6109654e74c2ab0c3beed64a912b04ef"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_topk_sorted": {
+      "source_start_line": 197,
+      "source_end_line": 205,
+      "executed_definition_ast_sha256": "7650bc1f203cf228e5ab7235c4dc2f0aec4930a67fd7a1ad9ee6d1fbe560c984"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_topk_from_candidates_sorted": {
+      "source_start_line": 208,
+      "source_end_line": 216,
+      "executed_definition_ast_sha256": "98864981013d53ae18843ed141b14925b807e771947ba4c4bed7edb2e1cc8d2d"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_adjacent_similarity": {
+      "source_start_line": 219,
+      "source_end_line": 224,
+      "executed_definition_ast_sha256": "177166055425bfe102018cada9ea7dfedd8c3560fb34a0229e086a5efb2f12f1"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_paired_merge_one_sequence": {
+      "source_start_line": 292,
+      "source_end_line": 351,
+      "executed_definition_ast_sha256": "91d73619474202b14dcebfe49f48781e642bdb7260b9e3c537a0b94c1e90be9a"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_select_mrope_batch": {
+      "source_start_line": 21,
+      "source_end_line": 30,
+      "executed_definition_ast_sha256": "4154bd0436bcce5d27373b2f1001bde02c7927a155eef3066fa75a2d53511c0c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_apply_mrope_to_merged_keys": {
+      "source_start_line": 39,
+      "source_end_line": 48,
+      "executed_definition_ast_sha256": "6f6b14b9d2f73ab0af3361a7d225eaf37aa319fe23151fbd435d03b4840b3361"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_rotate_half": {
+      "source_start_line": 33,
+      "source_end_line": 36,
+      "executed_definition_ast_sha256": "58ff5ecaa96b3b17160e4a93cb3ecae36a67b1d7819219e75b9b6bc032fbd156"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_build_prompt_record": {
+      "source_start_line": 355,
+      "source_end_line": 437,
+      "executed_definition_ast_sha256": "b4b93a2a3026a7054a522dc50969da6117eb51e3c28eee3533a1c15c359d3970"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_global_merge_masks": {
+      "source_start_line": 440,
+      "source_end_line": 458,
+      "executed_definition_ast_sha256": "9fcd06902d1a47cf4e0455173f1b07e7629edeed3bc6848ec0f5a4b6b12b206f"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_finalize_prompt_cache": {
+      "source_start_line": 462,
+      "source_end_line": 565,
+      "executed_definition_ast_sha256": "4b763a1db05d90f5a8cff6ce20926ed124b21421378a825a725adf57fca34493"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:_set_layer_cache": {
+      "source_start_line": 84,
+      "source_end_line": 98,
+      "executed_definition_ast_sha256": "ed75981b343ae926c147b84b1ec1c10870517787984a2e77c8ec911a02ed96b0"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py:compute_snapkv_importance_observation": {
+      "source_start_line": 228,
+      "source_end_line": 289,
+      "executed_definition_ast_sha256": "d972125883b615fde15f918de5d98efde7ca9e796003e2693241d1ed74146ab7"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_merge_adjacent_raw_reapply": {
+      "source_start_line": 167,
+      "source_end_line": 222,
+      "executed_definition_ast_sha256": "d637fbadae785e41f427e575eb9f39f915a3583ccbdef4cb46b8eb7daebb74e8"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_select_mrope_batch": {
+      "source_start_line": 63,
+      "source_end_line": 72,
+      "executed_definition_ast_sha256": "4154bd0436bcce5d27373b2f1001bde02c7927a155eef3066fa75a2d53511c0c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_apply_mrope_to_merged_keys": {
+      "source_start_line": 75,
+      "source_end_line": 84,
+      "executed_definition_ast_sha256": "6f6b14b9d2f73ab0af3361a7d225eaf37aa319fe23151fbd435d03b4840b3361"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_rotate_half": {
+      "source_start_line": 57,
+      "source_end_line": 60,
+      "executed_definition_ast_sha256": "58ff5ecaa96b3b17160e4a93cb3ecae36a67b1d7819219e75b9b6bc032fbd156"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_history_budget": {
+      "source_start_line": 122,
+      "source_end_line": 126,
+      "executed_definition_ast_sha256": "ff7dd3bc4f6303123ab31778c87ad126820a3f85d1df80b5269e535ba78a63ff"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_candidate_len": {
+      "source_start_line": 129,
+      "source_end_line": 134,
+      "executed_definition_ast_sha256": "7408159ac238d4dd6b57bb378260657d6109654e74c2ab0c3beed64a912b04ef"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_global_merge_masks": {
+      "source_start_line": 305,
+      "source_end_line": 325,
+      "executed_definition_ast_sha256": "9b69bf6c21c2839fa2bb583720b090f75c969e66c73ab8d43137b6e834ae73e6"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_build_layer_record": {
+      "source_start_line": 226,
+      "source_end_line": 302,
+      "executed_definition_ast_sha256": "0ab5d71ecf1a66cf0c67f212859749bf797902e01eeabbb920eff7bc414d27d7"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_topk_sorted": {
+      "source_start_line": 137,
+      "source_end_line": 145,
+      "executed_definition_ast_sha256": "7650bc1f203cf228e5ab7235c4dc2f0aec4930a67fd7a1ad9ee6d1fbe560c984"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_adjacent_similarity": {
+      "source_start_line": 159,
+      "source_end_line": 164,
+      "executed_definition_ast_sha256": "177166055425bfe102018cada9ea7dfedd8c3560fb34a0229e086a5efb2f12f1"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_update_decode_group_size": {
+      "source_start_line": 439,
+      "source_end_line": 448,
+      "executed_definition_ast_sha256": "7e420dcd041424e02f66afd4248aaa5a980edf7fd3d4254d47536d548207592d"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py:_apply_decode_score_correction": {
+      "source_start_line": 430,
+      "source_end_line": 436,
+      "executed_definition_ast_sha256": "1b307d86f027fd70604093944d9c68abe1829a88b5443e9884ec043131a4b262"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_merge_adjacent_raw_reapply": {
+      "source_start_line": 225,
+      "source_end_line": 314,
+      "executed_definition_ast_sha256": "5cfad76532cd2c8e0f3d4a9670be0a4a48f5d1b14f87950103f1b3e39cb6d4e1"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_select_mrope_batch": {
+      "source_start_line": 62,
+      "source_end_line": 71,
+      "executed_definition_ast_sha256": "4154bd0436bcce5d27373b2f1001bde02c7927a155eef3066fa75a2d53511c0c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_apply_mrope_to_merged_keys": {
+      "source_start_line": 74,
+      "source_end_line": 83,
+      "executed_definition_ast_sha256": "6f6b14b9d2f73ab0af3361a7d225eaf37aa319fe23151fbd435d03b4840b3361"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_rotate_half": {
+      "source_start_line": 56,
+      "source_end_line": 59,
+      "executed_definition_ast_sha256": "58ff5ecaa96b3b17160e4a93cb3ecae36a67b1d7819219e75b9b6bc032fbd156"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_current_budget_tensor": {
+      "source_start_line": 128,
+      "source_end_line": 141,
+      "executed_definition_ast_sha256": "0b57628fc0588863f2d8552b7f2fa21f96ed28802510bb769cd48ec107aab62d"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_candidate_len": {
+      "source_start_line": 144,
+      "source_end_line": 149,
+      "executed_definition_ast_sha256": "7408159ac238d4dd6b57bb378260657d6109654e74c2ab0c3beed64a912b04ef"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_global_merge_masks": {
+      "source_start_line": 601,
+      "source_end_line": 621,
+      "executed_definition_ast_sha256": "9b69bf6c21c2839fa2bb583720b090f75c969e66c73ab8d43137b6e834ae73e6"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_env_float": {
+      "source_start_line": 39,
+      "source_end_line": 41,
+      "executed_definition_ast_sha256": "38f9559c978d11c168ccfd72dfb1e2d9368c61dabdac582503463d13001a5ea7"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_safe_get_env_float": {
+      "source_start_line": 19,
+      "source_end_line": 26,
+      "executed_definition_ast_sha256": "0ed922b429323cdd5b7448080c8750343e3bcb77c8dec21950c852c862ff7fea"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_env_int": {
+      "source_start_line": 44,
+      "source_end_line": 46,
+      "executed_definition_ast_sha256": "245724747d555abd5ee41face8c3040aa327fce1c79c1a5fcf4d4575e50c9079"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py:_safe_get_env_int": {
+      "source_start_line": 29,
+      "source_end_line": 36,
+      "executed_definition_ast_sha256": "cfb3bef6ba802f4028a206961c3435b4c9d4749c4cbe4191c3d267630b786ff6"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py:init_sparsemm_kvrepack": {
+      "source_start_line": 229,
+      "source_end_line": 291,
+      "executed_definition_ast_sha256": "466b091c717eaae3a3cf092bfbbc3c52b7230c5e5335448962461f90c212f690"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py:SparseMMKVRepackCluster.__init__": {
+      "source_start_line": 61,
+      "source_end_line": 104,
+      "executed_definition_ast_sha256": "75a0821a4442f57aa497f6e564644a6fd75ceb0587863122b77e0c02f325b9b1"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py:SparseMMKVRepackCluster.ensure_head_capacity": {
+      "source_start_line": 161,
+      "source_end_line": 201,
+      "executed_definition_ast_sha256": "6bafc678d7a97f9dcc76654d67c26220a701e751b9b3898f90ce7031addbb53e"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py:SparseMMKVRepackCluster.init_metadata": {
+      "source_start_line": 203,
+      "source_end_line": 226,
+      "executed_definition_ast_sha256": "d90d630cb19e9ad84e5739c6fc3124c689ac60ecc4554a1aad6c902ba73fc39a"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py:_sparsemm_head_score": {
+      "source_start_line": 39,
+      "source_end_line": 57,
+      "executed_definition_ast_sha256": "ac9fd9038ce9917ff417d23242f9695aef225b280b24743dd8cddfdca7f32727"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py:_topk_sparsemm_order": {
+      "source_start_line": 30,
+      "source_end_line": 36,
+      "executed_definition_ast_sha256": "77d39675f8ab9e22c8b57ff5102b36c48ff7149a8f4520801285885ccba68adc"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_target_history_len": {
+      "source_start_line": 783,
+      "source_end_line": 792,
+      "executed_definition_ast_sha256": "0b6b7cecdd6a450de413b1050444fff73d065acc25b4b481c2f14a833765416d"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_effective_target_len": {
+      "source_start_line": 794,
+      "source_end_line": 799,
+      "executed_definition_ast_sha256": "cb907844702ebd8420315221af106845d8cb6beb34a33b272acb397368e33eef"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_select_merge_indices": {
+      "source_start_line": 801,
+      "source_end_line": 839,
+      "executed_definition_ast_sha256": "4ff70cb9430ccd6e653add8dd602b365add83ea654c867df54c16c711ca77d23"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_candidate_len": {
+      "source_start_line": 856,
+      "source_end_line": 863,
+      "executed_definition_ast_sha256": "f5c6732775d36e8bf25ffb164f2953000e3adc45787a2ed500e971b5a53e38db"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_dump_merge_info": {
+      "source_start_line": 980,
+      "source_end_line": 1071,
+      "executed_definition_ast_sha256": "3011d971a6d4ff0725393f6a3ec4a139c6b5be57d678ddf609e61182446ce8ce"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_build_simhead_mask": {
+      "source_start_line": 1073,
+      "source_end_line": 1120,
+      "executed_definition_ast_sha256": "18366ec70e63ad852fb92eee524cfc7b54d4e7a71b65beffcf2d18c5238dfec2"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_history_importance": {
+      "source_start_line": 1132,
+      "source_end_line": 1167,
+      "executed_definition_ast_sha256": "f2161aa80ff95b2ea67e15b0597ff1da7551bb268e23e7be5c4850b7cd73aa53"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_merge_one_sequence": {
+      "source_start_line": 1169,
+      "source_end_line": 1300,
+      "executed_definition_ast_sha256": "020a0cd93509898f008e437ae2f77647b38f3da706d6d5d6e201a842329a4bb8"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_compress_history": {
+      "source_start_line": 1302,
+      "source_end_line": 1425,
+      "executed_definition_ast_sha256": "3f11d2484f6eebb42d90d3345b0ac6a4111a359d8f906d6828a01377f717a7ed"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:_select_mrope_batch": {
+      "source_start_line": 87,
+      "source_end_line": 96,
+      "executed_definition_ast_sha256": "4154bd0436bcce5d27373b2f1001bde02c7927a155eef3066fa75a2d53511c0c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:_apply_mrope_to_merged_keys": {
+      "source_start_line": 99,
+      "source_end_line": 108,
+      "executed_definition_ast_sha256": "982900a4ce79007b46255c2ff22218aa87f7dd07ac9beedc87e14a8d2d7989aa"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py:_rotate_half": {
+      "source_start_line": 81,
+      "source_end_line": 84,
+      "executed_definition_ast_sha256": "58ff5ecaa96b3b17160e4a93cb3ecae36a67b1d7819219e75b9b6bc032fbd156"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py:init_sparsemm": {
+      "source_start_line": 761,
+      "source_end_line": 803,
+      "executed_definition_ast_sha256": "3ef0499422bd860eb40a751c45adbd15584769078829eb906e4ba562477e378c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py:SparseMM.__init__": {
+      "source_start_line": 286,
+      "source_end_line": 324,
+      "executed_definition_ast_sha256": "4a9ad21a46455ce0ef603cda02af7ab3aa67d300add9a1fcb389d7833e86385c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py:SparseMM.calcul_attn_sore": {
+      "source_start_line": 327,
+      "source_end_line": 362,
+      "executed_definition_ast_sha256": "b641ba6183abf058ed28034344a2805df7398aa3c883142adaa5fde14309f9aa"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py:SparseMM.update_kv": {
+      "source_start_line": 365,
+      "source_end_line": 478,
+      "executed_definition_ast_sha256": "047eb56288032b3aac35328922715475413f840dbff83d804f0df021c8e072d9"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/merge_score.py:merge_score_from_importance": {
+      "source_start_line": 19,
+      "source_end_line": 38,
+      "executed_definition_ast_sha256": "311b8236e90ad6a6fcd605488f5130c551713d4363317d796d5446979f6521c4"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py:_paired_merge_one_sequence": {
+      "source_start_line": 292,
+      "source_end_line": 351,
+      "executed_definition_ast_sha256": "91d73619474202b14dcebfe49f48781e642bdb7260b9e3c537a0b94c1e90be9a"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py:_select_mrope_batch": {
+      "source_start_line": 21,
+      "source_end_line": 30,
+      "executed_definition_ast_sha256": "4154bd0436bcce5d27373b2f1001bde02c7927a155eef3066fa75a2d53511c0c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py:_apply_mrope_to_merged_keys": {
+      "source_start_line": 39,
+      "source_end_line": 48,
+      "executed_definition_ast_sha256": "6f6b14b9d2f73ab0af3361a7d225eaf37aa319fe23151fbd435d03b4840b3361"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py:_rotate_half": {
+      "source_start_line": 33,
+      "source_end_line": 36,
+      "executed_definition_ast_sha256": "58ff5ecaa96b3b17160e4a93cb3ecae36a67b1d7819219e75b9b6bc032fbd156"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py:_candidate_len": {
+      "source_start_line": 189,
+      "source_end_line": 194,
+      "executed_definition_ast_sha256": "7408159ac238d4dd6b57bb378260657d6109654e74c2ab0c3beed64a912b04ef"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py:_global_merge_masks": {
+      "source_start_line": 440,
+      "source_end_line": 458,
+      "executed_definition_ast_sha256": "9fcd06902d1a47cf4e0455173f1b07e7629edeed3bc6848ec0f5a4b6b12b206f"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_lookm_decouplekv.py:_merge_adjacent_raw_reapply": {
+      "source_start_line": 167,
+      "source_end_line": 222,
+      "executed_definition_ast_sha256": "d637fbadae785e41f427e575eb9f39f915a3583ccbdef4cb46b8eb7daebb74e8"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_lookm_decouplekv.py:_select_mrope_batch": {
+      "source_start_line": 63,
+      "source_end_line": 72,
+      "executed_definition_ast_sha256": "4154bd0436bcce5d27373b2f1001bde02c7927a155eef3066fa75a2d53511c0c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_lookm_decouplekv.py:_apply_mrope_to_merged_keys": {
+      "source_start_line": 75,
+      "source_end_line": 84,
+      "executed_definition_ast_sha256": "6f6b14b9d2f73ab0af3361a7d225eaf37aa319fe23151fbd435d03b4840b3361"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_lookm_decouplekv.py:_rotate_half": {
+      "source_start_line": 57,
+      "source_end_line": 60,
+      "executed_definition_ast_sha256": "58ff5ecaa96b3b17160e4a93cb3ecae36a67b1d7819219e75b9b6bc032fbd156"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_lookm_decouplekv.py:_candidate_len": {
+      "source_start_line": 129,
+      "source_end_line": 134,
+      "executed_definition_ast_sha256": "7408159ac238d4dd6b57bb378260657d6109654e74c2ab0c3beed64a912b04ef"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_lookm_decouplekv.py:_global_merge_masks": {
+      "source_start_line": 305,
+      "source_end_line": 325,
+      "executed_definition_ast_sha256": "9b69bf6c21c2839fa2bb583720b090f75c969e66c73ab8d43137b6e834ae73e6"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py:_merge_adjacent_raw_reapply": {
+      "source_start_line": 225,
+      "source_end_line": 314,
+      "executed_definition_ast_sha256": "5cfad76532cd2c8e0f3d4a9670be0a4a48f5d1b14f87950103f1b3e39cb6d4e1"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py:_select_mrope_batch": {
+      "source_start_line": 62,
+      "source_end_line": 71,
+      "executed_definition_ast_sha256": "4154bd0436bcce5d27373b2f1001bde02c7927a155eef3066fa75a2d53511c0c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py:_apply_mrope_to_merged_keys": {
+      "source_start_line": 74,
+      "source_end_line": 83,
+      "executed_definition_ast_sha256": "6f6b14b9d2f73ab0af3361a7d225eaf37aa319fe23151fbd435d03b4840b3361"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py:_rotate_half": {
+      "source_start_line": 56,
+      "source_end_line": 59,
+      "executed_definition_ast_sha256": "58ff5ecaa96b3b17160e4a93cb3ecae36a67b1d7819219e75b9b6bc032fbd156"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py:_candidate_len": {
+      "source_start_line": 144,
+      "source_end_line": 149,
+      "executed_definition_ast_sha256": "7408159ac238d4dd6b57bb378260657d6109654e74c2ab0c3beed64a912b04ef"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py:_global_merge_masks": {
+      "source_start_line": 601,
+      "source_end_line": 621,
+      "executed_definition_ast_sha256": "9b69bf6c21c2839fa2bb583720b090f75c969e66c73ab8d43137b6e834ae73e6"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_effective_target_len": {
+      "source_start_line": 794,
+      "source_end_line": 799,
+      "executed_definition_ast_sha256": "cb907844702ebd8420315221af106845d8cb6beb34a33b272acb397368e33eef"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_select_merge_indices": {
+      "source_start_line": 801,
+      "source_end_line": 839,
+      "executed_definition_ast_sha256": "4ff70cb9430ccd6e653add8dd602b365add83ea654c867df54c16c711ca77d23"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/hybridkv_utils.py:HybridKVCache._hybrid_kvrepack_merge_one_sequence": {
+      "source_start_line": 1169,
+      "source_end_line": 1300,
+      "executed_definition_ast_sha256": "020a0cd93509898f008e437ae2f77647b38f3da706d6d5d6e201a842329a4bb8"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/hybridkv_utils.py:_select_mrope_batch": {
+      "source_start_line": 87,
+      "source_end_line": 96,
+      "executed_definition_ast_sha256": "4154bd0436bcce5d27373b2f1001bde02c7927a155eef3066fa75a2d53511c0c"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/hybridkv_utils.py:_apply_mrope_to_merged_keys": {
+      "source_start_line": 99,
+      "source_end_line": 108,
+      "executed_definition_ast_sha256": "982900a4ce79007b46255c2ff22218aa87f7dd07ac9beedc87e14a8d2d7989aa"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/hybridkv_utils.py:_rotate_half": {
+      "source_start_line": 81,
+      "source_end_line": 84,
+      "executed_definition_ast_sha256": "58ff5ecaa96b3b17160e4a93cb3ecae36a67b1d7819219e75b9b6bc032fbd156"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/asymkv_official/generation.py:_prefill_like_upstream": {
+      "source_start_line": 208,
+      "source_end_line": 277,
+      "executed_definition_ast_sha256": "4069e6d365674af8f631f36b36ca090f587c2af79a7f1bc9ce447b52d607b1cf"
+    },
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/asymkv_official/generation.py:AsymKVOfficialRuntimeConfig.resolve_cache_size": {
+      "source_start_line": 47,
+      "source_end_line": 59,
+      "executed_definition_ast_sha256": "bbc085bfd6260470b726f39374dd55b97b6fe0fd04edb523e07b1074a48ec6f0"
+    }
+  }
+}

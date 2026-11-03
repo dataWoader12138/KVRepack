@@ -1,0 +1,18 @@
+name: CPU source and configuration checks
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/check_sources.py
+      - run: python scripts/check_call_graph.py --output /tmp/kvrepack-call-graph.json
+      - run: python -m unittest discover -s tests -v
+        env:
+          PYTHONPATH: src
+          PYTHONDONTWRITEBYTECODE: '1'

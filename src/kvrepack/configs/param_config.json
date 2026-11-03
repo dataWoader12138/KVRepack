@@ -1,0 +1,10 @@
+{
+    "llava_ov": {
+        "score_threshold": 0.9,
+        "budget_fixed_ratio": 0.1
+    },
+    "qwen2.5_vl": {
+        "score_threshold": 0.9,
+        "budget_fixed_ratio": 0.1
+    }
+}

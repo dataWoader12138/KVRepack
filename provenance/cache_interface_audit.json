@@ -1,0 +1,1157 @@
+{
+  "schema_version": 1,
+  "audit_kind": "read_only_cache_and_interface_review",
+  "created_utc": "2026-11-03T04:03:09.914756+00:00",
+  "project": "KVRepack",
+  "scope": {
+    "supported_combinations": 19,
+    "qwen2_5_vl_methods": 13,
+    "llava_ov_methods": 6,
+    "transformers_source_root": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers",
+    "transformers_version": "4.52.3",
+    "source_files_modified": false,
+    "gpu_used": false,
+    "torch_imported": false,
+    "output_file": "provenance/cache_interface_audit.json"
+  },
+  "summary": {
+    "normal_first_video_generate_hard_call_blocker": "No deterministic missing-method, missing-attribute, explicit-argument or return-arity blocker was established for the intended use_cache=True, batch_size=1, multi-token video path. This is a static/interface statement, not a successful model execution.",
+    "findings_count": 4,
+    "migration_composition_finding": "LLAVA-SPARSE-STATE",
+    "inherited_generation_correctness_finding": "ASYM-PREFILL-BOUNDARY",
+    "inherited_direct_api_boundaries": [
+      "HYBRID-TEXT-INPUTIDS-ONLY",
+      "MASK-INPUTEMBEDS-ONLY"
+    ]
+  },
+  "actual_checks": [
+    {
+      "name": "installed_version_read_from_source",
+      "result": "4.52.3",
+      "evidence": {
+        "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/__init__.py",
+        "lines": [
+          21
+        ]
+      }
+    },
+    {
+      "name": "decoder_attention_explicit_signature_binding",
+      "checked_edges": 16,
+      "compatible_edges": 16,
+      "imports_torch": false
+    },
+    {
+      "name": "isolated_real_AST_custom_Qwen_text_input_ids_only",
+      "result": "AttributeError: 'NoneType' object has no attribute 'shape'",
+      "imports_torch": false
+    },
+    {
+      "name": "isolated_real_AST_Qwen_cross_attention_inputs_embeds_only",
+      "result": "AttributeError: 'NoneType' object has no attribute 'device'",
+      "imports_torch": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "LLAVA-SPARSE-STATE",
+      "severity": "medium",
+      "kind": "cross_prompt_budget_regression",
+      "confidence": "source_proven",
+      "affected_combinations": [
+        "llava_ov/sparsemm"
+      ],
+      "trigger": "Run two prompts of different sequence lengths in one model process, with the default SparseMM ratio budget.",
+      "result": "The second prefill uses head_adaptive_capacity computed from the first prompt length. If the first prompt is shorter, the second is over-compressed relative to configured ratio. No first-prompt blocker is implied.",
+      "origin": {
+        "artifact_pair": "Already present when artifact qwen2_model.py and artifact baseline_utils.py are used together: qwen2 attention calls init_sparsemm without rebuild_cluster, while the common helper only creates a missing cluster.",
+        "opensource_pair": "The opensource LLaVA attention calls init_sparsemm only on prefill; its helper unconditionally creates SparseMM. That pair recomputes prompt-specific capacity each prefill.",
+        "migration_assessment": "The chosen artifact files preserve this artifact interaction. Relative to the old executable opensource LLaVA route, selecting the artifact pair is a migration-composition regression. Per-file AST equality does not establish equivalence to the old executable baseline. SparseMM was not active in the supplied llava_ov_ratio.sh loop; it is an additionally exposed dispatcher branch.",
+        "first_sample_scope": "Not known to prevent the first supported video generation."
+      },
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "qwen2_flash_attn2_forward_SparseMM",
+          "line": 107,
+          "end_line": 233,
+          "lines": [
+            119
+          ]
+        },
+        {
+          "path": "KVRepack/src/kvrepack/baseline_utils.py",
+          "symbol": "init_sparsemm",
+          "line": 761,
+          "end_line": 803,
+          "lines": [
+            789
+          ]
+        },
+        {
+          "path": "KVRepack/src/kvrepack/baseline_utils.py",
+          "symbol": "SparseMM.update_kv",
+          "line": 365,
+          "end_line": 478,
+          "lines": [
+            371,
+            373,
+            376
+          ]
+        },
+        {
+          "path": "HybridKV-opensource/hybridkv/qwen2_model.py",
+          "symbol": "qwen2_flash_attn2_forward_SparseMM",
+          "line": 107,
+          "end_line": 233,
+          "lines": [
+            119,
+            120,
+            121
+          ]
+        },
+        {
+          "path": "HybridKV-opensource/hybridkv/baseline_utils.py",
+          "symbol": "init_sparsemm",
+          "line": 764,
+          "end_line": 806,
+          "lines": [
+            792
+          ]
+        }
+      ],
+      "cpu_validation_suggestion": "Execute actual SparseMM initialization/capacity code on CPU for two prompt lengths (e.g. 128 and 512) in one attention object, compare head capacities with a freshly constructed second object; separately compare the opensource pair. No FlashAttention invocation is required."
+    },
+    {
+      "id": "ASYM-PREFILL-BOUNDARY",
+      "severity": "high",
+      "kind": "prompt_token_omission",
+      "confidence": "source_proven",
+      "affected_combinations": [
+        "qwen2_5_vl/asymkv"
+      ],
+      "trigger": "prompt_length = n*ASYMKV_CHUNK_SIZE + 1; e.g. 513 or 1025 for the default chunk size 512.",
+      "result": "range(0,prompt_length-1,chunk_size) omits the final one-token chunk. Final logits are based on a prefix that excludes the last prompt token, and original_seen_tokens is one short. For prompt_length=1 the loop is empty; configured sink/budget constraints may raise before reaching it.",
+      "origin": {
+        "classification": "inherited_selected_implementation",
+        "source": "HybridKV-artifact/hybridkv/asymkv_official/generation.py",
+        "note": "The source explicitly documents the range as matching the released upstream driver. This is not introduced by package/kernel/naming transformations."
+      },
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/asymkv_official/generation.py",
+          "symbol": "_prefill_like_upstream",
+          "line": 208,
+          "end_line": 277,
+          "lines": [
+            231,
+            232,
+            233,
+            266,
+            275
+          ]
+        },
+        {
+          "path": "KVRepack/src/kvrepack/asymkv_official/generation.py",
+          "symbol": "_decode_one_token",
+          "line": 281,
+          "end_line": 315,
+          "lines": [
+            288
+          ]
+        },
+        {
+          "path": "HybridKV-artifact/hybridkv/asymkv_official/generation.py",
+          "symbol": "_prefill_like_upstream",
+          "line": 208,
+          "end_line": 277
+        }
+      ],
+      "cpu_validation_suggestion": "AST-isolate _prefill_like_upstream with shape-only fake tensors/model/cache; record visited intervals at lengths 512,513,514,1025. Assert whether covered token count equals prompt_length and logical cache count. A separate test with start_size=0/budget large enough is needed to reach the length-1 empty-loop path."
+    },
+    {
+      "id": "HYBRID-TEXT-INPUTIDS-ONLY",
+      "severity": "low",
+      "kind": "direct_api_input_failure",
+      "confidence": "reproduced_without_torch_import",
+      "affected_combinations": [
+        "qwen2_5_vl/hybridkv",
+        "qwen2_5_vl/hybridkv_kvrepack"
+      ],
+      "trigger": "Call the custom text model directly with input_ids, use_cache=True, past_key_values=None and inputs_embeds=None.",
+      "result": "AttributeError: 'NoneType' object has no attribute 'shape' at MAX_LEN = inputs_embeds.shape[1], before the later embedding lookup.",
+      "origin": {
+        "classification": "inherited_selected_implementation",
+        "source": "HybridKV-artifact/hybridkv/modeling_qwen2_5_vl.py",
+        "normal_runner_impact": "The standard outer multimodal model constructs inputs_embeds before invoking the text model, so the supported adapter generate path bypasses this failure."
+      },
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLTextModel.forward",
+          "line": 1255,
+          "end_line": 1401,
+          "lines": [
+            1292,
+            1318,
+            1319
+          ]
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLModel.forward",
+          "line": 1794,
+          "end_line": 1938,
+          "lines": [
+            1920
+          ]
+        },
+        {
+          "path": "HybridKV-artifact/hybridkv/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLTextModel.forward",
+          "line": 1255,
+          "end_line": 1401
+        }
+      ],
+      "cpu_validation_suggestion": "Extract the original function AST, remove decorators, postpone annotations, and pass a SimpleNamespace self plus shape-only input IDs. The failure occurs before tensor computation; reproduced during this audit."
+    },
+    {
+      "id": "MASK-INPUTEMBEDS-ONLY",
+      "severity": "low",
+      "kind": "direct_api_input_failure",
+      "confidence": "reproduced_without_torch_import_for_qwen_cross_attention",
+      "affected_combinations": [
+        "qwen2_5_vl/lookm",
+        "qwen2_5_vl/lookm_kvrepack",
+        "qwen2_5_vl/madakv",
+        "qwen2_5_vl/madakv_kvrepack",
+        "qwen2_5_vl/hybridkv",
+        "qwen2_5_vl/hybridkv_kvrepack",
+        "llava_ov/lookm",
+        "llava_ov/madakv",
+        "llava_ov/hybridkv"
+      ],
+      "trigger": "Invoke a mask-producing outer model forward with only inputs_embeds and input_ids=None.",
+      "result": "The forward signatures accept embeddings, but mask construction dereferences input_ids.device (and token positions), raising AttributeError before the embedding-only path can run.",
+      "origin": {
+        "classification": "inherited_selected_implementation",
+        "normal_runner_impact": "Selected evaluation adapters pass input_ids and visual tensors; this boundary is not a blocker for the intended token-based video generation. The Qwen cross-attention path was reproduced with an isolated real AST; the analogous custom/LLaVA paths were inspected statically."
+      },
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_croatt.py",
+          "symbol": "qwen_vl_forward_cross_attn",
+          "line": 27,
+          "end_line": 184,
+          "lines": [
+            67,
+            68
+          ]
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLModel.forward",
+          "line": 1794,
+          "end_line": 1938
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_llava_onevision.py",
+          "symbol": "LlavaOnevisionModel.forward",
+          "line": 492,
+          "end_line": 648,
+          "lines": [
+            544,
+            552,
+            553
+          ]
+        },
+        {
+          "path": "HybridKV-artifact/hybridkv/qwen_model_croatt.py",
+          "symbol": "qwen_vl_forward_cross_attn",
+          "line": 27,
+          "end_line": 184
+        }
+      ],
+      "cpu_validation_suggestion": "Use AST-isolated real forwards with inputs_embeds as a shape-only object and input_ids=None; assert the early device dereference without importing torch."
+    }
+  ],
+  "reviewed_contracts": [
+    {
+      "subject": "attention_call_signatures",
+      "result": "16 actual decoder-to-attention edges bound successfully using signatures extracted from current project functions and the installed Transformers 4.52.3 AST. No misspelled/missing explicit keyword was found. **kwargs expansion contents are not proven by binding.",
+      "evidence": [
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLDecoderLayer.forward",
+          "line": 1014,
+          "end_line": 1079
+        },
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py",
+          "symbol": "Qwen2DecoderLayer.forward",
+          "line": 241,
+          "end_line": 280
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_croatt.py",
+          "symbol": "cross_attn_qwen_decoder_forward_MadaKV",
+          "line": 642,
+          "end_line": 714
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "decoder_qwen2_forward_madakv",
+          "line": 835,
+          "end_line": 879
+        }
+      ]
+    },
+    {
+      "subject": "return_tuple_contracts",
+      "result": "Qwen stock/custom attention has 3 items; Mada has 4 items matched by its custom decoder. LLaVA stock Qwen2/Snap/LookM has 2 items; Sparse has 3 items matched by its custom decoder; LLaVA Mada has 3 items (last is budget) and returns (layer_outputs,current_budget) to its patched text loop. No return-arity mismatch found in these selected edges.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model.py",
+          "lines": [
+            153,
+            301,
+            426,
+            550
+          ]
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "lines": [
+            105,
+            233,
+            324,
+            425,
+            763,
+            808,
+            853,
+            882
+          ]
+        },
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py",
+          "symbol": "Qwen2Attention.forward",
+          "line": 147,
+          "end_line": 203
+        }
+      ]
+    },
+    {
+      "subject": "attention_instance_attributes",
+      "result": "The installed Qwen2.5 attention constructor provides num_heads/num_key_value_heads/num_key_value_groups/hidden_size/rope_scaling used by Qwen patches; installed Qwen2 constructor provides num_key_value_groups and config/head_dim used by LLaVA patches. Shared position_embeddings are supplied by the corresponding text model. The rotary_emb fallback inside some patches is not valid on 4.52.3 attention instances, but the selected text-model calls always supply position_embeddings.",
+      "evidence": [
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLAttention.__init__",
+          "line": 690,
+          "end_line": 720
+        },
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py",
+          "symbol": "Qwen2Attention.__init__",
+          "line": 133,
+          "end_line": 145
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2.py",
+          "symbol": "Qwen2Attention.__init__",
+          "line": 138,
+          "end_line": 152
+        }
+      ]
+    },
+    {
+      "subject": "cache_None_and_tuple_boundaries",
+      "result": "Supported generation uses use_cache=True: stock text models create DynamicCache from None, Sparse custom text models convert None/Cache to DynamicCacheSplitHeadFlatten, Random converts None/legacy cache in its text wrapper, and Hybrid allocates a fresh custom cache. Legacy tuple support in those inner helpers does not imply end-to-end support: outer multimodal models call get_seq_length before some inner conversions. LLaVA LookM/Mada/custom Qwen2 explicitly reject tuple cache. Custom Hybrid/Sparse attention paths are not safe general use_cache=False APIs; the selected adapters default to use_cache=True.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model.py",
+          "symbol": "adakv_qwen_forward",
+          "line": 560,
+          "end_line": 686
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_randomkv.py",
+          "symbol": "ensure_randomkv_cache",
+          "line": 47,
+          "end_line": 60
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "lookm_qwen2_forward",
+          "line": 549,
+          "end_line": 645
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "madakv_qwen2_forward",
+          "line": 647,
+          "end_line": 745
+        },
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLModel.forward",
+          "line": 1618,
+          "end_line": 1748
+        }
+      ]
+    },
+    {
+      "subject": "prepare_wrapper_and_logical_positions",
+      "result": "The Qwen wrapper delegates all standard vision/generation arguments to the installed original prepare function; on an empty key_cache it resets only kv_seq_len. This matches the installed model.model.language_model.layers hierarchy. Compressed physical cache length and flatten-cache sentinel get_seq_length()==1 are not logical token counts; normal generate advances explicit cache_position independently (+num_new_tokens), avoiding a demonstrated offset failure in this route. Direct continuation without cache_position requires separate validation.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/monkeypatch.py",
+          "symbol": "replace_qwen",
+          "line": 5,
+          "end_line": 137
+        },
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "line": 1946,
+          "end_line": 1987
+        },
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/generation/utils.py",
+          "lines": [
+            992
+          ]
+        },
+        {
+          "path": "KVRepack/src/kvrepack/baseline_utils.py",
+          "symbol": "DynamicCacheSplitHeadFlatten.get_seq_length",
+          "line": 157,
+          "end_line": 161
+        }
+      ]
+    },
+    {
+      "subject": "vision_masks_and_Mada_budget",
+      "result": "Qwen LookM/Mada and LLaVA LookM/Mada patched outer forwards construct vision/text masks and pass them through their paired text/decoder/attention chain. Mada initializes current_budget=None once per text call and propagates each layer-returned budget to the next layer. LookM/Mada baseline clusters rebuild on each multi-token prefill, so prompt masks are refreshed. Decode skips compression and does not require the old full-prompt masks.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_croatt.py",
+          "symbol": "qwen_vl_forward_cross_attn",
+          "line": 27,
+          "end_line": 184
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_croatt.py",
+          "symbol": "cross_attn_qwen_forward_unflatten_MadaKV",
+          "line": 517,
+          "end_line": 639
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "madakv_qwen2_forward",
+          "line": 647,
+          "end_line": 745
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_llava_onevision.py",
+          "symbol": "LlavaOnevisionModel.forward",
+          "line": 492,
+          "end_line": 648
+        },
+        {
+          "path": "KVRepack/src/kvrepack/baseline_utils.py",
+          "symbol": "init_lookm",
+          "line": 805,
+          "end_line": 840
+        },
+        {
+          "path": "KVRepack/src/kvrepack/baseline_utils.py",
+          "symbol": "init_madakv",
+          "line": 842,
+          "end_line": 882
+        }
+      ]
+    },
+    {
+      "subject": "prefill_decode_classification",
+      "result": "Compression patches generally classify q_len!=1 as prefill. A single-token initial prompt is consequently treated as decode; video experiments naturally have multi-token visual prompts. Chunked prefill, assisted/speculative decoding with q_len>1, beam search and cache reuse across independent prompts are not established by this audit.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py",
+          "symbol": "qwen_flash_attn2_forward_SnapKVKVRepack",
+          "line": 568,
+          "end_line": 684
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py",
+          "symbol": "qwen_flash_attn2_forward_SparseMMKVRepack",
+          "line": 559,
+          "end_line": 673
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2.py",
+          "symbol": "Qwen2Attention.forward",
+          "line": 154,
+          "end_line": 281
+        }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "fullkv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "Unpatched HF text model creates DynamicCache for use_cache=True and None input cache.",
+      "prefill": "HF attention Cache.update at every layer.",
+      "decode": "HF attention append; HF GenerationMixin advances absolute cache_position.",
+      "finalize": null,
+      "cross_prompt": "New generation gets a fresh cache; no project compression state.",
+      "evidence": [
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLTextModel.forward",
+          "line": 1110,
+          "end_line": 1225
+        },
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLFlashAttention2.forward",
+          "line": 806,
+          "end_line": 897
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "hybridkv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HybridKVCache",
+      "initialization": "Custom text model replaces a None/default cache with HybridKVCache; constructor owns prompt-specific masks, budget tables, records and finalized flag.",
+      "prefill": "Each layer calibrates heads, builds retrieval index and records pruned history; last layer allocates budgets and fills all flat layer buffers.",
+      "decode": "Append via update_flatten_view; advance per-head lengths; retrieve and scatter dynamic slots; FlashAttention varlen.",
+      "finalize": "Last layer calls finalize_hybrid_kvrepack_simhead before filling buffers only when hybridkv_kvrepack is enabled; then clear_prefill_state.",
+      "cross_prompt": "Fresh custom cache per generate; layer kv_cluster reused but its per-head metadata is overwritten by update_kv for each prompt.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLTextModel.forward",
+          "line": 1255,
+          "end_line": 1401
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLFlashAttention2.forward",
+          "line": 811,
+          "end_line": 1042
+        },
+        {
+          "path": "KVRepack/src/kvrepack/hybridkv_utils.py",
+          "symbol": "HybridKVCache.__init__",
+          "line": 325,
+          "end_line": 582
+        },
+        {
+          "path": "KVRepack/src/kvrepack/hybridkv_utils.py",
+          "symbol": "HybridKVCache.finalize_hybrid_kvrepack_simhead",
+          "line": 1635,
+          "end_line": 1679
+        },
+        {
+          "path": "KVRepack/src/kvrepack/hybridkv_utils.py",
+          "symbol": "HybridKVCache.clear_prefill_state",
+          "line": 2521,
+          "end_line": 2541
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "hybridkv_kvrepack",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HybridKVCache",
+      "initialization": "Custom text model replaces a None/default cache with HybridKVCache; constructor owns prompt-specific masks, budget tables, records and finalized flag.",
+      "prefill": "Each layer calibrates heads, builds retrieval index and records pruned history; last layer allocates budgets and fills all flat layer buffers.",
+      "decode": "Append via update_flatten_view; advance per-head lengths; retrieve and scatter dynamic slots; FlashAttention varlen.",
+      "finalize": "Last layer calls finalize_hybrid_kvrepack_simhead before filling buffers only when hybridkv_kvrepack is enabled; then clear_prefill_state.",
+      "cross_prompt": "Fresh custom cache per generate; layer kv_cluster reused but its per-head metadata is overwritten by update_kv for each prompt.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLTextModel.forward",
+          "line": 1255,
+          "end_line": 1401
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+          "symbol": "Qwen2_5_VLFlashAttention2.forward",
+          "line": 811,
+          "end_line": 1042
+        },
+        {
+          "path": "KVRepack/src/kvrepack/hybridkv_utils.py",
+          "symbol": "HybridKVCache.__init__",
+          "line": 325,
+          "end_line": 582
+        },
+        {
+          "path": "KVRepack/src/kvrepack/hybridkv_utils.py",
+          "symbol": "HybridKVCache.finalize_hybrid_kvrepack_simhead",
+          "line": 1635,
+          "end_line": 1679
+        },
+        {
+          "path": "KVRepack/src/kvrepack/hybridkv_utils.py",
+          "symbol": "HybridKVCache.clear_prefill_state",
+          "line": 2521,
+          "end_line": 2541
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "snapkv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "HF text model creates/converts the required cache for use_cache=True.",
+      "prefill": "Compute full prefill attention; write pruned K/V into cache.",
+      "decode": "Append one token to cached slots; SparseMM updates flattened-cache metadata and uses varlen FlashAttention.",
+      "finalize": null,
+      "cross_prompt": "init_snapkv rebuilds its cluster on each multi-token prefill; ratio budget is recomputed from q_len.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model.py",
+          "symbol": "qwen_flash_attn2_forward_SnapKV",
+          "line": 34,
+          "end_line": 153
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "sparsemm",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "DynamicCacheSplitHeadFlatten",
+      "initialization": "adakv_qwen_forward creates/converts the required cache for use_cache=True.",
+      "prefill": "Compute full prefill attention; write pruned K/V into cache.",
+      "decode": "Append one token to cached slots; SparseMM updates flattened-cache metadata and uses varlen FlashAttention.",
+      "finalize": null,
+      "cross_prompt": "Attention calls init_sparsemm(rebuild_cluster=True) on every multi-token prefill.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model.py",
+          "symbol": "qwen_flash_attn2_forward_SparseMM",
+          "line": 155,
+          "end_line": 301
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model.py",
+          "symbol": "adakv_qwen_forward",
+          "line": 560,
+          "end_line": 686
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "lookm",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "cross_attn_qwen_forward_unflatten creates/converts the required cache for use_cache=True.",
+      "prefill": "Compute full prefill attention; write pruned K/V into cache.",
+      "decode": "Append one token to cached slots; SparseMM updates flattened-cache metadata and uses varlen FlashAttention.",
+      "finalize": null,
+      "cross_prompt": "Outer model passes vision/text masks; each prefill rebuilds LookMCluster with current masks.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model.py",
+          "symbol": "qwen_flash_attn2_forward_LookM",
+          "line": 303,
+          "end_line": 426
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_croatt.py",
+          "symbol": "cross_attn_qwen_forward_unflatten",
+          "line": 187,
+          "end_line": 308
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "madakv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "cross_attn_qwen_forward_unflatten_MadaKV creates/converts the required cache for use_cache=True.",
+      "prefill": "Compute full prefill attention; write pruned K/V into cache.",
+      "decode": "Append one token to cached slots; SparseMM updates flattened-cache metadata and uses varlen FlashAttention.",
+      "finalize": null,
+      "cross_prompt": "Text loop initializes current_budget=None each call; custom decoder/attention returns the next layer budget; each prefill rebuilds MadaKVCluster.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model.py",
+          "symbol": "qwen_flash_attn2_forward_MadaKV",
+          "line": 428,
+          "end_line": 550
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_croatt.py",
+          "symbol": "cross_attn_qwen_forward_unflatten_MadaKV",
+          "line": 517,
+          "end_line": 639
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "randomkv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "RandomKVCache",
+      "initialization": "randomkv_qwen_forward converts None/DynamicCache to a RandomKVCache before calling the saved HF text forward.",
+      "prefill": "Each layer recomputes budget from q_len, compresses K/V and writes K/V plus mapping/cardinality/anchor metadata.",
+      "decode": "update_singletons appends both cache tensors and map/cardinality metadata; manual attention uses those metadata.",
+      "finalize": "Prompt stats begin/end on first/last layer; no global finalizer.",
+      "cross_prompt": "Cache is per generate; per-layer cluster cache_size is recomputed for every prefill.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_randomkv.py",
+          "symbol": "randomkv_qwen_forward",
+          "line": 63,
+          "end_line": 70
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_randomkv.py",
+          "symbol": "qwen_flash_attn2_forward_RandomKV",
+          "line": 117,
+          "end_line": 251
+        },
+        {
+          "path": "KVRepack/src/kvrepack/randomkv_utils.py",
+          "symbol": "RandomKVCache.update_singletons",
+          "line": 91,
+          "end_line": 151
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "asymkv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "AsymKVOfficialCache",
+      "initialization": "Patched custom generate creates a new cache in _prefill_like_upstream, bypassing HF prepare wrapper.",
+      "prefill": "Chunk forward/probe/compress, explicit positions and cardinality; see ASYM-PREFILL-BOUNDARY finding.",
+      "decode": "Custom _decode_one_token uses original_seen_tokens and rope_deltas; custom attention appends K/V/cardinality.",
+      "finalize": "Compression is between full chunks; no KVRepack simhead finalizer.",
+      "cross_prompt": "A new cache and running Hessian are created for every generate call.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/asymkv_official/integration.py",
+          "symbol": "install_qwen2_5_vl_asymkv_official",
+          "line": 9,
+          "end_line": 28
+        },
+        {
+          "path": "KVRepack/src/kvrepack/asymkv_official/generation.py",
+          "symbol": "_prefill_like_upstream",
+          "line": 208,
+          "end_line": 277
+        },
+        {
+          "path": "KVRepack/src/kvrepack/asymkv_official/generation.py",
+          "symbol": "_decode_one_token",
+          "line": 281,
+          "end_line": 315
+        },
+        {
+          "path": "KVRepack/src/kvrepack/asymkv_official/cache.py",
+          "symbol": "AsymKVOfficialCache.update",
+          "line": 34,
+          "end_line": 86
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "snapkv_kvrepack",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "HF text model owns the cache; attention layer 0 resets the config-level record list on each prefill.",
+      "prefill": "Record every layer using raw K, RoPE K, V, scores and RoPE embeddings; current-step attention uses full prefill K/V.",
+      "decode": "Snap/Sparse/Mada route q_len==1 directly to their baseline attention; LookM has an explicit decode append path.",
+      "finalize": "Last layer calls _finalize_prompt_cache, writes all layer caches, then clears the record list. No early return before finalization for multi-token prompts with use_cache=True.",
+      "cross_prompt": "SparseMM explicitly rebuilds its cluster per prefill; Mada passes next-layer budget through paired decoder; dynamic-cache metadata is fresh per generation.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py",
+          "symbol": "qwen_flash_attn2_forward_SnapKVKVRepack",
+          "line": 568,
+          "end_line": 684
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py",
+          "symbol": "_finalize_prompt_cache",
+          "line": 462,
+          "end_line": 565
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "sparsemm_kvrepack",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "DynamicCacheSplitHeadFlatten",
+      "initialization": "adakv_qwen_forward owns the cache; attention layer 0 resets the config-level record list on each prefill.",
+      "prefill": "Record every layer using raw K, RoPE K, V, scores and RoPE embeddings; current-step attention uses full prefill K/V.",
+      "decode": "Snap/Sparse/Mada route q_len==1 directly to their baseline attention; LookM has an explicit decode append path.",
+      "finalize": "Last layer calls _finalize_prompt_cache, writes all layer caches, then clears the record list. No early return before finalization for multi-token prompts with use_cache=True.",
+      "cross_prompt": "SparseMM explicitly rebuilds its cluster per prefill; Mada passes next-layer budget through paired decoder; dynamic-cache metadata is fresh per generation.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py",
+          "symbol": "qwen_flash_attn2_forward_SparseMMKVRepack",
+          "line": 559,
+          "end_line": 673
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py",
+          "symbol": "_finalize_prompt_cache",
+          "line": 453,
+          "end_line": 556
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "madakv_kvrepack",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "cross_attn_qwen_forward_unflatten_MadaKV owns the cache; attention layer 0 resets the config-level record list on each prefill.",
+      "prefill": "Record every layer using raw K, RoPE K, V, scores and RoPE embeddings; current-step attention uses full prefill K/V.",
+      "decode": "Snap/Sparse/Mada route q_len==1 directly to their baseline attention; LookM has an explicit decode append path.",
+      "finalize": "Last layer calls _finalize_prompt_cache, writes all layer caches, then clears the record list. No early return before finalization for multi-token prompts with use_cache=True.",
+      "cross_prompt": "SparseMM explicitly rebuilds its cluster per prefill; Mada passes next-layer budget through paired decoder; dynamic-cache metadata is fresh per generation.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py",
+          "symbol": "qwen_flash_attn2_forward_MadaKVKVRepack",
+          "line": 719,
+          "end_line": 850
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py",
+          "symbol": "_finalize_prompt_cache",
+          "line": 625,
+          "end_line": 716
+        }
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "lookm_kvrepack",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "cross_attn_qwen_forward_unflatten owns the cache; attention layer 0 resets the config-level record list on each prefill.",
+      "prefill": "Record every layer using raw K, RoPE K, V, scores and RoPE embeddings; current-step attention uses full prefill K/V.",
+      "decode": "Snap/Sparse/Mada route q_len==1 directly to their baseline attention; LookM has an explicit decode append path.",
+      "finalize": "Last layer calls _finalize_prompt_cache, writes all layer caches, then clears the record list. No early return before finalization for multi-token prompts with use_cache=True.",
+      "cross_prompt": "SparseMM explicitly rebuilds its cluster per prefill; Mada passes next-layer budget through paired decoder; dynamic-cache metadata is fresh per generation.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py",
+          "symbol": "qwen_flash_attn2_forward_LookMKVRepack",
+          "line": 451,
+          "end_line": 596
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py",
+          "symbol": "_finalize_prompt_cache",
+          "line": 329,
+          "end_line": 427
+        }
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "fullkv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "Unpatched HF LlavaOnevision→Qwen2 creates DynamicCache.",
+      "prefill": "Standard HF Qwen2 attention updates shared cache.",
+      "decode": "HF Qwen2 attention returns two items, matching stock decoder; in-place cache mutation.",
+      "finalize": null,
+      "cross_prompt": "No project compression state.",
+      "evidence": [
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+          "symbol": "LlavaOnevisionModel.forward",
+          "line": 489,
+          "end_line": 624
+        },
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py",
+          "symbol": "Qwen2Model.forward",
+          "line": 372,
+          "end_line": 464
+        },
+        {
+          "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py",
+          "symbol": "Qwen2Attention.forward",
+          "line": 147,
+          "end_line": 203
+        }
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "hybridkv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HybridKVCache",
+      "initialization": "Custom LlavaOnevisionModel passes masks and inputs_embeds to custom Qwen2Model; it constructs a HybridKVCache.",
+      "prefill": "Custom Qwen2 attention calibrates/builds index/prunes; last layer allocates and fills all layer buffers.",
+      "decode": "Append/update per-head metadata; retrieve/scatter dynamic slots; attention returns two items to custom Qwen2DecoderLayer.",
+      "finalize": "No KVRepack finalizer for this baseline; clear_prefill_state runs after last-layer allocation.",
+      "cross_prompt": "Fresh HybridKVCache per generate; helper class shared with Qwen. No LLaVA improved implementation is included.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/modeling_llava_onevision.py",
+          "symbol": "LlavaOnevisionModel.forward",
+          "line": 492,
+          "end_line": 648
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2.py",
+          "symbol": "Qwen2Model.forward",
+          "line": 450,
+          "end_line": 567
+        },
+        {
+          "path": "KVRepack/src/kvrepack/modeling_qwen2.py",
+          "symbol": "Qwen2Attention.forward",
+          "line": 154,
+          "end_line": 281
+        }
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "snapkv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "HF Qwen2Model.forward creates/converts cache for use_cache=True.",
+      "prefill": "Use full prefill attention; compressed K/V are written into cache. LookM/Mada get masks from patched LlavaOnevisionModel.forward.",
+      "decode": "Snap/LookM return two attention outputs; Sparse custom decoder unpacks three including cache; Mada custom decoder unpacks two outputs plus next-budget. Shared cache mutated in place.",
+      "finalize": "Baseline methods have no global compression finalizer.",
+      "cross_prompt": "SparseMM currently reuses its first capacity table across prompts (LLAVA-SPARSE-STATE); other baseline clusters rebuild/recompute on multi-token prefill. Mada current_budget starts at None each text forward.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "qwen2_flash_attn2_forward_SnapKV",
+          "line": 22,
+          "end_line": 105
+        }
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "sparsemm",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "DynamicCacheSplitHeadFlatten",
+      "initialization": "sparsemm_qwen2_forward creates/converts cache for use_cache=True.",
+      "prefill": "Use full prefill attention; compressed K/V are written into cache. LookM/Mada get masks from patched LlavaOnevisionModel.forward.",
+      "decode": "Snap/LookM return two attention outputs; Sparse custom decoder unpacks three including cache; Mada custom decoder unpacks two outputs plus next-budget. Shared cache mutated in place.",
+      "finalize": "Baseline methods have no global compression finalizer.",
+      "cross_prompt": "SparseMM currently reuses its first capacity table across prompts (LLAVA-SPARSE-STATE); other baseline clusters rebuild/recompute on multi-token prefill. Mada current_budget starts at None each text forward.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "qwen2_flash_attn2_forward_SparseMM",
+          "line": 107,
+          "end_line": 233
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "sparsemm_qwen2_forward",
+          "line": 435,
+          "end_line": 547
+        }
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "madakv",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "madakv_qwen2_forward creates/converts cache for use_cache=True.",
+      "prefill": "Use full prefill attention; compressed K/V are written into cache. LookM/Mada get masks from patched LlavaOnevisionModel.forward.",
+      "decode": "Snap/LookM return two attention outputs; Sparse custom decoder unpacks three including cache; Mada custom decoder unpacks two outputs plus next-budget. Shared cache mutated in place.",
+      "finalize": "Baseline methods have no global compression finalizer.",
+      "cross_prompt": "SparseMM currently reuses its first capacity table across prompts (LLAVA-SPARSE-STATE); other baseline clusters rebuild/recompute on multi-token prefill. Mada current_budget starts at None each text forward.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "qwen2_flash_attn2_forward_MadaKV",
+          "line": 326,
+          "end_line": 425
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "madakv_qwen2_forward",
+          "line": 647,
+          "end_line": 745
+        }
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "lookm",
+      "review_status": "reviewed_static_call_chain",
+      "cache": "HF DynamicCache",
+      "initialization": "lookm_qwen2_forward creates/converts cache for use_cache=True.",
+      "prefill": "Use full prefill attention; compressed K/V are written into cache. LookM/Mada get masks from patched LlavaOnevisionModel.forward.",
+      "decode": "Snap/LookM return two attention outputs; Sparse custom decoder unpacks three including cache; Mada custom decoder unpacks two outputs plus next-budget. Shared cache mutated in place.",
+      "finalize": "Baseline methods have no global compression finalizer.",
+      "cross_prompt": "SparseMM currently reuses its first capacity table across prompts (LLAVA-SPARSE-STATE); other baseline clusters rebuild/recompute on multi-token prefill. Mada current_budget starts at None each text forward.",
+      "evidence": [
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "qwen2_flash_attn2_forward_LookM",
+          "line": 235,
+          "end_line": 324
+        },
+        {
+          "path": "KVRepack/src/kvrepack/qwen2_model.py",
+          "symbol": "lookm_qwen2_forward",
+          "line": 549,
+          "end_line": 645
+        }
+      ]
+    }
+  ],
+  "source_snapshots": [
+    {
+      "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/__init__.py",
+      "sha256": "94341c4137cdcbb9651c348eb65abc3217a77168c06496a78bc4af0cdf9ac411"
+    },
+    {
+      "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/cache_utils.py",
+      "sha256": "948b63ada8229fa46cc0d6eb28bf9a4f2e0a4721c1eb1b1d19b967019d96e4ac"
+    },
+    {
+      "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/generation/utils.py",
+      "sha256": "9456d3984643f9347b6772aead6392c239702eccbb5872ad0e3f52b492594ba5"
+    },
+    {
+      "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+      "sha256": "e9c78c548355b1dcc7de036d39ccaf53f0f15db3819392e4be6a2032b2250ce8"
+    },
+    {
+      "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py",
+      "sha256": "a61bb2d35b25a1cec1eebcff887f3ee44c86a908e9abdca049ae447c7e8df1d6"
+    },
+    {
+      "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+      "sha256": "820feb130918d50c9cfad2a3853dc0cffa760da698be7416603ecd242f648ba6"
+    },
+    {
+      "path": "HybridKV-artifact/hybridkv/asymkv_official/generation.py",
+      "sha256": "8f649e57404b3955f5d6e2ed1b44e1c5a4737f22827a4d482d2ad6ef7c48818d"
+    },
+    {
+      "path": "HybridKV-artifact/hybridkv/modeling_qwen2_5_vl.py",
+      "sha256": "008d92a33ee0e7497fa605dd910ec7466f5610c40d91ba6958add3cb7a16c7d4"
+    },
+    {
+      "path": "HybridKV-artifact/hybridkv/qwen_model_croatt.py",
+      "sha256": "d8d60a46a93e301c82e8b3cfc30bcb05fd21e79d1468b97270d21ab9808e4a66"
+    },
+    {
+      "path": "HybridKV-opensource/hybridkv/baseline_utils.py",
+      "sha256": "369719ed7d0172c86c2d54c9dc518eac06a77a8983349febed1ec6e3e9774756"
+    },
+    {
+      "path": "HybridKV-opensource/hybridkv/qwen2_model.py",
+      "sha256": "19b9217568bfbb5d6a04404415aef338aafbe6e3aa6bb8eb8d2ca90332dc619e"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/asymkv_official/cache.py",
+      "sha256": "1d06c401a6febe85a622fb4b8544dc092c985d1a5210eaecfc0f8714f68cefb2"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/asymkv_official/generation.py",
+      "sha256": "f68dbd411938f9fef3fac74a57a9057e026ce1583667a5f23bdaef379d720508"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/asymkv_official/integration.py",
+      "sha256": "2da76a65644ada05675274ef929210c9684bc89e39e5d479d9cb5524a280098e"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/baseline_utils.py",
+      "sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/hybridkv_utils.py",
+      "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/modeling_llava_onevision.py",
+      "sha256": "d9f7c292990dd28873295d10155b0cbec271748f70a1900e61cb0d4c696aedb8"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/modeling_qwen2.py",
+      "sha256": "22f740946c5a2eda71f538ff1d7979147ea12fd5ecb11641098e3c43fabf5ffa"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+      "sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/monkeypatch.py",
+      "sha256": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/qwen2_model.py",
+      "sha256": "79e3d323b7d5e212ac97349689246ed95ac9cfe5e973671e73f0dffbdb0c2c94"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/qwen_model.py",
+      "sha256": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/qwen_model_croatt.py",
+      "sha256": "6f9d46f0d8a36ac842dc2e2beecccbc5be55194d5cfc47ff4379236f8dbf8cbf"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py",
+      "sha256": "59ddc9cd387293e0bba05ad7cbd20bb921ff9119121369f1ae27a7d99540ed4b"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py",
+      "sha256": "7a2ce16742e3d7f959417d0281c3e58faa1ec9426cba0c66ab14aa9007f92a1b"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/qwen_model_randomkv.py",
+      "sha256": "a55057dd40572be08b6f9a7046179363ba2af16e6fb0b161c09ba8fb0d57ee9a"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py",
+      "sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/qwen_model_sparsemm_kvrepack.py",
+      "sha256": "df69b680c900316145bb5b7ceb1191384f1fe3a64338bd1201d50b3094fbca2f"
+    },
+    {
+      "path": "KVRepack/src/kvrepack/randomkv_utils.py",
+      "sha256": "847b88ff3d73166d9d74b907f8cf68b4e5ec31c2c015d5d9a1e54e2439689faa"
+    }
+  ],
+  "limitations": [
+    "No full core/model import, model instantiation, tensor attention computation, CUDA kernel, GPU, weights, downloads or external scoring were used.",
+    "Signature binding proves explicit Python call arguments only; it cannot prove tensor shape/dtype/device semantics, data-dependent branches, external CUDA ABI or FlashAttention numerical correctness.",
+    "Normal evaluation assumptions reviewed: Transformers 4.52.3, single process per model/method, batch_size=1, greedy generation, use_cache=True, multi-token visual prompt, and tokenizer/processor inputs containing input_ids.",
+    "Legacy tuple cache, static cache, embeddings-only API, single-token initial prompts, use_cache=False, training/checkpointing, beam/speculative decoding, non-default distributed/device_map setups and cross-process monkeypatch reuse are not validated runtime features.",
+    "The two main findings were source-proven here; full CPU tensor/fake-model reproductions of SparseMM multi-prompt capacities and AsymKV chunk boundaries are coordinated separately by the root agent.",
+    "Per-file source equivalence does not prove equivalence to the original executable import composition; source-root/PYTHONPATH and adapter routing must be considered separately."
+  ]
+}

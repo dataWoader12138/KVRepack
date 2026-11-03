@@ -1,0 +1,123 @@
+{
+  "stage": "cpu_call_relationship_audit_with_confirmed_issues",
+  "created_at_utc": "2026-11-03T04:14:22.324937+00:00",
+  "original_experiment_sources_modified": false,
+  "scope": {
+    "qwen2_5_vl": {
+      "sizes": [
+        "3B",
+        "7B"
+      ],
+      "methods": 13,
+      "improved_methods": 5
+    },
+    "llava_ov": {
+      "size": "7B",
+      "baseline_methods": 6,
+      "improved_methods": 0,
+      "reason": "Four improved LLaVA source implementations were subsequently found in the port/tuning snapshots; they have not yet been integrated into KVRepack. This round only renames the already selected owned implementation."
+    }
+  },
+  "source_checks": {
+    "status": "passed",
+    "core_manifest_targets": 30,
+    "core_and_adapter_python_checked": 33,
+    "vendor_python_checked": 329,
+    "vendor_build_inputs_hashed": 2382,
+    "original_source_ast_comparison": "passed",
+    "extracted_functions": 6,
+    "qwen_dispatch_branches": 10,
+    "llava_dispatch_branches": 4,
+    "command": "PYTHONDONTWRITEBYTECODE=1 python scripts/check_sources.py --source-root <original workspace>",
+    "source_and_target_ast_fingerprints": "Original fingerprints retained; separate renamed-source fingerprints derived and compared to targets.",
+    "llava_whole_function_comparison": "passed after removing only the two recorded local imports and fallback else"
+  },
+  "unit_tests": {
+    "tests_run": 49,
+    "passed": 48,
+    "failed": 0,
+    "skipped": 1,
+    "skip_reason": "Original-source numerical differential requires explicit --source-root; it passed separately in the 15-case CPU CLI run.",
+    "command": "CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python -m unittest discover -s tests -v"
+  },
+  "portable_checkout": {
+    "status": "passed",
+    "copied_outside_original_workspace": true,
+    "all_model_method_plans": 19,
+    "actual_import_resolution_checks_without_torch": 5,
+    "original_source_directories_required": false,
+    "standalone_manifest_validation": "passed",
+    "original_source_ast_comparison": "passed",
+    "current_naming_recheck": "passed after naming, from an independent temporary checkout",
+    "torch_imported": false
+  },
+  "packaging": [
+    {
+      "wheel": "KVRepack-0.1.0-py3-none-any.whl",
+      "sha256": "c02b7391d82cb02ad6c545a2bc8eba4774e8ec8f64426929f63c14078bc28d9a",
+      "source_files_verified": 35,
+      "status": "passed",
+      "verification": "Root built the wheel and compared the listed packaged source files byte-for-byte after naming. Provenance update independently checked the wheel SHA-256.",
+      "verification_stage": "Historical naming-stage wheel; this audit updates documentation and adds diagnostics, not core implementation."
+    },
+    {
+      "wheel": "kvrepack_lmms_eval-0.3.4-py3-none-any.whl",
+      "sha256": "bd426c92b945bdb46cc393af2298cc982930a8680c7400b62a713d8c33dc4bce",
+      "source_files_verified": 1464,
+      "status": "passed",
+      "verification": "Root built the wheel and compared the listed packaged source files byte-for-byte after naming. Provenance update independently checked the wheel SHA-256.",
+      "verification_stage": "Historical naming-stage wheel; this audit updates documentation and adds diagnostics, not core implementation."
+    }
+  ],
+  "required_json_git_ignore_check": "passed_for_param_config_and_three_head_score_files",
+  "pending": [
+    "Resolve ASYM-PREFILL-BOUNDARY skipped prompt token",
+    "Resolve LLAVA-SPARSE-STATE cross-prompt budget reuse",
+    "Fresh environment dependency installation",
+    "CUDA extension build and export checks",
+    "GPU smoke tests for all supported model/method combinations",
+    "Source-versus-repack generation and KV-budget equivalence",
+    "Dataset and metric reproduction",
+    "GPU memory and latency measurements",
+    "Project-wide license choice by repository owner"
+  ],
+  "not_performed": [
+    "GPU or full-model execution",
+    "Model/data downloads",
+    "External judging/API requests",
+    "Publishing or pushing to GitHub",
+    "Changing audited core algorithms or fixing the recorded behavioral findings"
+  ],
+  "naming_validation": {
+    "status": "passed",
+    "source_paths_and_source_sha256_preserved": true,
+    "core_changed_files_exact_replay_and_reverse_sha256": 9,
+    "renamed_module_files": 5,
+    "vendor_changed_files_exact_replay_and_reverse_sha256": 1,
+    "original_source_ast_comparison": "passed after applying explicit naming rules to each original source; old AST hashes remain verified before naming",
+    "unchanged_nonbrand_registry_configuration": "passed; recursive branding of prior snapshot matches regenerated registry, protecting source_script",
+    "randomkv_baseline_concept_name_preserved": "RandomDecoupledKV",
+    "historical_source_script_filenames_preserved": true,
+    "gpu_or_algorithm_execution": false
+  },
+  "local_static_from_import_symbols": {
+    "status": "passed",
+    "count": 117,
+    "modules": 31,
+    "verification": "Root statically resolved local from-import names after naming, without torch/model imports."
+  },
+  "wheel_module_resolution": {
+    "status": "passed",
+    "renamed_modules": 5,
+    "legacy_modules": "absent",
+    "torch_imported": false
+  },
+  "call_relationship_audit": {
+    "summary": "provenance/cpu_audit_summary.json",
+    "status": "completed_with_confirmed_issues",
+    "all_supported_methods_correct": false,
+    "confirmed_behavioral_findings": 2,
+    "direct_api_boundary_findings": 2,
+    "core_implementation_modified": false
+  }
+}

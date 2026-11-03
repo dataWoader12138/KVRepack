@@ -1,0 +1,9 @@
+include LICENSE README.md
+recursive-include csrc *.cu *.h
+recursive-include include *.h *.cuh
+recursive-include deps/cutlass/include *
+recursive-include deps/cutlass/tools/util/include *
+recursive-include deps/cutlass/examples/common *
+include deps/cutlass/LICENSE.txt deps/cutlass/EULA.txt
+global-exclude *.pyc *.so
+prune build

@@ -1,0 +1,4 @@
+include README.md
+include THIRD_PARTY_NOTICES.md
+recursive-include src/kvrepack/configs *.json
+recursive-include src/kvrepack/data/head_score *.json

@@ -1,0 +1,5 @@
+include LICENSE README.md FORK.md
+recursive-include lmms_eval/tasks *
+recursive-include lmms_eval/models/model_utils *
+global-exclude *.pyc *.so *.log
+prune lmms_eval/__pycache__

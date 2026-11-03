@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "KVRepack"
+version = "0.1.0"
+description = "Canonical Qwen2.5-VL KVRepack improvements and LLaVA-OneVision KV-cache baselines"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "torch==2.6.0",
+    "transformers==4.52.3",
+    "numpy==1.26.4",
+    "accelerate==1.13.0",
+    "einops==0.8.2",
+    "scikit-learn==1.8.0",
+    "qwen-vl-utils==0.0.14",
+    "packaging",
+]
+
+[project.scripts]
+kvrepack = "kvrepack.run:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["kvrepack*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+kvrepack = ["configs/*.json", "data/head_score/*.json"]

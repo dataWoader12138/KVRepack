@@ -1,0 +1,5310 @@
+{
+  "schema_version": 2,
+  "source_path_base": "original workspace (KVRepack parent directory by default)",
+  "target_path_base": "KVRepack repository root",
+  "scope": "Selected Qwen2.5-VL evaluation paths and Llava-OneVision Qwen2 baselines. Selected DecoupleKV branding is renamed to KVRepack in owned code; original source paths, bytes, hashes and source AST fingerprints remain unchanged. No improved LLaVA algorithm is introduced.",
+  "transform_definitions": {
+    "rename_python_import_root": "Replace the root hybridkv only in Python import/from statements with kvrepack; do not rename algorithm variables, class names, method names or environment literals.",
+    "rename_cuda_module": "Replace whole-word mmko_kernel identifiers with kvrepack_kernel, including matching commented kernel examples.",
+    "relocate_head_score_resources": "Only load_head_score resource location changes: parent/visual_head/head_score -> package/data/head_score using __file__. JSON bytes are unchanged.",
+    "redirect_private_asymkv_helpers": "Official generation imports the same helper functions from kvrepack._asymkv_helpers instead of hybridkv.asymkv_paper.generation.",
+    "extract_private_asymkv_helpers": "Copy five complete function definitions, including decorators, from asymkv_paper/generation.py; add only their needed imports. Do not expose or copy the paper generation method.",
+    "extract_internal_asymkv_reducer": "Copy only reduce_groups_asymkv unchanged to satisfy the delayed import in preserved HybridKVCache; omit Hybrid-AsymKV generation and probe code.",
+    "retain_selected_qwen_dispatch": "Keep selected method branch bodies unchanged after import renaming. Remove unselected dispatcher branches and their unreachable headsplit token-mask setup. Keep generation prepare wrapper with only its unreachable mask-setting if removed.",
+    "copy_resource_bytes": "Copy required configuration or head-score JSON bytes without content changes.",
+    "append_llava_dispatcher_with_local_imports": "Append only opensource replace_llava_onevision, whose four selected branch bodies remain AST-identical. Add two function-local imports of the corresponding artifact-derived implementations and an explicit unsupported-method exception. Existing Qwen function AST is unchanged.",
+    "rename_decouplekv_brand": {
+      "ordered_rules": [
+        {
+          "kind": "literal",
+          "old": "hybrid_decouplekv",
+          "new": "hybridkv_kvrepack"
+        },
+        {
+          "kind": "literal",
+          "old": "decouplekv",
+          "new": "kvrepack"
+        },
+        {
+          "kind": "literal",
+          "old": "DecoupleKV",
+          "new": "KVRepack"
+        },
+        {
+          "kind": "literal",
+          "old": "DECOUPLEKV",
+          "new": "KVREPACK"
+        },
+        {
+          "kind": "regex",
+          "pattern": "(?<![A-Za-z0-9])decouple(?![A-Za-z0-9])",
+          "new": "kvrepack"
+        },
+        {
+          "kind": "literal",
+          "old": "DECOUPLE",
+          "new": "KVREPACK"
+        },
+        {
+          "kind": "regex",
+          "pattern": "Decouple(?!d)",
+          "new": "KVRepack"
+        }
+      ],
+      "scope": "Owned Python code text, including identifiers, environment names, method strings, docstrings and comments. Five module filenames follow the same lowercase rule. Historical source paths and entrypoint references are protected. RandomDecoupledKV and ordinary decoupled are preserved.",
+      "reversibility": "Each changed file records exact target character spans and original/replacement fragments. Reverse these spans to recover the previous integration bytes and SHA-256; replay ordered rules to recover current bytes. A global inverse replacement is intentionally not used.",
+      "algorithm_verification": "Apply identical ordered rules to the original source text before existing import/kernel/resource normalization and compare complete or selected ASTs. Original pre-branding source AST fingerprints are retained; derived renamed_source_* fingerprints are added."
+    }
+  },
+  "validation_plan": {
+    "mechanical_copy": "Apply declared import/kernel/resource-location changes to source and compare full ast.dump(include_attributes=False) with target.",
+    "selected_functions": "Find each selected function by name in source and target; require identical function AST hashes, including decorators and default arguments.",
+    "selected_dispatcher": "Compare every retained method branch body AST after package import normalization; compare prepare_inputs_for_generation_qwen AST after removing exactly the recorded unreachable token-mask if. Assert removed methods have no dispatcher branch.",
+    "resources": "Require source and target SHA-256 equality.",
+    "llava_dispatcher": "Compare all four retained branch bodies with opensource replace_llava_onevision. Remove only two leading imports and final fallback else, then compare the whole function AST. Require unchanged Qwen function AST.",
+    "branding": "Reverse span edits and verify previous target SHA, replay exact ordered naming rules, verify old source AST against recovered integration AST and branded original source AST against new target AST. No AST normalization removes arithmetic, branching, function arguments or non-brand string values."
+  },
+  "entries": [
+    {
+      "source_path": "HybridKV-artifact/hybridkv/baseline_utils.py",
+      "source_sha256": "e59c37edd0e267199496b958d671d26c60784e0335abf9d2222d0b02f46fe0b4",
+      "target_path": "src/kvrepack/baseline_utils.py",
+      "target_sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "relocate_head_score_resources"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_3b.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_hybridkv.sh"
+      ],
+      "source_ast_sha256": "f64ffd8d26f33fc3dea5193f9dbb718daf270bbc791bc1f6187109310efb6be6",
+      "renamed_source_ast_sha256": "f64ffd8d26f33fc3dea5193f9dbb718daf270bbc791bc1f6187109310efb6be6"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/qwen_model.py",
+      "source_sha256": "1c6b166411bbac2002fc1a9fb3c5cd90f4425cf77780f213c63a2d1f40582375",
+      "target_path": "src/kvrepack/qwen_model.py",
+      "target_sha256": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_3b.sh"
+      ],
+      "source_ast_sha256": "be741af438faec67b919dc321e6d5cf88cd5d821c4b804526a18160a5ea9a6c8",
+      "renamed_source_ast_sha256": "be741af438faec67b919dc321e6d5cf88cd5d821c4b804526a18160a5ea9a6c8"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/qwen_model_croatt.py",
+      "source_sha256": "d8d60a46a93e301c82e8b3cfc30bcb05fd21e79d1468b97270d21ab9808e4a66",
+      "target_path": "src/kvrepack/qwen_model_croatt.py",
+      "target_sha256": "6f9d46f0d8a36ac842dc2e2beecccbc5be55194d5cfc47ff4379236f8dbf8cbf",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_3b.sh"
+      ],
+      "source_ast_sha256": "9c7f4fa68c64d4d442136286facd11d88e4a63fc79c885c1b241c2d8b995f92d",
+      "renamed_source_ast_sha256": "9c7f4fa68c64d4d442136286facd11d88e4a63fc79c885c1b241c2d8b995f92d"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/modeling_qwen2_5_vl.py",
+      "source_sha256": "008d92a33ee0e7497fa605dd910ec7466f5610c40d91ba6958add3cb7a16c7d4",
+      "target_path": "src/kvrepack/modeling_qwen2_5_vl.py",
+      "target_sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "rename_decouplekv_brand"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh"
+      ],
+      "branding": {
+        "transformation": "rename_decouplekv_brand",
+        "previous_target_path": "src/kvrepack/modeling_qwen2_5_vl.py",
+        "previous_target_sha256": "008d92a33ee0e7497fa605dd910ec7466f5610c40d91ba6958add3cb7a16c7d4",
+        "reversible_edits": [
+          {
+            "target_start": 41048,
+            "target_end": 41048,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 41050,
+            "target_end": 41059,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 41121,
+            "target_end": 41129,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 62476,
+            "target_end": 62476,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 62478,
+            "target_end": 62487,
+            "before": "",
+            "after": "_kvrepack"
+          }
+        ]
+      },
+      "source_ast_sha256": "52434b4f860d2b033d5bcfea89cdef8a700335f27ce0b9ef380014188e6d2bc9",
+      "renamed_source_ast_sha256": "6fc4bc4ad3145cd40af33171bf0ef78393325b3c37647f60a2b6dd4e0d2a031b"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/hybridkv_utils.py",
+      "source_sha256": "8561262f87e1373c47a66b1dbc90020da80f47d02ae82be7cba1355c74b9c100",
+      "target_path": "src/kvrepack/hybridkv_utils.py",
+      "target_sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "rename_decouplekv_brand"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_hybridkv.sh"
+      ],
+      "branding": {
+        "transformation": "rename_decouplekv_brand",
+        "previous_target_path": "src/kvrepack/hybridkv_utils.py",
+        "previous_target_sha256": "6fa7b82c346e7f181153fadea5b6a427c4d7ed2850b43f1228121aea6940605d",
+        "reversible_edits": [
+          {
+            "target_start": 13825,
+            "target_end": 13833,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14883,
+            "target_end": 14891,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14925,
+            "target_end": 14928,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 14929,
+            "target_end": 14931,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 14932,
+            "target_end": 14933,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 16147,
+            "target_end": 16147,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 16149,
+            "target_end": 16158,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 16179,
+            "target_end": 16179,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 16181,
+            "target_end": 16190,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 16263,
+            "target_end": 16266,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 16267,
+            "target_end": 16269,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 16270,
+            "target_end": 16271,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 16303,
+            "target_end": 16303,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 16305,
+            "target_end": 16314,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 18817,
+            "target_end": 18825,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18885,
+            "target_end": 18888,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 18889,
+            "target_end": 18891,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 18892,
+            "target_end": 18893,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 18962,
+            "target_end": 18970,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19049,
+            "target_end": 19052,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19053,
+            "target_end": 19055,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19056,
+            "target_end": 19057,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19129,
+            "target_end": 19137,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19190,
+            "target_end": 19198,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19273,
+            "target_end": 19276,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19277,
+            "target_end": 19279,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19280,
+            "target_end": 19281,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19396,
+            "target_end": 19404,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19504,
+            "target_end": 19507,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19508,
+            "target_end": 19510,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19511,
+            "target_end": 19512,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19564,
+            "target_end": 19567,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19568,
+            "target_end": 19570,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19571,
+            "target_end": 19572,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19645,
+            "target_end": 19653,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19711,
+            "target_end": 19714,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19715,
+            "target_end": 19717,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19718,
+            "target_end": 19719,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19775,
+            "target_end": 19783,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19858,
+            "target_end": 19861,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19862,
+            "target_end": 19864,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19865,
+            "target_end": 19866,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19933,
+            "target_end": 19941,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20147,
+            "target_end": 20155,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20274,
+            "target_end": 20282,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20337,
+            "target_end": 20340,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 20341,
+            "target_end": 20343,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 20344,
+            "target_end": 20345,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 20455,
+            "target_end": 20463,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20528,
+            "target_end": 20531,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 20532,
+            "target_end": 20534,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 20535,
+            "target_end": 20536,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 20596,
+            "target_end": 20604,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20661,
+            "target_end": 20664,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 20665,
+            "target_end": 20667,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 20668,
+            "target_end": 20669,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 20734,
+            "target_end": 20742,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20959,
+            "target_end": 20962,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 20963,
+            "target_end": 20965,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 20966,
+            "target_end": 20967,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 21156,
+            "target_end": 21164,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21290,
+            "target_end": 21298,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21390,
+            "target_end": 21393,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 21394,
+            "target_end": 21396,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 21397,
+            "target_end": 21398,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 21576,
+            "target_end": 21579,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 21580,
+            "target_end": 21582,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 21583,
+            "target_end": 21584,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 21732,
+            "target_end": 21740,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21866,
+            "target_end": 21874,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21976,
+            "target_end": 21979,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 21980,
+            "target_end": 21982,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 21983,
+            "target_end": 21984,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 22146,
+            "target_end": 22149,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 22150,
+            "target_end": 22152,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 22153,
+            "target_end": 22154,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 22291,
+            "target_end": 22299,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22414,
+            "target_end": 22422,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22518,
+            "target_end": 22521,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 22522,
+            "target_end": 22524,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 22525,
+            "target_end": 22526,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 22650,
+            "target_end": 22658,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22724,
+            "target_end": 22732,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22816,
+            "target_end": 22819,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 22820,
+            "target_end": 22822,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 22823,
+            "target_end": 22824,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 22901,
+            "target_end": 22909,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22969,
+            "target_end": 22969,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 22971,
+            "target_end": 22973,
+            "before": " and self.retrie",
+            "after": "_k"
+          },
+          {
+            "target_start": 22974,
+            "target_end": 22997,
+            "before": "",
+            "after": "repack and self.retriev"
+          },
+          {
+            "target_start": 23027,
+            "target_end": 23035,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23118,
+            "target_end": 23118,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 23120,
+            "target_end": 23126,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 23289,
+            "target_end": 23297,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23361,
+            "target_end": 23369,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23437,
+            "target_end": 23445,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23510,
+            "target_end": 23518,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23585,
+            "target_end": 23593,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23721,
+            "target_end": 23729,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23792,
+            "target_end": 23800,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23872,
+            "target_end": 23880,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23946,
+            "target_end": 23947,
+            "before": "decouple_",
+            "after": "k"
+          },
+          {
+            "target_start": 23948,
+            "target_end": 23956,
+            "before": "",
+            "after": "repack_v"
+          },
+          {
+            "target_start": 24015,
+            "target_end": 24023,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 24089,
+            "target_end": 24097,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26828,
+            "target_end": 26836,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26937,
+            "target_end": 26945,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27008,
+            "target_end": 27016,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27264,
+            "target_end": 27272,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27319,
+            "target_end": 27327,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27369,
+            "target_end": 27372,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 27373,
+            "target_end": 27375,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 27376,
+            "target_end": 27377,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 37916,
+            "target_end": 37924,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38083,
+            "target_end": 38091,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38208,
+            "target_end": 38216,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38302,
+            "target_end": 38310,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38476,
+            "target_end": 38484,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38638,
+            "target_end": 38646,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38744,
+            "target_end": 38752,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 38866,
+            "target_end": 38874,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 39167,
+            "target_end": 39175,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 40379,
+            "target_end": 40387,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 40539,
+            "target_end": 40547,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 41027,
+            "target_end": 41035,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 41329,
+            "target_end": 41337,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 41443,
+            "target_end": 41451,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 41845,
+            "target_end": 41853,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 42058,
+            "target_end": 42058,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 42060,
+            "target_end": 42069,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 42089,
+            "target_end": 42097,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 42180,
+            "target_end": 42188,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 42283,
+            "target_end": 42291,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 42327,
+            "target_end": 42335,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 42435,
+            "target_end": 42443,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 42627,
+            "target_end": 42627,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 42629,
+            "target_end": 42638,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 42670,
+            "target_end": 42678,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 43212,
+            "target_end": 43220,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 43278,
+            "target_end": 43286,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 43528,
+            "target_end": 43536,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 43571,
+            "target_end": 43579,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 43831,
+            "target_end": 43839,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 44073,
+            "target_end": 44081,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 45461,
+            "target_end": 45469,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 46410,
+            "target_end": 46418,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 46640,
+            "target_end": 46648,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 47074,
+            "target_end": 47082,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 47262,
+            "target_end": 47270,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 47339,
+            "target_end": 47347,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 47450,
+            "target_end": 47458,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 47516,
+            "target_end": 47524,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 47808,
+            "target_end": 47816,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48193,
+            "target_end": 48201,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 48254,
+            "target_end": 48262,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 50340,
+            "target_end": 50348,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51297,
+            "target_end": 51305,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51377,
+            "target_end": 51385,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51457,
+            "target_end": 51465,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51595,
+            "target_end": 51603,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51679,
+            "target_end": 51687,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 51762,
+            "target_end": 51770,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 52069,
+            "target_end": 52077,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 52152,
+            "target_end": 52152,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 52154,
+            "target_end": 52163,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 52195,
+            "target_end": 52203,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 52246,
+            "target_end": 52254,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 52358,
+            "target_end": 52366,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 52460,
+            "target_end": 52468,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 52616,
+            "target_end": 52624,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 53185,
+            "target_end": 53193,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 53265,
+            "target_end": 53266,
+            "before": "decouple_",
+            "after": "k"
+          },
+          {
+            "target_start": 53267,
+            "target_end": 53275,
+            "before": "",
+            "after": "repack_v"
+          },
+          {
+            "target_start": 53322,
+            "target_end": 53330,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 53472,
+            "target_end": 53480,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 53812,
+            "target_end": 53820,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 53940,
+            "target_end": 53948,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 54033,
+            "target_end": 54041,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 54180,
+            "target_end": 54180,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 54182,
+            "target_end": 54188,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 54261,
+            "target_end": 54269,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 54657,
+            "target_end": 54665,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 54712,
+            "target_end": 54720,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 54827,
+            "target_end": 54827,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 54829,
+            "target_end": 54838,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 54892,
+            "target_end": 54900,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 54962,
+            "target_end": 54970,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 55015,
+            "target_end": 55023,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 55100,
+            "target_end": 55108,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 55177,
+            "target_end": 55185,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 56439,
+            "target_end": 56447,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 57301,
+            "target_end": 57309,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 57529,
+            "target_end": 57537,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 58031,
+            "target_end": 58039,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 58083,
+            "target_end": 58091,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 58222,
+            "target_end": 58230,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 60517,
+            "target_end": 60525,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 60636,
+            "target_end": 60636,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 60638,
+            "target_end": 60644,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 62014,
+            "target_end": 62022,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 62667,
+            "target_end": 62675,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 62876,
+            "target_end": 62876,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 62878,
+            "target_end": 62884,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 63156,
+            "target_end": 63164,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 63535,
+            "target_end": 63543,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 66251,
+            "target_end": 66259,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 68451,
+            "target_end": 68459,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 69628,
+            "target_end": 69628,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 69630,
+            "target_end": 69639,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 69679,
+            "target_end": 69687,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 69955,
+            "target_end": 69963,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 70620,
+            "target_end": 70628,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 70863,
+            "target_end": 70871,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 72695,
+            "target_end": 72703,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 72939,
+            "target_end": 72947,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 73009,
+            "target_end": 73009,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 73011,
+            "target_end": 73017,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 73443,
+            "target_end": 73451,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 75453,
+            "target_end": 75461,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 76841,
+            "target_end": 76849,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 77113,
+            "target_end": 77121,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 77175,
+            "target_end": 77175,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 77177,
+            "target_end": 77183,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 77650,
+            "target_end": 77658,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 77713,
+            "target_end": 77721,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 77785,
+            "target_end": 77785,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 77787,
+            "target_end": 77796,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 77828,
+            "target_end": 77836,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 77879,
+            "target_end": 77887,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 77957,
+            "target_end": 77965,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 78028,
+            "target_end": 78036,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 78081,
+            "target_end": 78089,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 78185,
+            "target_end": 78193,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 78428,
+            "target_end": 78436,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 78560,
+            "target_end": 78568,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 79415,
+            "target_end": 79423,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 79679,
+            "target_end": 79687,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 79732,
+            "target_end": 79740,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 79783,
+            "target_end": 79791,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 79852,
+            "target_end": 79860,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 79976,
+            "target_end": 79984,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 81258,
+            "target_end": 81266,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 83265,
+            "target_end": 83273,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 84061,
+            "target_end": 84069,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 84703,
+            "target_end": 84711,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 93645,
+            "target_end": 93645,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 93647,
+            "target_end": 93656,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 96176,
+            "target_end": 96176,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 96178,
+            "target_end": 96187,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 113853,
+            "target_end": 113853,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 113855,
+            "target_end": 113864,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 115326,
+            "target_end": 115334,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 115682,
+            "target_end": 115690,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 116122,
+            "target_end": 116130,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 117073,
+            "target_end": 117081,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 118762,
+            "target_end": 118770,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 122821,
+            "target_end": 122829,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 123311,
+            "target_end": 123319,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 124058,
+            "target_end": 124058,
+            "before": "_decouple",
+            "after": ""
+          },
+          {
+            "target_start": 124060,
+            "target_end": 124069,
+            "before": "",
+            "after": "_kvrepack"
+          },
+          {
+            "target_start": 126069,
+            "target_end": 126077,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 126157,
+            "target_end": 126165,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      },
+      "source_ast_sha256": "522aa34c0c150f4d6e903046a470e24c1acb20b38bc17737c56d83b2e5f06e3f",
+      "renamed_source_ast_sha256": "f9ee227a92f9fcf0f4527cf81876e54e73225058db6b5d00b6c2685501dc8eca"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/hybridkv_cpu.py",
+      "source_sha256": "ad7b68f1eeb0eca1c1e18751f7a8cd0869dac2f2dbc7f2d02ccea9459a90b113",
+      "target_path": "src/kvrepack/hybridkv_cpu.py",
+      "target_sha256": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_hybridkv.sh"
+      ],
+      "source_ast_sha256": "1a4fcce94a07b5233cb41a2c5779725a4d1f465bdf578877b06be2d281e78261",
+      "renamed_source_ast_sha256": "1a4fcce94a07b5233cb41a2c5779725a4d1f465bdf578877b06be2d281e78261"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/merge_score.py",
+      "source_sha256": "c7b51e8c2632324452cc10c2ad7344599d6b24eabf3d44bbe2476691ef7c713e",
+      "target_path": "src/kvrepack/merge_score.py",
+      "target_sha256": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "rename_decouplekv_brand"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_snapkv_decouplekv_simhead_3b.sh"
+      ],
+      "branding": {
+        "transformation": "rename_decouplekv_brand",
+        "previous_target_path": "src/kvrepack/merge_score.py",
+        "previous_target_sha256": "c7b51e8c2632324452cc10c2ad7344599d6b24eabf3d44bbe2476691ef7c713e",
+        "reversible_edits": [
+          {
+            "target_start": 34,
+            "target_end": 34,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 36,
+            "target_end": 42,
+            "before": "",
+            "after": "Repack"
+          }
+        ]
+      },
+      "source_ast_sha256": "b007dd21ee27dc59b2832ee91f967d2f4cc6691fff315bbcd87136d6ce6e0624",
+      "renamed_source_ast_sha256": "28bb3a33f2c7dba7a0c93dfac12a6829a2c032bca5daf0f55ab502455c55e75a"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py",
+      "source_sha256": "a995a055acd0dd73de8e183ff11ac270d250d0194fcb06f3028f4c10b48ad275",
+      "target_path": "src/kvrepack/qwen_model_snapkv_kvrepack.py",
+      "target_sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "rename_decouplekv_brand"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_snapkv_decouplekv_simhead_3b.sh"
+      ],
+      "branding": {
+        "transformation": "rename_decouplekv_brand",
+        "previous_target_path": "src/kvrepack/qwen_model_snapkv_decouplekv.py",
+        "previous_target_sha256": "a8f1561aa1a2232cf4c53935e493545958cb6b8c21ac435663d26cb00fe0d3e2",
+        "reversible_edits": [
+          {
+            "target_start": 2770,
+            "target_end": 2770,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 2772,
+            "target_end": 2778,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 3169,
+            "target_end": 3177,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3225,
+            "target_end": 3233,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3276,
+            "target_end": 3284,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3339,
+            "target_end": 3342,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3343,
+            "target_end": 3345,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3346,
+            "target_end": 3347,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3473,
+            "target_end": 3481,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3524,
+            "target_end": 3532,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3587,
+            "target_end": 3590,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3591,
+            "target_end": 3593,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3594,
+            "target_end": 3595,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3720,
+            "target_end": 3728,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3767,
+            "target_end": 3775,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3817,
+            "target_end": 3820,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3821,
+            "target_end": 3823,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3824,
+            "target_end": 3825,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3930,
+            "target_end": 3938,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3978,
+            "target_end": 3986,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4029,
+            "target_end": 4032,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4033,
+            "target_end": 4035,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4036,
+            "target_end": 4037,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 4141,
+            "target_end": 4149,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4249,
+            "target_end": 4257,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4421,
+            "target_end": 4429,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4520,
+            "target_end": 4528,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4651,
+            "target_end": 4659,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4722,
+            "target_end": 4725,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4726,
+            "target_end": 4728,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4729,
+            "target_end": 4730,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 4815,
+            "target_end": 4815,
+            "before": "DECOUPLE",
+            "after": ""
+          },
+          {
+            "target_start": 4817,
+            "target_end": 4823,
+            "before": "",
+            "after": "REPACK"
+          },
+          {
+            "target_start": 4868,
+            "target_end": 4876,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4974,
+            "target_end": 4982,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 5061,
+            "target_end": 5064,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 5065,
+            "target_end": 5067,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 5068,
+            "target_end": 5069,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 5148,
+            "target_end": 5156,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 5230,
+            "target_end": 5238,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 5334,
+            "target_end": 5342,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 5431,
+            "target_end": 5439,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 5506,
+            "target_end": 5509,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 5510,
+            "target_end": 5512,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 5513,
+            "target_end": 5514,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 5557,
+            "target_end": 5560,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 5561,
+            "target_end": 5563,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 5564,
+            "target_end": 5565,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 5631,
+            "target_end": 5639,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6138,
+            "target_end": 6146,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6214,
+            "target_end": 6222,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6260,
+            "target_end": 6268,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6296,
+            "target_end": 6299,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 6300,
+            "target_end": 6302,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 6303,
+            "target_end": 6304,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 6361,
+            "target_end": 6369,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6408,
+            "target_end": 6416,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 6445,
+            "target_end": 6448,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 6449,
+            "target_end": 6451,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 6452,
+            "target_end": 6453,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 6763,
+            "target_end": 6771,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 7005,
+            "target_end": 7013,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10626,
+            "target_end": 10629,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 10630,
+            "target_end": 10632,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 10633,
+            "target_end": 10634,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 11101,
+            "target_end": 11104,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 11105,
+            "target_end": 11107,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 11108,
+            "target_end": 11109,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 14333,
+            "target_end": 14341,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14658,
+            "target_end": 14666,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14859,
+            "target_end": 14867,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18931,
+            "target_end": 18939,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19211,
+            "target_end": 19219,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21663,
+            "target_end": 21750,
+            "before": "decouple_k_diff_alpha),\n                        merge_score_mode=config.snapkv_decouple",
+            "after": "kvrepack_k_diff_alpha),\n                        merge_score_mode=config.snapkv_kvrepack"
+          },
+          {
+            "target_start": 23008,
+            "target_end": 23008,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 23010,
+            "target_end": 23016,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 23250,
+            "target_end": 23258,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23477,
+            "target_end": 23485,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23550,
+            "target_end": 23558,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23626,
+            "target_end": 23634,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23978,
+            "target_end": 23986,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 24037,
+            "target_end": 24037,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 24039,
+            "target_end": 24045,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 24912,
+            "target_end": 24920,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 25821,
+            "target_end": 25829,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26116,
+            "target_end": 26124,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26177,
+            "target_end": 26185,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26234,
+            "target_end": 26242,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26288,
+            "target_end": 26296,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26751,
+            "target_end": 26759,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      },
+      "source_ast_sha256": "848f83d4aa48a5d6c56332565d6a89adf46122f4d20f227f728a83eb73d2b838",
+      "renamed_source_ast_sha256": "02d0a5e68694bc535b6aeac0db4c20049b92849d6ddda1d3053a04dfbadd3e06"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/qwen_model_sparsemm_decouplekv.py",
+      "source_sha256": "4ecffad01ff6c3e77b2d3092bc410fc40abc15d5cb56d40e161356591c2b274d",
+      "target_path": "src/kvrepack/qwen_model_sparsemm_kvrepack.py",
+      "target_sha256": "df69b680c900316145bb5b7ceb1191384f1fe3a64338bd1201d50b3094fbca2f",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "rename_decouplekv_brand"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_sparsemm_decouplekv_simhead_3b.sh"
+      ],
+      "branding": {
+        "transformation": "rename_decouplekv_brand",
+        "previous_target_path": "src/kvrepack/qwen_model_sparsemm_decouplekv.py",
+        "previous_target_sha256": "4ecffad01ff6c3e77b2d3092bc410fc40abc15d5cb56d40e161356591c2b274d",
+        "reversible_edits": [
+          {
+            "target_start": 552,
+            "target_end": 552,
+            "before": "decouple",
+            "after": ""
+          },
+          {
+            "target_start": 554,
+            "target_end": 560,
+            "before": "",
+            "after": "repack"
+          },
+          {
+            "target_start": 1601,
+            "target_end": 1604,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 1605,
+            "target_end": 1607,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 1608,
+            "target_end": 1609,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 1874,
+            "target_end": 1882,
+            "before": "Decouple",
+            "after": "KVRepack"
+          },
+          {
+            "target_start": 4989,
+            "target_end": 4992,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4993,
+            "target_end": 4995,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4996,
+            "target_end": 4997,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 5560,
+            "target_end": 5563,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 5564,
+            "target_end": 5566,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 5567,
+            "target_end": 5568,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 9075,
+            "target_end": 9075,
+            "before": "decouple",
+            "after": ""
+          },
+          {
+            "target_start": 9077,
+            "target_end": 9083,
+            "before": "",
+            "after": "repack"
+          },
+          {
+            "target_start": 9172,
+            "target_end": 9180,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9225,
+            "target_end": 9233,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9267,
+            "target_end": 9270,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 9271,
+            "target_end": 9273,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 9274,
+            "target_end": 9275,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 9336,
+            "target_end": 9344,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9389,
+            "target_end": 9397,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9431,
+            "target_end": 9434,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 9435,
+            "target_end": 9437,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 9438,
+            "target_end": 9439,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 9499,
+            "target_end": 9507,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9548,
+            "target_end": 9556,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9587,
+            "target_end": 9590,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 9591,
+            "target_end": 9593,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 9594,
+            "target_end": 9595,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 9659,
+            "target_end": 9667,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9713,
+            "target_end": 9721,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9771,
+            "target_end": 9774,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 9775,
+            "target_end": 9777,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 9778,
+            "target_end": 9779,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 9893,
+            "target_end": 9901,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9940,
+            "target_end": 9948,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9991,
+            "target_end": 9994,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 9995,
+            "target_end": 9997,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 9998,
+            "target_end": 9999,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 10099,
+            "target_end": 10107,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10151,
+            "target_end": 10159,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10193,
+            "target_end": 10196,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 10197,
+            "target_end": 10199,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 10200,
+            "target_end": 10201,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 10267,
+            "target_end": 10275,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10317,
+            "target_end": 10325,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10357,
+            "target_end": 10360,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 10361,
+            "target_end": 10363,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 10364,
+            "target_end": 10365,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 10427,
+            "target_end": 10435,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10483,
+            "target_end": 10491,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10530,
+            "target_end": 10533,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 10534,
+            "target_end": 10536,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 10537,
+            "target_end": 10538,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 10611,
+            "target_end": 10619,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10701,
+            "target_end": 10704,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 10705,
+            "target_end": 10707,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 10708,
+            "target_end": 10709,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 10790,
+            "target_end": 10798,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10873,
+            "target_end": 10881,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10920,
+            "target_end": 10928,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10971,
+            "target_end": 10974,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 10975,
+            "target_end": 10977,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 10978,
+            "target_end": 10979,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 11424,
+            "target_end": 11425,
+            "before": "decouple_",
+            "after": "k"
+          },
+          {
+            "target_start": 11426,
+            "target_end": 11434,
+            "before": "",
+            "after": "repack_v"
+          },
+          {
+            "target_start": 11473,
+            "target_end": 11481,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 11525,
+            "target_end": 11528,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 11529,
+            "target_end": 11531,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 11532,
+            "target_end": 11533,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 11619,
+            "target_end": 11619,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 11621,
+            "target_end": 11627,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 11856,
+            "target_end": 11864,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 12127,
+            "target_end": 12135,
+            "before": "Decouple",
+            "after": "KVRepack"
+          },
+          {
+            "target_start": 12189,
+            "target_end": 12197,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 12256,
+            "target_end": 12264,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 12319,
+            "target_end": 12327,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 12383,
+            "target_end": 12391,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 12445,
+            "target_end": 12453,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 12505,
+            "target_end": 12513,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 12833,
+            "target_end": 12841,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 13140,
+            "target_end": 13140,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 13142,
+            "target_end": 13148,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 15619,
+            "target_end": 15619,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 15621,
+            "target_end": 15627,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 15884,
+            "target_end": 15892,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 16019,
+            "target_end": 16027,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 16766,
+            "target_end": 16774,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19325,
+            "target_end": 19333,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19570,
+            "target_end": 19578,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21500,
+            "target_end": 21508,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22996,
+            "target_end": 22996,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 22998,
+            "target_end": 23004,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 23242,
+            "target_end": 23250,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23326,
+            "target_end": 23334,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23401,
+            "target_end": 23409,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23476,
+            "target_end": 23484,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23891,
+            "target_end": 23899,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 23952,
+            "target_end": 23952,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 23954,
+            "target_end": 23960,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 24940,
+            "target_end": 24940,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 24942,
+            "target_end": 24948,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 25018,
+            "target_end": 25018,
+            "before": "decouple",
+            "after": ""
+          },
+          {
+            "target_start": 25020,
+            "target_end": 25026,
+            "before": "",
+            "after": "repack"
+          },
+          {
+            "target_start": 25993,
+            "target_end": 26001,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26433,
+            "target_end": 26441,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      },
+      "source_ast_sha256": "02ba639802cb76e1cc8012c4d2165543da1105a8dfb524f450a289eaf05bbc35",
+      "renamed_source_ast_sha256": "f61f3a9055d1f19f2ebcf7ca5e969237404ccee90187727a2a0f4f6a499066c3"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py",
+      "source_sha256": "1c49a11eb3823c78ce3efd2046aff466a0f50447c83afbd9b89ce0bb2ea9dc87",
+      "target_path": "src/kvrepack/qwen_model_madakv_kvrepack.py",
+      "target_sha256": "7a2ce16742e3d7f959417d0281c3e58faa1ec9426cba0c66ab14aa9007f92a1b",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "rename_decouplekv_brand"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_madakv_decouplekv_simhead_3b.sh"
+      ],
+      "branding": {
+        "transformation": "rename_decouplekv_brand",
+        "previous_target_path": "src/kvrepack/qwen_model_madakv_decouplekv.py",
+        "previous_target_sha256": "07bbd7feac6ec55a2049cac103c75752748a8eecd37021cae03056ee6525b94c",
+        "reversible_edits": [
+          {
+            "target_start": 2583,
+            "target_end": 2591,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2647,
+            "target_end": 2655,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2698,
+            "target_end": 2706,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2738,
+            "target_end": 2741,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 2742,
+            "target_end": 2744,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 2745,
+            "target_end": 2746,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 2805,
+            "target_end": 2813,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2857,
+            "target_end": 2865,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2913,
+            "target_end": 2916,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 2917,
+            "target_end": 2919,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 2920,
+            "target_end": 2921,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3033,
+            "target_end": 3041,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3082,
+            "target_end": 3090,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3135,
+            "target_end": 3138,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3139,
+            "target_end": 3141,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3142,
+            "target_end": 3143,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3248,
+            "target_end": 3256,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3296,
+            "target_end": 3304,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3334,
+            "target_end": 3337,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3338,
+            "target_end": 3340,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3341,
+            "target_end": 3342,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3402,
+            "target_end": 3410,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3456,
+            "target_end": 3464,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3501,
+            "target_end": 3504,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3505,
+            "target_end": 3507,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3508,
+            "target_end": 3509,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3580,
+            "target_end": 3588,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3668,
+            "target_end": 3671,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3672,
+            "target_end": 3674,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3675,
+            "target_end": 3676,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3755,
+            "target_end": 3763,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3836,
+            "target_end": 3844,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3881,
+            "target_end": 3889,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3930,
+            "target_end": 3933,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3934,
+            "target_end": 3936,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3937,
+            "target_end": 3938,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 4452,
+            "target_end": 4460,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4527,
+            "target_end": 4535,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4573,
+            "target_end": 4581,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4609,
+            "target_end": 4612,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4613,
+            "target_end": 4615,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4616,
+            "target_end": 4617,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 4673,
+            "target_end": 4681,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4720,
+            "target_end": 4728,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4757,
+            "target_end": 4760,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4761,
+            "target_end": 4763,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4764,
+            "target_end": 4765,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 8782,
+            "target_end": 8785,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 8786,
+            "target_end": 8788,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 8789,
+            "target_end": 8790,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19357,
+            "target_end": 19357,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 19359,
+            "target_end": 19365,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 19468,
+            "target_end": 19476,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19722,
+            "target_end": 19730,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19897,
+            "target_end": 19905,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21670,
+            "target_end": 21678,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21732,
+            "target_end": 21740,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22512,
+            "target_end": 22520,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 25830,
+            "target_end": 25838,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 26041,
+            "target_end": 26049,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 27858,
+            "target_end": 27866,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29086,
+            "target_end": 29086,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 29088,
+            "target_end": 29094,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 29336,
+            "target_end": 29344,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29416,
+            "target_end": 29424,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29556,
+            "target_end": 29564,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29902,
+            "target_end": 29910,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 29961,
+            "target_end": 29961,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 29963,
+            "target_end": 29969,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 31148,
+            "target_end": 31156,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 32170,
+            "target_end": 32178,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 32459,
+            "target_end": 32467,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 32517,
+            "target_end": 32525,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 33122,
+            "target_end": 33130,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      },
+      "source_ast_sha256": "9f394294cb97102d1ad96a3d6bbc9a1223ec4530e49b2063df4d0e4ff87f5833",
+      "renamed_source_ast_sha256": "4815899750deff778a6e827e29b5b1837312245d8aa182eac50bba5e62fbfc8e"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/qwen_model_lookm_decouplekv.py",
+      "source_sha256": "c97e8b0ad9f49f07ba6cb3f8b5c6eb0a7e59660fbf9839e7f3c560f36fdd90a1",
+      "target_path": "src/kvrepack/qwen_model_lookm_kvrepack.py",
+      "target_sha256": "59ddc9cd387293e0bba05ad7cbd20bb921ff9119121369f1ae27a7d99540ed4b",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "rename_decouplekv_brand"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_lookm_decouplekv_3b.sh"
+      ],
+      "branding": {
+        "transformation": "rename_decouplekv_brand",
+        "previous_target_path": "src/kvrepack/qwen_model_lookm_decouplekv.py",
+        "previous_target_sha256": "c97e8b0ad9f49f07ba6cb3f8b5c6eb0a7e59660fbf9839e7f3c560f36fdd90a1",
+        "reversible_edits": [
+          {
+            "target_start": 429,
+            "target_end": 437,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2603,
+            "target_end": 2611,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2666,
+            "target_end": 2674,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2716,
+            "target_end": 2724,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2755,
+            "target_end": 2758,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 2759,
+            "target_end": 2761,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 2762,
+            "target_end": 2763,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 2821,
+            "target_end": 2829,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2872,
+            "target_end": 2880,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 2927,
+            "target_end": 2930,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 2931,
+            "target_end": 2933,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 2934,
+            "target_end": 2935,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3046,
+            "target_end": 3054,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3098,
+            "target_end": 3106,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3140,
+            "target_end": 3143,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3144,
+            "target_end": 3146,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3147,
+            "target_end": 3148,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3210,
+            "target_end": 3218,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3257,
+            "target_end": 3265,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3294,
+            "target_end": 3297,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3298,
+            "target_end": 3300,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3301,
+            "target_end": 3302,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3361,
+            "target_end": 3369,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3414,
+            "target_end": 3422,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3471,
+            "target_end": 3474,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3475,
+            "target_end": 3477,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3478,
+            "target_end": 3479,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3527,
+            "target_end": 3530,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3531,
+            "target_end": 3533,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3534,
+            "target_end": 3535,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 3617,
+            "target_end": 3625,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3661,
+            "target_end": 3669,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 3709,
+            "target_end": 3712,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3713,
+            "target_end": 3715,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3716,
+            "target_end": 3717,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 4141,
+            "target_end": 4149,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4196,
+            "target_end": 4204,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4241,
+            "target_end": 4244,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4245,
+            "target_end": 4247,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4248,
+            "target_end": 4249,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 4321,
+            "target_end": 4329,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4366,
+            "target_end": 4374,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 4401,
+            "target_end": 4404,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4405,
+            "target_end": 4407,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4408,
+            "target_end": 4409,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 9642,
+            "target_end": 9650,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9795,
+            "target_end": 9803,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 9905,
+            "target_end": 9913,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 10003,
+            "target_end": 10011,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14143,
+            "target_end": 14151,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 14583,
+            "target_end": 14591,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 16678,
+            "target_end": 16686,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 17915,
+            "target_end": 17923,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18236,
+            "target_end": 18236,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 18238,
+            "target_end": 18244,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 18476,
+            "target_end": 18484,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18555,
+            "target_end": 18563,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 18769,
+            "target_end": 18777,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19000,
+            "target_end": 19008,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 19303,
+            "target_end": 19306,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 19307,
+            "target_end": 19309,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 19310,
+            "target_end": 19311,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 19610,
+            "target_end": 19618,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20073,
+            "target_end": 20081,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 20164,
+            "target_end": 20164,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 20166,
+            "target_end": 20172,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 20722,
+            "target_end": 20730,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 21798,
+            "target_end": 21806,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22156,
+            "target_end": 22164,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22222,
+            "target_end": 22230,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22285,
+            "target_end": 22293,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 22776,
+            "target_end": 22784,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 25585,
+            "target_end": 25593,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      },
+      "source_ast_sha256": "4411c11dac8897b495840d04a6c6c7c3e09cc2365f7db17193bafc7271722de6",
+      "renamed_source_ast_sha256": "4a70082f588fe8be329ce9b97cf26153d9cb5e5c16c91db79eb404d12346f23c"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/lookm_headsplit_decouplekv_utils.py",
+      "source_sha256": "ffc56deade309a0a0c8049fb81d3402b47201ebf9e14bddac1aca69f6bad0d09",
+      "target_path": "src/kvrepack/lookm_headsplit_kvrepack_utils.py",
+      "target_sha256": "1cae33d61dc02b1c57798def8ebc05ab2f3efdaa68cfc39e444cbba6ff97229b",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "rename_decouplekv_brand"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_lookm_decouplekv_3b.sh"
+      ],
+      "branding": {
+        "transformation": "rename_decouplekv_brand",
+        "previous_target_path": "src/kvrepack/lookm_headsplit_decouplekv_utils.py",
+        "previous_target_sha256": "ffc56deade309a0a0c8049fb81d3402b47201ebf9e14bddac1aca69f6bad0d09",
+        "reversible_edits": [
+          {
+            "target_start": 994,
+            "target_end": 1002,
+            "before": "Decouple",
+            "after": "KVRepack"
+          },
+          {
+            "target_start": 3381,
+            "target_end": 3384,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 3385,
+            "target_end": 3387,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 3388,
+            "target_end": 3389,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 4300,
+            "target_end": 4303,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4304,
+            "target_end": 4306,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4307,
+            "target_end": 4308,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 4630,
+            "target_end": 4633,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 4634,
+            "target_end": 4636,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 4637,
+            "target_end": 4638,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 4804,
+            "target_end": 4804,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 4806,
+            "target_end": 4812,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 5117,
+            "target_end": 5120,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 5121,
+            "target_end": 5123,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 5124,
+            "target_end": 5125,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 5229,
+            "target_end": 5232,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 5233,
+            "target_end": 5235,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 5236,
+            "target_end": 5237,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 5336,
+            "target_end": 5339,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 5340,
+            "target_end": 5342,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 5343,
+            "target_end": 5344,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 7077,
+            "target_end": 7080,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 7081,
+            "target_end": 7083,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 7084,
+            "target_end": 7085,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 7156,
+            "target_end": 7156,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 7158,
+            "target_end": 7164,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 7536,
+            "target_end": 7536,
+            "before": "Decouple",
+            "after": ""
+          },
+          {
+            "target_start": 7538,
+            "target_end": 7544,
+            "before": "",
+            "after": "Repack"
+          },
+          {
+            "target_start": 7661,
+            "target_end": 7669,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 7706,
+            "target_end": 7714,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8162,
+            "target_end": 8170,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8193,
+            "target_end": 8201,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8230,
+            "target_end": 8238,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8260,
+            "target_end": 8268,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 8719,
+            "target_end": 8727,
+            "before": "Decouple",
+            "after": "KVRepack"
+          },
+          {
+            "target_start": 9508,
+            "target_end": 9511,
+            "before": "D",
+            "after": "KVR"
+          },
+          {
+            "target_start": 9512,
+            "target_end": 9514,
+            "before": "",
+            "after": "PA"
+          },
+          {
+            "target_start": 9515,
+            "target_end": 9516,
+            "before": "OUPLE",
+            "after": "K"
+          },
+          {
+            "target_start": 15052,
+            "target_end": 15060,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 15138,
+            "target_end": 15146,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 15192,
+            "target_end": 15200,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 15439,
+            "target_end": 15447,
+            "before": "decouple",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 16028,
+            "target_end": 16036,
+            "before": "decouple",
+            "after": "kvrepack"
+          }
+        ]
+      },
+      "source_ast_sha256": "dec8db0946cf6c519ecb1ad3df4cfd62c4703a4918b9b0996dd439ba6335fcc6",
+      "renamed_source_ast_sha256": "9e2872399294c2807db758e0cf5bd920f628e5bd53ca244de00018a70f14f737"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/randomkv_utils.py",
+      "source_sha256": "847b88ff3d73166d9d74b907f8cf68b4e5ec31c2c015d5d9a1e54e2439689faa",
+      "target_path": "src/kvrepack/randomkv_utils.py",
+      "target_sha256": "847b88ff3d73166d9d74b907f8cf68b4e5ec31c2c015d5d9a1e54e2439689faa",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_randomkv_3b.sh"
+      ],
+      "source_ast_sha256": "08227d8660dfec9882b6e2182bdf21197320a0cc87fc822c615f98ed42d09b54",
+      "renamed_source_ast_sha256": "08227d8660dfec9882b6e2182bdf21197320a0cc87fc822c615f98ed42d09b54"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/qwen_model_randomkv.py",
+      "source_sha256": "a55057dd40572be08b6f9a7046179363ba2af16e6fb0b161c09ba8fb0d57ee9a",
+      "target_path": "src/kvrepack/qwen_model_randomkv.py",
+      "target_sha256": "a55057dd40572be08b6f9a7046179363ba2af16e6fb0b161c09ba8fb0d57ee9a",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_randomkv_3b.sh"
+      ],
+      "source_ast_sha256": "3d5b0b6176e78a6734098369b733cc2d1b2b84851c89b813f226cdf6095d462f",
+      "renamed_source_ast_sha256": "3d5b0b6176e78a6734098369b733cc2d1b2b84851c89b813f226cdf6095d462f"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/asymkv_official/__init__.py",
+      "source_sha256": "ba4df13eba96cad8c371d1924ed9cfbfecee1b23eed498a636a2d7c6f2c0d78d",
+      "target_path": "src/kvrepack/asymkv_official/__init__.py",
+      "target_sha256": "ba4df13eba96cad8c371d1924ed9cfbfecee1b23eed498a636a2d7c6f2c0d78d",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_asymkv_official_lmms.sh"
+      ],
+      "source_ast_sha256": "dd40dd60e203bed7ac2b18b4b37eca25f2888ba0df55cb991b4bfdbfe652f45b",
+      "renamed_source_ast_sha256": "dd40dd60e203bed7ac2b18b4b37eca25f2888ba0df55cb991b4bfdbfe652f45b"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/asymkv_official/attention.py",
+      "source_sha256": "f66c75f20b64304e9ea4cf799cd3a18ab2c3602a1c02784df4804029a7a3f865",
+      "target_path": "src/kvrepack/asymkv_official/attention.py",
+      "target_sha256": "f66c75f20b64304e9ea4cf799cd3a18ab2c3602a1c02784df4804029a7a3f865",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_asymkv_official_lmms.sh"
+      ],
+      "source_ast_sha256": "3b6f265db377debb18a959897ceaad2279ff813e80ad02f611a0d95db4a23091",
+      "renamed_source_ast_sha256": "3b6f265db377debb18a959897ceaad2279ff813e80ad02f611a0d95db4a23091"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/asymkv_official/cache.py",
+      "source_sha256": "1d06c401a6febe85a622fb4b8544dc092c985d1a5210eaecfc0f8714f68cefb2",
+      "target_path": "src/kvrepack/asymkv_official/cache.py",
+      "target_sha256": "1d06c401a6febe85a622fb4b8544dc092c985d1a5210eaecfc0f8714f68cefb2",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_asymkv_official_lmms.sh"
+      ],
+      "source_ast_sha256": "cf75a88412455cfbdc89b3d1f4184cdf92b00425528b20a7f951555e70391893",
+      "renamed_source_ast_sha256": "cf75a88412455cfbdc89b3d1f4184cdf92b00425528b20a7f951555e70391893"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/asymkv_official/compression.py",
+      "source_sha256": "c10fa7442b1dcd7e8b9ff48098bb105545af691ceeb37cce0ba651039797a3f9",
+      "target_path": "src/kvrepack/asymkv_official/compression.py",
+      "target_sha256": "c10fa7442b1dcd7e8b9ff48098bb105545af691ceeb37cce0ba651039797a3f9",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_asymkv_official_lmms.sh"
+      ],
+      "source_ast_sha256": "996cef139dacb3cfd47da89f2c3656b8a0ee8aeba4c527176ab12992b725dfcf",
+      "renamed_source_ast_sha256": "996cef139dacb3cfd47da89f2c3656b8a0ee8aeba4c527176ab12992b725dfcf"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/asymkv_official/generation.py",
+      "source_sha256": "8f649e57404b3955f5d6e2ed1b44e1c5a4737f22827a4d482d2ad6ef7c48818d",
+      "target_path": "src/kvrepack/asymkv_official/generation.py",
+      "target_sha256": "f68dbd411938f9fef3fac74a57a9057e026ce1583667a5f23bdaef379d720508",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module",
+        "redirect_private_asymkv_helpers"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_asymkv_official_lmms.sh"
+      ],
+      "source_ast_sha256": "031b03968464b75721a8c0ec99ea5306b1524beb64380da5afce35946efa10cd",
+      "renamed_source_ast_sha256": "031b03968464b75721a8c0ec99ea5306b1524beb64380da5afce35946efa10cd"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/asymkv_official/integration.py",
+      "source_sha256": "2da76a65644ada05675274ef929210c9684bc89e39e5d479d9cb5524a280098e",
+      "target_path": "src/kvrepack/asymkv_official/integration.py",
+      "target_sha256": "2da76a65644ada05675274ef929210c9684bc89e39e5d479d9cb5524a280098e",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_asymkv_official_lmms.sh"
+      ],
+      "source_ast_sha256": "b3f5bb4f15cb494db2a515d84541b4a48d9cf0028c8280073dd621fb6794ac42",
+      "renamed_source_ast_sha256": "b3f5bb4f15cb494db2a515d84541b4a48d9cf0028c8280073dd621fb6794ac42"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/asymkv_paper/generation.py",
+      "source_sha256": "8ebc459357a7771ace231d902823b1abee5c7be6603ea2222efe2f1aeeb2c674",
+      "target_path": "src/kvrepack/_asymkv_helpers.py",
+      "target_sha256": "5e701e6451f05537f2f942969f389cccb82400c8546139451734c1cf1c885b22",
+      "kind": "selected_functions",
+      "transformations": [
+        "extract_private_asymkv_helpers"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_asymkv_official_lmms.sh"
+      ],
+      "selected_functions": [
+        "_freeze_model_parameters",
+        "_scatter_features",
+        "_prepare_multimodal_inputs",
+        "_chunk_language_model_loss",
+        "_normalize_eos_ids"
+      ],
+      "function_verification": [
+        {
+          "name": "_freeze_model_parameters",
+          "source_start_line": 62,
+          "source_end_line": 67,
+          "source_ast_sha256": "1ea3ee75039ccde76201c0c5e3e733d948550b3e730465a66f86fdad2b34cfab",
+          "target_ast_sha256": "1ea3ee75039ccde76201c0c5e3e733d948550b3e730465a66f86fdad2b34cfab",
+          "renamed_source_ast_sha256": "1ea3ee75039ccde76201c0c5e3e733d948550b3e730465a66f86fdad2b34cfab"
+        },
+        {
+          "name": "_scatter_features",
+          "source_start_line": 70,
+          "source_end_line": 89,
+          "source_ast_sha256": "92e6df30a0b6431d5277f5e25615be999b9f3a0e623b8d7382e03b67eeaae295",
+          "target_ast_sha256": "92e6df30a0b6431d5277f5e25615be999b9f3a0e623b8d7382e03b67eeaae295",
+          "renamed_source_ast_sha256": "92e6df30a0b6431d5277f5e25615be999b9f3a0e623b8d7382e03b67eeaae295"
+        },
+        {
+          "name": "_prepare_multimodal_inputs",
+          "source_start_line": 92,
+          "source_end_line": 139,
+          "source_ast_sha256": "bba1ad7f7c1be0f1b901622ab3236a5eadbdc787c14b47f9a72b7499e17a232c",
+          "target_ast_sha256": "bba1ad7f7c1be0f1b901622ab3236a5eadbdc787c14b47f9a72b7499e17a232c",
+          "renamed_source_ast_sha256": "bba1ad7f7c1be0f1b901622ab3236a5eadbdc787c14b47f9a72b7499e17a232c"
+        },
+        {
+          "name": "_chunk_language_model_loss",
+          "source_start_line": 142,
+          "source_end_line": 150,
+          "source_ast_sha256": "8291dfad670f4bccd0c2876b196e84534da0d1b3ed1fe93fed1322e45144a0dc",
+          "target_ast_sha256": "8291dfad670f4bccd0c2876b196e84534da0d1b3ed1fe93fed1322e45144a0dc",
+          "renamed_source_ast_sha256": "8291dfad670f4bccd0c2876b196e84534da0d1b3ed1fe93fed1322e45144a0dc"
+        },
+        {
+          "name": "_normalize_eos_ids",
+          "source_start_line": 191,
+          "source_end_line": 198,
+          "source_ast_sha256": "12437ee2dddbfb8123354a0428ffd4275c8186d03db8b9eb3142d513ff76baf2",
+          "target_ast_sha256": "12437ee2dddbfb8123354a0428ffd4275c8186d03db8b9eb3142d513ff76baf2",
+          "renamed_source_ast_sha256": "12437ee2dddbfb8123354a0428ffd4275c8186d03db8b9eb3142d513ff76baf2"
+        }
+      ]
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/hybrid_asymkv.py",
+      "source_sha256": "8bd9a26d6bd40425880ffe4b6256c00d44a0c05382683907cc3cdf4420479d63",
+      "target_path": "src/kvrepack/hybrid_asymkv.py",
+      "target_sha256": "918e45ed4765c1f6ce836b6c31c8ddfd1491ee1f4de6e205669a22f80ca7fdea",
+      "kind": "selected_functions",
+      "transformations": [
+        "extract_internal_asymkv_reducer"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh"
+      ],
+      "selected_functions": [
+        "reduce_groups_asymkv"
+      ],
+      "function_verification": [
+        {
+          "name": "reduce_groups_asymkv",
+          "source_start_line": 23,
+          "source_end_line": 98,
+          "source_ast_sha256": "32b591448e413c5e161010f1aeb5eebab0d7e4b6f02fbb0ddc8a6f38e62c13bb",
+          "target_ast_sha256": "32b591448e413c5e161010f1aeb5eebab0d7e4b6f02fbb0ddc8a6f38e62c13bb",
+          "renamed_source_ast_sha256": "32b591448e413c5e161010f1aeb5eebab0d7e4b6f02fbb0ddc8a6f38e62c13bb"
+        }
+      ]
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/monkeypatch.py",
+      "source_sha256": "29fb63a6d1b3c0386d7670b6f97c7f8eafb19efa317c1f2a45269b6efc90af08",
+      "target_path": "src/kvrepack/monkeypatch.py",
+      "target_sha256": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+      "kind": "selected_dispatcher",
+      "transformations": [
+        "rename_python_import_root",
+        "retain_selected_qwen_dispatch",
+        "append_llava_dispatcher_with_local_imports",
+        "rename_decouplekv_brand"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_randomkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_asymkv_official_lmms.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_lookm_decouplekv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_snapkv_decouplekv_simhead_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_sparsemm_decouplekv_simhead_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_madakv_decouplekv_simhead_3b.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh"
+      ],
+      "retained_branches": [
+        "asymkv_official",
+        "snapkv",
+        "sparsemm",
+        "sparsemm_kvrepack",
+        "lookm",
+        "lookm_kvrepack",
+        "madakv",
+        "madakv_kvrepack",
+        "randomkv",
+        "snapkv_kvrepack"
+      ],
+      "removed_branches": [
+        "asymkv_paper",
+        "lookm_headsplit_decouplekv",
+        "asymkv",
+        "decouplekv",
+        "decouplekv_base",
+        "decouplekv_blacklist",
+        "hybrid_decouplekv",
+        "adakv"
+      ],
+      "branch_verification": [
+        {
+          "method": "asymkv_official",
+          "source_body_ast_sha256": "365f764bb8f33bafe0eef93f42663b8f0da6af54d939984f2663e17dba4f2317",
+          "target_body_ast_sha256": "365f764bb8f33bafe0eef93f42663b8f0da6af54d939984f2663e17dba4f2317",
+          "target_method": "asymkv_official",
+          "renamed_source_body_ast_sha256": "365f764bb8f33bafe0eef93f42663b8f0da6af54d939984f2663e17dba4f2317",
+          "pre_branding_target_body_ast_sha256": "365f764bb8f33bafe0eef93f42663b8f0da6af54d939984f2663e17dba4f2317"
+        },
+        {
+          "method": "snapkv",
+          "source_body_ast_sha256": "3964a95fa10374752799ffce0b68fb7fe7e67ce40653df88fa3b14f0d9980f79",
+          "target_body_ast_sha256": "3964a95fa10374752799ffce0b68fb7fe7e67ce40653df88fa3b14f0d9980f79",
+          "target_method": "snapkv",
+          "renamed_source_body_ast_sha256": "3964a95fa10374752799ffce0b68fb7fe7e67ce40653df88fa3b14f0d9980f79",
+          "pre_branding_target_body_ast_sha256": "3964a95fa10374752799ffce0b68fb7fe7e67ce40653df88fa3b14f0d9980f79"
+        },
+        {
+          "method": "sparsemm",
+          "source_body_ast_sha256": "7b6ae33ef487cc34359b3d7e8e626cd7bc0e864180d412c4a84d4d2105b68003",
+          "target_body_ast_sha256": "7b6ae33ef487cc34359b3d7e8e626cd7bc0e864180d412c4a84d4d2105b68003",
+          "target_method": "sparsemm",
+          "renamed_source_body_ast_sha256": "7b6ae33ef487cc34359b3d7e8e626cd7bc0e864180d412c4a84d4d2105b68003",
+          "pre_branding_target_body_ast_sha256": "7b6ae33ef487cc34359b3d7e8e626cd7bc0e864180d412c4a84d4d2105b68003"
+        },
+        {
+          "method": "sparsemm_decouplekv",
+          "source_body_ast_sha256": "ef2293eb9fe82fb57864c78659e60f92dfea1c18874b2501dbcc5c88f6679d21",
+          "target_body_ast_sha256": "e1fb7834145530add63db6dca9a4a91b0ceac780e1e85fb6a3500064a5a8a4da",
+          "target_method": "sparsemm_kvrepack",
+          "renamed_source_body_ast_sha256": "e1fb7834145530add63db6dca9a4a91b0ceac780e1e85fb6a3500064a5a8a4da",
+          "pre_branding_target_body_ast_sha256": "ef2293eb9fe82fb57864c78659e60f92dfea1c18874b2501dbcc5c88f6679d21"
+        },
+        {
+          "method": "lookm",
+          "source_body_ast_sha256": "9ccb54ec863321ea1c17151f29bdbc8935821a126e87cd7a6d45f95689b9db2d",
+          "target_body_ast_sha256": "9ccb54ec863321ea1c17151f29bdbc8935821a126e87cd7a6d45f95689b9db2d",
+          "target_method": "lookm",
+          "renamed_source_body_ast_sha256": "9ccb54ec863321ea1c17151f29bdbc8935821a126e87cd7a6d45f95689b9db2d",
+          "pre_branding_target_body_ast_sha256": "9ccb54ec863321ea1c17151f29bdbc8935821a126e87cd7a6d45f95689b9db2d"
+        },
+        {
+          "method": "lookm_decouplekv",
+          "source_body_ast_sha256": "b4c3eaaa4bda91aba74fe87dd9cfca13691572b9b53a2015c619f496fbfd5419",
+          "target_body_ast_sha256": "61e7a284545b28c68269317309c2ea77671a13e6f40591d3f90a5dc1c1efe0b9",
+          "target_method": "lookm_kvrepack",
+          "renamed_source_body_ast_sha256": "61e7a284545b28c68269317309c2ea77671a13e6f40591d3f90a5dc1c1efe0b9",
+          "pre_branding_target_body_ast_sha256": "b4c3eaaa4bda91aba74fe87dd9cfca13691572b9b53a2015c619f496fbfd5419"
+        },
+        {
+          "method": "madakv",
+          "source_body_ast_sha256": "b97ca86882d00c503767f42499caae88972b52027a3910ac3e9c12a61dc1bc51",
+          "target_body_ast_sha256": "b97ca86882d00c503767f42499caae88972b52027a3910ac3e9c12a61dc1bc51",
+          "target_method": "madakv",
+          "renamed_source_body_ast_sha256": "b97ca86882d00c503767f42499caae88972b52027a3910ac3e9c12a61dc1bc51",
+          "pre_branding_target_body_ast_sha256": "b97ca86882d00c503767f42499caae88972b52027a3910ac3e9c12a61dc1bc51"
+        },
+        {
+          "method": "madakv_decouplekv",
+          "source_body_ast_sha256": "c00f497c84b63b812419286f18e863cdf4ee4ad96e3104f68c05d833f23d8b41",
+          "target_body_ast_sha256": "feb640d3e1102a64363bb1caf4c0e8a83edd3ce7647d7e82345674c23b19b6cc",
+          "target_method": "madakv_kvrepack",
+          "renamed_source_body_ast_sha256": "feb640d3e1102a64363bb1caf4c0e8a83edd3ce7647d7e82345674c23b19b6cc",
+          "pre_branding_target_body_ast_sha256": "c00f497c84b63b812419286f18e863cdf4ee4ad96e3104f68c05d833f23d8b41"
+        },
+        {
+          "method": "randomkv",
+          "source_body_ast_sha256": "005d583e14522e2ed51494d06ed743f20655bfc0964128879f2fc83efc50e879",
+          "target_body_ast_sha256": "005d583e14522e2ed51494d06ed743f20655bfc0964128879f2fc83efc50e879",
+          "target_method": "randomkv",
+          "renamed_source_body_ast_sha256": "005d583e14522e2ed51494d06ed743f20655bfc0964128879f2fc83efc50e879",
+          "pre_branding_target_body_ast_sha256": "005d583e14522e2ed51494d06ed743f20655bfc0964128879f2fc83efc50e879"
+        },
+        {
+          "method": "snapkv_decouplekv",
+          "source_body_ast_sha256": "04fa90942bf24cb21a9aedc2c92ddbd14d3dca8a99da1dc86b025310dbe709ac",
+          "target_body_ast_sha256": "12df8ceb87b81902df2a9e41ab2e32fbe9db2e48c00228b27a9c336eed4fc8a3",
+          "target_method": "snapkv_kvrepack",
+          "renamed_source_body_ast_sha256": "12df8ceb87b81902df2a9e41ab2e32fbe9db2e48c00228b27a9c336eed4fc8a3",
+          "pre_branding_target_body_ast_sha256": "04fa90942bf24cb21a9aedc2c92ddbd14d3dca8a99da1dc86b025310dbe709ac"
+        }
+      ],
+      "wrapper_verification": {
+        "source_wrapper_function": "replace_qwen.prepare_inputs_for_generation_qwen",
+        "removed_unreachable_if": "method in [\"decouplekv_base\", \"decouplekv_blacklist\", \"hybrid_decouplekv\"] and input_ids is not None",
+        "expected_selected_wrapper_ast_sha256": "9696e662e042731aded8ec1185ab38cb05b0aa27919da25d0bd298c6558d25a3",
+        "renamed_selected_wrapper_ast_sha256": "9696e662e042731aded8ec1185ab38cb05b0aa27919da25d0bd298c6558d25a3"
+      },
+      "llava_source": {
+        "source_path": "HybridKV-opensource/hybridkv/monkeypatch.py",
+        "source_sha256": "1423579e55fe04161bc6bf38a7b1513a44e7b3f775d2553c1953a7313fd53f4a",
+        "source_function": "replace_llava_onevision",
+        "source_start_line": 91,
+        "source_end_line": 114
+      },
+      "llava_retained_branches": [
+        "snapkv",
+        "sparsemm",
+        "lookm",
+        "madakv"
+      ],
+      "llava_branch_verification": [
+        {
+          "method": "snapkv",
+          "source_body_ast_sha256": "411303f2e08e07bbebd49cd31036bc1a9407cb3beb4ea52a6c8d804556467955",
+          "target_body_ast_sha256": "411303f2e08e07bbebd49cd31036bc1a9407cb3beb4ea52a6c8d804556467955"
+        },
+        {
+          "method": "sparsemm",
+          "source_body_ast_sha256": "f7b85ce5571e26ab2a910a0ab1fa945026e500323896e94d067a78e07d3170c9",
+          "target_body_ast_sha256": "f7b85ce5571e26ab2a910a0ab1fa945026e500323896e94d067a78e07d3170c9"
+        },
+        {
+          "method": "lookm",
+          "source_body_ast_sha256": "e3bc153b7b3f80069b8ef3a89205c4ad11e57fa3cbfc16376855f22edf032ea6",
+          "target_body_ast_sha256": "e3bc153b7b3f80069b8ef3a89205c4ad11e57fa3cbfc16376855f22edf032ea6"
+        },
+        {
+          "method": "madakv",
+          "source_body_ast_sha256": "67589f7dc91e0fd4b900ba55c24a9f0a8e413e04005901dd132e33c28a5b763b",
+          "target_body_ast_sha256": "67589f7dc91e0fd4b900ba55c24a9f0a8e413e04005901dd132e33c28a5b763b"
+        }
+      ],
+      "llava_function_verification": {
+        "source_function_ast_sha256": "c4be07954249a19c9b8fba5d6dfac04bc9c2153e8b74f0ab179abc9061119c2e",
+        "target_function_ast_sha256": "cdb8997a66a3eb74c2beab549f3d88778ebec469e06ea1d4864a1cebdcad2a74",
+        "target_normalized_function_ast_sha256": "c4be07954249a19c9b8fba5d6dfac04bc9c2153e8b74f0ab179abc9061119c2e",
+        "normalization": "Remove only the two leading local import statements and the unsupported-method fallback else. The remaining complete function AST equals the opensource source dispatcher.",
+        "qwen_function_before_ast_sha256": "6c6e3e00fb295847545af10e9e4e0d8df252e270dc06eb36f5806ecee0ae13c9",
+        "qwen_function_after_ast_sha256": "6c6e3e00fb295847545af10e9e4e0d8df252e270dc06eb36f5806ecee0ae13c9",
+        "renamed_qwen_function_ast_sha256": "577d1e673e1922debca296b61731613c0ebd96933e69dc4bdcfe9cfb116a7338"
+      },
+      "branding": {
+        "transformation": "rename_decouplekv_brand",
+        "previous_target_path": "src/kvrepack/monkeypatch.py",
+        "previous_target_sha256": "ed6c85487d783bcc2df7958d9da8e7f733ca8eba22df07cba97d269c35e705fe",
+        "reversible_edits": [
+          {
+            "target_start": 953,
+            "target_end": 961,
+            "before": "decouplekv",
+            "after": "kvrepack"
+          },
+          {
+            "target_start": 994,
+            "target_end": 2003,
+            "before": "",
+            "after": "KVRepack!\")\n        from .qwen_model import adakv_qwen_forward\n        from .qwen_model_sparsemm_kvrepack import qwen_flash_attn2_forward_SparseMMKVRepack\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward = adakv_qwen_forward\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward = qwen_flash_attn2_forward_SparseMMKVRepack\n\n    elif method == \"lookm\":\n        print(\"Using LookM!\")\n        from .qwen_model import qwen_flash_attn2_forward_LookM\n        from .qwen_model_croatt import (\n            qwen_vl_forward_cross_attn,\n            cross_attn_qwen_decoder_forward,\n            cross_attn_qwen_forward_unflatten,\n        )\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLModel.forward = qwen_vl_forward_cross_attn\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward = cross_attn_qwen_forward_unflatten\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VL"
+          },
+          {
+            "target_start": 2007,
+            "target_end": 2509,
+            "before": "",
+            "after": "derLayer.forward = cross_attn_qwen_decoder_forward\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward = qwen_flash_attn2_forward_LookM\n\n    elif method == \"lookm_kvrepack\":\n        print(\"Using LookM-KVRepack!\")\n        from .qwen_model_lookm_kvrepack import qwen_flash_attn2_forward_LookMKVRepack\n        from .qwen_model_croatt import (\n            qwen_vl_forward_cross_attn,\n            cross_attn_qwen_decoder_forward,\n            cross_attn_qwen_forward_"
+          },
+          {
+            "target_start": 2510,
+            "target_end": 3078,
+            "before": "ple",
+            "after": "nflatten,\n        )\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLModel.forward = qwen_vl_forward_cross_attn\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward = cross_attn_qwen_forward_unflatten\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLDecoderLayer.forward = cross_attn_qwen_decoder_forward\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward = qwen_flash_attn2_forward_LookMKVRepack\n\n    elif method == \"madakv\":\n        print(\"Using Mada"
+          },
+          {
+            "target_start": 3116,
+            "target_end": 3116,
+            "before": "adakv_qwen_forward\n        from .qwen_model_sparsemm_decouplekv import ",
+            "after": ""
+          },
+          {
+            "target_start": 3141,
+            "target_end": 3141,
+            "before": "Sparse",
+            "after": ""
+          },
+          {
+            "target_start": 3142,
+            "target_end": 3145,
+            "before": "MDecouple",
+            "after": "ada"
+          },
+          {
+            "target_start": 3147,
+            "target_end": 3456,
+            "before": "",
+            "after": "\n        from .qwen_model_croatt import (\n            qwen_vl_forward_cross_attn,\n            cross_attn_qwen_decoder_forward_MadaKV,\n            cross_attn_qwen_forward_unflatten_MadaKV,\n        )\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLModel.forward = qwen_vl_forward_cross_attn"
+          },
+          {
+            "target_start": 3546,
+            "target_end": 3717,
+            "before": "adakv_qwen_forward",
+            "after": "cross_attn_qwen_forward_unflatten_MadaKV\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLDecoderLayer.forward = cross_attn_qwen_decoder_forward_MadaKV"
+          },
+          {
+            "target_start": 3838,
+            "target_end": 3838,
+            "before": "Sparse",
+            "after": ""
+          },
+          {
+            "target_start": 3839,
+            "target_end": 3842,
+            "before": "MDecouple",
+            "after": "ada"
+          },
+          {
+            "target_start": 3866,
+            "target_end": 3881,
+            "before": "lookm",
+            "after": "madakv_kvrepack"
+          },
+          {
+            "target_start": 3905,
+            "target_end": 3905,
+            "before": "Look",
+            "after": ""
+          },
+          {
+            "target_start": 3906,
+            "target_end": 3920,
+            "before": "",
+            "after": "adaKV-KVRepack"
+          },
+          {
+            "target_start": 3948,
+            "target_end": 3964,
+            "before": "",
+            "after": "_madakv_kvrepack"
+          },
+          {
+            "target_start": 3997,
+            "target_end": 3997,
+            "before": "Look",
+            "after": ""
+          },
+          {
+            "target_start": 3998,
+            "target_end": 4011,
+            "before": "",
+            "after": "adaKVKVRepack"
+          },
+          {
+            "target_start": 4136,
+            "target_end": 4143,
+            "before": "",
+            "after": "_MadaKV"
+          },
+          {
+            "target_start": 4190,
+            "target_end": 4197,
+            "before": "",
+            "after": "_MadaKV"
+          },
+          {
+            "target_start": 4443,
+            "target_end": 4450,
+            "before": "",
+            "after": "_MadaKV"
+          },
+          {
+            "target_start": 4574,
+            "target_end": 4581,
+            "before": "",
+            "after": "_MadaKV"
+          },
+          {
+            "target_start": 4702,
+            "target_end": 4702,
+            "before": "Look",
+            "after": ""
+          },
+          {
+            "target_start": 4703,
+            "target_end": 4716,
+            "before": "",
+            "after": "adaKVKVRepack"
+          },
+          {
+            "target_start": 4738,
+            "target_end": 4744,
+            "before": "lookm_decouple",
+            "after": "random"
+          },
+          {
+            "target_start": 4770,
+            "target_end": 4776,
+            "before": "LookM-Decouple",
+            "after": "Random"
+          },
+          {
+            "target_start": 4807,
+            "target_end": 4813,
+            "before": "lookm_decouple",
+            "after": "random"
+          },
+          {
+            "target_start": 4848,
+            "target_end": 4854,
+            "before": "LookMDecouple",
+            "after": "Random"
+          },
+          {
+            "target_start": 4856,
+            "target_end": 4856,
+            "before": "\n        from .qwen_model_croatt import (\n            qwen_vl_forward_cross_attn",
+            "after": ""
+          },
+          {
+            "target_start": 4857,
+            "target_end": 4879,
+            "before": "\n            cross_attn_qwen_decoder_forward,\n            cross_attn_qwen_forward_unflatten,\n        )\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLModel.forward = qwen_vl_forward_cross_attn",
+            "after": " randomkv_qwen_forward"
+          },
+          {
+            "target_start": 4969,
+            "target_end": 4982,
+            "before": "cross_attn_qwen_forward_unflatten\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLDecoderLayer.forward = cross_attn_qwen_decoder",
+            "after": "randomkv_qwen"
+          },
+          {
+            "target_start": 5111,
+            "target_end": 5117,
+            "before": "LookMDecouple",
+            "after": "Random"
+          },
+          {
+            "target_start": 5141,
+            "target_end": 5156,
+            "before": "madakv",
+            "after": "snapkv_kvrepack"
+          },
+          {
+            "target_start": 5180,
+            "target_end": 5184,
+            "before": "Mada",
+            "after": "Snap"
+          },
+          {
+            "target_start": 5186,
+            "target_end": 5195,
+            "before": "",
+            "after": "-KVRepack"
+          },
+          {
+            "target_start": 5223,
+            "target_end": 5239,
+            "before": "",
+            "after": "_snapkv_kvrepack"
+          },
+          {
+            "target_start": 5272,
+            "target_end": 5276,
+            "before": "Mada",
+            "after": "Snap"
+          },
+          {
+            "target_start": 5278,
+            "target_end": 5466,
+            "before": "\n        from .qwen_model_croatt import ",
+            "after": "KVRepack\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward = qwen_flash_attn2_forward_SnapKVKVRepack\n\n    else:\n        raise NotImplementedError"
+          },
+          {
+            "target_start": 5467,
+            "target_end": 5754,
+            "before": "\n            qwen_vl_forward_cross_attn",
+            "after": "f\"Unsupported qwen method: {method}\")\n\n    if method not in [\"fullkv\"]:\n\n        original_prepare_inputs = transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation\n        def prepare_inputs_for_generation_qwen(\n            self"
+          },
+          {
+            "target_start": 5768,
+            "target_end": 7369,
+            "before": "cross_attn_qwen_decoder_forward_Mada",
+            "after": "input_ids,\n            past_key_values=None,\n            attention_mask=None,\n            inputs_embeds=None,\n            cache_position=None,\n            position_ids=None,\n            use_cache=True,\n            pixel_values=None,\n            pixel_values_videos=None,\n            image_grid_thw=None,\n            video_grid_thw=None,\n            second_per_grid_ts=None,\n            **kwargs,\n        ):\n\n            if past_key_values is not None and not isinstance(past_key_values, tuple):\n                if len(past_key_values.key_cache) == 0:\n                    for layer in self.model.language_model.layers:\n                        layer.self_attn.kv_seq_len = 0\n\n            return original_prepare_inputs(\n                self,\n                input_ids,\n                past_key_values=past_key_values,\n                attention_mask=attention_mask,\n                inputs_embeds=inputs_embeds,\n                cache_position=cache_position,\n                position_ids=position_ids,\n                pixel_values=pixel_values,\n                pixel_values_videos=pixel_values_videos,\n                image_grid_thw=image_grid_thw,\n                video_grid_thw=video_grid_thw,\n                second_per_grid_ts=second_per_grid_ts,\n                use_cache=use_cache,\n                **kwargs,\n            )\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation = prepare_inputs_for_generation_qwen\n\n\ndef replace_llava_onevision(method):\n    from kvrepack.qwen2_model import (\n        qwen2_flash_attn2_forward_Snap"
+          },
+          {
+            "target_start": 7381,
+            "target_end": 7491,
+            "before": "    cross_attn_qwen_forward_unflatten",
+            "after": "qwen2_flash_attn2_forward_SparseMM,\n        qwen2_flash_attn2_forward_LookM,\n        qwen2_flash_attn2_forward"
+          },
+          {
+            "target_start": 7508,
+            "target_end": 7710,
+            "before": "",
+            "after": "sparsemm_qwen2_forward,\n        lookm_qwen2_forward,\n        madakv_qwen2_forward,\n        decoder_qwen2_forward_sparsemm,\n        decoder_qwen2_forward_lookm,\n        decoder_qwen2_forward_madakv,\n    "
+          },
+          {
+            "target_start": 7716,
+            "target_end": 7729,
+            "before": "    transformers.models.qwen2_5_vl",
+            "after": "from kvrepack"
+          },
+          {
+            "target_start": 7739,
+            "target_end": 7762,
+            "before": "qwen2_5_vl.Qwen2_5_V",
+            "after": "llava_onevision import "
+          },
+          {
+            "target_start": 7763,
+            "target_end": 7776,
+            "before": "",
+            "after": "lavaOnevision"
+          },
+          {
+            "target_start": 7781,
+            "target_end": 7787,
+            "before": ".forward = qwen_vl_forward_cross_attn\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward = cross_attn_qwen_forward_unflatten_MadaKV\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLDecoderLayer.forward = cross_attn_qwen_decoder_forward_MadaKV\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward = qwen_flash_attn2_forward_MadaKV\n\n    el",
+            "after": "\n\n    "
+          },
+          {
+            "target_start": 7801,
+            "target_end": 7805,
+            "before": "madakv_decouple",
+            "after": "snap"
+          },
+          {
+            "target_start": 7831,
+            "target_end": 7835,
+            "before": "Mada",
+            "after": "Snap"
+          },
+          {
+            "target_start": 7837,
+            "target_end": 7849,
+            "before": "-DecoupleK",
+            "after": " on LlavaOne"
+          },
+          {
+            "target_start": 7850,
+            "target_end": 7855,
+            "before": "",
+            "after": "ision"
+          },
+          {
+            "target_start": 7867,
+            "target_end": 7938,
+            "before": "from .qwen_model_madakv_decouplekv import qwen",
+            "after": "transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen2"
+          },
+          {
+            "target_start": 7959,
+            "target_end": 7963,
+            "before": "Mada",
+            "after": "Snap"
+          },
+          {
+            "target_start": 7965,
+            "target_end": 7970,
+            "before": "DecoupleKV\n        from .qwen_model_croatt import (\n            qwen_vl_forward_cross_attn,\n            cross_attn_qwen_decoder_forward_MadaKV,\n            cross_attn_qwen_forward_unflatten_MadaKV,\n        )\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLModel.forward = qwen_vl_forward_cross_attn\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward = cross_attn_qwen_forward_unflatten_MadaKV\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLDecoderLayer.forward = cross_attn_qwen_decoder_forward_MadaKV\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward = qwen_flash_attn2_forward_MadaKVDecoupleKV\n",
+            "after": "\n    "
+          },
+          {
+            "target_start": 7991,
+            "target_end": 7999,
+            "before": "randomkv",
+            "after": "sparsemm"
+          },
+          {
+            "target_start": 8023,
+            "target_end": 8043,
+            "before": "RandomK",
+            "after": "SparseMM on LlavaOne"
+          },
+          {
+            "target_start": 8044,
+            "target_end": 8049,
+            "before": "",
+            "after": "ision"
+          },
+          {
+            "target_start": 8061,
+            "target_end": 8164,
+            "before": "from .qwen_model_randomkv import qwen_flas",
+            "after": "transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = sparsemm_qwen2_forward  # DynamicSplitCac"
+          },
+          {
+            "target_start": 8165,
+            "target_end": 8200,
+            "before": "_attn2_forward_RandomKV, randomkv_qwen_forward\n        transformers.models.qwen2_5_vl",
+            "after": "e\n        transformers.models.qwen2"
+          },
+          {
+            "target_start": 8215,
+            "target_end": 8215,
+            "before": "_5_vl",
+            "after": ""
+          },
+          {
+            "target_start": 8221,
+            "target_end": 8228,
+            "before": "_5_V",
+            "after": "Decoder"
+          },
+          {
+            "target_start": 8229,
+            "target_end": 8420,
+            "before": "Text",
+            "after": "ayer.forward = decoder_qwen2_forward_sparsemm # decoder need past the past_key_value\n        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen2_flash_attn2_forward_Sparse"
+          },
+          {
+            "target_start": 8421,
+            "target_end": 8427,
+            "before": "odel.forward = randomkv_qwen_forward\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward = qwen_flash_attn2_forward_RandomKV\n",
+            "after": "M\n    "
+          },
+          {
+            "target_start": 8448,
+            "target_end": 8453,
+            "before": "snapkv_decouplekv",
+            "after": "lookm"
+          },
+          {
+            "target_start": 8477,
+            "target_end": 8494,
+            "before": "SnapK",
+            "after": "LookM on LlavaOne"
+          },
+          {
+            "target_start": 8495,
+            "target_end": 8500,
+            "before": "-DecoupleKV",
+            "after": "ision"
+          },
+          {
+            "target_start": 8512,
+            "target_end": 9022,
+            "before": "from .qwen_model_snapkv_deco",
+            "after": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionModel.forward = LlavaOnevisionModel.forward # is_vision_token_mask past\n        transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = lookm_qwen2_forward # past vision mask\n        transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward = decoder_qwen2_forward_lookm # past vision mask\n        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen2_flash_attn2_forward_LookM # past vision mask & act"
+          },
+          {
+            "target_start": 9023,
+            "target_end": 9047,
+            "before": "plekv import qwen_flas",
+            "after": "al pruning\n\n    elif met"
+          },
+          {
+            "target_start": 9048,
+            "target_end": 9089,
+            "before": "_attn2_forward_Snap",
+            "after": "od == \"madakv\":\n        print(\"Using Mada"
+          },
+          {
+            "target_start": 9091,
+            "target_end": 9451,
+            "before": "",
+            "after": " in LlavaOneVison!\")\n        transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionModel.forward = LlavaOnevisionModel.forward # is_vision_token_mask past\n        transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = madakv_qwen2_forward # past vision mask & next-layer budget\n        transformers.models.qwen2.modeling_qwen2.Qwen2"
+          },
+          {
+            "target_start": 9455,
+            "target_end": 9536,
+            "before": "",
+            "after": "derLayer.forward = decoder_qwen2_forward_madakv # past vision mask & next-layer b"
+          },
+          {
+            "target_start": 9537,
+            "target_end": 9646,
+            "before": "ple",
+            "after": "dget\n        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen2_flash_attn2_forward_Mada"
+          },
+          {
+            "target_start": 9648,
+            "target_end": 9684,
+            "before": "\n        transformers.models.qwen2_5_vl.modelin",
+            "after": " # past vision mask & next-layer bud"
+          },
+          {
+            "target_start": 9685,
+            "target_end": 9691,
+            "before": "_qwen2_5_vl.Qwen2_5_VLFlas",
+            "after": "et wit"
+          },
+          {
+            "target_start": 9692,
+            "target_end": 9693,
+            "before": "Attention2.forward = qwen_flash_attn2_forward_SnapKVDeco",
+            "after": " "
+          },
+          {
+            "target_start": 9695,
+            "target_end": 9701,
+            "before": "leKV\n",
+            "after": "dating"
+          },
+          {
+            "target_start": 9760,
+            "target_end": 9773,
+            "before": "qwe",
+            "after": "LlavaOnevisio"
+          },
+          {
+            "target_start": 9794,
+            "target_end": 9794,
+            "before": "\n    if method not in [\"fullkv\"]:\n\n        original_prepare_inputs = transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation\n        def prepare_inputs_for_generation_qwen(\n            self,\n            input_ids,\n            past_key_values=None,\n            attention_mask=None,\n            inputs_embeds=None,\n            cache_position=None,\n            position_ids=None,\n            use_cache=True,\n            pixel_values=None,\n            pixel_values_videos=None,\n            image_grid_thw=None,\n            video_grid_thw=None,\n            second_per_grid_ts=None,\n            **kwargs,\n        ):\n\n            if past_key_values is not None and not isinstance(past_key_values, tuple):\n                if len(past_key_values.key_cache) == 0:\n                    for layer in self.model.language_model.layers:\n                        layer.self_attn.kv_seq_len = 0\n\n            return original_prepare_inputs(\n                self,\n                input_ids,\n                past_key_values=past_key_values,\n                attention_mask=attention_mask,\n                inputs_embeds=inputs_embeds,\n                cache_position=cache_position,\n                position_ids=position_ids,\n                pixel_values=pixel_values,\n                pixel_values_videos=pixel_values_videos,\n                image_grid_thw=image_grid_thw,\n                video_grid_thw=video_grid_thw,\n                second_per_grid_ts=second_per_grid_ts,\n                use_cache=use_cache,\n                **kwargs,\n            )\n        transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation = prepare_inputs_for_generation_qwen\n\n\ndef replace_llava_onevision(method):\n    from kvrepack.qwen2_model import (\n        qwen2_flash_attn2_forward_SnapKV,\n        qwen2_flash_attn2_forward_SparseMM,\n        qwen2_flash_attn2_forward_LookM,\n        qwen2_flash_attn2_forward_MadaKV,\n        sparsemm_qwen2_forward,\n        lookm_qwen2_forward,\n        madakv_qwen2_forward,\n        decoder_qwen2_forward_sparsemm,\n        decoder_qwen2_forward_lookm,\n        decoder_qwen2_forward_madakv,\n    )\n    from kvrepack.modeling_llava_onevision import LlavaOnevisionModel\n\n    if method == \"snapkv\":\n        print(\"Using SnapKV on LlavaOneVision!\")\n        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen2_flash_attn2_forward_SnapKV\n    \n    elif method == \"sparsemm\":\n        print(\"Using SparseMM on LlavaOneVision!\")\n        transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = sparsemm_qwen2_forward  # DynamicSplitCache\n        transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward = decoder_qwen2_forward_sparsemm # decoder need past the past_key_value\n        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen2_flash_attn2_forward_SparseMM\n    \n    elif method == \"lookm\":\n        print(\"Using LookM on LlavaOneVision!\")\n        transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionModel.forward = LlavaOnevisionModel.forward # is_vision_token_mask past\n        transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = lookm_qwen2_forward # past vision mask\n        transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward = decoder_qwen2_forward_lookm # past vision mask\n        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen2_flash_attn2_forward_LookM # past vision mask & actual pruning\n\n    elif method == \"madakv\":\n        print(\"Using MadaKV in LlavaOneVison!\")\n        transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionModel.forward = LlavaOnevisionModel.forward # is_vision_token_mask past\n        transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward = madakv_qwen2_forward # past vision mask & next-layer budget\n        transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward = decoder_qwen2_forward_madakv # past vision mask & next-layer budget\n        transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward = qwen2_flash_attn2_forward_MadaKV # past vision mask & next-layer budget with updating\n    else:\n        raise NotImplementedError(f\"Unsupported LlavaOnevision method: {method}\")\n",
+            "after": ""
+          }
+        ]
+      },
+      "original_retained_branches": [
+        "asymkv_official",
+        "snapkv",
+        "sparsemm",
+        "sparsemm_decouplekv",
+        "lookm",
+        "lookm_decouplekv",
+        "madakv",
+        "madakv_decouplekv",
+        "randomkv",
+        "snapkv_decouplekv"
+      ]
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/configs/param_config.json",
+      "source_sha256": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+      "target_path": "src/kvrepack/configs/param_config.json",
+      "target_sha256": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+      "kind": "byte_copy",
+      "transformations": [
+        "copy_resource_bytes"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_hybridkv.sh"
+      ]
+    },
+    {
+      "source_path": "HybridKV-artifact/visual_head/head_score/llava-ov.json",
+      "source_sha256": "85c6fa21d42696291de3c964db18afef6bb0dc600a99daff5947e73e437ded17",
+      "target_path": "src/kvrepack/data/head_score/llava-ov.json",
+      "target_sha256": "85c6fa21d42696291de3c964db18afef6bb0dc600a99daff5947e73e437ded17",
+      "kind": "byte_copy",
+      "transformations": [
+        "copy_resource_bytes"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_hybridkv.sh"
+      ]
+    },
+    {
+      "source_path": "HybridKV-artifact/visual_head/head_score/qwen25-vl-3b.json",
+      "source_sha256": "0dc35454994f4a50277f974dac88a17aad6dbcbca0d2be9c15ca21209c6ab2ec",
+      "target_path": "src/kvrepack/data/head_score/qwen25-vl-3b.json",
+      "target_sha256": "0dc35454994f4a50277f974dac88a17aad6dbcbca0d2be9c15ca21209c6ab2ec",
+      "kind": "byte_copy",
+      "transformations": [
+        "copy_resource_bytes"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh"
+      ]
+    },
+    {
+      "source_path": "HybridKV-artifact/visual_head/head_score/qwen2_5.json",
+      "source_sha256": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e",
+      "target_path": "src/kvrepack/data/head_score/qwen2_5.json",
+      "target_sha256": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e",
+      "kind": "byte_copy",
+      "transformations": [
+        "copy_resource_bytes"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv_3b.sh",
+        "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh"
+      ]
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/modeling_llava_onevision.py",
+      "source_sha256": "44f3becc21c598ff5201dd71acce10b7dd8d8bbf41bbaac0a8fc4d101f36718d",
+      "target_path": "src/kvrepack/modeling_llava_onevision.py",
+      "target_sha256": "d9f7c292990dd28873295d10155b0cbec271748f70a1900e61cb0d4c696aedb8",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_hybridkv.sh"
+      ],
+      "source_ast_sha256": "4b795284e413396e1185918aeea0a7b422e2669ae310a179a2ba5c9ac06ba500",
+      "renamed_source_ast_sha256": "4b795284e413396e1185918aeea0a7b422e2669ae310a179a2ba5c9ac06ba500"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/modeling_qwen2.py",
+      "source_sha256": "22f740946c5a2eda71f538ff1d7979147ea12fd5ecb11641098e3c43fabf5ffa",
+      "target_path": "src/kvrepack/modeling_qwen2.py",
+      "target_sha256": "22f740946c5a2eda71f538ff1d7979147ea12fd5ecb11641098e3c43fabf5ffa",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+        "HybridKV-artifact/scripts/eval/llava_ov_hybridkv.sh"
+      ],
+      "source_ast_sha256": "9a6b898e5ed7a56222f42fd9c4fbd922268da8b0f00636455db569db8459468a",
+      "renamed_source_ast_sha256": "9a6b898e5ed7a56222f42fd9c4fbd922268da8b0f00636455db569db8459468a"
+    },
+    {
+      "source_path": "HybridKV-artifact/hybridkv/qwen2_model.py",
+      "source_sha256": "2da6d77d20e869e4bd830068a1d545b847d26423774ea23bd2672582cf388801",
+      "target_path": "src/kvrepack/qwen2_model.py",
+      "target_sha256": "79e3d323b7d5e212ac97349689246ed95ac9cfe5e973671e73f0dffbdb0c2c94",
+      "kind": "mechanical_copy",
+      "transformations": [
+        "rename_python_import_root",
+        "rename_cuda_module"
+      ],
+      "entrypoint_refs": [
+        "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh"
+      ],
+      "source_ast_sha256": "b1af3281f127ccf2e6a8d5e0354dce3ae7593230dc2f12234b65175f8a502241",
+      "renamed_source_ast_sha256": "b1af3281f127ccf2e6a8d5e0354dce3ae7593230dc2f12234b65175f8a502241"
+    }
+  ],
+  "llava_static_compatibility": {
+    "transformers_version": "4.52.3",
+    "validation_kind": "Read installed source files only; no torch/model import or execution.",
+    "confirmed_symbols": {
+      "transformers.integrations": [
+        "use_kernel_forward_from_hub"
+      ],
+      "transformers.modeling_layers": [
+        "GradientCheckpointingLayer"
+      ],
+      "transformers.utils": [
+        "auto_docstring",
+        "can_return_tuple",
+        "LossKwargs"
+      ],
+      "transformers.modeling_flash_attention_utils": [
+        "FlashAttentionKwargs"
+      ],
+      "transformers.models.qwen2.modeling_qwen2": [
+        "Qwen2Attention",
+        "Qwen2DecoderLayer",
+        "Qwen2Model"
+      ],
+      "transformers.models.llava_onevision.modeling_llava_onevision": [
+        "LlavaOnevisionModel"
+      ]
+    },
+    "source_selection_notes": [
+      "artifact llava_ov_ratio.sh currently selects fullkv/lookm/snapkv; sparsemm/madakv are optional branches already implemented in its companion opensource dispatcher and artifact qwen2_model.",
+      "artifact monkeypatch.py omits replace_llava_onevision, so its original baseline call path is incomplete. This integration explicitly uses the existing opensource dispatch assignments with artifact-derived functions.",
+      "qwen2_model imports modeling_qwen2, which imports hybridkv_cpu and its CUDA extension at module import time. All four patched Llava baselines therefore require kvrepack_kernel even when a given baseline does not call a custom kernel.",
+      "HybridKV uses the original artifact param_config.json, including llava_ov.budget_fixed_ratio=0.1; the opensource config has a different 0.5 value and is not substituted.",
+      "API presence and AST checks do not establish GPU correctness or numerical equivalence."
+    ]
+  },
+  "frontend_integration": {
+    "files_sha256": {
+      "src/kvrepack/__init__.py": "e19f320f8a08d4ccf474ab12a2dea315a1470924f2bb63faf7a9f7b79ba8fb44",
+      "src/kvrepack/run.py": "6624bd7b88d1f549dcc2aa30a77dcd5f3ee5d1b49b464843301342fce457f2f0",
+      "src/kvrepack/experiments/__init__.py": "d84f4e11c7ac34846b6c62fce0b54277143358ecbd3f04cbfd079d71cbbc617f",
+      "src/kvrepack/experiments/registry.py": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+      "src/kvrepack/experiments/runner.py": "64c8fa752f1191b1198f7e1d49fef8b4a44301532617711553108a19fb928011"
+    },
+    "registry_snapshot_path": "provenance/method_registry.json",
+    "registry_snapshot_sha256": "dff60122bec2bd09c1d7e2ef2cd4d32004ad44cf9bccb81966e00ebce445264d",
+    "pre_branding_registry_snapshot_sha256": "89ec10b3c3e3f97e964ea9ebc30c9e69f164549964a8e1b0d4007bd417f76329",
+    "snapshot_generation": "{model: {name: spec.describe() for name, spec in methods.items()} for model, methods in METHODS_BY_MODEL.items()}",
+    "branding_validation": "Current snapshot equals recursive ordered brand mapping of previous snapshot, protecting each source_script historical filename. Numeric values and all other settings are unchanged."
+  }
+}

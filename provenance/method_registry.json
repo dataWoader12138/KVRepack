@@ -1,0 +1,1751 @@
+{
+  "qwen2_5_vl": {
+    "fullkv": {
+      "public_method": "fullkv",
+      "internal_method": "fullkv",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/run_qwen7b_fullkv_vatex_nextqa_limit200.sh",
+      "source_lines": "7,82-96",
+      "implementation": [
+        "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-7B-Instruct",
+        "tasks": [
+          "vatex_test",
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {},
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {},
+      "notes": [
+        "The selected script explicitly used the opensource FullKV adapter; no compression patch is installed."
+      ]
+    },
+    "hybridkv": {
+      "public_method": "hybridkv",
+      "internal_method": "hybridkv",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio_hybridkv.sh",
+      "source_lines": "1-36",
+      "implementation": [
+        "kvrepack.modeling_qwen2_5_vl",
+        "kvrepack.hybridkv_utils"
+      ],
+      "model_path": "custom_qwen2_5_vl",
+      "kernel": "kvrepack_kernel",
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-7B-Instruct",
+        "tasks": [
+          "vatex_test",
+          "videochatgpt_temporal",
+          "videochatgpt_gen",
+          "videochatgpt_consistency",
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "HEAD_CLASSIFY": "head_ada",
+          "BUDGET_METHOD": "head_ada"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "1",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "HEAD_CLASSIFY": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "head_ada"
+          ],
+          "exclusive_minimum": false
+        },
+        "BUDGET_METHOD": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "head_ada"
+          ],
+          "exclusive_minimum": false
+        }
+      },
+      "notes": []
+    },
+    "snapkv": {
+      "public_method": "snapkv",
+      "internal_method": "snapkv",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+      "source_lines": "1-31",
+      "implementation": [
+        "kvrepack.qwen_model"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-7B-Instruct",
+        "tasks": [
+          "videochatgpt_gen",
+          "videochatgpt_temporal",
+          "videochatgpt_consistency",
+          "vatex_test",
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": []
+    },
+    "sparsemm": {
+      "public_method": "sparsemm",
+      "internal_method": "sparsemm",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+      "source_lines": "1-31",
+      "implementation": [
+        "kvrepack.qwen_model"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": "kvrepack_kernel",
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-7B-Instruct",
+        "tasks": [
+          "videochatgpt_gen",
+          "videochatgpt_temporal",
+          "videochatgpt_consistency",
+          "vatex_test",
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": []
+    },
+    "madakv": {
+      "public_method": "madakv",
+      "internal_method": "madakv",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+      "source_lines": "1-31",
+      "implementation": [
+        "kvrepack.qwen_model"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-7B-Instruct",
+        "tasks": [
+          "videochatgpt_gen",
+          "videochatgpt_temporal",
+          "videochatgpt_consistency",
+          "vatex_test",
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": []
+    },
+    "lookm": {
+      "public_method": "lookm",
+      "internal_method": "lookm",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+      "source_lines": "1-31",
+      "implementation": [
+        "kvrepack.qwen_model"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-7B-Instruct",
+        "tasks": [
+          "videochatgpt_gen",
+          "videochatgpt_temporal",
+          "videochatgpt_consistency",
+          "vatex_test",
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": []
+    },
+    "randomkv": {
+      "public_method": "randomkv",
+      "internal_method": "randomkv",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio_randomkv_3b.sh",
+      "source_lines": "3-45",
+      "implementation": [
+        "kvrepack.qwen_model_randomkv"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-3B-Instruct",
+        "tasks": [
+          "nextqa_oe_test",
+          "vatex_test"
+        ],
+        "frames": 64,
+        "limit": 20000,
+        "env": {
+          "BUDGET_RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "1",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": [
+        "BUDGET is unset: the history budget follows BUDGET_RATIO."
+      ]
+    },
+    "asymkv": {
+      "public_method": "asymkv",
+      "internal_method": "asymkv_official",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_asymkv_official_lmms.sh",
+      "source_lines": "6-19,43-56",
+      "implementation": [
+        "kvrepack.asymkv_official.integration"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-3B-Instruct",
+        "tasks": [
+          "vatex_test",
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.10",
+          "RATIO": "0.10",
+          "MASK_RATIO": "0.10",
+          "ASYMKV_START_SIZE": "32",
+          "ASYMKV_CHUNK_SIZE": "512"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "MASK_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "ASYMKV_START_SIZE": {
+          "kind": "int",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "ASYMKV_CHUNK_SIZE": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        }
+      },
+      "notes": [
+        "Only the official integration is exposed; paper and matched Hybrid variants are excluded."
+      ]
+    },
+    "hybridkv_kvrepack": {
+      "public_method": "hybridkv_kvrepack",
+      "internal_method": "hybridkv_kvrepack",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl"
+      ],
+      "baseline": "hybridkv",
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio_hybrid_decouplekv_3b.sh",
+      "source_lines": "20-68,96-105",
+      "implementation": [
+        "kvrepack.modeling_qwen2_5_vl",
+        "kvrepack.hybridkv_utils"
+      ],
+      "model_path": "custom_qwen2_5_vl",
+      "kernel": "kvrepack_kernel",
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-3B-Instruct",
+        "tasks": [
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 10000,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.10",
+          "RATIO": "0.10",
+          "HEAD_CLASSIFY": "head_ada",
+          "BUDGET_METHOD": "head_ada",
+          "HYBRID_KVREPACK_CHUNK_SIZE": "8",
+          "HYBRID_KVREPACK_COMPRESS_RATIO": "0.50",
+          "K_DIFF_ALPHA": "2",
+          "HYBRID_KVREPACK_K_DIFF_ALPHA": "2",
+          "HYBRID_KVREPACK_MAX_GROUP_SIZE": "0",
+          "HYBRID_KVREPACK_BLOCK_META_WEIGHT": "uniform",
+          "HYBRID_KVREPACK_STATIC_MERGE_SCOPE": "visual",
+          "HYBRID_KVREPACK_K_MERGE_SPACE": "raw_reapply",
+          "HYBRID_KVREPACK_SIMHEAD_ENABLE": "1",
+          "HYBRID_KVREPACK_SIMHEAD_MERGE_RATIO": "0.30",
+          "HYBRID_KVREPACK_SIMHEAD_SIM_SPACE": "raw",
+          "HYBRID_KVREPACK_VERBOSE": "0",
+          "HYBRIDKV_VERBOSE": "0",
+          "HYBRID_KVREPACK_MERGE_SCORE_MODE": "full"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "HEAD_CLASSIFY": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "head_ada"
+          ],
+          "exclusive_minimum": false
+        },
+        "BUDGET_METHOD": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "head_ada"
+          ],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_CHUNK_SIZE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "8"
+          ],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_COMPRESS_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "K_DIFF_ALPHA": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_K_DIFF_ALPHA": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_MAX_GROUP_SIZE": {
+          "kind": "int",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_BLOCK_META_WEIGHT": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "uniform"
+          ],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_STATIC_MERGE_SCOPE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "visual",
+            "all"
+          ],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_K_MERGE_SPACE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "raw_reapply",
+            "rope"
+          ],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_SIMHEAD_ENABLE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "0",
+            "1"
+          ],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_SIMHEAD_MERGE_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_SIMHEAD_SIM_SPACE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "raw",
+            "rope"
+          ],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_VERBOSE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "0",
+            "1"
+          ],
+          "exclusive_minimum": false
+        },
+        "HYBRIDKV_VERBOSE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "0",
+            "1"
+          ],
+          "exclusive_minimum": false
+        },
+        "HYBRID_KVREPACK_MERGE_SCORE_MODE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "full",
+            "importance_only",
+            "difference_only"
+          ],
+          "exclusive_minimum": false
+        }
+      },
+      "notes": []
+    },
+    "snapkv_kvrepack": {
+      "public_method": "snapkv_kvrepack",
+      "internal_method": "snapkv_kvrepack",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl"
+      ],
+      "baseline": "snapkv",
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio_snapkv_decouplekv_simhead_3b.sh",
+      "source_lines": "19-65,80-89",
+      "implementation": [
+        "kvrepack.qwen_model_snapkv_kvrepack"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-3B-Instruct",
+        "tasks": [
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET_RATIO": "0.10",
+          "SNAPKV_SIMHEAD_MERGE_RATIO": "0",
+          "SNAPKV_SIMHEAD_SIM_SPACE": "raw",
+          "SNAPKV_KVREPACK_COMPRESS_RATIO": "0.90",
+          "K_DIFF_ALPHA": "1",
+          "SNAPKV_KVREPACK_SCORE_CORRECTION": "none",
+          "SNAPKV_KVREPACK_ENABLE": "1",
+          "SNAPKV_KVREPACK_WINDOW_SIZE": "32",
+          "SNAPKV_KVREPACK_KERNEL_SIZE": "5",
+          "SNAPKV_KVREPACK_POOLING": "avgpool",
+          "SNAPKV_KVREPACK_GQA_FUNC": "mean",
+          "SNAPKV_KVREPACK_MERGE_SCORE_MODE": "full"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "SNAPKV_SIMHEAD_MERGE_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "SNAPKV_SIMHEAD_SIM_SPACE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "raw",
+            "rope"
+          ],
+          "exclusive_minimum": false
+        },
+        "SNAPKV_KVREPACK_COMPRESS_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "K_DIFF_ALPHA": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "SNAPKV_KVREPACK_SCORE_CORRECTION": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "none"
+          ],
+          "exclusive_minimum": false
+        },
+        "SNAPKV_KVREPACK_ENABLE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "0",
+            "1"
+          ],
+          "exclusive_minimum": false
+        },
+        "SNAPKV_KVREPACK_WINDOW_SIZE": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "SNAPKV_KVREPACK_KERNEL_SIZE": {
+          "kind": "odd_int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "SNAPKV_KVREPACK_POOLING": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "avgpool",
+            "maxpool"
+          ],
+          "exclusive_minimum": false
+        },
+        "SNAPKV_KVREPACK_GQA_FUNC": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "mean",
+            "max"
+          ],
+          "exclusive_minimum": false
+        },
+        "SNAPKV_KVREPACK_MERGE_SCORE_MODE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "full",
+            "importance_only",
+            "difference_only"
+          ],
+          "exclusive_minimum": false
+        }
+      },
+      "notes": [
+        "The selected script defaults to merge ratio 0; enable merge explicitly with --set SNAPKV_SIMHEAD_MERGE_RATIO=... ."
+      ]
+    },
+    "sparsemm_kvrepack": {
+      "public_method": "sparsemm_kvrepack",
+      "internal_method": "sparsemm_kvrepack",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl"
+      ],
+      "baseline": "sparsemm",
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio_sparsemm_decouplekv_simhead_3b.sh",
+      "source_lines": "18-63,80-89",
+      "implementation": [
+        "kvrepack.qwen_model_sparsemm_kvrepack"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": "kvrepack_kernel",
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-3B-Instruct",
+        "tasks": [
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.10",
+          "RATIO": "0.10",
+          "SPARSEMM_SIMHEAD_MERGE_RATIO": "0.5",
+          "SPARSEMM_SIMHEAD_SIM_SPACE": "raw",
+          "SPARSEMM_KVREPACK_COMPRESS_RATIO": "0.8",
+          "K_DIFF_ALPHA": "0",
+          "SPARSEMM_KVREPACK_SCORE_CORRECTION": "none",
+          "SPARSEMM_KVREPACK_BUDGET_RATIO": "0.10",
+          "SPARSEMM_KVREPACK_RATIO": "0.10",
+          "SPARSEMM_KVREPACK_HEAD_SCORE": "visual",
+          "SPARSEMM_KVREPACK_WINDOW_SIZE": "32",
+          "SPARSEMM_KVREPACK_KERNEL_SIZE": "5",
+          "SPARSEMM_KVREPACK_POOLING": "avgpool",
+          "SPARSEMM_KVREPACK_GQA_FUNC": "mean",
+          "SPARSEMM_KVREPACK_K_DIFF_ALPHA": "0"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "SPARSEMM_SIMHEAD_MERGE_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "SPARSEMM_SIMHEAD_SIM_SPACE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "raw",
+            "rope"
+          ],
+          "exclusive_minimum": false
+        },
+        "SPARSEMM_KVREPACK_COMPRESS_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "K_DIFF_ALPHA": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "SPARSEMM_KVREPACK_SCORE_CORRECTION": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "none"
+          ],
+          "exclusive_minimum": false
+        },
+        "SPARSEMM_KVREPACK_BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "SPARSEMM_KVREPACK_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "SPARSEMM_KVREPACK_HEAD_SCORE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "visual"
+          ],
+          "exclusive_minimum": false
+        },
+        "SPARSEMM_KVREPACK_WINDOW_SIZE": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "SPARSEMM_KVREPACK_KERNEL_SIZE": {
+          "kind": "odd_int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "SPARSEMM_KVREPACK_POOLING": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "avgpool",
+            "maxpool"
+          ],
+          "exclusive_minimum": false
+        },
+        "SPARSEMM_KVREPACK_GQA_FUNC": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "mean",
+            "max"
+          ],
+          "exclusive_minimum": false
+        },
+        "SPARSEMM_KVREPACK_K_DIFF_ALPHA": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        }
+      },
+      "notes": []
+    },
+    "madakv_kvrepack": {
+      "public_method": "madakv_kvrepack",
+      "internal_method": "madakv_kvrepack",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl"
+      ],
+      "baseline": "madakv",
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio_madakv_decouplekv_simhead_3b.sh",
+      "source_lines": "19-59,75-84",
+      "implementation": [
+        "kvrepack.qwen_model_madakv_kvrepack"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-3B-Instruct",
+        "tasks": [
+          "nextqa_oe_test"
+        ],
+        "frames": 64,
+        "limit": 20000,
+        "env": {
+          "BUDGET_RATIO": "0.10",
+          "MADAKV_SIMHEAD_MERGE_RATIO": "0.1",
+          "MADAKV_SIMHEAD_SIM_SPACE": "raw",
+          "MADAKV_KVREPACK_COMPRESS_RATIO": "0.8",
+          "K_DIFF_ALPHA": "1",
+          "MADAKV_KVREPACK_SCORE_CORRECTION": "none",
+          "MADAKV_KVREPACK_BUDGET_RATIO": "0.10",
+          "MADAKV_KVREPACK_THRESHOLD": "0.8",
+          "MADAKV_KVREPACK_WINDOW_SIZE": "32",
+          "MADAKV_KVREPACK_GQA_FUNC": "mean",
+          "MADAKV_KVREPACK_K_DIFF_ALPHA": "1",
+          "MADAKV_KVREPACK_ENABLE": "1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "MADAKV_SIMHEAD_MERGE_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "MADAKV_SIMHEAD_SIM_SPACE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "raw",
+            "rope"
+          ],
+          "exclusive_minimum": false
+        },
+        "MADAKV_KVREPACK_COMPRESS_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "K_DIFF_ALPHA": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "MADAKV_KVREPACK_SCORE_CORRECTION": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "none"
+          ],
+          "exclusive_minimum": false
+        },
+        "MADAKV_KVREPACK_BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "MADAKV_KVREPACK_THRESHOLD": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "MADAKV_KVREPACK_WINDOW_SIZE": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "MADAKV_KVREPACK_GQA_FUNC": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "mean",
+            "max"
+          ],
+          "exclusive_minimum": false
+        },
+        "MADAKV_KVREPACK_K_DIFF_ALPHA": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "MADAKV_KVREPACK_ENABLE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "0",
+            "1"
+          ],
+          "exclusive_minimum": false
+        }
+      },
+      "notes": []
+    },
+    "lookm_kvrepack": {
+      "public_method": "lookm_kvrepack",
+      "internal_method": "lookm_kvrepack",
+      "model": "qwen2_5_vl",
+      "supported_models": [
+        "qwen2_5_vl"
+      ],
+      "baseline": "lookm",
+      "source_script": "HybridKV-artifact/scripts/eval/qwen_ratio_lookm_decouplekv_3b.sh",
+      "source_lines": "18-58,72-81",
+      "implementation": [
+        "kvrepack.qwen_model_lookm_kvrepack"
+      ],
+      "model_path": "transformers_qwen2_5_vl",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "Qwen/Qwen2.5-VL-3B-Instruct",
+        "tasks": [
+          "vatex_test"
+        ],
+        "frames": 64,
+        "limit": 9000,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.10",
+          "RATIO": "0.10",
+          "LOOKM_SIMHEAD_MERGE_RATIO": "0.50",
+          "LOOKM_SIMHEAD_SIM_SPACE": "raw",
+          "LOOKM_KVREPACK_COMPRESS_RATIO": "0.80",
+          "K_DIFF_ALPHA": "0",
+          "LOOKM_KVREPACK_SCORE_CORRECTION": "none",
+          "LOOKM_KVREPACK_BUDGET_RATIO": "0.10",
+          "LOOKM_KVREPACK_WINDOW_SIZE": "32",
+          "LOOKM_KVREPACK_TEXT_PRIORITY": "1",
+          "LOOKM_KVREPACK_GQA_FUNC": "mean",
+          "LOOKM_KVREPACK_K_DIFF_ALPHA": "0",
+          "LOOKM_KVREPACK_ENABLE": "1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "0",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "LOOKM_SIMHEAD_MERGE_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "LOOKM_SIMHEAD_SIM_SPACE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "raw",
+            "rope"
+          ],
+          "exclusive_minimum": false
+        },
+        "LOOKM_KVREPACK_COMPRESS_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "K_DIFF_ALPHA": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "LOOKM_KVREPACK_SCORE_CORRECTION": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "none"
+          ],
+          "exclusive_minimum": false
+        },
+        "LOOKM_KVREPACK_BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "LOOKM_KVREPACK_WINDOW_SIZE": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "LOOKM_KVREPACK_TEXT_PRIORITY": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "0",
+            "1"
+          ],
+          "exclusive_minimum": false
+        },
+        "LOOKM_KVREPACK_GQA_FUNC": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "mean",
+            "max"
+          ],
+          "exclusive_minimum": false
+        },
+        "LOOKM_KVREPACK_K_DIFF_ALPHA": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "LOOKM_KVREPACK_ENABLE": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "0",
+            "1"
+          ],
+          "exclusive_minimum": false
+        }
+      },
+      "notes": [
+        "Selects the global similarity gate implementation, not the separate headsplit experiment."
+      ]
+    }
+  },
+  "llava_ov": {
+    "fullkv": {
+      "public_method": "fullkv",
+      "internal_method": "fullkv",
+      "model": "llava_ov",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+      "source_lines": "1-35",
+      "implementation": [
+        "transformers.models.llava_onevision.modeling_llava_onevision"
+      ],
+      "model_path": "transformers_llava_onevision",
+      "kernel": null,
+      "defaults": {
+        "pretrained": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+        "tasks": [
+          "videochatgpt_consistency"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "1",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": []
+    },
+    "snapkv": {
+      "public_method": "snapkv",
+      "internal_method": "snapkv",
+      "model": "llava_ov",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+      "source_lines": "1-35",
+      "implementation": [
+        "kvrepack.qwen2_model"
+      ],
+      "model_path": "transformers_llava_onevision",
+      "kernel": "kvrepack_kernel",
+      "defaults": {
+        "pretrained": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+        "tasks": [
+          "videochatgpt_consistency"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "1",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": []
+    },
+    "sparsemm": {
+      "public_method": "sparsemm",
+      "internal_method": "sparsemm",
+      "model": "llava_ov",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+      "source_lines": "1-35",
+      "implementation": [
+        "kvrepack.qwen2_model"
+      ],
+      "model_path": "transformers_llava_onevision",
+      "kernel": "kvrepack_kernel",
+      "defaults": {
+        "pretrained": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+        "tasks": [
+          "videochatgpt_consistency"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "1",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": [
+        "The source script's current loop lists FullKV/LookM/SnapKV; this additional baseline is supported by its LLaVA adapter and selected explicitly via METHOD."
+      ]
+    },
+    "madakv": {
+      "public_method": "madakv",
+      "internal_method": "madakv",
+      "model": "llava_ov",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+      "source_lines": "1-35",
+      "implementation": [
+        "kvrepack.qwen2_model"
+      ],
+      "model_path": "transformers_llava_onevision",
+      "kernel": "kvrepack_kernel",
+      "defaults": {
+        "pretrained": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+        "tasks": [
+          "videochatgpt_consistency"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "1",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": [
+        "The source script's current loop lists FullKV/LookM/SnapKV; this additional baseline is supported by its LLaVA adapter and selected explicitly via METHOD."
+      ]
+    },
+    "lookm": {
+      "public_method": "lookm",
+      "internal_method": "lookm",
+      "model": "llava_ov",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/llava_ov_ratio.sh",
+      "source_lines": "1-35",
+      "implementation": [
+        "kvrepack.qwen2_model"
+      ],
+      "model_path": "transformers_llava_onevision",
+      "kernel": "kvrepack_kernel",
+      "defaults": {
+        "pretrained": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+        "tasks": [
+          "videochatgpt_consistency"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "1",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        }
+      },
+      "notes": []
+    },
+    "hybridkv": {
+      "public_method": "hybridkv",
+      "internal_method": "hybridkv",
+      "model": "llava_ov",
+      "supported_models": [
+        "qwen2_5_vl",
+        "llava_ov"
+      ],
+      "baseline": null,
+      "source_script": "HybridKV-artifact/scripts/eval/llava_ov_hybridkv.sh",
+      "source_lines": "1-38",
+      "implementation": [
+        "kvrepack.modeling_llava_onevision",
+        "kvrepack.modeling_qwen2"
+      ],
+      "model_path": "custom_llava_onevision",
+      "kernel": "kvrepack_kernel",
+      "defaults": {
+        "pretrained": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+        "tasks": [
+          "videochatgpt_temporal"
+        ],
+        "frames": 64,
+        "limit": 200,
+        "env": {
+          "BUDGET": "1024",
+          "BUDGET_RATIO": "0.1",
+          "RATIO": "0.1",
+          "HEAD_CLASSIFY": "head_ada",
+          "BUDGET_METHOD": "head_ada"
+        },
+        "normalized_runtime_env": {
+          "CUDA_LAUNCH_BLOCKING": "1",
+          "OMP_NUM_THREADS": "4",
+          "DECORD_EOF_RETRY_MAX": "20480",
+          "TOKENIZERS_PARALLELISM": "false"
+        }
+      },
+      "allowed_overrides": {
+        "BUDGET": {
+          "kind": "int",
+          "minimum": 1,
+          "maximum": null,
+          "choices": [],
+          "exclusive_minimum": false
+        },
+        "BUDGET_RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "RATIO": {
+          "kind": "float",
+          "minimum": 0,
+          "maximum": 1,
+          "choices": [],
+          "exclusive_minimum": true
+        },
+        "HEAD_CLASSIFY": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "head_ada"
+          ],
+          "exclusive_minimum": false
+        },
+        "BUDGET_METHOD": {
+          "kind": "enum",
+          "minimum": null,
+          "maximum": null,
+          "choices": [
+            "head_ada"
+          ],
+          "exclusive_minimum": false
+        }
+      },
+      "notes": []
+    }
+  }
+}

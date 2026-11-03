@@ -1,0 +1,1742 @@
+{
+  "schema_version": 1,
+  "evidence_boundary": "Executes actual adapter AST dispatch, monkeypatch assignments, official AsymKV installer, prepare-input forwarding/reset, and selected Hybrid cache switches. Compression functions, model loading, attention, tensors and CUDA are NOT executed. Transformers class/method existence and selected model construction links are checked against the supplied installed source, without importing transformers.",
+  "transformers_source": {
+    "root": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers",
+    "version": "4.52.3",
+    "expected_version": "4.52.3",
+    "files_sha256": {
+      "__init__.py": "94341c4137cdcbb9651c348eb65abc3217a77168c06496a78bc4af0cdf9ac411",
+      "generation/utils.py": "9456d3984643f9347b6772aead6392c239702eccbb5872ad0e3f52b492594ba5",
+      "models/auto/modeling_auto.py": "ae6c3f7d5f689792d9bb8e38d8bc44e0343c3b1867e023fb94280c45b9a40848",
+      "models/llava_onevision/modeling_llava_onevision.py": "e9c78c548355b1dcc7de036d39ccaf53f0f15db3819392e4be6a2032b2250ce8",
+      "models/qwen2/modeling_qwen2.py": "a61bb2d35b25a1cec1eebcff887f3ee44c86a908e9abdca049ae447c7e8df1d6",
+      "models/qwen2_5_vl/modeling_qwen2_5_vl.py": "820feb130918d50c9cfad2a3853dc0cffa760da698be7416603ecd242f648ba6"
+    },
+    "structure_checks": [
+      {
+        "class": "Qwen2DecoderLayer",
+        "attribute": "self.self_attn",
+        "constructor": "Qwen2Attention",
+        "expected_constructor": "Qwen2Attention",
+        "passed": true,
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py",
+        "line": 231
+      },
+      {
+        "class": "Qwen2Model",
+        "attribute": "self.layers",
+        "constructor": "nn.ModuleList",
+        "expected_constructor": "nn.ModuleList",
+        "passed": true,
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py",
+        "line": 354
+      },
+      {
+        "class": "LlavaOnevisionModel",
+        "attribute": "self.language_model",
+        "constructor": "AutoModel.from_config",
+        "expected_constructor": "AutoModel.from_config",
+        "passed": true,
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+        "line": 342
+      },
+      {
+        "class": "LlavaOnevisionForConditionalGeneration",
+        "attribute": "self.model",
+        "constructor": "LlavaOnevisionModel",
+        "expected_constructor": "LlavaOnevisionModel",
+        "passed": true,
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+        "line": 707
+      },
+      {
+        "class": "Qwen2_5_VLModel",
+        "attribute": "self.language_model",
+        "constructor": "Qwen2_5_VLTextModel._from_config",
+        "expected_constructor": "Qwen2_5_VLTextModel._from_config",
+        "passed": true,
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1393
+      },
+      {
+        "class": "Qwen2_5_VLForConditionalGeneration",
+        "attribute": "self.model",
+        "constructor": "Qwen2_5_VLModel",
+        "expected_constructor": "Qwen2_5_VLModel",
+        "passed": true,
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1799
+      },
+      {
+        "class": "AutoModel",
+        "attribute": "MODEL_MAPPING_NAMES[qwen2]",
+        "constructor": "Qwen2Model",
+        "expected_constructor": "Qwen2Model",
+        "passed": true,
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/auto/modeling_auto.py",
+        "line": 32
+      },
+      {
+        "class": "Qwen2_5_VLDecoderLayer",
+        "attribute": "QWEN2_5_VL_ATTENTION_CLASSES[flash_attention_2]",
+        "constructor": "Qwen2_5_VLFlashAttention2",
+        "expected_constructor": "Qwen2_5_VLFlashAttention2",
+        "passed": true,
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 991
+      }
+    ],
+    "passed": true
+  },
+  "combinations": [
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "fullkv",
+      "internal_method": "fullkv",
+      "worker_pid": 3603,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "auto",
+          "device_map": "audit-device",
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Use Full KV"
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "hybridkv",
+      "internal_method": "hybridkv",
+      "worker_pid": 3609,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "kvrepack.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "kvrepack.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "src/kvrepack/modeling_qwen2_5_vl.py",
+        "line": 1980,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": true,
+        "cache_class": "kvrepack.hybridkv_utils.HybridKVCache",
+        "model_switch_source": {
+          "source_path": "src/kvrepack/modeling_qwen2_5_vl.py",
+          "line": 1304
+        },
+        "kvrepack_enabled": false,
+        "asymkv_enabled": false,
+        "chunk_size": 8,
+        "cache_switch_source": {
+          "source_path": "src/kvrepack/hybridkv_utils.py",
+          "line": 373
+        }
+      },
+      "dispatch_stdout": []
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "snapkv",
+      "internal_method": "snapkv",
+      "worker_pid": 3613,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.qwen_model.qwen_flash_attn2_forward_SnapKV",
+          "source_path": "src/kvrepack/qwen_model.py",
+          "line": 34,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 15
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": true,
+        "cases": [
+          {
+            "cache_case": "none",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "legacy_tuple",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "empty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              0,
+              0
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "nonempty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          }
+        ],
+        "source": {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using SnapKV!"
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "sparsemm",
+      "internal_method": "sparsemm",
+      "worker_pid": 3616,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward",
+          "target": "kvrepack.qwen_model.adakv_qwen_forward",
+          "source_path": "src/kvrepack/qwen_model.py",
+          "line": 560,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 20
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.qwen_model.qwen_flash_attn2_forward_SparseMM",
+          "source_path": "src/kvrepack/qwen_model.py",
+          "line": 155,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 21
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": true,
+        "cases": [
+          {
+            "cache_case": "none",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "legacy_tuple",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "empty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              0,
+              0
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "nonempty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          }
+        ],
+        "source": {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using SparseMM!"
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "madakv",
+      "internal_method": "madakv",
+      "worker_pid": 3619,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLModel.forward",
+          "target": "kvrepack.qwen_model_croatt.qwen_vl_forward_cross_attn",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 27,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 64
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward",
+          "target": "kvrepack.qwen_model_croatt.cross_attn_qwen_forward_unflatten_MadaKV",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 517,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 65
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLDecoderLayer.forward",
+          "target": "kvrepack.qwen_model_croatt.cross_attn_qwen_decoder_forward_MadaKV",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 642,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 66
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.qwen_model.qwen_flash_attn2_forward_MadaKV",
+          "source_path": "src/kvrepack/qwen_model.py",
+          "line": 428,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 67
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": true,
+        "cases": [
+          {
+            "cache_case": "none",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "legacy_tuple",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "empty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              0,
+              0
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "nonempty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          }
+        ],
+        "source": {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using MadaKV!"
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "lookm",
+      "internal_method": "lookm",
+      "worker_pid": 3627,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLModel.forward",
+          "target": "kvrepack.qwen_model_croatt.qwen_vl_forward_cross_attn",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 27,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 38
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward",
+          "target": "kvrepack.qwen_model_croatt.cross_attn_qwen_forward_unflatten",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 187,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 39
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLDecoderLayer.forward",
+          "target": "kvrepack.qwen_model_croatt.cross_attn_qwen_decoder_forward",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 444,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 40
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.qwen_model.qwen_flash_attn2_forward_LookM",
+          "source_path": "src/kvrepack/qwen_model.py",
+          "line": 303,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 41
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": true,
+        "cases": [
+          {
+            "cache_case": "none",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "legacy_tuple",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "empty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              0,
+              0
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "nonempty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          }
+        ],
+        "source": {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using LookM!"
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "randomkv",
+      "internal_method": "randomkv",
+      "worker_pid": 3630,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward",
+          "target": "kvrepack.qwen_model_randomkv.randomkv_qwen_forward",
+          "source_path": "src/kvrepack/qwen_model_randomkv.py",
+          "line": 63,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 85
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.qwen_model_randomkv.qwen_flash_attn2_forward_RandomKV",
+          "source_path": "src/kvrepack/qwen_model_randomkv.py",
+          "line": 117,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 86
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": true,
+        "cases": [
+          {
+            "cache_case": "none",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "legacy_tuple",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "empty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              0,
+              0
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "nonempty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          }
+        ],
+        "source": {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using RandomKV!"
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "asymkv",
+      "internal_method": "asymkv_official",
+      "worker_pid": 3632,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLAttention.forward",
+          "target": "kvrepack.asymkv_official.attention.qwen2_5_vl_asymkv_official_attention_forward",
+          "source_path": "src/kvrepack/asymkv_official/attention.py",
+          "line": 66,
+          "patch_source_path": "src/kvrepack/asymkv_official/integration.py",
+          "patch_line": 23
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.asymkv_official.attention.qwen2_5_vl_asymkv_official_attention_forward",
+          "source_path": "src/kvrepack/asymkv_official/attention.py",
+          "line": 66,
+          "patch_source_path": "src/kvrepack/asymkv_official/integration.py",
+          "patch_line": 23
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLSdpaAttention.forward",
+          "target": "kvrepack.asymkv_official.attention.qwen2_5_vl_asymkv_official_attention_forward",
+          "source_path": "src/kvrepack/asymkv_official/attention.py",
+          "line": 66,
+          "patch_source_path": "src/kvrepack/asymkv_official/integration.py",
+          "patch_line": 23
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.generate",
+          "target": "kvrepack.asymkv_official.generation.asymkv_official_generate",
+          "source_path": "src/kvrepack/asymkv_official/generation.py",
+          "line": 318,
+          "patch_source_path": "src/kvrepack/asymkv_official/integration.py",
+          "patch_line": 26
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using released-code AsymKV (upstream commit 771ce4db0292)."
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "hybridkv_kvrepack",
+      "internal_method": "hybridkv_kvrepack",
+      "worker_pid": 3635,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "kvrepack.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "kvrepack.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "src/kvrepack/modeling_qwen2_5_vl.py",
+        "line": 1980,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": true,
+        "cache_class": "kvrepack.hybridkv_utils.HybridKVCache",
+        "model_switch_source": {
+          "source_path": "src/kvrepack/modeling_qwen2_5_vl.py",
+          "line": 1304
+        },
+        "kvrepack_enabled": true,
+        "asymkv_enabled": false,
+        "chunk_size": 8,
+        "cache_switch_source": {
+          "source_path": "src/kvrepack/hybridkv_utils.py",
+          "line": 373
+        }
+      },
+      "dispatch_stdout": []
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "snapkv_kvrepack",
+      "internal_method": "snapkv_kvrepack",
+      "worker_pid": 3638,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.qwen_model_snapkv_kvrepack.qwen_flash_attn2_forward_SnapKVKVRepack",
+          "source_path": "src/kvrepack/qwen_model_snapkv_kvrepack.py",
+          "line": 568,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 91
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": true,
+        "cases": [
+          {
+            "cache_case": "none",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "legacy_tuple",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "empty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              0,
+              0
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "nonempty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          }
+        ],
+        "source": {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using SnapKV-KVRepack!"
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "sparsemm_kvrepack",
+      "internal_method": "sparsemm_kvrepack",
+      "worker_pid": 3641,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward",
+          "target": "kvrepack.qwen_model.adakv_qwen_forward",
+          "source_path": "src/kvrepack/qwen_model.py",
+          "line": 560,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 27
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.qwen_model_sparsemm_kvrepack.qwen_flash_attn2_forward_SparseMMKVRepack",
+          "source_path": "src/kvrepack/qwen_model_sparsemm_kvrepack.py",
+          "line": 559,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 28
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": true,
+        "cases": [
+          {
+            "cache_case": "none",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "legacy_tuple",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "empty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              0,
+              0
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "nonempty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          }
+        ],
+        "source": {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using SparseMM-KVRepack!"
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "madakv_kvrepack",
+      "internal_method": "madakv_kvrepack",
+      "worker_pid": 3646,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLModel.forward",
+          "target": "kvrepack.qwen_model_croatt.qwen_vl_forward_cross_attn",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 27,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 77
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward",
+          "target": "kvrepack.qwen_model_croatt.cross_attn_qwen_forward_unflatten_MadaKV",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 517,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 78
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLDecoderLayer.forward",
+          "target": "kvrepack.qwen_model_croatt.cross_attn_qwen_decoder_forward_MadaKV",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 642,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 79
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.qwen_model_madakv_kvrepack.qwen_flash_attn2_forward_MadaKVKVRepack",
+          "source_path": "src/kvrepack/qwen_model_madakv_kvrepack.py",
+          "line": 719,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 80
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": true,
+        "cases": [
+          {
+            "cache_case": "none",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "legacy_tuple",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "empty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              0,
+              0
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "nonempty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          }
+        ],
+        "source": {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using MadaKV-KVRepack!"
+      ]
+    },
+    {
+      "model": "qwen2_5_vl",
+      "public_method": "lookm_kvrepack",
+      "internal_method": "lookm_kvrepack",
+      "worker_pid": 3650,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+        "line": 39,
+        "extracted_ranges": [
+          [
+            66,
+            128
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+        "line": 1790,
+        "kwargs": {
+          "torch_dtype": "bfloat16-double",
+          "device_map": 0,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLModel.forward",
+          "target": "kvrepack.qwen_model_croatt.qwen_vl_forward_cross_attn",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 27,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 51
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLTextModel.forward",
+          "target": "kvrepack.qwen_model_croatt.cross_attn_qwen_forward_unflatten",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 187,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 52
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLDecoderLayer.forward",
+          "target": "kvrepack.qwen_model_croatt.cross_attn_qwen_decoder_forward",
+          "source_path": "src/kvrepack/qwen_model_croatt.py",
+          "line": 444,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 53
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLFlashAttention2.forward",
+          "target": "kvrepack.qwen_model_lookm_kvrepack.qwen_flash_attn2_forward_LookMKVRepack",
+          "source_path": "src/kvrepack/qwen_model_lookm_kvrepack.py",
+          "line": 451,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 54
+        },
+        {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": true,
+        "cases": [
+          {
+            "cache_case": "none",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "legacy_tuple",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "empty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              0,
+              0
+            ],
+            "empty_cache_reset_correct": true
+          },
+          {
+            "cache_case": "nonempty",
+            "all_arguments_forwarded_by_identity": true,
+            "kv_seq_len_after": [
+              23,
+              24
+            ],
+            "empty_cache_reset_correct": true
+          }
+        ],
+        "source": {
+          "attribute": "transformers.models.qwen2_5_vl.modeling_qwen2_5_vl.Qwen2_5_VLForConditionalGeneration.prepare_inputs_for_generation",
+          "target": "kvrepack.monkeypatch.replace_qwen.<locals>.prepare_inputs_for_generation_qwen",
+          "source_path": "src/kvrepack/monkeypatch.py",
+          "line": 99,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 137
+        }
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using LookM-KVRepack!"
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "fullkv",
+      "internal_method": "fullkv",
+      "worker_pid": 3659,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/llava_hf.py",
+        "line": 54,
+        "extracted_ranges": [
+          [
+            83,
+            110
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+        "line": 695,
+        "kwargs": {
+          "revision": "main",
+          "torch_dtype": "bfloat16-double",
+          "device_map": "audit-device",
+          "trust_remote_code": false,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Use Full KV"
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "snapkv",
+      "internal_method": "snapkv",
+      "worker_pid": 3661,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/llava_hf.py",
+        "line": 54,
+        "extracted_ranges": [
+          [
+            83,
+            110
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+        "line": 695,
+        "kwargs": {
+          "revision": "main",
+          "torch_dtype": "bfloat16-double",
+          "device_map": "audit-device",
+          "trust_remote_code": false,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward",
+          "target": "kvrepack.qwen2_model.qwen2_flash_attn2_forward_SnapKV",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 22,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 157
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using SnapKV on LlavaOneVision!"
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "sparsemm",
+      "internal_method": "sparsemm",
+      "worker_pid": 3663,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/llava_hf.py",
+        "line": 54,
+        "extracted_ranges": [
+          [
+            83,
+            110
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+        "line": 695,
+        "kwargs": {
+          "revision": "main",
+          "torch_dtype": "bfloat16-double",
+          "device_map": "audit-device",
+          "trust_remote_code": false,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward",
+          "target": "kvrepack.qwen2_model.sparsemm_qwen2_forward",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 435,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 161
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward",
+          "target": "kvrepack.qwen2_model.decoder_qwen2_forward_sparsemm",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 747,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 162
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward",
+          "target": "kvrepack.qwen2_model.qwen2_flash_attn2_forward_SparseMM",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 107,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 163
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using SparseMM on LlavaOneVision!"
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "madakv",
+      "internal_method": "madakv",
+      "worker_pid": 3672,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/llava_hf.py",
+        "line": 54,
+        "extracted_ranges": [
+          [
+            83,
+            110
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+        "line": 695,
+        "kwargs": {
+          "revision": "main",
+          "torch_dtype": "bfloat16-double",
+          "device_map": "audit-device",
+          "trust_remote_code": false,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionModel.forward",
+          "target": "kvrepack.modeling_llava_onevision.LlavaOnevisionModel.forward",
+          "source_path": "src/kvrepack/modeling_llava_onevision.py",
+          "line": 492,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 174
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward",
+          "target": "kvrepack.qwen2_model.madakv_qwen2_forward",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 647,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 175
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward",
+          "target": "kvrepack.qwen2_model.decoder_qwen2_forward_madakv",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 835,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 176
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward",
+          "target": "kvrepack.qwen2_model.qwen2_flash_attn2_forward_MadaKV",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 326,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 177
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using MadaKV in LlavaOneVison!"
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "lookm",
+      "internal_method": "lookm",
+      "worker_pid": 3674,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/llava_hf.py",
+        "line": 54,
+        "extracted_ranges": [
+          [
+            83,
+            110
+          ]
+        ]
+      },
+      "adapter_class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+        "source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+        "line": 695,
+        "kwargs": {
+          "revision": "main",
+          "torch_dtype": "bfloat16-double",
+          "device_map": "audit-device",
+          "trust_remote_code": false,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [
+        {
+          "attribute": "transformers.models.llava_onevision.modeling_llava_onevision.LlavaOnevisionModel.forward",
+          "target": "kvrepack.modeling_llava_onevision.LlavaOnevisionModel.forward",
+          "source_path": "src/kvrepack/modeling_llava_onevision.py",
+          "line": 492,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 167
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Model.forward",
+          "target": "kvrepack.qwen2_model.lookm_qwen2_forward",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 549,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 168
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2DecoderLayer.forward",
+          "target": "kvrepack.qwen2_model.decoder_qwen2_forward_lookm",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 790,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 169
+        },
+        {
+          "attribute": "transformers.models.qwen2.modeling_qwen2.Qwen2Attention.forward",
+          "target": "kvrepack.qwen2_model.qwen2_flash_attn2_forward_LookM",
+          "source_path": "src/kvrepack/qwen2_model.py",
+          "line": 235,
+          "patch_source_path": "src/kvrepack/monkeypatch.py",
+          "patch_line": 170
+        }
+      ],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": false
+      },
+      "dispatch_stdout": [
+        "Using LookM on LlavaOneVision!"
+      ]
+    },
+    {
+      "model": "llava_ov",
+      "public_method": "hybridkv",
+      "internal_method": "hybridkv",
+      "worker_pid": 3677,
+      "algorithm_functions_executed": 0,
+      "errors": [],
+      "passed": true,
+      "initial_patch_count": 0,
+      "adapter_source": {
+        "path": "vendor/lmms-eval/lmms_eval/models/llava_hf.py",
+        "line": 54,
+        "extracted_ranges": [
+          [
+            83,
+            110
+          ]
+        ]
+      },
+      "adapter_class": "kvrepack.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+      "adapter_class_source": {
+        "class": "kvrepack.modeling_llava_onevision.LlavaOnevisionForConditionalGeneration",
+        "source_path": "src/kvrepack/modeling_llava_onevision.py",
+        "line": 719,
+        "kwargs": {
+          "revision": "main",
+          "torch_dtype": "bfloat16-double",
+          "device_map": "audit-device",
+          "trust_remote_code": false,
+          "attn_implementation": "flash_attention_2"
+        }
+      },
+      "patch_targets": [],
+      "prepare_inputs_check": {
+        "applicable": false,
+        "reason": "Selected route installs no prepare-input wrapper"
+      },
+      "hybrid_cache_check": {
+        "applicable": true,
+        "cache_class": "kvrepack.hybridkv_utils.HybridKVCache",
+        "model_switch_source": {
+          "source_path": "src/kvrepack/modeling_qwen2.py",
+          "line": 501
+        }
+      },
+      "dispatch_stdout": [
+        "Using hybridkv!"
+      ]
+    }
+  ],
+  "separate_process_per_combination": true,
+  "passed": true
+}
