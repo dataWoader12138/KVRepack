@@ -1,6 +1,6 @@
 # Qwen3B 视频复测与后台进度（2026-11-04）
 
-状态：**running**；阶段快照 UTC：2026-11-04T05:20:32.294430+00:00。
+状态：**running**；阶段快照 UTC：2026-11-04T05:23:07.061150+00:00。
 
 本页仅覆盖下表计划。pending/running 均未通过；200 条是子集，完整 NextQA、VATEX 分别为9178、4478条。阶段变化时更新，逐样本实时计数请查看本机 matrix_state.json。
 
@@ -22,7 +22,7 @@
 ## 普通 CLI 与历史上下文
 
 - cli_nextqa_snapkv_smoke20：passed，有效样本20，WUPS=28.003499816653978。仅candidate普通CLI结果，没有配对原版E2E相等证明。
-- cli_nextqa_madakv_200：running，有效样本None，WUPS=None。仅candidate普通CLI结果，没有配对原版E2E相等证明。
+- cli_nextqa_madakv_200：passed，有效样本200，WUPS=30.598461646042235。仅candidate普通CLI结果，没有配对原版E2E相等证明。
 - 历史200条 snapkv_kvrepack WUPS=30.490725191798408，cr=0.9；仅作旧汇总分上下文，即使同分也不能证明历史逐样本一致。
 - 历史200条 madakv_kvrepack WUPS=30.598461646042235，cr=0.5；仅作旧汇总分上下文，即使同分也不能证明历史逐样本一致。
 

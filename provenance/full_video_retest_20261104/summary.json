@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-04T05:20:32.294430+00:00",
+  "updated_utc": "2026-11-04T05:23:07.061150+00:00",
   "matrix_status": "running",
   "base_commit": "169aa1f2e44d76d7205bd40b86bf08a6a7705b6d",
   "core_unchanged_from_base": true,
@@ -72,14 +72,14 @@
         "pid": 23837,
         "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original/trace.jsonl",
         "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original.matrix.launch.log",
-        "count": 168,
+        "count": 198,
         "returncode": null
       },
       "repack": {
         "pid": 23838,
         "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack/trace.jsonl",
         "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack.matrix.launch.log",
-        "count": 168,
+        "count": 198,
         "returncode": null
       }
     }
@@ -111,11 +111,11 @@
       "result_sha256": "46b52f09afb4c98af3584a4e1508f1beb8f04c7977e28657edb17856c73af044"
     },
     "cli_nextqa_madakv_200": {
-      "status": "running",
+      "status": "passed",
       "scope": "candidate-only ordinary CLI; no paired original equality proof",
       "expected_count": 200,
-      "effective_count": null,
-      "WUPS": null,
+      "effective_count": 200,
+      "WUPS": 30.598461646042235,
       "run_state_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/cli_nextqa_madakv_200/run_state.json",
       "algorithm_env": {
         "BUDGET_RATIO": "0.1",
@@ -130,7 +130,9 @@
         "MADAKV_KVREPACK_GQA_FUNC": "mean",
         "MADAKV_KVREPACK_K_DIFF_ALPHA": "2",
         "MADAKV_KVREPACK_ENABLE": "1"
-      }
+      },
+      "result_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/cli_nextqa_madakv_200/eval_outputs/snapshots__66285546d2b821cf421d4f5eb2576359d3770cd3/20261104_125138_results.json",
+      "result_sha256": "ccc5ee4469d843decc10958f7ffd3eac54289e9c1e991738ac2597f3fcd550b5"
     }
   },
   "completed_artifacts": [],
