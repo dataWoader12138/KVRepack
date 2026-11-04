@@ -1,0 +1,57 @@
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+You have video processor config saved in `preprocessor.json` file which is deprecated. Video processor configs should be saved in their own `video_preprocessor.json` file. You can rename the file or load and save the processor back which renames it automatically. Loading from `preprocessor.json` will be removed in v5.0.
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 0, "input_tokens": 9736}
+qwen-vl-utils using decord to read video.
+[h264 @ 0x55dec82a5980] mmco: unref short failure
+[h264 @ 0x55dec82a5980] mmco: unref short failure
+[h264 @ 0x55dec82a5980] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 1, "input_tokens": 9000}
+The given max_pixels[1605632] exceeds limit[564480.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 2, "input_tokens": 22568}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 3, "input_tokens": 11816}
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 4, "input_tokens": 8680}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 5, "input_tokens": 8680}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 6, "input_tokens": 9000}
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 7, "input_tokens": 8680}
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 8, "input_tokens": 9736}
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 9, "input_tokens": 8680}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 10, "input_tokens": 11816}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 11, "input_tokens": 23208}
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 12, "input_tokens": 8680}
+The given max_pixels[1605632] exceeds limit[453853.2663316583].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 13, "input_tokens": 18600}
+{"stage": "cpu_input_ready", "task": "vatex_test", "doc_id": 14, "input_tokens": 8680}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py", line 315, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py", line 239, in main
+    directory, identity, manifest_path = prepare_cache(args, processor)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py", line 175, in prepare_cache
+    info = save_cached_input(directory, doc_id, batch, metadata, identity)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py", line 109, in save_cached_input
+    _, previous_metadata, info = load_cached_input(task_cache, doc_id, contract_sha)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py", line 87, in load_cached_input
+    raise FileNotFoundError(f"Incomplete cached input for doc_id={doc_id}")
+FileNotFoundError: Incomplete cached input for doc_id=15

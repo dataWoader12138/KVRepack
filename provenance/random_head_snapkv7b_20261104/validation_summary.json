@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "conditions": 8,
+  "generations": 160,
+  "formal_start_utc": "2026-11-04T13:11:31.977931+00:00",
+  "formal_end_utc": "2026-11-04T13:28:56.314970+00:00",
+  "formal_elapsed_seconds": 1044.337039,
+  "summed_generation_seconds_including_instrumentation": 298.2289667725563,
+  "all_eos": true,
+  "token_cap_hits": 0,
+  "cpu_tests": {
+    "tests": 205,
+    "passed": 204,
+    "skipped": 1,
+    "reason": "Existing source differential test requires explicit original source root."
+  },
+  "source_check": {
+    "status": "passed",
+    "core_files": 30,
+    "local_modules_and_adapter": 50,
+    "vendor_python_files": 329,
+    "vendor_build_files": 2382,
+    "original_source_comparison": false
+  },
+  "scope": "SnapKV-KVRepack 7B pilot; no full benchmark or HybridKV head-selection quality claim."
+}

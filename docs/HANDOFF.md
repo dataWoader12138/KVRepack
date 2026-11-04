@@ -1,5 +1,9 @@
 # KVRepack 项目交接（2026-11-04）
 
+**当前最新授权：NExTQA前200条 Random-head消融，正在运行。** 用户已明确本轮“推全”是原始`doc_id=0..199`，非完整9178条；只NExTQA，不VATEX。见[协议、命令与恢复](RANDOM_HEAD_NEXTQA_200.md)。继续Qwen2.5-VL7B + SnapKV-KVRepack，原策略与global Random seeds0/1/2，共800次生成，保持34头、`.30/.70/2`、10%预算、64帧、128生成上限及继承repetition penalty1.05。独立流式worker每输入共享CPU张量、四组配对后原子提交；单条四条件GPU smoke与旧试跑同条全部输入/候选SHA、head/work/cache形状、生成token一致。正式输出`outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/`，控制器`scripts/run_nextqa_random_head_200.py`明确`--limit200`，完成后自动离线评分至`report/`；启动预计30–45分钟，以run_state实际进度为准。当前不能记为200条完成或提前得出性能结论。源码已冻结，不恢复下述历史停止任务。
+
+**Random-head首轮已完成并停止**：Qwen2.5-VL7B + SnapKV-KVRepack，NExTQA/VATEX各原前20行，原策略与global Random seeds0/1/2共160次生成。见[实际结果](RANDOM_HEAD_ABLATION_RESULTS_20261104.md)与[协议](RANDOM_HEAD_ABLATION.md)。仅换mask，原生112头中分别选34/17，输入及全部候选SHA、实际merge数量/移除量、28层prefill形状配对通过，核心文件未改。NExTQA原/Random均值=32.016623/31.950346（差+.066277，视频聚类95%CI[0,.198830]）；VATEX CIDEr=.505653/.521858，Random均值更高，其余三指标也同向。**没有稳定优于Random的证据，不能写成Head Selection的正向消融结论**；这里只是Snap7B/n20，未完成原文Hybrid表或总体有效性证明。正式17分24秒，累计generate约298.229秒，全部EOS、无cap。VATEX CPU准备曾误并行，在生成0条时被cache伴随文件检查中止，已存16条复验后串行补齐，失败记录保留。新CPU30项通过；全suite205项204过1旧skip；来源30core/50local通过。证据位于provenance/random_head_snapkv7b_20261104，GPU已释放，不自动扩大或恢复旧任务。
+
 本文是随项目保存、可由用户和开发者审阅的交接摘要：记录已接受的要求、实现选择、验证证据和待办事项，供后续会话恢复项目背景。后续修改应以当前代码、报告和用户的新指示为准。密钥、凭证、模型权重、视频和数据集保存在项目外。
 
 当前版本完成了独立项目整理、CPU 审计、Qwen3B 两种改进方法的 GPU 小样本迁移对照及 Qwen7B 的400条未压缩表示观察，仍有两项已确认但未修复的行为问题。小样本一致性和表示观察不表示完整压缩基准已经复现；GitHub 上传状态以实际远端和提交记录为准。

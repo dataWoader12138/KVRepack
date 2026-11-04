@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "task": "vatex_test",
+  "strategy": "random_global",
+  "mask_seed": 1,
+  "model_seed": 42,
+  "target": 20,
+  "completed": 20,
+  "started_utc": "2026-11-04T13:26:30.338172+00:00",
+  "cache_manifest": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/random_head_snapkv7b_20261104/cache/vatex_test/manifest.json",
+  "current_doc_id": 19,
+  "updated_utc": "2026-11-04T13:27:40.678804+00:00",
+  "finished_utc": "2026-11-04T13:27:42.857170+00:00"
+}

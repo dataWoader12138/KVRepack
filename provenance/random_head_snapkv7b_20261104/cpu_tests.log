@@ -1,0 +1,8 @@
+..............s..............................................................................................................................................................................................
+----------------------------------------------------------------------
+Ran 205 tests in 22.713s
+
+OK (skipped=1)
+{"status": "incomplete", "output": "/tmp/tmphacqi2g9/report", "validation_issues": 2}
+{"status": "incomplete", "output": "/tmp/tmp06nepum4/report", "validation_issues": 3}
+{"status": "incomplete", "output": "/tmp/tmp24t6t7z3/report", "validation_issues": 3}

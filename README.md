@@ -1,6 +1,10 @@
 # KVRepack
 
+当前运行：[NExTQA前200条 Random-head 消融](docs/RANDOM_HEAD_NEXTQA_200.md)。用户已将本轮“推全”明确为前200条，Qwen2.5-VL-7B + SnapKV-KVRepack、原策略及3个Random种子，共800次生成；目前运行中，不扩大至9178条或VATEX。
+
 项目交接摘要与后续工作入口：[docs/HANDOFF.md](docs/HANDOFF.md)。
+
+Random-head 消融：[固定选头数量的实验协议与运行命令](docs/RANDOM_HEAD_ABLATION.md)；[首轮160次生成结果](docs/RANDOM_HEAD_ABLATION_RESULTS_20261104.md)。已完成7B SnapKV-KVRepack、两数据集各20条和3个随机种子的160次生成；当前小样本没有显示相似度选头稳定优于Random。
 
 视频实验参数：[按数据集核对的最佳参数表](docs/VIDEO_BEST_PARAMETERS.md) · [CSV](docs/video_best_parameters.csv)。表格区分实际完成记录、单一候选、历史变体及不同复评协议，不修改运行入口的默认值。
 
@@ -31,6 +35,7 @@ KVRepack/
 ├── src/kvrepack/          # 唯一的核心包、方法注册表和实验入口
 │   ├── experiments/      # 公开方法 → 内部方法 → 固定实现及环境参数
 │   ├── observations/     # 无压缩前向的近邻/等量全配对观察、上下文对照与绘图
+│   ├── ablations/        # 固定选头数量的 Random-head 干预、执行审计与离线评分
 │   ├── configs/          # 保留原始字节的配置
 │   ├── data/head_score/  # 运行必需的 head score，随包分发
 │   └── asymkv_official/  # 唯一对外提供的 AsymKV 实现

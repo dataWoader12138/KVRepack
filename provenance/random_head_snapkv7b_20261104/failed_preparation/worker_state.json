@@ -1,0 +1,12 @@
+{
+  "status": "failed",
+  "task": "vatex_test",
+  "strategy": "similarity",
+  "mask_seed": 0,
+  "model_seed": 42,
+  "target": 20,
+  "completed": 0,
+  "started_utc": "2026-11-04T13:16:17.369894+00:00",
+  "error": "FileNotFoundError: Incomplete cached input for doc_id=15",
+  "finished_utc": "2026-11-04T13:19:01.620651+00:00"
+}

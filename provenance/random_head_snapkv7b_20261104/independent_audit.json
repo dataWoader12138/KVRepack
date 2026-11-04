@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "audit_type": "Independent read-only CPU audit of existing GPU-produced head-selection records",
+  "written_utc": "2026-11-04T13:32:09.032954+00:00",
+  "status": "passed_with_scope_limits",
+  "result_root": "outputs/ablations/random_head_snapkv7b_20261104",
+  "method": "snapkv_kvrepack",
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "model_revision": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "audit_execution": {
+    "new_gpu_runs": 0,
+    "official_scoring_runs": 0,
+    "source_files_modified": false,
+    "implementation": "Independent standard-library JSON traversal, integer/count arithmetic, SHA256 file streaming, and reconstruction with Python random.Random; no report or head-selection helper functions imported.",
+    "artifact_creation": "This JSON summarizes completed checks; writing it did not rerun the large-file audit."
+  },
+  "coverage": {
+    "total_completed_records": 160,
+    "condition_count": 8,
+    "records_per_condition": 20,
+    "tasks": [
+      "nextqa_oe_test",
+      "vatex_test"
+    ],
+    "conditions": [
+      "similarity",
+      "random_global_seed0",
+      "random_global_seed1",
+      "random_global_seed2"
+    ],
+    "doc_ids_per_condition": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "paired_random_vs_similarity_comparisons": 120,
+    "controller_status": "complete",
+    "all_eight_condition_states": "complete",
+    "audit_issue_count": 0
+  },
+  "common_parameters": {
+    "frames": 64,
+    "budget_ratio": 0.1,
+    "compression_ratio": 0.7,
+    "dtype": "bfloat16",
+    "attention": "flash_attention_2",
+    "model_seed": 42,
+    "max_new_tokens": 128,
+    "do_sample": false,
+    "score_correction": "none",
+    "head_selection_unit": "Native KV head, before GQA repeat",
+    "layers": 28,
+    "native_kv_heads_per_layer": 4,
+    "native_kv_heads_total": 112,
+    "selection_quota_rule": "ceil(112 * merge_ratio)",
+    "random_strategy": "Global count-matched Random; fixed per-seed model-level head ranking, uniform without replacement. Layer quotas are allowed to change."
+  },
+  "tasks": {
+    "nextqa_oe_test": {
+      "completed_records": 80,
+      "condition_counts": {
+        "similarity": 20,
+        "random_global_seed0": 20,
+        "random_global_seed1": 20,
+        "random_global_seed2": 20
+      },
+      "merge_ratio": 0.3,
+      "k_diff_alpha": 2,
+      "baseline_selected_heads_per_record": 34,
+      "selected_heads_per_record": 34,
+      "eligible_merge_heads_per_record": 112,
+      "actual_merge_calls_per_record": 34,
+      "actual_removed_tokens_min": 12478,
+      "actual_removed_tokens_max": 18292,
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "similarity_mask_variants": 10,
+      "random": {
+        "0": {
+          "mask_variants_across_20_inputs": 1,
+          "hamming_vs_similarity_min": 44,
+          "hamming_vs_similarity_max": 46,
+          "changed_text_doc_ids": [
+            15
+          ],
+          "changed_token_ids_doc_ids": [
+            15
+          ]
+        },
+        "1": {
+          "mask_variants_across_20_inputs": 1,
+          "hamming_vs_similarity_min": 40,
+          "hamming_vs_similarity_max": 44,
+          "changed_text_doc_ids": [],
+          "changed_token_ids_doc_ids": []
+        },
+        "2": {
+          "mask_variants_across_20_inputs": 1,
+          "hamming_vs_similarity_min": 44,
+          "hamming_vs_similarity_max": 48,
+          "changed_text_doc_ids": [],
+          "changed_token_ids_doc_ids": []
+        }
+      },
+      "between_random_seeds": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "intersection_heads": 12,
+          "hamming": 44
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "intersection_heads": 8,
+          "hamming": 52
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "intersection_heads": 5,
+          "hamming": 58
+        }
+      ],
+      "prediction_change_example": {
+        "doc_id": 15,
+        "similarity": "clean spoon",
+        "random_seed": 0,
+        "random": "clean mouth"
+      }
+    },
+    "vatex_test": {
+      "completed_records": 80,
+      "condition_counts": {
+        "similarity": 20,
+        "random_global_seed0": 20,
+        "random_global_seed1": 20,
+        "random_global_seed2": 20
+      },
+      "merge_ratio": 0.15,
+      "k_diff_alpha": 0.5,
+      "baseline_selected_heads_per_record": 17,
+      "selected_heads_per_record": 17,
+      "eligible_merge_heads_per_record": 112,
+      "actual_merge_calls_per_record": 17,
+      "actual_removed_tokens_min": 6273,
+      "actual_removed_tokens_max": 16915,
+      "generated_tokens_min": 11,
+      "generated_tokens_max": 27,
+      "records_without_eos": 0,
+      "similarity_mask_variants": 2,
+      "random": {
+        "0": {
+          "mask_variants_across_20_inputs": 1,
+          "hamming_vs_similarity_min": 30,
+          "hamming_vs_similarity_max": 32,
+          "changed_text_doc_ids": [
+            16
+          ],
+          "changed_token_ids_doc_ids": [
+            16
+          ]
+        },
+        "1": {
+          "mask_variants_across_20_inputs": 1,
+          "hamming_vs_similarity_min": 24,
+          "hamming_vs_similarity_max": 24,
+          "changed_text_doc_ids": [
+            11,
+            15,
+            16
+          ],
+          "changed_token_ids_doc_ids": [
+            11,
+            15,
+            16
+          ]
+        },
+        "2": {
+          "mask_variants_across_20_inputs": 1,
+          "hamming_vs_similarity_min": 28,
+          "hamming_vs_similarity_max": 28,
+          "changed_text_doc_ids": [
+            0,
+            3,
+            4,
+            10,
+            11,
+            15
+          ],
+          "changed_token_ids_doc_ids": [
+            0,
+            3,
+            4,
+            10,
+            11,
+            15
+          ]
+        }
+      },
+      "between_random_seeds": [
+        {
+          "seeds": [
+            0,
+            1
+          ],
+          "intersection_heads": 1,
+          "hamming": 32
+        },
+        {
+          "seeds": [
+            0,
+            2
+          ],
+          "intersection_heads": 1,
+          "hamming": 32
+        },
+        {
+          "seeds": [
+            1,
+            2
+          ],
+          "intersection_heads": 1,
+          "hamming": 32
+        }
+      ]
+    }
+  },
+  "paired_fairness_checks": {
+    "all_120_pairs_passed": true,
+    "identical_fields": [
+      "input_hashes",
+      "input_shapes",
+      "input_dtypes",
+      "input_cache_sha256",
+      "reference_metadata",
+      "audit.baseline_masks",
+      "audit.candidate_hashes",
+      "audit.prefill_cache_shapes",
+      "audit.actual_merge_calls",
+      "audit.actual_removed_tokens"
+    ],
+    "candidate_fingerprints_per_layer": [
+      "candidate_raw",
+      "candidate_rope",
+      "candidate_value",
+      "candidate_imp",
+      "candidate_idx",
+      "head_sim"
+    ],
+    "candidate_fingerprint_coverage": "All 28 layers for every shared task/doc_id; fingerprint SHA256, shape, dtype, and candidate/final lengths agreed.",
+    "nonselection_config_identical": "Full record.config compared after excluding only strategy and mask_seed.",
+    "effective_merge_identity": "The set of (layer,head) in actual merge calls exactly matched the selected mask; no duplicate merge calls.",
+    "removed_token_work": "Independently recomputed both as sum(before-after) over actual merge calls and sum(candidate_history-final_history) over selected heads; matched recorded expected and actual work and the paired similarity run.",
+    "cache_shapes": "All 28 layers retained native [1,4,length,128] K/V shapes. Prefill length equaled final_history+32. Final length equaled prefill length+generated_tokens-1."
+  },
+  "random_rank_reconstruction": {
+    "passed": true,
+    "recipe": "payload=json.dumps([seed,\"global\",28,4,0],separators=(\",\",\":\")).encode(); local_seed=int.from_bytes(sha256(payload).digest()[:16],\"big\"); ranking=random.Random(local_seed).sample(range(112),112); select ranking[:quota].",
+    "all_three_seeds_different": true,
+    "fixed_within_model_seed_across_inputs": true,
+    "vatex_17_head_mask_is_subset_of_same_seed_nextqa_34_head_mask": true,
+    "global_rng": "Source uses a separate local random.Random; reconstruction did not call the production selection helper."
+  },
+  "independently_rehashed_pt_files": {
+    "task": "vatex_test",
+    "file_count": 20,
+    "doc_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "file_pattern": "cache/vatex_test/{doc_id:06d}.pt",
+    "bytes_streamed": 4153386128,
+    "all_file_sha256_match_companion_json": true,
+    "all_doc_ids_and_task_metadata_match": true,
+    "input_tokens_min": 8616,
+    "input_tokens_max": 23208,
+    "scope_limit": "Only these VATEX20 .pt files were independently streamed and rehashed. No claim of independently rehashing NextQA20 .pt files or independently deserializing all cached tensors.",
+    "elapsed_seconds_observed": 4.143
+  },
+  "frozen_source_sha256": {
+    "all_match_current_files_at_final_audit": true,
+    "files": {
+      "src/kvrepack/ablations/run_head_selection.py": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+      "src/kvrepack/ablations/head_selection.py": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+      "src/kvrepack/qwen_model_snapkv_kvrepack.py": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+      "src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543"
+    }
+  },
+  "failed_preparation_attempt": {
+    "state_path": "failed_attempts/vatex_similarity_preparation_20261104T131901/worker/run_state.json",
+    "status": "failed",
+    "completed_gpu_records": 0,
+    "records_jsonl_rows": 0,
+    "error": "FileNotFoundError: Incomplete cached input for doc_id=15",
+    "interpretation": "Preparation failure was preserved separately and supplied no prediction rows to the eight successful conditions."
+  },
+  "evidence_paths": {
+    "controller": "experiment_state.json",
+    "records": "{task}/{condition}/records.jsonl",
+    "condition_states": "{task}/{condition}/run_state.json",
+    "condition_configs": "{task}/{condition}/run_config.json",
+    "cache_metadata": "cache/{task}/{doc_id:06d}.json"
+  },
+  "interpretation_limits": [
+    "This audit validates execution, recorded input/candidate equality, selection identity, and matched merge work; it does not independently recompute all GPU candidate tensors or numerical model outputs.",
+    "Prediction changes establish an observable intervention, not an improvement or degradation.",
+    "Twenty documents per task and three random seeds are a limited pilot, not a full-benchmark performance conclusion.",
+    "Global Random changes the layer distribution as well as head identity; this run is not a layer-count-matched Random ablation.",
+    "No official task metrics were computed by the independent auditor."
+  ]
+}

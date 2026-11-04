@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "task": "nextqa_oe_test",
+  "strategy": "random_global",
+  "mask_seed": 0,
+  "model_seed": 42,
+  "target": 20,
+  "completed": 20,
+  "started_utc": "2026-11-04T13:13:10.414801+00:00",
+  "cache_manifest": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/random_head_snapkv7b_20261104/cache/nextqa_oe_test/manifest.json",
+  "current_doc_id": 19,
+  "updated_utc": "2026-11-04T13:14:09.924763+00:00",
+  "finished_utc": "2026-11-04T13:14:11.870285+00:00"
+}

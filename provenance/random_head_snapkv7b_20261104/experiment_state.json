@@ -1,0 +1,39 @@
+{
+  "status": "complete",
+  "started_utc": "2026-11-04T13:12:58.329235+00:00",
+  "target": 160,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "tasks": [
+    "nextqa_oe_test",
+    "vatex_test"
+  ],
+  "source_sha256": {
+    "src/kvrepack/ablations/run_head_selection.py": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+    "src/kvrepack/ablations/head_selection.py": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+    "src/kvrepack/qwen_model_snapkv_kvrepack.py": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+    "src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543"
+  },
+  "completed_conditions": [
+    "nextqa_oe_test/similarity",
+    "nextqa_oe_test/random_global_seed0",
+    "nextqa_oe_test/random_global_seed1",
+    "nextqa_oe_test/random_global_seed2",
+    "vatex_test/similarity",
+    "vatex_test/random_global_seed0",
+    "vatex_test/random_global_seed1",
+    "vatex_test/random_global_seed2"
+  ],
+  "current": "vatex_test/random_global_seed2",
+  "updated_utc": "2026-11-04T13:27:43.971891+00:00",
+  "continued_utc": "2026-11-04T13:23:00.478879+00:00",
+  "preparation_retry": {
+    "reason": "Two CPU preparation workers accidentally overlapped; incomplete doc15 companion-file check stopped first VATEX worker before any generation. Duplicate worker terminated. All 16 retained inputs revalidated before serial continuation.",
+    "generated_rows_before_retry": 0,
+    "failed_state": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/random_head_snapkv7b_20261104/failed_attempts/vatex_similarity_preparation_20261104T131901/experiment_state.json"
+  },
+  "finished_utc": "2026-11-04T13:28:57.375902+00:00"
+}

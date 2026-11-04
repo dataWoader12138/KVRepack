@@ -1,0 +1,37 @@
+{
+  "task": "vatex_test",
+  "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "model_type": "qwen2_5_vl-7b",
+  "frames": 64,
+  "budget_ratio": 0.1,
+  "algorithm_env": {
+    "BUDGET_RATIO": "0.1",
+    "SNAPKV_SIMHEAD_MERGE_RATIO": ".15",
+    "SNAPKV_SIMHEAD_SIM_SPACE": "raw",
+    "SNAPKV_KVREPACK_COMPRESS_RATIO": ".7",
+    "K_DIFF_ALPHA": ".5",
+    "SNAPKV_KVREPACK_SCORE_CORRECTION": "none",
+    "SNAPKV_KVREPACK_ENABLE": "1",
+    "SNAPKV_KVREPACK_WINDOW_SIZE": "32",
+    "SNAPKV_KVREPACK_KERNEL_SIZE": "5",
+    "SNAPKV_KVREPACK_POOLING": "avgpool",
+    "SNAPKV_KVREPACK_GQA_FUNC": "mean",
+    "SNAPKV_KVREPACK_MERGE_SCORE_MODE": "full"
+  },
+  "min_pixels": 200704,
+  "max_pixels": 1605632,
+  "dtype": "bfloat16",
+  "attention": "flash_attention_2",
+  "max_new_tokens": 128,
+  "use_cache": true,
+  "do_sample": false,
+  "model_seed": 42,
+  "strategy": "similarity",
+  "mask_seed": 0,
+  "cache_contract_sha256": "3b06994ced836629d1a752ee29b33f8412c705e6e676b19ec57e9deb01ffba94",
+  "source_files": {
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/monkeypatch.py": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/head_selection.py": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1"
+  }
+}
