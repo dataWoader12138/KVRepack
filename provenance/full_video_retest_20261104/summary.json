@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-04T05:19:45.669987+00:00",
+  "updated_utc": "2026-11-04T05:20:32.294430+00:00",
   "matrix_status": "running",
   "base_commit": "169aa1f2e44d76d7205bd40b86bf08a6a7705b6d",
   "core_unchanged_from_base": true,
@@ -72,14 +72,14 @@
         "pid": 23837,
         "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original/trace.jsonl",
         "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original.matrix.launch.log",
-        "count": 160,
+        "count": 168,
         "returncode": null
       },
       "repack": {
         "pid": 23838,
         "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack/trace.jsonl",
         "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack.matrix.launch.log",
-        "count": 160,
+        "count": 168,
         "returncode": null
       }
     }
