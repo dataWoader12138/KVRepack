@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "pid": 129065,
+  "started_utc": "2026-11-04T07:16:00.580271+00:00",
+  "updated_utc": "2026-11-04T07:54:01.026830+00:00",
+  "completed": 400,
+  "target": 400,
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.52.3",
+    "flash-attn": "2.7.4.post1",
+    "numpy": "1.26.4",
+    "datasets": "2.19.2",
+    "qwen-vl-utils": "0.0.14"
+  },
+  "model_load_seconds": 4.597463559359312,
+  "expected_layers": 28,
+  "expected_kv_heads": 4,
+  "model_hidden_size": 3584,
+  "current_task": "vatex_test",
+  "current_doc_id": 199,
+  "counts_by_task": {
+    "nextqa_oe_test": 200,
+    "vatex_test": 200
+  },
+  "elapsed_seconds": 2280.4081306122243,
+  "last_seconds": {
+    "preprocess": 16.72133456170559,
+    "forward_with_observation": 1.9848441146314144,
+    "total": 19.11901855841279
+  },
+  "finished_utc": "2026-11-04T07:54:01.026860+00:00"
+}

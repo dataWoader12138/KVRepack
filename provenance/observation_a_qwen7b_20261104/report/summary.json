@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "expected_total_records": 400,
+  "tasks": {
+    "nextqa_oe_test": {
+      "primary_text_group": "text_question",
+      "expected_records": 200,
+      "seen_unique_records": 200,
+      "valid_completed_records": 200,
+      "paired_records": 200,
+      "excluded_primary_M0": [],
+      "missing_completed_doc_ids": [],
+      "status_counts": {
+        "completed": 200
+      },
+      "metrics": {
+        "k_raw": {
+          "n_records": 200,
+          "n_source_videos": 184,
+          "visual": 0.738970166943036,
+          "text": 0.8075647946566876,
+          "difference": -0.06859462771365153,
+          "positive_source_video_fraction": 0.03804347826086957,
+          "positive_source_video_count": 7,
+          "ci95": {
+            "visual": [
+              0.7338056841922658,
+              0.7444355348176284
+            ],
+            "text": [
+              0.8055050228678313,
+              0.8095694279041422
+            ],
+            "difference": [
+              -0.07427944402770355,
+              -0.06285981523270906
+            ]
+          },
+          "uncertainty": "95% percentile source-video cluster bootstrap"
+        },
+        "v": {
+          "n_records": 200,
+          "n_source_videos": 184,
+          "visual": 0.31592759214870314,
+          "text": 0.37049603115357727,
+          "difference": -0.05456843900487408,
+          "positive_source_video_fraction": 0.23369565217391305,
+          "positive_source_video_count": 43,
+          "ci95": {
+            "visual": [
+              0.305513042950864,
+              0.32710890976242046
+            ],
+            "text": [
+              0.36655922313749345,
+              0.37451788332211977
+            ],
+            "difference": [
+              -0.0662168059003879,
+              -0.042984725635338915
+            ]
+          },
+          "uncertainty": "95% percentile source-video cluster bootstrap"
+        },
+        "k_rope": {
+          "n_records": 200,
+          "n_source_videos": 184,
+          "visual": 0.7389651194121689,
+          "text": 0.7991636744514108,
+          "difference": -0.06019855503924191,
+          "positive_source_video_fraction": 0.06521739130434782,
+          "positive_source_video_count": 12,
+          "ci95": {
+            "visual": [
+              0.7338000909589153,
+              0.7444304341113508
+            ],
+            "text": [
+              0.7971070307824417,
+              0.8011405044754977
+            ],
+            "difference": [
+              -0.0658452457401709,
+              -0.05447561792393397
+            ]
+          },
+          "uncertainty": "95% percentile source-video cluster bootstrap"
+        }
+      }
+    },
+    "vatex_test": {
+      "primary_text_group": "text_instruction",
+      "expected_records": 200,
+      "seen_unique_records": 200,
+      "valid_completed_records": 200,
+      "paired_records": 200,
+      "excluded_primary_M0": [],
+      "missing_completed_doc_ids": [],
+      "status_counts": {
+        "completed": 200
+      },
+      "metrics": {
+        "k_raw": {
+          "n_records": 200,
+          "n_source_videos": 200,
+          "visual": 0.7399719787468868,
+          "text": 0.7844908938796392,
+          "difference": -0.044518915132752496,
+          "positive_source_video_fraction": 0.12,
+          "positive_source_video_count": 24,
+          "ci95": {
+            "visual": [
+              0.7355016422519194,
+              0.7442707716553871
+            ],
+            "text": [
+              0.7823427157482532,
+              0.7866964231271829
+            ],
+            "difference": [
+              -0.04958408526274634,
+              -0.039595883451535335
+            ]
+          },
+          "uncertainty": "95% percentile source-video cluster bootstrap"
+        },
+        "v": {
+          "n_records": 200,
+          "n_source_videos": 200,
+          "visual": 0.3143443950290592,
+          "text": 0.34138830229677425,
+          "difference": -0.027043907267715054,
+          "positive_source_video_fraction": 0.335,
+          "positive_source_video_count": 67,
+          "ci95": {
+            "visual": [
+              0.30556287618955164,
+              0.3230656651977978
+            ],
+            "text": [
+              0.3374024647173166,
+              0.3453843264010343
+            ],
+            "difference": [
+              -0.03690801765874697,
+              -0.016994588264407133
+            ]
+          },
+          "uncertainty": "95% percentile source-video cluster bootstrap"
+        },
+        "k_rope": {
+          "n_records": 200,
+          "n_source_videos": 200,
+          "visual": 0.7399673024338803,
+          "text": 0.7760032561953578,
+          "difference": -0.03603595376147756,
+          "positive_source_video_fraction": 0.15,
+          "positive_source_video_count": 30,
+          "ci95": {
+            "visual": [
+              0.7354969324618911,
+              0.7442661315354386
+            ],
+            "text": [
+              0.773881178150286,
+              0.7781744210543112
+            ],
+            "difference": [
+              -0.04107009261833231,
+              -0.031116996665252344
+            ]
+          },
+          "uncertainty": "95% percentile source-video cluster bootstrap"
+        }
+      }
+    }
+  },
+  "validation_issues": [],
+  "dimensions": {
+    "layers": 28,
+    "kv_heads": 4
+  },
+  "bootstrap": {
+    "samples": 5000,
+    "seed": 20261104,
+    "confidence": 0.95,
+    "unit": "source_video_id",
+    "estimator": "equal document weights; equal layer weights then equal KV-head weights",
+    "resampling": "sample source videos with replacement; retain every member document"
+  },
+  "interpretation": "Adjacent visual-minus-text cosine difference is descriptive association; no distant controls, merge-safety or causal claim. Negative cosines are retained.",
+  "provenance": {
+    "record_metadata_variants": [],
+    "missing_metadata": "Model/frame settings are not inferred when absent from input records.",
+    "input_jsonl": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen7b_adjacent_first200_20261104/records.jsonl",
+    "input_sha256": "43ab745ed11b9fc6ee8b5a670bba428a677f33565b8f74493583d37f18d2551f"
+  },
+  "artifacts": {
+    "plots": "PNG/PDF/SVG per task",
+    "tables": [
+      "task_summary.csv",
+      "record_summary.csv",
+      "head_summary.csv",
+      "layer_summary.csv"
+    ]
+  }
+}

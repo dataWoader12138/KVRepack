@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "experiment": "adjacent_visual_text_cosine",
+  "pretrained": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "model_metadata_sha256": {
+    "chat_template.json": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96",
+    "config.json": "77d9ec7321cc572e3579e2c84799c9cadaded63c49ce93b101733349fc330c43",
+    "generation_config.json": "0a3aea82869fe29f20dc95ccf3e2bcff380eca1f5ad6447a4a4b37110b08e43e",
+    "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "model.safetensors.index.json": "73b333b0b16e5286ddba615d2caebcd495cf7e616f52eb217a81781393d79de9",
+    "preprocessor_config.json": "f2058c716eef96ccaed1cc1e2d0c08306b62586d535b28d9d08e691b2fab7ca0",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "4abd3520120e266da84c0864fee064d1fb10806f02225911a47253dd38dc5f56",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "tasks": [
+    "nextqa_oe_test",
+    "vatex_test"
+  ],
+  "limit": 200,
+  "row_policy": "First N original test rows; repeated videos retained",
+  "frames": 64,
+  "max_pairs": 16,
+  "seed": 42,
+  "min_pixels": 200704,
+  "max_pixels": 1605632,
+  "dtype": "bfloat16",
+  "statistics_dtype": "float32",
+  "attention": "flash_attention_2",
+  "compression": false,
+  "backbone_only": true,
+  "use_cache": false,
+  "generation": false,
+  "pair_selection": "Outcome-independent nearest-neighbor subsampling; same locations for every layer/KV head",
+  "primary_text_groups": {
+    "nextqa_oe_test": "text_question",
+    "vatex_test": "text_instruction"
+  },
+  "store_pair_values": false,
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.52.3",
+    "flash-attn": "2.7.4.post1",
+    "numpy": "1.26.4",
+    "datasets": "2.19.2",
+    "qwen-vl-utils": "0.0.14"
+  },
+  "sources_sha256": {
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/__init__.py": "fd6ffedf38b2688c5bcaafcc7bf95342808eb5648d7a0a7f78b47174c9582504",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/adjacent.py": "7436799cd91e54fbefc385e46430199be8260257088c2e992ac568c923954af3",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/hooks.py": "49f9483502fad62d09f400fad3fab1a62ceae47466f5a7e996564b2e05179a6d",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/pairs.py": "7a5ece1c7f3e95e18686dc77ee09612dfb8daf1948572d7b71806af4e25dedea",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/report.py": "a7ec4b59b76f8b603c678248b30d68cfbaabea639846213c2769549f5bd7462e",
+    "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py": "820feb130918d50c9cfad2a3853dc0cffa760da698be7416603ecd242f648ba6"
+  },
+  "datasets": {
+    "nextqa_oe_test": {
+      "arrow_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___n_ex_tqa/OE/0.0.0/a0d7729e38399da9c8a70c59aa4ad7f6996d3c00/n_ex_tqa-test.arrow",
+      "arrow_sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+      "video_root": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/nextqa/NExTVideo",
+      "task_yaml_sha256": "c81a2b515f03261b77250491ef77a1391672a53687ad86940e4bef17c7183f20",
+      "task_utils_sha256": "27c8baea98d4709e25c71484f01e6897e771c420072bff87f2be90deda72f2e4",
+      "task_kwargs": {
+        "pre_prompt": "",
+        "post_prompt": "\nAnswer a question using a short phrase or sentence."
+      },
+      "row_policy": "Original Arrow row order; no video deduplication or filtering",
+      "included_yaml_sha256": "5e0d2f26789ffe92fcf1861bdb3879395a5419e462564748661f2909119eaf60"
+    },
+    "vatex_test": {
+      "arrow_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___vatex/vatex_test/0.0.0/73c2e83ade2892705080e9dadeb7c75c5b99e0f4/vatex-test.arrow",
+      "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "video_root": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/vatex_test",
+      "task_yaml_sha256": "3a154d8593a5a26511f18c2961e4a511125da15629ca0aae85c8ae82870bc6d5",
+      "task_utils_sha256": "a1adb3c156c9107c8e001dabb07d9047511770b076c600f856b6d34bf1d74479",
+      "task_kwargs": {
+        "prompt": "Provide a brief single-sentence caption for the last video below. Do not give any reasoning, just the caption. You must follow the captioning style of the preceding videos. Do not start your response with \"Output:\", just provide the caption."
+      },
+      "row_policy": "Original Arrow row order; no video deduplication or filtering"
+    }
+  }
+}

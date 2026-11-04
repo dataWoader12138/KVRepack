@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "protocol_document": "docs/OBSERVATION_A.md",
+  "code_commit": "54dfd943da7052ffa93597793c35c32527d913c6",
+  "model": "Qwen2.5-VL-7B-Instruct",
+  "snapshot": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "formal_seconds": 2280.4081306122243,
+  "formal_minutes": 38.00680217687041,
+  "started_utc": "2026-11-04T07:16:00.580271+00:00",
+  "finished_utc": "2026-11-04T07:54:01.026860+00:00",
+  "tasks": {
+    "nextqa_oe_test": {
+      "rows": 200,
+      "source_video_clusters": 184,
+      "paired_records": 200,
+      "matched_pairs_per_group": 2079,
+      "pairs_per_row_min": 3,
+      "pairs_per_row_max": 16,
+      "pairs_per_row_mean": 10.395,
+      "rows_with_repeated_prepared_frame_indices": 90,
+      "frame_index_scope": "Indices into the process_vision_info prepared frame pool before resampling to64; not source decoded frame numbers.",
+      "seconds": {
+        "preprocess_sum": 358.8915967158973,
+        "forward_with_observation_sum": 294.22493072226644,
+        "total_sum": 712.8492472618818
+      }
+    },
+    "vatex_test": {
+      "rows": 200,
+      "source_video_clusters": 200,
+      "paired_records": 200,
+      "matched_pairs_per_group": 3200,
+      "pairs_per_row_min": 16,
+      "pairs_per_row_max": 16,
+      "pairs_per_row_mean": 16.0,
+      "rows_with_repeated_prepared_frame_indices": 49,
+      "frame_index_scope": "Indices into the process_vision_info prepared frame pool before resampling to64; not source decoded frame numbers.",
+      "seconds": {
+        "preprocess_sum": 1167.8519146852195,
+        "forward_with_observation_sum": 315.51618095859885,
+        "total_sum": 1548.2693956494331
+      }
+    }
+  },
+  "coverage": "Both original first200 row ranges complete; no replacement, deduplication, failure or M0 exclusion.",
+  "independent_audit": "All18 point estimates (3metrics x2tasks x3values) recomputed fromrecords withstdlib, difference0.0; all400 IDs,28layers,4KVheads,capturecounts and finite means verified.",
+  "cpu_validation": {
+    "new_observation_tests": 55,
+    "full_suite": 105,
+    "passed": 104,
+    "skipped": 1,
+    "skip_reason": "Historical original-source differential requires explicit opt-in; no observation test skipped."
+  },
+  "local_records": {
+    "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen7b_adjacent_first200_20261104/records.jsonl",
+    "sha256": "43ab745ed11b9fc6ee8b5a670bba428a677f33565b8f74493583d37f18d2551f",
+    "bytes": 69212112,
+    "published": false
+  },
+  "boundary": "Adjacent geometry only; no random/distant controls, merge intervention, generation-quality, causal modality or universal VLM claim. Weights/video payloads and complete runtime dependency closure not hashed.",
+  "artifacts": {
+    "contract.json": {
+      "sha256": "543a437e7cbbd49f754b1c7313c2b3a685b93fb8d2a86ea751da6d9f8781d8cc",
+      "bytes": 5151
+    },
+    "cpu_tests.log": {
+      "sha256": "6b462dffff0b0d1275ebe3c97166bbe582bd096f3950f13a036454f56fe0635a",
+      "bytes": 17883
+    },
+    "pilot_timing.json": {
+      "sha256": "9f72ab6e8404acb4b3749bf12d3dbd322a30c2903de0e2e5a930688b67bfb0d4",
+      "bytes": 1250
+    },
+    "report/RESULTS.md": {
+      "sha256": "2d7fa69c0506a2f193e921c0c1b43ce76bcc567c0255f1b814fcbcf4ad2ca8e8",
+      "bytes": 1709
+    },
+    "report/adjacent_main.metadata.json": {
+      "sha256": "4cc5fd6f706adcf6d404e04d5a2703d0194afe906534d6f8d6d56d0dca02ddd1",
+      "bytes": 1528
+    },
+    "report/adjacent_main.pdf": {
+      "sha256": "d9b248959e8179f1b902da872121fe3bed419f96810334f04f4d605028824574",
+      "bytes": 18213
+    },
+    "report/adjacent_main.png": {
+      "sha256": "08eb63f0b84d03f9bd7af7395ab22783cb72ba1df6d50e93dcba6c6eb267ac40",
+      "bytes": 120935
+    },
+    "report/adjacent_main.svg": {
+      "sha256": "217d9e251fe9fdb4d9779a30501f0d3a09bc6a844b2b948bc05b01e2a9180fac",
+      "bytes": 17716
+    },
+    "report/head_summary.csv": {
+      "sha256": "daec77b4a1a258277241d38f9f6fd0fc93f3652fc8a4f747d28518c31d625fa7",
+      "bytes": 60969
+    },
+    "report/layer_summary.csv": {
+      "sha256": "4b57a884fb7b4f0bb8db0d0cb632c18bcecdb42b8cb9576d665f5a6d37098f16",
+      "bytes": 14949
+    },
+    "report/nextqa_oe_test.pdf": {
+      "sha256": "3f87aa0ba7b2a9b56c69e2609972928bd6a2174a08afac3137beb1554c233755",
+      "bytes": 18614
+    },
+    "report/nextqa_oe_test.png": {
+      "sha256": "a1a53e74a73bcd5999038eca0a9472ca6d519922bcea81abecb5aa88aebffcd0",
+      "bytes": 128272
+    },
+    "report/nextqa_oe_test.svg": {
+      "sha256": "643c0a1855df81c8effc422307f71974f17918cba96c6435e4c093419f84cdd2",
+      "bytes": 73230
+    },
+    "report/record_summary.csv": {
+      "sha256": "bfcd386d4dfe268cea0135a2fba78edcd6c2e77b58bbf243265ad56955a98a3b",
+      "bytes": 143925
+    },
+    "report/summary.json": {
+      "sha256": "4bbc1d6c0b37875a29e5f4ac6789f51f21aaeb47cf9383a6bc8de1746b9ee9b8",
+      "bytes": 6444
+    },
+    "report/task_summary.csv": {
+      "sha256": "4062579088dd41a3181d18eefd4bfd719bae37ec6757f5c9eddd5aa69380594b",
+      "bytes": 1549
+    },
+    "report/vatex_test.pdf": {
+      "sha256": "06d421cb2c757f1d722a49d6732169e17af5e97c26de07be9592ec9948ae4f7a",
+      "bytes": 18183
+    },
+    "report/vatex_test.png": {
+      "sha256": "9c10a222ff32af9085586b4aa69330cdce44e3a8dd53feef0f4a515d05ead189",
+      "bytes": 122312
+    },
+    "report/vatex_test.svg": {
+      "sha256": "79dbcc323f422e7d8b82dd272bfa7aade40c56c6170b2df141cde9569c34836c",
+      "bytes": 70321
+    },
+    "run_state.json": {
+      "sha256": "04954a55a10f9e3f1b5152f822f84e4d0ae83456166e1cc6dd073f81a8ee2470",
+      "bytes": 931
+    },
+    "sample_manifest.json": {
+      "sha256": "e0a7706e8297577ed9c11a3fd60f5f82ff302e2a71c0af90c93714335d814689",
+      "bytes": 1359641
+    },
+    "source_check.json": {
+      "sha256": "4170bbd2cf41a2db45e8665c95972b592090a0f0a6361719b8f52f4a627b48b7",
+      "bytes": 179
+    }
+  }
+}

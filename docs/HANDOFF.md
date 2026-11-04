@@ -2,11 +2,13 @@
 
 本文是随项目保存、可由用户和开发者审阅的交接摘要：记录已接受的要求、实现选择、验证证据和待办事项，供后续会话恢复项目背景。后续修改应以当前代码、报告和用户的新指示为准。密钥、凭证、模型权重、视频和数据集保存在项目外。
 
-当前版本完成了独立项目整理、CPU 审计和 Qwen3B 两种改进方法的 GPU 小样本迁移对照，仍有两项已确认但未修复的行为问题。小样本一致性不表示完整实验已经复现；GitHub 上传状态以实际远端和提交记录为准。
+当前版本完成了独立项目整理、CPU 审计、Qwen3B 两种改进方法的 GPU 小样本迁移对照及 Qwen7B 的400条未压缩表示观察，仍有两项已确认但未修复的行为问题。小样本一致性和表示观察不表示完整压缩基准已经复现；GitHub 上传状态以实际远端和提交记录为准。
 
 用户指定的目标为公开仓库 `https://github.com/dataWoader12138/KVRepack`。提交作者为 `dataWoader12138`；Git 的身份和 SSH 凭证在各机器本地配置。
 
-最新用户授权的独立任务是[观察实验A](OBSERVATION_A.md)：Qwen2.5-VL-7B、NExTQA/VATEX各原始前200行，只比较视觉空间近邻和自然文本近邻，保留原行且不去重；不做随机/远距对照或合并干预。代码位于 `src/kvrepack/observations/`，正式400条运行和即时状态位于 `outputs/observations/qwen7b_adjacent_first200_20261104/`，应等待完整运行和统计报告后再宣布结果；不得把4条计时pilot当正式结果。本轮不改压缩核心。下述旧大规模矩阵已在VATEX200因1例V缓存字节哈希不同而按严格门禁停止，两端输入、生成token/text和logits未报差，尚未解释该V差异幅度或完成全量；不能认为旧矩阵仍在后台运行。
+最新用户授权的独立任务是[观察实验A](OBSERVATION_A.md)：Qwen2.5-VL-7B、NExTQA/VATEX各原始前200行，只比较视觉空间近邻和自然文本近邻，保留原行且不去重；不做随机/远距对照或合并干预。代码位于 `src/kvrepack/observations/`，正式400条原始记录和状态位于 `outputs/observations/qwen7b_adjacent_first200_20261104/`；4条计时pilot使用独立目录，不纳入正式400条。本轮不改压缩核心。下述旧大规模矩阵已在VATEX200因1例V缓存字节哈希不同而按严格门禁停止，两端输入、生成token/text和logits未报差，尚未解释该V差异幅度或完成全量；不能认为旧矩阵仍在后台运行。
+
+该观察实验现已**400/400完成**，UTC07:16–07:54，正式耗时约38分钟，无失败或M=0排除；完整结果见 [OBSERVATION_A_RESULTS_20261104.md](OBSERVATION_A_RESULTS_20261104.md)。两任务的视觉近邻raw K和V均值均低于相应文本近邻，四个主配对区间均低于0；不能写成视觉整体更相似或合并安全。存在层/头异质性，不是每层每头同向。模型28层、4个KV头；NExTQA184个源视频聚类、VATEX200。运行协议及图表证据位于 `provenance/observation_a_qwen7b_20261104/`；完整原始records保存在outputs，未加入Git。当前观察任务已结束，GPU已释放；不要因旧段落中的计划而自动恢复旧失败矩阵。
 
 2026-11-04 后续用户已授权扩大 GPU 测试。当前计划先经正式 CLI/adapter 完成 SnapKV-KVRepack、MadaKV-KVRepack 在 NextQA/VATEX 各200条的原压缩实现与整理版配对，再自动续跑 SnapKV-KVRepack 的两个完整测试集（9178/4478条，两端均跑）。本机后台控制器、断点、资源冻结记录与进度位于 `/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/`；不要重复启动已有控制器或改动其冻结代码/资源。阶段完成、错误及全量结果会由独立发布器更新到 [扩大复测报告](FULL_VIDEO_RETEST_20261104.md) 和相应 provenance；以该页及本机 `matrix_state.json` 的实际状态为准，不能把计划或启动视为通过。核心算法保持 `169aa1f`，本轮新增的是外部追踪、对照与断点工具。
 

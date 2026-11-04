@@ -6,7 +6,7 @@
 
 扩大 GPU 复测：[200 条配对与完整测试集的运行状态、结果及恢复方式](docs/FULL_VIDEO_RETEST_20261104.md)。该页按阶段更新，明确区分运行中与已通过。
 
-论文观察实验 A：[7B 模型、两数据集各前200条的视觉／文本近邻 K/V 相似度](docs/OBSERVATION_A.md)。独立观察入口和统计绘图位于 `src/kvrepack/observations/`。
+论文观察实验 A：[运行协议](docs/OBSERVATION_A.md) · [实际400条结果与主图](docs/OBSERVATION_A_RESULTS_20261104.md)。使用7B模型、两数据集各原始前200条；独立观察入口和统计绘图位于 `src/kvrepack/observations/`。
 
 将 Qwen2.5-VL 的 KV cache 基线及其 KVRepack 改进整理到一个独立项目，同时纳入 LLaVA-OneVision-Qwen2-7B 的原有基线。任务包括 NextQA、VATEX、VideoChatGPT。多图 MileBench、历史参数搜索和诊断支线尚未纳入首版。
 

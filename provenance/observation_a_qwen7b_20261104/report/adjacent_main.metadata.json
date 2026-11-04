@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source_summary": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen7b_adjacent_first200_20261104/report/summary.json",
+  "source_summary_sha256": "4bbc1d6c0b37875a29e5f4ac6789f51f21aaeb47cf9383a6bc8de1746b9ee9b8",
+  "title": "Qwen2.5-VL-7B",
+  "source_status": "complete",
+  "n_inputs": 400,
+  "coverage": {
+    "nextqa_oe_test": {
+      "n_inputs": 200,
+      "n_paired_inputs": 200,
+      "n_source_video_clusters": 184
+    },
+    "vatex_test": {
+      "n_inputs": 200,
+      "n_paired_inputs": 200,
+      "n_source_video_clusters": 200
+    }
+  },
+  "source_dimensions": {
+    "layers": 28,
+    "kv_heads": 4
+  },
+  "intended_run_scope": {
+    "model": "Qwen2.5-VL-7B",
+    "expected_layers": 28,
+    "expected_kv_heads": 4,
+    "note": "Scope only; model identity is not inferred from absent record metadata."
+  },
+  "source_provenance": {
+    "record_metadata_variants": [],
+    "missing_metadata": "Model/frame settings are not inferred when absent from input records.",
+    "input_jsonl": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen7b_adjacent_first200_20261104/records.jsonl",
+    "input_sha256": "43ab745ed11b9fc6ee8b5a670bba428a677f33565b8f74493583d37f18d2551f"
+  },
+  "statistics": "Existing per-input means and source-video 95% intervals; no new statistics computed",
+  "values": "Signed cosine values retained; no positivity clipping",
+  "interpretation": "Adjacent visual/text comparison; no locality-gain, causal, or merge-safety claim"
+}
