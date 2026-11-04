@@ -7,7 +7,9 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from kvrepack.observations.reference_report import GROUPS, METRICS, build_summary, main, write_report
+from kvrepack.observations.reference_report import (
+    GROUPS, METRICS, _cluster_bootstrap, build_summary, expected_ids, main, write_report,
+)
 
 
 def record(group, doc_id, mean=.2, length=100):
@@ -16,16 +18,17 @@ def record(group, doc_id, mean=.2, length=100):
                 model_id=GROUPS[group]["model_id"], model_revision="revision-"+group,
                 input_tokens=length, image_tokens=0 if group == "text" else 1,
                 source_metadata=dict(dataset_id="LongBench-qasper" if group == "text" else "OCRBench",
-                                     dataset_revision="fixed-test-revision", doc_id=doc_id, content_sha256="test-content"),
+                                     dataset_revision="fixed-test-revision", doc_id=doc_id, content_sha256="test-content",
+                                     context_sha256=f"context-{doc_id}", original_image_sha256=f"image-{doc_id}"),
                 layer_stats=[dict(layer=layer, kv_heads=4, head_dim=128, sequence_length=length,
                                   capture_counts=dict.fromkeys(METRICS, 1),
                                   inclusive={metric: [inclusive]*4 for metric in METRICS},
                                   **{metric: [mean]*4 for metric in METRICS}) for layer in range(28)])
 
 
-def records(text=.2, vision=.6, length=100):
+def records(text=.2, vision=.6, length=100, sample_count=5):
     return [record(group, doc_id, text if group == "text" else vision, length)
-            for group, data in GROUPS.items() for doc_id in data["doc_ids"]]
+            for group, ids in expected_ids(sample_count).items() for doc_id in ids]
 
 
 class ReferenceReportTests(unittest.TestCase):
@@ -118,6 +121,76 @@ class ReferenceReportTests(unittest.TestCase):
         saved = next(row for row in summary["record_table"] if row["group"] == "text")
         self.assertEqual(json.loads(saved["source_metadata_json"]), rows[0]["source_metadata"])
 
+    def test_200_fixed_ids_complete_coverage_native_heads_and_dynamic_tables(self):
+        summary = build_summary(records(sample_count=200), sample_count=200, bootstrap_samples=40)
+        self.assertEqual(summary["status"], "complete")
+        self.assertEqual(summary["sample_count"], 200)
+        self.assertEqual(summary["expected_total_inputs"], 400)
+        self.assertEqual(summary["groups"]["text"]["valid_doc_ids"], list(range(200)))
+        self.assertEqual(summary["groups"]["vision"]["valid_doc_ids"], list(range(0, 1000, 5)))
+        self.assertTrue(summary["bootstrap"]["enabled"])
+        for group in GROUPS:
+            self.assertEqual(summary["groups"][group]["n_inputs"], 200)
+            self.assertEqual(summary["groups"][group]["n_source_clusters"], 200)
+            heads = [row for row in summary["head_table"] if row["group"] == group and row["metric"] == "k_rope"]
+            self.assertEqual(len(heads), 112)
+            self.assertEqual({row["n_inputs"] for row in heads}, {200})
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            write_report(summary, root, plots=False)
+            with (root/"source_inputs.csv").open() as stream:
+                self.assertEqual(len(list(csv.DictReader(stream))), 400)
+            with (root/"record_summary.csv").open() as stream:
+                self.assertEqual(len(list(csv.DictReader(stream))), 1200)
+            self.assertIn("200+200", (root/"RESULTS.md").read_text())
+            self.assertNotIn("(5 inputs)", (root/"RESULTS.md").read_text())
+
+    def test_200_rejects_wrong_image_range_duplicates_missing_rows_and_missing_clusters(self):
+        for mode in ("missing", "wrong_image_id", "duplicate", "missing_cluster"):
+            with self.subTest(mode=mode):
+                rows = records(sample_count=200)
+                if mode == "missing":
+                    rows.pop()
+                elif mode == "wrong_image_id":
+                    rows[-1]["doc_id"] = 999
+                elif mode == "duplicate":
+                    rows[-1] = deepcopy(rows[-2])
+                else:
+                    rows[0]["source_metadata"].pop("context_sha256")
+                self.assertEqual(build_summary(rows, sample_count=200, bootstrap_samples=10)["status"], "incomplete")
+        for count in (True, 0, 10, 201):
+            with self.subTest(count=count), self.assertRaises(ValueError):
+                build_summary([], sample_count=count)
+
+    def test_cluster_resampling_keeps_article_members_and_two_groups_are_independent(self):
+        rows = []
+        for group in GROUPS:
+            # Repeated questions about source A are resampled together, not as
+            # twenty independent articles. Both groups share identical values;
+            # independent resampling must still allow a nonzero difference CI.
+            for index in range(21):
+                value = 1. if index < 20 else -.2
+                for metric in METRICS:
+                    rows.append(dict(group=group, doc_id=index, metric=metric, mean=value,
+                                     source_cluster_id="a" if index < 20 else "b"))
+        groups, differences, metadata = _cluster_bootstrap(rows, 5000, 20261104)
+        for group in GROUPS:
+            self.assertEqual(metadata[group]["n_source_clusters"], 2)
+            for metric in METRICS:
+                self.assertEqual(groups[group][metric], [-.2, 1.])
+        for metric in METRICS:
+            self.assertEqual(differences[metric], [-1.2, 1.2])
+
+    def test_ci_unavailable_with_single_source_is_not_replaced_by_head_pseudoreplication(self):
+        rows = records(sample_count=200)
+        for row in rows[:200]:
+            row["source_metadata"]["context_sha256"] = "one-article-many-questions"
+        summary = build_summary(rows, sample_count=200, bootstrap_samples=20)
+        self.assertEqual(summary["status"], "complete")
+        self.assertEqual(summary["groups"]["text"]["n_source_clusters"], 1)
+        self.assertTrue(all(values["ci95"] is None for values in summary["groups"]["text"]["metrics"].values()))
+        self.assertTrue(all(values["ci95"] is None for values in summary["comparisons"].values()))
+
     def test_corrupt_JSONL_incomplete_report_returns_nonzero_and_does_not_plot(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -148,6 +221,19 @@ class ReferenceReportTests(unittest.TestCase):
             with (root/"comparison_summary.csv").open() as stream:
                 self.assertEqual(len(list(csv.DictReader(stream))), 3)
             self.assertNotIn("head_table", compact)
+
+    @unittest.skipUnless(importlib.util.find_spec("matplotlib"), "optional matplotlib unavailable")
+    def test_200_plot_titles_and_footnotes_use_actual_sample_count(self):
+        summary = build_summary(records(sample_count=200), sample_count=200, bootstrap_samples=20)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            compact = write_report(summary, root)
+            svg = (root/"reference_main.svg").read_text()
+            self.assertIn("200 + 200 full inputs", svg)
+            self.assertIn("200 full inputs/model", svg)
+            self.assertNotIn("5 full inputs/model", svg)
+            for curve in compact["artifacts"]["plots"]["main"]["curves"]:
+                self.assertEqual(curve["n_head_means"], 112)
 
 
 if __name__ == "__main__":

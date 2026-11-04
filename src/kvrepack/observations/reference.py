@@ -1,6 +1,6 @@
-"""Five-input all-token pilot inspired by MixKV Figure 1(b), using Qwen2.5.
+"""Complete-input observations inspired by MixKV Figure 1(b), using Qwen2.5.
 
-Each invocation runs one group of exactly five complete inputs. There is no
+Each invocation runs one group of exactly 5 (default) or 200 complete inputs. There is no
 token sampling, generation, compression, truncation, or automatic scale-up.
 """
 from __future__ import annotations
@@ -64,6 +64,8 @@ def prepare_input(sample, tokenizer, *, processor=None, min_pixels=25088, max_pi
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--group', required=True, choices=tuple(MODELS))
+    parser.add_argument('--sample-count', type=int, choices=(5, 200), default=5,
+                        help='Explicit original-input count per group; never expands automatically')
     parser.add_argument('--pretrained', required=True, type=Path, help='Pinned local snapshot of the selected model')
     parser.add_argument('--hf-home', required=True, type=Path)
     parser.add_argument('--inputs', required=True, type=Path, help='reference_samples.json prepared once, before model runs')
@@ -101,9 +103,13 @@ def main(argv=None):
     torch.backends.cudnn.allow_tf32 = False
     manifest = json.loads(args.inputs.read_text())
     all_samples = manifest['samples'] if isinstance(manifest, dict) else manifest
+    expected_ids = {'text': list(range(args.sample_count)),
+                    'vision': list(range(0, 1000, 1000 // args.sample_count))}
     samples = [row for row in all_samples if row['group'] == args.group]
-    if [row['doc_id'] for row in samples] != IDS[args.group]:
-        raise ValueError('Require exactly the five prespecified complete inputs in original order')
+    if [row['doc_id'] for row in samples] != expected_ids[args.group]:
+        raise ValueError('Require exactly the prespecified complete inputs in original order')
+    if isinstance(manifest, dict) and manifest.get('sample_count') != 2 * args.sample_count:
+        raise ValueError('Input manifest count differs from the explicitly selected experiment size')
     model_id, revision, family = MODELS[args.group]
     pretrained = args.pretrained.expanduser().resolve()
     if pretrained.name != revision:
@@ -115,9 +121,10 @@ def main(argv=None):
     model_index = json.loads((pretrained / 'model.safetensors.index.json').read_text())
     if any(not (pretrained/name).is_file() for name in set(model_index['weight_map'].values())):
         raise FileNotFoundError('Model download is incomplete; do not run with missing shards')
-    contract = {'schema_version': 1, 'experiment': 'mixkv_reference_qwen25_five_per_group',
+    experiment = 'mixkv_reference_qwen25_five_per_group' if args.sample_count == 5 else 'mixkv_reference_qwen25_200_per_group'
+    contract = {'schema_version': 1, 'experiment': experiment,
                 'group': args.group, 'model_id': model_id, 'model_revision': revision,
-                'pretrained': str(pretrained), 'doc_ids': IDS[args.group], 'sample_count': 5,
+                'pretrained': str(pretrained), 'doc_ids': expected_ids[args.group], 'sample_count': args.sample_count,
                 'inputs_sha256': sha(args.inputs), 'system_prompt': SYSTEM,
                 'all_prefill_tokens': True, 'token_sampling': False, 'truncation': False,
                 'compression': False, 'generation': False, 'use_cache': False,
@@ -141,12 +148,12 @@ def main(argv=None):
         for line in (output / 'records.jsonl').open():
             row = json.loads(line)
             if (not line.endswith('\n') or row['status'] != 'completed' or row['group'] != args.group
-                    or row['doc_id'] not in IDS[args.group] or row['doc_id'] in completed):
-                raise ValueError('Existing results are partial, duplicated or outside the five-input pilot')
+                    or row['doc_id'] not in expected_ids[args.group] or row['doc_id'] in completed):
+                raise ValueError('Existing results are partial, duplicated or outside the declared input range')
             completed.add(row['doc_id'])
     started = time.monotonic()
     state = {'schema_version': 1, 'status': 'loading', 'pid': os.getpid(), 'group': args.group,
-             'started_utc': timestamp(), 'updated_utc': timestamp(), 'completed': len(completed), 'target': 5,
+             'started_utc': timestamp(), 'updated_utc': timestamp(), 'completed': len(completed), 'target': args.sample_count,
              'auto_expand': False, 'gpu': torch.cuda.get_device_name(0)}
     atomic_json(output / 'run_state.json', state)
     try:
@@ -191,7 +198,7 @@ def main(argv=None):
             state.update(completed=len(completed), updated_utc=timestamp(), elapsed_seconds=time.monotonic()-started)
             atomic_json(output / 'run_state.json', state)
             print(json.dumps({'group': args.group, 'doc_id': sample['doc_id'], 'completed': len(completed),
-                              'target': 5, 'tokens': info['input_tokens'], 'image_tokens': info['image_tokens'],
+                              'target': args.sample_count, 'tokens': info['input_tokens'], 'image_tokens': info['image_tokens'],
                               'seconds': row['seconds']}, ensure_ascii=False), flush=True)
             del result, batch, cpu
             torch.cuda.empty_cache()

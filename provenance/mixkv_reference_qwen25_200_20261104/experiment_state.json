@@ -1,0 +1,33 @@
+{
+  "status": "complete",
+  "started_utc": "2026-11-04T11:32:58.924616+00:00",
+  "target": 400,
+  "completed_groups": [
+    "text",
+    "vision"
+  ],
+  "sample_count": 200,
+  "auto_expand": false,
+  "current_group": "vision",
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "-B",
+    "-m",
+    "kvrepack.observations.reference",
+    "--group",
+    "vision",
+    "--sample-count",
+    "200",
+    "--pretrained",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "--hf-home",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "--inputs",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/inputs/reference_samples.json",
+    "--output",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/vision"
+  ],
+  "completed": 400,
+  "elapsed_seconds": 178.51294130831957,
+  "finished_utc": "2026-11-04T11:35:57.437559+00:00"
+}

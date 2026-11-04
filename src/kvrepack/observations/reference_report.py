@@ -1,6 +1,6 @@
-"""Descriptive reports for five full text inputs versus five image/text inputs.
+"""Full-input text versus image/text reports for the fixed 5 or 200 inputs/model.
 
-This reference-style pilot follows MixKV's per-layer/per-head distribution
+This reference-style observation follows MixKV's per-layer/per-head distribution
 format while comparing Qwen2.5 models. It never bootstraps heads or claims a
 modality effect: the models, datasets, inputs and full prompt lengths differ.
 """
@@ -26,6 +26,50 @@ GROUPS = {
 }
 METRICS = ("k_raw", "k_rope", "v")
 LAYERS, HEADS, HEAD_DIM = 28, 4, 128
+
+
+def expected_ids(sample_count):
+    if type(sample_count) is not int or sample_count not in (5, 200):
+        raise ValueError("sample_count must be the prescribed 5 or 200 inputs per group")
+    return {"text": tuple(range(sample_count)),
+            "vision": GROUPS["vision"]["doc_ids"] if sample_count == 5 else tuple(range(0, 1000, 5))}
+
+
+def _cluster_bootstrap(record_rows, bootstrap_samples, seed):
+    """Independently resample each model's sources, retaining all member rows."""
+    import numpy as np
+
+    draws, metadata = {}, {}
+    seeds = np.random.SeedSequence(seed).spawn(len(GROUPS))
+    for index, group in enumerate(GROUPS):
+        sources = defaultdict(dict)
+        for row in record_rows:
+            if row["group"] == group:
+                sources[row["source_cluster_id"]].setdefault(row["doc_id"], {})[row["metric"]] = row["mean"]
+        metadata[group] = dict(n_source_clusters=len(sources),
+                               cluster_key="context_sha256" if group == "text" else "original_image_sha256")
+        if len(sources) < 2:
+            draws[group] = None
+            continue
+        counts, totals = [], []
+        for _, members in sorted(sources.items()):
+            counts.append(len(members))
+            totals.append([math.fsum(row[metric] for row in members.values()) for metric in METRICS])
+        counts, totals = np.asarray(counts, dtype=np.int64), np.asarray(totals, dtype=np.float64)
+        samples = np.empty((bootstrap_samples, len(METRICS)), dtype=np.float64)
+        rng = np.random.default_rng(seeds[index])
+        for start in range(0, bootstrap_samples, 256):
+            size = min(256, bootstrap_samples-start)
+            selected = rng.integers(0, len(sources), size=(size, len(sources)))
+            samples[start:start+size] = totals[selected].sum(axis=1)/counts[selected].sum(axis=1)[:, None]
+        draws[group] = samples
+    group_ci = {group: ({metric: np.quantile(values[:, index], [.025, .975]).tolist()
+                         for index, metric in enumerate(METRICS)} if values is not None else None)
+                for group, values in draws.items()}
+    differences = draws["vision"]-draws["text"] if all(draws[group] is not None for group in GROUPS) else None
+    difference_ci = ({metric: np.quantile(differences[:, index], [.025, .975]).tolist()
+                      for index, metric in enumerate(METRICS)} if differences is not None else None)
+    return group_ci, difference_ci, metadata
 
 
 def _integer(value, label, minimum=0):
@@ -76,8 +120,11 @@ def _collapse(record):
             {metric: statistics.fmean(inclusive[metric]) for metric in METRICS}, details)
 
 
-def build_summary(records, *, read_errors=None):
-    """Require the prescribed 5+5 inputs; average inputs equally, regardless of N."""
+def build_summary(records, *, sample_count=5, bootstrap_samples=5000, seed=20261104, read_errors=None):
+    """Require prescribed sources; weight inputs equally, regardless of length."""
+    prescribed = expected_ids(sample_count)
+    _integer(bootstrap_samples, "bootstrap_samples", 1)
+    _integer(seed, "seed")
     issues, seen, valid = list(read_errors or []), defaultdict(set), defaultdict(set)
     record_rows, head_values, group_meta, source_meta = [], defaultdict(list), {}, defaultdict(list)
     for index, record in enumerate(records):
@@ -90,8 +137,8 @@ def build_summary(records, *, read_errors=None):
             if group not in GROUPS:
                 raise ValueError("group must be text or vision")
             doc_id = _integer(record.get("doc_id"), "doc_id")
-            if doc_id not in GROUPS[group]["doc_ids"]:
-                raise ValueError("doc_id outside the prescribed five-input pilot")
+            if doc_id not in prescribed[group]:
+                raise ValueError("doc_id outside the prescribed input range")
             if doc_id in seen[group]:
                 raise ValueError("duplicate group/doc_id")
             seen[group].add(doc_id)
@@ -104,13 +151,18 @@ def build_summary(records, *, read_errors=None):
             if not isinstance(metadata, dict) or not metadata:
                 raise ValueError("Record must preserve nonempty source_metadata")
             serialized = json.dumps(metadata, ensure_ascii=False, sort_keys=True, allow_nan=False)
+            cluster_key = "context_sha256" if group == "text" else "original_image_sha256"
+            cluster = metadata.get(cluster_key)
+            if sample_count == 200 and (not isinstance(cluster, str) or not cluster):
+                raise ValueError(f"200-input source-cluster statistics require {cluster_key}")
+            cluster = cluster if isinstance(cluster, str) and cluster else f"input:{doc_id}"
             means, inclusive, details = _collapse(record)
             identity = dict(model_id=record["model_id"], model_revision=revision)
             if group in group_meta and identity != group_meta[group]:
-                raise ValueError("Model ID/revision changed within the same five-input group")
+                raise ValueError("Model ID/revision changed within the same input group")
             group_meta[group] = identity
             common = dict(group=group, doc_id=doc_id, **identity,
-                          input_tokens=record["input_tokens"], image_tokens=record["image_tokens"])
+                          input_tokens=record["input_tokens"], image_tokens=record["image_tokens"], source_cluster_id=cluster)
             for metric in METRICS:
                 record_rows.append(dict(**common, metric=metric, mean=means[metric], inclusive_mean=inclusive[metric],
                                         ordered_nonself_pairs=record["input_tokens"]*(record["input_tokens"]-1),
@@ -119,7 +171,7 @@ def build_summary(records, *, read_errors=None):
                 key = (group, detail["metric"], detail["layer"], detail["kv_head"])
                 head_values[key].append((detail["mean"], detail["inclusive_mean"]))
             source_meta[group].append(dict(doc_id=doc_id, input_tokens=record["input_tokens"],
-                                          image_tokens=record["image_tokens"], metadata=metadata))
+                                          image_tokens=record["image_tokens"], source_cluster_id=cluster, metadata=metadata))
             valid[group].add(doc_id)
         except (ValueError, TypeError, KeyError, AttributeError) as exc:
             issues.append(dict(record_index=index, group=record.get("group") if isinstance(record, dict) else None,
@@ -137,11 +189,11 @@ def build_summary(records, *, read_errors=None):
               for key, values in sorted(layer_values.items())]
     by_group = {}
     for group, specification in GROUPS.items():
-        missing = sorted(set(specification["doc_ids"])-valid[group])
+        missing = sorted(set(prescribed[group])-valid[group])
         if missing:
             issues.append(dict(group=group, error="missing valid completed prescribed inputs", doc_ids=missing))
         primary = [row for row in record_rows if row["group"] == group and row["metric"] == METRICS[0]]
-        by_group[group] = dict(expected_doc_ids=list(specification["doc_ids"]), valid_doc_ids=sorted(valid[group]),
+        by_group[group] = dict(expected_doc_ids=list(prescribed[group]), valid_doc_ids=sorted(valid[group]),
                                seen_unique_inputs=len(seen[group]), n_inputs=len(valid[group]), missing_doc_ids=missing,
                                **group_meta.get(group, dict(model_id=specification["model_id"], model_revision=None)),
                                input_tokens={"min": min(row["input_tokens"] for row in primary),
@@ -155,14 +207,29 @@ def build_summary(records, *, read_errors=None):
             text, vision = (by_group[group]["metrics"][metric]["mean"] for group in ("text", "vision"))
             comparisons[metric] = dict(text=text, vision=vision, vision_minus_text=vision-text,
                                        text_inputs=by_group["text"]["n_inputs"], vision_inputs=by_group["vision"]["n_inputs"])
-    return dict(schema_version=1, experiment="mixkv_reference_style_qwen25_full_input_5plus5",
-                status="incomplete" if issues else "complete", expected_total_inputs=10,
+    bootstrap = dict(enabled=sample_count == 200, samples=bootstrap_samples, seed=seed,
+                     group_resampling="Independent group streams from numpy.SeedSequence; no cross-model row/head pairing",
+                     estimator="Equal input weights; resample source clusters with replacement, retaining all member inputs")
+    if sample_count == 200:
+        group_ci, difference_ci, cluster_metadata = _cluster_bootstrap(record_rows, bootstrap_samples, seed)
+        for group, data in by_group.items():
+            data.update(cluster_metadata[group])
+            for metric, values in data["metrics"].items():
+                values["ci95"] = group_ci[group][metric] if group_ci[group] is not None else None
+        for metric, values in comparisons.items():
+            values["ci95"] = difference_ci[metric] if difference_ci is not None else None
+        bootstrap["confidence"] = .95
+        bootstrap["unit"] = {group: values["cluster_key"] for group, values in cluster_metadata.items()}
+    return dict(schema_version=1, experiment=f"mixkv_reference_style_qwen25_full_input_{sample_count}pergroup",
+                status="incomplete" if issues else "complete", sample_count=sample_count, expected_total_inputs=2*sample_count,
                 dimensions=dict(layers=LAYERS, native_kv_heads=HEADS, head_dim=HEAD_DIM),
                 groups=by_group, comparisons=comparisons, validation_issues=issues,
                 statistic="All distinct-token-pair cosine over the full native prefill sequence in each input; self-pairs excluded; signed values retained",
-                aggregation="Equal KV-head and layer weights within each input, then equal weights for the five prescribed inputs per model; no token-length weighting",
-                histogram_unit="One layer/native-KV-head mean over the five inputs; 28*4=112 descriptive means per model; not independent observations",
-                uncertainty="Descriptive fixed 5+5-input pilot only; no confidence intervals, significance tests, or head-as-sample inference",
+                aggregation=f"Equal KV-head and layer weights within each input, then equal weights for the {sample_count} prescribed inputs per model; no token-length weighting",
+                histogram_unit=f"One layer/native-KV-head mean over the {sample_count} inputs; 28*4=112 descriptive means per model; not independent observations",
+                uncertainty=("Exploratory 95% percentile source-cluster bootstrap for independently resampled groups; fixed source rows, no causal or head-as-sample inference. CI unavailable if either required group has fewer than two source clusters."
+                             if sample_count == 200 else "Descriptive fixed 5+5-input pilot only; no confidence intervals, significance tests, or head-as-sample inference"),
+                bootstrap=bootstrap,
                 interpretation="Reference-style adaptation of MixKV Figure 1(b), not an exact reproduction: Qwen2.5 text and vision-language models, fixed LongBench qasper and OCRBench inputs. Models, datasets, input lengths and semantic roles differ; comparison does not isolate a within-model modality effect or establish merge safety.",
                 source_inputs={group: sorted(values, key=lambda row: row["doc_id"]) for group, values in source_meta.items()},
                 record_table=record_rows, head_table=heads, layer_table=layers)
@@ -202,9 +269,10 @@ def _plot(summary, output, *, raw=False):
             axis.grid(axis="y", alpha=.15)
         axes[0].legend(frameon=False, fontsize=8, loc="upper left")
         axes[-1].set_xlabel("Full-input, within-head mean cosine")
-        fig.suptitle("Qwen2.5-7B vs Qwen2.5-VL-7B: 5 + 5 full-input pilot", fontsize=10.5)
-        fig.text(.5, .015, "112 layer/KV-head means per curve; equal weights for 5 full inputs/model. Dashed lines: means.\n"
-                 "Descriptive pilot; no confidence intervals. Models, datasets and full context lengths differ.",
+        count = summary["sample_count"]
+        fig.suptitle(f"Qwen2.5-7B vs Qwen2.5-VL-7B: {count} + {count} full inputs", fontsize=10.5)
+        fig.text(.5, .015, f"112 layer/KV-head means per curve; equal weights for {count} full inputs/model. Dashed lines: means.\n"
+                 "Descriptive head distributions. Models, datasets and full context lengths differ.",
                  ha="center", va="bottom", fontsize=7.4)
         fig.subplots_adjust(left=.095, right=.985, bottom=.16, top=.88, hspace=.34)
         name = "reference_raw" if raw else "reference_main"
@@ -217,29 +285,46 @@ def _plot(summary, output, *, raw=False):
 def write_report(summary, output, *, plots=True):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
-    _csv(output/"record_summary.csv", summary["record_table"], ["group", "doc_id", "model_id", "model_revision", "input_tokens", "image_tokens", "ordered_nonself_pairs", "metric", "mean", "inclusive_mean", "source_metadata_json"])
+    _csv(output/"record_summary.csv", summary["record_table"], ["group", "doc_id", "model_id", "model_revision", "input_tokens", "image_tokens", "ordered_nonself_pairs", "source_cluster_id", "metric", "mean", "inclusive_mean", "source_metadata_json"])
+    _csv(output/"source_inputs.csv", [dict(group=group, doc_id=value["doc_id"], input_tokens=value["input_tokens"],
+                                          image_tokens=value["image_tokens"], source_cluster_id=value["source_cluster_id"],
+                                          source_metadata_json=json.dumps(value["metadata"], ensure_ascii=False, sort_keys=True))
+                                     for group, values in summary["source_inputs"].items() for value in values],
+         ["group", "doc_id", "input_tokens", "image_tokens", "source_cluster_id", "source_metadata_json"])
     for table, fields in (("head", ["kv_head"]), ("layer", ["kv_heads"])):
         _csv(output/f"{table}_summary.csv", summary[f"{table}_table"], ["group", "metric", "layer", *fields, "n_inputs", "mean", "inclusive_mean"])
     group_rows = [dict(group=group, model_id=data["model_id"], model_revision=data["model_revision"], n_inputs=data["n_inputs"],
                        metric=metric, **values, **{"input_tokens_"+key: value for key, value in (data["input_tokens"] or {}).items()})
                   for group, data in summary["groups"].items() for metric, values in data["metrics"].items()]
-    _csv(output/"group_summary.csv", group_rows, ["group", "model_id", "model_revision", "n_inputs", "metric", "mean", "inclusive_mean", "input_tokens_min", "input_tokens_max", "input_tokens_mean"])
-    _csv(output/"comparison_summary.csv", [dict(metric=metric, **values) for metric, values in summary["comparisons"].items()],
-         ["metric", "text", "vision", "vision_minus_text", "text_inputs", "vision_inputs"])
+    for row in group_rows:
+        interval = row.get("ci95") or (None, None)
+        row["ci95_low"], row["ci95_high"] = interval
+        row["n_source_clusters"] = summary["groups"][row["group"]].get("n_source_clusters")
+    _csv(output/"group_summary.csv", group_rows, ["group", "model_id", "model_revision", "n_inputs", "n_source_clusters", "metric", "mean", "inclusive_mean", "ci95_low", "ci95_high", "input_tokens_min", "input_tokens_max", "input_tokens_mean"])
+    comparison_rows = []
+    for metric, values in summary["comparisons"].items():
+        row = dict(metric=metric, **values)
+        row["ci95_low"], row["ci95_high"] = values.get("ci95") or (None, None)
+        comparison_rows.append(row)
+    _csv(output/"comparison_summary.csv", comparison_rows,
+         ["metric", "text", "vision", "vision_minus_text", "ci95_low", "ci95_high", "text_inputs", "vision_inputs"])
     compact = {key: value for key, value in summary.items() if not key.endswith("_table")}
-    compact["artifacts"] = dict(tables=["record_summary.csv", "head_summary.csv", "layer_summary.csv", "group_summary.csv", "comparison_summary.csv"], plots="disabled")
+    compact["artifacts"] = dict(tables=["record_summary.csv", "head_summary.csv", "layer_summary.csv", "group_summary.csv", "comparison_summary.csv", "source_inputs.csv"], plots="disabled")
     if plots and summary["status"] == "complete":
         compact["artifacts"]["plots"] = dict(main=_plot(summary, output), raw_supplement=_plot(summary, output, raw=True))
-    lines = ["# Reference-style full-input 5+5 pilot", "", f"Status: **{summary['status']}**.", "", summary["interpretation"], "", summary["statistic"], "", summary["aggregation"], "", summary["histogram_unit"], "", summary["uncertainty"], "",
-             "| Quantity | Text model (5 inputs) | Vision-language model (5 inputs) | Vision − text |", "|---|---:|---:|---:|"]
+    count = summary["sample_count"]
+    lines = [f"# Reference-style full-input {count}+{count} observation", "", f"Status: **{summary['status']}**.", "", summary["interpretation"], "", summary["statistic"], "", summary["aggregation"], "", summary["histogram_unit"], "", summary["uncertainty"], "",
+             f"| Quantity | Text model ({count} inputs) | Vision-language model ({count} inputs) | Vision − text |", "|---|---:|---:|---:|"]
     for metric, values in summary["comparisons"].items():
-        lines.append(f"| {metric} | {values['text']:.6f} | {values['vision']:.6f} | {values['vision_minus_text']:.6f} |")
+        bounds = values.get("ci95")
+        interval = f" [{bounds[0]:.6f}, {bounds[1]:.6f}]" if bounds else (" (CI unavailable)" if count == 200 else "")
+        lines.append(f"| {metric} | {values['text']:.6f} | {values['vision']:.6f} | {values['vision_minus_text']:.6f}{interval} |")
     lines += ["", "The main figure uses post-RoPE K and V; raw K is provided separately. Self-pairs are excluded; negative values and opposite-direction results are retained.", "",
-              "| Group | Model | Revision | Valid document IDs | Input token min / max / mean |", "|---|---|---|---|---|"]
+              "| Group | Model | Revision | Valid document IDs | Source clusters | Input token min / max / mean |", "|---|---|---|---|---|---|"]
     for group, data in summary["groups"].items():
         lengths = data["input_tokens"]
         label = f"{lengths['min']} / {lengths['max']} / {lengths['mean']:.1f}" if lengths else "unavailable"
-        lines.append(f"| {group} | {data['model_id']} | {data['model_revision']} | {data['valid_doc_ids']} | {label} |")
+        lines.append(f"| {group} | {data['model_id']} | {data['model_revision']} | {data['valid_doc_ids']} | {data.get('n_source_clusters', 'not used for pilot inference')} | {label} |")
     if summary["validation_issues"]:
         lines += ["", "Incomplete coverage or validation errors; all displayed aggregates are provisional:", "", "```json", json.dumps(summary["validation_issues"], indent=2), "```"]
     (output/"summary.json").write_text(json.dumps(compact, ensure_ascii=False, indent=2, allow_nan=False)+"\n", encoding="utf-8")
@@ -252,9 +337,12 @@ def main(argv=None):
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--no-plots", action="store_true")
+    parser.add_argument("--sample-count", type=int, choices=(5, 200), default=5)
+    parser.add_argument("--bootstrap-samples", type=int, default=5000)
+    parser.add_argument("--seed", type=int, default=20261104)
     args = parser.parse_args(argv)
     records, issues = read_jsonl(args.input)
-    summary = build_summary(records, read_errors=issues)
+    summary = build_summary(records, sample_count=args.sample_count, bootstrap_samples=args.bootstrap_samples, seed=args.seed, read_errors=issues)
     summary["provenance"] = dict(input_jsonl=str(args.input.resolve()), input_sha256=hashlib.sha256(args.input.read_bytes()).hexdigest())
     write_report(summary, args.output, plots=not args.no_plots)
     print(json.dumps(dict(status=summary["status"], output=str(args.output), validation_issues=len(summary["validation_issues"]))))

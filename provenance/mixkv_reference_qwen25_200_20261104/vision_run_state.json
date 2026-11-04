@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "pid": 216630,
+  "group": "vision",
+  "started_utc": "2026-11-04T11:34:40.678652+00:00",
+  "updated_utc": "2026-11-04T11:35:56.510701+00:00",
+  "completed": 200,
+  "target": 200,
+  "auto_expand": false,
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "model_load_seconds": 4.237803339958191,
+  "current_doc_id": 995,
+  "elapsed_seconds": 75.83205971866846,
+  "finished_utc": "2026-11-04T11:35:56.510692+00:00"
+}

@@ -31,6 +31,13 @@ def prompt_fixture(path):
 
 
 class ReferenceTextInputTests(unittest.TestCase):
+    def test_count_only_accepts_five_or_200_before_any_resource_access(self):
+        with patch.object(reference, "_dataset_file") as loader:
+            for count in (0, 1, 10, 199, 201, True, 200.0, "200", None):
+                with self.subTest(count=count), self.assertRaises(ValueError):
+                    reference.prepare_reference_samples("unused", "unused", offline=True, sample_count=count)
+            loader.assert_not_called()
+
     def test_zip_preserves_first_five_full_contexts_and_original_questions(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -69,6 +76,27 @@ class ReferenceTextInputTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     reference._qasper_template(path)
 
+    def test_text_200_keeps_long_final_row_and_does_not_replace_bad_selected_rows(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            rows = zip_fixture(root / "data.zip", count=200)
+            rows[-1]["context"] = "Full original scientific article. " * 4000
+            def save():
+                with zipfile.ZipFile(root / "data.zip", "w") as archive:
+                    archive.writestr("data/qasper.jsonl", "".join(json.dumps(r) + "\n" for r in rows))
+            save()
+            samples = reference._text_samples(root / "data.zip", "{context}\n{input}", {}, sample_count=200)
+            self.assertEqual([r["doc_id"] for r in samples], list(range(200)))
+            self.assertEqual(samples[-1]["context"], rows[-1]["context"])
+            self.assertGreater(len(samples[-1]["context"]), 32768)
+            rows[105]["context"] = ""
+            save()
+            with self.assertRaisesRegex(ValueError, "row 105"):
+                reference._text_samples(root / "data.zip", "{context}{input}", {}, sample_count=200)
+            zip_fixture(root / "data.zip", count=199)
+            with self.assertRaisesRegex(ValueError, "200 required"):
+                reference._text_samples(root / "data.zip", "{context}{input}", {}, sample_count=200)
+
     def test_offline_missing_prompt_and_tampered_cached_prompt_fail(self):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaises(FileNotFoundError):
@@ -85,7 +113,9 @@ class ReferenceTextInputTests(unittest.TestCase):
             reference._write_once(path, b"original")
             before = path.stat()
             reference._write_once(path, b"original")
-            self.assertEqual(path.stat(), before)
+            after = path.stat()
+            self.assertEqual((after.st_ino, after.st_size, after.st_mtime_ns, after.st_ctime_ns),
+                             (before.st_ino, before.st_size, before.st_mtime_ns, before.st_ctime_ns))
             with self.assertRaises(ValueError):
                 reference._write_once(path, b"different")
             self.assertEqual(path.read_bytes(), b"original")
@@ -128,11 +158,38 @@ class ReferenceVisionInputTests(unittest.TestCase):
     def test_missing_fixed_row_and_missing_image_bytes_fail(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            for kwargs in ({"count": 800}, {"missing_bytes": True}):
+            for kwargs in ({"count": 800}, {"count": 1001}, {"missing_bytes": True}):
                 with self.subTest(kwargs=kwargs):
                     self.parquet_fixture(root / "images.parquet", **kwargs)
                     with self.assertRaises(ValueError):
                         reference._vision_samples(root / "images.parquet", root / "out", {})
+
+    def test_200_vision_rows_use_predeclared_step_five_and_original_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            payload, originals = self.parquet_fixture(root / "images.parquet")
+            samples = reference._vision_samples(root / "images.parquet", root / "out", {}, sample_count=200)
+            self.assertEqual([s["doc_id"] for s in samples], list(range(0, 1000, 5)))
+            for sample in samples:
+                self.assertEqual(sample["prompt"], originals[sample["doc_id"]]["question"])
+                self.assertEqual(Path(sample["image_path"]).read_bytes(), payload)
+
+    def test_prepare_200_records_count_and_complete_fixed_docids(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            zip_fixture(root / "data.zip", count=200)
+            self.parquet_fixture(root / "images.parquet")
+            prompt_fixture(root / "prompt.json")
+            with patch.object(reference, "_dataset_file", side_effect=[root / "data.zip", root / "images.parquet"]), \
+                    patch.object(reference, "_prompt_file", return_value=root / "prompt.json"):
+                samples = reference.prepare_reference_samples(root / "cache", root / "out", offline=True, sample_count=200)
+            manifest = json.loads((root / "out/reference_samples.json").read_text())
+            self.assertEqual(len(samples), 400)
+            self.assertEqual(manifest["sample_count"], 400)
+            self.assertEqual(manifest["sample_count_per_group"], 200)
+            self.assertEqual(manifest["selection"]["text"], list(range(200)))
+            self.assertEqual(manifest["selection"]["vision"], list(range(0, 1000, 5)))
+            self.assertTrue(all(s["source_metadata"]["row_index"] == s["doc_id"] for s in samples))
 
     def test_prepare_returns_exactly_ten_and_persists_only_fixed_selection(self):
         with tempfile.TemporaryDirectory() as directory:

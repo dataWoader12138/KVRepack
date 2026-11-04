@@ -12,6 +12,8 @@ MixKV式补充观察：当前为[Qwen2.5两模型各5个完整输入的pilot](do
 
 该5＋5已完成：[结果和类似MixKV图1(b)的分布图](docs/MIXKV_REFERENCE_PILOT_RESULTS_20261104.md)。RoPE后K/V组均值为图文更高，raw K方向相反；仅为小批量诊断，未扩大实验。
 
+后续已按用户明确授权完成[各200条的完整输入观察](docs/MIXKV_REFERENCE_200_RESULTS_20261104.md)，含主图、raw对照与独立来源聚类区间；原生统计模块不变，400条全部完成，旧5＋5保留原样。
+
 相似度解释：[MixKV对照口径、原结果的层差异及候选机制调研](docs/VISUAL_TEXT_SIMILARITY_RESEARCH.md)。明确区分本机证据、相关论文的结论与尚待验证的原因。
 
 将 Qwen2.5-VL 的 KV cache 基线及其 KVRepack 改进整理到一个独立项目，同时纳入 LLaVA-OneVision-Qwen2-7B 的原有基线。任务包括 NextQA、VATEX、VideoChatGPT。多图 MileBench、历史参数搜索和诊断支线尚未纳入首版。

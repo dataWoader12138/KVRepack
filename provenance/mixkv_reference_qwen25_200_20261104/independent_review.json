@@ -1,0 +1,22 @@
+{
+  "scope": "Read-only independent recomputation from 400 stored native-prefill records; no extra GPU forwards",
+  "status": "passed",
+  "checks": {
+    "record_inputs": 400,
+    "text_source_clusters": 148,
+    "vision_source_clusters": 199,
+    "means_max_abs_recompute_error_bound": 2.3e-16,
+    "bootstrap_ci_max_abs_recompute_error": 0.0,
+    "descriptive_layer_head_means_per_curve": 112,
+    "pilot_overlap_inputs": 10,
+    "pilot_overlap_input_tensor_bytes_identical": true,
+    "pilot_overlap_max_cosine_difference": 0.0,
+    "frozen_sources_unchanged": true
+  },
+  "limits": [
+    "Different models, datasets, full input lengths and position layouts; not a within-model modality intervention",
+    "Raw K means current-layer pre-RoPE, not absence of all positional information",
+    "K ordering changes with the capture stage; raw comparison remains negative",
+    "Confidence intervals use independent group source-cluster resampling, not independent heads or paired doc IDs"
+  ]
+}

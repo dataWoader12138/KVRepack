@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "overlap_count": 10,
+  "max_cosine_difference": 0.0,
+  "frozen_sources_unchanged": true,
+  "records": [
+    {
+      "group": "text",
+      "doc_id": 0,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    },
+    {
+      "group": "text",
+      "doc_id": 1,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    },
+    {
+      "group": "text",
+      "doc_id": 2,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    },
+    {
+      "group": "text",
+      "doc_id": 3,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    },
+    {
+      "group": "text",
+      "doc_id": 4,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    },
+    {
+      "group": "vision",
+      "doc_id": 0,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    },
+    {
+      "group": "vision",
+      "doc_id": 200,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    },
+    {
+      "group": "vision",
+      "doc_id": 400,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    },
+    {
+      "group": "vision",
+      "doc_id": 600,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    },
+    {
+      "group": "vision",
+      "doc_id": 800,
+      "input_tensor_bytes_identical": true,
+      "max_cosine_difference": 0.0
+    }
+  ]
+}
