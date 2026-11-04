@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-11-04",
+  "status": "passed",
+  "source_snapshot_commit": "b2da65c30a36e51c4b7cb280aaeeea75320409ff",
+  "source_zip_sha256": "7bbf2074d7d2575946cd46e817a72f266fb0bed7eb78584b550f73f8daeb93d2",
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "model": "Qwen2.5-VL-3B-Instruct",
+  "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+  "scope": "isolated real-model worker, original artifact vs repacked implementation",
+  "full_cli_tested": false,
+  "full_benchmark_reproduced": false,
+  "custom_kvrepack_kernel_tested": false,
+  "performance_benchmark": false,
+  "score_tolerance": {
+    "atol": 0,
+    "rtol": 0
+  },
+  "compared_records": 8,
+  "compared_logits": 8964224,
+  "compared_cache_tensor_hash_pairs": 1152,
+  "dependencies": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.52.3",
+    "flash-attn": "2.7.4.post1",
+    "qwen-vl-utils": "0.0.14",
+    "decord": "0.6.0",
+    "datasets": "2.19.2",
+    "accelerate": "1.13.0"
+  },
+  "published_artifacts": {
+    "inputs_manifest.json": {
+      "sha256": "095b71bab268d9749fb76120eb92bd42949d49d5aaf6474d6fb822a3aae8122f",
+      "bytes": 7447
+    },
+    "gpu_pair_worker.py": {
+      "sha256": "11f66c4d1f03179c96727128cae15c3fa0e5bbc32689a27f6a7fa3d72b5be055",
+      "bytes": 10835
+    },
+    "compare_gpu_runs.py": {
+      "sha256": "4cd1414e5d80245c1f8e9accba77b3e27c19cd9a3d5c8709923d7f194bc75ebb",
+      "bytes": 21984
+    },
+    "score_gpu_subset.py": {
+      "sha256": "274e4ae921aac57d0828314a95a3c6062abcadca05326f7ae327a862f9202739",
+      "bytes": 15496
+    },
+    "final_unit_tests.log": {
+      "sha256": "ae081f935146d0521d8825ad9f9cc527d200459affeb5adb5dea894428185407",
+      "bytes": 8718
+    },
+    "final_check_sources.json": {
+      "sha256": "e26ff3386f5692f67a850cdad691000bfd11d29434213e88510722a8ade6e6a5",
+      "bytes": 179
+    },
+    "subset_metrics.json": {
+      "sha256": "2e9dff01661f86cefa9123c41eaf8d1cf40be1a11c9ed140ffaa3f561893d215",
+      "bytes": 16227
+    },
+    "snapkv_comparison.json": {
+      "sha256": "839639f703f07c58cbb4114c7994171b220cae17986c78b7730a9baf55ec9f6a",
+      "bytes": 694322
+    },
+    "snapkv_comparison.md": {
+      "sha256": "c08241deb27bc4c14820c8b9a18dabce0c5906d979f47cc7ba594dec034f0b3a",
+      "bytes": 1572
+    },
+    "snapkv_original.json": {
+      "sha256": "fc98cd6b25ab5b80bbb35c65b65d4ca13a604f7fd8caefde324350f42c51f110",
+      "bytes": 128419
+    },
+    "snapkv_original.log": {
+      "sha256": "57b384581fb7dc7d93571570e1083c8eb4e8422bf8bbf48b3b0051649687cd30",
+      "bytes": 3946
+    },
+    "snapkv_repack.json": {
+      "sha256": "fd44a443eea7cf8e56ed24525469dbaf947097f51750527849111c2b04df0248",
+      "bytes": 128400
+    },
+    "snapkv_repack.log": {
+      "sha256": "a4abaffce8629556d8d9745e3eb8ffeb86e89160e627e1fb3b7458c9ede72853",
+      "bytes": 3917
+    },
+    "madakv_comparison.json": {
+      "sha256": "eabf02ac7bbfe1bb6ee4ff789096f768ae096bc51ed9aaae2e0b4174a8e66e96",
+      "bytes": 694163
+    },
+    "madakv_comparison.md": {
+      "sha256": "c08241deb27bc4c14820c8b9a18dabce0c5906d979f47cc7ba594dec034f0b3a",
+      "bytes": 1572
+    },
+    "madakv_original.json": {
+      "sha256": "69114e564af57b1f79e2eecbd32a59eb553823fe4d3011009474e04b8370e77c",
+      "bytes": 128374
+    },
+    "madakv_original.log": {
+      "sha256": "88fedc813065744a9f24672a42bd292ca064a214769c9c5c3334e93a8eb22df4",
+      "bytes": 3940
+    },
+    "madakv_repack.json": {
+      "sha256": "414559001bfc4565673f0fbb145c13f9c024156837de1824e77380123a5118af",
+      "bytes": 128357
+    },
+    "madakv_repack.log": {
+      "sha256": "377c7dfd9a78973df54eff628514d9b456622136a62a7a8617e063cf3a4347b5",
+      "bytes": 3913
+    }
+  },
+  "local_only_tensor_artifacts": {
+    "/root/kvrepack-gpu-work/results/snapkv_original_scores.pt": {
+      "sha256": "d259defe4cfd60759cab7e6d9a3a0e8a9928d7e9fdfb721ca84ffe30da56553b",
+      "bytes": 18842312,
+      "reason": "Full-vocabulary raw logits retained locally, omitted from Git."
+    },
+    "/root/kvrepack-gpu-work/results/snapkv_repack_scores.pt": {
+      "sha256": "461e15d5304fcd293b0f308c81be92c67808dd9a028d016499e694c87415cf50",
+      "bytes": 18842232,
+      "reason": "Full-vocabulary raw logits retained locally, omitted from Git."
+    },
+    "/root/kvrepack-gpu-work/results/madakv_original_scores.pt": {
+      "sha256": "a081020981a1718a6c7c52c081b39fe1ef83ef1f97ba79425481da5978a36c89",
+      "bytes": 17019080,
+      "reason": "Full-vocabulary raw logits retained locally, omitted from Git."
+    },
+    "/root/kvrepack-gpu-work/results/madakv_repack_scores.pt": {
+      "sha256": "16c860f67948d7549be4d0fc752c2dffe7173baae04e40f0d51ff28ade408391",
+      "bytes": 17019000,
+      "reason": "Full-vocabulary raw logits retained locally, omitted from Git."
+    }
+  },
+  "cpu_regression": {
+    "tests": 50,
+    "passed": 49,
+    "skipped": 1,
+    "skip_reason": "Explicit original-source CPU differential is optional and not rerun by default suite."
+  },
+  "source_verification": {
+    "status": "passed",
+    "core_files": 30,
+    "local_modules_and_adapter": 33,
+    "vendor_python_files": 329,
+    "vendor_build_files": 2382,
+    "original_source_comparison": false
+  }
+}

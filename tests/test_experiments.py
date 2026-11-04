@@ -274,6 +274,43 @@ class ProvenanceTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "frontend hash mismatch"):
                 verify_vendor_sources(root)
 
+    def test_shipped_schema2_manifests_verify_and_still_reject_target_drift(self):
+        checkout = Path(__file__).resolve().parents[1]
+        core_path = checkout / "provenance/core_sources.json"
+        vendor_path = checkout / "provenance/vendor_sources.json"
+        core = json.loads(core_path.read_text())
+        vendor = json.loads(vendor_path.read_text())
+        self.assertEqual(core["schema_version"], 2)
+        self.assertEqual(vendor["schema_version"], 2)
+        self.assertEqual(len(verify_manifest(checkout)["verified_targets"]), len(core["entries"]))
+        frontend = verify_vendor_sources(checkout)["verified_targets"]
+        self.assertGreaterEqual(len(frontend), 5)
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "provenance").mkdir()
+            # Preserve a real schema-2 entry and its original target hash; only
+            # reduce the copied fixture's target set to avoid copying the core.
+            entry = core["entries"][0]
+            core["entries"] = [entry]
+            target = root / entry["target_path"]
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((checkout / entry["target_path"]).read_bytes())
+            (root / "provenance/core_sources.json").write_text(json.dumps(core))
+            (root / "provenance/vendor_sources.json").write_text(vendor_path.read_text())
+            for item in frontend:
+                copied = root / item["target_path"]
+                copied.parent.mkdir(parents=True, exist_ok=True)
+                copied.write_bytes((checkout / item["target_path"]).read_bytes())
+            self.assertEqual(len(verify_manifest(root)["verified_targets"]), 1)
+            self.assertEqual(len(verify_vendor_sources(root)["verified_targets"]), len(frontend))
+            target.write_bytes(target.read_bytes() + b"\n# changed target\n")
+            with self.assertRaisesRegex(ValueError, "Source hash mismatch"):
+                verify_manifest(root)
+            adapter = root / "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py"
+            adapter.write_bytes(adapter.read_bytes() + b"\n# changed adapter\n")
+            with self.assertRaisesRegex(ValueError, "frontend hash mismatch"):
+                verify_vendor_sources(root)
+
     def test_actual_child_import_specs_resolve_only_local_fixture_without_torch(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)

@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-04T04:31:36.249488+00:00",
+  "scope": {
+    "cpu_metrics_only": true,
+    "gpu_or_model_loaded": false,
+    "network_or_download_requested": false,
+    "python_network_blocked": true,
+    "java_use": "Only local Stanford PTB tokenizer; Python block does not sandbox subprocess networking",
+    "subset": "Exactly doc_ids 0 and 1 of NextQA-OE test and VATEX test"
+  },
+  "limitations": [
+    "Compares newly rerun original/repack outputs only; historical prediction JSONL files are unavailable.",
+    "Two-doc subset metrics are not historical 200-doc aggregates, a benchmark reproduction, a quality ranking, or evidence of general algorithm equivalence.",
+    "CIDEr document frequencies are computed over these two references groups, so subset CIDEr is especially incomparable with 200-doc/full-corpus CIDEr.",
+    "METEOR and SPICE are deliberately omitted; no VATEX mean4/composite score is reported.",
+    "This CPU script verifies input hashes/text/metrics; token/logit/cache equivalence is checked separately by compare_gpu_runs.py."
+  ],
+  "versions": {
+    "nltk": "3.9.4",
+    "pywsd": "1.2.5",
+    "pycocoevalcap": "1.2",
+    "pycocotools": "2.0.11",
+    "pyarrow": "23.0.1",
+    "pandas": "3.0.2"
+  },
+  "provenance": {
+    "script": "/root/kvrepack-gpu-work/score_gpu_subset.py",
+    "script_sha256": "274e4ae921aac57d0828314a95a3c6062abcadca05326f7ae327a862f9202739",
+    "inventory": "/tmp/gpu_retest_data_inventory.json",
+    "inventory_sha256": "29f1a4577eaf6ca8f9a9ccb13242734197f07a01dd177cae881e305d3f00e46d",
+    "inputs_manifest": "/root/kvrepack-gpu-work/inputs_manifest.json",
+    "inputs_manifest_sha256": "095b71bab268d9749fb76120eb92bd42949d49d5aaf6474d6fb822a3aae8122f",
+    "references": {
+      "nextqa_oe_test": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___n_ex_tqa/OE/0.0.0/a0d7729e38399da9c8a70c59aa4ad7f6996d3c00/n_ex_tqa-test.arrow",
+        "sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+        "doc_ids": [
+          0,
+          1
+        ],
+        "row_count": 9178
+      },
+      "vatex_test": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___vatex/vatex_test/0.0.0/73c2e83ade2892705080e9dadeb7c75c5b99e0f4/vatex-test.arrow",
+        "sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+        "doc_ids": [
+          0,
+          1
+        ],
+        "row_count": 4478
+      }
+    },
+    "scorers": {
+      "nextqa": {
+        "path": "/root/kvrepack-gpu-work/KVRepack/vendor/lmms-eval/lmms_eval/tasks/nextqa/utils.py",
+        "sha256": "27c8baea98d4709e25c71484f01e6897e771c420072bff87f2be90deda72f2e4",
+        "unchanged_function_ast_sha256": {
+          "remove_stop": "5e2bf5c0b02440b964f675b56a76b325163d06469a35aa75b1c28932670c3832",
+          "wup": "f88f9aef402b87d0a38af560a5cee83231da31e1fe6b7d5f71dc148232b4ac7e",
+          "wups": "21467c4241859c6a208e00fc1e32b897ecaf2248d06e694041cc037a14c59da9",
+          "get_wups": "cc94bcf6a89dffbbb068d12c1fe09e0ded97d702b5f668479039bd52162886c9",
+          "nextqa_process_results": "d764fd50606bdafc1de8fc2b3e228680388a39ac7086ccd48f9df9f484a3ef92",
+          "nextqa_aggregate_results": "3aa7ba090f78603a3f26f21a6cf133473350e50931fc2be3178ce60cd5d7a1a7"
+        },
+        "stopwords_path": "/root/kvrepack-gpu-work/KVRepack/vendor/lmms-eval/lmms_eval/tasks/nextqa/stopwords.csv",
+        "stopwords_sha256": "13652df2a1ccf314a6b8a354a2adf1dc4e4b8cc5c7a25c6354e1a0182be743a3"
+      },
+      "vatex": {
+        "path": "/root/kvrepack-gpu-work/KVRepack/vendor/lmms-eval/lmms_eval/tasks/vatex/utils.py",
+        "sha256": "a1adb3c156c9107c8e001dabb07d9047511770b076c600f856b6d34bf1d74479",
+        "unchanged_function_ast_sha256": {
+          "vatex_process_result": "664786a7681350ca55590738e5846c0ebe9603fa2a128c10e8d9bfc791577794",
+          "vatex_aggregation_result": "86bcff7e17d5d7286260377384b59fdc33f0bc3919f95fb05a2d23409a79a10c"
+        },
+        "adaptations": [
+          "Unchanged task aggregation AST; unused METEOR constructor replaced with an unscorable placeholder.",
+          "Only Bleu_4, ROUGE_L, CIDEr are requested; no COCOEvalCap.evaluate(), METEOR or SPICE execution.",
+          "PTB tokenize bytecode unchanged; only jar path and temporary-file directory relocated, with exact-input memoization.",
+          "Task submission side effect redirected into an automatically deleted temporary directory."
+        ],
+        "ptb_source_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/pycocoevalcap/tokenizer/ptbtokenizer.py",
+        "ptb_source_sha256": "ded90551127b8a4bf683873432ccafa83330a9997f6d0b695cb71a618808b8c1",
+        "ptb_jar_path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/pycocoevalcap/tokenizer/stanford-corenlp-3.4.1.jar",
+        "ptb_jar_sha256": "2fcb91bb7a111f93d71e264f4ee0e3afd19ba0dde6d21b38605088df9e940399"
+      }
+    }
+  },
+  "runs": {
+    "snapkv_original": {
+      "file": "/root/kvrepack-gpu-work/results/snapkv_original.json",
+      "sha256": "fc98cd6b25ab5b80bbb35c65b65d4ca13a604f7fd8caefde324350f42c51f110",
+      "implementation": "original",
+      "generation_source_module": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py",
+      "generation_source_sha256": "a995a055acd0dd73de8e183ff11ac270d250d0194fcb06f3028f4c10b48ad275",
+      "config": {
+        "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+        "model": "Qwen2.5-VL-3B-Instruct",
+        "method": "snapkv_kvrepack",
+        "simtop": 0.7,
+        "compress_ratio": 0.9,
+        "alpha": 2,
+        "budget_ratio": 0.1,
+        "score_correction": "none",
+        "frames": 64,
+        "max_new_tokens": 64,
+        "dtype": "bfloat16",
+        "attention": "flash_attention_2"
+      },
+      "tasks": {
+        "nextqa_oe_test": {
+          "n": 2,
+          "doc_ids": [
+            0,
+            1
+          ],
+          "metrics": {
+            "WUPS": 52.197802197802204
+          },
+          "scale": "0-100; task returns WUPS@0",
+          "records": [
+            {
+              "id": "nextqa_oe_test:0",
+              "prediction": "no",
+              "task_result": {
+                "0": 1,
+                "0.9": 1,
+                "qtype": "DB"
+              }
+            },
+            {
+              "id": "nextqa_oe_test:1",
+              "prediction": "with a brush",
+              "task_result": {
+                "0": 0.04395604395604396,
+                "0.9": 0.00043956043956043956,
+                "qtype": "CH"
+              }
+            }
+          ]
+        },
+        "vatex_test": {
+          "n": 2,
+          "doc_ids": [
+            0,
+            1
+          ],
+          "metrics": {
+            "Bleu_4": 3.834664749148058e-09,
+            "ROUGE_L": 0.39267915124971686,
+            "CIDEr": 0.49178549085113177
+          },
+          "scale": "Raw pycocoevalcap units; no multiplication by 100",
+          "records": [
+            {
+              "id": "vatex_test:0",
+              "video_id": "5-xGskbsBgI_000055_000065",
+              "reference_count": 10,
+              "prediction": "A man sits at a desk and speaks to the camera."
+            },
+            {
+              "id": "vatex_test:1",
+              "video_id": "uaoC__dKucA_000518_000528",
+              "reference_count": 10,
+              "prediction": "A woman sits at a table and talks about knitting."
+            }
+          ]
+        }
+      }
+    },
+    "snapkv_repack": {
+      "file": "/root/kvrepack-gpu-work/results/snapkv_repack.json",
+      "sha256": "fd44a443eea7cf8e56ed24525469dbaf947097f51750527849111c2b04df0248",
+      "implementation": "repack",
+      "generation_source_module": "/root/kvrepack-gpu-work/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py",
+      "generation_source_sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+      "config": {
+        "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+        "model": "Qwen2.5-VL-3B-Instruct",
+        "method": "snapkv_kvrepack",
+        "simtop": 0.7,
+        "compress_ratio": 0.9,
+        "alpha": 2,
+        "budget_ratio": 0.1,
+        "score_correction": "none",
+        "frames": 64,
+        "max_new_tokens": 64,
+        "dtype": "bfloat16",
+        "attention": "flash_attention_2"
+      },
+      "tasks": {
+        "nextqa_oe_test": {
+          "n": 2,
+          "doc_ids": [
+            0,
+            1
+          ],
+          "metrics": {
+            "WUPS": 52.197802197802204
+          },
+          "scale": "0-100; task returns WUPS@0",
+          "records": [
+            {
+              "id": "nextqa_oe_test:0",
+              "prediction": "no",
+              "task_result": {
+                "0": 1,
+                "0.9": 1,
+                "qtype": "DB"
+              }
+            },
+            {
+              "id": "nextqa_oe_test:1",
+              "prediction": "with a brush",
+              "task_result": {
+                "0": 0.04395604395604396,
+                "0.9": 0.00043956043956043956,
+                "qtype": "CH"
+              }
+            }
+          ]
+        },
+        "vatex_test": {
+          "n": 2,
+          "doc_ids": [
+            0,
+            1
+          ],
+          "metrics": {
+            "Bleu_4": 3.834664749148058e-09,
+            "ROUGE_L": 0.39267915124971686,
+            "CIDEr": 0.49178549085113177
+          },
+          "scale": "Raw pycocoevalcap units; no multiplication by 100",
+          "records": [
+            {
+              "id": "vatex_test:0",
+              "video_id": "5-xGskbsBgI_000055_000065",
+              "reference_count": 10,
+              "prediction": "A man sits at a desk and speaks to the camera."
+            },
+            {
+              "id": "vatex_test:1",
+              "video_id": "uaoC__dKucA_000518_000528",
+              "reference_count": 10,
+              "prediction": "A woman sits at a table and talks about knitting."
+            }
+          ]
+        }
+      }
+    },
+    "madakv_original": {
+      "file": "/root/kvrepack-gpu-work/results/madakv_original.json",
+      "sha256": "69114e564af57b1f79e2eecbd32a59eb553823fe4d3011009474e04b8370e77c",
+      "implementation": "original",
+      "generation_source_module": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py",
+      "generation_source_sha256": "1c49a11eb3823c78ce3efd2046aff466a0f50447c83afbd9b89ce0bb2ea9dc87",
+      "config": {
+        "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+        "model": "Qwen2.5-VL-3B-Instruct",
+        "method": "madakv_kvrepack",
+        "simtop": 0.5,
+        "compress_ratio": 0.7,
+        "alpha": 2,
+        "budget_ratio": 0.1,
+        "score_correction": "none",
+        "frames": 64,
+        "max_new_tokens": 64,
+        "dtype": "bfloat16",
+        "attention": "flash_attention_2"
+      },
+      "tasks": {
+        "nextqa_oe_test": {
+          "n": 2,
+          "doc_ids": [
+            0,
+            1
+          ],
+          "metrics": {
+            "WUPS": 52.197802197802204
+          },
+          "scale": "0-100; task returns WUPS@0",
+          "records": [
+            {
+              "id": "nextqa_oe_test:0",
+              "prediction": "no",
+              "task_result": {
+                "0": 1,
+                "0.9": 1,
+                "qtype": "DB"
+              }
+            },
+            {
+              "id": "nextqa_oe_test:1",
+              "prediction": "with a brush",
+              "task_result": {
+                "0": 0.04395604395604396,
+                "0.9": 0.00043956043956043956,
+                "qtype": "CH"
+              }
+            }
+          ]
+        },
+        "vatex_test": {
+          "n": 2,
+          "doc_ids": [
+            0,
+            1
+          ],
+          "metrics": {
+            "Bleu_4": 3.929956483210505e-09,
+            "ROUGE_L": 0.38959160138799426,
+            "CIDEr": 0.4580657340908626
+          },
+          "scale": "Raw pycocoevalcap units; no multiplication by 100",
+          "records": [
+            {
+              "id": "vatex_test:0",
+              "video_id": "5-xGskbsBgI_000055_000065",
+              "reference_count": 10,
+              "prediction": "A man wearing glasses speaks to the camera."
+            },
+            {
+              "id": "vatex_test:1",
+              "video_id": "uaoC__dKucA_000518_000528",
+              "reference_count": 10,
+              "prediction": "A woman sits at a table and talks about knitting."
+            }
+          ]
+        }
+      }
+    },
+    "madakv_repack": {
+      "file": "/root/kvrepack-gpu-work/results/madakv_repack.json",
+      "sha256": "414559001bfc4565673f0fbb145c13f9c024156837de1824e77380123a5118af",
+      "implementation": "repack",
+      "generation_source_module": "/root/kvrepack-gpu-work/KVRepack/src/kvrepack/qwen_model_madakv_kvrepack.py",
+      "generation_source_sha256": "7a2ce16742e3d7f959417d0281c3e58faa1ec9426cba0c66ab14aa9007f92a1b",
+      "config": {
+        "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+        "model": "Qwen2.5-VL-3B-Instruct",
+        "method": "madakv_kvrepack",
+        "simtop": 0.5,
+        "compress_ratio": 0.7,
+        "alpha": 2,
+        "budget_ratio": 0.1,
+        "score_correction": "none",
+        "frames": 64,
+        "max_new_tokens": 64,
+        "dtype": "bfloat16",
+        "attention": "flash_attention_2"
+      },
+      "tasks": {
+        "nextqa_oe_test": {
+          "n": 2,
+          "doc_ids": [
+            0,
+            1
+          ],
+          "metrics": {
+            "WUPS": 52.197802197802204
+          },
+          "scale": "0-100; task returns WUPS@0",
+          "records": [
+            {
+              "id": "nextqa_oe_test:0",
+              "prediction": "no",
+              "task_result": {
+                "0": 1,
+                "0.9": 1,
+                "qtype": "DB"
+              }
+            },
+            {
+              "id": "nextqa_oe_test:1",
+              "prediction": "with a brush",
+              "task_result": {
+                "0": 0.04395604395604396,
+                "0.9": 0.00043956043956043956,
+                "qtype": "CH"
+              }
+            }
+          ]
+        },
+        "vatex_test": {
+          "n": 2,
+          "doc_ids": [
+            0,
+            1
+          ],
+          "metrics": {
+            "Bleu_4": 3.929956483210505e-09,
+            "ROUGE_L": 0.38959160138799426,
+            "CIDEr": 0.4580657340908626
+          },
+          "scale": "Raw pycocoevalcap units; no multiplication by 100",
+          "records": [
+            {
+              "id": "vatex_test:0",
+              "video_id": "5-xGskbsBgI_000055_000065",
+              "reference_count": 10,
+              "prediction": "A man wearing glasses speaks to the camera."
+            },
+            {
+              "id": "vatex_test:1",
+              "video_id": "uaoC__dKucA_000518_000528",
+              "reference_count": 10,
+              "prediction": "A woman sits at a table and talks about knitting."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "snapkv": {
+      "nextqa_oe_test": {
+        "same_doc_ids": true,
+        "identical_prediction_texts": true,
+        "metric_deltas_repack_minus_original": {
+          "WUPS": 0.0
+        }
+      },
+      "vatex_test": {
+        "same_doc_ids": true,
+        "identical_prediction_texts": true,
+        "metric_deltas_repack_minus_original": {
+          "Bleu_4": 0.0,
+          "ROUGE_L": 0.0,
+          "CIDEr": 0.0
+        }
+      }
+    },
+    "madakv": {
+      "nextqa_oe_test": {
+        "same_doc_ids": true,
+        "identical_prediction_texts": true,
+        "metric_deltas_repack_minus_original": {
+          "WUPS": 0.0
+        }
+      },
+      "vatex_test": {
+        "same_doc_ids": true,
+        "identical_prediction_texts": true,
+        "metric_deltas_repack_minus_original": {
+          "Bleu_4": 0.0,
+          "ROUGE_L": 0.0,
+          "CIDEr": 0.0
+        }
+      }
+    }
+  }
+}

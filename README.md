@@ -6,9 +6,11 @@
 
 将 Qwen2.5-VL 的 KV cache 基线及其 KVRepack 改进整理到一个独立项目，同时纳入 LLaVA-OneVision-Qwen2-7B 的原有基线。任务包括 NextQA、VATEX、VideoChatGPT。多图 MileBench、历史参数搜索和诊断支线尚未纳入首版。
 
-本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。当前状态为**整理和 CPU 静态验证阶段，GPU 正确性、数值一致性和速度尚待验证**。
+本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。当前已完成整理、CPU 审计及下述 GPU 子集数值对照；**完整 CLI、完整基准与性能仍待验证**。
 
 2026-11-03 的无 GPU 调用关系审计覆盖了19个组合，并执行原压缩函数的CPU小张量检查；已复现 **LLaVA SparseMM 跨视频复用旧预算**及 **AsymKV 特定分块边界遗漏末 token** 两项问题，核心代码尚未修复。详细调用图、触发条件和复查命令见 [CPU 调用关系审计](docs/CPU_CALL_AUDIT.md)。分派与源码检查通过不能替代这些行为问题的处理。
+
+2026-11-04 已获授权并完成 Qwen3B 的 SnapKV-KVRepack、MadaKV-KVRepack GPU 迁移对照：NextQA、VATEX 各2例、64帧，共8组原实现/新实现配对，生成 token 完全一致，36层 prefill/final KV 的 SHA-256 一致，全部词表的生成 logits 最大绝对差为0。测试使用绕过 runner/adapter 的隔离 worker，未覆盖完整 CLI、完整任务评分、自定义 CUDA 内核、7B、LLaVA、HybridKV、SparseMM 或性能；MadaKV 两个数据集均用 `(simtop, cr, alpha)=(0.5, 0.7, 2)`，NextQA 此处是代表配置，并非其 `cr=0.5` 的历史最佳配置。详情及入口 schema 1/2 兼容修复见 [GPU 子集复测](docs/GPU_RETEST_20261104.md)。
 
 ## 文件组织
 
@@ -49,9 +51,9 @@ KVRepack/
 
 LLaVA 的六种基线已纳入本版。工作区另已找到 SnapKV、SparseMM、MadaKV、HybridKV 的 LLaVA 改进源码，尚未迁入；这些改进组合在生成计划时会明确拒绝。详见 [迁移范围](docs/REPACKING.md#首版范围)。
 
-## 安装（待 GPU 阶段实际验证）
+## 安装（全新环境安装流程尚未验证）
 
-使用独立的 Python 3.12 环境。以下命令供下一阶段使用；本次整理未在原实验环境中安装或替换任何包。
+使用独立的 Python 3.12 环境。以下安装流程尚未在全新机器验证；本轮 GPU 子集复测复用了原有依赖环境。
 
 ```bash
 cd KVRepack
@@ -88,6 +90,6 @@ python -m kvrepack.run --method hybridkv_kvrepack --task nextqa_oe_test \
 
 权重、视频、数据集和历史日志不包含在仓库中。可显式设置 `HF_HOME` 复用已有缓存；NextQA 的 NLTK 资源需预先准备，VATEX 的 METEOR 评分需要 Java。具体路径及阶段安排见 [验证说明](docs/VALIDATION.md)。VideoChatGPT 的生成和外部 judge 评分是不同环节；评分模型和配置需要单独记录。本次没有发送评分请求。
 
-本项目保留原始算法实现并记录机械迁移证据；这些检查不能替代 GPU 的数值、生成结果与性能对照。历史 CSV 的最优结果也不能仅靠当前脚本默认值保证复现。
+本项目保留原始算法实现并记录机械迁移证据；现有小样本数值对照不能替代未覆盖方法的 GPU 检查、完整任务评分与性能测试。历史 CSV 的最优结果也不能仅靠当前脚本默认值保证复现。
 
 第三方许可与项目自身许可的待确认项见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

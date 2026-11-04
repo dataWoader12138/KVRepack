@@ -1,0 +1,5150 @@
+{
+  "implementation": "original",
+  "source_module": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_madakv_decouplekv.py",
+  "source_sha256": "1c49a11eb3823c78ce3efd2046aff466a0f50447c83afbd9b89ce0bb2ea9dc87",
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "torch_version": "2.6.0+cu124",
+  "scores_kind": "unprocessed_generation_logits",
+  "records": [
+    {
+      "id": "nextqa_oe_test:0",
+      "input_hashes": {
+        "input_ids": "cd59627f40c558b3300db000423b313f99664195e3d5535d98b8986321c7ee62",
+        "attention_mask": "1f3408477a4392babbd96e8b3dfadeccc001a04551b7a430f80324750ae1d0fd",
+        "pixel_values_videos": "463d16a88962d8eec89be93d4309486cb4d88f6129bcb8db01f46d998f8e9591",
+        "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08",
+        "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      },
+      "input_shapes": {
+        "input_ids": [
+          1,
+          9607
+        ],
+        "attention_mask": [
+          1,
+          9607
+        ],
+        "pixel_values_videos": [
+          38272,
+          1176
+        ],
+        "video_grid_thw": [
+          1,
+          3
+        ],
+        "second_per_grid_ts": [
+          1
+        ]
+      },
+      "generated_ids": [
+        2152,
+        151645
+      ],
+      "text": "no",
+      "prefill_cache_shapes": [
+        {
+          "layer": 0,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "e4fc59fcbd248b4ed8af7f0a683f54469004de1412e38211b9fa4782eeb443b6",
+          "value_sha256": "41f0c742d10de51ce3724d90faae290fd54d3974bae8b7acc372c8956b3ccb1e"
+        },
+        {
+          "layer": 1,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "06266760d333103db9d8d66895849760a6615421d47350091106bde02b8257be",
+          "value_sha256": "31951e0c0607941ae42ea1e7a48462b8b5bdfa16c9c64cf80b378e6c30e3eff4"
+        },
+        {
+          "layer": 2,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "abe2c22549f4ca6b92a49b9d8d157ec7bc9d7497945974694d20fb9d17789c63",
+          "value_sha256": "60d0bd02801403b61df963b74eaacabf85d51a8a901cf4c2cc3c0ceccbe49a74"
+        },
+        {
+          "layer": 3,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "3ba29a5fe5172fa1859ce83bd4cdb9249820fa1b9ee43d4bd67ee476d425758b",
+          "value_sha256": "1d6ffea74ab190bee8514d65818cf777962a6eb1a9d794cb2415c71e4c5fae15"
+        },
+        {
+          "layer": 4,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "bb06aa8f1b279ba337dee56bb9f10d49e9922e28f9d57647361ac48c2a803a50",
+          "value_sha256": "73c468f37384301847a3ef9ca388808f4fdc6a1224282a06433bb51a81e12290"
+        },
+        {
+          "layer": 5,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "ab3cc6e0e3f0a2d46cf89d7cd9e24d77357799f60bbc9344f2d1ef338045415b",
+          "value_sha256": "21f79e9ee486a5a7eb8480329dcc7c2986718beca7f7dbb196022bc75d519862"
+        },
+        {
+          "layer": 6,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "6f1b1321f6bc8c6715f2226d22d9c617e5f4cc34e242a83a429430cb7988c6db",
+          "value_sha256": "aaaa4b178624aa76dd8485ae7455e7fb154a2cb498ea267f9cdaa1c7319f9970"
+        },
+        {
+          "layer": 7,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "8ce8db513c72719d042a17cb683a36aac0395d614acd5a2265f0a98ae92bae84",
+          "value_sha256": "bbaecb9d8e3f9913d2c47034afd70d70ad9202fb3c8135488a1ce580e74e43c0"
+        },
+        {
+          "layer": 8,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "d16dd2c9f6e91eb1687655f09a5491c58efc0a704ea1bd280941cf7defa16dfb",
+          "value_sha256": "b1bdbece697c4269e35ffbc09e6176ddd68a736e5acd4990684eb078f2a94730"
+        },
+        {
+          "layer": 9,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "abff586f1a3a21f8111351eb0b32d3dc892723da4c3009f54408d2cdb2626902",
+          "value_sha256": "c81b7517cd54e0954b727390e7d17deb869cb52bf0eebf0f54d8ec06ff7b74b8"
+        },
+        {
+          "layer": 10,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "e01b5711b9422d2b0ccea956fb8abb2ebf625afbee4d3a0424944c32bdf5cf07",
+          "value_sha256": "d03923b06b2180a270e2cd35d012ac01c2d830ca7c0bf6913c613a3fc9a288ae"
+        },
+        {
+          "layer": 11,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "d0ebd34144e5c3cc85f5612dfbfff4a1578c7e37707ae9efd0753a1e452131e3",
+          "value_sha256": "3d71a41b64fcce4e3cc39fe2401328a64bcb1c09b1376cf5d17ca1dec52f4693"
+        },
+        {
+          "layer": 12,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "b4d1439c335f834cb9fd4eeb928867f4992df4ff67bbf9a9e30210da8ca7c335",
+          "value_sha256": "6f14eb453fe9d1b13b3416f0c2b7f451b3ec50a68345be286e48860d133249c0"
+        },
+        {
+          "layer": 13,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "d499655d456592e4c106ae89c39be72c67e8aa9820fb4f42f89e5883054cd7d0",
+          "value_sha256": "33bab085c31543136de828d2af5d508b0c7a6a9dcc0d638329412235a3638c1a"
+        },
+        {
+          "layer": 14,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "e3829f338bd80a8630c9e5deae5bbc63226c21b932224f902bfc59e5a8b163f5",
+          "value_sha256": "9ae0bd160ab594c6dade9126610548026e39ed7ccd6c42080dec932333ccec19"
+        },
+        {
+          "layer": 15,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "f0ba941b91211b960efacdc27efcf2c4036b98efce34f2a6f85b5ac699cf46f1",
+          "value_sha256": "0be29c0c72990f8a490b6520dfe016e8811a44da7c093943a0dcc5ad4bd06180"
+        },
+        {
+          "layer": 16,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "a2f31db547ae1f99cb6dde1c81454609ec25f7982e45e36b2e611aeca6e8e98a",
+          "value_sha256": "60d35cbab213d69de76777aa1e55549a3af63e8a77959ea137cef8bae274aec0"
+        },
+        {
+          "layer": 17,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "cbccd68e618cd7805365e61fd0e63c49f6abda866f9fb0f21dcd36bc803c366a",
+          "value_sha256": "85a61c800959b7ddb28f18d3342c2e1f269014bbb804ae919c1964ba339a7628"
+        },
+        {
+          "layer": 18,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "d6e235a7e6ab3919ea45abd65ad1f2a3a7e0f2deb646a0b4c86cf88a824ebd42",
+          "value_sha256": "383fa11dfa05c3b68825af84ae34823de8411802229b55aac94b1d234315744d"
+        },
+        {
+          "layer": 19,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "fbb9a271ce5a0414ec350a61c40da77699db61b4ecb9d41484f3b5bcddf612cd",
+          "value_sha256": "d82a29463628a1e4d856d99586cb28fafcaa4364ef193df7f0079e84ef46e2ce"
+        },
+        {
+          "layer": 20,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "e744c50c0fa3357474850f3a07cf2b83f416af00e3dd1903fcbb31a92735a233",
+          "value_sha256": "2d448898b78cb172dfdb95260c6cc03cfe8778b7809d632ff16b23b765dd98a5"
+        },
+        {
+          "layer": 21,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "3a08d306cf0c1c9cfbb0fb1c918fbe606749dfe2c7ef46d9fdaa7efa4f78e0e4",
+          "value_sha256": "5cfad5001bb2f3e49664e6607766221ecb6d0abbb102702535725b5e3082b985"
+        },
+        {
+          "layer": 22,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "a96feb75377129388ae9798c61d4bba69341d8933d19d5cdc18770faf212fc4e",
+          "value_sha256": "ff58e26c0d50d97ccc9209f78300f8bcbf7fdd60423cacd2a625a27d76159b8e"
+        },
+        {
+          "layer": 23,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "ef26299dcb4a57f070f1c874006fb5eebebd5fbe9baa025b7127c9ec1f34b845",
+          "value_sha256": "b89e172ce05e4e95d4a988e6b228aee36d01a4794534f34990dfa96638f713aa"
+        },
+        {
+          "layer": 24,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "edf28247768fb2da26cf840a30a57fa85ba70b00d87979e226e61118d0f920ba",
+          "value_sha256": "22df85613df77632f96881e4424aaafef8ce51e550b8f0db1e1d4e6d711efed4"
+        },
+        {
+          "layer": 25,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "2236c6984404ae03eeeeefd90986d080296b2087d87df64973dad6feac00a326",
+          "value_sha256": "50a80e561a8c4112de6deaacdfcf19f93c313111987e829af99f36ac0dc3847a"
+        },
+        {
+          "layer": 26,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "d1d4bda8bd6935b019457284ec295c81256e6c7f191efc4237d2a3cd5413df07",
+          "value_sha256": "7c394b2b7f32ab422d62891e33c9f0da3e21f4baebcf6a1b4c0d70be96c9e4d8"
+        },
+        {
+          "layer": 27,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "c685a90421e8ec2a2a3a20f92c85cd9a04b22763962dcdb5efa0c3d581949cda",
+          "value_sha256": "e5fa1b902b844f611da69df83267990f5cf72ed42c4fcf32f338dcbf58bd170a"
+        },
+        {
+          "layer": 28,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "c100958eecc1722ade640dffed24ed0c8741ca8ba3370673e518a1c29daa7812",
+          "value_sha256": "992f94de79303169653ede7794c9975f9646efe2a7b757d8cf64727b91b7b27c"
+        },
+        {
+          "layer": 29,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "bd42ae43a98d8d0f2fb848c002f4a51c8ddf726ab47178897033549b3cc5cc1d",
+          "value_sha256": "3adc458c3b6c3421914c713f7984d85b18f424dcc52fa17f5393671943cc6fda"
+        },
+        {
+          "layer": 30,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "64131e86035d4a489929f4307ff7f1cc5330eafb314dca1777eef3785a8133b8",
+          "value_sha256": "232103104ee13b2d09d565173142fc2b1bc3f5a02f90d05d037a64e715cfc888"
+        },
+        {
+          "layer": 31,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "f430a312049cfa357f771fd705f1c072fe014e6bf273750fb602d1692d6af914",
+          "value_sha256": "5931d9ac8f3162d706b58e235528ada92c639970479eca294cefcdea56e2e673"
+        },
+        {
+          "layer": 32,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "a2bb4bdca09efb13598b322d27d3f21070fde37cb967bceffda61ec6d07fcf8a",
+          "value_sha256": "8b5cb14714dc133ea69c57ae4ac5dfd83b139dcb6fec6bf3e6b66a9d9a90db5a"
+        },
+        {
+          "layer": 33,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "82d70ee84f4120b2fff2655e3c7438d9671928f28bcf15c3b09d3063212dae78",
+          "value_sha256": "5d5a63c6c35add346029a9515776779ceb7a0f1fd91491aeff1ea79365315418"
+        },
+        {
+          "layer": 34,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "b4b07b558f3d9061d5e45e9b5e93ac9f68b4c2e1227d97a496a19977b3e3b318",
+          "value_sha256": "9460eafb85dccce9601eb87cfd99e74ccdff67801f18885a53727af062d3e426"
+        },
+        {
+          "layer": 35,
+          "key": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            992,
+            128
+          ],
+          "key_sha256": "3906c24fd5695a66086b9ae3f92dd0ee3b767418513ffc8347c59001b7a76ef0",
+          "value_sha256": "924b71749ed576221a0a3eb97d48e4e95cc73c94dbd255eb573d0a601340926c"
+        }
+      ],
+      "cache_shapes": [
+        {
+          "layer": 0,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "5081b5d9885f733dc440fb51eaebb2494a50e904e431a2cde1486b26a68a84d3",
+          "value_sha256": "1176087aac772de7eb06a30e3edf5d756117339108249062b30f9a06bfe0127e"
+        },
+        {
+          "layer": 1,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "651991464ea214809d787517b8ad5e12b6833bfffe426f02556080cb7b7d8331",
+          "value_sha256": "8f6d934d03b013d7774a70f6185e5aa3ef899e053ee83e754f74cf4b64afcd11"
+        },
+        {
+          "layer": 2,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "c4ddf6777b82f59d1096f494316694677e20f5e2490d9ba7c09bd313689f7e8d",
+          "value_sha256": "c4ee4492ab9d1cfd3d5864b6e6635c6ee793531fcc547b011794885c6403bbc0"
+        },
+        {
+          "layer": 3,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "f1cb2826aa66435a4c63283aa16feabe5eb9ac0ba4b0ceed2fe374f7e5db91e6",
+          "value_sha256": "6eb33174fe2fdba587d7630d6fafdc5d805e4143048bf9b63d562c2016d96dc7"
+        },
+        {
+          "layer": 4,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "866157d55db37ea0c8e1b5c28ac7a91dedd04e137f9f34fcd799f7e936682ba1",
+          "value_sha256": "9d47fe9a1a02716164a328d75a324e1f4854936f9330df216b1592792a82d688"
+        },
+        {
+          "layer": 5,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "9093e0ccdb2843e88142c225a638dd17b94af6110847ed1d4be935a866d1b95f",
+          "value_sha256": "56fdf8f0df10c269144b53cef6d0eef81a913c8c08ff3f9c755a26e0e522aa67"
+        },
+        {
+          "layer": 6,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "1673fbd57d6dcbfeca4fe958683b8b3cf923ba0a377ef7f86947efcab9ad1383",
+          "value_sha256": "d14b102def62600d6b929c259239b8998240f5fc1cd2b9c62c0a03caf1d5ab76"
+        },
+        {
+          "layer": 7,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "07ef9f97e9c167348e43268a6475de363e793268178bff2b1f1b0bedffb253e7",
+          "value_sha256": "58010615a6f582fcaefe672a9ee9bd6ade1c7ca4839d062806923acf70c23f44"
+        },
+        {
+          "layer": 8,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "87ab270a07936f1114625c7e20eac02ec7ff351eefeef9816f3a8851a49a40a4",
+          "value_sha256": "6cc1f69f3790a3c0c91936db91d52fff932d42a64d51006b5d1287909e7b7e57"
+        },
+        {
+          "layer": 9,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "b2f50ce2e16423b397553f8ec01af891b3b3368cb04ad0744818ee2ec5319024",
+          "value_sha256": "c7d3f54220aa79aba79e487a19a72fe735d9116dadc51c439c2a227c26574cdd"
+        },
+        {
+          "layer": 10,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "1714e30fb2e38cc8e2ee736e973a8c3f98f3a78968579f1f5f6d746f51eb72e0",
+          "value_sha256": "c89d9e470a2f0b0f48e0d5d68a78eb3170f952d1d4aade19035fd7e500902f3a"
+        },
+        {
+          "layer": 11,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "f74ea46efb9a9b7baf544b13d68daa605a5119a287cf43329783447ad44b2c0a",
+          "value_sha256": "ea1b6b5e5ba9a7a567e8bfeb380cafa4bd45d63bff37b99f7570b9262ecfd9f4"
+        },
+        {
+          "layer": 12,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "1160eeaa10461426ccf359130a363c0b23db3e7080503636d3cb94274dade601",
+          "value_sha256": "1aa226a18f9d8051982495974c76b694ddec6451884a923b75404c1f527a41da"
+        },
+        {
+          "layer": 13,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "bb3ebd831a9f8a97e16cf6d651e192ed1220df47015698b21d48be9846f7f914",
+          "value_sha256": "ddaca7ed2ce6351ed60ab0fa406757700875f5fd2ef4d67e5fc7031e929b02ea"
+        },
+        {
+          "layer": 14,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "a05e7dc2b0d7c06118033f6fb483047ef6ec0ab4d616397e7daab8b5ddd0e445",
+          "value_sha256": "52813e847e225ad9be1625b7a6794352eef808206c950384a3e39220b9dc55a4"
+        },
+        {
+          "layer": 15,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "755554b7ac78e7ac7873cfde62098431aec5d0d1378f2bdd312b527de065f97b",
+          "value_sha256": "c7ca0f4ffdf891899878807b51ada978c4c6e37e2892a5bc9bde2e6e3e342942"
+        },
+        {
+          "layer": 16,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "aa145834efc4030841a3326a0e3a8d8f8b6be65506946cda4ad716404a58a0ee",
+          "value_sha256": "22ed7146ea1db4e3d45317b5e50ee34a2f6fdbc7209b51ab769f8eda2c4e024c"
+        },
+        {
+          "layer": 17,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "fe62f92563fff185e5fa3f8f783d7b1abb4d9e25ed20b40fb80383d61c964519",
+          "value_sha256": "e2af96c23619b14d42da12056e0130e1fb65256e835fd7f8cc4bf6cdce638fcc"
+        },
+        {
+          "layer": 18,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "6af98add458833f0256252006224e61d06de3083d0d848633989fd0672d82586",
+          "value_sha256": "c70c5640f365002699c3109dc4bd48f8eedae05ce0d5bbbb39b28f9f7bece924"
+        },
+        {
+          "layer": 19,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "274b1532d1e76b5cfaaf114678af3f099e1400844c9c4a330a5e7806f10cd381",
+          "value_sha256": "6fcce656cec5f7bfcd346e952aadec4379b119200ece95eeb344a18800232f46"
+        },
+        {
+          "layer": 20,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "a0124be2032b32280de477ee288f580b73d73642f22d66ebf85af669be303e7d",
+          "value_sha256": "4c66403b2891a7149c4bf399f4b11ace7d7ccf9745a92dc0ea102f6710dba567"
+        },
+        {
+          "layer": 21,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "37b2859a450a8e45ce5bc36886e7a8a88d95cbb333d3922dadefda358c2b8bd9",
+          "value_sha256": "552dfee8ae12644d3f67b4666757203d0886f143211dae358065edd34456eba1"
+        },
+        {
+          "layer": 22,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "208db3fb71b689d3a2814c6b2d1144aed27fa0a78aca31268fc9ba19cbd76c0c",
+          "value_sha256": "30b93e0f22a112e05e541c83863ad7e96d15055a615980f9ac28eacec2a4014e"
+        },
+        {
+          "layer": 23,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "8915448b94498d5e6b95fde6f20f2787a650bc3c96e995afbb11d7fd10033b36",
+          "value_sha256": "19efd8bb0b591571a057daf9af22d7110af1ba3a961af5e830749bf36fde9ec7"
+        },
+        {
+          "layer": 24,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "3f2c85bfe305bdd6bad27e2cb220a8b11242ecf5d16897d6acebbdb4db20e2ec",
+          "value_sha256": "1fe61a629368a25b4ba0c28c7e90cdc0c2f2dea394e22e259eff407f793b1825"
+        },
+        {
+          "layer": 25,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "e6d9564ddd813ba684f35d1bce083d601c0bf6088e5d568787a93b1507f36c17",
+          "value_sha256": "14cf0a74d4c7ff33a35c07e8048487db14f4daf9a2487ea9542e95226d6b0036"
+        },
+        {
+          "layer": 26,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "9c3d9db8202b2c40d9e5550f13852818094e9583f252fd398705b6fd1df70363",
+          "value_sha256": "5dc56ddfd82645c2eeba7735fcd015aef48b3e47312d75c663ed816856f2c9f3"
+        },
+        {
+          "layer": 27,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "c4f6a964ba2f03920dff67e5203296ae21440d49f0384113821201970131953d",
+          "value_sha256": "97ad691327a1a76ee1a9c34be50c443352a763482156c8b159a6516d6cd16950"
+        },
+        {
+          "layer": 28,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "4ce82f567828528592c6182c81c276dc004c2454066808d827e91bc9ca4181d9",
+          "value_sha256": "aa2785c2261780de7cb9a3a17e4ecbe915ab61ff138f47070c0e60e68929f6bc"
+        },
+        {
+          "layer": 29,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "6d4ff3dbd48d62bf59a25efa2ab61e701d36e5fe8ede108a4afa69e0313f654b",
+          "value_sha256": "719763de164045f7188593942d8a6ef0aa820aca00bfcfc8de406f02e1c115e2"
+        },
+        {
+          "layer": 30,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "9c6cac8c42bbc806bfc654dab004157ae0404e7d68ada3baf0d45fcb6e8d9f56",
+          "value_sha256": "601a833e01f942cf250ec49a25ee3531b8a692a5fb339e40fb13afaeb41a1902"
+        },
+        {
+          "layer": 31,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "f0e3ad6779d2df9660b82bf14084738dd1f542603efa0e8f1a7c8dd5957167ff",
+          "value_sha256": "deb2f3bd02ccdaf2be6aaeb15cb3b7c810852594c0e05193136b1de874b247f8"
+        },
+        {
+          "layer": 32,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "91e852bc26713a4227a139cd4288dc1a8487447e331f6cf1d2cb823412dff0af",
+          "value_sha256": "080b7945ac06d6b2d99f4840b1bdd62e3243122cf02017d3092cc441bffd52d2"
+        },
+        {
+          "layer": 33,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "64260398cbb16ecaf0c0767b41c8ef3b88660d5286d6fa7889625f1961f16f85",
+          "value_sha256": "714362cc973fc5107a9d990a1a30c78b392e97761f191a9f8f90538f56d10c33"
+        },
+        {
+          "layer": 34,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "5c3090c8471c88de8da6ad466bdd0130ccabb17aa7cd82d79fe6dde91567148b",
+          "value_sha256": "26b52298eeb7f5a9855fe4db307883ae48594f3226f83f020c657ab1a8f11617"
+        },
+        {
+          "layer": 35,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "153caf21bc9e33fa976d20e0f43bb378072ae8f321c465ea4913fd010b3620e7",
+          "value_sha256": "876fb2bbf896fa0ec57196ea430d72a40d1efcc9ba2dddbf3a0279a4e7ed5e5a"
+        }
+      ],
+      "config": {
+        "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+        "model": "Qwen2.5-VL-3B-Instruct",
+        "method": "madakv_kvrepack",
+        "simtop": 0.5,
+        "compress_ratio": 0.7,
+        "alpha": 2,
+        "budget_ratio": 0.1,
+        "score_correction": "none",
+        "frames": 64,
+        "max_new_tokens": 64,
+        "dtype": "bfloat16",
+        "attention": "flash_attention_2"
+      },
+      "seconds": 5.49119857698679,
+      "peak_allocated_GiB": 9.958975315093994
+    },
+    {
+      "id": "nextqa_oe_test:1",
+      "input_hashes": {
+        "input_ids": "3748295b62af5a17c2095a7f30dd94c21674b13c49914a2a4ea58ed6674a9055",
+        "attention_mask": "d3a70afb5084affb50e8df54b4b940e56649a5afba8961df294e68c32e03020e",
+        "pixel_values_videos": "00f2d7606f25256d573174345406ed29c3c58439547ec8f1146935f278fcbcc9",
+        "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08",
+        "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      },
+      "input_shapes": {
+        "input_ids": [
+          1,
+          9616
+        ],
+        "attention_mask": [
+          1,
+          9616
+        ],
+        "pixel_values_videos": [
+          38272,
+          1176
+        ],
+        "video_grid_thw": [
+          1,
+          3
+        ],
+        "second_per_grid_ts": [
+          1
+        ]
+      },
+      "generated_ids": [
+        4197,
+        264,
+        15625,
+        151645
+      ],
+      "text": "with a brush",
+      "prefill_cache_shapes": [
+        {
+          "layer": 0,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "5d66d2019736ebe340e42bc6bb04f34aaf157752874e26dfd35eaef6f23e749b",
+          "value_sha256": "7b9f05c18e98e677272796b47e9f3d4f0d5fdd2fa5883633b2e58d12fcdf8b8e"
+        },
+        {
+          "layer": 1,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "fad5f06d6cf20fa37082a5f91d202af0cf23f4eaa64b47c4a4d81665794cd431",
+          "value_sha256": "92779609f0387da6b97775f842674c3d481f14ea4b0d0c86ecb1db8e4aa88d87"
+        },
+        {
+          "layer": 2,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "ea86f6faa6d43bdd43fd9573f7c9171cfbc57d67ca2ced21dc026288cdefd504",
+          "value_sha256": "5d545a3876995e4df7a482bce5469150b31b044c403091e1a8e13a304bdce1b7"
+        },
+        {
+          "layer": 3,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "359e3f37eddd4b1302afbff7d7f18398acffd3968360f7bef4ffcb2b0e4b47c8",
+          "value_sha256": "eada8f2cea2afa824a0adc30c6e4982c784209bb0fcf22abc4b13cddb65d09d6"
+        },
+        {
+          "layer": 4,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "60187d941b423bfb30c8d36aed12b43a0a28c7edfc849ecfcac283df62f79cfc",
+          "value_sha256": "03565dad48b363906ac5a6a0f33b930cdee46965bc648f2ec70d7311bde9e740"
+        },
+        {
+          "layer": 5,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "ccc65269235c754555ef847cdb006e3b4351dde76194f0ae966271f2e6d570c7",
+          "value_sha256": "b3bf97b343f58f05b2f04751daeb22d84f2d57c6312f44c76b9a3216c394b713"
+        },
+        {
+          "layer": 6,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "fb4544647742e292bd3fbc5d9e06cbceb9b6da5349ab35b1fa842417914e4b8f",
+          "value_sha256": "a14b2de87a387b212933f57f60976dd2d5b4877d464d05b3e960690b6e323333"
+        },
+        {
+          "layer": 7,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "b2190dc5ca5b1a55d97d08e31200edada4889af1508a6f8ff1cec5145084e425",
+          "value_sha256": "3d818ffbe59344f23623a83e473727d4622db130019ad94751ec93b3cd43a86e"
+        },
+        {
+          "layer": 8,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "695ea614c64adc554968888d44cf9c17d08eed8ffec66e810c94f36c35025da5",
+          "value_sha256": "8d3506d875a0bcd34e910cb9d0a0d95900b96f094a270062961e73691d88d7d9"
+        },
+        {
+          "layer": 9,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "bef281590fb3e06f6e0504f7cbd59d651656319d31ea18581ca5a4b6281a7df1",
+          "value_sha256": "7f47bac6038fcdc3d3eafab308bb07376491e5f680e042f305d13efa4a14d998"
+        },
+        {
+          "layer": 10,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "8fdc0f53bf69e197fdfb7d61be2e536d4c2f28cb11aebb4273f3d08fa86ad9ab",
+          "value_sha256": "68b8b6a0bf42e921c8d4e26825e87f004070f4b6ecfd34ab42cd894121c33dd2"
+        },
+        {
+          "layer": 11,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "3df62cb3a77b3eb6285873f59ad06d3ae9b7b6aa117e300d065f00b0c6edc413",
+          "value_sha256": "62917f5e593bd46b97f6b71676cca712d7784d850615ec80512b7531a6066986"
+        },
+        {
+          "layer": 12,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "4184bdfbad36f57601d4515d1b3e5d482209030bffb71a9d3fcbb7bfa1d87794",
+          "value_sha256": "6b0e6578fb9673d6ba557cfb9080bac39348076bf153cc89608abd111ca2d633"
+        },
+        {
+          "layer": 13,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "5660abe6a43a08c4a920f4cca97a6f60d527da9c3119e0036f07a0a34a65090f",
+          "value_sha256": "197fa841852ef3078356f29aaf70da6f404a827ab7ce77ef60f319e568cc8afa"
+        },
+        {
+          "layer": 14,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "e7eaf64f90a28046109fca1f2861474c7151ff3a8755d4e3dce9a0d0b19382da",
+          "value_sha256": "fbc3738692f98f3cba9dd11aec87d16a04c5eb73304523dedc76921b4cac012d"
+        },
+        {
+          "layer": 15,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "595daab197b73ce8f8f617bf68834842c33f048c4c1ff7333a442f1d3b9c2672",
+          "value_sha256": "d213390644e98213e401b0b7cab24e23062ce4503af5cb9f8639d193909602d4"
+        },
+        {
+          "layer": 16,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "48f073d9dc3c575317939bffe6cebe7b03fbfc5b97cf2dd9543340ad169a63bc",
+          "value_sha256": "95330de0f3cad5c7334e3aa0ad3f8554d9a77fadcb6456176c30b267aff542f3"
+        },
+        {
+          "layer": 17,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "7b539cf2e5a85ce1a12d058ccc1f43dfeaffa71dc3e722c04f7febcfbb088659",
+          "value_sha256": "d35ffe7c632a83dd273cb7ec88df90d93ca526a0a91397795dcd18243c9f9404"
+        },
+        {
+          "layer": 18,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "21716735bd9572a28996da5404dd4068ea30a7f310ae429fb773887305c992ff",
+          "value_sha256": "7e57b093557c7be770956eff86a3fd773ba00557d9946259c1ff22300048fc74"
+        },
+        {
+          "layer": 19,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "0e182fab35f7209abe3c4879a3a664eb200c4924f93464165a4a9e102f0a006d",
+          "value_sha256": "b38d8764f09c870ad4bc2c8f0f5571fab0eba8f85920453b10681703a6ff7ab5"
+        },
+        {
+          "layer": 20,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "0b661f56eb41ce4d056c217ecaa74d078492210c28dbac65f832ea03642a0dfd",
+          "value_sha256": "c2a647359dbfb289f6d60ed7886043544c148e3b7a7f3fc098a5b63a81da357a"
+        },
+        {
+          "layer": 21,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "82661a46808b8a6e63eb337b5ac0b1982fa39b4ce7c615cb881b881b456fa3bd",
+          "value_sha256": "f97b09aef2697b238f37bd61b6c8ba30a20671c121df2b506fdb8b6707212fd4"
+        },
+        {
+          "layer": 22,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "1384dfea769848c84128f052b2a386b1d88760da3815cec902b14964e7028268",
+          "value_sha256": "2be327917513a7b3d570ff5104295245db148b9ed85d077af8f6e00f6bdecdde"
+        },
+        {
+          "layer": 23,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "663ed9274e43ecc944751fc9ef0d05ae30146cb591c605b3003b0c2eaf26b27a",
+          "value_sha256": "189686f67bd9d5a80180567e39744dd021d96b6ad8a3d054e1b9d48acaf39831"
+        },
+        {
+          "layer": 24,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "8ef8cd65bde2113048fdcdc7ccc82385a9f591d7b9be0e4a27afc4b0aeb34093",
+          "value_sha256": "f6c4cf6a149a30d7982b328559d060c41bd7d4b6d8e686d53c07924f5ce78d5c"
+        },
+        {
+          "layer": 25,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "9dbf842ac5ddf003b265140ed7ab409ea32b67fd070aea505f2a2e4d9ef905d0",
+          "value_sha256": "3b5b2bffcb5d7c84679760eb3188ac4de06ff1dfc4b9b4e8a2418ec238a7b8de"
+        },
+        {
+          "layer": 26,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "1ffb76facc0ff0dca368de24c9df12103d9277040d37bc0bd6ac3688e87e851d",
+          "value_sha256": "a7a176e1b8be53596b138849dba6e6032dfe0f7a9bfc228c9c01c7d0fe1f5994"
+        },
+        {
+          "layer": 27,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "93d172bd95f6eb81cdc1c64b9f5af21fa063d1fdcf122806b3e1d10d4c3f5d86",
+          "value_sha256": "6a311a9556fa62a03000f8d1a046f11eea81c8b9dd655a8059cd978e489ed390"
+        },
+        {
+          "layer": 28,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "b8baa58e319c4ecb34775c869d1e1f57779f860d4d5cd8e5ddb74879658192b8",
+          "value_sha256": "8cfc1f5fcbec5f9dfd552257962e28446acb1875aedfd7aee32a4bc51f4dabd0"
+        },
+        {
+          "layer": 29,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "c02fd6094ac7d4f5fa11ad447f048a2c65f403f06b76d5da63ac5e9d55283e39",
+          "value_sha256": "5d7420d5997313e7a0d765a1ec5db6b4caa26d3af653dc2d1ce3e319ef95ec7f"
+        },
+        {
+          "layer": 30,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "e7af9598fd58dc1b2043def81c354db8beb28d0287b07f3bef1d2d5fc1551cef",
+          "value_sha256": "aa8d4610e446e9bbd5a074075f371f3556f036a7a4918f80ecc17210624f39e3"
+        },
+        {
+          "layer": 31,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "b41f4961c1c3bbf6735dd1f1810f76c33a89f513892698948e04eae500af45ba",
+          "value_sha256": "75b359a29d9d275b23a11e0a8729fca58f0a0805a51070990cda21666cc51986"
+        },
+        {
+          "layer": 32,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "6c144bff881930ae5add85b98ecb7d265e35f33bfcf78f3f1dfdca4c56e01290",
+          "value_sha256": "0d322e85eff0769627ef9a7d3f38b3dd5acf52663c8cc1aac72f320b1794ceda"
+        },
+        {
+          "layer": 33,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "df67b873ffc1d929dd91f9a9f137a1a2dc50a87520ee29389574171ccd7ad21e",
+          "value_sha256": "1a7de3d21a8bf255c2f4944114083e6697ea5e598a4df2bde4e4041e7cd792f6"
+        },
+        {
+          "layer": 34,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "41b2906c89e1da711b1a7d196149254b49d458066b13abe20c104e2f4559addc",
+          "value_sha256": "6988542a514d4d1645a154abc99f575f2f834694d6e6e89e30a4d70346a2db5b"
+        },
+        {
+          "layer": 35,
+          "key": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            993,
+            128
+          ],
+          "key_sha256": "d4e4e265d51326a2cf547fcadaf0719899a1f66a0e6435f494683af7720d9ade",
+          "value_sha256": "9191d68dcb9f872ba43c02a40536c0377674de9cbc8bc3127bb33e7b8a6449d3"
+        }
+      ],
+      "cache_shapes": [
+        {
+          "layer": 0,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "d5fb75c1c5b05efd83ad6e513ab0407e96a846e86f13a4d50d23bd027ed98121",
+          "value_sha256": "14b95ec46800471abef8198330b772ef158a191de2ec19b2bd6bb4c00eb669cb"
+        },
+        {
+          "layer": 1,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "14403e11c3fc5125da8e894775b3de6e8a51deedbd6554337e2d2e1c84325447",
+          "value_sha256": "142788fab958ba8d4944fc97112c6e82dbd838d36d5cc2c6d43d4400cb918658"
+        },
+        {
+          "layer": 2,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "f0417bcaa6bff0ec21c505c4562365277647764db0c593bad97e4e357c275163",
+          "value_sha256": "470bd574660492c932f471fb4ecae565e78403059a16a1cd12b9799ea19cae90"
+        },
+        {
+          "layer": 3,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "eaf65be1e8295ffc2f48f9976afb026aa4fb3b1c4aeb307f44a31f2310c7d4ff",
+          "value_sha256": "0c12589ece3267d4a132c1b22fec98c1a5350ede7d6b73027d6375a03360016d"
+        },
+        {
+          "layer": 4,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "ffe3b0f2e69f9abeefdcac06fbaa699681a63059b6e63436c8c7ccb1150b1a58",
+          "value_sha256": "4c41ffade7bdb2c6b0b2d98decaf0dc3d234a9a1572e7f7f45573d5790f49ccf"
+        },
+        {
+          "layer": 5,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "e3283f5016b3bf761684b6af50a5f8e795215fa798b563408e605cbfe21817b4",
+          "value_sha256": "a94031e806dd05b6cc5b247b6fbd43dcb59848f566a0d085b1f9dc4dced5495b"
+        },
+        {
+          "layer": 6,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "da6e941cb41ecbb351a2f6ce18a85400b3c8bf15694f9e33327f2a62b1150729",
+          "value_sha256": "265d13af9250127d58e3d95b467ba46244503900d75d7a81123666ddfb9a0420"
+        },
+        {
+          "layer": 7,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "13b9fad3e1b8feb89c6793bc1709b635b87d33e8d6464e471d2944eaabc0f008",
+          "value_sha256": "d891bfb059405feefee320e0c5bf3909ee30101adaeb14de457d3970d1d301a3"
+        },
+        {
+          "layer": 8,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "78acd812bbf6d3d01c8e74e22a22c03a181e01283b7fac05270d65994ad492b1",
+          "value_sha256": "b165fc70cae186655ae3e6b8f12d46c270eac08d0188950b88e0d87278c528af"
+        },
+        {
+          "layer": 9,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "04ccf4447b55d2d9bc6ccbe888107d906f6a5e1ac09ec53f7b1aaaa2499efeda",
+          "value_sha256": "daebebf0ea8687a7be39b174322a0c37681bd4fa9652577eab5725adb918f70d"
+        },
+        {
+          "layer": 10,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "31a87def03e1cf205a9127163bdfbe07ee513b9c79e1afa96668b3ceecbf8bc5",
+          "value_sha256": "042e4e9bc779833cddbdde9d93f8eb96bd098b34076f70b91478e695b3c8eb07"
+        },
+        {
+          "layer": 11,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "9275fe5a356f1b1fdec9c9d48dba2e5f25c803587cc72ccb50ba627174062b3b",
+          "value_sha256": "292832bdefe8bbb79efc01405d7abb66503fa0889e8736f25314a036213e851f"
+        },
+        {
+          "layer": 12,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "e1364f51f31e319b73bd84d43650caf4d1c0c6d919265e0248dc50a3c6f87ed7",
+          "value_sha256": "b1f6db50d7f48010e03bbbf0c82177e28ce0077febccb6cc9527adecd4883757"
+        },
+        {
+          "layer": 13,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "556285fe6db6b3ad681473cecffc0cbee8615f9d872822793a939f82a4ad6fe4",
+          "value_sha256": "d167a49cd8dc07f5f08af48f168855ffb462b17b69ade2274e7ddfb69de0d0f5"
+        },
+        {
+          "layer": 14,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "d51c68d73205dd96df40a8817cb43060a35be5bd9370abcda4ff067e73c2a81b",
+          "value_sha256": "d10e1fd809291bcd5c7df7de1601265be591796e67eefedf5391ccfcb88c9754"
+        },
+        {
+          "layer": 15,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "e2dde5584e59eb4e0592a9f5e324d9edcea57e71bf14b7c6e746f67288324eb3",
+          "value_sha256": "43dbe203e27128865a9a6b2bdc347f84ffb9a838f1aaa412a85300e524fa483d"
+        },
+        {
+          "layer": 16,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "89309816e114a28b44564c0df21a4d686b45377c830353241285786fc4cbd6cd",
+          "value_sha256": "7db33356786c6ed36367e17df5bea1cbce94c52d666b9fade664d730a0dfb309"
+        },
+        {
+          "layer": 17,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "a9926e041b0d2806409bcdc2c69cf9c252f5e1d60cb084f1ce46d25257933603",
+          "value_sha256": "8eb55a429010981e32f0e326fd2b161a256b762353ed6b466aae962200b97799"
+        },
+        {
+          "layer": 18,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "323757d6c74124ab1f722f75f1b178094e1fc4a41fc6e509091b49cdd01f6f63",
+          "value_sha256": "668322bc0333c8a3916cc4dc3afa15c0c6fbd1201d1e094c94aaf848698a159e"
+        },
+        {
+          "layer": 19,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "65e562644186c57254201db9c4b57effdc2fabe97d1eed6654bd33e1141ddd1d",
+          "value_sha256": "efdc6892d8d3bc0e5a9c161c02a214118c9c55f913fea5268d100e8ea09e9c48"
+        },
+        {
+          "layer": 20,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "7bf454ad80ace693eff5d74d50f602c34731a576324c9143a86956ed47fb93b2",
+          "value_sha256": "c2e443454daccf5810ed3ad6f7af8496ff397163552dae8a99e4753ea7848ce6"
+        },
+        {
+          "layer": 21,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "4caf7ca6cfe4e8e61099bd1a47d5c78822cfed0743cbf5198180014b919144a7",
+          "value_sha256": "f02c52ae8ec94698de24bc71e929671d4eebcbe5f7091a8f95fd6bad515bfca9"
+        },
+        {
+          "layer": 22,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "4168cd9568283adf0ee321bde93ccdd60698248bde7970cf3bde689cb805aacd",
+          "value_sha256": "6e01979f4d666fc24037bc15422be708b269c9730d9221bec7d92c7946e7e33c"
+        },
+        {
+          "layer": 23,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "093ca8a80c36d7f52d756186da18910ab02e21cae11e3682313d4b54fad29678",
+          "value_sha256": "d6e4167ff9b251e0cef9e4ec64a70f9327ea344f13dc787da35a768dabb9afc9"
+        },
+        {
+          "layer": 24,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "d2dd1d7e2fd1e22ce28f0d8f429275697e4df8a05fa38e179bcf2f3066055cb9",
+          "value_sha256": "f218a4ef0c44add2e8d528ae39250c315a1dec576242a25fda00a0a960d06d1d"
+        },
+        {
+          "layer": 25,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "73d2f3a9468487a2dca8596e25787c9eae71ad4df2ca67a0e2b0dae5136591bd",
+          "value_sha256": "fabd99d41a3ae358337464bea3ae175e4477326324bbcd46e705fee0df710e68"
+        },
+        {
+          "layer": 26,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "0ff32f37325193e8c3ee512110b595ff8b2482d4c1366c7fc14abcadcb9c64a2",
+          "value_sha256": "403681bca4d3b87b3684936555787fcc8b922b051dfd7585a566c59a8a7434ce"
+        },
+        {
+          "layer": 27,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "ad9d5b9c459971c4617e789e7082cd34182a4f62074cb5ae169dc221faea1a03",
+          "value_sha256": "81fcfbbb1d5f7547463c525d8476943a2d0c5ab19df8f110db93ddde2a6edfdf"
+        },
+        {
+          "layer": 28,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "780b869da5739f43801a3f5a340386fbca4353c68aff8b3768622d354f294320",
+          "value_sha256": "8624a7dc4737a46c67596c4620070db20f8e57ea87d520047f6ee16953b1a1c6"
+        },
+        {
+          "layer": 29,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "40bd7bf50228592b67b06f5803651413d537ad2ca1366dd3e4224eccdec43a7a",
+          "value_sha256": "c9956793c021d32acb243b0da1a94a75a6ff139c4d2c870e393353990c61225d"
+        },
+        {
+          "layer": 30,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "ba1d2b62597a052a0fea0025db9d46d7aba26904067ec4e0c30360cf4f50139f",
+          "value_sha256": "12d7c6310f541d33d7be90fda8462cbe0c60f389ff4667c83c76b84b2cd102bf"
+        },
+        {
+          "layer": 31,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "552c62118f039ff43e69cc127b246a544711d0c8254000ce43f895f0688d48fb",
+          "value_sha256": "f0bfa61f33a63ffb75f15ca1e2529e80e8b237512c38f85d4c6be765bd1e2c3e"
+        },
+        {
+          "layer": 32,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "256da66283979d4219be41dfb33967fc898a5c7666d1ff337b51c155cbcfd202",
+          "value_sha256": "702ba6f70f4964042bedbc56357b3e9a930b67c64922f1f2d5b3d65891e97e7d"
+        },
+        {
+          "layer": 33,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "326859fe5767da97c716a93b94a2647deb9f3e55309732232dfda594d59e4f52",
+          "value_sha256": "852b0b095fd6b86f155e68bffb58baccb03669ebd593ae065bf55bbe76e1e585"
+        },
+        {
+          "layer": 34,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "f1a54ab82131a61f77b4edc119fb28add7924263eaebc419af865f6a71394e30",
+          "value_sha256": "dcdb44674b2dc74280b616aac4e489605218cd64308737ddf48ffd0475e04cd7"
+        },
+        {
+          "layer": 35,
+          "key": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            996,
+            128
+          ],
+          "key_sha256": "817ac00ddce509805635d2f4b251d0378e8e7caafb0e84f49e010df16d4e59eb",
+          "value_sha256": "2a56b68c0c850ddfeaf77b8f3aa255075a8d920ee18b6080f02586c234736dcc"
+        }
+      ],
+      "config": {
+        "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+        "model": "Qwen2.5-VL-3B-Instruct",
+        "method": "madakv_kvrepack",
+        "simtop": 0.5,
+        "compress_ratio": 0.7,
+        "alpha": 2,
+        "budget_ratio": 0.1,
+        "score_correction": "none",
+        "frames": 64,
+        "max_new_tokens": 64,
+        "dtype": "bfloat16",
+        "attention": "flash_attention_2"
+      },
+      "seconds": 5.054486855864525,
+      "peak_allocated_GiB": 9.961590766906738
+    },
+    {
+      "id": "vatex_test:0",
+      "input_hashes": {
+        "input_ids": "d9c508d2797a7969d948ed8f8f771ced67560839c7aac16570f71c4c06662029",
+        "attention_mask": "7d5c5ca3689dc58d97168a7e934709de10ee15028b982a98f59c8c9b85e19e02",
+        "pixel_values_videos": "4cf0eaa3d4daef1daca6bb934cf1dcd202411838a5e2738cc24d52637d738b5f",
+        "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08",
+        "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      },
+      "input_shapes": {
+        "input_ids": [
+          1,
+          9736
+        ],
+        "attention_mask": [
+          1,
+          9736
+        ],
+        "pixel_values_videos": [
+          38272,
+          1176
+        ],
+        "video_grid_thw": [
+          1,
+          3
+        ],
+        "second_per_grid_ts": [
+          1
+        ]
+      },
+      "generated_ids": [
+        32,
+        883,
+        12233,
+        28147,
+        21191,
+        311,
+        279,
+        6249,
+        13,
+        151645
+      ],
+      "text": "A man wearing glasses speaks to the camera.",
+      "prefill_cache_shapes": [
+        {
+          "layer": 0,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "3441f57eb1cd13a04e92e4de1440ebf6cdd26055a04166c45aca7da4e9b0a3bc",
+          "value_sha256": "7451fb9d12d72e31443a6b08675fa029f5e1311df1558e66d06416b3db4fd5a0"
+        },
+        {
+          "layer": 1,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "e599d13079c2056f0020fb2cd8a7e1b49f853c875c519196d8c1edcfc4aa5dad",
+          "value_sha256": "11047695141f638f2d420529e904f2fda5d8f98c407475ad4b3b159201db87b8"
+        },
+        {
+          "layer": 2,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "cd372079da405cba2554f4a7aa524626b655b2704586304c247fb1b9a392e8d0",
+          "value_sha256": "97bb4cc44fb2871a381777d05c286c11521064ddc40d4abe81f263b2cb8dd82c"
+        },
+        {
+          "layer": 3,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "1781908eec7a0044f04419b352c02b47249d1e5169e9d4765f0496395a8046b6",
+          "value_sha256": "b6a4151a9f9a690ce44ee20362d664554d8fd61cd52d2c5f0c39d919a45c1ed8"
+        },
+        {
+          "layer": 4,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "68ec22f64f07e903320e282d60439357813f0dedcda80f0065527d3d9e540e92",
+          "value_sha256": "7804a523da64dcd9141b410e04f9a93e40b9cc1dd1779e99f2fe6d1b928e4afb"
+        },
+        {
+          "layer": 5,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "b55b7f0f37eed014f7735869de5e608ca884b255ab84f5cb9ce03218f6c059b0",
+          "value_sha256": "ab554c50fd0853a1ccc3a03dac5f3677537da143db21ffdc703629cf6c1f59a6"
+        },
+        {
+          "layer": 6,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "9a0c6a802d28f1be26d198051d21c8e93da8df01db6a1ee7ff51e0ba3ce91823",
+          "value_sha256": "01b77fd2659cb0e2cc759fcdbe1d1896b9a25c857617abcde8ace50c9a1e9bb9"
+        },
+        {
+          "layer": 7,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "c4c2a55be19360c8986273f9462ac5dac88b05209ab080bb02d3334342eb6a4c",
+          "value_sha256": "ebaf331cb24159f1e546ca7f5aba569eafd375b0ef2ab239db4103ced1ddc684"
+        },
+        {
+          "layer": 8,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "15ca9000182c9b08cfb65296214478c930e0fce7fe20011a7b08baac1f0c096c",
+          "value_sha256": "28e78d445c597fe730c2496c76fb1c68d66892e2959225ee38c999128f6540f4"
+        },
+        {
+          "layer": 9,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "913b419b71d6904fa2f40488738f7e44a8bbdfec6da2517fcf0f0ddef53ee823",
+          "value_sha256": "9c15b92d694f210bf3c8a723e9c91790e3642b52f1eddb3ba6ea625c4362eec9"
+        },
+        {
+          "layer": 10,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "1e4ec4b8246257d2773396fb2c3e7d4977ede98860d23db964ae09dbc4273eeb",
+          "value_sha256": "ef5077376460e29081e32c8ea1d0fa6aba96e231ed778a8d13a46e5fb3f7f908"
+        },
+        {
+          "layer": 11,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "7347f01bb6924ff1f43558484af984d8655bc56568d410c96d93f5bd9e8893fe",
+          "value_sha256": "c635c43e43f8a0035d4b2f056943d9a57d95a71a1a015056f0664eb68867a916"
+        },
+        {
+          "layer": 12,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "8e8cd6558db28053da76dbc8a86d1f1ae763c42628736e5ef59091044f238da0",
+          "value_sha256": "46b7ad4cf1a94a730aa03e96a6104a6b26fb5c6371ef786e8fb60979ef057e25"
+        },
+        {
+          "layer": 13,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "3a15ac7bd738e71044ec3fc007fec323204b5547147cd591b704990a212bd6cf",
+          "value_sha256": "620be532ecaa85e18384d73790419cba33d88a7f31a20a67169e5dbfa8bb3b50"
+        },
+        {
+          "layer": 14,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "d540c10ce7c057b1a1a2fb003b9073b96089c56c48340dfe8cc27f61d36a7ad6",
+          "value_sha256": "0b22775017df4875bbdb623a2952c3d6c242b90e6c6d0cf330d2c852af45375f"
+        },
+        {
+          "layer": 15,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "fcd1cf8a7bdeda57f89e886202d2cc4b1a31f6938be3ea553b1b7f719774de11",
+          "value_sha256": "ba94c816e5208976263b8a7db2fae3fab87ced5f6d918d61cfe94fc63cffd78a"
+        },
+        {
+          "layer": 16,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "75aaf57fbffbaa1c800f1f62088c0bc6f0905072ebbfdca5082fa84c6eb4fbae",
+          "value_sha256": "52a17d9e260efe7d78cb7c6ecbdbe5fd20109499704adbb402252f6ff7da38d7"
+        },
+        {
+          "layer": 17,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "789bc3259dc4352df247a446f7c3f935c3c8e5cf3c66e2387f11ae45d09f29a7",
+          "value_sha256": "8ffccd56a83ac2cc340ac3afb10496604ccb84945218213feafb5d220f3fb954"
+        },
+        {
+          "layer": 18,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "7ff79c4b56d424b5cc094329b3af4acdc5a071d1bae85f0356ec52e8090fd368",
+          "value_sha256": "6c16bf7b02ecd2c01cf6edd65281a8c91e92385eddd31b2b31abbc7a7ff07e14"
+        },
+        {
+          "layer": 19,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "1cb462bc133da620dfa80cef1f8a55b3865786a0d8459ac800d599a087122d22",
+          "value_sha256": "334632bbbabd1cd2ce847a3443baa153e5ff3d833296b7af23aef8b57882f6f5"
+        },
+        {
+          "layer": 20,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "768731501df0108c27c17e67cd40c054dd0bbec70f622a769c5409ef1c336e2b",
+          "value_sha256": "c3e50627ae3b9b7326817e6b91ba0c8890118474aace023a58a828d7a3a5eaad"
+        },
+        {
+          "layer": 21,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "003024ac3e3aca1cddaf026d586aa9ea69c1ea70cd237782e412de8fe08a5d91",
+          "value_sha256": "a8e0bfdd481950f16f58ec0c41d7a646af9bb7cf9222a1d7f89ac804598df29e"
+        },
+        {
+          "layer": 22,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "10a54cc9c647a6093a1e32620e2db2e8944c7ecc79f38d9cabde826b4208b74f",
+          "value_sha256": "896dd4c5f1b4eb4631fdafe14b1ec3e5f49de25a70ef430418e83e934c09afaf"
+        },
+        {
+          "layer": 23,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "998a3354e9cbe5a18114dd8557f23525c08a7db72d3ab1c8581477168009bf24",
+          "value_sha256": "ecf6f10d7a702382f0b2ab2a521f6edfd083410eb85ae3e745ec80856dcb91ec"
+        },
+        {
+          "layer": 24,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "94a7430d20e70b2cde6a489c7e1472aa22595d8c608a95ae99aa69df9ca90dd1",
+          "value_sha256": "6729e17b88de6eadacce1e5891559ad536088b60acdba5b322fc43a99a49f904"
+        },
+        {
+          "layer": 25,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "042a0ea0d2c8d020c84c1b34977c027e517964c43abf09729e8cafc57b32dcf9",
+          "value_sha256": "57c87711b8913d48381ff5d3608b78f022d1bc8ef66b37d9522bcd595300a843"
+        },
+        {
+          "layer": 26,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "6887fdf84b8e91da2955e6dddb4d8b6fbc771395b9db9f6399c0b127637a2644",
+          "value_sha256": "0a29397118ebad493607b0c72fc9b8ead278a5567a56c651c40dae054f7b2003"
+        },
+        {
+          "layer": 27,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "0eee7414ff14b3f5fdf4260a5be9ff7d2c438a1e1ea76da1f09bd4f2cafef38d",
+          "value_sha256": "c3a3b26c080bdbc162ebed644196cf87020fda8ff871652f6b14778007ef4621"
+        },
+        {
+          "layer": 28,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "4f458b19ee68f12aa329b822d9ba0c5a69b2bdc16fa8a2550e9210f64cbb29de",
+          "value_sha256": "4971c891793c46b9fb79eed4680f8b7b29cb8f16fcdf4400bf878be3239c3305"
+        },
+        {
+          "layer": 29,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "dbdb5c5841aeb000fa2d91efe061942822b9c7b15bec20b5989002ead4d0d25e",
+          "value_sha256": "583382dcb232174bc0501819a691e04cfcd80d534f224da8e081093cd4b0129e"
+        },
+        {
+          "layer": 30,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "4885e78a3f298c87449057a3e9b942dc37939d1f35bf2b66bfcc73c78e22b01e",
+          "value_sha256": "4b09ca9ff40a85f22eed19cca3a72ab073a35ed456dbb99a6767b77fedd07f5e"
+        },
+        {
+          "layer": 31,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "9cebba6382a9173116a5d7d3cf8766c688afa219d679fa4bb289bd7a8291380d",
+          "value_sha256": "1a41bfc8d7d0c6587f5b33b7c45c661e622d1912752e7dccf22943705e4919a2"
+        },
+        {
+          "layer": 32,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "762ba63dcb3a894d7bcc4d92cb0f04da7381848624cc4f247816902f6aeb4ba3",
+          "value_sha256": "f8ca6535023daff181279026d02e33de695c44e4086106573abc836c8e6c10b6"
+        },
+        {
+          "layer": 33,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "19031649d7fc6e4d2167b02aeb0545abe9819080c6d46ee3225ab52c8f8badfd",
+          "value_sha256": "c0716346853b9637eff48c0c67355a0309a6e06aab8b2e019c48edfac142c6da"
+        },
+        {
+          "layer": 34,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "e9a4f4a66af57fcfa0d27e23742b9a67e85a67f833265fc6333ab7d2e8aca504",
+          "value_sha256": "54708006468993e7eecf8632d24b39b36f7d92fea77b2b59784987f0f6e86609"
+        },
+        {
+          "layer": 35,
+          "key": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1005,
+            128
+          ],
+          "key_sha256": "98277de99e1ec508367196be7bdb52e101eb1c13966502bb0d253393a408c516",
+          "value_sha256": "fe80f495f90e98c5ea9bb942a604b92f442bf372da61f269d9d085028b50fd36"
+        }
+      ],
+      "cache_shapes": [
+        {
+          "layer": 0,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "68bf13b6c513e8d75f0d6ca973297ba26ea0302e3003b7a76289391e9f343b7d",
+          "value_sha256": "53e7d097f366ce8003bf323689b987b7c2730efc158d602b8daeb8983ab32a10"
+        },
+        {
+          "layer": 1,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "a248d18725ca43a6cb247b4fe9b420bb5eba2c6d267b16cb38cc295a7f618dea",
+          "value_sha256": "767491ae58616a29e29e13f9af5d25d35e480b926aadb4b38dec32005dd03b34"
+        },
+        {
+          "layer": 2,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "4ca6c9c65d7f45974c838e801d793e1261353b60ac398d052a3fac080daf3a93",
+          "value_sha256": "a6f6fd1f8ac3ae0982347b5ea794dfe9325778e53d68b4bcb8d64e387259eb49"
+        },
+        {
+          "layer": 3,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "477fac5d11e8f818e3901e6c224803cff0691dc6a904745ea0b4148e9f30f9a2",
+          "value_sha256": "4870fcd1bc7372a88a8f96ebc8f2802796efb720a934d267ad0a9d5af68cec70"
+        },
+        {
+          "layer": 4,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "ea7509421c8af6393bbd0c62e2dd21394b47f413c7d108feb8e6e09f62ab99b2",
+          "value_sha256": "06e4c805c961ec896bdbd408bd959d7f20e718422637267335c42722aafd9d97"
+        },
+        {
+          "layer": 5,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "6265a8f2f3e1e4ee740700a4046559dbb454526a11b8f2b095ee62768ccd57ad",
+          "value_sha256": "f4e26999559cf6b2a40a5d28c5e9265169f4663a1ff6dfe4b383abbfd0fd207a"
+        },
+        {
+          "layer": 6,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "e309b9763ba0d852d81ec7a0ff981b8faaaf1fb6e84fe5070e99eb362f9a2616",
+          "value_sha256": "17efd4877b1e0cb63805dde72892ac58de7a426a20f8bf2a557ac333708d6f67"
+        },
+        {
+          "layer": 7,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "52b2a349715989bc6b59c77ded78ed5915ec4fedd54090379a599f822c102eb9",
+          "value_sha256": "943d1b34d1055debc15019b5beab0ce96389cdb5823d96b13f82f14fe0c5b9c3"
+        },
+        {
+          "layer": 8,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "e979ed86f2d360371d3b817407e77d0c75266dcf917ca3ab62330641055f73ad",
+          "value_sha256": "a0de79bdce884ebf9a89764c340ee72e6f15fdb7acf6d8dea7d10c90b7ded723"
+        },
+        {
+          "layer": 9,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "506b78f220a7dabdd7f75338672140f60f50061d7a4e899e3b96d27d09948de6",
+          "value_sha256": "8a955aa3ccc87445da4d30399c610f980fb826a7af8a6cde233db990c9b4ca76"
+        },
+        {
+          "layer": 10,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "a31e0ad551ad47b3861eb3acdd691fc75d989868aaf0b5ba729b26d799e1a8e8",
+          "value_sha256": "c85cc3e8c95a359f1ff5702c3add14334da683fbfc8d84ae201d55caf92c804c"
+        },
+        {
+          "layer": 11,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "fe2e2bed57eeb6886b0a085fbd55610e4125fe918024eda1403d547ab81ef1c0",
+          "value_sha256": "b3328dcd284911b5b5dc11168ada8471b515485894a1983ae5172e05c9e48aba"
+        },
+        {
+          "layer": 12,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "a4b7821ab5ab2a2ec585e924acb41ff8ff28c7e8272a7c0f2839c428a1494d8d",
+          "value_sha256": "3adbfa6938e2af24201f367034432b936d3adf62107a3b5b2222d6afe4afcdd3"
+        },
+        {
+          "layer": 13,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "9d823d1b6c775aae48ed0a4312d3614f541f863c7f52dee1eee6c8ea7a206178",
+          "value_sha256": "f767cf62b949252cfb82c59072f52617fedbe8164f5425e899a73ef9ab7d4455"
+        },
+        {
+          "layer": 14,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "06aa042d480c1a7d4d2863c339d250d042164826d3d1c041a87376ecfa5a7632",
+          "value_sha256": "41fa03050fb4fef98fa04355409116b9744a48a3084958af8e8484f40639ba80"
+        },
+        {
+          "layer": 15,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "0375c54ab9d281cf456a4cd7f28bc91e4a8e105ccadcb68fb88a9608ef210edc",
+          "value_sha256": "d010e1d67e8f3574b95a5e0395f95fc95db750cc7d42f8b1947f38a05716f25c"
+        },
+        {
+          "layer": 16,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "bf6edf9aea0fc7c108550c8cd5f64da0517cedf414d41d933d035af92f712a18",
+          "value_sha256": "bc7a0447d9e302f34faa32e15099ce55d8dec55df8d3bc3573e7b9a3f49d5d53"
+        },
+        {
+          "layer": 17,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "bf7a955d937b403fd7c7f86e4fa5ec51896e85af2377f4ae5f358c4db0160690",
+          "value_sha256": "2cdd33e7df15a7ea2910280eaf7c2e52ba6ba55a76ab412a612710fce8ee298a"
+        },
+        {
+          "layer": 18,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "9490997207e0edce209aeac19940fbaf31e3c6afe169ef8c0b6c47526c128147",
+          "value_sha256": "9581fd120f582ca99b2400c94465d651cea11084af00871eadbbabc48cb9ff4b"
+        },
+        {
+          "layer": 19,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "8930e2ba910ed32732dc934bc54e87df804118383b9cb35c152d505bac182dd4",
+          "value_sha256": "c6b1f4af23108fcac9c0ef959690d6556102b8d904d54926053ee99a88265065"
+        },
+        {
+          "layer": 20,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "9e15b0bd21aefb0751af0054e9e7a751b4126ee1886e8381912152be505ab235",
+          "value_sha256": "fc05dda1d2ca6b08b8b4873bc0f2e3b2e3ec380b2596550d1df61432c5cb1039"
+        },
+        {
+          "layer": 21,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "689e086ee23c2a99e13cdc684371a0471b7ad469bd5c42fc4405fcfbf0721f10",
+          "value_sha256": "bb363cf8c27e25e71d02c15ef6b5f435b8f0ab19ac4741e1289c06a80c641be0"
+        },
+        {
+          "layer": 22,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "7752868de4c4128aebd281dc40c83a4149d394b2b4d9abd54dfba37bd40828cc",
+          "value_sha256": "0caa047e15de5ed2397c33b4596d1dfba68ac918e92980222cebc0191b6fe024"
+        },
+        {
+          "layer": 23,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "4771a2bb769f55803986f442d04135d39d30673e667d9a79cb9c8680cba413b6",
+          "value_sha256": "004e20f1052bb0745771ee9f8a4d715199a8a3c56edddfc0c5dbd05014ce8d06"
+        },
+        {
+          "layer": 24,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "0cb587ae4c4c8e49eb009e6325791a1ad498780e8afe925c2cd4d9d9e7b23e8a",
+          "value_sha256": "c3f1e2cf53f0391aaef32e26221b61883b58eda2b3b4412ec6aabbaf74705ab0"
+        },
+        {
+          "layer": 25,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "795a86921958637ea616da96f88bf97cf334a4b9d4dae19e30aad47556dad410",
+          "value_sha256": "67e22a82f8ca31ffb59373101a68254c9514ee87daad1d5dc2295fda8b0de389"
+        },
+        {
+          "layer": 26,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "5d3bde70c6d57f875397329519cb234944f13943fb5ae92498cdcf01295cf1a1",
+          "value_sha256": "c666acff38a81041986708c55294f7a59765cf37ab4d1d2ce4e35171aa9df5eb"
+        },
+        {
+          "layer": 27,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "1cc0c53239ed3ef6425e0b980b5a6cf78e78306b606ee38e4597682808351340",
+          "value_sha256": "84ab804732f4ad5451118397ebdc41212f7a6e2d01867ad4b6070c5c91b92750"
+        },
+        {
+          "layer": 28,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "fd18d539bb3a3090d1972ca1fb8384bc3765fcf70527b31dcf947ca5099da1b8",
+          "value_sha256": "c0063fed897629d5996225dbc1a246b8fb7eb83f7717b4d8ca38ae0112794471"
+        },
+        {
+          "layer": 29,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "4f44a15292181e607bdcef6a88b1fb475f9cfb7a62fd96c7aa772cacf87826dd",
+          "value_sha256": "47f83ba3cc31d192df97f8b337531a1c6e30971b76b1f423bc2d32d5b6a72ff3"
+        },
+        {
+          "layer": 30,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "c57709e1bb21d120404d3b195c1f03a03ab617ba01bc5620524e78a72e2c82e7",
+          "value_sha256": "ee693a6f894f84231c983570049233f66668fa54d42883114aa5b3d7bbbe9d5a"
+        },
+        {
+          "layer": 31,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "d7dcc141bd45242cfc0cf2bca276bfc0c4eb9e95dfb083eadd47c895861f284a",
+          "value_sha256": "1495446f57dd1a86ed3e6c8e476bb672ea70a3c12921f64dab2f7b28fe92fcf4"
+        },
+        {
+          "layer": 32,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "6ed1b50ec934bee2622ade1065f84e5ba04b831b28259d0a839630d7988eed41",
+          "value_sha256": "6e01ac98d200b77c8261536a0631ae7faff33bfe38397a4ab68bd3abac7fd146"
+        },
+        {
+          "layer": 33,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "56b237a842c7d4a1cfe401e547c1b02e5430ebb8d3c58f067cf8e81e0d3a7cbd",
+          "value_sha256": "d8e2ffbb96bcbe23b641b821523b5c85516170c8b743e0ada344153b76db4a12"
+        },
+        {
+          "layer": 34,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "c00d198042e392dae3336133164206f2fe71b691eeaf2cd3d728a73287f94db2",
+          "value_sha256": "5c1f32e9367a15d2eb5b1c0ae104d7293b5b124d6973486e6711575fec21ae96"
+        },
+        {
+          "layer": 35,
+          "key": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            1014,
+            128
+          ],
+          "key_sha256": "3cceab514bf4ef2248aaad81f57f5ca1a6e125c37b3bec725aacba95aef08b31",
+          "value_sha256": "0bec2109c0174c14d03bc65e1d58f8032926897aab6a41b7ba4549eff4142d90"
+        }
+      ],
+      "config": {
+        "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+        "model": "Qwen2.5-VL-3B-Instruct",
+        "method": "madakv_kvrepack",
+        "simtop": 0.5,
+        "compress_ratio": 0.7,
+        "alpha": 2,
+        "budget_ratio": 0.1,
+        "score_correction": "none",
+        "frames": 64,
+        "max_new_tokens": 64,
+        "dtype": "bfloat16",
+        "attention": "flash_attention_2"
+      },
+      "seconds": 5.966481305658817,
+      "peak_allocated_GiB": 9.996968269348145
+    },
+    {
+      "id": "vatex_test:1",
+      "input_hashes": {
+        "input_ids": "8e5d9e4d9c599932dcf160be2819828daeae20b30d3b9551c4de5ec2a0242832",
+        "attention_mask": "f6340de14931b09189ddcfc6a6e24ceb2c8b8b6e11acd03899327d234b1f3de2",
+        "pixel_values_videos": "6ce4dfa608b1137e39a8c7b9ccb3a60006ee8ad929920df6f6c37e5ba71427b3",
+        "video_grid_thw": "a0e6092e50b93f05849fc19739f86aa2f4c0d1f8d35dec42a3926958eb1d0b3b",
+        "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      },
+      "input_shapes": {
+        "input_ids": [
+          1,
+          9000
+        ],
+        "attention_mask": [
+          1,
+          9000
+        ],
+        "pixel_values_videos": [
+          35328,
+          1176
+        ],
+        "video_grid_thw": [
+          1,
+          3
+        ],
+        "second_per_grid_ts": [
+          1
+        ]
+      },
+      "generated_ids": [
+        32,
+        5220,
+        23011,
+        518,
+        264,
+        1965,
+        323,
+        13433,
+        911,
+        71799,
+        13,
+        151645
+      ],
+      "text": "A woman sits at a table and talks about knitting.",
+      "prefill_cache_shapes": [
+        {
+          "layer": 0,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "461ba3358cd2c03f3ef2b4b89c1325cd9818a46d8a17849794455aeb19b280b5",
+          "value_sha256": "bd97e249415459274a137eb40ddfda31e4c1fdde9c6b2ee61a3e3a8f7f0323a2"
+        },
+        {
+          "layer": 1,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "56ee3759cf44c00c4a5a9e81cf29eeefeedfadf0405ca2816e66016ffd4430b3",
+          "value_sha256": "0441bab3a014fff3b45e3df7a1a1b61a8e497a76cc08af83855b0fb3d3ae4df3"
+        },
+        {
+          "layer": 2,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "b79381e923fd8c9aceaf261fe4098a9d245e9f3c09fc87c64ca9da71ed738b62",
+          "value_sha256": "cb798c1715fa1c418a87ffa998158f9f64e2753cd99be546ae4fcf80535f88aa"
+        },
+        {
+          "layer": 3,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "1cfc52acfa2e385f3579baceddd3fbf22a9e50554f88f34fb78c8cf5c7c358c5",
+          "value_sha256": "ec847179d38154317baa481ab5545ae18e05ee174dbd08c4a7aed8bc0ccbcdc3"
+        },
+        {
+          "layer": 4,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "b600d2fb0f9d479bce05fcf93de75ad9861a0bffa3ba2a41714ca60f3e72fe0c",
+          "value_sha256": "64178ae8fc9a05da2c9aa16e67a5505e54cf1762aa4290385e65cf6104b0e3d3"
+        },
+        {
+          "layer": 5,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "70b9e6a4f786261cd2aff5565172b5fccbe7901abefde49c83a997189c3b108a",
+          "value_sha256": "c3b29a376e9a292f5781b597556ada8bb662bcdb1c2291c5045f66b96fcfd276"
+        },
+        {
+          "layer": 6,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "1d0a667d3cc2cf314d9f69f652706791708da9c605d449fc1d53d0b80662d432",
+          "value_sha256": "da5917f371d6ef71835e2d13f235787baf5198c06e5d54c3b18a2f6ad4da12dd"
+        },
+        {
+          "layer": 7,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "eae424561dee47b964882386f8c66ed78883596cf52c6b94c68756d41a708a80",
+          "value_sha256": "717f7e7915656005088850674dabcba45e0ca3c1c2fffdd55857d8723c868242"
+        },
+        {
+          "layer": 8,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "b249ea950286088163dc3e3f851d84022dd54361ffa4ce4a6be444e1b8ef54e2",
+          "value_sha256": "ae8152ccfb144539b54ed05096380ad8abc4a9c8fe8d5bd2bb013d2e29bcbbcb"
+        },
+        {
+          "layer": 9,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "2516c534964dbd2c823d6706f989b31558eb005418ffa2491016472c98667d28",
+          "value_sha256": "34a8150bfc0db1f354ff1317736a6b9f7e5093e261fdfdae4c35de34a3c09d9b"
+        },
+        {
+          "layer": 10,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "2f9d9e2318e590b5eda2353fd3883a5a424dfb570c1d80b5f703074df2b32028",
+          "value_sha256": "067fe75941a2ad2ed77330cf51b791eeccc627fb523d928130fe6bf32078dfa8"
+        },
+        {
+          "layer": 11,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "e56ece16aa92cc1dc02d49f7f7dc6c50b708f5eee00de5b09b64362685d513e6",
+          "value_sha256": "d346dfecf8fee62ef2aef32ce4010371b1a3ee2e066b9895eb4b9c2b89b43957"
+        },
+        {
+          "layer": 12,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "9d453706ce964f570cb218cab671de1390e989c7ab71f6d96bf5b081626b5917",
+          "value_sha256": "e72eef53e7e9dab2434627889864528f9ef1578b102f8ede1bbbe9f806421635"
+        },
+        {
+          "layer": 13,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "a0854927dfe7d79f0bf46458044632018ccef1dbd3b6db4f0ea5c4e5736330cf",
+          "value_sha256": "af2a865946241182f054151b67c8e49566dd416a8c0ba5c538e1e19eb8124e55"
+        },
+        {
+          "layer": 14,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "8c000d7f1516c04d2f52d16899fe6da64a9164f1d152b37bf2a9b16535cec4f0",
+          "value_sha256": "fb0cd1dd8dd327a4d415a764892f50cc532e29cc0b1a0c969922485dfd5c77cb"
+        },
+        {
+          "layer": 15,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "8df9850909ccf23f469dea63833da1f801ae0269db37a16e073b36dba42dde70",
+          "value_sha256": "daf10168aa38b7bb4acf2c4bcab3e0016448052a8c79729bf124aaa78a26a682"
+        },
+        {
+          "layer": 16,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "0614c7b7fdfaaa8a70baff00d5bcacefe2017b1c1b52d53adde4b4154048ce68",
+          "value_sha256": "e60fa011c0230bae62486a23d70b761ec004f999308b0e246d1eb4ed66dae4ff"
+        },
+        {
+          "layer": 17,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "89037ffa4c6233af94ec5dd44fdbc5774aa383d362c80eb61b8959d03c44df78",
+          "value_sha256": "f5c8476e558e89cfeaf139bfd1d8daa050b3c982c696331e248a917b62b436d9"
+        },
+        {
+          "layer": 18,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "0bf3f532a6ea8a765f2ac4f8813f691fe2b32fa9c35e8fe872db88e9c217c0e4",
+          "value_sha256": "9966820a181deac54a8235aa8053281696af42865e8988ae345329750b7f2638"
+        },
+        {
+          "layer": 19,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "aee8ffd3b6e9468556a9be18f2c7d3347b3890d7720b25820b0f987fe762b71a",
+          "value_sha256": "8a774436fed587ca44153aaf5c47229beed5506dd733f61633607cafec2779fd"
+        },
+        {
+          "layer": 20,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "8205825c5b39b6fb8ca7234c594ecbee25cefbb208fd761f2717ee7f085a056e",
+          "value_sha256": "abd535006e319decf1fbab59de45a6a5b439a0ffd2ccfb96f12a28206cd30ec1"
+        },
+        {
+          "layer": 21,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "1492439ae382eeb12a6ba983c17f8abccc7a1ba31a4c664377cf0fd9580c008d",
+          "value_sha256": "764fbf4dcd6afae734290824f4c1829efc6042d541dccae154b9e557d320f145"
+        },
+        {
+          "layer": 22,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "3bbf752ea7ba287c12432e782ecf87cd732956267761166daab3cae99df32171",
+          "value_sha256": "73c5bd5854de5f5a3feee9c87de756e5f6310ba2f91d3882289659107c81ded0"
+        },
+        {
+          "layer": 23,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "6cc4eb6aa2915ecc44da82c88792d45363696ae4819b1955414555fad17593b4",
+          "value_sha256": "d35a68a42a2bbc25da1b9693bd2f65e749a0f199f19f6ea8959be74b638ca330"
+        },
+        {
+          "layer": 24,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "b92a7c4555ae823beb29c226202cda621989bf3ad1ec8a175767b8c86c41fab9",
+          "value_sha256": "538e19f2aac6089c0bfe6c60a09b0146fca5def9479fec69a9e350094aaf4e54"
+        },
+        {
+          "layer": 25,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "5fb22370c34eb553bcee4139f8140e8b7577b2f264b5881ca128908801a3cb8d",
+          "value_sha256": "7306c3384e37371c631388078867e07258568e5269c1b085be147d2b57c3c220"
+        },
+        {
+          "layer": 26,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "ce32d864b950ee45916a7a0ce4c5beb281a6f34a7f5c17c03b06949d6e9f7b79",
+          "value_sha256": "03e93b5cb1674640e36bf9c9dcbc6e0d17c6332d066062a090927857cb763e8d"
+        },
+        {
+          "layer": 27,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "2feb1b638a6583c60563d8990a21756386cede4e651552a9ab10db058cc3f259",
+          "value_sha256": "966f3f470ce8d76357566e3590df9ae2feae34eb934b3575ec29c7c0fdf27b3b"
+        },
+        {
+          "layer": 28,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "b1f5483ab615b544b41c9c29819380f1264979b08a4794657d2d73a760260766",
+          "value_sha256": "591856ed8e4fcb7cae18a45e0ad5920153757cfe19661e1ca6646e0d09370211"
+        },
+        {
+          "layer": 29,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "6d2438d0677611863e19d63c982a3df132410e7639008e6c9cbe2a01a9b31250",
+          "value_sha256": "4fb6f829d06581aa269494a7a22d43cac8b3d17142f696f7b8f22484bb778cc4"
+        },
+        {
+          "layer": 30,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "a5a83cec95b012db94c1948fd15c30f216a6554d19eeed3b3a7295cb511949bf",
+          "value_sha256": "7df9d8154994101f19cfa2817aa534ec19e9b8c3aa0a34ddb0f4abb7bf1755a7"
+        },
+        {
+          "layer": 31,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "52237161ced74538877a2ae9a4669cdf237f84636f20afa8fdefda532953ad4d",
+          "value_sha256": "ef4b2581dd7177f20acc11efccbe201471766324cb94133623c218ef64e76b3a"
+        },
+        {
+          "layer": 32,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "22bbec2fec574b28edf2ead8a2285cb3bf0ae803119834271e082692c83b4c49",
+          "value_sha256": "fb5c0a173dbd0e0c4ac40547a2e92ad243b2e696c31247a8093a21cd7b82f410"
+        },
+        {
+          "layer": 33,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "06a7e4bdfad3426ce45330afd2e4cbc3227a06fa81680f0c687127b6b04668ea",
+          "value_sha256": "6e35d17575a9694ca85ff5597eb30d355931d34e67d459bec9915fb17f0464f2"
+        },
+        {
+          "layer": 34,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "8353635512ca550e03739880224470be3b2bca71d6323cba6bf915892623917f",
+          "value_sha256": "bd2be8a74a7e6ec2b23317932391e21c874ea8024fe622901114b4b94d5e4235"
+        },
+        {
+          "layer": 35,
+          "key": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            932,
+            128
+          ],
+          "key_sha256": "0d828ae790f7a88452f8efd21758de4a067e2eea898e59e16bccf985fda02dcc",
+          "value_sha256": "fae3ccc953149e1a6a319bb9c461a77dfdf8a4e4712bae4557fce3f1b7ec90b5"
+        }
+      ],
+      "cache_shapes": [
+        {
+          "layer": 0,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "7e3f29d6381615a870820377fc8c2f30e8385a99bda78e204ac7c6f0e3179c0f",
+          "value_sha256": "e4c2a119410858dbd423025b618ed248c41c447a0e1d1687ea3bda78d66a4ca2"
+        },
+        {
+          "layer": 1,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "8fa0df0cebae6ef982fde72813ce659bb2bbdd4b8f266653a3bdf3a38f04ced9",
+          "value_sha256": "5742fb9026274385dbce5c5e2d679c811e77571c2a5f0fae893e0f7a4becd503"
+        },
+        {
+          "layer": 2,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "5a63dd2eccb059555fe277fcaee07f8b773e165d2e367c200e16703619a2f894",
+          "value_sha256": "198ef182bfe166eb3734e92ba08161d47c7223a16d75c2f2188718f68200c4f7"
+        },
+        {
+          "layer": 3,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "f61b6a5e59be35f32fef26e319a31431da702c6894011bf2ce51c88ae5c36c56",
+          "value_sha256": "5aa76fc15c92bece1fb2706fa3c7198f894fe6c9be165e3e9e5dcb7aeeba67da"
+        },
+        {
+          "layer": 4,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "de93601959dff49e868a3b76018fa51c669393279be56278ad559f0ae174637e",
+          "value_sha256": "96f0578f2bbc857ddd7678f24e6ec0b256b33db0717544feb93af834a0ec399d"
+        },
+        {
+          "layer": 5,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "cfe2690cc6a1401dc5e65ff426c7c6bf8e7f8a7f58e3f44747123d4cfc1ae6b5",
+          "value_sha256": "eb40747c57d4f2523e211ddb29fd3574f99e5521d92bc8364d7024d6035c708f"
+        },
+        {
+          "layer": 6,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "8eba6d2db0b814942194cd9dc1061f7be8aa64c6ffd6186d86411d2440748ab9",
+          "value_sha256": "be8402f2be5c4a6e06724c8510d1228b72f96a517e18ccb8ea7c3cc5fb230969"
+        },
+        {
+          "layer": 7,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "c4681b102041d220ac74548ad75bf22786f2b3451831fc80b99abfec1facabc6",
+          "value_sha256": "120b99b1b40e3c15fd00b23ae52357e9bd7a3b25e5e66af18647b42611259703"
+        },
+        {
+          "layer": 8,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "17c68efd86a4ef36cd632f7e7f9ae6774cca17d5f003e400faa3bc0145261104",
+          "value_sha256": "7a2e0c2dd102d0d37a68f07dcbc8996613a16dff03375dfa5a220c498f452b2d"
+        },
+        {
+          "layer": 9,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "efc426da480e273388443b8c316e4b27b246da3d710648f3e0dda75f4936db1e",
+          "value_sha256": "26f783e6e15e123c28b2eef0f4c3f8d69158e6c931ccadaac1c7ecb12b5ea48e"
+        },
+        {
+          "layer": 10,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "3ce7c649f68c6fd9adcaf8e831b19ae1e7032a8a54fc01e2c5dacb36b42b619a",
+          "value_sha256": "f6cb5de9ca0c31727d816bb6ba57e7f9b7b7b1fd3aa462c5519ef2fbb3871b3e"
+        },
+        {
+          "layer": 11,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "e581fa814f3ed06a9517116743957654e291f9320b6ab659de69f8c709b013dc",
+          "value_sha256": "37cb57fbb3c9352afa4e93775d5c2330e69761342b5c5fd431a1aad9357cf60e"
+        },
+        {
+          "layer": 12,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "87b6e3a8773a36b4b83d6ef3f0d4c0d523deb9cccc372616197216b145ef788f",
+          "value_sha256": "fec8cb91490ac87d0978eeaa993eedb528de01e9aa7f04e2217794fb802d367b"
+        },
+        {
+          "layer": 13,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "4dcf0e0566b50c0fe3963afc9611153192aad98d80b6fb1a467ad3d20c9374da",
+          "value_sha256": "746528d6409e998a00f7c66da525a977c36b0c5c2a7143cc70e63b999269fd98"
+        },
+        {
+          "layer": 14,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "46bb952c2ae69a0c9a476036faaccec489d1d84f59d83a4f845ed5dea8155586",
+          "value_sha256": "80c1596c29d2cea5568280fef53cd200768ef5a420ef22207a3bf536475fbe01"
+        },
+        {
+          "layer": 15,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "fc03cc68b22acb121ab290f842189b1061d3e30a3acd52ba18be9fd8479dc2a6",
+          "value_sha256": "e205601e1472f1876b369400b2e51104dfe0c3068bd22cc6299606d3d4d811b7"
+        },
+        {
+          "layer": 16,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "6566f859bb17b5abf976bb2bd03e8e29156bfac78d29eb02b0963d603183da03",
+          "value_sha256": "ea47b1a7ffdaf0d869e19d92f16409ded3124c1d497763c30ea517128cf1f2e9"
+        },
+        {
+          "layer": 17,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "b945aa1c96f71299104e1f2906e93cef80de8b7bda1319649813a67d5bda7c14",
+          "value_sha256": "7b7feac98932db5e611f61f17d3c951243cc57e247bc319803ed77a6dd0f2ca9"
+        },
+        {
+          "layer": 18,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "70fd7d85958e837856666cc9e967c107a742ba5790288f4364bdd790e8414447",
+          "value_sha256": "03d72c1942cf5201444adbfe3050a3dd849d5731350a97d9ed9ef6b7c851cfcd"
+        },
+        {
+          "layer": 19,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "bdff184dbe9ba40c6fe241746ab123b685ef9db4d153e75441b09de353b375f3",
+          "value_sha256": "2be06f158206d91403a4c0494401c474234284bf4815aeba40e7bc274ce1cfc7"
+        },
+        {
+          "layer": 20,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "484de6b08994a2770740655edec542865711b68788a0bb879d52920ebc934c48",
+          "value_sha256": "20511cbf41f43b3fe074c13bad7f5d4288c9b8131b2967bc9ee0a7916a2fc25d"
+        },
+        {
+          "layer": 21,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "cbd2ea49adc5112d29a657d709282f063a9195402823cf7594242206edc78896",
+          "value_sha256": "609100a397a50847dac2b719c75eeeb0166b937657443ad698637f92c40f6306"
+        },
+        {
+          "layer": 22,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "b524e1576e0e6adbf91cec6646749d39fa87bf5724bc775f85c1776e5149bd5e",
+          "value_sha256": "d7df86208d7ee1346bb20e8e793908f3df0c66dbbb76bee8d683b143870f126c"
+        },
+        {
+          "layer": 23,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "95ac08157ec9f9b75b155a6efa224e94b3b747c6bd70b0d1a612dd6cb833a679",
+          "value_sha256": "dc8887c299d22f3a7b68e380d15a35608272303cf6517071a5f821036a0921b7"
+        },
+        {
+          "layer": 24,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "728cccdd6dbbbbfd9cb8fd8e0716edcab2b979f2aeedc91936295f24ba4a2224",
+          "value_sha256": "4769e3c82582f46ff9b7df12548df9ddc92b2bb0f74b3435292fb50400375b66"
+        },
+        {
+          "layer": 25,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "8f176adc76fdebfd81d22b8896cdcd8fd338a61f9a8dc16b0aa4e2a9f98fa415",
+          "value_sha256": "cd5d6ffda5e1fdffa87bc4d0044bcae547dc07a50b46b51d1dd1fc4096c8fe25"
+        },
+        {
+          "layer": 26,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "6fa6ba352f36250ff528e9b33b29834dc623c46d7ef47cd87d62b684ae6ae20b",
+          "value_sha256": "999e1bbaad57c3346415e8d4602d54ba95c17ffec499516a78143320935d89db"
+        },
+        {
+          "layer": 27,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "dd2bd3df81e865bdedd5ac007e20a534c729329d4d55e669b6bdce9d4240b7bf",
+          "value_sha256": "875000245d5e73cf48289292533b6f1b24654b6818f6e74e3dbf07bd7227627b"
+        },
+        {
+          "layer": 28,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "5b8d5853b293c16ca17800a093ab397bb2122b4f3a55e381bf119ed75b926e10",
+          "value_sha256": "44743da84e27879169093c60601a731c8dbf735e86220f385e75c375b1ccd607"
+        },
+        {
+          "layer": 29,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "8f1419e8ecee6b8017d7cd201efba86d6df109aaae6b9208d31dd402a3e5e7f7",
+          "value_sha256": "183cbd3effb35b593ad51f45e6efed6d7c42320809e0c6025bf7266c54ffd5ee"
+        },
+        {
+          "layer": 30,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "68bdb236fe76d391103110a220c020aebe3c3ff7216c5c0de25771c806bcfa51",
+          "value_sha256": "5a313e5b0d5555729b6459581bf9107a26772c7c41e14fc18a379ef8b2e26df4"
+        },
+        {
+          "layer": 31,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "a1184e606ce4326e1052db64862904ce3410de6b7aa6ac65c0a922617cdafbb3",
+          "value_sha256": "677c8358193a8da90bcdf61cf3cba4a6ee7f13bf234ee5d6df106bd18749b6bd"
+        },
+        {
+          "layer": 32,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "75716a3068e738a2316336ab135aa58c8d59a4e6b7739cfb515f068ede30dc6a",
+          "value_sha256": "6abb47a3f50909b7269e2bb792629dd50cf82a7c15a6a124c51eaba7d86a674a"
+        },
+        {
+          "layer": 33,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "b5f75d6678f1432f6b5b72daed8bf11424f3d5832b91fcb517a3285eca91dbb2",
+          "value_sha256": "913bc92cd10f478ca6acd366d868f0ca10799c64011a499b969f8eab97c2ed8e"
+        },
+        {
+          "layer": 34,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "4b68ed529e4fd4d04e377328fd7f17bdf7fe250299b9fa25c8322e2e11555330",
+          "value_sha256": "e63e52e4c54990d4e1fd963ff8e719c05a18b970437b2908582906527411a795"
+        },
+        {
+          "layer": 35,
+          "key": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "value": [
+            1,
+            2,
+            943,
+            128
+          ],
+          "key_sha256": "9d663fa68dcf326b3a0f7b8b1e2468bf0c80930d4e68d73c54e483ce86e93775",
+          "value_sha256": "8d9088d01d066dfbadc90780df3e2d5abb10e5e78d8d7b1dd6f5b05c3d75e4b4"
+        }
+      ],
+      "config": {
+        "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+        "model": "Qwen2.5-VL-3B-Instruct",
+        "method": "madakv_kvrepack",
+        "simtop": 0.5,
+        "compress_ratio": 0.7,
+        "alpha": 2,
+        "budget_ratio": 0.1,
+        "score_correction": "none",
+        "frames": 64,
+        "max_new_tokens": 64,
+        "dtype": "bfloat16",
+        "attention": "flash_attention_2"
+      },
+      "seconds": 6.121845938265324,
+      "peak_allocated_GiB": 9.76990032196045
+    }
+  ]
+}

@@ -208,7 +208,9 @@ def verify_manifest(root: Path) -> dict:
     except (OSError, ValueError) as exc:
         raise ValueError("Missing or invalid provenance/core_sources.json") from exc
     entries = manifest.get("entries", [])
-    if manifest.get("schema_version") != 1 or not entries:
+    # Schema 2 adds branding provenance; copied-target fields retain schema 1's
+    # path/sha256 contract and must pass the same checks below.
+    if manifest.get("schema_version") not in (1, 2) or not entries:
         raise ValueError("Unsupported or empty core source manifest")
     checked = []
     for entry in entries:
@@ -232,7 +234,7 @@ def verify_vendor_sources(root: Path, adapter: str = "qwen2_5_vl") -> dict:
         hashes = component["vendored_files_sha256"]
     except (OSError, ValueError, KeyError, TypeError) as exc:
         raise ValueError("Missing or invalid provenance/vendor_sources.json") from exc
-    if manifest.get("schema_version") != 1 or component.get("destination") != "vendor/lmms-eval":
+    if manifest.get("schema_version") not in (1, 2) or component.get("destination") != "vendor/lmms-eval":
         raise ValueError("Unexpected evaluation frontend in vendor source manifest")
     checked = []
     critical = ["lmms_eval/__init__.py", "lmms_eval/__main__.py", "lmms_eval/evaluator.py",

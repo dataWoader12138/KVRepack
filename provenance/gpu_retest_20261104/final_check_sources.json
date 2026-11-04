@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "core_files": 30,
+  "local_modules_and_adapter": 33,
+  "vendor_python_files": 329,
+  "vendor_build_files": 2382,
+  "original_source_comparison": false
+}

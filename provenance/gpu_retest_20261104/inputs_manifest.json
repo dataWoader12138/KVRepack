@@ -1,0 +1,165 @@
+{
+  "model_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-3B-Instruct/snapshots/66285546d2b821cf421d4f5eb2576359d3770cd3",
+  "records": [
+    {
+      "id": "nextqa_oe_test:0",
+      "task": "nextqa_oe_test",
+      "doc_id": 0,
+      "video_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/nextqa/NExTVideo/4924794333.mp4",
+      "video_sha256": "233e76447591ac4bd6bb28f5b09433259dd4bdd43cdf25820c301887180b4aa9",
+      "prompt": "is the baby old enough to converse\nAnswer a question using a short phrase or sentence.",
+      "input_path": "/root/kvrepack-gpu-work/inputs/nextqa_oe_test_0.pt",
+      "input_hashes": {
+        "input_ids": "cd59627f40c558b3300db000423b313f99664195e3d5535d98b8986321c7ee62",
+        "attention_mask": "1f3408477a4392babbd96e8b3dfadeccc001a04551b7a430f80324750ae1d0fd",
+        "pixel_values_videos": "463d16a88962d8eec89be93d4309486cb4d88f6129bcb8db01f46d998f8e9591",
+        "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08",
+        "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      },
+      "input_shapes": {
+        "input_ids": [
+          1,
+          9607
+        ],
+        "attention_mask": [
+          1,
+          9607
+        ],
+        "pixel_values_videos": [
+          38272,
+          1176
+        ],
+        "video_grid_thw": [
+          1,
+          3
+        ],
+        "second_per_grid_ts": [
+          1
+        ]
+      },
+      "input_tokens": 9607,
+      "frames": 64,
+      "source_dataset_arrow_sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3"
+    },
+    {
+      "id": "nextqa_oe_test:1",
+      "task": "nextqa_oe_test",
+      "doc_id": 1,
+      "video_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/nextqa/NExTVideo/3747890905.mp4",
+      "video_sha256": "8d787fe5873f242828cec7b35e8b4312d96f3ef8852b1c2a06c9474adf0cd464",
+      "prompt": "how does the adult get rid of the food residue near the end of the video\nAnswer a question using a short phrase or sentence.",
+      "input_path": "/root/kvrepack-gpu-work/inputs/nextqa_oe_test_1.pt",
+      "input_hashes": {
+        "input_ids": "3748295b62af5a17c2095a7f30dd94c21674b13c49914a2a4ea58ed6674a9055",
+        "attention_mask": "d3a70afb5084affb50e8df54b4b940e56649a5afba8961df294e68c32e03020e",
+        "pixel_values_videos": "00f2d7606f25256d573174345406ed29c3c58439547ec8f1146935f278fcbcc9",
+        "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08",
+        "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      },
+      "input_shapes": {
+        "input_ids": [
+          1,
+          9616
+        ],
+        "attention_mask": [
+          1,
+          9616
+        ],
+        "pixel_values_videos": [
+          38272,
+          1176
+        ],
+        "video_grid_thw": [
+          1,
+          3
+        ],
+        "second_per_grid_ts": [
+          1
+        ]
+      },
+      "input_tokens": 9616,
+      "frames": 64,
+      "source_dataset_arrow_sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3"
+    },
+    {
+      "id": "vatex_test:0",
+      "task": "vatex_test",
+      "doc_id": 0,
+      "video_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/vatex_test/5-xGskbsBgI_000055_000065.mp4",
+      "video_sha256": "be1512edb56d27b5aa653d9ea31869f49d2a0aa7228ae66b83e3d6d58175749c",
+      "prompt": "Provide a brief single-sentence caption for the last video below. Do not give any reasoning, just the caption. You must follow the captioning style of the preceding videos. Do not start your response with \"Output:\", just provide the caption.\n[video1] output: A man picks up a can of shoe paste, a towel, and brush from a table.\n[video2] output: A person places the frying pan on the stove and then another person flips over the food that is in it.\n[video3] output: A woman describes and demonstrates how to create a colorful cross stitch design.\n[video4] output: A little girl uses the grass in her yard as well as a blue mat to do flips.\n",
+      "input_path": "/root/kvrepack-gpu-work/inputs/vatex_test_0.pt",
+      "input_hashes": {
+        "input_ids": "d9c508d2797a7969d948ed8f8f771ced67560839c7aac16570f71c4c06662029",
+        "attention_mask": "7d5c5ca3689dc58d97168a7e934709de10ee15028b982a98f59c8c9b85e19e02",
+        "pixel_values_videos": "4cf0eaa3d4daef1daca6bb934cf1dcd202411838a5e2738cc24d52637d738b5f",
+        "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08",
+        "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      },
+      "input_shapes": {
+        "input_ids": [
+          1,
+          9736
+        ],
+        "attention_mask": [
+          1,
+          9736
+        ],
+        "pixel_values_videos": [
+          38272,
+          1176
+        ],
+        "video_grid_thw": [
+          1,
+          3
+        ],
+        "second_per_grid_ts": [
+          1
+        ]
+      },
+      "input_tokens": 9736,
+      "frames": 64,
+      "source_dataset_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f"
+    },
+    {
+      "id": "vatex_test:1",
+      "task": "vatex_test",
+      "doc_id": 1,
+      "video_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/vatex_test/uaoC__dKucA_000518_000528.mp4",
+      "video_sha256": "960fb8a4248512d6bfab9d0fd793536fd5ea10d83f59c35b2f8e5950ff5c3c25",
+      "prompt": "Provide a brief single-sentence caption for the last video below. Do not give any reasoning, just the caption. You must follow the captioning style of the preceding videos. Do not start your response with \"Output:\", just provide the caption.\n[video1] output: A man picks up a can of shoe paste, a towel, and brush from a table.\n[video2] output: A person places the frying pan on the stove and then another person flips over the food that is in it.\n[video3] output: A woman describes and demonstrates how to create a colorful cross stitch design.\n[video4] output: A little girl uses the grass in her yard as well as a blue mat to do flips.\n",
+      "input_path": "/root/kvrepack-gpu-work/inputs/vatex_test_1.pt",
+      "input_hashes": {
+        "input_ids": "8e5d9e4d9c599932dcf160be2819828daeae20b30d3b9551c4de5ec2a0242832",
+        "attention_mask": "f6340de14931b09189ddcfc6a6e24ceb2c8b8b6e11acd03899327d234b1f3de2",
+        "pixel_values_videos": "6ce4dfa608b1137e39a8c7b9ccb3a60006ee8ad929920df6f6c37e5ba71427b3",
+        "video_grid_thw": "a0e6092e50b93f05849fc19739f86aa2f4c0d1f8d35dec42a3926958eb1d0b3b",
+        "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c"
+      },
+      "input_shapes": {
+        "input_ids": [
+          1,
+          9000
+        ],
+        "attention_mask": [
+          1,
+          9000
+        ],
+        "pixel_values_videos": [
+          35328,
+          1176
+        ],
+        "video_grid_thw": [
+          1,
+          3
+        ],
+        "second_per_grid_ts": [
+          1
+        ]
+      },
+      "input_tokens": 9000,
+      "frames": 64,
+      "source_dataset_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f"
+    }
+  ]
+}
