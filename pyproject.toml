@@ -21,6 +21,11 @@ dependencies = [
 
 [project.scripts]
 kvrepack = "kvrepack.run:main"
+kvrepack-observe = "kvrepack.observations.adjacent:main"
+kvrepack-observe-report = "kvrepack.observations.report:main"
+
+[project.optional-dependencies]
+observations = ["datasets==2.19.2", "matplotlib>=3.8,<4", "PyYAML>=6,<7"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

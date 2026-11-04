@@ -6,6 +6,8 @@
 
 扩大 GPU 复测：[200 条配对与完整测试集的运行状态、结果及恢复方式](docs/FULL_VIDEO_RETEST_20261104.md)。该页按阶段更新，明确区分运行中与已通过。
 
+论文观察实验 A：[7B 模型、两数据集各前200条的视觉／文本近邻 K/V 相似度](docs/OBSERVATION_A.md)。独立观察入口和统计绘图位于 `src/kvrepack/observations/`。
+
 将 Qwen2.5-VL 的 KV cache 基线及其 KVRepack 改进整理到一个独立项目，同时纳入 LLaVA-OneVision-Qwen2-7B 的原有基线。任务包括 NextQA、VATEX、VideoChatGPT。多图 MileBench、历史参数搜索和诊断支线尚未纳入首版。
 
 本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。当前已完成整理、CPU 审计及下述 GPU 子集数值对照；**完整 CLI、完整基准与性能仍待验证**。
@@ -20,6 +22,7 @@
 KVRepack/
 ├── src/kvrepack/          # 唯一的核心包、方法注册表和实验入口
 │   ├── experiments/      # 公开方法 → 内部方法 → 固定实现及环境参数
+│   ├── observations/     # 无压缩前向中的模态近邻观察与统计绘图
 │   ├── configs/          # 保留原始字节的配置
 │   ├── data/head_score/  # 运行必需的 head score，随包分发
 │   └── asymkv_official/  # 唯一对外提供的 AsymKV 实现
