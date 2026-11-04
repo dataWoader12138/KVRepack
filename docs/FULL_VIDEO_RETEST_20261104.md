@@ -1,13 +1,13 @@
 # Qwen3B 视频复测与后台进度（2026-11-04）
 
-状态：**running**；阶段快照 UTC：2026-11-04T05:41:13.168126+00:00。
+状态：**failed**；阶段快照 UTC：2026-11-04T05:54:25.628063+00:00。
 
 本页仅覆盖下表计划。pending/running 均未通过；200 条是子集，完整 NextQA、VATEX 分别为9178、4478条。阶段变化时更新，逐样本实时计数请查看本机 matrix_state.json。
 
 | 方法 | 任务 | 样本数 | 范围 | 状态 | 实际评分 |
 |---|---|---:|---|---|---|
 | snapkv_kvrepack | nextqa_oe_test | 200 | 前200条子集 | passed | WUPS=30.12715027465206 |
-| snapkv_kvrepack | vatex_test | 200 | 前200条子集 | running | — |
+| snapkv_kvrepack | vatex_test | 200 | 前200条子集 | failed | — |
 | madakv_kvrepack | nextqa_oe_test | 200 | 前200条子集 | pending | — |
 | madakv_kvrepack | vatex_test | 200 | 前200条子集 | pending | — |
 | snapkv_kvrepack | nextqa_oe_test | 9178 | 完整split | pending | — |
@@ -75,3 +75,9 @@ python watch_publish.py --watch --interval 30
 - doc131：两诊断输入hash相等=True；floor匹配当前文本=True；ceil匹配旧文本=True。
 
 小型源JSON及SHA见[summary](../provenance/full_video_retest_20261104/summary.json)中的historical_reconstruction_and_rounding及historical_diagnostics/；不上传恢复预测JSONL或大日志。
+
+矩阵错误：
+
+```text
+Exit 1: [PosixPath('/root/miniconda3/envs/hybridkv/bin/python'), '-B', PosixPath('/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/compare_full_runs.py'), '--reference', PosixPath('/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_original/trace.jsonl'), '--candidate', PosixPath('/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_repack/trace.jsonl'), '--expected-count', '4478', '--output', PosixPath('/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_vatex_test_200_comparison.json'), '--limit', '200']; see /root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/matrix_postprocess.log
+```

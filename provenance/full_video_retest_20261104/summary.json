@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-04T05:41:13.168126+00:00",
-  "matrix_status": "running",
+  "updated_utc": "2026-11-04T05:54:25.628063+00:00",
+  "matrix_status": "failed",
   "base_commit": "169aa1f2e44d76d7205bd40b86bf08a6a7705b6d",
   "core_unchanged_from_base": true,
   "matrix_plan": {
@@ -44,7 +44,7 @@
       "task": "vatex_test",
       "count": 200,
       "full_split": false,
-      "status": "running",
+      "status": "failed",
       "started_utc": "2026-11-04T05:23:36.337227+00:00"
     },
     {
@@ -87,19 +87,19 @@
         "pid": 78772,
         "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_original/trace.jsonl",
         "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_original.matrix.launch.log",
-        "count": 107,
-        "returncode": null
+        "count": 200,
+        "returncode": 0
       },
       "repack": {
         "pid": 78773,
         "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_repack/trace.jsonl",
         "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_repack.matrix.launch.log",
-        "count": 107,
-        "returncode": null
+        "count": 200,
+        "returncode": 0
       }
     }
   },
-  "error": null,
+  "error": "Exit 1: [PosixPath('/root/miniconda3/envs/hybridkv/bin/python'), '-B', PosixPath('/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/compare_full_runs.py'), '--reference', PosixPath('/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_original/trace.jsonl'), '--candidate', PosixPath('/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_repack/trace.jsonl'), '--expected-count', '4478', '--output', PosixPath('/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_vatex_test_200_comparison.json'), '--limit', '200']; see /root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/matrix_postprocess.log",
   "candidate_only_cli": {
     "cli_nextqa_snapkv_smoke20": {
       "status": "passed",
