@@ -1,0 +1,90 @@
+{
+  "status": "confirmed_observed_budget_difference",
+  "historical_snap_result_id": "P02",
+  "historical_snap_WUPS": 30.490725191798408,
+  "current_snap_paired_WUPS": 30.12715027465206,
+  "current_official_cli_results": [
+    {
+      "implementation": "original",
+      "path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original/attempt_0002/eval_outputs/snapshots__66285546d2b821cf421d4f5eb2576359d3770cd3/20261104_130526_results.json",
+      "sha256": "ca280c5b5c82e51094282aa3ecaed85196b8aeab7c0f5f8b03dff3b07b80ed01",
+      "WUPS": 30.12715027465206
+    },
+    {
+      "implementation": "repack",
+      "path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack/attempt_0003/eval_outputs/snapshots__66285546d2b821cf421d4f5eb2576359d3770cd3/20261104_130526_results.json",
+      "sha256": "abc1d9feace6b852c6dbfb6385a8086dbf8bb8af56d5deec84201ec5255730b3",
+      "WUPS": 30.12715027465206
+    }
+  ],
+  "current_official_offline_WUPS_agree": true,
+  "historical_log": {
+    "path": "/tmp/run_nextqa_vatexbest_decouplekv_20260704.log",
+    "line_number_convention": "LF physical lines; CR progress bars count differently under str.splitlines()",
+    "excerpt_only": true,
+    "selected_excerpt_sha256": "5fdd78b5356b65c53360ff1950988b55c7f039157adcc682cbd7cedf18a7e87c"
+  },
+  "budget_examples": [
+    {
+      "seq_len": 12567,
+      "budget_ratio": 0.1,
+      "historical_final_history": 1257,
+      "current_int_budget": 1256,
+      "log_lines": [
+        {
+          "line": 2326,
+          "text": "Token Length: 12567"
+        },
+        {
+          "line": 2327,
+          "text": "[SnapKV-DecoupleKV] adjacent-sim global gate: merge_heads=51/72 merge_ratio=0.7083 target_ratio=0.7000 budget_ratio=0.1000 final_history=1257 candidate_history=1397 compress_ratio=0.9000 alpha=2.0000 sim_space=raw score_correction=none attention=flash sim_min/mean/max=0.3579/0.7113/0.9985 merge_heads_per_layer=[2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 1, 2, 2, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 2]"
+        }
+      ]
+    },
+    {
+      "seq_len": 9621,
+      "budget_ratio": 0.1,
+      "historical_final_history": 963,
+      "current_int_budget": 962,
+      "log_lines": [
+        {
+          "line": 2334,
+          "text": "Token Length: 9621"
+        },
+        {
+          "line": 2335,
+          "text": "[SnapKV-DecoupleKV] adjacent-sim global gate: merge_heads=51/72 merge_ratio=0.7083 target_ratio=0.7000 budget_ratio=0.1000 final_history=963 candidate_history=1070 compress_ratio=0.9000 alpha=2.0000 sim_space=raw score_correction=none attention=flash sim_min/mean/max=0.3658/0.7024/0.9985 merge_heads_per_layer=[2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 1, 1, 2, 0, 1, 1, 2, 1, 1, 1, 1, 0, 0, 0, 0, 2, 2]"
+        }
+      ]
+    }
+  ],
+  "current_source_functions": [
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_snapkv_decouplekv.py",
+      "sha256": "a995a055acd0dd73de8e183ff11ac270d250d0194fcb06f3028f4c10b48ad275",
+      "function": "_history_budget",
+      "line_start": 176,
+      "line_end": 186,
+      "excerpt": "def _history_budget(config, seq_len: int, history_len: int) -> int:\n    if history_len <= 0:\n        return 0\n    ratio = getattr(config, \"snapkv_decouple_budget_ratio\", None)\n    if ratio is not None:\n        # Match opensource SnapKVCluster.update_kv, which truncates the ratio budget.\n        budget = int(seq_len * float(ratio))\n    else:\n        budget = int(getattr(config, \"snapkv_decouple_cache_size\", 512))\n    budget = min(max(budget, 0), int(history_len))\n    return budget"
+    },
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py",
+      "sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+      "function": "_history_budget",
+      "line_start": 176,
+      "line_end": 186,
+      "excerpt": "def _history_budget(config, seq_len: int, history_len: int) -> int:\n    if history_len <= 0:\n        return 0\n    ratio = getattr(config, \"snapkv_kvrepack_budget_ratio\", None)\n    if ratio is not None:\n        # Match opensource SnapKVCluster.update_kv, which truncates the ratio budget.\n        budget = int(seq_len * float(ratio))\n    else:\n        budget = int(getattr(config, \"snapkv_kvrepack_cache_size\", 512))\n    budget = min(max(budget, 0), int(history_len))\n    return budget"
+    }
+  ],
+  "interpretation": "Old log budgets match ceiling for these examples; current original and migrated code use int(seq_len*ratio), yielding one fewer history token. This is a confirmed older-run versus current-original behavior difference, not a migration-introduced difference. It does not prove the cause of the entire WUPS gap.",
+  "alpha_evidence": "The selected historical Snap log rows explicitly report alpha=2.0000; current paired config also sets alpha=2. No missing-alpha explanation is established.",
+  "pending_checks": "All200 historical video/question IDs uniquely mapped and input token lengths matched; historical video content/pixel tensors, generation token IDs, logits, KV, and complete task/dependency identities remain unproved.",
+  "ordinary_mada_context": {
+    "historical_result_id": "P04",
+    "historical_WUPS": 30.598461646042235,
+    "candidate_WUPS": 30.598461646042235,
+    "candidate_status": "passed",
+    "aggregate_equal": true,
+    "limitation": "Exact aggregate agreement only; ordinary candidate CLI has no paired original E2E proof or historical per-sample identity proof"
+  }
+}
