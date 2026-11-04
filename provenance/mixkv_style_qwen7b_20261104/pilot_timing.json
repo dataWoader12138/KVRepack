@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "purpose": "Independent pilot, not included in formal first-200 records",
+  "rows": 4,
+  "state": {
+    "schema_version": 1,
+    "status": "complete",
+    "pid": 170088,
+    "started_utc": "2026-11-04T08:41:57.213745+00:00",
+    "updated_utc": "2026-11-04T08:43:00.141848+00:00",
+    "completed": 4,
+    "target": 4,
+    "gpu": "NVIDIA A800-SXM4-80GB",
+    "expected_layers": 28,
+    "expected_kv_heads": 4,
+    "model_load_seconds": 4.045603595674038,
+    "current_task": "vatex_test",
+    "current_doc_id": 1,
+    "counts_by_task": {
+      "nextqa_oe_test": 2,
+      "vatex_test": 2
+    },
+    "elapsed_seconds": 62.928115878254175,
+    "last_seconds": {
+      "preprocess": 28.82382706180215,
+      "total": 30.920176681131124
+    },
+    "finished_utc": "2026-11-04T08:43:00.141832+00:00"
+  },
+  "row_seconds": [
+    4.766944270581007,
+    3.625576253980398,
+    10.347660686820745,
+    30.920176681131124
+  ],
+  "all_input_bytes_same": true,
+  "adjacent_max_absolute_difference": 0.0,
+  "pilot_records_sha256": "fade14912050f273b734f36245b6e97e27a5a7c9e01be72a6a13b7d54c68fdc7",
+  "matched_T": [
+    7,
+    16,
+    16,
+    16
+  ],
+  "formal_estimate_announced": "45–90 minutes before formal run"
+}

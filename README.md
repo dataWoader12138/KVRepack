@@ -8,6 +8,12 @@
 
 论文观察实验 A：[运行协议](docs/OBSERVATION_A.md) · [实际400条结果与主图](docs/OBSERVATION_A_RESULTS_20261104.md)。使用7B模型、两数据集各原始前200条；独立观察入口和统计绘图位于 `src/kvrepack/observations/`。
 
+MixKV式补充观察：当前为[Qwen2.5两模型各5个完整输入的pilot](docs/MIXKV_REFERENCE_PILOT.md)，比较LongBench长文本与OCRBench图文，统计全部输入token、不抽样token、不自动扩展。[旧等token抽样方案](docs/MIXKV_STYLE_OBSERVATION.md)已按用户要求停止在365/400条，不自动续跑。
+
+该5＋5已完成：[结果和类似MixKV图1(b)的分布图](docs/MIXKV_REFERENCE_PILOT_RESULTS_20261104.md)。RoPE后K/V组均值为图文更高，raw K方向相反；仅为小批量诊断，未扩大实验。
+
+相似度解释：[MixKV对照口径、原结果的层差异及候选机制调研](docs/VISUAL_TEXT_SIMILARITY_RESEARCH.md)。明确区分本机证据、相关论文的结论与尚待验证的原因。
+
 将 Qwen2.5-VL 的 KV cache 基线及其 KVRepack 改进整理到一个独立项目，同时纳入 LLaVA-OneVision-Qwen2-7B 的原有基线。任务包括 NextQA、VATEX、VideoChatGPT。多图 MileBench、历史参数搜索和诊断支线尚未纳入首版。
 
 本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。当前已完成整理、CPU 审计及下述 GPU 子集数值对照；**完整 CLI、完整基准与性能仍待验证**。
@@ -22,7 +28,7 @@
 KVRepack/
 ├── src/kvrepack/          # 唯一的核心包、方法注册表和实验入口
 │   ├── experiments/      # 公开方法 → 内部方法 → 固定实现及环境参数
-│   ├── observations/     # 无压缩前向中的模态近邻观察与统计绘图
+│   ├── observations/     # 无压缩前向的近邻/等量全配对观察、上下文对照与绘图
 │   ├── configs/          # 保留原始字节的配置
 │   ├── data/head_score/  # 运行必需的 head score，随包分发
 │   └── asymkv_official/  # 唯一对外提供的 AsymKV 实现

@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "experiment": "mixkv_style_all_pairs_context_control",
+  "status": "complete",
+  "expected_total_records": 200,
+  "dimensions": {
+    "layers": 28,
+    "native_kv_heads": 4
+  },
+  "tasks": {
+    "nextqa_oe_test": {
+      "expected_records": 200,
+      "seen_unique_records": 200,
+      "valid_completed_records": 200,
+      "missing_completed_doc_ids": [],
+      "comparisons": {
+        "matched_visual_vs_text": {
+          "k_raw": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.6393388834341267,
+            "right": 0.7322346622979188,
+            "difference": -0.09289577886379208,
+            "positive_source_video_count": 0,
+            "ci95": {
+              "left": [
+                0.637891250967293,
+                0.6408327104602655
+              ],
+              "right": [
+                0.7295834571115111,
+                0.7349701971332867
+              ],
+              "difference": [
+                -0.09595246037290694,
+                -0.08985468771026948
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "v": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.1340562239071872,
+            "right": 0.21876410988076486,
+            "difference": -0.08470788597357767,
+            "positive_source_video_count": 0,
+            "ci95": {
+              "left": [
+                0.13262470098110682,
+                0.13548748901007068
+              ],
+              "right": [
+                0.21390856733379024,
+                0.22372198829618978
+              ],
+              "difference": [
+                -0.08979076027708867,
+                -0.07982907331546019
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "k_rope": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.5710947896269374,
+            "right": 0.6995809908428243,
+            "difference": -0.12848620121588694,
+            "positive_source_video_count": 0,
+            "ci95": {
+              "left": [
+                0.5698145685612439,
+                0.5724411207154486
+              ],
+              "right": [
+                0.6961317611071299,
+                0.7031524367942311
+              ],
+              "difference": [
+                -0.13231282536244468,
+                -0.1247287145457131
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          }
+        },
+        "matched_text_context": {
+          "k_raw": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.7322346622979188,
+            "right": 0.7286897357468405,
+            "difference": 0.003544926551078298,
+            "positive_source_video_count": 128,
+            "ci95": {
+              "left": [
+                0.7295834571115111,
+                0.7349701971332867
+              ],
+              "right": [
+                0.7257570265326156,
+                0.731611318951499
+              ],
+              "difference": [
+                0.0023519713352139456,
+                0.0047090376496859085
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "v": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.21876410988076486,
+            "right": 0.24517698034204208,
+            "difference": -0.026412870461277216,
+            "positive_source_video_count": 2,
+            "ci95": {
+              "left": [
+                0.21390856733379024,
+                0.22372198829618978
+              ],
+              "right": [
+                0.24011007440372256,
+                0.25033238347114156
+              ],
+              "difference": [
+                -0.028065198013501606,
+                -0.024746928036957726
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "k_rope": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.6995809908428243,
+            "right": 0.7009006648198307,
+            "difference": -0.0013196739770063859,
+            "positive_source_video_count": 80,
+            "ci95": {
+              "left": [
+                0.6961317611071299,
+                0.7031524367942311
+              ],
+              "right": [
+                0.6973441242795613,
+                0.7045280612207396
+              ],
+              "difference": [
+                -0.0025261107652548103,
+                -0.00012213683925404791
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          }
+        },
+        "full_prompt": {
+          "k_raw": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.6383120520860458,
+            "right": 0.6273310460688349,
+            "difference": 0.01098100601721086,
+            "positive_source_video_count": 138,
+            "ci95": {
+              "left": [
+                0.6368507790860062,
+                0.6397841996195448
+              ],
+              "right": [
+                0.6255713928974233,
+                0.6291732161519206
+              ],
+              "difference": [
+                0.008666719559730363,
+                0.013289868092732351
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "v": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.1334364200013691,
+            "right": 0.1347810789162469,
+            "difference": -0.001344658914877811,
+            "positive_source_video_count": 89,
+            "ci95": {
+              "left": [
+                0.1320486695158495,
+                0.1348367654717859
+              ],
+              "right": [
+                0.1333595031303388,
+                0.13628204856072865
+              ],
+              "difference": [
+                -0.0032510876569992026,
+                0.0005665848442429789
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "k_rope": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.5698181974304917,
+            "right": 0.5835762167735791,
+            "difference": -0.013758019343087402,
+            "positive_source_video_count": 40,
+            "ci95": {
+              "left": [
+                0.5685497557973288,
+                0.5711259369203692
+              ],
+              "right": [
+                0.5816818144699223,
+                0.5855652099413002
+              ],
+              "difference": [
+                -0.016132021911971575,
+                -0.011436932142780198
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          }
+        },
+        "within_multimodal": {
+          "k_raw": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.6394562558181669,
+            "right": 0.7322605557336236,
+            "difference": -0.09280429991545669,
+            "positive_source_video_count": 0,
+            "ci95": {
+              "left": [
+                0.6380068534351844,
+                0.6409335625479564
+              ],
+              "right": [
+                0.7296076998798,
+                0.7349914528812602
+              ],
+              "difference": [
+                -0.09594166273070373,
+                -0.08971590288206083
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "v": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.13426262911895898,
+            "right": 0.21878968195802645,
+            "difference": -0.08452705283906747,
+            "positive_source_video_count": 0,
+            "ci95": {
+              "left": [
+                0.13286590051629363,
+                0.13566719260398016
+              ],
+              "right": [
+                0.21392144902909338,
+                0.2237189155932539
+              ],
+              "difference": [
+                -0.08957062149515553,
+                -0.0796589499127749
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "k_rope": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.5711112304391461,
+            "right": 0.6996026055998444,
+            "difference": -0.1284913751606983,
+            "positive_source_video_count": 0,
+            "ci95": {
+              "left": [
+                0.5698234297688288,
+                0.5724250303196224
+              ],
+              "right": [
+                0.6961479442433857,
+                0.7031538505098042
+              ],
+              "difference": [
+                -0.13234043001298368,
+                -0.1246754117372741
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          }
+        },
+        "text_context": {
+          "k_raw": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.7322605557336236,
+            "right": 0.7287180473062267,
+            "difference": 0.0035425084273968954,
+            "positive_source_video_count": 128,
+            "ci95": {
+              "left": [
+                0.7296076998798,
+                0.7349914528812602
+              ],
+              "right": [
+                0.7257920628033516,
+                0.7316285509624132
+              ],
+              "difference": [
+                0.0023556507729396493,
+                0.004706473654860097
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "v": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.21878968195802645,
+            "right": 0.24521363826969242,
+            "difference": -0.02642395631166597,
+            "positive_source_video_count": 2,
+            "ci95": {
+              "left": [
+                0.21392144902909338,
+                0.2237189155932539
+              ],
+              "right": [
+                0.24013512077787288,
+                0.25036262633141076
+              ],
+              "difference": [
+                -0.028071936069931865,
+                -0.02476467198778146
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          },
+          "k_rope": {
+            "n_records": 200,
+            "n_source_videos": 184,
+            "left": 0.6996026055998444,
+            "right": 0.7009250752719969,
+            "difference": -0.0013224696721524376,
+            "positive_source_video_count": 80,
+            "ci95": {
+              "left": [
+                0.6961479442433857,
+                0.7031538505098042
+              ],
+              "right": [
+                0.6973691623187223,
+                0.7045308452716852
+              ],
+              "difference": [
+                -0.0025280355470851056,
+                -0.00012293818559166599
+              ]
+            },
+            "uncertainty": "95% percentile source-video cluster bootstrap"
+          }
+        }
+      }
+    }
+  },
+  "validation_issues": [],
+  "comparisons": {
+    "matched_visual_vs_text": {
+      "left": [
+        "multimodal",
+        "visual_matched"
+      ],
+      "right": [
+        "multimodal",
+        "text_matched"
+      ],
+      "labels": [
+        "Visual: equal-token subsets",
+        "Text: equal-token subsets"
+      ]
+    },
+    "matched_text_context": {
+      "left": [
+        "multimodal",
+        "text_matched"
+      ],
+      "right": [
+        "text_only",
+        "text_matched"
+      ],
+      "labels": [
+        "Matched text with preceding video",
+        "Matched text without video"
+      ]
+    },
+    "full_prompt": {
+      "left": [
+        "multimodal",
+        "prompt_all"
+      ],
+      "right": [
+        "text_only",
+        "prompt_all"
+      ],
+      "labels": [
+        "Video + text: entire prompt",
+        "Text only: entire prompt"
+      ]
+    },
+    "within_multimodal": {
+      "left": [
+        "multimodal",
+        "visual_all"
+      ],
+      "right": [
+        "multimodal",
+        "text_primary"
+      ],
+      "labels": [
+        "Visual positions in video + text",
+        "Primary text in video + text"
+      ]
+    },
+    "text_context": {
+      "left": [
+        "multimodal",
+        "text_primary"
+      ],
+      "right": [
+        "text_only",
+        "text_primary"
+      ],
+      "labels": [
+        "Primary text with preceding video",
+        "Primary text without video"
+      ]
+    }
+  },
+  "statistic": "Primary: equal token-count subsets in both modalities, all distinct-token-pair cosine within each draw, then equal draw weights. Supplement: entire predefined pools. Self-pairs excluded; negative cosines retained",
+  "matched_sampling": {
+    "draws": 32,
+    "token_cap": 16,
+    "tokens": "min(token_cap, visual token count, primary text token count); same T across visual and text pools/contexts",
+    "resampling": "uniform subsets without replacement within a draw; draws can overlap; outcome independent"
+  },
+  "histogram_unit": "One decoder-layer/native-KV-head mean over all prescribed rows; layers*KV-heads points per condition/task, not independent samples",
+  "bootstrap": {
+    "samples": 5000,
+    "seed": 20261104,
+    "confidence": 0.95,
+    "unit": "source_video_id",
+    "estimator": "Equal documents, equal layers, equal native KV heads",
+    "rng": "numpy.default_rng; shared cluster draws across comparisons/metrics"
+  },
+  "interpretation": "Adaptation of MixKV Figure 1(b), not an exact paper reproduction: same Qwen2.5-VL model across conditions; primary visual/text subset lengths are matched, but full forward prompt lengths differ. Source modality, context and token role remain confounded. Cosine alone does not establish merge safety.",
+  "provenance": {
+    "record_metadata_variants": [],
+    "checkpoint": "NExTQA first 200 complete; VATEX still running",
+    "source_records": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen7b_mixkv_style_first200_20261104/records.jsonl",
+    "source_prefix_rows": 200,
+    "source_prefix_sha256": "1a180a3e033e1e559fcaeb298a91f142a1f5b6f54cc86b10bc9164d0884f3d93"
+  },
+  "artifacts": {
+    "tables": [
+      "record_summary.csv",
+      "record_comparisons.csv",
+      "head_summary.csv",
+      "layer_summary.csv",
+      "task_summary.csv"
+    ],
+    "histogram_bins": {
+      "minimum": -1,
+      "maximum": 1,
+      "bins": 30,
+      "shared": true
+    },
+    "plots": "PNG/PDF/SVG"
+  }
+}

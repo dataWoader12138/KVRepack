@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "basis": "Original fixed 400 rows from observation A, no similarity-based selection",
+  "measurement_count_control": "T matches per row; full causal input lengths remain different",
+  "tasks": {
+    "nextqa_oe_test": {
+      "rows": 200,
+      "original_visual_tokens": {
+        "min": 8448,
+        "median": 9568.0,
+        "max": 23040
+      },
+      "primary_text_tokens": {
+        "min": 4,
+        "median": 11.5,
+        "max": 23
+      },
+      "distinct_primary_texts": 195,
+      "prespecified_matched_T_counts": {
+        "4": 6,
+        "5": 10,
+        "6": 13,
+        "7": 11,
+        "8": 16,
+        "9": 13,
+        "10": 17,
+        "11": 14,
+        "12": 15,
+        "13": 13,
+        "14": 16,
+        "15": 14,
+        "16": 42
+      }
+    },
+    "vatex_test": {
+      "rows": 200,
+      "original_visual_tokens": {
+        "min": 8192,
+        "median": 9152.0,
+        "max": 24576
+      },
+      "primary_text_tokens": {
+        "min": 48,
+        "median": 48.0,
+        "max": 48
+      },
+      "distinct_primary_texts": 1,
+      "prespecified_matched_T_counts": {
+        "16": 200
+      }
+    }
+  }
+}

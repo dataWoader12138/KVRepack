@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "scope": "Independent read-only review of four pilot rows and frozen source; not a full-model proof",
+  "gpu_runs_added_by_review": 0,
+  "source_modified": false,
+  "checks": {
+    "previous_observation_input_tensor_bytes_identical": true,
+    "previous_pair_plan_identical": true,
+    "previous_adjacent_all_layers_heads_max_abs_difference": 0.0,
+    "matched_seed_draw_positions_reconstructed": true,
+    "matched_token_counts_draws_pairs_and_pool_membership": true,
+    "text_only_and_multimodal_primary_and_complete_user_ids_identical": true,
+    "text_only_and_multimodal_draw_token_ids_identical": true,
+    "cluster_bootstrap_summary_reconstructed": true,
+    "native_rope_positions_recomputed_each_prefill": true,
+    "row_means_max_abs_recompute_error_upper_bound": 2.8e-17
+  },
+  "limitations": [
+    "Only measurement token and pair counts matched; full causal input lengths differ",
+    "Uniform global subsets rather than adjacent positions",
+    "Input-position source labels do not imply unimodal deep representations",
+    "112 layer/KV-head points describe a distribution and are not independent input samples",
+    "Removing video changes context and positions jointly",
+    "Not original MixKV cross-model/cross-dataset replication; does not establish merge safety"
+  ]
+}

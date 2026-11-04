@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "status": "stopped_by_user",
+  "pid": 170891,
+  "started_utc": "2026-11-04T08:44:11.672024+00:00",
+  "updated_utc": "2026-11-04T09:22:52.263805+00:00",
+  "completed": 365,
+  "target": 400,
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "expected_layers": 28,
+  "expected_kv_heads": 4,
+  "model_load_seconds": 4.679673068225384,
+  "current_task": "vatex_test",
+  "current_doc_id": 165,
+  "counts_by_task": {
+    "nextqa_oe_test": 200,
+    "vatex_test": 165
+  },
+  "elapsed_seconds": 2320.581063337624,
+  "last_seconds": {
+    "preprocess": 1.3757139630615711,
+    "total": 3.6151321083307266
+  },
+  "previous_status": "running",
+  "stopped_utc": "2026-11-04T09:25:18.818847+00:00",
+  "stop_reason": "User requested stopping this equal-token random-subset experiment and only a small MixKV-style cross-model pilot next",
+  "partial_trailing_lines": 0,
+  "resume_authorized": false
+}
