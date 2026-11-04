@@ -1,0 +1,5 @@
+{
+  "subset_limit": 200,
+  "subset_methods": ["snapkv_kvrepack", "madakv_kvrepack"],
+  "full_methods": ["snapkv_kvrepack"]
+}

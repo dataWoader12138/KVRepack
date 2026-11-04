@@ -4,6 +4,8 @@
 
 视频实验参数：[按数据集核对的最佳参数表](docs/VIDEO_BEST_PARAMETERS.md) · [CSV](docs/video_best_parameters.csv)。表格区分实际完成记录、单一候选、历史变体及不同复评协议，不修改运行入口的默认值。
 
+扩大 GPU 复测：[200 条配对与完整测试集的运行状态、结果及恢复方式](docs/FULL_VIDEO_RETEST_20261104.md)。该页按阶段更新，明确区分运行中与已通过。
+
 将 Qwen2.5-VL 的 KV cache 基线及其 KVRepack 改进整理到一个独立项目，同时纳入 LLaVA-OneVision-Qwen2-7B 的原有基线。任务包括 NextQA、VATEX、VideoChatGPT。多图 MileBench、历史参数搜索和诊断支线尚未纳入首版。
 
 本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。当前已完成整理、CPU 审计及下述 GPU 子集数值对照；**完整 CLI、完整基准与性能仍待验证**。

@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "updated_utc": "2026-11-04T05:19:45.669987+00:00",
+  "matrix_status": "running",
+  "base_commit": "169aa1f2e44d76d7205bd40b86bf08a6a7705b6d",
+  "core_unchanged_from_base": true,
+  "matrix_plan": {
+    "subset_limit": 200,
+    "subset_methods": [
+      "snapkv_kvrepack",
+      "madakv_kvrepack"
+    ],
+    "full_methods": [
+      "snapkv_kvrepack"
+    ]
+  },
+  "stages": [
+    {
+      "key": "snapkv_kvrepack:nextqa_oe_test:200",
+      "method": "snapkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "count": 200,
+      "full_split": false,
+      "status": "running",
+      "started_utc": "2026-11-04T05:05:17.065762+00:00"
+    },
+    {
+      "key": "snapkv_kvrepack:vatex_test:200",
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "count": 200,
+      "full_split": false,
+      "status": "pending"
+    },
+    {
+      "key": "madakv_kvrepack:nextqa_oe_test:200",
+      "method": "madakv_kvrepack",
+      "task": "nextqa_oe_test",
+      "count": 200,
+      "full_split": false,
+      "status": "pending"
+    },
+    {
+      "key": "madakv_kvrepack:vatex_test:200",
+      "method": "madakv_kvrepack",
+      "task": "vatex_test",
+      "count": 200,
+      "full_split": false,
+      "status": "pending"
+    },
+    {
+      "key": "snapkv_kvrepack:nextqa_oe_test:9178",
+      "method": "snapkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "count": 9178,
+      "full_split": true,
+      "status": "pending"
+    },
+    {
+      "key": "snapkv_kvrepack:vatex_test:4478",
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "count": 4478,
+      "full_split": true,
+      "status": "pending"
+    }
+  ],
+  "current_snapshot": {
+    "stage": "snapkv_kvrepack:nextqa_oe_test:200",
+    "implementations": {
+      "original": {
+        "pid": 23837,
+        "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original/trace.jsonl",
+        "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original.matrix.launch.log",
+        "count": 160,
+        "returncode": null
+      },
+      "repack": {
+        "pid": 23838,
+        "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack/trace.jsonl",
+        "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack.matrix.launch.log",
+        "count": 160,
+        "returncode": null
+      }
+    }
+  },
+  "error": null,
+  "candidate_only_cli": {
+    "cli_nextqa_snapkv_smoke20": {
+      "status": "passed",
+      "scope": "candidate-only ordinary CLI; no paired original equality proof",
+      "expected_count": 20,
+      "effective_count": 20,
+      "WUPS": 28.003499816653978,
+      "run_state_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/cli_nextqa_snapkv_smoke20/run_state.json",
+      "algorithm_env": {
+        "BUDGET_RATIO": "0.1",
+        "SNAPKV_SIMHEAD_MERGE_RATIO": "0.70",
+        "SNAPKV_SIMHEAD_SIM_SPACE": "raw",
+        "SNAPKV_KVREPACK_COMPRESS_RATIO": "0.90",
+        "K_DIFF_ALPHA": "2",
+        "SNAPKV_KVREPACK_SCORE_CORRECTION": "none",
+        "SNAPKV_KVREPACK_ENABLE": "1",
+        "SNAPKV_KVREPACK_WINDOW_SIZE": "32",
+        "SNAPKV_KVREPACK_KERNEL_SIZE": "5",
+        "SNAPKV_KVREPACK_POOLING": "avgpool",
+        "SNAPKV_KVREPACK_GQA_FUNC": "mean",
+        "SNAPKV_KVREPACK_MERGE_SCORE_MODE": "full"
+      },
+      "result_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/cli_nextqa_snapkv_smoke20/eval_outputs/snapshots__66285546d2b821cf421d4f5eb2576359d3770cd3/20261104_124515_results.json",
+      "result_sha256": "46b52f09afb4c98af3584a4e1508f1beb8f04c7977e28657edb17856c73af044"
+    },
+    "cli_nextqa_madakv_200": {
+      "status": "running",
+      "scope": "candidate-only ordinary CLI; no paired original equality proof",
+      "expected_count": 200,
+      "effective_count": null,
+      "WUPS": null,
+      "run_state_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/cli_nextqa_madakv_200/run_state.json",
+      "algorithm_env": {
+        "BUDGET_RATIO": "0.1",
+        "MADAKV_SIMHEAD_MERGE_RATIO": "0.50",
+        "MADAKV_SIMHEAD_SIM_SPACE": "raw",
+        "MADAKV_KVREPACK_COMPRESS_RATIO": "0.50",
+        "K_DIFF_ALPHA": "2",
+        "MADAKV_KVREPACK_SCORE_CORRECTION": "none",
+        "MADAKV_KVREPACK_BUDGET_RATIO": "0.1",
+        "MADAKV_KVREPACK_THRESHOLD": "0.8",
+        "MADAKV_KVREPACK_WINDOW_SIZE": "32",
+        "MADAKV_KVREPACK_GQA_FUNC": "mean",
+        "MADAKV_KVREPACK_K_DIFF_ALPHA": "2",
+        "MADAKV_KVREPACK_ENABLE": "1"
+      }
+    }
+  },
+  "completed_artifacts": [],
+  "trace_snapshot_references": [],
+  "helper_snapshots": {
+    "check_cli_readiness.py": {
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/check_cli_readiness.py",
+      "sha256": "096c8e66e8f219439d1a4aaa445a5506f4a773f0cb6ceadb44448e6302e4ca3f",
+      "driver_frozen": true
+    },
+    "compare_full_runs.py": {
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/compare_full_runs.py",
+      "sha256": "18f6324d82cf663acee7e09e5daa7025827a74fedac68962d7385eed98777864",
+      "driver_frozen": true
+    },
+    "freeze_assets.py": {
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/freeze_assets.py",
+      "sha256": "7848199b802fe9e7154beccdd71828041dc8094c1c5f44aa22febbc38bad7a93",
+      "driver_frozen": true
+    },
+    "launch_traced.py": {
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/launch_traced.py",
+      "sha256": "433de16db87c955a705b9993177f4a6f83009e6070d26301bb43477cf00abea5",
+      "driver_frozen": true
+    },
+    "matrix_plan.json": {
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/matrix_plan.json",
+      "sha256": "f475d2efe656c7f3b3eac772f758d52a973d2bc7a9c8d34f5e8389980ad647b8",
+      "driver_frozen": false
+    },
+    "run_matrix.py": {
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/run_matrix.py",
+      "sha256": "bd5e40a3737377bf664717d5af98415aa0ce37623ba05b2e4e91fc9d44d3c325",
+      "driver_frozen": true
+    },
+    "score_full_runs.py": {
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/score_full_runs.py",
+      "sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+      "driver_frozen": true
+    },
+    "trace_eval.py": {
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/trace_eval.py",
+      "sha256": "120d78ca3abf4e14ca114d103f2ed3cadbbbe4e68380b4d712bd92b10859795d",
+      "driver_frozen": true
+    },
+    "watch_publish.py": {
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/watch_publish.py",
+      "sha256": "ddbf4f0648620aab3153bc2fec90ad5fdc391f1540a8866ebc61cc07df09c650",
+      "driver_frozen": false
+    }
+  },
+  "frozen_assets_summary": "frozen_assets_summary.json",
+  "historical_context_only": [
+    {
+      "dataset": "NExTQA",
+      "model": "Qwen2.5-VL-3B",
+      "method": "snapkv_kvrepack",
+      "simtop": 0.7,
+      "cr": 0.9,
+      "alpha": 2.0,
+      "score_raw": 30.490725191798408,
+      "metric": "WUPS",
+      "generation_limit": 200,
+      "evidence": {
+        "path": "HybridKV-artifact/scripts/logs/nextqa_oe_test/snapkv_decouplekv_simhead/64/budget0.10_simtop0.7_cr0.9_alpha2_simraw_corrnone_limit200/eval_outputs/Qwen__Qwen2.5-VL-3B-Instruct/20260704_204620_results.json",
+        "sha256": "911e8cff0f1b3385c8d20fd505104125b4491eec47023b50ce0ed1db274aaf90",
+        "metrics_snapshot": {
+          "WUPS": 30.490725191798408
+        },
+        "effective_samples": 200,
+        "config_limit": 200.0,
+        "model_args": "pretrained=Qwen/Qwen2.5-VL-3B-Instruct,max_num_frames=64,attn_implementation=flash_attention_2,method=snapkv_decouplekv",
+        "task_hash": "20d7fe083708abe95f208683d6f6f92508073575b298ccd79f8a3fbfbe397199"
+      }
+    },
+    {
+      "dataset": "NExTQA",
+      "model": "Qwen2.5-VL-3B",
+      "method": "madakv_kvrepack",
+      "simtop": 0.5,
+      "cr": 0.5,
+      "alpha": 2.0,
+      "score_raw": 30.598461646042235,
+      "metric": "WUPS",
+      "generation_limit": 200,
+      "evidence": {
+        "path": "HybridKV-artifact/scripts/logs/nextqa_oe_test/madakv_decouplekv_simhead/64/budget0.10_simtop0.50_cr0.50_alpha2_simraw_corrnone_th0.8_limit200_transfer_params_20260718/eval_outputs/Qwen__Qwen2.5-VL-3B-Instruct/20260718_015842_results.json",
+        "sha256": "51f86330ebcc6d3fd3591ee3403db02819c04383ac9d3a1d9ee24279b81e4a9f",
+        "metrics_snapshot": {
+          "WUPS": 30.598461646042235
+        },
+        "effective_samples": 200,
+        "config_limit": 200.0,
+        "model_args": "pretrained=Qwen/Qwen2.5-VL-3B-Instruct,max_num_frames=64,attn_implementation=flash_attention_2,method=madakv_decouplekv",
+        "task_hash": "20d7fe083708abe95f208683d6f6f92508073575b298ccd79f8a3fbfbe397199"
+      }
+    }
+  ],
+  "historical_source_sha256": "6d2b2b7437df377e5b2921a31b2213db4f8c0b74e484ee254b447cd62a5f6d55",
+  "limitations": [
+    "Only the explicitly listed Qwen3B methods/tasks are planned; no all-methods claim.",
+    "Original control substitutes original compression into the current runner/adapter/tasks; it is not an untouched historical frontend rerun.",
+    "Exact logits/KV equality uses exported full-byte SHA-256; no max_abs_error was measured in these traced runs.",
+    "200 docs are a first-doc subset, not full NextQA9178/VATEX4478; only passed full_split stages validate the full split.",
+    "Historical aggregates are context only: matching aggregate scores would not prove historical per-sample identity.",
+    "Trace transfer/hashing invalidates timing/performance benchmarks; videos are metadata-monitored and dependency coverage is incomplete."
+  ]
+}

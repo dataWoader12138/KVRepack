@@ -1,0 +1,62 @@
+{
+  "ledger_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/asset_manifest.json",
+  "ledger_sha256": "0193927b6f911d202d82b20a7a08351fdc6d872761ff5b615e1aa48060219bbb",
+  "created_utc": "2026-11-04T05:05:15.961868+00:00",
+  "summary": {
+    "by_category": {
+      "adapter_frontend": 3,
+      "candidate_core_frontend": 35,
+      "dataset_arrow": 2,
+      "evaluation_frontend": 26,
+      "installed_flash-attn": 73,
+      "installed_qwen-vl-utils": 3,
+      "installed_torch": 2028,
+      "installed_transformers": 1876,
+      "inventory": 1,
+      "model_snapshot_all_files": 11,
+      "nltk_metadata": 245,
+      "original_core": 85,
+      "selected_task": 11,
+      "video_metadata": 5478
+    },
+    "file_count": 9877,
+    "hashed_bytes": 8220901718
+  },
+  "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-3B-Instruct/snapshots/66285546d2b821cf421d4f5eb2576359d3770cd3",
+  "coverage": {
+    "initial_hash": "Full bytes of weights, Arrow, selected source and package payloads.",
+    "limitations": "Not all possible dependencies. torch .so/runtime/system libraries omitted; NLTK metadata only; new unlisted files are not monitored.",
+    "monitoring": "stat and symlink target only; no periodic byte rehash or proof against metadata-preserving byte changes",
+    "per_doc_proof": "Tracer separately hashes actual model input tensors, logits and KV cache tensors.",
+    "videos": "All unique Arrow-referenced video files: existence/nonzero/stat only; not decoded or hashed."
+  },
+  "weight_and_arrow_hashes": [
+    {
+      "category": "dataset_arrow",
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___n_ex_tqa/OE/0.0.0/a0d7729e38399da9c8a70c59aa4ad7f6996d3c00/n_ex_tqa-test.arrow",
+      "sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+      "bytes": 1137240
+    },
+    {
+      "category": "dataset_arrow",
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___vatex/vatex_test/0.0.0/73c2e83ade2892705080e9dadeb7c75c5b99e0f4/vatex-test.arrow",
+      "sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "bytes": 3596880
+    },
+    {
+      "category": "model_snapshot_all_files",
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-3B-Instruct/snapshots/66285546d2b821cf421d4f5eb2576359d3770cd3/model-00001-of-00002.safetensors",
+      "sha256": "41a8895c164b4d32bae6b302f4603fcbc1797f32dafa45c7e9bcda23c6755df8",
+      "bytes": 3982649232
+    },
+    {
+      "category": "model_snapshot_all_files",
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-3B-Instruct/snapshots/66285546d2b821cf421d4f5eb2576359d3770cd3/model-00002-of-00002.safetensors",
+      "sha256": "365531ff8752420e89dee707b79d021fb2d6e25abafe486f080555a4fe6972e4",
+      "bytes": 3526688744
+    }
+  ],
+  "selected_hashes_aggregate_sha256": "f4b0177ad571c9aa03cae7d642fd834430e8a72b4f45c42474ae0d94dae00b99",
+  "ledger_copied": false,
+  "videos": "Existence/nonzero/stat metadata only, no video payload hashes or decoding proof; no complete dependency closure claim"
+}

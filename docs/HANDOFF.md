@@ -6,6 +6,8 @@
 
 用户指定的目标为公开仓库 `https://github.com/dataWoader12138/KVRepack`。提交作者为 `dataWoader12138`；Git 的身份和 SSH 凭证在各机器本地配置。
 
+2026-11-04 后续用户已授权扩大 GPU 测试。当前计划先经正式 CLI/adapter 完成 SnapKV-KVRepack、MadaKV-KVRepack 在 NextQA/VATEX 各200条的原压缩实现与整理版配对，再自动续跑 SnapKV-KVRepack 的两个完整测试集（9178/4478条，两端均跑）。本机后台控制器、断点、资源冻结记录与进度位于 `/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/`；不要重复启动已有控制器或改动其冻结代码/资源。阶段完成、错误及全量结果会由独立发布器更新到 [扩大复测报告](FULL_VIDEO_RETEST_20261104.md) 和相应 provenance；以该页及本机 `matrix_state.json` 的实际状态为准，不能把计划或启动视为通过。核心算法保持 `169aa1f`，本轮新增的是外部追踪、对照与断点工具。
+
 初始版本已推送到 `main`，提交为 `fba9c68`。后续视频参数核查见 [VIDEO_BEST_PARAMETERS.md](VIDEO_BEST_PARAMETERS.md)、[CSV](video_best_parameters.csv) 和 [机器可读证据](../provenance/video_best_parameters.json)：主表45个数据集/模型/方法格，36格有完成记录、9格明确缺失；独立评分与共享/配对缓存分开，历史 `log_count` 不混入当前 `none` 表。部分配置只有一个已完成候选，不能称充分寻优。此次发布只新增参数和证据文档，未改变算法或CLI默认值。
 
 ## 目标与已接受的约束
