@@ -29,6 +29,8 @@
 
 主组没有有效邻接对时，仍保留该原始输入的完成记录并报告覆盖不足，不人为扩写文本或用其他行替换。缺行、重复ID、错误层数/头数或非法统计值不会被标为完整实验通过。
 
+`frame_sampling` 的索引是 qwen-vl-utils 初次读取所得帧池中、再重采样至64帧时的索引；其 `original_frames`/`unique_frames` 不应解释为源视频全部解码帧数或独立原始帧数。重复采样情况随结果保留，本轮没有据此作时序冗余的结论。
+
 ## 安装与运行
 
 已有项目依赖环境可直接用 `PYTHONPATH=src`；新环境安装观察附加依赖：
@@ -58,6 +60,17 @@ PYTHONPATH=src python -m kvrepack.observations.report \
   --output outputs/observations/qwen7b_adjacent_first200/report \
   --expected-layers 28 --expected-kv-heads 4
 ```
+
+生成紧凑的论文双面板主图（左raw K、右V，复用已有置信区间，不重新选择样本或重算统计）：
+
+```bash
+python scripts/plot_adjacent_observation.py \
+  --summary outputs/observations/qwen7b_adjacent_first200/report/summary.json \
+  --output outputs/observations/qwen7b_adjacent_first200/report/adjacent_main \
+  --title 'Qwen2.5-VL-7B'
+```
+
+主图同时输出 PNG（300dpi）、PDF、SVG 和来源 metadata；逐数据集的均值／配对差值图另保留为补充结果。
 
 ## 产物与解释范围
 
