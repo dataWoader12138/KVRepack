@@ -1,13 +1,13 @@
 # Qwen3B 视频复测与后台进度（2026-11-04）
 
-状态：**running**；阶段快照 UTC：2026-11-04T05:23:07.061150+00:00。
+状态：**running**；阶段快照 UTC：2026-11-04T05:23:36.785837+00:00。
 
 本页仅覆盖下表计划。pending/running 均未通过；200 条是子集，完整 NextQA、VATEX 分别为9178、4478条。阶段变化时更新，逐样本实时计数请查看本机 matrix_state.json。
 
 | 方法 | 任务 | 样本数 | 范围 | 状态 | 实际评分 |
 |---|---|---:|---|---|---|
-| snapkv_kvrepack | nextqa_oe_test | 200 | 前200条子集 | running | — |
-| snapkv_kvrepack | vatex_test | 200 | 前200条子集 | pending | — |
+| snapkv_kvrepack | nextqa_oe_test | 200 | 前200条子集 | passed | WUPS=30.12715 |
+| snapkv_kvrepack | vatex_test | 200 | 前200条子集 | running | — |
 | madakv_kvrepack | nextqa_oe_test | 200 | 前200条子集 | pending | — |
 | madakv_kvrepack | vatex_test | 200 | 前200条子集 | pending | — |
 | snapkv_kvrepack | nextqa_oe_test | 9178 | 完整split | pending | — |

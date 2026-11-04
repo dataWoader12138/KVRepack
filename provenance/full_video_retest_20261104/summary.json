@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_utc": "2026-11-04T05:23:07.061150+00:00",
+  "updated_utc": "2026-11-04T05:23:36.785837+00:00",
   "matrix_status": "running",
   "base_commit": "169aa1f2e44d76d7205bd40b86bf08a6a7705b6d",
   "core_unchanged_from_base": true,
@@ -21,8 +21,22 @@
       "task": "nextqa_oe_test",
       "count": 200,
       "full_split": false,
-      "status": "running",
-      "started_utc": "2026-11-04T05:05:17.065762+00:00"
+      "status": "passed",
+      "started_utc": "2026-11-04T05:05:17.065762+00:00",
+      "finished_utc": "2026-11-04T05:23:35.840960+00:00",
+      "comparison": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_nextqa_oe_test_200_comparison.json",
+      "metrics": {
+        "WUPS": 30.12715027465206
+      },
+      "metrics_files": {
+        "original": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_nextqa_oe_test_200_original_metrics.json",
+        "repack": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_nextqa_oe_test_200_repack_metrics.json"
+      },
+      "artifacts_sha256": {
+        "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_nextqa_oe_test_200_comparison.json": "a4d124bd081dad1c7c8872b2ff301eb053088af35b5c80473250c4b0ae93e8b6",
+        "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_nextqa_oe_test_200_original_metrics.json": "d37e3d6f9bb3a4842a4a3415c94b21d77bdaee324e5d2a497c01c0d841964d00",
+        "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_nextqa_oe_test_200_repack_metrics.json": "1d118173c29d47237bf5092a1d60d3064a0de07177c8f56d53dd481702b17f64"
+      }
     },
     {
       "key": "snapkv_kvrepack:vatex_test:200",
@@ -30,7 +44,8 @@
       "task": "vatex_test",
       "count": 200,
       "full_split": false,
-      "status": "pending"
+      "status": "running",
+      "started_utc": "2026-11-04T05:23:36.337227+00:00"
     },
     {
       "key": "madakv_kvrepack:nextqa_oe_test:200",
@@ -66,20 +81,20 @@
     }
   ],
   "current_snapshot": {
-    "stage": "snapkv_kvrepack:nextqa_oe_test:200",
+    "stage": "snapkv_kvrepack:vatex_test:200",
     "implementations": {
       "original": {
-        "pid": 23837,
-        "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original/trace.jsonl",
-        "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original.matrix.launch.log",
-        "count": 198,
+        "pid": 78772,
+        "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_original/trace.jsonl",
+        "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_original.matrix.launch.log",
+        "count": 0,
         "returncode": null
       },
       "repack": {
-        "pid": 23838,
-        "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack/trace.jsonl",
-        "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack.matrix.launch.log",
-        "count": 198,
+        "pid": 78773,
+        "trace": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_repack/trace.jsonl",
+        "launcher_log": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_repack.matrix.launch.log",
+        "count": 0,
         "returncode": null
       }
     }
@@ -135,8 +150,44 @@
       "result_sha256": "ccc5ee4469d843decc10958f7ffd3eac54289e9c1e991738ac2597f3fcd550b5"
     }
   },
-  "completed_artifacts": [],
-  "trace_snapshot_references": [],
+  "completed_artifacts": [
+    {
+      "stage": "snapkv_kvrepack:nextqa_oe_test:200",
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_nextqa_oe_test_200_comparison.json",
+      "sha256": "a4d124bd081dad1c7c8872b2ff301eb053088af35b5c80473250c4b0ae93e8b6",
+      "repository_path": "provenance/full_video_retest_20261104/completed/snapkv_kvrepack_nextqa_oe_test_200_comparison.json"
+    },
+    {
+      "stage": "snapkv_kvrepack:nextqa_oe_test:200",
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_nextqa_oe_test_200_original_metrics.json",
+      "sha256": "d37e3d6f9bb3a4842a4a3415c94b21d77bdaee324e5d2a497c01c0d841964d00",
+      "repository_path": "provenance/full_video_retest_20261104/completed/snapkv_kvrepack_nextqa_oe_test_200_original_metrics.json"
+    },
+    {
+      "stage": "snapkv_kvrepack:nextqa_oe_test:200",
+      "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_kvrepack_nextqa_oe_test_200_repack_metrics.json",
+      "sha256": "1d118173c29d47237bf5092a1d60d3064a0de07177c8f56d53dd481702b17f64",
+      "repository_path": "provenance/full_video_retest_20261104/completed/snapkv_kvrepack_nextqa_oe_test_200_repack_metrics.json"
+    }
+  ],
+  "trace_snapshot_references": [
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original/trace.jsonl",
+      "snapshot_sha256": "586421dae6e335e2223a3a76d8f24f0c2cc876959291640c148a3f119de48d27",
+      "snapshot_size_bytes": 4097684,
+      "source_stage": "snapkv_kvrepack:nextqa_oe_test:200",
+      "copied": false,
+      "note": "Comparison's finite full-file snapshot SHA; shared trace may grow on full-split resume"
+    },
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack/trace.jsonl",
+      "snapshot_sha256": "84e8090d364877e66be82011cda9e4c0233523daf6645c7ac1634e4f453efa30",
+      "snapshot_size_bytes": 4123884,
+      "source_stage": "snapkv_kvrepack:nextqa_oe_test:200",
+      "copied": false,
+      "note": "Comparison's finite full-file snapshot SHA; shared trace may grow on full-split resume"
+    }
+  ],
   "helper_snapshots": {
     "check_cli_readiness.py": {
       "source_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/check_cli_readiness.py",

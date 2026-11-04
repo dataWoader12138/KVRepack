@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "mode": "final",
+  "complete_expected_run": true,
+  "expected_count_per_side": 200,
+  "declared_full_count_per_side": 9178,
+  "selected_prefix_limit": 200,
+  "full_benchmark_validated": false,
+  "scope": "prefix doc_id 0..199 only",
+  "doc_id_coverage": {"candidate": {"distinct_valid_doc_ids": 200, "expected_max": 199, "expected_min": 0, "missing_expected_doc_ids": 0, "observed_max": 199, "observed_min": 0}, "reference": {"distinct_valid_doc_ids": 200, "expected_max": 199, "expected_min": 0, "missing_expected_doc_ids": 0, "observed_max": 199, "observed_min": 0}},
+  "task_sets": {"candidate": ["nextqa_oe_test"], "reference": ["nextqa_oe_test"]},
+  "expected_cache_layers": 36,
+  "reference": {"duplicate_ids": 0, "error_or_invalid_records": 0, "file_changed_while_scanning": false, "json_records": 200, "malformed_lines": 0, "missing_file": false, "path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_original/trace.jsonl", "pending_partial_tail": 0, "physical_lines": 200, "records_outside_selected_prefix": 0, "scanned_prefix_sha256": "586421dae6e335e2223a3a76d8f24f0c2cc876959291640c148a3f119de48d27", "size_after_scan_bytes": 4097684, "snapshot_size_bytes": 4097684, "unique_ids": 200, "valid_unique_records": 200},
+  "candidate": {"duplicate_ids": 0, "error_or_invalid_records": 0, "file_changed_while_scanning": false, "json_records": 200, "malformed_lines": 0, "missing_file": false, "path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_nextqa_repack/trace.jsonl", "pending_partial_tail": 0, "physical_lines": 200, "records_outside_selected_prefix": 0, "scanned_prefix_sha256": "84e8090d364877e66be82011cda9e4c0233523daf6645c7ac1634e4f453efa30", "size_after_scan_bytes": 4123884, "snapshot_size_bytes": 4123884, "unique_ids": 200, "valid_unique_records": 200},
+  "counts": {"compared_valid_records": 200, "exactly_matching_records": 200, "matched_ids": 200, "mismatched_records": 0, "missing_candidate_ids": 0, "missing_reference_ids": 0},
+  "per_task_counts": {"candidate": {"nextqa_oe_test": {"unique_ids": 200, "valid_records": 200}}, "reference": {"nextqa_oe_test": {"unique_ids": 200, "valid_records": 200}}},
+  "mismatch_field_counts": {},
+  "issue_counts": {},
+  "compressed_cache_proof": {"all_expected_prefill_and_final_hashes_equal": true, "compression_amount_checked_for_all_expected_records": true, "compression_amount_unchecked_reasons": {}, "final_cache_tensor_hashes_equal": 200, "prefill_and_final_complete_cache_snapshots_equal": 200, "prefill_cache_tensor_hashes_equal": 200, "records_with_all_prefill_layers_compressed_on_both_sides": 200, "records_with_compression_amount_measured": 200, "records_with_some_prefill_layers_compressed_on_both_sides": 200, "some_prefill_compression_observed": true},
+  "checks": ["matched unique record ids and declared full counts", "task and doc_id", "actual nonempty config", "actual input tensor SHA-256 mappings", "exact generated token ids and decoded text", "exact all-step full-vocabulary logits SHA-256, shape and dtype", "complete prefill and final cache layer shapes/metadata and K/V tensor SHA-256", "optional exported input shapes/dtypes, prompt lengths and runtime parameters"],
+  "limitations": ["Tensor hash equality is checked from worker exports; raw logits/cache tensors are not loaded and max_abs_error cannot be recovered from a mismatching hash.", "Declared expected counts are supplied by the caller; this tool does not download a dataset or independently derive its benchmark population.", "Cache size reduction is measured only when prompt_length/input_length/input_shapes.input_ids and dense cache shapes are exported.", "Progress scans compare finite file-size snapshots; incomplete selected doc_id ranges never receive passed status.", "With --limit, later doc_ids and an unfinished trailing line outside the completed selected prefix are not benchmark validation; full_benchmark_validated remains false."],
+  "elapsed_seconds": 0.56,
+  "gpu_or_torch_used": false,
+  "mismatches": [
+  ],
+  "issues": [
+  ],
+  "missing_in_candidate": [
+  ],
+  "missing_in_reference": [
+  ],
+  "reference_missing_expected_doc_ids": [
+  ],
+  "candidate_missing_expected_doc_ids": [
+  ]
+}
