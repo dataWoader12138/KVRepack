@@ -1,0 +1,24 @@
+{
+  "status": "complete",
+  "task": "nextqa_oe_test",
+  "target_docs": 200,
+  "target_generations": 800,
+  "completed_docs": 200,
+  "completed_generations": 800,
+  "contract_sha256": "3b9413b0caf3779522f66d5bed42df17adcfc7cbba2d52259c2eeb3d6b38ada7",
+  "started_utc": "2026-11-04T14:00:15.767795+00:00",
+  "updated_utc": "2026-11-04T14:30:25.458906+00:00",
+  "model_seed": 42,
+  "conditions": [
+    "similarity",
+    "random_global_seed0",
+    "random_global_seed1",
+    "random_global_seed2"
+  ],
+  "resumed": false,
+  "estimated_remaining_seconds": 0,
+  "current_doc_id": 199,
+  "current_strategy": "random_global_seed2",
+  "elapsed_current_session_seconds": 1809.6902376040816,
+  "finished_utc": "2026-11-04T14:30:25.469716+00:00"
+}

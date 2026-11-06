@@ -1,6 +1,6 @@
 # NExTQA 前200条 Random-head 消融
 
-2026-11-04，用户将本轮“推全”的范围明确为 **NExTQA 原始前200条**。本轮运行 `doc_id=0..199`，比较原相似度选头与3个 Random-head 种子，共800次生成；不扩大至完整9178条测试集，也不运行VATEX。正式任务已启动，当前状态为 **running**；完成状态及得分应以实际输出为准。本页不把启动或单条检查视为200条完成。
+2026-11-04，用户将本轮“推全”的范围明确为 **NExTQA 原始前200条**。本轮运行 `doc_id=0..199`，比较原相似度选头与3个 Random-head 种子，共800次生成；不扩大至完整9178条测试集，也不运行VATEX。实验已于2026-11-04完成200条×4条件共800次生成及自动评分，并于2026-11-06复核。见[结果、图表与诚实结论](RANDOM_HEAD_NEXTQA_200_RESULTS_20261104.md)；本轮GPU已释放。
 
 本轮继续使用已验证的 SnapKV-KVRepack 分支，尚不等于完成正文 HybridKV 那一行的消融。此前各20条的试跑及其结果保留，正式200条在独立目录重新生成，不拼接旧预测。
 
@@ -68,8 +68,8 @@ python scripts/run_nextqa_random_head_200.py \
 
 ## 本机运行与结论边界
 
-本机正式输出为`outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/`，启动时预计约30–45分钟，实际剩余时间以worker状态为准。独立单条四条件GPU检查已通过，且其输入、候选SHA、所选head、合并工作量、缓存形状与生成token均与旧试跑的同一条完全一致；这验证了新流式入口，但不表示正式200条已经完成。
+本机正式输出为`outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/`，运行状态为`complete`，`completed_docs=200`、`completed_generations=800`。生成worker墙钟约30分9.7秒，自动评分约10.8537秒，控制器端到端约30分29.55秒。此前独立单条检查及本轮完整执行审计均通过；实际检查范围和证据见[结果报告](RANDOM_HEAD_NEXTQA_200_RESULTS_20261104.md)。
 
-最终分别报告原策略和三个Random种子的WUPS，以及Random均值±样本标准差（`ddof=1`）。200条输入复用3个随机排序，不产生600个独立输入；配对区间按源视频聚类，不能把head或token当作独立样本。结果未完成前不判断哪种策略更好。
+实际WUPS为原策略32.917681、Random均值32.811042±样本SD0.336289，配对差为+0.106639点，95%源视频聚类区间[−0.191880,0.501384]。区间跨0，当前结果不支持稳定优势，也不是两者等效的证明。200条输入复用3个随机排序，不产生600个独立输入；完整分种子得分见[结果报告](RANDOM_HEAD_NEXTQA_200_RESULTS_20261104.md)。本轮已结束，不自动追加实验。
 
 [原实验协议](RANDOM_HEAD_ABLATION.md) · [旧20条试跑结果](RANDOM_HEAD_ABLATION_RESULTS_20261104.md) · [流式worker](../src/kvrepack/ablations/run_head_selection_full.py) · [200条控制器](../scripts/run_nextqa_random_head_200.py)

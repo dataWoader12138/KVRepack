@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "audit_type": "Independent CPU comparison of new single-model stream worker against completed old four-process pilot",
+  "written_utc": "2026-11-04T14:05:21.217047+00:00",
+  "status": "exact_match",
+  "task": "nextqa_oe_test",
+  "doc_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "conditions": [
+    "similarity",
+    "random_global_seed0",
+    "random_global_seed1",
+    "random_global_seed2"
+  ],
+  "paired_record_count": 80,
+  "old_result_root": "outputs/ablations/random_head_snapkv7b_20261104/nextqa_oe_test",
+  "new_result_root": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104",
+  "new_full_target_docs": 200,
+  "new_full_target_generations": 800,
+  "condition_summary": {
+    "similarity": {
+      "paired_records": 20,
+      "all_fields_exact": 20,
+      "input_hashes_exact": 20,
+      "candidate_hashes_exact": 20,
+      "selected_masks_exact": 20,
+      "generated_ids_exact": 20,
+      "text_exact": 20,
+      "actual_work_exact": 20,
+      "prefill_cache_shapes_exact": 20
+    },
+    "random_global_seed0": {
+      "paired_records": 20,
+      "all_fields_exact": 20,
+      "input_hashes_exact": 20,
+      "candidate_hashes_exact": 20,
+      "selected_masks_exact": 20,
+      "generated_ids_exact": 20,
+      "text_exact": 20,
+      "actual_work_exact": 20,
+      "prefill_cache_shapes_exact": 20
+    },
+    "random_global_seed1": {
+      "paired_records": 20,
+      "all_fields_exact": 20,
+      "input_hashes_exact": 20,
+      "candidate_hashes_exact": 20,
+      "selected_masks_exact": 20,
+      "generated_ids_exact": 20,
+      "text_exact": 20,
+      "actual_work_exact": 20,
+      "prefill_cache_shapes_exact": 20
+    },
+    "random_global_seed2": {
+      "paired_records": 20,
+      "all_fields_exact": 20,
+      "input_hashes_exact": 20,
+      "candidate_hashes_exact": 20,
+      "selected_masks_exact": 20,
+      "generated_ids_exact": 20,
+      "text_exact": 20,
+      "actual_work_exact": 20,
+      "prefill_cache_shapes_exact": 20
+    }
+  },
+  "equal_record_count_per_field": {
+    "record.input_hashes": 80,
+    "record.input_shapes": 80,
+    "record.input_dtypes": 80,
+    "record.reference_metadata": 80,
+    "record.source_video_id": 80,
+    "record.video_id": 80,
+    "record.generated_ids": 80,
+    "record.generated_tokens": 80,
+    "record.text": 80,
+    "record.prediction": 80,
+    "record.final_cache_shapes": 80,
+    "record.eos_token_id": 80,
+    "record.eos_reached": 80,
+    "record.input_tokens": 80,
+    "audit.baseline_masks": 80,
+    "audit.selected_masks": 80,
+    "audit.baseline_selected_count": 80,
+    "audit.selected_count": 80,
+    "audit.baseline_layer_counts": 80,
+    "audit.selected_layer_counts": 80,
+    "audit.eligible_merge_heads": 80,
+    "audit.expected_effective_merge_count": 80,
+    "audit.actual_merge_calls": 80,
+    "audit.expected_removed_tokens": 80,
+    "audit.actual_removed_tokens": 80,
+    "audit.mask_hamming": 80,
+    "audit.mask_jaccard": 80,
+    "audit.candidate_hashes": 80,
+    "audit.merge_calls": 80,
+    "audit.prefill_cache_shapes": 80,
+    "config.task": 80,
+    "config.model_snapshot": 80,
+    "config.model_type": 80,
+    "config.frames": 80,
+    "config.budget_ratio": 80,
+    "config.algorithm_env": 80,
+    "config.min_pixels": 80,
+    "config.max_pixels": 80,
+    "config.dtype": 80,
+    "config.attention": 80,
+    "config.max_new_tokens": 80,
+    "config.use_cache": 80,
+    "config.do_sample": 80,
+    "config.model_seed": 80,
+    "config.strategy": 80,
+    "config.mask_seed": 80
+  },
+  "mismatch_count": 0,
+  "mismatches": [],
+  "byte_evidence": {
+    "input_tensor_hashes": "Exact recorded SHA256, shapes and dtypes compared for all80 pairs; no CPU .pt files re-read or regenerated.",
+    "candidate_tensors": "All28 layer candidate_raw/candidate_rope/candidate_value/candidate_imp/candidate_idx/head_sim fingerprints compared for all80 pairs.",
+    "generated_tokens": "Full generated_ids sequences compared, including EOS.",
+    "cache_evidence": "Actual merge call identities/work and prefill/final cache shapes compared; no raw K/V tensor content is present in these records."
+  },
+  "state_isolation_conclusion": "Within the first20 original documents, interleaving four selectors and reusing a single loaded model reproduced every compared input, candidate fingerprint, mask, actual merge operation, cache shape and generated token sequence from the separate-process pilot.",
+  "excluded_expected_differences": [
+    "Output paths and timestamps",
+    "Runtime and GPU memory timing",
+    "New stream contract and additional source provenance",
+    "Old persistent CPU .pt container hash, absent in the no-persistent-tensor-cache stream worker"
+  ],
+  "boundaries": [
+    "No GPU, model inference, video preprocessing, tensor deserialization, or official scoring executed by this audit.",
+    "Exactness refers to recorded tensor fingerprints and generation tokens; full vocabulary logits and raw final-cache tensor bytes were not recorded and were not numerically compared.",
+    "This artifact audits the first20 completed bundles, not the remaining180 documents or full200 performance."
+  ],
+  "source_bundle_hashes": [
+    {
+      "doc_id": 0,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000000.json",
+      "sha256": "c6d8500b7497cf57723c57eb5bbdfeb71a9910685f6a0212b1ab34b4190547d9"
+    },
+    {
+      "doc_id": 1,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000001.json",
+      "sha256": "7370ddde46ae6a6da6ba8457503d398b487a9119e8b0ac14bed532b9d028658f"
+    },
+    {
+      "doc_id": 2,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000002.json",
+      "sha256": "c4f08d08271d5445f432f286b36494bf84749ef0ca8a76df1060ccfd0d103484"
+    },
+    {
+      "doc_id": 3,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000003.json",
+      "sha256": "86e352e9ba661833b766fea31a77169116b9519aefa483fb56fb3d7b08d54247"
+    },
+    {
+      "doc_id": 4,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000004.json",
+      "sha256": "5c2f24a8bfafd1de2caf4df038d90b598102c96d0578dba5c564bdbca83a1efd"
+    },
+    {
+      "doc_id": 5,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000005.json",
+      "sha256": "4cdb233489b042bff11b3c0e94de823217c4b8d36ebe46ea435de4b7fe52e3c3"
+    },
+    {
+      "doc_id": 6,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000006.json",
+      "sha256": "2c130e8e4cb72fad117dcaf4b47a0519b07e63e10d25731abf787f066fc71342"
+    },
+    {
+      "doc_id": 7,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000007.json",
+      "sha256": "c014949dae48b786fb1f20bef2a4cfa05541942c1b1c44df839585e736ae5ab8"
+    },
+    {
+      "doc_id": 8,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000008.json",
+      "sha256": "ec3b1bbff467b6d1fbadc89524088ea39ccb0eded4baf707fdf1cd88a13e532e"
+    },
+    {
+      "doc_id": 9,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000009.json",
+      "sha256": "d3d8ed7e940b75a387cdd22c42d4ece089afbb5afcb2fa16fb8c57609b1fd6fd"
+    },
+    {
+      "doc_id": 10,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000010.json",
+      "sha256": "08e26877e6bb980414b7acd11979e51f6a5441e3e522123e2acfe4ad002ffd9c"
+    },
+    {
+      "doc_id": 11,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000011.json",
+      "sha256": "9dda97e13f017ed43e03a3307edfad6a89913db103a32a3836299435dec814b5"
+    },
+    {
+      "doc_id": 12,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000012.json",
+      "sha256": "26195004e659e7c86dfd0624372f954c5ade79915eb60a2938057cc7c2ddef28"
+    },
+    {
+      "doc_id": 13,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000013.json",
+      "sha256": "b43594f648b4396ad5c5256e2026b6951b41ea41aca9906f1ab89a45e53e0c86"
+    },
+    {
+      "doc_id": 14,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000014.json",
+      "sha256": "ebfe54047a40f8aa78b2f3c65bdec4fe04d7bf5200d462108fcf883ecdfd4af9"
+    },
+    {
+      "doc_id": 15,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000015.json",
+      "sha256": "6bac31f7d780630df4b2a3a4e54ed454dc41f9418b15fbf26c7441b8d01b2946"
+    },
+    {
+      "doc_id": 16,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000016.json",
+      "sha256": "959c57ba950a03f671a978c1b6644d45702aa9a14e571ab555dc4ee448c70d34"
+    },
+    {
+      "doc_id": 17,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000017.json",
+      "sha256": "5565cf33647c1b3bae24111c7d47c766e6f48179a75d677e503f0343069ff8e6"
+    },
+    {
+      "doc_id": 18,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000018.json",
+      "sha256": "3b96ccf1b9d0897d165e5dfdddb18b7530902ff009734e0f39ff993a069b18e0"
+    },
+    {
+      "doc_id": 19,
+      "path": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/samples/000019.json",
+      "sha256": "cbbab45a69beac8ffa113bd5f6410aa868329c42f4e4ccfae5e23314018776fe"
+    }
+  ]
+}

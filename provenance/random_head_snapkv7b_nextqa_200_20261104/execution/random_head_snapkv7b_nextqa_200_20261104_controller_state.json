@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "task": "nextqa_oe_test",
+  "target_docs": 200,
+  "target_generations": 800,
+  "conditions": [
+    "similarity",
+    "random_global_seed0",
+    "random_global_seed1",
+    "random_global_seed2"
+  ],
+  "started_utc": "2026-11-04T14:00:10.521454+00:00",
+  "controller_pid": 232003,
+  "process_group": 232003,
+  "worker_log": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/random_head_snapkv7b_nextqa_200_20261104_worker.log",
+  "score_log": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/random_head_snapkv7b_nextqa_200_20261104_scoring.log",
+  "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/random_head_snapkv7b_nextqa_200_20261104",
+  "worker_pid": 232004,
+  "updated_utc": "2026-11-04T14:30:26.510183+00:00",
+  "finished_utc": "2026-11-04T14:30:40.075514+00:00"
+}

@@ -1,0 +1,479 @@
+{
+  "schema_version": 1,
+  "audit_date_utc": "2026-11-06",
+  "written_utc": "2026-11-06T03:11:08.267743+00:00",
+  "audit_type": "Independent standard-library audit; no production validation/report helper imported",
+  "status": "passed",
+  "result_root": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104",
+  "method": "snapkv_kvrepack",
+  "task": "nextqa_oe_test",
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "coverage": {
+    "sample_bundles": 200,
+    "doc_id_range": [
+      0,
+      199
+    ],
+    "contiguous_original_prefix": true,
+    "condition_count": 4,
+    "completed_records": 800,
+    "random_vs_similarity_pairs": 600,
+    "source_video_clusters": 184,
+    "controller_status": "complete",
+    "source_dataset_rows": 9178,
+    "scope": "NextQA original doc0..199, four conditions; not all9178 dataset questions"
+  },
+  "parameters": {
+    "frames": 64,
+    "budget_ratio": 0.1,
+    "simhead_merge_ratio": 0.3,
+    "compression_ratio": 0.7,
+    "K_DIFF_ALPHA": 2,
+    "score_correction": "none",
+    "layers": 28,
+    "native_kv_heads_per_layer": 4,
+    "total_head_slots": 112,
+    "selected_quota": 34,
+    "quota_rule": "ceil(112*.30)",
+    "head_dim": 128,
+    "max_new_tokens": 128,
+    "model_seed": 42,
+    "checkpoint_repetition_penalty": 1.05,
+    "generation_overrides": {
+      "eos_token_id": 151645,
+      "pad_token_id": 151643,
+      "do_sample": false,
+      "temperature": null,
+      "top_p": null,
+      "num_beams": 1,
+      "max_new_tokens": 128,
+      "use_cache": true,
+      "return_dict_in_generate": true,
+      "output_scores": false
+    }
+  },
+  "conditions": {
+    "similarity": {
+      "records": 200,
+      "eos_reached_count": 200,
+      "no_eos_doc_ids": [],
+      "at_generation_cap_doc_ids": [],
+      "text_changed_doc_ids": [],
+      "generated_ids_changed_doc_ids": [],
+      "prediction_change_examples": [],
+      "selected_heads_per_record": [
+        34
+      ],
+      "actual_merge_calls_per_record": [
+        34
+      ],
+      "removed_tokens_min": 12376,
+      "removed_tokens_max": 33660,
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "hamming_vs_similarity_min": 0,
+      "hamming_vs_similarity_max": 0,
+      "unique_selected_masks": 39,
+      "text_changed_count": 0,
+      "generated_ids_changed_count": 0
+    },
+    "random_global_seed0": {
+      "records": 200,
+      "eos_reached_count": 200,
+      "no_eos_doc_ids": [],
+      "at_generation_cap_doc_ids": [],
+      "text_changed_doc_ids": [
+        15,
+        43,
+        113,
+        126,
+        145,
+        165
+      ],
+      "generated_ids_changed_doc_ids": [
+        15,
+        43,
+        113,
+        126,
+        145,
+        165
+      ],
+      "prediction_change_examples": [
+        {
+          "doc_id": 15,
+          "similarity": "clean spoon",
+          "random": "clean mouth"
+        },
+        {
+          "doc_id": 43,
+          "similarity": "cold",
+          "random": "cold outside"
+        },
+        {
+          "doc_id": 113,
+          "similarity": "to follow music",
+          "random": "to follow her rhythm"
+        }
+      ],
+      "selected_heads_per_record": [
+        34
+      ],
+      "actual_merge_calls_per_record": [
+        34
+      ],
+      "removed_tokens_min": 12376,
+      "removed_tokens_max": 33660,
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "hamming_vs_similarity_min": 44,
+      "hamming_vs_similarity_max": 48,
+      "unique_selected_masks": 1,
+      "text_changed_count": 6,
+      "generated_ids_changed_count": 6
+    },
+    "random_global_seed1": {
+      "records": 200,
+      "eos_reached_count": 200,
+      "no_eos_doc_ids": [],
+      "at_generation_cap_doc_ids": [],
+      "text_changed_doc_ids": [
+        120,
+        126,
+        150,
+        153,
+        165,
+        183
+      ],
+      "generated_ids_changed_doc_ids": [
+        120,
+        126,
+        150,
+        153,
+        165,
+        183
+      ],
+      "prediction_change_examples": [
+        {
+          "doc_id": 120,
+          "similarity": "look at camera",
+          "random": "look around"
+        },
+        {
+          "doc_id": 126,
+          "similarity": "play with toy",
+          "random": "play"
+        },
+        {
+          "doc_id": 150,
+          "similarity": "to take control",
+          "random": "to take helicopter"
+        }
+      ],
+      "selected_heads_per_record": [
+        34
+      ],
+      "actual_merge_calls_per_record": [
+        34
+      ],
+      "removed_tokens_min": 12376,
+      "removed_tokens_max": 33660,
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "hamming_vs_similarity_min": 40,
+      "hamming_vs_similarity_max": 44,
+      "unique_selected_masks": 1,
+      "text_changed_count": 6,
+      "generated_ids_changed_count": 6
+    },
+    "random_global_seed2": {
+      "records": 200,
+      "eos_reached_count": 200,
+      "no_eos_doc_ids": [],
+      "at_generation_cap_doc_ids": [],
+      "text_changed_doc_ids": [
+        113,
+        120,
+        126,
+        165
+      ],
+      "generated_ids_changed_doc_ids": [
+        113,
+        120,
+        126,
+        165
+      ],
+      "prediction_change_examples": [
+        {
+          "doc_id": 113,
+          "similarity": "to follow music",
+          "random": "to follow the rhythm"
+        },
+        {
+          "doc_id": 120,
+          "similarity": "look at camera",
+          "random": "look around"
+        },
+        {
+          "doc_id": 126,
+          "similarity": "play with toy",
+          "random": "play"
+        }
+      ],
+      "selected_heads_per_record": [
+        34
+      ],
+      "actual_merge_calls_per_record": [
+        34
+      ],
+      "removed_tokens_min": 12376,
+      "removed_tokens_max": 33660,
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "hamming_vs_similarity_min": 44,
+      "hamming_vs_similarity_max": 50,
+      "unique_selected_masks": 1,
+      "text_changed_count": 4,
+      "generated_ids_changed_count": 4
+    }
+  },
+  "pairing": {
+    "all600_pairs_equal": true,
+    "equal_pair_counts": {
+      "record.input_hashes": 600,
+      "record.input_shapes": 600,
+      "record.input_dtypes": 600,
+      "record.input_fingerprint_sha256": 600,
+      "record.reference_metadata": 600,
+      "record.source_video_id": 600,
+      "record.video_id": 600,
+      "record.input_tokens": 600,
+      "audit.baseline_masks": 600,
+      "audit.baseline_selected_count": 600,
+      "audit.baseline_layer_counts": 600,
+      "audit.candidate_hashes": 600,
+      "audit.prefill_cache_shapes": 600,
+      "audit.actual_merge_calls": 600,
+      "audit.actual_removed_tokens": 600,
+      "audit.expected_effective_merge_count": 600,
+      "audit.expected_removed_tokens": 600
+    },
+    "candidate_components": [
+      "candidate_raw",
+      "candidate_rope",
+      "candidate_value",
+      "candidate_imp",
+      "candidate_idx",
+      "head_sim"
+    ],
+    "candidate_layers_per_record": 28,
+    "removed_work_recomputation": "sum(before-after) over actual unique merge calls equals selected candidate_history-final_history totals, recorded expected/actual work, and paired similarity condition",
+    "cache_shape_recomputation": "K/V native[1,4,length,128] in all28 layers; prefill length=final_history+32; final length=prefill+generated_tokens-1",
+    "nonselection_configuration": "Each row config equals common run_config after removing only strategy and mask_seed; contract/source hashes also agree"
+  },
+  "masks": {
+    "similarity_mask_variants": 39,
+    "random_masks_fixed_within_seed": true,
+    "rank_recipe": "Compact JSON [seed,\"global\",28,4,0] -> SHA256 first16bytes as local random.Random seed -> permutation of range112 -> first34 head slots; production rank helper not imported",
+    "between_random_seeds": [
+      {
+        "seeds": [
+          0,
+          1
+        ],
+        "intersection_heads": 12,
+        "hamming": 44
+      },
+      {
+        "seeds": [
+          0,
+          2
+        ],
+        "intersection_heads": 8,
+        "hamming": 52
+      },
+      {
+        "seeds": [
+          1,
+          2
+        ],
+        "intersection_heads": 5,
+        "hamming": 58
+      }
+    ],
+    "scope": "Global count-matched Random; per-layer allocation is allowed to change",
+    "original_or_reconstructed_mask_checks_all800_passed": true,
+    "independently_reconstructed_random_mask_records": 600,
+    "similarity_equals_original_mask_records": 200
+  },
+  "ranges": {
+    "input_tokens_min": 8497,
+    "input_tokens_max": 23088,
+    "prefill_cache_length_min": 881,
+    "prefill_cache_length_max": 2340,
+    "removed_tokens_min": 12376,
+    "removed_tokens_max": 33660
+  },
+  "frozen_sources": {
+    "all_current_sha256_match": true,
+    "files": [
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py",
+        "expected_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "current_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py",
+        "expected_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "current_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/head_selection.py",
+        "expected_sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+        "current_sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py",
+        "expected_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "current_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/monkeypatch.py",
+        "expected_sha256": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+        "current_sha256": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py",
+        "expected_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "current_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py",
+        "expected_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "current_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py",
+        "expected_sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+        "current_sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+        "matches": true
+      }
+    ],
+    "contract_sha256": "3b9413b0caf3779522f66d5bed42df17adcfc7cbba2d52259c2eeb3d6b38ada7"
+  },
+  "integrity": {
+    "issue_count": 0,
+    "check_counts": {
+      "controller_complete.checked": 1,
+      "controller_complete.passed": 1,
+      "contract_scope_sha.checked": 1,
+      "contract_scope_sha.passed": 1,
+      "contiguous_200_samples.checked": 1,
+      "contiguous_200_samples.passed": 1,
+      "frozen_source_sha.checked": 8,
+      "frozen_source_sha.passed": 8,
+      "bundle_identity_four_conditions.checked": 200,
+      "bundle_identity_four_conditions.passed": 200,
+      "bundle_metadata_fairness.checked": 200,
+      "bundle_metadata_fairness.passed": 200,
+      "record_identity.checked": 800,
+      "record_identity.passed": 800,
+      "native_28x4.checked": 800,
+      "native_28x4.passed": 800,
+      "strategy_seed.checked": 800,
+      "strategy_seed.passed": 800,
+      "selected_quota_eligibility.checked": 800,
+      "selected_quota_eligibility.passed": 800,
+      "layer_count_metadata.checked": 800,
+      "layer_count_metadata.passed": 800,
+      "original_or_reconstructed_random_mask.checked": 800,
+      "original_or_reconstructed_random_mask.passed": 800,
+      "mask_overlap.checked": 800,
+      "mask_overlap.passed": 800,
+      "nonselection_config_source_contract.checked": 800,
+      "nonselection_config_source_contract.passed": 800,
+      "bundle_input_metadata.checked": 800,
+      "bundle_input_metadata.passed": 800,
+      "input_sha_format.checked": 800,
+      "input_sha_format.passed": 800,
+      "input_shapes.checked": 800,
+      "input_shapes.passed": 800,
+      "candidate_layer_coverage.checked": 800,
+      "candidate_layer_coverage.passed": 800,
+      "floor_budget_ceil_candidate.checked": 22400,
+      "floor_budget_ceil_candidate.passed": 22400,
+      "candidate_fingerprint_structure.checked": 134400,
+      "candidate_fingerprint_structure.passed": 134400,
+      "actual_merge_identity.checked": 800,
+      "actual_merge_identity.passed": 800,
+      "actual_merge_count_removed_work.checked": 800,
+      "actual_merge_count_removed_work.passed": 800,
+      "cache_layer_coverage.checked": 800,
+      "cache_layer_coverage.passed": 800,
+      "prefill_final_cache_shapes.checked": 22400,
+      "prefill_final_cache_shapes.passed": 22400,
+      "prediction_eos_cap.checked": 800,
+      "prediction_eos_cap.passed": 800,
+      "positive_finite_runtime.checked": 800,
+      "positive_finite_runtime.passed": 800,
+      "paired_record_input_hashes.checked": 600,
+      "paired_record_input_hashes.passed": 600,
+      "paired_record_input_shapes.checked": 600,
+      "paired_record_input_shapes.passed": 600,
+      "paired_record_input_dtypes.checked": 600,
+      "paired_record_input_dtypes.passed": 600,
+      "paired_record_input_fingerprint_sha256.checked": 600,
+      "paired_record_input_fingerprint_sha256.passed": 600,
+      "paired_record_reference_metadata.checked": 600,
+      "paired_record_reference_metadata.passed": 600,
+      "paired_record_source_video_id.checked": 600,
+      "paired_record_source_video_id.passed": 600,
+      "paired_record_video_id.checked": 600,
+      "paired_record_video_id.passed": 600,
+      "paired_record_input_tokens.checked": 600,
+      "paired_record_input_tokens.passed": 600,
+      "paired_audit_baseline_masks.checked": 600,
+      "paired_audit_baseline_masks.passed": 600,
+      "paired_audit_baseline_selected_count.checked": 600,
+      "paired_audit_baseline_selected_count.passed": 600,
+      "paired_audit_baseline_layer_counts.checked": 600,
+      "paired_audit_baseline_layer_counts.passed": 600,
+      "paired_audit_candidate_hashes.checked": 600,
+      "paired_audit_candidate_hashes.passed": 600,
+      "paired_audit_prefill_cache_shapes.checked": 600,
+      "paired_audit_prefill_cache_shapes.passed": 600,
+      "paired_audit_actual_merge_calls.checked": 600,
+      "paired_audit_actual_merge_calls.passed": 600,
+      "paired_audit_actual_removed_tokens.checked": 600,
+      "paired_audit_actual_removed_tokens.passed": 600,
+      "paired_audit_expected_effective_merge_count.checked": 600,
+      "paired_audit_expected_effective_merge_count.passed": 600,
+      "paired_audit_expected_removed_tokens.checked": 600,
+      "paired_audit_expected_removed_tokens.passed": 600
+    },
+    "sample_files_aggregate_sha256": "59a24fbd8401031bfa1252feff72c7bae4a5b5e91ed2e0ecb155bfb6318d37f0",
+    "sample_files_total_bytes": 78336697
+  },
+  "issues": [],
+  "execution": {
+    "new_gpu_runs": 0,
+    "model_or_tensor_imports": false,
+    "video_preprocessing_runs": 0,
+    "official_or_offline_scoring_runs": 0,
+    "pt_cache_rehashes": 0,
+    "only_new_file": "outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/independent_200_audit_20261106.json"
+  },
+  "limits": [
+    "This validates recorded execution and pairing, not newly computed task scores; changed predictions do not establish improvement or degradation.",
+    "Input/candidate SHA256 values are compared as recorded. The auditor did not regenerate tensors, logits or final-cache tensor contents; cache checks cover shapes and actual merge identities/work.",
+    "The200 questions share source videos; they are not200 independent video clusters.",
+    "Earlier first20_pilot_equivalence.json covers old-process/new-stream equivalence and was not rerun here.",
+    "Current-source hashing covers the eight files listed in run_contract, not every installed dependency or checkpoint weight shard."
+  ]
+}

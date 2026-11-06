@@ -1,0 +1,2 @@
+Warming up PyWSD (takes ~10 secs)... took 4.2234368324279785 secs.
+{"status": "complete", "limit": 200, "scores": {"similarity": 32.917681214957476, "random_global_seed0": 32.45074039136625, "random_global_seed1": 33.11660284887911, "random_global_seed2": 32.86578289959762}, "random_mean": 32.811042046614325, "random_sample_std": 0.33628949406764036, "difference": 0.10663916834315046, "ci95": [-0.1918800705795446, 0.5013844817400103], "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/random_head_snapkv7b_nextqa_200_20261104/report"}

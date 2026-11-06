@@ -1,0 +1,1405 @@
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+You have video processor config saved in `preprocessor.json` file which is deprecated. Video processor configs should be saved in their own `video_preprocessor.json` file. You can rename the file or load and save the processor back which renames it automatically. Loading from `preprocessor.json` will be removed in v5.0.
+Using SnapKV-KVRepack!
+Loading checkpoint shards:   0%|                                                                                                                                                                                                                                               | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██████████████████████████████████████████████▏                                                                                                                                                                                        | 1/5 [00:01<00:04,  1.16s/it]Loading checkpoint shards:  40%|████████████████████████████████████████████████████████████████████████████████████████████▍                                                                                                                                          | 2/5 [00:01<00:02,  1.03it/s]Loading checkpoint shards:  60%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                                            | 3/5 [00:02<00:01,  1.07it/s]Loading checkpoint shards:  80%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                                              | 4/5 [00:03<00:00,  1.09it/s]Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:04<00:00,  1.49it/s]Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:04<00:00,  1.24it/s]
+qwen-vl-utils using decord to read video.
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 0, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 0, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 0, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 0, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 0, "completed_docs": 1, "target_docs": 200, "estimated_remaining_seconds": 2735.3012816123664}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 1, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 1, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 1, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 1, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 1, "completed_docs": 2, "target_docs": 200, "estimated_remaining_seconds": 2134.0698035247624}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 2, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 2, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 2, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 2, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 2, "completed_docs": 3, "target_docs": 200, "estimated_remaining_seconds": 1898.8189203056197}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 3, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 3, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 3, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 3, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 3, "completed_docs": 4, "target_docs": 200, "estimated_remaining_seconds": 1907.4979145154357}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 4, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 4, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 4, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 4, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 4, "completed_docs": 5, "target_docs": 200, "estimated_remaining_seconds": 1802.5286123268306}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 5, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 5, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 5, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 5, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 5, "completed_docs": 6, "target_docs": 200, "estimated_remaining_seconds": 1731.6381496277947}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 6, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 6, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 6, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 6, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 6, "completed_docs": 7, "target_docs": 200, "estimated_remaining_seconds": 1689.9880045982345}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 7, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 7, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 7, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 7, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 7, "completed_docs": 8, "target_docs": 200, "estimated_remaining_seconds": 1717.8198759555817}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 8, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 8, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 8, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 8, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 8, "completed_docs": 9, "target_docs": 200, "estimated_remaining_seconds": 1740.8685975099604}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 9, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 9, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 9, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 9, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 9, "completed_docs": 10, "target_docs": 200, "estimated_remaining_seconds": 1678.057632513344}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 10, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 10, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 10, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 10, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 10, "completed_docs": 11, "target_docs": 200, "estimated_remaining_seconds": 1649.4512684748254}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 11, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 11, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 11, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 11, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 11, "completed_docs": 12, "target_docs": 200, "estimated_remaining_seconds": 1632.8784002661705}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 12, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 12, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 12, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 12, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 12, "completed_docs": 13, "target_docs": 200, "estimated_remaining_seconds": 1633.783834853711}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 13, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 6}
+{"stage": "condition_completed", "doc_id": 13, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 6}
+{"stage": "condition_completed", "doc_id": 13, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 6}
+{"stage": "condition_completed", "doc_id": 13, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 6}
+{"stage": "sample_committed", "doc_id": 13, "completed_docs": 14, "target_docs": 200, "estimated_remaining_seconds": 1687.8312286926166}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 14, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 14, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 14, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 14, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 14, "completed_docs": 15, "target_docs": 200, "estimated_remaining_seconds": 1656.9150683172045}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 15, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 15, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 15, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 15, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 15, "completed_docs": 16, "target_docs": 200, "estimated_remaining_seconds": 1649.0061199832708}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 16, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 16, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 16, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 16, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 16, "completed_docs": 17, "target_docs": 200, "estimated_remaining_seconds": 1622.9133908305973}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 17, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 17, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 17, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 17, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 17, "completed_docs": 18, "target_docs": 200, "estimated_remaining_seconds": 1596.1150526160168}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 18, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 18, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 18, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 18, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 18, "completed_docs": 19, "target_docs": 200, "estimated_remaining_seconds": 1600.8065676944034}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 19, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 19, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 19, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 19, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 19, "completed_docs": 20, "target_docs": 200, "estimated_remaining_seconds": 1591.9339922033253}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 20, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 20, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 20, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 20, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 20, "completed_docs": 21, "target_docs": 200, "estimated_remaining_seconds": 1568.0771511287562}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 21, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 21, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 21, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 21, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 21, "completed_docs": 22, "target_docs": 200, "estimated_remaining_seconds": 1544.38246832788}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 22, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 22, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 22, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 22, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 22, "completed_docs": 23, "target_docs": 200, "estimated_remaining_seconds": 1541.1696885518081}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 23, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 23, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 23, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 23, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 23, "completed_docs": 24, "target_docs": 200, "estimated_remaining_seconds": 1535.2914843782783}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 24, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 24, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 24, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 24, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 24, "completed_docs": 25, "target_docs": 200, "estimated_remaining_seconds": 1531.698905467987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 25, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 25, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 25, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 25, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 25, "completed_docs": 26, "target_docs": 200, "estimated_remaining_seconds": 1511.4097903496943}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 26, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 26, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 26, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 26, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 26, "completed_docs": 27, "target_docs": 200, "estimated_remaining_seconds": 1503.6933093902965}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 27, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 27, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 27, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 27, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 27, "completed_docs": 28, "target_docs": 200, "estimated_remaining_seconds": 1501.4310645769751}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 28, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 28, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 28, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 28, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 28, "completed_docs": 29, "target_docs": 200, "estimated_remaining_seconds": 1488.1809408239506}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 29, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 29, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 29, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 29, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 29, "completed_docs": 30, "target_docs": 200, "estimated_remaining_seconds": 1478.6109953038397}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 30, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 30, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 30, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 30, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 30, "completed_docs": 31, "target_docs": 200, "estimated_remaining_seconds": 1462.5487370277124}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 31, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 31, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 31, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 31, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 31, "completed_docs": 32, "target_docs": 200, "estimated_remaining_seconds": 1445.3139749541879}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 32, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 32, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 32, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 32, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 32, "completed_docs": 33, "target_docs": 200, "estimated_remaining_seconds": 1440.0762900504649}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 33, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 33, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 33, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 33, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 33, "completed_docs": 34, "target_docs": 200, "estimated_remaining_seconds": 1435.437642396592}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 34, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 34, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 34, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 34, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 34, "completed_docs": 35, "target_docs": 200, "estimated_remaining_seconds": 1429.3452128038875}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 35, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 35, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 35, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 35, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 35, "completed_docs": 36, "target_docs": 200, "estimated_remaining_seconds": 1415.4601566071312}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 36, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 36, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 36, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 36, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 36, "completed_docs": 37, "target_docs": 200, "estimated_remaining_seconds": 1401.7521531099605}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 37, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 37, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 37, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 37, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 37, "completed_docs": 38, "target_docs": 200, "estimated_remaining_seconds": 1404.5877952850178}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 38, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 38, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 38, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 38, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 38, "completed_docs": 39, "target_docs": 200, "estimated_remaining_seconds": 1393.7350291258251}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 39, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 39, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 39, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 39, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 39, "completed_docs": 40, "target_docs": 200, "estimated_remaining_seconds": 1383.0874571800232}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 40, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 40, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 40, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 40, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 40, "completed_docs": 41, "target_docs": 200, "estimated_remaining_seconds": 1376.6849449152446}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 41, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 41, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 41, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 41, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 41, "completed_docs": 42, "target_docs": 200, "estimated_remaining_seconds": 1361.946853735972}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 42, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 42, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 42, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 42, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 42, "completed_docs": 43, "target_docs": 200, "estimated_remaining_seconds": 1349.8237380028465}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 43, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 43, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 43, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 43, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 43, "completed_docs": 44, "target_docs": 200, "estimated_remaining_seconds": 1351.7761780565436}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 44, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 44, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 44, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 44, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 44, "completed_docs": 45, "target_docs": 200, "estimated_remaining_seconds": 1353.0339401641654}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 45, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 45, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 45, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 45, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 45, "completed_docs": 46, "target_docs": 200, "estimated_remaining_seconds": 1339.0308885742788}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 46, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 46, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 46, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 46, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 46, "completed_docs": 47, "target_docs": 200, "estimated_remaining_seconds": 1329.1044239137877}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 47, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 47, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 47, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 47, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 47, "completed_docs": 48, "target_docs": 200, "estimated_remaining_seconds": 1322.6352562010288}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 48, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 48, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 48, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 48, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 48, "completed_docs": 49, "target_docs": 200, "estimated_remaining_seconds": 1314.8994103080918}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 49, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 49, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 49, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 49, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 49, "completed_docs": 50, "target_docs": 200, "estimated_remaining_seconds": 1310.09917511791}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 50, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 50, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 50, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 50, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 50, "completed_docs": 51, "target_docs": 200, "estimated_remaining_seconds": 1305.6253833714507}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 51, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 51, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 51, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 51, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 51, "completed_docs": 52, "target_docs": 200, "estimated_remaining_seconds": 1293.4620566866718}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 52, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 52, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 52, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 52, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 52, "completed_docs": 53, "target_docs": 200, "estimated_remaining_seconds": 1287.208053700415}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 53, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 53, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 53, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 53, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 53, "completed_docs": 54, "target_docs": 200, "estimated_remaining_seconds": 1276.716791553216}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 54, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 54, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 54, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 54, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 54, "completed_docs": 55, "target_docs": 200, "estimated_remaining_seconds": 1273.6532733894207}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 55, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 55, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 55, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 55, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 55, "completed_docs": 56, "target_docs": 200, "estimated_remaining_seconds": 1267.1474806251272}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 56, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 56, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 56, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 56, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 56, "completed_docs": 57, "target_docs": 200, "estimated_remaining_seconds": 1258.3078108410955}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 57, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 57, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 57, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 57, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 57, "completed_docs": 58, "target_docs": 200, "estimated_remaining_seconds": 1252.5722858167157}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 58, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 58, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 58, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 58, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 58, "completed_docs": 59, "target_docs": 200, "estimated_remaining_seconds": 1241.2047319193766}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 59, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 59, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 59, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 59, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 59, "completed_docs": 60, "target_docs": 200, "estimated_remaining_seconds": 1228.0637914997835}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 60, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 60, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 60, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 60, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 60, "completed_docs": 61, "target_docs": 200, "estimated_remaining_seconds": 1223.2098351657755}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 61, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 61, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 61, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 61, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 61, "completed_docs": 62, "target_docs": 200, "estimated_remaining_seconds": 1211.0786656412868}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 62, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 62, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 62, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 62, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 62, "completed_docs": 63, "target_docs": 200, "estimated_remaining_seconds": 1199.0735548034547}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 63, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 63, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 63, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 63, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 63, "completed_docs": 64, "target_docs": 200, "estimated_remaining_seconds": 1190.1977303144522}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 64, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 64, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 64, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 64, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 64, "completed_docs": 65, "target_docs": 200, "estimated_remaining_seconds": 1177.9092349395728}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 65, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 65, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 65, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 65, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 65, "completed_docs": 66, "target_docs": 200, "estimated_remaining_seconds": 1172.685899648138}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 66, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 66, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 66, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 66, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 66, "completed_docs": 67, "target_docs": 200, "estimated_remaining_seconds": 1160.7655152103573}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 67, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 67, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 67, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 67, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 67, "completed_docs": 68, "target_docs": 200, "estimated_remaining_seconds": 1151.1475711144947}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 68, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 68, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 68, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 68, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 68, "completed_docs": 69, "target_docs": 200, "estimated_remaining_seconds": 1145.0138380732656}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 69, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 69, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 69, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 69, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 69, "completed_docs": 70, "target_docs": 200, "estimated_remaining_seconds": 1132.814053390175}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 70, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 70, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 70, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 70, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 70, "completed_docs": 71, "target_docs": 200, "estimated_remaining_seconds": 1121.7427965777233}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 71, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 71, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 71, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 71, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 71, "completed_docs": 72, "target_docs": 200, "estimated_remaining_seconds": 1109.5657061404652}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 72, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 72, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 72, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 72, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 72, "completed_docs": 73, "target_docs": 200, "estimated_remaining_seconds": 1101.3393619447845}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 73, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 73, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 73, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 73, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 73, "completed_docs": 74, "target_docs": 200, "estimated_remaining_seconds": 1094.7496713648575}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 74, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 74, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 74, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 74, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 74, "completed_docs": 75, "target_docs": 200, "estimated_remaining_seconds": 1081.7336075442531}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 75, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 75, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 75, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 75, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 75, "completed_docs": 76, "target_docs": 200, "estimated_remaining_seconds": 1089.3154336300336}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 76, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 76, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 76, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 76, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 76, "completed_docs": 77, "target_docs": 200, "estimated_remaining_seconds": 1081.5292536808397}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 77, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 77, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 77, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 77, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 77, "completed_docs": 78, "target_docs": 200, "estimated_remaining_seconds": 1088.3797356109017}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 78, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 78, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 78, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 78, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 78, "completed_docs": 79, "target_docs": 200, "estimated_remaining_seconds": 1078.8165703557336}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 79, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 79, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 79, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 79, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 79, "completed_docs": 80, "target_docs": 200, "estimated_remaining_seconds": 1072.0379138756543}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 80, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 80, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 80, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 80, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 80, "completed_docs": 81, "target_docs": 200, "estimated_remaining_seconds": 1082.8567570332484}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 81, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 81, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 81, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 81, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 81, "completed_docs": 82, "target_docs": 200, "estimated_remaining_seconds": 1084.7827555767103}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 82, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 82, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 82, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 82, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 82, "completed_docs": 83, "target_docs": 200, "estimated_remaining_seconds": 1071.508230855307}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 83, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 83, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 83, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 83, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 83, "completed_docs": 84, "target_docs": 200, "estimated_remaining_seconds": 1062.473660007474}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 84, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 84, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 84, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 84, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 84, "completed_docs": 85, "target_docs": 200, "estimated_remaining_seconds": 1057.1914714436757}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 85, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 85, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 85, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 85, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 85, "completed_docs": 86, "target_docs": 200, "estimated_remaining_seconds": 1046.2510357776353}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 86, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 86, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 86, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 86, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 86, "completed_docs": 87, "target_docs": 200, "estimated_remaining_seconds": 1033.255157305206}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 87, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 87, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 87, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 87, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 87, "completed_docs": 88, "target_docs": 200, "estimated_remaining_seconds": 1024.908930902454}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 88, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 88, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 88, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 88, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 88, "completed_docs": 89, "target_docs": 200, "estimated_remaining_seconds": 1017.7960468429778}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 89, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 89, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 89, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 89, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 89, "completed_docs": 90, "target_docs": 200, "estimated_remaining_seconds": 1006.5508862241276}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 90, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 90, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 90, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 90, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 90, "completed_docs": 91, "target_docs": 200, "estimated_remaining_seconds": 994.9184565287043}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 91, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 91, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 91, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 91, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 91, "completed_docs": 92, "target_docs": 200, "estimated_remaining_seconds": 987.4881126846633}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 92, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 92, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 92, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 92, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 92, "completed_docs": 93, "target_docs": 200, "estimated_remaining_seconds": 976.3436386479887}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 93, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 93, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 93, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 93, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 93, "completed_docs": 94, "target_docs": 200, "estimated_remaining_seconds": 968.8895821918514}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 94, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 94, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 94, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 94, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 94, "completed_docs": 95, "target_docs": 200, "estimated_remaining_seconds": 958.0458478355093}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 95, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 95, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 95, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 95, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 95, "completed_docs": 96, "target_docs": 200, "estimated_remaining_seconds": 948.7128535471857}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 96, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 96, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 96, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 96, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 96, "completed_docs": 97, "target_docs": 200, "estimated_remaining_seconds": 937.3391438761784}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 97, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 97, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 97, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 97, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 97, "completed_docs": 98, "target_docs": 200, "estimated_remaining_seconds": 930.1297095355635}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 98, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 98, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 98, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 98, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 98, "completed_docs": 99, "target_docs": 200, "estimated_remaining_seconds": 919.8382000214223}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 99, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 99, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 99, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 99, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 99, "completed_docs": 100, "target_docs": 200, "estimated_remaining_seconds": 909.0331177227199}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 100, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 100, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 100, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 100, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 100, "completed_docs": 101, "target_docs": 200, "estimated_remaining_seconds": 900.1747254143553}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 101, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 101, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 101, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 101, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 101, "completed_docs": 102, "target_docs": 200, "estimated_remaining_seconds": 891.1549827882327}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 102, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 102, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 102, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 102, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 102, "completed_docs": 103, "target_docs": 200, "estimated_remaining_seconds": 881.5676691094866}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 103, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 103, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 103, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 103, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 103, "completed_docs": 104, "target_docs": 200, "estimated_remaining_seconds": 873.0401332710799}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 104, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 104, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 104, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 104, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 104, "completed_docs": 105, "target_docs": 200, "estimated_remaining_seconds": 862.1748291426117}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 105, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 105, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 105, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 105, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 105, "completed_docs": 106, "target_docs": 200, "estimated_remaining_seconds": 854.1042291674553}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 106, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 106, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 106, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 106, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 106, "completed_docs": 107, "target_docs": 200, "estimated_remaining_seconds": 844.5307907593027}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 107, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 107, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 107, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 107, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 107, "completed_docs": 108, "target_docs": 200, "estimated_remaining_seconds": 835.4576497257308}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 108, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 108, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 108, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 108, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 108, "completed_docs": 109, "target_docs": 200, "estimated_remaining_seconds": 827.2294640371217}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 109, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 109, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 109, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 109, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 109, "completed_docs": 110, "target_docs": 200, "estimated_remaining_seconds": 818.7435477904298}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 110, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 110, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 110, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 110, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 110, "completed_docs": 111, "target_docs": 200, "estimated_remaining_seconds": 807.1626556505961}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 111, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 111, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 111, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 111, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 111, "completed_docs": 112, "target_docs": 200, "estimated_remaining_seconds": 796.3405056824641}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 112, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 112, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 112, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 112, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 112, "completed_docs": 113, "target_docs": 200, "estimated_remaining_seconds": 787.9322625144789}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 113, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 113, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 113, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 113, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 113, "completed_docs": 114, "target_docs": 200, "estimated_remaining_seconds": 778.479778279338}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 114, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 114, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 114, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 114, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 114, "completed_docs": 115, "target_docs": 200, "estimated_remaining_seconds": 768.3132399890734}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 115, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 115, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 115, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 115, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 115, "completed_docs": 116, "target_docs": 200, "estimated_remaining_seconds": 757.8624756265559}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 116, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 116, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 116, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 116, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 116, "completed_docs": 117, "target_docs": 200, "estimated_remaining_seconds": 748.5478874525517}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 117, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 117, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 117, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 117, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 117, "completed_docs": 118, "target_docs": 200, "estimated_remaining_seconds": 740.8101006169188}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 118, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 118, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 118, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 118, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 118, "completed_docs": 119, "target_docs": 200, "estimated_remaining_seconds": 730.2476395840968}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 119, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 119, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 119, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 119, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 119, "completed_docs": 120, "target_docs": 200, "estimated_remaining_seconds": 729.0968126828471}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 120, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 120, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 120, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 120, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 120, "completed_docs": 121, "target_docs": 200, "estimated_remaining_seconds": 718.4679427175236}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 121, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 121, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 121, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 121, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 121, "completed_docs": 122, "target_docs": 200, "estimated_remaining_seconds": 707.9574662357203}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 122, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 122, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 122, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 122, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 122, "completed_docs": 123, "target_docs": 200, "estimated_remaining_seconds": 698.9979677333882}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 123, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 123, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 123, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 123, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 123, "completed_docs": 124, "target_docs": 200, "estimated_remaining_seconds": 690.0381475461105}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 124, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 124, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 124, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 124, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 124, "completed_docs": 125, "target_docs": 200, "estimated_remaining_seconds": 680.4664405368269}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 125, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 125, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 125, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 125, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 125, "completed_docs": 126, "target_docs": 200, "estimated_remaining_seconds": 670.2393180323498}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 126, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 126, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 126, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 126, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 126, "completed_docs": 127, "target_docs": 200, "estimated_remaining_seconds": 660.3518766005501}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 127, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 127, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 127, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 127, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 127, "completed_docs": 128, "target_docs": 200, "estimated_remaining_seconds": 651.4565065777861}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 128, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 128, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 128, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 128, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 128, "completed_docs": 129, "target_docs": 200, "estimated_remaining_seconds": 641.2581783853644}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 129, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 129, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 129, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 129, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 129, "completed_docs": 130, "target_docs": 200, "estimated_remaining_seconds": 632.8963536181702}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 130, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 130, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 130, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 130, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 130, "completed_docs": 131, "target_docs": 200, "estimated_remaining_seconds": 624.7767260831048}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 131, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 131, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 131, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 131, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 131, "completed_docs": 132, "target_docs": 200, "estimated_remaining_seconds": 615.6078792767543}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 132, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 132, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 132, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 132, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 132, "completed_docs": 133, "target_docs": 200, "estimated_remaining_seconds": 607.6952431942791}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 133, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 133, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 133, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 133, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 133, "completed_docs": 134, "target_docs": 200, "estimated_remaining_seconds": 597.8985447168573}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 134, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 134, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 134, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 134, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 134, "completed_docs": 135, "target_docs": 200, "estimated_remaining_seconds": 589.7275483148793}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 135, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 135, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 135, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 135, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 135, "completed_docs": 136, "target_docs": 200, "estimated_remaining_seconds": 579.8771436319631}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 136, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 136, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 136, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 136, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 136, "completed_docs": 137, "target_docs": 200, "estimated_remaining_seconds": 570.9004325385403}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 137, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 137, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 137, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 137, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 137, "completed_docs": 138, "target_docs": 200, "estimated_remaining_seconds": 562.1315271080189}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 138, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 138, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 138, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 138, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 138, "completed_docs": 139, "target_docs": 200, "estimated_remaining_seconds": 553.1499954867008}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 139, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 139, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 139, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 139, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 139, "completed_docs": 140, "target_docs": 200, "estimated_remaining_seconds": 543.6332530464445}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 140, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 140, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 140, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 140, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 140, "completed_docs": 141, "target_docs": 200, "estimated_remaining_seconds": 535.089407331264}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 141, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 141, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 141, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 141, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 141, "completed_docs": 142, "target_docs": 200, "estimated_remaining_seconds": 526.9879290712341}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 142, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 142, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 142, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 142, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 142, "completed_docs": 143, "target_docs": 200, "estimated_remaining_seconds": 516.9897297700489}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 143, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 143, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 143, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 143, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 143, "completed_docs": 144, "target_docs": 200, "estimated_remaining_seconds": 508.2008102107793}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 144, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 144, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 144, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 144, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 144, "completed_docs": 145, "target_docs": 200, "estimated_remaining_seconds": 499.6314294298404}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 145, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 145, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 145, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 145, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 145, "completed_docs": 146, "target_docs": 200, "estimated_remaining_seconds": 490.03616195753824}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 146, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 146, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 146, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 146, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 146, "completed_docs": 147, "target_docs": 200, "estimated_remaining_seconds": 479.9003075062468}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 147, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 147, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 147, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 147, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 147, "completed_docs": 148, "target_docs": 200, "estimated_remaining_seconds": 471.2029451347284}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 148, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 148, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 148, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 148, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 148, "completed_docs": 149, "target_docs": 200, "estimated_remaining_seconds": 461.5037144385778}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 149, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 149, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 149, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 149, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 149, "completed_docs": 150, "target_docs": 200, "estimated_remaining_seconds": 451.8652007256945}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 150, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 150, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 150, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 150, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 150, "completed_docs": 151, "target_docs": 200, "estimated_remaining_seconds": 442.20796552611307}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 151, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 151, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 151, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 151, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 151, "completed_docs": 152, "target_docs": 200, "estimated_remaining_seconds": 433.05344634424705}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 152, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 152, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 152, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 152, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 152, "completed_docs": 153, "target_docs": 200, "estimated_remaining_seconds": 424.25235478981745}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 153, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 153, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 153, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 153, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 153, "completed_docs": 154, "target_docs": 200, "estimated_remaining_seconds": 415.2881089233636}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 154, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 154, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 154, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 154, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 154, "completed_docs": 155, "target_docs": 200, "estimated_remaining_seconds": 406.2403696011151}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 155, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 155, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 155, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 155, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 155, "completed_docs": 156, "target_docs": 200, "estimated_remaining_seconds": 396.8544063436297}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 156, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 156, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 156, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 156, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 156, "completed_docs": 157, "target_docs": 200, "estimated_remaining_seconds": 387.29558301218754}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 157, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 157, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 157, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 157, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 157, "completed_docs": 158, "target_docs": 200, "estimated_remaining_seconds": 378.9369869323188}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 158, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 158, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 158, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 158, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 158, "completed_docs": 159, "target_docs": 200, "estimated_remaining_seconds": 369.47824972296286}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 159, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 159, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 159, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 159, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 159, "completed_docs": 160, "target_docs": 200, "estimated_remaining_seconds": 360.0341439396143}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 160, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 160, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 160, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 160, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 160, "completed_docs": 161, "target_docs": 200, "estimated_remaining_seconds": 350.4635180171972}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 161, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 161, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 161, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 161, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 161, "completed_docs": 162, "target_docs": 200, "estimated_remaining_seconds": 341.40060672628476}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 162, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 162, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 162, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 162, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 162, "completed_docs": 163, "target_docs": 200, "estimated_remaining_seconds": 332.7702692279055}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 163, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 163, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 163, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 163, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 163, "completed_docs": 164, "target_docs": 200, "estimated_remaining_seconds": 324.56545210220827}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 164, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 164, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 164, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 164, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 164, "completed_docs": 165, "target_docs": 200, "estimated_remaining_seconds": 315.52785912325436}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 165, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 165, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 165, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 165, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 165, "completed_docs": 166, "target_docs": 200, "estimated_remaining_seconds": 306.64598472129154}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 166, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 166, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 166, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 166, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 166, "completed_docs": 167, "target_docs": 200, "estimated_remaining_seconds": 297.8012088831447}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 167, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 167, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 167, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 167, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 167, "completed_docs": 168, "target_docs": 200, "estimated_remaining_seconds": 288.9879269805692}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 168, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 168, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 168, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 168, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 168, "completed_docs": 169, "target_docs": 200, "estimated_remaining_seconds": 280.45516736937697}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 169, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 169, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 169, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 169, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 169, "completed_docs": 170, "target_docs": 200, "estimated_remaining_seconds": 271.3582376329338}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 170, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 170, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 170, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 170, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 170, "completed_docs": 171, "target_docs": 200, "estimated_remaining_seconds": 261.98927481563993}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 171, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 171, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 171, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 171, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 171, "completed_docs": 172, "target_docs": 200, "estimated_remaining_seconds": 253.0108687836937}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 172, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 172, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 172, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 172, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 172, "completed_docs": 173, "target_docs": 200, "estimated_remaining_seconds": 243.64756069119179}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 173, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 173, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 173, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 173, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 173, "completed_docs": 174, "target_docs": 200, "estimated_remaining_seconds": 234.2638725337369}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 174, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 174, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 174, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 174, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 174, "completed_docs": 175, "target_docs": 200, "estimated_remaining_seconds": 225.37564306386878}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 175, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 175, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 175, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 175, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 175, "completed_docs": 176, "target_docs": 200, "estimated_remaining_seconds": 216.37554585798222}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 176, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 176, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 176, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 176, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 176, "completed_docs": 177, "target_docs": 200, "estimated_remaining_seconds": 207.24774774717494}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 177, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 177, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 177, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 177, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 177, "completed_docs": 178, "target_docs": 200, "estimated_remaining_seconds": 198.72288942290993}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 178, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 178, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 178, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 178, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 178, "completed_docs": 179, "target_docs": 200, "estimated_remaining_seconds": 189.80765486596016}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 179, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 179, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 179, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 179, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 179, "completed_docs": 180, "target_docs": 200, "estimated_remaining_seconds": 180.96452966125474}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 180, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 180, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 180, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 180, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 180, "completed_docs": 181, "target_docs": 200, "estimated_remaining_seconds": 171.9934011333267}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 181, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 181, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 181, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 181, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 181, "completed_docs": 182, "target_docs": 200, "estimated_remaining_seconds": 163.0708985487511}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 182, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 182, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 182, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 182, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 182, "completed_docs": 183, "target_docs": 200, "estimated_remaining_seconds": 153.8604220470485}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 183, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 183, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 183, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 183, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 183, "completed_docs": 184, "target_docs": 200, "estimated_remaining_seconds": 144.6563800236453}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 184, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 184, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 184, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 184, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 184, "completed_docs": 185, "target_docs": 200, "estimated_remaining_seconds": 135.44123634273137}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 185, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 185, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 185, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 185, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 185, "completed_docs": 186, "target_docs": 200, "estimated_remaining_seconds": 126.42167649842719}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 186, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 186, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 186, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 186, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 186, "completed_docs": 187, "target_docs": 200, "estimated_remaining_seconds": 117.54939281231262}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 187, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 187, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 187, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "condition_completed", "doc_id": 187, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 5}
+{"stage": "sample_committed", "doc_id": 187, "completed_docs": 188, "target_docs": 200, "estimated_remaining_seconds": 108.38457699183454}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 188, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 188, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 188, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 188, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 188, "completed_docs": 189, "target_docs": 200, "estimated_remaining_seconds": 99.22980261808902}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 189, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 189, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 189, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 189, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 189, "completed_docs": 190, "target_docs": 200, "estimated_remaining_seconds": 90.67188640213325}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 190, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 190, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 190, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 190, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 190, "completed_docs": 191, "target_docs": 200, "estimated_remaining_seconds": 81.521737881902}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 191, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 191, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 191, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 191, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 191, "completed_docs": 192, "target_docs": 200, "estimated_remaining_seconds": 72.39183954863499}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 192, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 192, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 192, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 192, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 192, "completed_docs": 193, "target_docs": 200, "estimated_remaining_seconds": 63.36418114722239}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 193, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 193, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 193, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 193, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 193, "completed_docs": 194, "target_docs": 200, "estimated_remaining_seconds": 54.28114930586409}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 194, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 194, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 194, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 194, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 194, "completed_docs": 195, "target_docs": 200, "estimated_remaining_seconds": 45.18557144711033}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 195, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 195, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 195, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 195, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 195, "completed_docs": 196, "target_docs": 200, "estimated_remaining_seconds": 36.201606842480146}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 196, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 196, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 196, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 196, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 196, "completed_docs": 197, "target_docs": 200, "estimated_remaining_seconds": 27.158931448337086}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 197, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 197, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 197, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "condition_completed", "doc_id": 197, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 3}
+{"stage": "sample_committed", "doc_id": 197, "completed_docs": 198, "target_docs": 200, "estimated_remaining_seconds": 18.107692626690625}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 198, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 198, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 198, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "condition_completed", "doc_id": 198, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 2}
+{"stage": "sample_committed", "doc_id": 198, "completed_docs": 199, "target_docs": 200, "estimated_remaining_seconds": 9.043610426049735}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: return_tensors, fps.
+{"stage": "condition_completed", "doc_id": 199, "condition": "similarity", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 199, "condition": "random_global_seed0", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 199, "condition": "random_global_seed1", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "condition_completed", "doc_id": 199, "condition": "random_global_seed2", "actual_merge_calls": 34, "generated_tokens": 4}
+{"stage": "sample_committed", "doc_id": 199, "completed_docs": 200, "target_docs": 200, "estimated_remaining_seconds": 0.0}

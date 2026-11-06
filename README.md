@@ -1,6 +1,6 @@
 # KVRepack
 
-当前运行：[NExTQA前200条 Random-head 消融](docs/RANDOM_HEAD_NEXTQA_200.md)。用户已将本轮“推全”明确为前200条，Qwen2.5-VL-7B + SnapKV-KVRepack、原策略及3个Random种子，共800次生成；目前运行中，不扩大至9178条或VATEX。
+已完成：[NExTQA前200条 Random-head 消融结果](docs/RANDOM_HEAD_NEXTQA_200_RESULTS_20261104.md) · [协议与复现命令](docs/RANDOM_HEAD_NEXTQA_200.md)。2026-11-04完成Qwen2.5-VL-7B + SnapKV-KVRepack四条件800次生成，11-06复核；原策略/Random均值WUPS为32.917681/32.811042，差值区间跨0，未显示稳定优势。仅前200条，本轮未运行VATEX。
 
 项目交接摘要与后续工作入口：[docs/HANDOFF.md](docs/HANDOFF.md)。
 
