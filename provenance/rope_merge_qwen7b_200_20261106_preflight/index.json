@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-06T05:02:46.872071+00:00",
+  "stage": "preflight",
+  "scope": "Four one-input smoke cases/eight paired generations; not formal 200-input effectiveness results",
+  "formal_completion_asserted": false,
+  "original_source_artifacts": {
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/run_contract.json": {
+      "sha256": "7c2d7b2d8881c5a0da56de8dc3908c2cefd4c059aafde7b0b02d54e0542f3323",
+      "bytes": 4666,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/run_contract.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/run_config.json": {
+      "sha256": "2384ab8e91b44e0839c50665313e7bd67aa6b2232ac7858b617bd8ffc6292934",
+      "bytes": 4996,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/run_config.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/run_state.json": {
+      "sha256": "32296022ed7d12a27a1df278de66ca1b2464c2cb0d54fd267912805f38b05ccc",
+      "bytes": 643,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/run_state.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/intervention.json": {
+      "sha256": "aaeab56cded736bc43f620895eade3d6f192c9d8b83d11f593e329699b6c3dcd",
+      "bytes": 2605,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/intervention.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/report/RESULTS.md": {
+      "sha256": "966c61f8b3baf047747d69a485fd685dd361581131cd10515d2911635f71cec6",
+      "bytes": 1004,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/report/RESULTS.md",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/report/generation_summary.csv": {
+      "sha256": "9be02c89f00073e1b6abc1dbe4b2907b63ab49318c0542d42de956e0049d5b39",
+      "bytes": 188,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/report/generation_summary.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/report/paired_WUPS.csv": {
+      "sha256": "e76dc0e0bb53a4ba31252debcff032e4f7c0140dc369acff0ca808d910a5ea7b",
+      "bytes": 64,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/report/paired_WUPS.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/report/summary.json": {
+      "sha256": "46e3874add867d4209bc6d8a32e8dbbbb6692d8fdaf5201e672114a549581ba2",
+      "bytes": 15891,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/report/summary.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.csv": {
+      "sha256": "573f84753dccde78841664a08240c82a078cc9f4dd0ddc2d19a9201c87fea8a7",
+      "bytes": 88,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.pdf": {
+      "sha256": "a4f1a7886b66c1dcd8610fdedf52ca3a15437ba477fc7525a66e7520374468c7",
+      "bytes": 16974,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.pdf",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.png": {
+      "sha256": "7ee2b979495749d5988e9c12889175d56d38ddfb06fbb65b871930608f0b702f",
+      "bytes": 83330,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.png",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.svg": {
+      "sha256": "8e311248033eb2329bbfe41df822e58d873cf34782ec4a9046c2b4bb79ecfff7",
+      "bytes": 37993,
+      "public_path": "smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.svg",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/run_contract.json": {
+      "sha256": "12343100be2cd0ec89f9613599c8c68b07dec1f838b91d431439227aa09bf9c4",
+      "bytes": 4596,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/run_contract.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/run_config.json": {
+      "sha256": "941875ec43e20198acb3a982b74048035123068072e04566e09e094307a849e7",
+      "bytes": 4991,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/run_config.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/run_state.json": {
+      "sha256": "ab9cfcd7f7fbe66bd549cd4425831db9ed15a59704b5cebd1325f546c8598288",
+      "bytes": 639,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/run_state.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/intervention.json": {
+      "sha256": "aaeab56cded736bc43f620895eade3d6f192c9d8b83d11f593e329699b6c3dcd",
+      "bytes": 2605,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/intervention.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/report/RESULTS.md": {
+      "sha256": "4a85575c0fcc10f7bd583e1383f3589d807340c98ca78b6ce5df1391b69ccad0",
+      "bytes": 1132,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/report/RESULTS.md",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/report/generation_summary.csv": {
+      "sha256": "8553eee33f19e907c999a06084444253e29c360e947b749b392d1dc4668b961e",
+      "bytes": 194,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/report/generation_summary.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/report/summary.json": {
+      "sha256": "95d5d5727c26633cffb7b1cc2da96a3188e417e31f602bdd838eb0920a3d17d6",
+      "bytes": 17498,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/report/summary.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/report/task_scores.csv": {
+      "sha256": "e943edb6aad029cfdc21fd43022e673d3a7b2bd84ad6ce2d8c16a1533f5f5246",
+      "bytes": 242,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/report/task_scores.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/report/task_scores.pdf": {
+      "sha256": "6edc920be27b5dfd566cb1dc665ef268213f469decbdf6ae51cf388a48d6c305",
+      "bytes": 20858,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/report/task_scores.pdf",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/report/task_scores.png": {
+      "sha256": "0227722d8026a1676baaa9023d9342ad5c819e93c4f80deb331aca68a1d0935a",
+      "bytes": 140891,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/report/task_scores.png",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/report/task_scores.svg": {
+      "sha256": "4de1d1566bbb1c34fde0b3d45bed366230f2f5f42ff515818e94706efbf78a18",
+      "bytes": 63916,
+      "public_path": "smoke/snapkv_kvrepack/vatex_test/report/task_scores.svg",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/run_contract.json": {
+      "sha256": "27f459cb5dcad6a3f88f9993fe40e23c1e158602ef6a7448abf50a021be2c5d9",
+      "bytes": 5291,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/run_contract.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/run_config.json": {
+      "sha256": "af6425bd370f6b276440f7feb5ec1ac988c43f23178a7594f024166ff5c09908",
+      "bytes": 5409,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/run_config.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/run_state.json": {
+      "sha256": "a95c35b37e0485c9a06c1ae5e08f7b717446ad609e460f0da3e56f12dd5d97d5",
+      "bytes": 645,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/run_state.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/intervention.json": {
+      "sha256": "78e28f246b77a37ef4008624b6c2f03ca6934e7d54ed6fe9adc3ee813ab3260d",
+      "bytes": 248,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/intervention.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/report/RESULTS.md": {
+      "sha256": "755244ea4f59064aa21fee2e3c5288db914de1b6ea0ac38c32b616996410cc4b",
+      "bytes": 1006,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/report/RESULTS.md",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/report/generation_summary.csv": {
+      "sha256": "9be02c89f00073e1b6abc1dbe4b2907b63ab49318c0542d42de956e0049d5b39",
+      "bytes": 188,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/report/generation_summary.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/report/paired_WUPS.csv": {
+      "sha256": "e76dc0e0bb53a4ba31252debcff032e4f7c0140dc369acff0ca808d910a5ea7b",
+      "bytes": 64,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/report/paired_WUPS.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/report/summary.json": {
+      "sha256": "16cf32d99829bdb6aa8887d8f8c7e466fd194d5fbb9e2dbe73c5916e10143300",
+      "bytes": 17015,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/report/summary.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.csv": {
+      "sha256": "573f84753dccde78841664a08240c82a078cc9f4dd0ddc2d19a9201c87fea8a7",
+      "bytes": 88,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.pdf": {
+      "sha256": "496d0aab76ef3b2d3e4f25c189b497e8ac53f30f5dc684a621991408ee3aeeb4",
+      "bytes": 17225,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.pdf",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.png": {
+      "sha256": "c0c7a791d2e40e5a647da8f517edfcc1edd9ba5b5630dc10d0823b16139994c2",
+      "bytes": 83178,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.png",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.svg": {
+      "sha256": "4dc36a6394882e4eaccd7285fdb9ff9a937b92804ef398a2e841f80e2af73787",
+      "bytes": 38443,
+      "public_path": "smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.svg",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/run_contract.json": {
+      "sha256": "24cfee124f9b60f02298e4321ca51a07b1eca3e323b63c5fc5a0d85b459a61f7",
+      "bytes": 5220,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/run_contract.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/run_config.json": {
+      "sha256": "d24c9dc80d813568775535e144dd0313105d20688fab4f109fdc1808b7b95bb6",
+      "bytes": 5403,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/run_config.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/run_state.json": {
+      "sha256": "eb057380c500b278257f4a513e0eb2f0552fe57b02fcebd86887671bc82431ed",
+      "bytes": 640,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/run_state.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/intervention.json": {
+      "sha256": "78e28f246b77a37ef4008624b6c2f03ca6934e7d54ed6fe9adc3ee813ab3260d",
+      "bytes": 248,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/intervention.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/report/RESULTS.md": {
+      "sha256": "60e9d44c2eba45f49dc61bbf1ae392843a63fd790c507cd7e1249ff27207d0f1",
+      "bytes": 1134,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/report/RESULTS.md",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/report/generation_summary.csv": {
+      "sha256": "fe312c59875da9588e172258a79e9f8d1a64ab4512038594618641538e312d86",
+      "bytes": 194,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/report/generation_summary.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/report/summary.json": {
+      "sha256": "9521759f63a2fa266bc35c0f5ae4f08b20f6269a378171aa44dfcf9252eb8fb4",
+      "bytes": 18628,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/report/summary.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/report/task_scores.csv": {
+      "sha256": "e19a40956c8532d1d672660f2de3cb67f5c19c10542b3afdf059816fb6250396",
+      "bytes": 244,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/report/task_scores.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/report/task_scores.pdf": {
+      "sha256": "d147653bfb54ea64e049ccc12e32078f514249ccb5f64e66c42b513e2456d4c6",
+      "bytes": 21581,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/report/task_scores.pdf",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/report/task_scores.png": {
+      "sha256": "14f07e1e770e03ba84c9636821608f6cec459d3cfc0c0ab1a31b59cd60bd572a",
+      "bytes": 147812,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/report/task_scores.png",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/report/task_scores.svg": {
+      "sha256": "052614578f0041b45447c885d6340e759fd05b8b72af427618171f1f01a83bf6",
+      "bytes": 66724,
+      "public_path": "smoke/hybridkv_kvrepack/vatex_test/report/task_scores.svg",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/scoring_validation.json": {
+      "sha256": "ca8927b9cd6c6a93a8c188510cc4b8f96e68e498e3bfe6248662f6fb9eb9e768",
+      "bytes": 9757,
+      "public_path": "smoke/scoring_validation.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/comparison.csv": {
+      "sha256": "8a51e2d9e314063873947f01496d49ce2ac33cf946a7866b5a181b84c399cb66",
+      "bytes": 790,
+      "public_path": "smoke/comparison.csv",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/comparison.json": {
+      "sha256": "c687f2d1690694c03baaf3c51734007aa0fca836ffd878a9b77f7cb1f198b205",
+      "bytes": 3402,
+      "public_path": "smoke/comparison.json",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/RESULTS.md": {
+      "sha256": "aea72df0447afb2a18a7e446e44cdfaa3d6f9bf66505d5f9bc03dd44b6747194",
+      "bytes": 1162,
+      "public_path": "smoke/RESULTS.md",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/aggregation_state.json": {
+      "sha256": "8823620d1ff76bb114c856cb12b8a5a75cdba7521f0b7bf2cec769a0b6bd9744",
+      "bytes": 149,
+      "public_path": "smoke/aggregation_state.json",
+      "byte_identical": true
+    },
+    "/tmp/kvrepack_rope_merge_cpu_suite_20261106.log": {
+      "sha256": "cb2f8308804324d6be5b4a075de042abc20b516cb65496449f410725010ac06f",
+      "bytes": 585,
+      "public_path": "cpu_suite.log",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106_kernel_build.log": {
+      "sha256": "9cc0d031b5eeb7b8c1fd5382dc317ad737cc263fb37dc3b8c177f8f097adbc87",
+      "bytes": 26125,
+      "public_path": "kernel_build.log",
+      "byte_identical": true
+    },
+    "outputs/ablations/rope_merge_qwen7b_200_20261106/run_contract.json": {
+      "sha256": "6051d36b909218b048116497bd97e75b1af0ec8f059790202b28a2dc5a6b30d1",
+      "bytes": 1653,
+      "public_path": "formal_matrix_contract.json",
+      "byte_identical": true
+    }
+  },
+  "sample_transformation_manifest": "sample_manifest.json",
+  "files_sha256": {
+    "README.md": "e08f9d0789c86f2c03ffd15fd8d5a824d91700f8a6df7c78cb9cea0917f836a4",
+    "cpu_suite.log": "cb2f8308804324d6be5b4a075de042abc20b516cb65496449f410725010ac06f",
+    "formal_matrix_contract.json": "6051d36b909218b048116497bd97e75b1af0ec8f059790202b28a2dc5a6b30d1",
+    "kernel_build.log": "9cc0d031b5eeb7b8c1fd5382dc317ad737cc263fb37dc3b8c177f8f097adbc87",
+    "kernel_metadata.json": "2ab1519f2092bf2e796a588a2bbbaaad3bfa56f178efc3bc4e1d73b2f92ea097",
+    "packaging_validation.json": "3b292b5581b56fced80e1d640bb526d3f7eb5be0e63774ac21e4649a0eae34ee",
+    "sample_manifest.json": "b3505b7f10ea9b60adc4208475301c0cb67d8b561f124fd4bb065baf63b2e6d3",
+    "smoke/RESULTS.md": "aea72df0447afb2a18a7e446e44cdfaa3d6f9bf66505d5f9bc03dd44b6747194",
+    "smoke/aggregation_state.json": "8823620d1ff76bb114c856cb12b8a5a75cdba7521f0b7bf2cec769a0b6bd9744",
+    "smoke/comparison.csv": "8a51e2d9e314063873947f01496d49ce2ac33cf946a7866b5a181b84c399cb66",
+    "smoke/comparison.json": "c687f2d1690694c03baaf3c51734007aa0fca836ffd878a9b77f7cb1f198b205",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/intervention.json": "78e28f246b77a37ef4008624b6c2f03ca6934e7d54ed6fe9adc3ee813ab3260d",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/report/RESULTS.md": "755244ea4f59064aa21fee2e3c5288db914de1b6ea0ac38c32b616996410cc4b",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/report/generation_summary.csv": "9be02c89f00073e1b6abc1dbe4b2907b63ab49318c0542d42de956e0049d5b39",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/report/paired_WUPS.csv": "e76dc0e0bb53a4ba31252debcff032e4f7c0140dc369acff0ca808d910a5ea7b",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/report/summary.json": "16cf32d99829bdb6aa8887d8f8c7e466fd194d5fbb9e2dbe73c5916e10143300",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.csv": "573f84753dccde78841664a08240c82a078cc9f4dd0ddc2d19a9201c87fea8a7",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.pdf": "496d0aab76ef3b2d3e4f25c189b497e8ac53f30f5dc684a621991408ee3aeeb4",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.png": "c0c7a791d2e40e5a647da8f517edfcc1edd9ba5b5630dc10d0823b16139994c2",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/report/task_scores.svg": "4dc36a6394882e4eaccd7285fdb9ff9a937b92804ef398a2e841f80e2af73787",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/run_config.json": "af6425bd370f6b276440f7feb5ec1ac988c43f23178a7594f024166ff5c09908",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/run_contract.json": "27f459cb5dcad6a3f88f9993fe40e23c1e158602ef6a7448abf50a021be2c5d9",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/run_state.json": "a95c35b37e0485c9a06c1ae5e08f7b717446ad609e460f0da3e56f12dd5d97d5",
+    "smoke/hybridkv_kvrepack/nextqa_oe_test/samples/000000.json": "92d4044a2d27e6ef18b0f3349c285db08957474489fbd3b49eaa9f206cfbec32",
+    "smoke/hybridkv_kvrepack/vatex_test/intervention.json": "78e28f246b77a37ef4008624b6c2f03ca6934e7d54ed6fe9adc3ee813ab3260d",
+    "smoke/hybridkv_kvrepack/vatex_test/report/RESULTS.md": "60e9d44c2eba45f49dc61bbf1ae392843a63fd790c507cd7e1249ff27207d0f1",
+    "smoke/hybridkv_kvrepack/vatex_test/report/generation_summary.csv": "fe312c59875da9588e172258a79e9f8d1a64ab4512038594618641538e312d86",
+    "smoke/hybridkv_kvrepack/vatex_test/report/summary.json": "9521759f63a2fa266bc35c0f5ae4f08b20f6269a378171aa44dfcf9252eb8fb4",
+    "smoke/hybridkv_kvrepack/vatex_test/report/task_scores.csv": "e19a40956c8532d1d672660f2de3cb67f5c19c10542b3afdf059816fb6250396",
+    "smoke/hybridkv_kvrepack/vatex_test/report/task_scores.pdf": "d147653bfb54ea64e049ccc12e32078f514249ccb5f64e66c42b513e2456d4c6",
+    "smoke/hybridkv_kvrepack/vatex_test/report/task_scores.png": "14f07e1e770e03ba84c9636821608f6cec459d3cfc0c0ab1a31b59cd60bd572a",
+    "smoke/hybridkv_kvrepack/vatex_test/report/task_scores.svg": "052614578f0041b45447c885d6340e759fd05b8b72af427618171f1f01a83bf6",
+    "smoke/hybridkv_kvrepack/vatex_test/run_config.json": "d24c9dc80d813568775535e144dd0313105d20688fab4f109fdc1808b7b95bb6",
+    "smoke/hybridkv_kvrepack/vatex_test/run_contract.json": "24cfee124f9b60f02298e4321ca51a07b1eca3e323b63c5fc5a0d85b459a61f7",
+    "smoke/hybridkv_kvrepack/vatex_test/run_state.json": "eb057380c500b278257f4a513e0eb2f0552fe57b02fcebd86887671bc82431ed",
+    "smoke/hybridkv_kvrepack/vatex_test/samples/000000.json": "0fbe73e440f0fcdd85bc7d28c024be836b527c84a34e2fa2f4b41aa0e5b9cc80",
+    "smoke/scoring_validation.json": "ca8927b9cd6c6a93a8c188510cc4b8f96e68e498e3bfe6248662f6fb9eb9e768",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/intervention.json": "aaeab56cded736bc43f620895eade3d6f192c9d8b83d11f593e329699b6c3dcd",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/report/RESULTS.md": "966c61f8b3baf047747d69a485fd685dd361581131cd10515d2911635f71cec6",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/report/generation_summary.csv": "9be02c89f00073e1b6abc1dbe4b2907b63ab49318c0542d42de956e0049d5b39",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/report/paired_WUPS.csv": "e76dc0e0bb53a4ba31252debcff032e4f7c0140dc369acff0ca808d910a5ea7b",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/report/summary.json": "46e3874add867d4209bc6d8a32e8dbbbb6692d8fdaf5201e672114a549581ba2",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.csv": "573f84753dccde78841664a08240c82a078cc9f4dd0ddc2d19a9201c87fea8a7",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.pdf": "a4f1a7886b66c1dcd8610fdedf52ca3a15437ba477fc7525a66e7520374468c7",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.png": "7ee2b979495749d5988e9c12889175d56d38ddfb06fbb65b871930608f0b702f",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/report/task_scores.svg": "8e311248033eb2329bbfe41df822e58d873cf34782ec4a9046c2b4bb79ecfff7",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/run_config.json": "2384ab8e91b44e0839c50665313e7bd67aa6b2232ac7858b617bd8ffc6292934",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/run_contract.json": "7c2d7b2d8881c5a0da56de8dc3908c2cefd4c059aafde7b0b02d54e0542f3323",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/run_state.json": "32296022ed7d12a27a1df278de66ca1b2464c2cb0d54fd267912805f38b05ccc",
+    "smoke/snapkv_kvrepack/nextqa_oe_test/samples/000000.json": "2f0b1f70ab28b3d953b8c42dc414b6394a1c2b9f01e5a03c8ca75a840a8e560f",
+    "smoke/snapkv_kvrepack/vatex_test/intervention.json": "aaeab56cded736bc43f620895eade3d6f192c9d8b83d11f593e329699b6c3dcd",
+    "smoke/snapkv_kvrepack/vatex_test/report/RESULTS.md": "4a85575c0fcc10f7bd583e1383f3589d807340c98ca78b6ce5df1391b69ccad0",
+    "smoke/snapkv_kvrepack/vatex_test/report/generation_summary.csv": "8553eee33f19e907c999a06084444253e29c360e947b749b392d1dc4668b961e",
+    "smoke/snapkv_kvrepack/vatex_test/report/summary.json": "95d5d5727c26633cffb7b1cc2da96a3188e417e31f602bdd838eb0920a3d17d6",
+    "smoke/snapkv_kvrepack/vatex_test/report/task_scores.csv": "e943edb6aad029cfdc21fd43022e673d3a7b2bd84ad6ce2d8c16a1533f5f5246",
+    "smoke/snapkv_kvrepack/vatex_test/report/task_scores.pdf": "6edc920be27b5dfd566cb1dc665ef268213f469decbdf6ae51cf388a48d6c305",
+    "smoke/snapkv_kvrepack/vatex_test/report/task_scores.png": "0227722d8026a1676baaa9023d9342ad5c819e93c4f80deb331aca68a1d0935a",
+    "smoke/snapkv_kvrepack/vatex_test/report/task_scores.svg": "4de1d1566bbb1c34fde0b3d45bed366230f2f5f42ff515818e94706efbf78a18",
+    "smoke/snapkv_kvrepack/vatex_test/run_config.json": "941875ec43e20198acb3a982b74048035123068072e04566e09e094307a849e7",
+    "smoke/snapkv_kvrepack/vatex_test/run_contract.json": "12343100be2cd0ec89f9613599c8c68b07dec1f838b91d431439227aa09bf9c4",
+    "smoke/snapkv_kvrepack/vatex_test/run_state.json": "ab9cfcd7f7fbe66bd549cd4425831db9ed15a59704b5cebd1325f546c8598288",
+    "smoke/snapkv_kvrepack/vatex_test/samples/000000.json": "6825ab3b6dea13a3f2ed13946a538abe26cd99b7d4b3e6d7e331930c0cdfca51"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "module_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/kvrepack_kernel.cpython-312-x86_64-linux-gnu.so",
+  "module_bytes": 2330928,
+  "module_sha256": "b57f2a5076de3ac67c984b6bc09e351ce7adcfdd86f477eb3bb424ad7092b01a",
+  "distribution": "kvrepack-kernels",
+  "distribution_version": "0.1.0",
+  "source": "SHA256 and size independently read from the compiled module; build/import diagnostics copied verbatim in kernel_build.log",
+  "binary_included": false,
+  "module_imported_by_this_packaging": false,
+  "kernel_functions_executed_by_this_packaging": 0
+}

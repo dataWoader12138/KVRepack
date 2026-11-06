@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "stage": "preflight",
+  "case_count": 4,
+  "input_count": 4,
+  "paired_generations": 8,
+  "cases": [
+    {
+      "method": "snapkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "sample_count": 1,
+      "generations": 2,
+      "smoke_state_complete": true,
+      "public_bundle_valid": true,
+      "report_structure_valid": true
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "sample_count": 1,
+      "generations": 2,
+      "smoke_state_complete": true,
+      "public_bundle_valid": true,
+      "report_structure_valid": true
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "sample_count": 1,
+      "generations": 2,
+      "smoke_state_complete": true,
+      "public_bundle_valid": true,
+      "report_structure_valid": true
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "vatex_test",
+      "sample_count": 1,
+      "generations": 2,
+      "smoke_state_complete": true,
+      "public_bundle_valid": true,
+      "report_structure_valid": true
+    }
+  ],
+  "smoke_reports_copied_byte_for_byte": true,
+  "sample_numerical_fields_unchanged": true,
+  "new_scoring_performed": false,
+  "new_gpu_or_model_execution": false,
+  "source_or_output_files_modified": false,
+  "cpu_suite": {
+    "tests": 214,
+    "passed": 213,
+    "skipped": 1,
+    "scope": "Previously executed repository suite; copied log only, not rerun during packaging"
+  },
+  "formal_limit_per_method_task": 200,
+  "formal_target_generations": 1600,
+  "formal_state_copied": false,
+  "formal_completion_asserted": false
+}

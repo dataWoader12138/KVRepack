@@ -1,0 +1,13 @@
+# RoPE merge-space experiment: preflight evidence
+
+This package records **four one-input smoke cases**, not the final 200-input results. The cases are Qwen2.5-VL-7B with SnapKV-KVRepack and HybridKV-KVRepack, each on NextQA and VATEX. Each case compares `raw_reapply` (raw K group mean followed by anchor RoPE) with `post_rope` (group mean of native post-RoPE K), so this package covers four inputs and eight generations.
+
+The separate formal matrix targets the original first200 inputs of each dataset and method, 1600 generations in total. That matrix was running when this preflight package was prepared. `formal_matrix_contract.json` freezes its configuration/source identity only; no dynamic formal run state or completion claim is included. Read the actual formal output state for current progress.
+
+`smoke/<method>/<task>/` preserves each smoke contract/config/state, intervention specification, one paired sample and original offline report (including CSV/JSON/PNG/PDF/SVG). Both sample arms and all numerical fields, generated token IDs, grouping audits and fingerprints are retained. Only `reference_metadata` fields `prompt`, `text_segments`, `video_path`, `arrow_path`, `text_scope`, and `alignment` are removed from the sample bundle and each row. `sample_manifest.json` records both original and public sample hashes and the exact transformation; no video/image payload, tensor cache, model weights or credentials are included. Original reports/configs are copied without rewriting their historical source paths or hashes.
+
+`smoke/scoring_validation.json` documents the already completed local scoring integration checks. All score CLIs succeeded and their tables/plots were checked; this packaging step does not repeat scoring or use a GPU. The NextQA single-source confidence interval is deliberately absent. VATEX CIDEr is zero for the single-reference-video smoke corpus under the original scorer and is not a meaningful quality estimate. **A one-input smoke cannot establish that either K aggregation space improves quality.**
+
+`cpu_suite.log` records the prior 214-test suite:213 passed and one pre-existing source-differential test skipped. `kernel_build.log` records the fresh local HybridKV kernel build and CPU symbol-import diagnostics; `kernel_metadata.json` independently fingerprints the2330928-byte compiled module. The `.so` binary is deliberately excluded; it must be built for each target environment.
+
+`packaging_validation.json` records structural validation of all four sanitized paired bundles without scoring/model execution. `index.json` lists original source artifact hashes and published file hashes.

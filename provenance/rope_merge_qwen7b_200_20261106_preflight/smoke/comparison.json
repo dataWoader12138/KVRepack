@@ -1,0 +1,116 @@
+{
+  "status": "complete",
+  "limit": 1,
+  "total_generations": 8,
+  "comparisons": [
+    {
+      "task": "nextqa_oe_test",
+      "method": "snapkv_kvrepack",
+      "metric": "WUPS",
+      "raw_reapply": 100.0,
+      "post_rope": 100.0,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    },
+    {
+      "task": "nextqa_oe_test",
+      "method": "hybridkv_kvrepack",
+      "metric": "WUPS",
+      "raw_reapply": 100.0,
+      "post_rope": 100.0,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_kvrepack",
+      "metric": "Bleu_4",
+      "raw_reapply": 0.5828233953266314,
+      "post_rope": 0.5828233953266314,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_kvrepack",
+      "metric": "METEOR",
+      "raw_reapply": 0.33766870986990977,
+      "post_rope": 0.33766870986990977,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_kvrepack",
+      "metric": "ROUGE_L",
+      "raw_reapply": 0.724622030237581,
+      "post_rope": 0.724622030237581,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    },
+    {
+      "task": "vatex_test",
+      "method": "snapkv_kvrepack",
+      "metric": "CIDEr",
+      "raw_reapply": 0.0,
+      "post_rope": 0.0,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybridkv_kvrepack",
+      "metric": "Bleu_4",
+      "raw_reapply": 0.3406227681539254,
+      "post_rope": 0.3406227681539254,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybridkv_kvrepack",
+      "metric": "METEOR",
+      "raw_reapply": 0.26056686336721213,
+      "post_rope": 0.26056686336721213,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybridkv_kvrepack",
+      "metric": "ROUGE_L",
+      "raw_reapply": 0.4739178690344062,
+      "post_rope": 0.4739178690344062,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    },
+    {
+      "task": "vatex_test",
+      "method": "hybridkv_kvrepack",
+      "metric": "CIDEr",
+      "raw_reapply": 0.0,
+      "post_rope": 0.0,
+      "post_minus_raw": 0.0,
+      "post_minus_raw_ci95": null,
+      "n_inputs": 1
+    }
+  ],
+  "source_reports_sha256": {
+    "snapkv_kvrepack/nextqa_oe_test/report/summary.json": "46e3874add867d4209bc6d8a32e8dbbbb6692d8fdaf5201e672114a549581ba2",
+    "hybridkv_kvrepack/nextqa_oe_test/report/summary.json": "16cf32d99829bdb6aa8887d8f8c7e466fd194d5fbb9e2dbe73c5916e10143300",
+    "snapkv_kvrepack/vatex_test/report/summary.json": "95d5d5727c26633cffb7b1cc2da96a3188e417e31f602bdd838eb0920a3d17d6",
+    "hybridkv_kvrepack/vatex_test/report/summary.json": "9521759f63a2fa266bc35c0f5ae4f08b20f6269a378171aa44dfcf9252eb8fb4"
+  },
+  "difference": "post_rope minus raw_reapply; positive favors post-RoPE aggregation",
+  "units": "NextQA WUPS: 0-100 points; VATEX: original raw corpus units",
+  "completed_utc": "2026-11-06T04:57:24.466804+00:00"
+}

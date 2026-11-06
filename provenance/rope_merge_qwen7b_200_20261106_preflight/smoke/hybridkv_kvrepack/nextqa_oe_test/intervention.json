@@ -1,0 +1,4 @@
+{
+  "original_function_source_sha256": "4632d3afcc653dfb04155b86cc8a987aeddd9112376c16a62782ba0c31a13259",
+  "transformation": "Original function; Hybrid post_rope temporarily selects its native rope K reduction branch only during this function"
+}

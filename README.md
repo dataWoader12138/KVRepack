@@ -1,5 +1,7 @@
 # KVRepack
 
+当前运行：[RoPE前后K合并消融](docs/ROPE_MERGE_ABLATION.md)。Qwen2.5-VL-7B，HybridKV-KVRepack/SnapKV-KVRepack在NExTQA、VATEX各前200条，对比原raw-reapply与直接post-RoPE K均值，共1,600次生成；保持选头、分组、V合并及预算一致，正式结果尚在运行。
+
 已完成：[NExTQA前200条 Random-head 消融结果](docs/RANDOM_HEAD_NEXTQA_200_RESULTS_20261104.md) · [协议与复现命令](docs/RANDOM_HEAD_NEXTQA_200.md)。2026-11-04完成Qwen2.5-VL-7B + SnapKV-KVRepack四条件800次生成，11-06复核；原策略/Random均值WUPS为32.917681/32.811042，差值区间跨0，未显示稳定优势。仅前200条，本轮未运行VATEX。
 
 项目交接摘要与后续工作入口：[docs/HANDOFF.md](docs/HANDOFF.md)。

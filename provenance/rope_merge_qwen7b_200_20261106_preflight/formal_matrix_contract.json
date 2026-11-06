@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "experiment": "rope_merge",
+  "limit": 200,
+  "target_generations": 1600,
+  "pretrained": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "hf_home": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+  "sources_sha256": {
+    "scripts/run_rope_merge_qwen7b.py": "e9e801ef75afaf19a8f0dfe1a5024d003f6efd9a6e3572feed6dd9a0145e7020",
+    "src/kvrepack/ablations/run_rope_merge.py": "3b6faa0490a5ac89beaca963211f10c5cf0b3a06aacf0b8934d35fc123c930b6",
+    "src/kvrepack/ablations/rope_merge.py": "62b5cca8d74043bf9945f00c5c9f0048d01d2d7e0a9aa4c9cedb86660a61e4be",
+    "src/kvrepack/ablations/rope_merge_report.py": "ad2f154367aa2479a564e923688d12259f36a0e7d7c981b796dfdabb4b1d79e4",
+    "src/kvrepack/qwen_model_snapkv_kvrepack.py": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+    "src/kvrepack/hybridkv_utils.py": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+    "src/kvrepack/modeling_qwen2_5_vl.py": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+    "src/kvrepack/baseline_utils.py": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+    "src/kvrepack/merge_score.py": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+    "src/kvrepack/configs/param_config.json": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+    "src/kvrepack/data/head_score/qwen2_5.json": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e"
+  }
+}

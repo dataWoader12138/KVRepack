@@ -1,0 +1,265 @@
+{
+  "status": "passed",
+  "validated_utc": "2026-11-06T04:54:22.818855+00:00",
+  "scope": "Four independent one-input CPU scoring integration checks; not a quality comparison or full unittest suite",
+  "cases": [
+    {
+      "method": "snapkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "status": "passed",
+      "limit": 1,
+      "n_generations": 2,
+      "comparisons": {
+        "WUPS": {
+          "raw_reapply": 100.0,
+          "post_rope": 100.0,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        }
+      },
+      "generation": {
+        "raw_reapply": {
+          "n_inputs": 1,
+          "eos_count": 1,
+          "reached_length_limit": 0,
+          "capped_without_eos": 0,
+          "generated_tokens_min": 2,
+          "generated_tokens_max": 2,
+          "generated_tokens_mean": 2.0
+        },
+        "post_rope": {
+          "n_inputs": 1,
+          "eos_count": 1,
+          "reached_length_limit": 0,
+          "capped_without_eos": 0,
+          "generated_tokens_min": 2,
+          "generated_tokens_max": 2,
+          "generated_tokens_mean": 2.0
+        }
+      },
+      "scoring_seconds": 7.700683303177357,
+      "png_dimensions": [
+        1635,
+        1045
+      ],
+      "report": "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/nextqa_oe_test/report",
+      "report_file_sha256": {
+        "RESULTS.md": "966c61f8b3baf047747d69a485fd685dd361581131cd10515d2911635f71cec6",
+        "generation_summary.csv": "9be02c89f00073e1b6abc1dbe4b2907b63ab49318c0542d42de956e0049d5b39",
+        "paired_WUPS.csv": "e76dc0e0bb53a4ba31252debcff032e4f7c0140dc369acff0ca808d910a5ea7b",
+        "summary.json": "46e3874add867d4209bc6d8a32e8dbbbb6692d8fdaf5201e672114a549581ba2",
+        "task_scores.csv": "573f84753dccde78841664a08240c82a078cc9f4dd0ddc2d19a9201c87fea8a7",
+        "task_scores.pdf": "a4f1a7886b66c1dcd8610fdedf52ca3a15437ba477fc7525a66e7520374468c7",
+        "task_scores.png": "7ee2b979495749d5988e9c12889175d56d38ddfb06fbb65b871930608f0b702f",
+        "task_scores.svg": "8e311248033eb2329bbfe41df822e58d873cf34782ec4a9046c2b4bb79ecfff7"
+      }
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "status": "passed",
+      "limit": 1,
+      "n_generations": 2,
+      "comparisons": {
+        "Bleu_4": {
+          "raw_reapply": 0.5828233953266314,
+          "post_rope": 0.5828233953266314,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        },
+        "METEOR": {
+          "raw_reapply": 0.33766870986990977,
+          "post_rope": 0.33766870986990977,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        },
+        "ROUGE_L": {
+          "raw_reapply": 0.724622030237581,
+          "post_rope": 0.724622030237581,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        },
+        "CIDEr": {
+          "raw_reapply": 0.0,
+          "post_rope": 0.0,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        }
+      },
+      "generation": {
+        "raw_reapply": {
+          "n_inputs": 1,
+          "eos_count": 1,
+          "reached_length_limit": 0,
+          "capped_without_eos": 0,
+          "generated_tokens_min": 16,
+          "generated_tokens_max": 16,
+          "generated_tokens_mean": 16.0
+        },
+        "post_rope": {
+          "n_inputs": 1,
+          "eos_count": 1,
+          "reached_length_limit": 0,
+          "capped_without_eos": 0,
+          "generated_tokens_min": 16,
+          "generated_tokens_max": 16,
+          "generated_tokens_mean": 16.0
+        }
+      },
+      "scoring_seconds": 14.08018271997571,
+      "png_dimensions": [
+        3110,
+        1045
+      ],
+      "report": "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/snapkv_kvrepack/vatex_test/report",
+      "report_file_sha256": {
+        "RESULTS.md": "4a85575c0fcc10f7bd583e1383f3589d807340c98ca78b6ce5df1391b69ccad0",
+        "generation_summary.csv": "8553eee33f19e907c999a06084444253e29c360e947b749b392d1dc4668b961e",
+        "summary.json": "95d5d5727c26633cffb7b1cc2da96a3188e417e31f602bdd838eb0920a3d17d6",
+        "task_scores.csv": "e943edb6aad029cfdc21fd43022e673d3a7b2bd84ad6ce2d8c16a1533f5f5246",
+        "task_scores.pdf": "6edc920be27b5dfd566cb1dc665ef268213f469decbdf6ae51cf388a48d6c305",
+        "task_scores.png": "0227722d8026a1676baaa9023d9342ad5c819e93c4f80deb331aca68a1d0935a",
+        "task_scores.svg": "4de1d1566bbb1c34fde0b3d45bed366230f2f5f42ff515818e94706efbf78a18"
+      }
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "status": "passed",
+      "limit": 1,
+      "n_generations": 2,
+      "comparisons": {
+        "WUPS": {
+          "raw_reapply": 100.0,
+          "post_rope": 100.0,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        }
+      },
+      "generation": {
+        "raw_reapply": {
+          "n_inputs": 1,
+          "eos_count": 1,
+          "reached_length_limit": 0,
+          "capped_without_eos": 0,
+          "generated_tokens_min": 2,
+          "generated_tokens_max": 2,
+          "generated_tokens_mean": 2.0
+        },
+        "post_rope": {
+          "n_inputs": 1,
+          "eos_count": 1,
+          "reached_length_limit": 0,
+          "capped_without_eos": 0,
+          "generated_tokens_min": 2,
+          "generated_tokens_max": 2,
+          "generated_tokens_mean": 2.0
+        }
+      },
+      "scoring_seconds": 8.21252404898405,
+      "png_dimensions": [
+        1635,
+        1045
+      ],
+      "report": "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/nextqa_oe_test/report",
+      "report_file_sha256": {
+        "RESULTS.md": "755244ea4f59064aa21fee2e3c5288db914de1b6ea0ac38c32b616996410cc4b",
+        "generation_summary.csv": "9be02c89f00073e1b6abc1dbe4b2907b63ab49318c0542d42de956e0049d5b39",
+        "paired_WUPS.csv": "e76dc0e0bb53a4ba31252debcff032e4f7c0140dc369acff0ca808d910a5ea7b",
+        "summary.json": "16cf32d99829bdb6aa8887d8f8c7e466fd194d5fbb9e2dbe73c5916e10143300",
+        "task_scores.csv": "573f84753dccde78841664a08240c82a078cc9f4dd0ddc2d19a9201c87fea8a7",
+        "task_scores.pdf": "496d0aab76ef3b2d3e4f25c189b497e8ac53f30f5dc684a621991408ee3aeeb4",
+        "task_scores.png": "c0c7a791d2e40e5a647da8f517edfcc1edd9ba5b5630dc10d0823b16139994c2",
+        "task_scores.svg": "4dc36a6394882e4eaccd7285fdb9ff9a937b92804ef398a2e841f80e2af73787"
+      }
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "vatex_test",
+      "status": "passed",
+      "limit": 1,
+      "n_generations": 2,
+      "comparisons": {
+        "Bleu_4": {
+          "raw_reapply": 0.3406227681539254,
+          "post_rope": 0.3406227681539254,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        },
+        "METEOR": {
+          "raw_reapply": 0.26056686336721213,
+          "post_rope": 0.26056686336721213,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        },
+        "ROUGE_L": {
+          "raw_reapply": 0.4739178690344062,
+          "post_rope": 0.4739178690344062,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        },
+        "CIDEr": {
+          "raw_reapply": 0.0,
+          "post_rope": 0.0,
+          "raw_minus_post": 0.0,
+          "ci95": null
+        }
+      },
+      "generation": {
+        "raw_reapply": {
+          "n_inputs": 1,
+          "eos_count": 1,
+          "reached_length_limit": 0,
+          "capped_without_eos": 0,
+          "generated_tokens_min": 15,
+          "generated_tokens_max": 15,
+          "generated_tokens_mean": 15.0
+        },
+        "post_rope": {
+          "n_inputs": 1,
+          "eos_count": 1,
+          "reached_length_limit": 0,
+          "capped_without_eos": 0,
+          "generated_tokens_min": 15,
+          "generated_tokens_max": 15,
+          "generated_tokens_mean": 15.0
+        }
+      },
+      "scoring_seconds": 14.40475370362401,
+      "png_dimensions": [
+        3110,
+        1045
+      ],
+      "report": "outputs/ablations/rope_merge_qwen7b_200_20261106_smoke/hybridkv_kvrepack/vatex_test/report",
+      "report_file_sha256": {
+        "RESULTS.md": "60e9d44c2eba45f49dc61bbf1ae392843a63fd790c507cd7e1249ff27207d0f1",
+        "generation_summary.csv": "fe312c59875da9588e172258a79e9f8d1a64ab4512038594618641538e312d86",
+        "summary.json": "9521759f63a2fa266bc35c0f5ae4f08b20f6269a378171aa44dfcf9252eb8fb4",
+        "task_scores.csv": "e19a40956c8532d1d672660f2de3cb67f5c19c10542b3afdf059816fb6250396",
+        "task_scores.pdf": "d147653bfb54ea64e049ccc12e32078f514249ccb5f64e66c42b513e2456d4c6",
+        "task_scores.png": "14f07e1e770e03ba84c9636821608f6cec459d3cfc0c0ab1a31b59cd60bd572a",
+        "task_scores.svg": "052614578f0041b45447c885d6340e759fd05b8b72af427618171f1f01a83bf6"
+      }
+    }
+  ],
+  "case_count": 4,
+  "total_generations": 8,
+  "scorer_sha256": "ad2f154367aa2479a564e923688d12259f36a0e7d7c981b796dfdabb4b1d79e4",
+  "checks": [
+    "All four score CLI processes exit 0",
+    "Original official NextQA WUPS and VATEX Bleu_4/METEOR/ROUGE_L/CIDEr local scoring complete",
+    "CSV scores exactly match summary JSON",
+    "EOS/cap CSV matches generation metadata",
+    "PNG decode and nonempty PDF/SVG verified",
+    "No missing metrics",
+    "Current scoring source SHA matches source recorded by each report",
+    "NextQA one-source bootstrap CI intentionally absent"
+  ],
+  "limitations": [
+    "n=1 smoke results cannot establish method quality or K merge-space effectiveness",
+    "CIDEr equals zero here because each smoke reference corpus contains only one video; this is the exact native corpus result, not a useful quality estimate",
+    "20 earlier inline synthetic fixture checks are separate from the repository unittest suite"
+  ],
+  "gpu_used": false,
+  "formal_report_scoring_started": false
+}

@@ -1,0 +1,11 @@
+task,method,metric,raw_reapply,post_rope,post_minus_raw,post_minus_raw_ci95,n_inputs
+nextqa_oe_test,snapkv_kvrepack,WUPS,100.0,100.0,0.0,,1
+nextqa_oe_test,hybridkv_kvrepack,WUPS,100.0,100.0,0.0,,1
+vatex_test,snapkv_kvrepack,Bleu_4,0.5828233953266314,0.5828233953266314,0.0,,1
+vatex_test,snapkv_kvrepack,METEOR,0.33766870986990977,0.33766870986990977,0.0,,1
+vatex_test,snapkv_kvrepack,ROUGE_L,0.724622030237581,0.724622030237581,0.0,,1
+vatex_test,snapkv_kvrepack,CIDEr,0.0,0.0,0.0,,1
+vatex_test,hybridkv_kvrepack,Bleu_4,0.3406227681539254,0.3406227681539254,0.0,,1
+vatex_test,hybridkv_kvrepack,METEOR,0.26056686336721213,0.26056686336721213,0.0,,1
+vatex_test,hybridkv_kvrepack,ROUGE_L,0.4739178690344062,0.4739178690344062,0.0,,1
+vatex_test,hybridkv_kvrepack,CIDEr,0.0,0.0,0.0,,1

@@ -1,0 +1,180 @@
+Using pip 26.0.1 from /root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/pip (python 3.12)
+Obtaining file:///root/autodl-tmp/HybridKV-artifact/KVRepack/csrc
+  Checking if build backend supports build_editable: started
+  Running command Checking if build backend supports build_editable
+  Checking if build backend supports build_editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Running command Preparing editable metadata (pyproject.toml)
+  No CUDA runtime is found, using CUDA_HOME='/usr/local/cuda'
+  running dist_info
+  creating /tmp/pip-modern-metadata-8ozzsh8v/kvrepack_kernels.egg-info
+  writing /tmp/pip-modern-metadata-8ozzsh8v/kvrepack_kernels.egg-info/PKG-INFO
+  writing dependency_links to /tmp/pip-modern-metadata-8ozzsh8v/kvrepack_kernels.egg-info/dependency_links.txt
+  writing requirements to /tmp/pip-modern-metadata-8ozzsh8v/kvrepack_kernels.egg-info/requires.txt
+  writing top-level names to /tmp/pip-modern-metadata-8ozzsh8v/kvrepack_kernels.egg-info/top_level.txt
+  writing manifest file '/tmp/pip-modern-metadata-8ozzsh8v/kvrepack_kernels.egg-info/SOURCES.txt'
+  /root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/utils/cpp_extension.py:529: UserWarning: Attempted to use ninja as the BuildExtension backend but we could not find ninja.. Falling back to using the slow distutils backend.
+    warnings.warn(msg.format('we could not find ninja.'))
+  reading manifest file '/tmp/pip-modern-metadata-8ozzsh8v/kvrepack_kernels.egg-info/SOURCES.txt'
+  reading manifest template 'MANIFEST.in'
+  warning: no previously-included files matching '*.pyc' found anywhere in distribution
+  warning: no previously-included files matching '*.so' found anywhere in distribution
+  no previously-included directories found matching 'build'
+  adding license file 'LICENSE'
+  adding license file 'deps/cutlass/LICENSE.txt'
+  adding license file 'deps/cutlass/EULA.txt'
+  writing manifest file '/tmp/pip-modern-metadata-8ozzsh8v/kvrepack_kernels.egg-info/SOURCES.txt'
+  creating '/tmp/pip-modern-metadata-8ozzsh8v/kvrepack_kernels-0.1.0.dist-info'
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: kvrepack-kernels
+  Building editable for kvrepack-kernels (pyproject.toml): started
+  Running command Building editable for kvrepack-kernels (pyproject.toml)
+  No CUDA runtime is found, using CUDA_HOME='/usr/local/cuda'
+  running editable_wheel
+  creating /tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels.egg-info
+  writing /tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels.egg-info/PKG-INFO
+  writing dependency_links to /tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels.egg-info/dependency_links.txt
+  writing requirements to /tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels.egg-info/requires.txt
+  writing top-level names to /tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels.egg-info/top_level.txt
+  writing manifest file '/tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels.egg-info/SOURCES.txt'
+  /root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/utils/cpp_extension.py:529: UserWarning: Attempted to use ninja as the BuildExtension backend but we could not find ninja.. Falling back to using the slow distutils backend.
+    warnings.warn(msg.format('we could not find ninja.'))
+  reading manifest file '/tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels.egg-info/SOURCES.txt'
+  reading manifest template 'MANIFEST.in'
+  warning: no previously-included files matching '*.pyc' found anywhere in distribution
+  warning: no previously-included files matching '*.so' found anywhere in distribution
+  no previously-included directories found matching 'build'
+  adding license file 'LICENSE'
+  adding license file 'deps/cutlass/LICENSE.txt'
+  adding license file 'deps/cutlass/EULA.txt'
+  writing manifest file '/tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels.egg-info/SOURCES.txt'
+  creating '/tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels-0.1.0.dist-info'
+  creating /tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels-0.1.0.dist-info/WHEEL
+  running build_ext
+  /root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/utils/cpp_extension.py:448: UserWarning: The detected CUDA version (12.8) has a minor version mismatch with the version that was used to compile PyTorch (12.4). Most likely this shouldn't be a problem.
+    warnings.warn(CUDA_MISMATCH_WARN.format(cuda_str_version, torch.version.cuda))
+  /root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/utils/cpp_extension.py:458: UserWarning: There are no g++ version bounds defined for CUDA version 12.8
+    warnings.warn(f'There are no {compiler_name} version bounds defined for CUDA version {cuda_str_version}')
+  building 'kvrepack_kernel' extension
+  creating /tmp/tmphi6sguth.build-temp/csrc
+  /usr/local/cuda/bin/nvcc -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/csrc -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/tools/util/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/examples/common -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/TH -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/THC -I/usr/local/cuda/include -I/root/miniconda3/envs/hybridkv/include/python3.12 -c csrc/cuda_api.cu -o /tmp/tmphi6sguth.build-temp/csrc/cuda_api.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ --use_fast_math -lineinfo --ptxas-options=-v --ptxas-options=-O2 -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -DTORCH_EXTENSION_NAME=kvrepack_kernel -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_80,code=sm_80
+  ptxas info    : 11 bytes gmem, 88 bytes cmem[4]
+  ptxas info    : Compiling entry function '_Z26update_flatten_view_kernelIN3c108BFloat16ELi1EEvPT_S3_S3_PiS4_i' for 'sm_80'
+  ptxas info    : Function properties for _Z26update_flatten_view_kernelIN3c108BFloat16ELi1EEvPT_S3_S3_PiS4_i
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 17 registers, used 0 barriers, 396 bytes cmem[0]
+  ptxas info    : Compile time = 8.979 ms
+  ptxas info    : Compiling entry function '_Z26update_flatten_view_kernelIN3c104HalfELi1EEvPT_S3_S3_PiS4_i' for 'sm_80'
+  ptxas info    : Function properties for _Z26update_flatten_view_kernelIN3c104HalfELi1EEvPT_S3_S3_PiS4_i
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 17 registers, used 0 barriers, 396 bytes cmem[0]
+  ptxas info    : Compile time = 3.429 ms
+  ptxas info    : Compiling entry function '_Z25update_base_offset_kernelPlPiS0_i' for 'sm_80'
+  ptxas info    : Function properties for _Z25update_base_offset_kernelPlPiS0_i
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 14 registers, used 0 barriers, 380 bytes cmem[0]
+  ptxas info    : Compile time = 1.526 ms
+  /usr/local/cuda/bin/nvcc -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/csrc -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/tools/util/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/examples/common -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/TH -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/THC -I/usr/local/cuda/include -I/root/miniconda3/envs/hybridkv/include/python3.12 -c csrc/gather_copy.cu -o /tmp/tmphi6sguth.build-temp/csrc/gather_copy.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ --use_fast_math -lineinfo --ptxas-options=-v --ptxas-options=-O2 -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -DTORCH_EXTENSION_NAME=kvrepack_kernel -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_80,code=sm_80
+  /root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/include/copy.cuh(271): warning #177-D: variable "bid_64" was declared but never referenced
+        int64_t bid_64 = bid;
+                ^
+            detected during instantiation of "void gather_copy_var_midpoint_BP(T *, T *, T *, T *, T *, T *, int, int, int, int, int *, int *, unsigned int *, int64_t *) [with T=int4, MAP_SIZE=32]" at line 135 of csrc/gather_copy.cu
+
+  Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+  ptxas info    : 11 bytes gmem, 88 bytes cmem[4]
+  ptxas info    : Compiling entry function '_Z27gather_copy_var_midpoint_BPI4int4Li256EEvPT_S2_S2_S2_S2_S2_iiiiPiS3_PjPl' for 'sm_80'
+  ptxas info    : Function properties for _Z27gather_copy_var_midpoint_BPI4int4Li256EEvPT_S2_S2_S2_S2_S2_iiiiPiS3_PjPl
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 44 registers, used 1 barriers, 448 bytes cmem[0]
+  ptxas info    : Compile time = 65.068 ms
+  ptxas info    : Compiling entry function '_Z27gather_copy_var_midpoint_BPI4int4Li128EEvPT_S2_S2_S2_S2_S2_iiiiPiS3_PjPl' for 'sm_80'
+  ptxas info    : Function properties for _Z27gather_copy_var_midpoint_BPI4int4Li128EEvPT_S2_S2_S2_S2_S2_iiiiPiS3_PjPl
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 44 registers, used 1 barriers, 448 bytes cmem[0]
+  ptxas info    : Compile time = 62.009 ms
+  ptxas info    : Compiling entry function '_Z27gather_copy_var_midpoint_BPI4int4Li64EEvPT_S2_S2_S2_S2_S2_iiiiPiS3_PjPl' for 'sm_80'
+  ptxas info    : Function properties for _Z27gather_copy_var_midpoint_BPI4int4Li64EEvPT_S2_S2_S2_S2_S2_iiiiPiS3_PjPl
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 44 registers, used 1 barriers, 448 bytes cmem[0]
+  ptxas info    : Compile time = 62.622 ms
+  ptxas info    : Compiling entry function '_Z27gather_copy_var_midpoint_BPI4int4Li32EEvPT_S2_S2_S2_S2_S2_iiiiPiS3_PjPl' for 'sm_80'
+  ptxas info    : Function properties for _Z27gather_copy_var_midpoint_BPI4int4Li32EEvPT_S2_S2_S2_S2_S2_iiiiPiS3_PjPl
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 44 registers, used 1 barriers, 448 bytes cmem[0]
+  ptxas info    : Compile time = 62.385 ms
+  ptxas info    : Compiling entry function '_Z30reorder_keys_and_mixed_offsetsIlLi256ELi2048EEvPT_S1_S1_PiS2_' for 'sm_80'
+  ptxas info    : Function properties for _Z30reorder_keys_and_mixed_offsetsIlLi256ELi2048EEvPT_S1_S1_PiS2_
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 32 registers, used 1 barriers, 18688 bytes smem, 392 bytes cmem[0]
+  ptxas info    : Compile time = 40.528 ms
+  ptxas info    : Compiling entry function '_Z30reorder_keys_and_mixed_offsetsIlLi128ELi2048EEvPT_S1_S1_PiS2_' for 'sm_80'
+  ptxas info    : Function properties for _Z30reorder_keys_and_mixed_offsetsIlLi128ELi2048EEvPT_S1_S1_PiS2_
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 32 registers, used 1 barriers, 17664 bytes smem, 392 bytes cmem[0]
+  ptxas info    : Compile time = 33.135 ms
+  ptxas info    : Compiling entry function '_Z30reorder_keys_and_mixed_offsetsIlLi64ELi1024EEvPT_S1_S1_PiS2_' for 'sm_80'
+  ptxas info    : Function properties for _Z30reorder_keys_and_mixed_offsetsIlLi64ELi1024EEvPT_S1_S1_PiS2_
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 30 registers, used 1 barriers, 8960 bytes smem, 392 bytes cmem[0]
+  ptxas info    : Compile time = 25.636 ms
+  ptxas info    : Compiling entry function '_Z30reorder_keys_and_mixed_offsetsIlLi32ELi1024EEvPT_S1_S1_PiS2_' for 'sm_80'
+  ptxas info    : Function properties for _Z30reorder_keys_and_mixed_offsetsIlLi32ELi1024EEvPT_S1_S1_PiS2_
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 29 registers, used 1 barriers, 8704 bytes smem, 392 bytes cmem[0]
+  ptxas info    : Compile time = 20.837 ms
+  /usr/local/cuda/bin/nvcc -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/csrc -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/tools/util/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/examples/common -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/TH -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/THC -I/usr/local/cuda/include -I/root/miniconda3/envs/hybridkv/include/python3.12 -c csrc/gemm_softmax.cu -o /tmp/tmphi6sguth.build-temp/csrc/gemm_softmax.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ --use_fast_math -lineinfo --ptxas-options=-v --ptxas-options=-O2 -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -DTORCH_EXTENSION_NAME=kvrepack_kernel -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_80,code=sm_80
+  ptxas info    : 218061 bytes gmem, 72 bytes cmem[3], 168 bytes cmem[4]
+  ptxas info    : Compiling entry function '_ZN7cutlass6KernelINS_6kernel12ApplySoftmaxINS_10bfloat16_tEffS3_fLi8ENS_11MatrixShapeILi1ELi1024EEEEEEEvNT_6ParamsE' for 'sm_80'
+  ptxas info    : Function properties for _ZN7cutlass6KernelINS_6kernel12ApplySoftmaxINS_10bfloat16_tEffS3_fLi8ENS_11MatrixShapeILi1ELi1024EEEEEEEvNT_6ParamsE
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 26 registers, used 0 barriers, 464 bytes cmem[0]
+  ptxas info    : Compile time = 10.581 ms
+  ptxas info    : Compiling entry function '_ZN7cutlass6KernelINS_9reduction6kernel26ApplySoftmaxFinalReductionIfffNS_4gemm9GemmShapeILi32ELi256ELi32EEELb0EEEEEvNT_6ParamsE' for 'sm_80'
+  ptxas info    : Function properties for _ZN7cutlass6KernelINS_9reduction6kernel26ApplySoftmaxFinalReductionIfffNS_4gemm9GemmShapeILi32ELi256ELi32EEELb0EEEEEvNT_6ParamsE
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 32 registers, used 0 barriers, 424 bytes cmem[0]
+  ptxas info    : Compile time = 7.654 ms
+  ptxas info    : Compiling entry function '_ZN7cutlass6KernelINS_4gemm6kernel23GemmWithEpilogueVisitorINS1_11threadblock13MmaMultistageINS1_9GemmShapeILi32ELi256ELi32EEENS_9transform11threadblock28PredicatedTileAccessIteratorINS_11MatrixShapeILi32ELi32EEENS_10bfloat16_tENS_6layout8RowMajorELi1ENS8_29PitchLinearWarpRakedThreadMapINS_16PitchLinearShapeILi32ELi32EEELi128ENSH_ILi4ELi8EEELi8EEENS_5ArrayISD_Li8ELb0EEELb0ENSE_9NoPermuteEEENS9_25RegularTileAccessIteratorISC_SD_NSE_37RowMajorTensorOpMultiplicandCrosswiseILi16ELi32EEELi0ESK_Li16EEELNS_4arch14CacheOperation4KindE1ENSA_INSB_ILi32ELi256EEESD_NSE_11ColumnMajorELi0ENSG_INSH_ILi32ELi256EEELi128ESJ_Li8EEESM_Lb0ESN_EENSP_ISW_SD_NSE_40ColumnMajorTensorOpMultiplicandCrosswiseILi16ELi32EEELi1ESZ_Li16EEELSV_1EfSF_NS4_9MmaPolicyINS1_4warp11MmaTensorOpINS6_ILi32ELi64ELi32EEESD_SR_SD_S12_fSF_NS15_17MmaTensorOpPolicyINST_3MmaINS6_ILi16ELi8ELi16EEELi32ESD_SF_SD_SX_fSF_NST_13OpMultiplyAddEEENSB_ILi1ELi1EEEEELi1ELb0EbEENSB_ILi0ELi0EEES1G_Li1EEELi3ELNS1_23SharedMemoryClearOptionE0EbEENS_8epilogue11threadblock19EpilogueWithVisitorINS1L_22EpilogueVisitorSoftmaxIS7_Li128ENS1L_22PredicatedTileIteratorINS1L_26OutputTileOptimalThreadMapINS1L_15OutputTileShapeILi256ELi8ELi1ELi1ELi1EEENS1Q_ILi1ELi4ELi1ELi1ELi4EEELi128ELi8ELi16EEESD_Lb0ESN_Lb0EEEffffNS1K_6thread17LinearCombinationISD_Li8EffLNS1V_9ScaleType4KindE2ELNS_15FloatRoundStyleE2ESD_EELb0EEES7_S1F_Li1ENS1K_4warp24FragmentIteratorTensorOpIS17_S1A_fNSL_IfLi4ELb1EEESF_EENS22_20TileIteratorTensorOpIS17_S1A_fSF_EENS1L_18SharedLoadIteratorINS1T_18CompactedThreadMapEfLi32EEENSB_ILi0ELi8EEELi1ELi1EEENS4_37GemmBatchedIdentityThreadblockSwizzleEEEEEvNT_6ParamsE' for 'sm_80'
+  ptxas info    : Function properties for _ZN7cutlass6KernelINS_4gemm6kernel23GemmWithEpilogueVisitorINS1_11threadblock13MmaMultistageINS1_9GemmShapeILi32ELi256ELi32EEENS_9transform11threadblock28PredicatedTileAccessIteratorINS_11MatrixShapeILi32ELi32EEENS_10bfloat16_tENS_6layout8RowMajorELi1ENS8_29PitchLinearWarpRakedThreadMapINS_16PitchLinearShapeILi32ELi32EEELi128ENSH_ILi4ELi8EEELi8EEENS_5ArrayISD_Li8ELb0EEELb0ENSE_9NoPermuteEEENS9_25RegularTileAccessIteratorISC_SD_NSE_37RowMajorTensorOpMultiplicandCrosswiseILi16ELi32EEELi0ESK_Li16EEELNS_4arch14CacheOperation4KindE1ENSA_INSB_ILi32ELi256EEESD_NSE_11ColumnMajorELi0ENSG_INSH_ILi32ELi256EEELi128ESJ_Li8EEESM_Lb0ESN_EENSP_ISW_SD_NSE_40ColumnMajorTensorOpMultiplicandCrosswiseILi16ELi32EEELi1ESZ_Li16EEELSV_1EfSF_NS4_9MmaPolicyINS1_4warp11MmaTensorOpINS6_ILi32ELi64ELi32EEESD_SR_SD_S12_fSF_NS15_17MmaTensorOpPolicyINST_3MmaINS6_ILi16ELi8ELi16EEELi32ESD_SF_SD_SX_fSF_NST_13OpMultiplyAddEEENSB_ILi1ELi1EEEEELi1ELb0EbEENSB_ILi0ELi0EEES1G_Li1EEELi3ELNS1_23SharedMemoryClearOptionE0EbEENS_8epilogue11threadblock19EpilogueWithVisitorINS1L_22EpilogueVisitorSoftmaxIS7_Li128ENS1L_22PredicatedTileIteratorINS1L_26OutputTileOptimalThreadMapINS1L_15OutputTileShapeILi256ELi8ELi1ELi1ELi1EEENS1Q_ILi1ELi4ELi1ELi1ELi4EEELi128ELi8ELi16EEESD_Lb0ESN_Lb0EEEffffNS1K_6thread17LinearCombinationISD_Li8EffLNS1V_9ScaleType4KindE2ELNS_15FloatRoundStyleE2ESD_EELb0EEES7_S1F_Li1ENS1K_4warp24FragmentIteratorTensorOpIS17_S1A_fNSL_IfLi4ELb1EEESF_EENS22_20TileIteratorTensorOpIS17_S1A_fSF_EENS1L_18SharedLoadIteratorINS1T_18CompactedThreadMapEfLi32EEENSB_ILi0ELi8EEELi1ELi1EEENS4_37GemmBatchedIdentityThreadblockSwizzleEEEEEvNT_6ParamsE
+      0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+  ptxas info    : Used 125 registers, used 1 barriers, 728 bytes cmem[0]
+  ptxas info    : Compile time = 66.882 ms
+  /usr/local/cuda/bin/nvcc -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/csrc -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/tools/util/include -I/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/deps/cutlass/examples/common -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/TH -I/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/include/THC -I/usr/local/cuda/include -I/root/miniconda3/envs/hybridkv/include/python3.12 -c csrc/python_extension.cu -o /tmp/tmphi6sguth.build-temp/csrc/python_extension.o -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options '-fPIC' -O3 -std=c++17 -U__CUDA_NO_HALF_OPERATORS__ --use_fast_math -lineinfo --ptxas-options=-v --ptxas-options=-O2 -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -U__CUDA_NO_BFLOAT16_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -DTORCH_EXTENSION_NAME=kvrepack_kernel -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_80,code=sm_80
+  ptxas info    : 11 bytes gmem, 88 bytes cmem[4]
+  g++ -pthread -B /root/miniconda3/envs/hybridkv/compiler_compat -shared -Wl,--allow-shlib-undefined -Wl,-rpath,/root/miniconda3/envs/hybridkv/lib -Wl,-rpath-link,/root/miniconda3/envs/hybridkv/lib -L/root/miniconda3/envs/hybridkv/lib -Wl,--allow-shlib-undefined -Wl,-rpath,/root/miniconda3/envs/hybridkv/lib -Wl,-rpath-link,/root/miniconda3/envs/hybridkv/lib -L/root/miniconda3/envs/hybridkv/lib /tmp/tmphi6sguth.build-temp/csrc/cuda_api.o /tmp/tmphi6sguth.build-temp/csrc/gather_copy.o /tmp/tmphi6sguth.build-temp/csrc/gemm_softmax.o /tmp/tmphi6sguth.build-temp/csrc/python_extension.o -L/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/torch/lib -L/usr/local/cuda/lib64 -lc10 -ltorch -ltorch_cpu -ltorch_python -lcudart -lc10_cuda -ltorch_cuda -o /tmp/tmpaw0hhuh4.build-lib/kvrepack_kernel.cpython-312-x86_64-linux-gnu.so
+  copying /tmp/tmpaw0hhuh4.build-lib/kvrepack_kernel.cpython-312-x86_64-linux-gnu.so ->
+  Editable install will be performed using a meta path finder.
+
+  Options like `package-data`, `include/exclude-package-data` or
+  `packages.find.exclude/include` may have no effect.
+
+  adding '__editable___kvrepack_kernels_0_1_0_finder.py'
+  adding '__editable__.kvrepack_kernels-0.1.0.pth'
+  creating '/tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb/tmpomnoe003/.tmp-3s8z1lul/kvrepack_kernels-0.1.0-0.editable-cp312-cp312-linux_x86_64.whl' and adding '/tmp/tmpm00aiof0kvrepack_kernels-0.1.0-0.editable-cp312-cp312-linux_x86_64.whl' to it
+  adding 'kvrepack_kernels-0.1.0.dist-info/EULA.txt'
+  adding 'kvrepack_kernels-0.1.0.dist-info/LICENSE'
+  adding 'kvrepack_kernels-0.1.0.dist-info/LICENSE.txt'
+  adding 'kvrepack_kernels-0.1.0.dist-info/METADATA'
+  adding 'kvrepack_kernels-0.1.0.dist-info/WHEEL'
+  adding 'kvrepack_kernels-0.1.0.dist-info/top_level.txt'
+  adding 'kvrepack_kernels-0.1.0.dist-info/RECORD'
+  /root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/setuptools/command/editable_wheel.py:357: InformationOnly: Editable installation.
+  !!
+
+          ********************************************************************************
+          Please be careful with folders in your working directory with the same
+          name as your package as they may take precedence during imports.
+          ********************************************************************************
+
+  !!
+    with strategy, WheelFile(wheel_path, "w") as wheel_obj:
+  Building editable for kvrepack-kernels (pyproject.toml): finished with status 'done'
+  Created wheel for kvrepack-kernels: filename=kvrepack_kernels-0.1.0-0.editable-cp312-cp312-linux_x86_64.whl size=12873 sha256=598b59cf6d53932bf03528037cf03f133b4a1d88c4ff422e62357d8728072ea6
+  Stored in directory: /tmp/pip-ephem-wheel-cache-b7e737mv/wheels/03/eb/7a/5d04feed8a3897caaafcb463e52c43ef3a3124b4c771274ebb
+Successfully built kvrepack-kernels
+Installing collected packages: kvrepack-kernels
+Successfully installed kvrepack-kernels-0.1.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+{"cuda_initialized_after": false, "cuda_initialized_before": false, "direct_url": {"dir_info": {"editable": true}, "url": "file:///root/autodl-tmp/HybridKV-artifact/KVRepack/csrc"}, "distribution": "kvrepack-kernels", "distribution_version": "0.1.0", "exports": {"gather_copy_with_offsets": true, "gemm_softmax": true, "reorder_keys_and_compute_offsets": true, "update_base_offset": true, "update_flatten_view": true}, "kernel_functions_executed": 0, "module_bytes": 2330928, "module_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/kvrepack_kernel.cpython-312-x86_64-linux-gnu.so", "module_sha256": "b57f2a5076de3ac67c984b6bc09e351ce7adcfdd86f477eb3bb424ad7092b01a", "origin_inside_current_repo_csrc": true, "source_csrc": "/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc", "stage": "cpu_import_symbol_check", "status": "passed", "torch": "2.6.0+cu124", "torch_cuda_build": "12.4"}
