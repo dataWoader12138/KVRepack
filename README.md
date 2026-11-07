@@ -2,13 +2,15 @@
 
 项目交接摘要与后续工作入口：[docs/HANDOFF.md](docs/HANDOFF.md)。
 
-新增 [Spot-the-Diff / MMCoQA Random-head 图片实验](docs/MILEBENCH_RANDOM_HEAD.md)：按参考提交 `6c65bf8` 为HybridKV-KVRepack和SnapKV-KVRepack准备原选头+3随机seed的配对入口。默认只生成计划，CPU检查完成后待GPU阶段执行。
+当前 [Spot-the-Diff / MMCoQA Random-head 图片实验](docs/MILEBENCH_RANDOM_HEAD.md) 已进入用户授权的 Qwen2.5-VL-7B GPU 阶段：HybridKV-KVRepack 和 SnapKV-KVRepack 均运行 similarity 与 random seed0/1，读取两个官方 MileBench v1 子集全部标注，各200条，计划 `4×200×3=2400` 次生成。MileBench 作者已从源任务抽样构成这些子集，见[论文 §3.2](https://arxiv.org/pdf/2404.18532)；本项目的 `--all-samples` 不设条目上限。
 
 将 Qwen2.5-VL 与 LLaVA-OneVision 的 KV cache 基线及 KVRepack 改进整理到一个独立项目。视频入口包括 NextQA、VATEX、VideoChatGPT；新增 [MileBench 多图主实验](docs/MILEBENCH.md)，包含数据预检、图片生成、原协议评分和 JSON/CSV 汇总。图片配置与视频默认值分别管理，共享核心实现。
 
-本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。当前状态为**整理和 CPU 静态验证阶段，GPU 正确性、数值一致性和速度尚待验证**。
+本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。首版完成整理和 CPU 静态验证；目前 GPU 实测仅覆盖上述 Qwen7B Random-head 运行范围，其他模型、方法及性能仍需分别验证。
 
-首版无 GPU 审计覆盖19个组合，并复现 LLaVA SparseMM 跨 prompt 预算复用及 AsymKV 分块边界末 token 遗漏。本次已单独修复前者并新增 CPU 回归；AsymKV 问题仍未修复且不在图片入口范围。历史证据见 [CPU 调用关系审计](docs/CPU_CALL_AUDIT.md)，图片扩展与本次实测范围见 [MileBench 验证报告](provenance/milebench_validation.json)。**GPU 模型生成、分数与性能仍未验证**。
+首版无 GPU 审计覆盖19个组合，并复现 LLaVA SparseMM 跨 prompt 预算复用及 AsymKV 分块边界末 token 遗漏。本次已单独修复前者并新增 CPU 回归；AsymKV 问题仍未修复且不在图片入口范围。历史证据见 [CPU 调用关系审计](docs/CPU_CALL_AUDIT.md)，图片扩展与本次实测范围见 [MileBench 验证报告](provenance/milebench_validation.json)。Qwen7B 两方法/两任务各1条的独立 smoke 已通过；正式 Hybrid/Spot 已完成200条、600次生成并重新核分通过，其余三组仍在运行，尚无完整四组结果，也未完成全项目 GPU 数值一致性或性能验证。
+
+正式进度以 `outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/controller_state.json` 为准。首个控制器在 Hybrid/MMCoQA 第二个生成样本（原 `sample_id=18`）因后置审计错误地要求56个选中头全部有效合并而停止；现已恢复参考 Hybrid 允许自然缺调用或 noop、但有效合并数必须大于0的语义，SnapKV 仍要求34头有效匹配，预算、算法和随机 mask 未改。已完成 Hybrid/Spot 的原合同、样本及报告按字节复制复用，`reuse_manifest.json` 记录 SHA，旧12份绑定源码冻结于 `source_archives/first_controller`；未重复其600次生成。原失败目录保留。
 
 ## 文件组织
 
@@ -23,7 +25,7 @@ KVRepack/
 ├── csrc/                 # kvrepack_kernel 源码和固定 CUTLASS 头文件快照
 ├── provenance/           # 原入口、原文件与新文件的 SHA-256、环境版本
 ├── requirements/         # 原环境的版本约束，不包含凭证或本地安装地址
-├── scripts/              # 只读的来源/静态验证工具
+├── scripts/              # 实验规划、运行、评分及来源审计工具
 ├── tests/                # CPU 检查
 └── docs/                 # 方法选择、迁移范围、GPU 验证清单
 ```
@@ -61,9 +63,9 @@ PYTHONPATH=src python -m kvrepack.run --benchmark milebench \
 
 图片附加依赖安装为 `python -m pip install -e '.[images]'`；依赖约束与完整评分/汇总命令见 [使用说明](docs/MILEBENCH.md)。当前目标核心和部分 opensource 历史图片实现有差异，LLaVA共享预算配置也不同，详见 [来源差异](docs/MILEBENCH_SOURCE_DIFF.md)，不能仅凭入口迁移称已复现历史分数。
 
-## 安装（待 GPU 阶段实际验证）
+## 安装与环境约束
 
-使用独立的 Python 3.12 环境。以下命令供下一阶段使用；本次整理未在原实验环境中安装或替换任何包。
+使用独立的 Python 3.12 环境。以下为依赖安装参考；本机已从当前 checkout 构建 `kvrepack_kernel` 并开始上述限定范围的 GPU 实测，不代表已验证全新机器安装或所有模型/方法。
 
 ```bash
 cd KVRepack

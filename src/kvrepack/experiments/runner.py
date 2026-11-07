@@ -359,7 +359,7 @@ def verify_manifest(root: Path) -> dict:
     except (OSError, ValueError) as exc:
         raise ValueError("Missing or invalid provenance/core_sources.json") from exc
     entries = manifest.get("entries", [])
-    if manifest.get("schema_version") != 1 or not entries:
+    if manifest.get("schema_version") not in (1, 2) or not entries:
         raise ValueError("Unsupported or empty core source manifest")
     checked = []
     for entry in entries:

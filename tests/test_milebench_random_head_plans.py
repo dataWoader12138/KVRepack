@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 import importlib.util
 import io
 import json
@@ -24,6 +24,19 @@ SCRIPT = ROOT / "scripts/run_milebench_random_heads.py"
 spec = importlib.util.spec_from_file_location("milebench_random_head_controller", SCRIPT)
 controller = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(controller)
+
+
+def write_annotation(data_root, task, count):
+    folder = Path(data_root) / task
+    folder.mkdir(parents=True, exist_ok=True)
+    payload = {"meta_data": {"task_instruction": ["Compare the images."],
+                             "question_type": "open-ended", "num_sample": count},
+               "data": [{"sample_id": index, "task_instruction_id": 0,
+                         "task_instance": {"context": "{image#1} versus {image#2}",
+                                           "images_path": ["one.png", "two.png"]},
+                         "response": "red"} for index in range(count)]}
+    (folder / f"{task}.json").write_text(json.dumps(payload))
+    return payload
 
 
 class RandomHeadPlanTests(unittest.TestCase):
@@ -121,6 +134,113 @@ assert not any(name in sys.modules for name in ('torch', 'transformers', 'accele
             with patch.object(controller, "execute_matrix") as launch, redirect_stdout(io.StringIO()):
                 self.assertEqual(controller.main(["--data-root", "/missing-data", "--output-root", str(output)]), 0)
             launch.assert_not_called()
+
+    def test_all_samples_freezes_full_counts_without_two_hundred_cap_and_uses_two_seeds(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            data = root / "data"
+            counts = {"Spot-the-Diff": 301, "MMCoQA": 245}
+            for task, count in counts.items():
+                write_annotation(data, task, count)
+            output = root / "not-created"
+            plans = build_matrix(data, output, all_samples=True, head_seeds=(0, 1), environ={})
+            self.assertEqual(len(plans), 4)
+            for plan in plans:
+                config = plan.resolved_config
+                task = config["task"]
+                self.assertEqual(config["limit"], counts[task])
+                self.assertTrue(config["ablation"]["all_samples"])
+                self.assertEqual(config["ablation"]["selected_sample_count"], counts[task])
+                raw = (data / task / f"{task}.json").read_bytes()
+                self.assertEqual(config["ablation"]["annotation_sha256"], hashlib.sha256(raw).hexdigest())
+                self.assertEqual([arm["label"] for arm in config["ablation"]["conditions"]],
+                                 ["similarity", "random_global_seed0", "random_global_seed1"])
+                self.assertEqual(plan.provenance["random_head_protocol"]["sample_selection"], "complete_annotation")
+            self.assertEqual(sum(plan.resolved_config["limit"] * 3 for plan in plans), 3276)
+            self.assertFalse(output.exists())
+            with self.assertRaisesRegex(ValueError, "mutually exclusive"):
+                build_random_head_plan("hybridkv_kvrepack", "MMCoQA", data, all_samples=True, limit=1)
+
+    def test_all_samples_cli_reports_per_task_counts_and_conflicts_with_explicit_limit(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            data = root / "data"
+            write_annotation(data, "Spot-the-Diff", 201)
+            write_annotation(data, "MMCoQA", 203)
+            output = root / "not-created"
+            stdout = io.StringIO()
+            with redirect_stdout(stdout), patch.object(controller, "execute_matrix") as launch:
+                code = controller.main(["--data-root", str(data), "--output-root", str(output),
+                                        "--all-samples", "--head-seeds", "0", "1"])
+            self.assertEqual(code, 0)
+            launch.assert_not_called()
+            payload = json.loads(stdout.getvalue())
+            self.assertEqual(payload["sample_selection"], "complete_annotation")
+            self.assertIsNone(payload["requested_samples_per_run"])
+            self.assertEqual(payload["requested_total_generations"], (201 + 203) * 2 * 3)
+            self.assertEqual([row["sample_count"] for row in payload["selected_samples_by_run"]], [201, 203, 201, 203])
+            self.assertFalse(output.exists())
+            with redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as raised:
+                controller.main(["--data-root", str(data), "--output-root", str(output),
+                                 "--all-samples", "--limit", "1"])
+            self.assertEqual(raised.exception.code, 2)
+
+    @unittest.skipUnless(importlib.util.find_spec("PIL"), "Image preflight requires Pillow")
+    def test_full_runtime_startup_accepts_more_than_200_and_freezes_every_id(self):
+        from PIL import Image
+        from kvrepack.ablations.run_milebench_head_selection import run
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            data = root / "data"
+            write_annotation(data, "MMCoQA", 301)
+            images = data / "MMCoQA" / "images"
+            images.mkdir()
+            for filename in ("one.png", "two.png"):
+                with Image.new("RGB", (4, 4), "red") as image:
+                    image.save(images / filename)
+            plan = build_random_head_plan("hybridkv_kvrepack", "MMCoQA", data,
+                                          output=root / "run", all_samples=True,
+                                          head_seeds=(0, 1), environ={})
+            factory = unittest.mock.Mock(side_effect=RuntimeError("intentional no model fixture"))
+            with self.assertRaisesRegex(RuntimeError, "intentional no model"):
+                run(plan.resolved_config, worker_factory=factory)
+            factory.assert_called_once()
+            contract = json.loads((plan.output / "run_contract.json").read_text())
+            self.assertTrue(contract["all_samples"])
+            self.assertEqual(contract["annotation_total_samples"], 301)
+            self.assertEqual(contract["limit"], 301)
+            self.assertEqual(contract["selected_sample_ids"], list(range(301)))
+            state = json.loads((plan.output / "ablation_state.json").read_text())
+            self.assertEqual(state["target_samples"], 301)
+            self.assertEqual(state["target_generations"], 903)
+            self.assertEqual(state["status"], "failed")
+
+    @unittest.skipUnless(importlib.util.find_spec("PIL"), "Image preflight requires Pillow")
+    def test_full_runtime_rejects_annotation_changed_after_planning_before_model_load(self):
+        from PIL import Image
+        from kvrepack.ablations.run_milebench_head_selection import run
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            data = root / "data"
+            write_annotation(data, "MMCoQA", 2)
+            images = data / "MMCoQA" / "images"
+            images.mkdir()
+            for filename in ("one.png", "two.png"):
+                with Image.new("RGB", (4, 4), "red") as image:
+                    image.save(images / filename)
+            plan = build_random_head_plan("hybridkv_kvrepack", "MMCoQA", data,
+                                          output=root / "run", all_samples=True,
+                                          head_seeds=(0, 1), environ={})
+            path = data / "MMCoQA/MMCoQA.json"
+            payload = json.loads(path.read_text())
+            payload["data"][0]["response"] = "changed annotation"
+            path.write_text(json.dumps(payload))
+            factory = unittest.mock.Mock(side_effect=AssertionError("no model must load"))
+            with self.assertRaisesRegex(ValueError, "hash changed"):
+                run(plan.resolved_config, worker_factory=factory)
+            factory.assert_not_called()
+            self.assertFalse(plan.output.exists())
 
 
 class RandomHeadControllerTests(unittest.TestCase):

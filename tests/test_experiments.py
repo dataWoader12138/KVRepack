@@ -24,6 +24,11 @@ from kvrepack.run import main
 
 
 class RegistryTests(unittest.TestCase):
+    def test_shipped_core_manifest_can_be_verified_before_real_launch(self):
+        root = Path(__file__).resolve().parents[1]
+        verified = verify_manifest(root)
+        self.assertGreater(len(verified["verified_targets"]), 0)
+
     def test_exactly_one_implementation_per_public_method_and_baseline_pair(self):
         self.assertEqual(len(METHODS), 13)
         for name in ("hybridkv", "snapkv", "sparsemm", "madakv", "lookm"):

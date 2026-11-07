@@ -91,6 +91,36 @@ def _has_fingerprint(value) -> bool:
     return False
 
 
+def merge_work_stats(audit: dict) -> dict:
+    """Derive observed work without treating a selected head as an invocation.
+
+    Hybrid's native branches may skip selected heads or invoke a no-op merger.
+    These counters describe observations; a non-invocation does not establish
+    its eligibility reason. Use ``validate_bundle`` for the full pairing gate.
+    """
+    calls, counts = audit.get("merge_calls"), audit.get("selected_count")
+    if (not isinstance(calls, list) or not isinstance(counts, list) or not counts
+            or any(type(count) is not int or count < 0 for count in counts)):
+        raise ValueError("Merge work requires recorded calls and selected-head counts")
+    seen, effective, removed = set(), 0, 0
+    for call in calls:
+        names = ("layer", "batch", "head", "before", "after")
+        if not isinstance(call, dict) or any(type(call.get(name)) is not int for name in names):
+            raise ValueError("Incomplete actual merge-call record")
+        identity = tuple(call[name] for name in names[:3])
+        if identity in seen or not 0 < call["after"] <= call["before"]:
+            raise ValueError("Merge calls contain an invalid or duplicated native head")
+        seen.add(identity)
+        effective += call["after"] < call["before"]
+        removed += call["before"] - call["after"]
+    selected = sum(counts)
+    if len(calls) > selected:
+        raise ValueError("Merge invocations exceed the selected-head count")
+    return {"selected_count": selected, "merge_invocation_count": len(calls),
+            "effective_merge_count": effective, "no_op_call_count": len(calls) - effective,
+            "selected_without_invocation_count": selected - len(calls), "removed_tokens": removed}
+
+
 def _audit(audit: dict, contract: dict, *, sample_id: int, strategy: str, seed: int) -> dict:
     layers, heads, ratio, quota = _geometry(contract)
     hybrid = contract["method"] == "hybridkv_kvrepack"
@@ -113,18 +143,23 @@ def _audit(audit: dict, contract: dict, *, sample_id: int, strategy: str, seed: 
         if selected != [index in chosen for index in range(layers * heads)]:
             raise ValueError("Random mask differs from its fixed seed/model ranking")
     calls = audit.get("merge_calls")
-    if not isinstance(calls, list) or len(calls) != quota or audit.get("actual_merge_calls") != quota:
+    if (not isinstance(calls, list) or len(calls) > quota
+            or (not hybrid and (len(calls) != quota or audit.get("actual_merge_calls") != quota))):
         raise ValueError("Every selected head must have an effective original merge")
-    seen, removed = set(), 0
+    work = merge_work_stats(audit)
+    seen, effective_heads, removed = set(), [], 0
     for call in calls:
         if not isinstance(call, dict) or any(type(call.get(name)) is not int for name in ("layer", "batch", "head", "before", "after")):
             raise ValueError("Incomplete actual merge-call record")
         layer, batch, head, before, after = (call[name] for name in ("layer", "batch", "head", "before", "after"))
         identity = (layer, batch, head)
         if (not 0 <= layer < layers or batch != 0 or not 0 <= head < heads or identity in seen
-                or not selected[layer * heads + head] or not 0 < after < before):
+                or not selected[layer * heads + head] or not 0 < after <= before
+                or (not hybrid and after == before)):
             raise ValueError("Merge calls contain an ineffective, duplicated or unselected native head")
         seen.add(identity)
+        if after < before:
+            effective_heads.append([layer, batch, head])
         removed += before - after
         if hybrid:
             try:
@@ -133,7 +168,14 @@ def _audit(audit: dict, contract: dict, *, sample_id: int, strategy: str, seed: 
                 raise ValueError("Hybrid audit lacks the original per-head retained budgets") from exc
             if call.get("retained_head_budget") != budget:
                 raise ValueError("A Hybrid merge changed its native retained head budget")
-    if audit.get("actual_removed_tokens") != removed:
+    if (type(audit.get("actual_merge_calls")) is not int
+            or audit["actual_merge_calls"] != work["effective_merge_count"]):
+        raise ValueError("Actual effective merge-call counter differs from recorded effective calls")
+    if hybrid and work["effective_merge_count"] <= 0:
+        raise ValueError("Selected Hybrid heads never exercised an effective original merge")
+    if "merged_heads" in audit and audit["merged_heads"] != effective_heads:
+        raise ValueError("Recorded merged_heads differ from the effective unique merge calls")
+    if type(audit.get("actual_removed_tokens")) is not int or audit["actual_removed_tokens"] != removed:
         raise ValueError("Actual removed-token counter differs from effective merge calls")
     if hybrid:
         if audit.get("method") != "hybridkv_kvrepack" or not isinstance(audit.get("pre_selection"), dict):
@@ -157,7 +199,7 @@ def _audit(audit: dict, contract: dict, *, sample_id: int, strategy: str, seed: 
     if any(not _has_fingerprint(row) for row in candidates):
         raise ValueError("Native candidate bytes were not fingerprinted for every layer")
     union = sum(a or b for a, b in zip(selected, baseline))
-    return {"selected_count": quota, "effective_merge_count": len(seen), "removed_tokens": removed,
+    return {"selected_count": quota, "effective_merge_count": work["effective_merge_count"], "removed_tokens": removed,
             "mask_hamming": sum(a != b for a, b in zip(selected, baseline)),
             "mask_jaccard": sum(a and b for a, b in zip(selected, baseline)) / union if union else 1.0}
 

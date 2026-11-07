@@ -8764,7 +8764,7 @@
       "src/kvrepack/run.py": "a3be62012bf3d8c54ac3840d6e12be80d16791f1d086ce7c9e1bed99a047842a",
       "src/kvrepack/experiments/__init__.py": "d84f4e11c7ac34846b6c62fce0b54277143358ecbd3f04cbfd079d71cbbc617f",
       "src/kvrepack/experiments/registry.py": "c2cf2ff1ec656c1cdab54c79822fdd78eb03869ddfb1f80940f361825894861b",
-      "src/kvrepack/experiments/runner.py": "693916dbdc96b20d35bd54a471899b7dd80007f3b800097d4a42ce263549374c"
+      "src/kvrepack/experiments/runner.py": "c9a42abfe7dbf91e37083871b7384cbaa2f9bc7281ea274a86d2135d21ae38b0"
     },
     "registry_snapshot_path": "provenance/method_registry.json",
     "registry_snapshot_sha256": "dff60122bec2bd09c1d7e2ef2cd4d32004ad44cf9bccb81966e00ebce445264d",
@@ -8787,6 +8787,12 @@
         "Image Qwen model default is uniformly3B, source JPEG/pixel/generation recipe explicit, RATIO independent.",
         "Record source/core differences and shared LLaVA .1 resource value; no GPU validation claim."
       ]
+    },
+    "gpu_launch_fix": {
+      "file": "src/kvrepack/experiments/runner.py",
+      "previous_sha256": "693916dbdc96b20d35bd54a471899b7dd80007f3b800097d4a42ce263549374c",
+      "change": "Accept shipped core manifest schema2 as well as schema1. Hash/path validation remains strict; no algorithm or source entry changes.",
+      "regression_test": "test_shipped_core_manifest_can_be_verified_before_real_launch"
     }
   }
 }

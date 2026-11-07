@@ -17,7 +17,7 @@ import tempfile
 import unittest
 
 from kvrepack.ablations.head_selection import _ranking
-from kvrepack.ablations.milebench_head_selection_report import json_sha, summarize_run, validate_bundle
+from kvrepack.ablations.milebench_head_selection_report import json_sha, merge_work_stats, summarize_run, validate_bundle
 
 
 LABELS = ["similarity", "random_global_seed0", "random_global_seed1", "random_global_seed2"]
@@ -109,6 +109,15 @@ def write_run(root, contract, bundles=None):
         (root / "samples" / f"{index:06d}.json").write_text(json.dumps(bundle))
 
 
+def recount_hybrid(audit):
+    """Model the reference adapter's observed counters after native branching."""
+    calls = audit["merge_calls"]
+    audit["actual_merge_calls"] = sum(call["after"] < call["before"] for call in calls)
+    audit["actual_removed_tokens"] = sum(call["before"] - call["after"] for call in calls)
+    audit["merged_heads"] = [[call["layer"], call["batch"], call["head"]]
+                             for call in calls if call["after"] < call["before"]]
+
+
 class PairingValidationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -132,6 +141,87 @@ class PairingValidationTests(unittest.TestCase):
         bundle["records"]["random_global_seed0"]["audit"]["pre_selection"]["sparse_budget_per_head"][0][0][0] += 1
         with self.assertRaisesRegex(ValueError, "budget|pairing"):
             validate_bundle(bundle, contract)
+
+    def test_hybrid_native_non_invocation_keeps_selected_quota_and_actual_effective_count(self):
+        contract = make_contract(self.root)
+        bundle = make_bundle(contract, 0)
+        audit = bundle["records"]["random_global_seed0"]["audit"]
+        audit["merge_calls"].pop()
+        recount_hybrid(audit)
+        result = validate_bundle(bundle, contract)
+        self.assertEqual(result["random_global_seed0"]["selected_count"], 2)
+        self.assertEqual(result["random_global_seed0"]["effective_merge_count"], 1)
+        self.assertEqual(set(result["random_global_seed0"]),
+                         {"selected_count", "effective_merge_count", "removed_tokens", "mask_hamming", "mask_jaccard"})
+        self.assertEqual(merge_work_stats(audit), {
+            "selected_count": 2, "merge_invocation_count": 1, "effective_merge_count": 1,
+            "no_op_call_count": 0, "selected_without_invocation_count": 1,
+            "removed_tokens": audit["actual_removed_tokens"]})
+
+    def test_hybrid_native_noop_is_observed_but_not_counted_as_an_effective_merge(self):
+        contract = make_contract(self.root)
+        bundle = make_bundle(contract, 0)
+        audit = bundle["records"]["random_global_seed1"]["audit"]
+        audit["merge_calls"][1]["after"] = audit["merge_calls"][1]["before"]
+        recount_hybrid(audit)
+        result = validate_bundle(bundle, contract)
+        self.assertEqual(result["random_global_seed1"]["effective_merge_count"], 1)
+        stats = merge_work_stats(audit)
+        self.assertEqual(stats["merge_invocation_count"], 2)
+        self.assertEqual(stats["no_op_call_count"], 1)
+        self.assertEqual(stats["selected_without_invocation_count"], 0)
+
+    def test_hybrid_relaxed_native_work_still_rejects_forged_counters_and_invalid_calls(self):
+        contract = make_contract(self.root)
+        original = make_bundle(contract, 0)
+        audit = original["records"]["random_global_seed0"]["audit"]
+        audit["merge_calls"].pop()
+        recount_hybrid(audit)
+        validate_bundle(original, contract)
+        mutations = [
+            lambda row: row.update(actual_merge_calls=2),
+            lambda row: row.update(actual_merge_calls=True),
+            lambda row: row.update(actual_removed_tokens=row["actual_removed_tokens"] + 1),
+            lambda row: row["merged_heads"].append([9, 0, 0]),
+            lambda row: row["merge_calls"].append(deepcopy(row["merge_calls"][0])),
+            lambda row: row["merge_calls"][0].update(after=0),
+            lambda row: row["merge_calls"][0].update(after=row["merge_calls"][0]["before"] + 1),
+        ]
+        selected = audit["selected_masks"]
+        unselected = next((layer, head) for layer in range(2) for head in range(2) if not selected[layer][0][head])
+        mutations.append(lambda row: row["merge_calls"][0].update(layer=unselected[0], head=unselected[1]))
+        for mutation in mutations:
+            bundle = deepcopy(original)
+            mutation(bundle["records"]["random_global_seed0"]["audit"])
+            with self.subTest(mutation=mutation), self.assertRaises(ValueError):
+                validate_bundle(bundle, contract)
+
+    def test_hybrid_zero_effective_work_is_rejected_even_with_consistent_counters(self):
+        contract = make_contract(self.root)
+        for no_calls in (False, True):
+            bundle = make_bundle(contract, 0)
+            audit = bundle["records"]["similarity"]["audit"]
+            if no_calls:
+                audit["merge_calls"].clear()
+            else:
+                for call in audit["merge_calls"]:
+                    call["after"] = call["before"]
+            recount_hybrid(audit)
+            with self.subTest(no_calls=no_calls), self.assertRaisesRegex(ValueError, "never exercised"):
+                validate_bundle(bundle, contract)
+
+    def test_snap_still_requires_the_original_strict_effective_merge_quota(self):
+        contract = make_contract(self.root, method="snapkv_kvrepack")
+        for no_call in (False, True):
+            bundle = make_bundle(contract, 0)
+            audit = bundle["records"]["random_global_seed0"]["audit"]
+            if no_call:
+                audit["merge_calls"].pop()
+            else:
+                audit["merge_calls"][1]["after"] = audit["merge_calls"][1]["before"]
+            recount_hybrid(audit)
+            with self.subTest(no_call=no_call), self.assertRaises(ValueError):
+                validate_bundle(bundle, contract)
 
     def test_saved_pass_flag_does_not_override_input_mask_or_actual_work_tampering(self):
         contract = make_contract(self.root)
@@ -202,6 +292,30 @@ class ReportTests(unittest.TestCase):
             self.assertTrue(all(abs(float(row["similarity_minus_random_points"]) + 100) < 1e-6 for row in rows))
             with self.assertRaisesRegex(ValueError, "fresh"):
                 summarize_run(run, output)
+
+    def test_hybrid_report_preserves_csv_columns_and_real_effective_counts_with_native_skips(self):
+        contract = make_contract(self.root / "data")
+        bundles = [make_bundle(contract, index) for index in range(2)]
+        for bundle in bundles:
+            skipped = bundle["records"]["random_global_seed0"]["audit"]
+            skipped["merge_calls"].pop()
+            recount_hybrid(skipped)
+            noop = bundle["records"]["random_global_seed1"]["audit"]
+            noop["merge_calls"][1]["after"] = noop["merge_calls"][1]["before"]
+            recount_hybrid(noop)
+        run, output = self.root / "run", self.root / "report"
+        write_run(run, contract, bundles)
+        summary = summarize_run(run, output)
+        self.assertEqual(summary["selected_head_quota"], 2)
+        self.assertAlmostEqual(summary["random_mean_percent"], 100)
+        with (output / "selector_audit.csv").open() as stream:
+            reader = csv.DictReader(stream)
+            rows = list(reader)
+            self.assertEqual(reader.fieldnames, ["sample_id", "condition", "selected_count", "effective_merge_count",
+                                                 "removed_tokens", "mask_hamming", "mask_jaccard"])
+        reduced = [row for row in rows if row["condition"] in ("random_global_seed0", "random_global_seed1")]
+        self.assertEqual(len(reduced), 4)
+        self.assertTrue(all(row["selected_count"] == "2" and row["effective_merge_count"] == "1" for row in reduced))
 
     def test_incomplete_or_changed_annotation_is_rejected_before_output_creation(self):
         contract = make_contract(self.root / "data")

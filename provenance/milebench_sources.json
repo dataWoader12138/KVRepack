@@ -134,7 +134,7 @@
     },
     {
       "path": "src/kvrepack/experiments/runner.py",
-      "sha256": "693916dbdc96b20d35bd54a471899b7dd80007f3b800097d4a42ce263549374c"
+      "sha256": "c9a42abfe7dbf91e37083871b7384cbaa2f9bc7281ea274a86d2135d21ae38b0"
     },
     {
       "path": "src/kvrepack/experiments/milebench.py",
@@ -206,7 +206,7 @@
     },
     {
       "path": "src/kvrepack/ablations/milebench_head_selection_report.py",
-      "sha256": "ea4c95eef15cdf03412f8a263a4eafa8c7eaa729fbe1026b18f1117dcf7a4554"
+      "sha256": "66bce8722ebdbba54b43532c9de7ce8ed4b7a5f5f9bed2553d1d88fe2a3e7807"
     },
     {
       "path": "src/kvrepack/ablations/milebench_paired_worker.py",
@@ -214,15 +214,15 @@
     },
     {
       "path": "src/kvrepack/ablations/run_milebench_head_selection.py",
-      "sha256": "ead38d704e4d548d83dcf4354764cb78a0fd64c99ec8b2dc14bd0d4736dc03ee"
+      "sha256": "533cd0f99b66d50433b06372151421d73117f8df4ecc4a7992b09dda81efe054"
     },
     {
       "path": "src/kvrepack/experiments/random_head_images.py",
-      "sha256": "38650f060f2c5cf431d8d38f6fde704e9f0000a2f0977d5b77c93730e46b65d4"
+      "sha256": "6e7533888e8597cc16a6f2fe14a546318e968624d9a9118c921af81f827bb04d"
     },
     {
       "path": "scripts/run_milebench_random_heads.py",
-      "sha256": "53dff846bb2280394e12bcddd5fd5db677fe0c2bf0b947500098fef8648effdb"
+      "sha256": "a9342c09abf585a988c7ab3ba8e78dd31ae14489040db2940a70e7c1b0565579"
     },
     {
       "path": "scripts/check_random_head_sources.py",
@@ -251,5 +251,31 @@
       "src/kvrepack/benchmarks/milebench/workers.py": "3846a1dc46879f6f1875002dae35ad7e211c65d46074f8fee542624acf2d383d"
     },
     "description": "Add paired Random-head image experiment wrappers using byte-identical reference selectors and canonical cores. Base image loader now honors declared torch_dtype (ordinary profiles remain auto); image config validates auto/bfloat16. New paired recipe explicitly loads and verifies actual BF16 rather than only casting activations."
+  },
+  "gpu_execution_followup": {
+    "user_scope": "Qwen7B Hybrid/Snap x Spot/MMCoQA, complete MileBench v1 annotations, similarity plus random seeds0/1 only",
+    "changes": "Explicit all-samples mode reads all annotations without cap, freezes annotation SHA/total, rechecks all IDs before model load; no selector or merge math change.",
+    "targets": {
+      "src/kvrepack/ablations/run_milebench_head_selection.py": {
+        "previous_sha256": "ead38d704e4d548d83dcf4354764cb78a0fd64c99ec8b2dc14bd0d4736dc03ee",
+        "sha256": "533cd0f99b66d50433b06372151421d73117f8df4ecc4a7992b09dda81efe054"
+      },
+      "src/kvrepack/experiments/random_head_images.py": {
+        "previous_sha256": "38650f060f2c5cf431d8d38f6fde704e9f0000a2f0977d5b77c93730e46b65d4",
+        "sha256": "6e7533888e8597cc16a6f2fe14a546318e968624d9a9118c921af81f827bb04d"
+      },
+      "scripts/run_milebench_random_heads.py": {
+        "previous_sha256": "53dff846bb2280394e12bcddd5fd5db677fe0c2bf0b947500098fef8648effdb",
+        "sha256": "a9342c09abf585a988c7ab3ba8e78dd31ae14489040db2940a70e7c1b0565579"
+      }
+    },
+    "launch_fix": "Core source manifest is schema2; runtime verifier now accepts schema1/2 with full path/hash checks, tested against shipped manifest.",
+    "hybrid_audit_fix": {
+      "file": "src/kvrepack/ablations/milebench_head_selection_report.py",
+      "previous_sha256": "ea4c95eef15cdf03412f8a263a4eafa8c7eaa729fbe1026b18f1117dcf7a4554",
+      "sha256": "66bce8722ebdbba54b43532c9de7ce8ed4b7a5f5f9bed2553d1d88fe2a3e7807",
+      "change": "Restore reference Hybrid adapter work semantics: fixed selected quota, unique selected calls may be absent or no-op, actual effective count is independently recounted and must be positive. Snap strict eligible work unchanged. No algorithm, budget, classifier, candidates, mask or generation changes.",
+      "tests": "15 report tests passed; final auditor also accepts and reports native Hybrid skips/no-ops separately from selected quota."
+    }
   }
 }

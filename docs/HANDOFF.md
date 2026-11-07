@@ -1,14 +1,27 @@
-# KVRepack 项目交接（2026-11-03）
+# KVRepack 项目交接（2026-11-08更新；首版2026-11-03）
 
 本文是随项目保存、可由用户和开发者审阅的交接摘要：记录已接受的要求、实现选择、验证证据和待办事项，供后续会话恢复项目背景。后续修改应以当前代码、报告和用户的新指示为准。密钥、凭证、模型权重、视频和数据集保存在项目外。
 
-2026-11-07后续任务：用户确认HybridKV-KVRepack与SnapKV-KVRepack都补充Spot-the-Diff/MMCoQA Random-head实验，参考远端 `6c65bf8`。新专用控制器默认只规划，显式 `--execute` 才运行；当前仍仅获脚本整理和CPU检查授权，用户将在后续开启GPU。说明见 [MILEBENCH_RANDOM_HEAD.md](MILEBENCH_RANDOM_HEAD.md)，本轮验证见 [milebench_random_head_validation.json](../provenance/milebench_random_head_validation.json)。参考选择器精确迁入，本分支保留既有MileBench代码，未将远端main的大型历史结果合入。
+2026-11-08当前任务：用户已授权GPU，并确认继续官方MileBench子集全量。当前为Qwen2.5-VL-7B、HybridKV-KVRepack/SnapKV-KVRepack、Spot-the-Diff/MMCoQA、仅random seeds0/1及similarity，共 `4×200×3=2400` 次计划生成。MileBench作者从源任务抽样构建各200条的官方子集，见[论文§3.2](https://arxiv.org/pdf/2404.18532)；本轮使用这两份子集的全部标注。本项目 `--all-samples` 不设条目cap，完整读取并冻结标注SHA和总条数，与显式 `--limit` 互斥；命令需显式 `--all-samples --head-seeds 0 1`。
 
-最新扩展已获用户授权：在没有GPU的情况下整理、测试并上传MileBench多图主实验。数据/生成/评分/汇总后端已接入，Qwen与LLaVA各有10种图片方法；LLaVA四改进已迁入，原视频注册矩阵仍为19组合。LLaVA SparseMM跨prompt预算已独立修复并完成CPU回归；AsymKV边界问题仍未修复。GPU推理、任务分数及性能未测。
+本机已从当前checkout构建kvrepack_kernel；两方法/两任务各1条的独立smoke全部通过（12次生成及评分）。正式Hybrid/Spot已完成200条、600次生成并重新核分通过。首个控制器在Hybrid/MMCoQA第2个生成样本（原sample_id=18）后置审计失败，原因是将56个选中头误等同56个有效合并头。现修复仅恢复参考Hybrid允许自然缺调用或noop、每条件有效合并数仍须大于0的语义；SnapKV仍要求34头有效匹配。预算、核心算法和随机mask未改，不能通过重抽mask或改预算满足门禁。缺调用及noop按观测记录，不据此推断未调用头的资格原因。
 
-当前使用与验证入口为 [MILEBENCH.md](MILEBENCH.md)、[来源差异](MILEBENCH_SOURCE_DIFF.md)、[LLaVA迁移](LLAVA_MIGRATION.md) 和 [milebench_validation.json](../provenance/milebench_validation.json)。图片Qwen统一默认3B、生成512 token；LLaVA基线/改进共享目标固定预算分配0.1，与当前opensource的0.5差异已记录。上传状态以实际远端提交为准。
+当前正式根为 `outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108`，后台控制器PID5372，进度看 `controller_state.json` 及各 `ablation_state.json`。完整Hybrid/Spot的原合同、样本与报告按字节复制到新根复用，未重复600次生成；`reuse_manifest.json` 记录SHA，`source_archives/first_controller` 冻结旧12份绑定源码。原失败根 `outputs/ablations/random_head_qwen7b_all_seed01_20261108` 保持原样。其余三组GPU任务仍在运行，尚无完整四组结果；GPU证据只覆盖以上范围，不能推广到全部模型/方法或性能。运行期间禁止修改绑定源码和manifest。
 
-以下关于首版范围、未迁入LLaVA改进、两项未修问题及49项历史测试的段落是基准提交 `fba9c68` 的历史交接记录，保留用于来源追溯；不能替代上述当前状态和报告。最新代码仍不代表实验结果已复现。
+四组完成后在新目录做独立审计，显式提供旧绑定源码归档：
+
+```bash
+CUDA_VISIBLE_DEVICES='' PYTHONPATH=src python scripts/audit_milebench_random_head_run.py \
+  --run-root outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108 \
+  --source-archive outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/source_archives/first_controller \
+  --output outputs/audits/random_head_qwen7b_all_seed01_v2_20261108_final
+```
+
+输出目录必须尚不存在。当前协议、运行命令、数据边界及评分见 [MILEBENCH_RANDOM_HEAD.md](MILEBENCH_RANDOM_HEAD.md)；首轮准备期CPU证据见 [milebench_random_head_validation.json](../provenance/milebench_random_head_validation.json)。参考提交为 `6c65bf8`，选择器精确迁入，本分支保留既有MileBench代码，没有合入远端main的大型历史结果。
+
+此前MileBench主实验已获用户授权在无GPU情况下整理、测试并上传，数据/生成/评分/汇总后端已接入，Qwen与LLaVA各有10种图片方法，原视频注册矩阵仍为19组合。LLaVA SparseMM跨prompt预算已独立修复并完成CPU回归；AsymKV边界问题仍未修复。当前图片使用入口为 [MILEBENCH.md](MILEBENCH.md)、[来源差异](MILEBENCH_SOURCE_DIFF.md)、[LLaVA迁移](LLAVA_MIGRATION.md) 和 [milebench_validation.json](../provenance/milebench_validation.json)。普通图片Qwen默认3B及512生成token；本轮专用消融显式使用7B。LLaVA基线/改进共享目标固定预算分配0.1，与opensource的0.5差异已记录。上传状态以实际远端提交为准。
+
+**历史边界：以下正文是2026-11-03首版、基准提交 `fba9c68` 的历史交接，保留用于来源追溯。关于GPU尚未授权、LLaVA改进尚未迁入、SparseMM尚未修复及49项测试的说法仅描述当时状态；当前工作必须以上述更新、当前源码/报告及用户新指示为准。当前限定范围的GPU运行也不代表首版全部组合已复现。**
 
 用户指定的目标为公开仓库 `https://github.com/dataWoader12138/KVRepack`。提交作者为 `dataWoader12138`；Git 的身份和 SSH 凭证在各机器本地配置。
 

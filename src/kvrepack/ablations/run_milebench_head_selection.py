@@ -91,15 +91,23 @@ def run(config, *, worker_factory=None):
     if config["public_method"] not in METHODS or config["task"] not in TASKS or config["model"] != "qwen2_5_vl":
         raise ValueError("This reference experiment supports Qwen HybridKV/SnapKV and Spot-the-Diff/MMCoQA only")
     output = _output_path(config)
-    data = validate_data(config["data_root"], config["task"], limit=config["limit"], verify_images=True)
+    all_samples = config["ablation"].get("all_samples", False)
+    if type(all_samples) is not bool:
+        raise ValueError("all_samples must be Boolean")
+    selection_limit = None if all_samples else config["limit"]
+    data = validate_data(config["data_root"], config["task"], limit=selection_limit, verify_images=True)
     if not data["valid"]:
         raise ValueError("Image data preflight failed: " + "; ".join(data["errors"]))
-    annotation = load_annotation(config["data_root"], config["task"], config["limit"])
+    annotation = load_annotation(config["data_root"], config["task"], selection_limit)
     if len(annotation["data"]) != config["limit"]:
         raise ValueError("Requested sample prefix exceeds the annotation; refusing silent truncation")
     ids = [sample["sample_id"] for sample in annotation["data"]]
     if ids != data["sample_ids"] or hashlib.sha256(Path(data["annotation_path"]).read_bytes()).hexdigest() != data["annotation_sha256"]:
         raise ValueError("Annotation changed during preflight")
+    if all_samples and (data["total_samples"] != config["limit"]
+                        or data["annotation_sha256"] != config["ablation"].get("annotation_sha256")
+                        or len(ids) != config["ablation"].get("selected_sample_count")):
+        raise ValueError("Full annotation count or hash changed after planning")
     # Keep the source image-count grouping after original-order prefix selection.
     groups = {}
     for sample in annotation["data"]:
@@ -113,7 +121,8 @@ def run(config, *, worker_factory=None):
     paths += ["src/kvrepack/" + name for name in ("hybridkv_utils.py", "qwen_model_snapkv_kvrepack.py", "modeling_qwen2_5_vl.py", "configs/param_config.json")]
     contract = dict(schema_version=1, reference_commit=REFERENCE, method=config["public_method"], task=config["task"],
                     limit=config["limit"], conditions=[c["label"] for c in conditions], condition_settings=conditions,
-                    data_root=config["data_root"],
+                    data_root=config["data_root"], all_samples=all_samples,
+                    annotation_total_samples=data["total_samples"],
                     annotation_sha256=data["annotation_sha256"], selected_sample_ids=ids,
                     generation_sample_ids=[s["sample_id"] for s in ordered],
                     head_geometry=config["ablation"]["expected_geometry"], algorithm_env=config["algorithm_env"],

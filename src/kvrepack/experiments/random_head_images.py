@@ -38,18 +38,39 @@ def build_random_head_plan(method: str, task: str, data_root: str | Path, *,
                            pretrained: str = DEFAULT_PRETRAINED,
                            output: str | Path | None = None,
                            head_seeds: Sequence[int] = DEFAULT_HEAD_SEEDS,
-                           seed: int = 42, limit: int = 200, device: str = "0",
+                           seed: int = 42, limit: int | None = None, all_samples: bool = False,
+                           device: str = "0",
                            budget_ratio: float = 0.1, max_new_tokens: int = 512,
                            hf_home: str | Path | None = None,
                            environ: Mapping[str, str] | None = None,
                            repo_root: str | Path | None = None) -> ExperimentPlan:
-    """Build one no-write/no-network plan for the exact two-method protocol."""
+    """Build a no-write/no-network plan; all_samples explicitly reads annotations.
+
+    Ordinary planning retains the original 200-input default without touching
+    data. Full-data planning freezes the complete annotation's count and hash.
+    """
     if method not in METHODS:
         raise ValueError(f"Random-head image method must be one of {', '.join(METHODS)}")
     if task not in TASKS:
         raise ValueError(f"Random-head image task must be one of {', '.join(TASKS)}")
-    if type(limit) is not int or not 1 <= limit <= 200:
-        raise ValueError("limit must be an integer from 1 to 200 for this experiment")
+    if type(all_samples) is not bool:
+        raise ValueError("all_samples must be Boolean")
+    annotation_sha256 = None
+    if all_samples:
+        if limit is not None:
+            raise ValueError("all_samples and an explicit limit are mutually exclusive")
+        from ..benchmarks.milebench.dataset import annotation_path, load_annotation
+        source = annotation_path(data_root, task)
+        original = source.read_bytes()
+        annotation = load_annotation(data_root, task, limit=None)
+        if source.read_bytes() != original:
+            raise ValueError("Annotation changed during full-data planning")
+        limit = len(annotation["data"])
+        annotation_sha256 = hashlib.sha256(original).hexdigest()
+    else:
+        limit = 200 if limit is None else limit
+        if type(limit) is not int or not 1 <= limit <= 200:
+            raise ValueError("limit must be an integer from 1 to 200 for this experiment")
     arms = conditions(head_seeds)
     # Keep the source head-selection and merge recipe separate from the image
     # preprocessing/generation recipe. No random token, budget or head-category
@@ -91,6 +112,9 @@ def build_random_head_plan(method: str, task: str, data_root: str | Path, *,
         "intervention": "merge_head_mask_only",
         "pairing": "same_prepared_input_tensor_and_native_pre_selection_state",
         "expected_geometry": {"layers": 28, "native_kv_heads": 4},
+        "all_samples": all_samples,
+        "annotation_sha256": annotation_sha256,
+        "selected_sample_count": limit,
     }
     provenance = deepcopy(plan.provenance)
     provenance["random_head_reference_commit"] = REFERENCE_COMMIT
@@ -99,6 +123,9 @@ def build_random_head_plan(method: str, task: str, data_root: str | Path, *,
         "conditions": deepcopy(arms),
         "image_adaptation": "MileBench image protocol and 512-token default; no video frame or WUPS scoring settings",
         "gpu_validation": "pending",
+        "sample_selection": "complete_annotation" if all_samples else "original_prefix",
+        "selected_sample_count": limit,
+        "annotation_sha256": annotation_sha256,
     }
     tracked = provenance["configuration_sources_sha256"]
     for relative in (

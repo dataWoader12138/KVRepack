@@ -94,7 +94,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--tasks", nargs="+", choices=TASKS, default=TASKS)
     parser.add_argument("--head-seeds", nargs="+", type=int, default=DEFAULT_HEAD_SEEDS)
     parser.add_argument("--seed", type=int, default=42, help="fixed model RNG seed, separate from selector seeds")
-    parser.add_argument("--limit", type=int, default=200)
+    selection = parser.add_mutually_exclusive_group()
+    selection.add_argument("--limit", type=int, help="original input prefix (default 200 unless --all-samples)")
+    selection.add_argument("--all-samples", action="store_true", help="read every annotation row; no sample cap")
     parser.add_argument("--budget-ratio", type=float, default=0.1)
     parser.add_argument("--device", default="0")
     parser.add_argument("--max-new-tokens", type=int, default=512)
@@ -104,7 +106,7 @@ def main(argv: list[str] | None = None) -> int:
         plans = build_matrix(
             args.data_root, args.output_root, methods=args.methods, tasks=args.tasks,
             pretrained=args.pretrained, hf_home=args.hf_home, head_seeds=args.head_seeds,
-            seed=args.seed, limit=args.limit, budget_ratio=args.budget_ratio,
+            seed=args.seed, limit=args.limit, all_samples=args.all_samples, budget_ratio=args.budget_ratio,
             device=args.device, max_new_tokens=args.max_new_tokens,
         )
         if args.execute:
@@ -114,7 +116,12 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps({
                 "benchmark": "milebench", "ablation": "random_head", "executed": False,
                 "reference_commit": REFERENCE_COMMIT, "planned_runs": len(plans),
-                "requested_samples_per_run": args.limit,
+                "requested_samples_per_run": None if args.all_samples else (200 if args.limit is None else args.limit),
+                "sample_selection": "complete_annotation" if args.all_samples else "original_prefix",
+                "selected_samples_by_run": [
+                    {"method": plan.resolved_config["public_method"], "task": plan.resolved_config["task"],
+                     "sample_count": plan.resolved_config["limit"]} for plan in plans
+                ],
                 "requested_total_generations": sum(plan.resolved_config["limit"] * len(plan.resolved_config["ablation"]["conditions"]) for plan in plans),
                 "experiments": [plan.to_dict() for plan in plans],
             }, indent=2, ensure_ascii=False))
