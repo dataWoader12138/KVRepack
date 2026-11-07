@@ -13,6 +13,7 @@ jobs:
       - run: python -m pip install numpy==1.26.4 Pillow==12.1.1 rouge==1.0.1
       - run: python scripts/check_sources.py
       - run: python scripts/check_milebench_sources.py
+      - run: python scripts/check_random_head_sources.py
       - run: python scripts/check_call_graph.py --output /tmp/kvrepack-call-graph.json
       - run: python -m unittest discover -s tests -v
         env:

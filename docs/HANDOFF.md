@@ -2,6 +2,8 @@
 
 本文是随项目保存、可由用户和开发者审阅的交接摘要：记录已接受的要求、实现选择、验证证据和待办事项，供后续会话恢复项目背景。后续修改应以当前代码、报告和用户的新指示为准。密钥、凭证、模型权重、视频和数据集保存在项目外。
 
+2026-11-07后续任务：用户确认HybridKV-KVRepack与SnapKV-KVRepack都补充Spot-the-Diff/MMCoQA Random-head实验，参考远端 `6c65bf8`。新专用控制器默认只规划，显式 `--execute` 才运行；当前仍仅获脚本整理和CPU检查授权，用户将在后续开启GPU。说明见 [MILEBENCH_RANDOM_HEAD.md](MILEBENCH_RANDOM_HEAD.md)，本轮验证见 [milebench_random_head_validation.json](../provenance/milebench_random_head_validation.json)。参考选择器精确迁入，本分支保留既有MileBench代码，未将远端main的大型历史结果合入。
+
 最新扩展已获用户授权：在没有GPU的情况下整理、测试并上传MileBench多图主实验。数据/生成/评分/汇总后端已接入，Qwen与LLaVA各有10种图片方法；LLaVA四改进已迁入，原视频注册矩阵仍为19组合。LLaVA SparseMM跨prompt预算已独立修复并完成CPU回归；AsymKV边界问题仍未修复。GPU推理、任务分数及性能未测。
 
 当前使用与验证入口为 [MILEBENCH.md](MILEBENCH.md)、[来源差异](MILEBENCH_SOURCE_DIFF.md)、[LLaVA迁移](LLAVA_MIGRATION.md) 和 [milebench_validation.json](../provenance/milebench_validation.json)。图片Qwen统一默认3B、生成512 token；LLaVA基线/改进共享目标固定预算分配0.1，与当前opensource的0.5差异已记录。上传状态以实际远端提交为准。

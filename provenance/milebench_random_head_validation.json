@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-11-07T14:15:15.034896+00:00",
+  "status": "prepared_cpu_verified_gpu_pending",
+  "integration_base_commit": "a57701fb6a035eb6271a00d8cbde78d8ac62cf55",
+  "reference_commit": "6c65bf801ab1e5d0cd85f1d24991e3d5399bebcf",
+  "delivery_branch": "feat/milebench-random-head",
+  "gpu_model_generation_performed": false,
+  "cuda_build_performed": false,
+  "scope": {
+    "methods": [
+      "hybridkv_kvrepack",
+      "snapkv_kvrepack"
+    ],
+    "tasks": [
+      "Spot-the-Diff",
+      "MMCoQA"
+    ],
+    "default_model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "conditions": [
+      "similarity",
+      "random_global_seed0",
+      "random_global_seed1",
+      "random_global_seed2"
+    ],
+    "model_seed": 42,
+    "head_seeds": [
+      0,
+      1,
+      2
+    ],
+    "requested_samples_per_run": 200,
+    "planned_method_task_runs": 4,
+    "requested_future_generations": 3200,
+    "actual_gpu_generations": 0
+  },
+  "source_compatibility": {
+    "two_selectors_and_package_init": "byte_identical_to_reference",
+    "hybrid_and_snap_cores": "byte_identical_to_reference",
+    "copied_tests": "only_declared_optional_torch_import_skip",
+    "git_reference_comparison": "passed"
+  },
+  "unit_tests": {
+    "tests_run": 126,
+    "passed": 125,
+    "skipped": 1,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 44.2,
+    "skip_reason": "Existing original-artifact numerical differential requires unavailable HybridKV-artifact; current selector/source comparisons completed separately.",
+    "command": "CUDA_VISIBLE_DEVICES='' PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src KVREPACK_MILEBENCH_SOURCE=<HybridKV-opensource> python -m unittest discover -s tests -v"
+  },
+  "source_checks": {
+    "core_targets": 35,
+    "local_modules_and_adapters": 54,
+    "core_source_manifest": "passed",
+    "milebench_targets": 27,
+    "milebench_protocol_ast": "passed",
+    "original_milebench_source_comparison": "passed",
+    "random_head_source_recovery_and_git_comparison": "passed"
+  },
+  "static_call_graph": {
+    "passed": true,
+    "python_files": 54,
+    "function_definitions": 777,
+    "verified_unique_local_import_bindings": 180,
+    "resolved_local_call_sites": 753,
+    "argument_binding_checked": 751,
+    "external_or_dynamic_call_sites": 9636,
+    "kernel_call_sites": 11,
+    "kernel_exports": 5,
+    "errors": 0,
+    "boundary": "AST/import/call-signature/kernel-export checks. Dynamic receiver, inheritance, PyTorch __call__, tensor shapes and CUDA execution are not proven by this graph."
+  },
+  "data_preflight": [
+    {
+      "task": "Spot-the-Diff",
+      "valid": true,
+      "selected_samples": 200,
+      "image_references": 400,
+      "unique_images": 400,
+      "images_checked": 400,
+      "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff"
+    },
+    {
+      "task": "MMCoQA",
+      "valid": true,
+      "selected_samples": 200,
+      "image_references": 1104,
+      "unique_images": 610,
+      "images_checked": 610,
+      "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6"
+    }
+  ],
+  "packaging": {
+    "status": "passed",
+    "wheel": "KVRepack-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "076845da6394bcc1f40d2d4db9634eccbb3220d6ab4565fc90cc2e24732f35a9",
+    "wheel_members": 63,
+    "new_ablation_modules_included": true
+  },
+  "environment": {
+    "python": "3.12.9",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.52.3",
+    "numpy": "1.26.4",
+    "rouge": "1.0.1",
+    "cuda_visible_devices_during_tests": ""
+  },
+  "verified_boundaries": [
+    "Default controller is no-write/no-network/no-data/no-inference-import pure planning; explicit execute is required.",
+    "Both methods share one prepared tensor mapping across all arms; before/after tensor fingerprints checked.",
+    "All selection uses fixed private model-level RNG rankings, with model RNG/cache state reset per arm.",
+    "Original global count and effective distinct merge count are independently recomputed; classification, per-head budgets, candidates and baseline masks paired.",
+    "Hybrid work differences are kept; Snap matched candidate/cache/effective-work contract preserved.",
+    "Original image metrics, strict coverage/hash checks, negative paired differences and seed sample SD tested.",
+    "CPU model-double stream passes real audit and scoring; failures/mutation/ineffective merge never commit a complete sample.",
+    "Explicit BF16 dtype now reaches loader; ordinary image profiles retain auto; paired worker verifies actual model dtype."
+  ],
+  "intentional_image_adaptations": [
+    "Use MileBench still images, source JPEG/prompts/pixel/truncation, 512 generated tokens instead of video64frames/128tokens.",
+    "Use image absolute BUDGET512 with independent RATIO0.1, not the video fallback1024; per-arm effective budgets remain native.",
+    "Use original Spot Rouge-L and MMCoQA substring Accuracy, not WUPS; no unsupported image confidence interval or independent-input claim.",
+    "Fresh-output fail-fast execution; exact resume is not implemented."
+  ],
+  "not_verified": [
+    "CUDA or FlashAttention/custom-kernel execution",
+    "Actual model forward/generation for these image random-head arms",
+    "Whether all selected heads meet the effective-merge gate on real short image prompts",
+    "Image task quality, GPU memory, latency or throughput"
+  ],
+  "evidence_sha256": {
+    "provenance/milebench_sources.json": "d5c688c2baf3d0f16fc599244dd966c041c9b1c0c8b5a01ceda9b78b164c6871",
+    "provenance/random_head_selector_sources.json": "4514400df793f5d15dbbd28c4ae01319f3539454c101779a19879492fd2fe69c",
+    "scripts/run_milebench_random_heads.py": "53dff846bb2280394e12bcddd5fd5db677fe0c2bf0b947500098fef8648effdb",
+    "src/kvrepack/experiments/random_head_images.py": "38650f060f2c5cf431d8d38f6fde704e9f0000a2f0977d5b77c93730e46b65d4",
+    "src/kvrepack/ablations/milebench_paired_worker.py": "dd9f37cbc71e5fb615a92687533efe20f5bf38f4b2d0c85c94e876f14b9f3c1a",
+    "src/kvrepack/ablations/run_milebench_head_selection.py": "ead38d704e4d548d83dcf4354764cb78a0fd64c99ec8b2dc14bd0d4736dc03ee",
+    "src/kvrepack/ablations/milebench_head_selection_report.py": "ea4c95eef15cdf03412f8a263a4eafa8c7eaa729fbe1026b18f1117dcf7a4554"
+  }
+}

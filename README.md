@@ -2,6 +2,8 @@
 
 项目交接摘要与后续工作入口：[docs/HANDOFF.md](docs/HANDOFF.md)。
 
+新增 [Spot-the-Diff / MMCoQA Random-head 图片实验](docs/MILEBENCH_RANDOM_HEAD.md)：按参考提交 `6c65bf8` 为HybridKV-KVRepack和SnapKV-KVRepack准备原选头+3随机seed的配对入口。默认只生成计划，CPU检查完成后待GPU阶段执行。
+
 将 Qwen2.5-VL 与 LLaVA-OneVision 的 KV cache 基线及 KVRepack 改进整理到一个独立项目。视频入口包括 NextQA、VATEX、VideoChatGPT；新增 [MileBench 多图主实验](docs/MILEBENCH.md)，包含数据预检、图片生成、原协议评分和 JSON/CSV 汇总。图片配置与视频默认值分别管理，共享核心实现。
 
 本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。当前状态为**整理和 CPU 静态验证阶段，GPU 正确性、数值一致性和速度尚待验证**。

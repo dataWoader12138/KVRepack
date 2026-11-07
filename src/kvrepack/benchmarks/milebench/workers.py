@@ -192,9 +192,10 @@ class MileBenchWorker:
         import_module("numpy").random.seed(seed)
         transformers = import_module("transformers")
         model_class = select_model_class(self.family, self.method, profile=config.get("profile", "main11"))
-        # MileBench's source worker uses auto dtype for both baseline and upgrade.
+        # Ordinary image profiles retain auto; paired ablations explicitly fix
+        # BF16 at load time, avoiding a float32 allocation before a later cast.
         self.model = model_class.from_pretrained(
-            config["pretrained"], torch_dtype="auto", device_map=str(self.device),
+            config["pretrained"], torch_dtype=config["image"].get("torch_dtype", "auto"), device_map=str(self.device),
             attn_implementation=config.get("attention", "flash_attention_2"),
         ).eval()
         if self.family == "qwen2_5_vl":

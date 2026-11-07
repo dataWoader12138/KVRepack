@@ -52,6 +52,8 @@ def _validate_config(config: Mapping[str, Any]) -> None:
             raise ValueError(f"image.{name} must be a positive integer")
     if not isinstance(image.get("system_prompt"), str):
         raise ValueError("image.system_prompt must be a string")
+    if image.get("torch_dtype", "auto") not in ("auto", "bfloat16"):
+        raise ValueError("image.torch_dtype must be auto or bfloat16")
     if image["min_pixels"] > image["max_pixels"] or image["message_min_pixels"] > image["max_pixels"]:
         raise ValueError("Image pixel floors cannot exceed max_pixels")
     limit = config.get("limit")

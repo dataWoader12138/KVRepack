@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "source_repository": "https://github.com/dataWoader12138/KVRepack",
+  "source_commit": "6c65bf801ab1e5d0cd85f1d24991e3d5399bebcf",
+  "integration_base": "a57701fb6a035eb6271a00d8cbde78d8ac62cf55",
+  "entries": [
+    {
+      "source_path": "src/kvrepack/ablations/__init__.py",
+      "target_path": "src/kvrepack/ablations/__init__.py",
+      "source_git_blob": "b076bd7855abc840d5e18d04f52a280fef2582cc",
+      "source_sha256": "cc381c99a3b42dd4b7abd47391f509f391a1697899a0837d3eb547bac81b1a1b",
+      "target_sha256": "cc381c99a3b42dd4b7abd47391f509f391a1697899a0837d3eb547bac81b1a1b",
+      "transformation": "exact_copy"
+    },
+    {
+      "source_path": "src/kvrepack/ablations/head_selection.py",
+      "target_path": "src/kvrepack/ablations/head_selection.py",
+      "source_git_blob": "3b72d493e6366dc32ff7a7676c5e9e09467191a3",
+      "source_sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+      "target_sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+      "transformation": "exact_copy"
+    },
+    {
+      "source_path": "src/kvrepack/ablations/hybrid_head_selection.py",
+      "target_path": "src/kvrepack/ablations/hybrid_head_selection.py",
+      "source_git_blob": "95bdd570ad8b59a41901a3d3b3fc937f137f297c",
+      "source_sha256": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+      "target_sha256": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+      "transformation": "exact_copy"
+    },
+    {
+      "source_path": "tests/test_head_selection.py",
+      "target_path": "tests/test_head_selection.py",
+      "source_git_blob": "7cf067a321c8c551cb0dd25d8ae6d431c9d5732c",
+      "source_sha256": "59e98c14662e6e0bc567fcfad88980efa8a6c1652c975f567b9950e10bf03cfc",
+      "target_sha256": "1126f58bacd8a3d915d3dc599614ba2eded6000646b78620920160ce8533087e",
+      "transformation": "optional_torch_test_skip",
+      "replacement": {
+        "before": "import torch\n",
+        "after": "try:\n    import torch\nexcept ModuleNotFoundError as error:\n    raise unittest.SkipTest(\"CPU selector checks require torch\") from error\n"
+      }
+    },
+    {
+      "source_path": "tests/test_hybrid_head_selection.py",
+      "target_path": "tests/test_hybrid_head_selection.py",
+      "source_git_blob": "8e22354482bcc1ef0ae2f8a4ba567e26c8f4d6b2",
+      "source_sha256": "e91765808d7672adefe4be1bde4f60887b777417a5710c8c6e5524a8fa24270e",
+      "target_sha256": "0b89c44a7685776daede578d43cc84c3f31e96980c67db37f4b848dddf6cc03c",
+      "transformation": "optional_torch_test_skip",
+      "replacement": {
+        "before": "import torch\n",
+        "after": "try:\n    import torch\nexcept ModuleNotFoundError as error:\n    raise unittest.SkipTest(\"CPU selector checks require torch\") from error\n"
+      }
+    }
+  ],
+  "core_compatibility": [
+    {
+      "path": "src/kvrepack/hybridkv_utils.py",
+      "reference_sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+      "target_sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+      "comparison": "byte_identical"
+    },
+    {
+      "path": "src/kvrepack/qwen_model_snapkv_kvrepack.py",
+      "reference_sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+      "target_sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+      "comparison": "byte_identical"
+    }
+  ],
+  "semantics": {
+    "intervention": "Only native KV merge-head identity changes; original candidate/budget/classification/merger preserved.",
+    "conditions": [
+      "similarity",
+      "random_global_seed0",
+      "random_global_seed1",
+      "random_global_seed2"
+    ],
+    "random_ranking": "Private Python random.Random seeded by SHA256([head_seed, global, layers, KV heads, batch]) rather than global generation RNG. One model-level without-replacement ranking reused across prompts/tasks.",
+    "quota": "Global count matches native ceil(layers*KV_heads*merge_ratio), not a per-layer quota.",
+    "hybrid": "Native mask layout [layers,batch,KV_heads]; captures native calibrated classes before release and all per-head budgets/candidates. Different selected head identities may change actual removed-token totals under heterogeneous budgets.",
+    "snap": "Native mask layout [batch,layers,KV_heads]; strict baseline/candidate eligibility, effective merge work and cache coverage checks remain intact.",
+    "effective_work_note": "Reference selectors are copied exactly. The reference worker additionally enforces that every selected head really performed a shortening merge; the image runtime must retain that completion gate.",
+    "excluded": "random token eviction, random static/dynamic classification, random head budgets and random_layer_matched are not the image ablation."
+  },
+  "gpu_or_model_execution": false
+}

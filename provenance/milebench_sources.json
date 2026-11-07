@@ -174,7 +174,7 @@
     },
     {
       "path": "src/kvrepack/benchmarks/milebench/generate.py",
-      "sha256": "4041809a85d181c58d615856c43089d91e4bcd77b5bf5579c78c2ae9eee3ee94"
+      "sha256": "ef7ad8b50f860899cc351f8313b4d0db2397fe6d1eae3699c62574d8fd0dbdbc"
     },
     {
       "path": "src/kvrepack/benchmarks/milebench/score.py",
@@ -182,7 +182,7 @@
     },
     {
       "path": "src/kvrepack/benchmarks/milebench/workers.py",
-      "sha256": "3846a1dc46879f6f1875002dae35ad7e211c65d46074f8fee542624acf2d383d"
+      "sha256": "78e9012e8437989cae968d5a0072f3e659f47070f9bde8d815e295e41111913d"
     },
     {
       "path": "src/kvrepack/configs/milebench/image8.json",
@@ -191,6 +191,46 @@
     {
       "path": "src/kvrepack/configs/milebench/main11.json",
       "sha256": "5533b1ae464075eb8d870884dbb9ec43108e39bf6f4d4384dcd3525a42debd1c"
+    },
+    {
+      "path": "src/kvrepack/ablations/__init__.py",
+      "sha256": "cc381c99a3b42dd4b7abd47391f509f391a1697899a0837d3eb547bac81b1a1b"
+    },
+    {
+      "path": "src/kvrepack/ablations/head_selection.py",
+      "sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1"
+    },
+    {
+      "path": "src/kvrepack/ablations/hybrid_head_selection.py",
+      "sha256": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325"
+    },
+    {
+      "path": "src/kvrepack/ablations/milebench_head_selection_report.py",
+      "sha256": "ea4c95eef15cdf03412f8a263a4eafa8c7eaa729fbe1026b18f1117dcf7a4554"
+    },
+    {
+      "path": "src/kvrepack/ablations/milebench_paired_worker.py",
+      "sha256": "dd9f37cbc71e5fb615a92687533efe20f5bf38f4b2d0c85c94e876f14b9f3c1a"
+    },
+    {
+      "path": "src/kvrepack/ablations/run_milebench_head_selection.py",
+      "sha256": "ead38d704e4d548d83dcf4354764cb78a0fd64c99ec8b2dc14bd0d4736dc03ee"
+    },
+    {
+      "path": "src/kvrepack/experiments/random_head_images.py",
+      "sha256": "38650f060f2c5cf431d8d38f6fde704e9f0000a2f0977d5b77c93730e46b65d4"
+    },
+    {
+      "path": "scripts/run_milebench_random_heads.py",
+      "sha256": "53dff846bb2280394e12bcddd5fd5db677fe0c2bf0b947500098fef8648effdb"
+    },
+    {
+      "path": "scripts/check_random_head_sources.py",
+      "sha256": "e1d564c9934153108cda44bf5f1dbedd76d2c66b79861fef288ad0f98f07905c"
+    },
+    {
+      "path": "provenance/random_head_selector_sources.json",
+      "sha256": "4514400df793f5d15dbbd28c4ae01319f3539454c101779a19879492fd2fe69c"
     }
   ],
   "declared_integration_changes": {
@@ -202,5 +242,14 @@
     "profiles": "Explicit source image parameters rather than video defaults; uniform Qwen3B default, explicit7B opt-in; effective Qwen pixel floors and 512-token greedy generation; same target LLaVA .1 shared resource instead of source.5.",
     "core": "Existing Qwen implementations reused, not overwritten. LLaVA ports and SparseMM prefill fix independently recorded in core_sources and llava_image_sources."
   },
-  "gpu_or_model_execution": false
+  "gpu_or_model_execution": false,
+  "followup_changes": {
+    "base_commit": "a57701fb6a035eb6271a00d8cbde78d8ac62cf55",
+    "reference_commit": "6c65bf801ab1e5d0cd85f1d24991e3d5399bebcf",
+    "previous_target_sha256": {
+      "src/kvrepack/benchmarks/milebench/generate.py": "4041809a85d181c58d615856c43089d91e4bcd77b5bf5579c78c2ae9eee3ee94",
+      "src/kvrepack/benchmarks/milebench/workers.py": "3846a1dc46879f6f1875002dae35ad7e211c65d46074f8fee542624acf2d383d"
+    },
+    "description": "Add paired Random-head image experiment wrappers using byte-identical reference selectors and canonical cores. Base image loader now honors declared torch_dtype (ordinary profiles remain auto); image config validates auto/bfloat16. New paired recipe explicitly loads and verifies actual BF16 rather than only casting activations."
+  }
 }
