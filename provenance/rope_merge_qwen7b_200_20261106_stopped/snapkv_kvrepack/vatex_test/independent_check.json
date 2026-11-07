@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "written_utc": "2026-11-06T06:16:48.498290+00:00",
+  "status": "passed",
+  "audit_type": "Independent standard-library read-only SnapKV VATEX raw/post-RoPE paired execution audit; production validators not imported",
+  "result_root": "outputs/ablations/rope_merge_qwen7b_200_20261106/snapkv_kvrepack/vatex_test",
+  "coverage": {
+    "doc_id_range": [
+      0,
+      199
+    ],
+    "sample_count": 200,
+    "generation_records": 400,
+    "condition_count": 2,
+    "source_video_clusters": 200,
+    "state": "complete",
+    "contract_sha256": "68e6901be854229a85f3b8f9fdcf668ca7d565da4ebabe1f26e0d85ee584666e"
+  },
+  "pairing": {
+    "native_head_slots": 112,
+    "selected_and_actual_merged_heads_per_record": 17,
+    "actual_merge_calls_each_arm": 3400,
+    "actual_removed_tokens_per_doc_min": 6103,
+    "actual_removed_tokens_per_doc_max": 18037,
+    "all_pair_checks_passed": true,
+    "unique_selected_masks": 2,
+    "candidate_components": [
+      "candidate_raw",
+      "candidate_rope",
+      "candidate_value",
+      "candidate_imp",
+      "candidate_idx",
+      "head_sim"
+    ],
+    "group_profiles": "Each actual call independently compared input/rawK/ropeK/V/importance/positions and merge_idx/group_ids/group_size/start_mask fingerprints, targets and actual removed work."
+  },
+  "values": {
+    "bitwise_equal_doc_count": 200,
+    "nonexact_doc_ids": [],
+    "nonexact_merge_calls": 0,
+    "differing_elements_recorded": 0,
+    "max_abs_difference_recorded": 0.0,
+    "rounding_records": [],
+    "gate_status": "Every live pairing gate passed the declared at-most-one-step BF16/FP16 V bound with identical original inputs/groups.",
+    "independent_limit": "This audit rechecks output SHA differences and recorded comparison counters. Element-level ULP distances cannot be regenerated from discarded tensors."
+  },
+  "keys": {
+    "changed_merge_calls": 3400,
+    "total_merge_calls_each_arm": 3400,
+    "all17_calls_changed_doc_count": 200,
+    "max_abs_difference_recorded": 20.28125
+  },
+  "generation": {
+    "raw_reapply": {
+      "rows": 200,
+      "eos_count": 200,
+      "no_eos_doc_ids": [],
+      "cap_doc_ids": [],
+      "cap_without_eos_doc_ids": [],
+      "generated_tokens_min": 10,
+      "generated_tokens_max": 25,
+      "mean_generated_tokens": 16.025,
+      "non_eos_token_length_histogram": {
+        "9": 2,
+        "10": 7,
+        "11": 8,
+        "12": 22,
+        "13": 27,
+        "14": 27,
+        "15": 29,
+        "16": 22,
+        "17": 22,
+        "18": 10,
+        "19": 9,
+        "20": 5,
+        "21": 3,
+        "22": 2,
+        "23": 3,
+        "24": 2
+      }
+    },
+    "post_rope": {
+      "rows": 200,
+      "eos_count": 200,
+      "no_eos_doc_ids": [],
+      "cap_doc_ids": [],
+      "cap_without_eos_doc_ids": [],
+      "generated_tokens_min": 10,
+      "generated_tokens_max": 28,
+      "mean_generated_tokens": 16.13,
+      "non_eos_token_length_histogram": {
+        "9": 2,
+        "10": 7,
+        "11": 8,
+        "12": 23,
+        "13": 28,
+        "14": 24,
+        "15": 27,
+        "16": 21,
+        "17": 24,
+        "18": 9,
+        "19": 10,
+        "20": 5,
+        "21": 3,
+        "22": 3,
+        "23": 3,
+        "24": 2,
+        "27": 1
+      }
+    }
+  },
+  "post_vs_raw_predictions": {
+    "equal_first_token_pairs": 200,
+    "first_token_changed_doc_ids": [],
+    "text_changed_count": 32,
+    "text_changed_doc_ids": [
+      4,
+      10,
+      11,
+      15,
+      23,
+      28,
+      29,
+      32,
+      49,
+      51,
+      55,
+      59,
+      64,
+      74,
+      84,
+      85,
+      87,
+      88,
+      99,
+      101,
+      107,
+      144,
+      145,
+      146,
+      151,
+      158,
+      169,
+      172,
+      183,
+      189,
+      190,
+      199
+    ],
+    "generated_ids_changed_count": 32,
+    "generated_ids_changed_doc_ids": [
+      4,
+      10,
+      11,
+      15,
+      23,
+      28,
+      29,
+      32,
+      49,
+      51,
+      55,
+      59,
+      64,
+      74,
+      84,
+      85,
+      87,
+      88,
+      99,
+      101,
+      107,
+      144,
+      145,
+      146,
+      151,
+      158,
+      169,
+      172,
+      183,
+      189,
+      190,
+      199
+    ],
+    "first_divergences": [
+      {
+        "doc_id": 4,
+        "first_changed_generated_position_1_based": 2
+      },
+      {
+        "doc_id": 10,
+        "first_changed_generated_position_1_based": 2
+      },
+      {
+        "doc_id": 11,
+        "first_changed_generated_position_1_based": 14
+      },
+      {
+        "doc_id": 15,
+        "first_changed_generated_position_1_based": 12
+      },
+      {
+        "doc_id": 23,
+        "first_changed_generated_position_1_based": 2
+      },
+      {
+        "doc_id": 28,
+        "first_changed_generated_position_1_based": 10
+      },
+      {
+        "doc_id": 29,
+        "first_changed_generated_position_1_based": 5
+      },
+      {
+        "doc_id": 32,
+        "first_changed_generated_position_1_based": 10
+      },
+      {
+        "doc_id": 49,
+        "first_changed_generated_position_1_based": 10
+      },
+      {
+        "doc_id": 51,
+        "first_changed_generated_position_1_based": 10
+      },
+      {
+        "doc_id": 55,
+        "first_changed_generated_position_1_based": 4
+      },
+      {
+        "doc_id": 59,
+        "first_changed_generated_position_1_based": 3
+      },
+      {
+        "doc_id": 64,
+        "first_changed_generated_position_1_based": 8
+      },
+      {
+        "doc_id": 74,
+        "first_changed_generated_position_1_based": 2
+      },
+      {
+        "doc_id": 84,
+        "first_changed_generated_position_1_based": 14
+      },
+      {
+        "doc_id": 85,
+        "first_changed_generated_position_1_based": 8
+      },
+      {
+        "doc_id": 87,
+        "first_changed_generated_position_1_based": 13
+      },
+      {
+        "doc_id": 88,
+        "first_changed_generated_position_1_based": 14
+      },
+      {
+        "doc_id": 99,
+        "first_changed_generated_position_1_based": 7
+      },
+      {
+        "doc_id": 101,
+        "first_changed_generated_position_1_based": 9
+      },
+      {
+        "doc_id": 107,
+        "first_changed_generated_position_1_based": 7
+      },
+      {
+        "doc_id": 144,
+        "first_changed_generated_position_1_based": 4
+      },
+      {
+        "doc_id": 145,
+        "first_changed_generated_position_1_based": 14
+      },
+      {
+        "doc_id": 146,
+        "first_changed_generated_position_1_based": 11
+      },
+      {
+        "doc_id": 151,
+        "first_changed_generated_position_1_based": 3
+      },
+      {
+        "doc_id": 158,
+        "first_changed_generated_position_1_based": 2
+      },
+      {
+        "doc_id": 169,
+        "first_changed_generated_position_1_based": 10
+      },
+      {
+        "doc_id": 172,
+        "first_changed_generated_position_1_based": 15
+      },
+      {
+        "doc_id": 183,
+        "first_changed_generated_position_1_based": 5
+      },
+      {
+        "doc_id": 189,
+        "first_changed_generated_position_1_based": 10
+      },
+      {
+        "doc_id": 190,
+        "first_changed_generated_position_1_based": 6
+      },
+      {
+        "doc_id": 199,
+        "first_changed_generated_position_1_based": 4
+      }
+    ],
+    "examples": [
+      {
+        "doc_id": 4,
+        "raw_reapply": "A woman demonstrates a technique while holding a small object in her hand.",
+        "post_rope": "A person holds a lit match near their face while speaking."
+      },
+      {
+        "doc_id": 10,
+        "raw_reapply": "A person applies lotion to their leg while standing.",
+        "post_rope": "A man applies lotion to his leg while standing."
+      },
+      {
+        "doc_id": 11,
+        "raw_reapply": "A shirtless man throws a rock at a target in a backyard setting.",
+        "post_rope": "A shirtless man throws a rock at a target in a backyard."
+      },
+      {
+        "doc_id": 15,
+        "raw_reapply": "A person pours a dark beer into a Samuel Adams glass on a bar counter.",
+        "post_rope": "A person pours a dark beer into a Samuel Adams glass."
+      },
+      {
+        "doc_id": 23,
+        "raw_reapply": "A worker in a bucket crane reaches out to clean windows on a building.",
+        "post_rope": "A construction worker uses a crane to lift a bucket while working on a building's exterior."
+      },
+      {
+        "doc_id": 28,
+        "raw_reapply": "A group of people lie on a couch, with one person adjusting their hair.",
+        "post_rope": "A group of people lie on a couch, some with their hands behind their heads, while one person sits up and adjusts their position."
+      },
+      {
+        "doc_id": 29,
+        "raw_reapply": "A person lies down on a bed while holding a phone displaying a music app.",
+        "post_rope": "A person lies down under a red light while holding a phone displaying a music app."
+      },
+      {
+        "doc_id": 32,
+        "raw_reapply": "A person showcases a collection of wooden coasters with various designs and text.",
+        "post_rope": "A person showcases a collection of wooden coasters featuring various designs and phrases."
+      }
+    ]
+  },
+  "cache_scope": {
+    "prefill_shapes_exactly_paired": true,
+    "final_cache_shape_equal_doc_count": 175,
+    "final_shape_note": "Both arms obey full28-layer native[1,4,final_history+32+generated_tokens-1,128] shapes. If answer lengths differ, final shape lengths may legitimately differ. No numerical cache-content equality claimed."
+  },
+  "ranges": {
+    "input_tokens_min": 8360,
+    "input_tokens_max": 24744
+  },
+  "frozen_sources": {
+    "all_current_hashes_match": true,
+    "files": [
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_rope_merge.py",
+        "expected_sha256": "3b6faa0490a5ac89beaca963211f10c5cf0b3a06aacf0b8934d35fc123c930b6",
+        "current_sha256": "3b6faa0490a5ac89beaca963211f10c5cf0b3a06aacf0b8934d35fc123c930b6",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/rope_merge.py",
+        "expected_sha256": "62b5cca8d74043bf9945f00c5c9f0048d01d2d7e0a9aa4c9cedb86660a61e4be",
+        "current_sha256": "62b5cca8d74043bf9945f00c5c9f0048d01d2d7e0a9aa4c9cedb86660a61e4be",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py",
+        "expected_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "current_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py",
+        "expected_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "current_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py",
+        "expected_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "current_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py",
+        "expected_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "current_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py",
+        "expected_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "current_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_snapkv_kvrepack.py",
+        "expected_sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+        "current_sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/monkeypatch.py",
+        "expected_sha256": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+        "current_sha256": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+        "matches": true
+      }
+    ],
+    "kernel_scope": "SnapKV uses no custom kvrepack_kernel; this cell contract has no kernel binary to validate."
+  },
+  "integrity": {
+    "issue_count": 0,
+    "check_counts": {
+      "state_complete_200_400.checked": 1,
+      "state_complete_200_400.passed": 1,
+      "contract_identity.checked": 1,
+      "contract_identity.passed": 1,
+      "continuous_200_docs.checked": 1,
+      "continuous_200_docs.passed": 1,
+      "frozen_source_sha.checked": 9,
+      "frozen_source_sha.passed": 9,
+      "bundle_identity.checked": 200,
+      "bundle_identity.passed": 200,
+      "paired_input_metadata.checked": 200,
+      "paired_input_metadata.passed": 200,
+      "bundle_input_fingerprints.checked": 200,
+      "bundle_input_fingerprints.passed": 200,
+      "paired_nonintervention_config.checked": 200,
+      "paired_nonintervention_config.passed": 200,
+      "paired_head_selection_candidates.checked": 200,
+      "paired_head_selection_candidates.passed": 200,
+      "one_head_selection_capture.checked": 200,
+      "one_head_selection_capture.passed": 200,
+      "native_head_layer_coverage.checked": 200,
+      "native_head_layer_coverage.passed": 200,
+      "native_four_head_mask.checked": 5600,
+      "native_four_head_mask.passed": 5600,
+      "selected17_of112.checked": 200,
+      "selected17_of112.passed": 200,
+      "candidate_budget_lengths.checked": 5600,
+      "candidate_budget_lengths.passed": 5600,
+      "candidate_fingerprint_structure.checked": 33600,
+      "candidate_fingerprint_structure.passed": 33600,
+      "paired17_actual_merges.checked": 200,
+      "paired17_actual_merges.passed": 200,
+      "paired_actual_removed_work.checked": 200,
+      "paired_actual_removed_work.passed": 200,
+      "paired_prefill_cache_shapes.checked": 200,
+      "paired_prefill_cache_shapes.passed": 200,
+      "paired_call_inputs_groups_positions.checked": 3400,
+      "paired_call_inputs_groups_positions.passed": 3400,
+      "merge_call_parameters.checked": 3400,
+      "merge_call_parameters.passed": 3400,
+      "group_profiles_independently_rechecked.checked": 3400,
+      "group_profiles_independently_rechecked.passed": 3400,
+      "merge_input_fingerprints.checked": 3400,
+      "merge_input_fingerprints.passed": 3400,
+      "merged_output_shape.checked": 3400,
+      "merged_output_shape.passed": 3400,
+      "live_pairing_gate_passed.checked": 200,
+      "live_pairing_gate_passed.passed": 200,
+      "value_rounding_evidence_consistency.checked": 200,
+      "value_rounding_evidence_consistency.passed": 200,
+      "post_key_changed.checked": 200,
+      "post_key_changed.passed": 200,
+      "row_identity_variant.checked": 400,
+      "row_identity_variant.passed": 400,
+      "row_frozen_source_contract.checked": 400,
+      "row_frozen_source_contract.passed": 400,
+      "generation_eos_cap_metadata.checked": 400,
+      "generation_eos_cap_metadata.passed": 400,
+      "cache_layer_coverage.checked": 400,
+      "cache_layer_coverage.passed": 400,
+      "fixed_prefill_final_cache_shapes.checked": 11200,
+      "fixed_prefill_final_cache_shapes.passed": 11200
+    },
+    "sample_files_aggregate_sha256": "5b1ae13ab6cc606c92e1052827dbffcc4c908ae10f50f7995e0cdf1c3516ae46"
+  },
+  "issues": [],
+  "scope_limits": [
+    "No task scores or historical P22 samples/metrics were recomputed or independently verified here.",
+    "No GPU, model/tensor imports, video preprocessing or tensor deserialization; only this independent_check.json was added.",
+    "This verifies exact recorded fingerprints and execution facts, not full-vocabulary logits or numeric final-cache equality.",
+    "This cell is SnapKV/VATEX200; it does not declare the still-running Hybrid/VATEX cell complete."
+  ]
+}

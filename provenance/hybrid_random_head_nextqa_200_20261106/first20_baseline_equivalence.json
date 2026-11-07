@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "written_utc": "2026-11-06T07:07:15.504230+00:00",
+  "status": "exact_match",
+  "audit_type": "Independent standard-library first20 baseline equivalence and four-condition preselection audit",
+  "result_root": "outputs/ablations/hybrid_random_head_nextqa_200_20261106",
+  "comparison": {
+    "reference_root": "outputs/ablations/rope_merge_qwen7b_200_20261106/hybridkv_kvrepack/nextqa_oe_test",
+    "reference_condition": "raw_reapply",
+    "new_condition": "similarity",
+    "doc_id_range": [
+      0,
+      19
+    ],
+    "paired_docs": 20,
+    "native_merge_calls_compared": 1120
+  },
+  "baseline_findings": {
+    "all_inputs_tokens_text_masks_head_scores_and_recorded_merge_fingerprints_exact": true,
+    "fields": "Input SHA/shape/dtype/source metadata; generated IDs/text/EOS/final-cache shapes; recorded shared algorithm/generation config; native mask SHA reconstructed from[L,B,H] Boolean values;28 layer native head-score fingerprints and classification maps;56 actual native-head merge identities, inputs/positions/groups/targets/work per doc",
+    "mask_layout": "[28,1,4]",
+    "selected_heads": 56
+  },
+  "four_condition_pairing": {
+    "docs": 20,
+    "records": 80,
+    "pre_selection_full_snapshot_equal": true,
+    "scope": "Every original pre-selection head score, calibrated category, retrieval/pruned mapping, retained per-head budget, and captured full candidate tensor fingerprint snapshot agrees across all four conditions.",
+    "actual_removed_tokens_range_by_condition": {
+      "similarity": {
+        "min": 157003,
+        "max": 246107,
+        "sum": 3814686
+      },
+      "random_global_seed0": {
+        "min": 146450,
+        "max": 241050,
+        "sum": 3643270
+      },
+      "random_global_seed1": {
+        "min": 147171,
+        "max": 236236,
+        "sum": 3747751
+      },
+      "random_global_seed2": {
+        "min": 124971,
+        "max": 217270,
+        "sum": 3255579
+      }
+    },
+    "work_interpretation": "Work differences are expected selected-head consequences under heterogeneous native budgets. No equality or resampling requirement imposed."
+  },
+  "frozen_sources": {
+    "all_current_sha_match": true,
+    "files": [
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_hybrid_head_selection.py",
+        "expected_sha256": "17603aebc04595e57c9d6c64c9ff5c6ee13f7c2736e5f47aeb6c1b09626a4343",
+        "current_sha256": "17603aebc04595e57c9d6c64c9ff5c6ee13f7c2736e5f47aeb6c1b09626a4343",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection.py",
+        "expected_sha256": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+        "current_sha256": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection_report.py",
+        "expected_sha256": "a9191e9e673e37a780a02a83c41f2bd1c82ec1329ed8388982f6c6e6de65613d",
+        "current_sha256": "a9191e9e673e37a780a02a83c41f2bd1c82ec1329ed8388982f6c6e6de65613d",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py",
+        "expected_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "current_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py",
+        "expected_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "current_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/head_selection.py",
+        "expected_sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+        "current_sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py",
+        "expected_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "current_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py",
+        "expected_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "current_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py",
+        "expected_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "current_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "expected_sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "current_sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+        "expected_sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+        "current_sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_cpu.py",
+        "expected_sha256": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+        "current_sha256": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "expected_sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "current_sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py",
+        "expected_sha256": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+        "current_sha256": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/configs/param_config.json",
+        "expected_sha256": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+        "current_sha256": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/data/head_score/qwen2_5.json",
+        "expected_sha256": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e",
+        "current_sha256": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e",
+        "matches": true
+      }
+    ],
+    "kernel_contract_equal": true
+  },
+  "integrity": {
+    "issue_count": 0,
+    "checks": {
+      "new_committed_four_condition_bundle.checked": 20,
+      "new_committed_four_condition_bundle.passed": 20,
+      "baseline.input_hashes.checked": 20,
+      "baseline.input_hashes.passed": 20,
+      "baseline.input_shapes.checked": 20,
+      "baseline.input_shapes.passed": 20,
+      "baseline.input_dtypes.checked": 20,
+      "baseline.input_dtypes.passed": 20,
+      "baseline.reference_metadata.checked": 20,
+      "baseline.reference_metadata.passed": 20,
+      "baseline.source_video_id.checked": 20,
+      "baseline.source_video_id.passed": 20,
+      "baseline.video_id.checked": 20,
+      "baseline.video_id.passed": 20,
+      "baseline.input_tokens.checked": 20,
+      "baseline.input_tokens.passed": 20,
+      "baseline.generated_ids.checked": 20,
+      "baseline.generated_ids.passed": 20,
+      "baseline.generated_tokens.checked": 20,
+      "baseline.generated_tokens.passed": 20,
+      "baseline.text.checked": 20,
+      "baseline.text.passed": 20,
+      "baseline.prediction.checked": 20,
+      "baseline.prediction.passed": 20,
+      "baseline.eos_token_id.checked": 20,
+      "baseline.eos_token_id.passed": 20,
+      "baseline.eos_reached.checked": 20,
+      "baseline.eos_reached.passed": 20,
+      "baseline.final_cache_shapes.checked": 20,
+      "baseline.final_cache_shapes.passed": 20,
+      "baseline.config.task.checked": 20,
+      "baseline.config.task.passed": 20,
+      "baseline.config.method.checked": 20,
+      "baseline.config.method.passed": 20,
+      "baseline.config.model_snapshot.checked": 20,
+      "baseline.config.model_snapshot.passed": 20,
+      "baseline.config.frames.checked": 20,
+      "baseline.config.frames.passed": 20,
+      "baseline.config.budget_ratio.checked": 20,
+      "baseline.config.budget_ratio.passed": 20,
+      "baseline.config.algorithm_env.checked": 20,
+      "baseline.config.algorithm_env.passed": 20,
+      "baseline.config.min_pixels.checked": 20,
+      "baseline.config.min_pixels.passed": 20,
+      "baseline.config.max_pixels.checked": 20,
+      "baseline.config.max_pixels.passed": 20,
+      "baseline.config.dtype.checked": 20,
+      "baseline.config.dtype.passed": 20,
+      "baseline.config.attention.checked": 20,
+      "baseline.config.attention.passed": 20,
+      "baseline.config.max_new_tokens.checked": 20,
+      "baseline.config.max_new_tokens.passed": 20,
+      "baseline.config.use_cache.checked": 20,
+      "baseline.config.use_cache.passed": 20,
+      "baseline.config.do_sample.checked": 20,
+      "baseline.config.do_sample.passed": 20,
+      "baseline.config.model_seed.checked": 20,
+      "baseline.config.model_seed.passed": 20,
+      "baseline.config.effective_generation_config.checked": 20,
+      "baseline.config.effective_generation_config.passed": 20,
+      "baseline.config.generation_overrides.checked": 20,
+      "baseline.config.generation_overrides.passed": 20,
+      "native_mask_layout.checked": 20,
+      "native_mask_layout.passed": 20,
+      "baseline.native_mask_sha256.checked": 20,
+      "baseline.native_mask_sha256.passed": 20,
+      "baseline.original_selector_identity.checked": 20,
+      "baseline.original_selector_identity.passed": 20,
+      "baseline.head_score_fingerprints.checked": 20,
+      "baseline.head_score_fingerprints.passed": 20,
+      "baseline.native_head_classification_maps.checked": 20,
+      "baseline.native_head_classification_maps.passed": 20,
+      "baseline.actual_merge_work.checked": 20,
+      "baseline.actual_merge_work.passed": 20,
+      "baseline.merge_call_coverage.checked": 20,
+      "baseline.merge_call_coverage.passed": 20,
+      "baseline.native_merge_call_identity_target.checked": 1120,
+      "baseline.native_merge_call_identity_target.passed": 1120,
+      "baseline.actual_selected_candidate_fingerprints.checked": 1120,
+      "baseline.actual_selected_candidate_fingerprints.passed": 1120,
+      "baseline.actual_merge_group_fingerprints.checked": 1120,
+      "baseline.actual_merge_group_fingerprints.passed": 1120,
+      "baseline.merge_output_shapes.checked": 1120,
+      "baseline.merge_output_shapes.passed": 1120,
+      "four_arm.same_input.checked": 80,
+      "four_arm.same_input.passed": 80,
+      "four_arm.same_preselection_classification_budget_all_candidates.checked": 80,
+      "four_arm.same_preselection_classification_budget_all_candidates.passed": 80,
+      "four_arm.same_baseline_and_quota.checked": 80,
+      "four_arm.same_baseline_and_quota.passed": 80,
+      "same_compiled_kernel_contract.checked": 1,
+      "same_compiled_kernel_contract.passed": 1,
+      "frozen_source_sha.checked": 16,
+      "frozen_source_sha.passed": 16
+    },
+    "new_bundle_aggregate_sha256": "59584a8c48b92dc30dd7cce50782fe130c13a2761b8165331ab70aae4edbfa6c"
+  },
+  "issues": [],
+  "limits": [
+    "First20 original documents only; remaining180 not audited by this artifact.",
+    "No GPU, model/tensor imports, video preparation or score calculation. Only first20_baseline_equivalence.json added.",
+    "Old RoPE raw records do not contain the new complete retained-budget snapshot. Whole-budget equality here refers to the four new arms; old/new comparison uses the metadata and actual selected merge fingerprints available in both.",
+    "No raw output K/V tensors or logits were regenerated or numerically compared.",
+    "The stopped RoPE experiment was only read as existing reference data; it was not resumed."
+  ]
+}

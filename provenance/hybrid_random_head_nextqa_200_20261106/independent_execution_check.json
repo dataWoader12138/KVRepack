@@ -1,0 +1,735 @@
+{
+  "schema_version": 1,
+  "audit_date_utc": "2026-11-07",
+  "written_utc": "2026-11-07T13:24:38.068755+00:00",
+  "status": "passed",
+  "audit_type": "Independent standard-library full Hybrid Random-head execution and prior-baseline audit; production validation/scoring helpers not imported",
+  "result_root": "outputs/ablations/hybrid_random_head_nextqa_200_20261106",
+  "coverage": {
+    "doc_id_range": [
+      0,
+      199
+    ],
+    "contiguous_sample_bundles": 200,
+    "condition_count": 4,
+    "generation_records": 800,
+    "source_video_clusters": 184,
+    "controller_status": "complete",
+    "finished_utc": "2026-11-06T07:47:28.028031+00:00",
+    "original_dataset_rows": 9178,
+    "scope": "Original first200 NextQA questions, not the complete9178 question test split"
+  },
+  "parameters": {
+    "method": "hybridkv_kvrepack",
+    "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "frames": 64,
+    "budget_ratio": 0.1,
+    "simhead_ratio": 0.5,
+    "compress_ratio": 0.5,
+    "K_DIFF_ALPHA": 2,
+    "K_merge_space": "raw_reapply",
+    "native_layers": 28,
+    "native_kv_heads_per_layer": 4,
+    "native_head_slots": 112,
+    "selected_quota": 56,
+    "model_seed": 42,
+    "max_new_tokens": 128,
+    "checkpoint_repetition_penalty": 1.05
+  },
+  "conditions": {
+    "similarity": {
+      "rows": 200,
+      "eos_count": 200,
+      "no_eos_doc_ids": [],
+      "cap_doc_ids": [],
+      "cap_without_eos_doc_ids": [],
+      "first_token_changed_doc_ids": [],
+      "text_changed_doc_ids": [],
+      "generated_ids_changed_doc_ids": [],
+      "change_examples": [],
+      "selected_heads_per_record": [
+        56
+      ],
+      "effective_merges_per_record": [
+        56
+      ],
+      "removed_tokens_min": 142908,
+      "removed_tokens_max": 466674,
+      "removed_tokens_sum": 41267821,
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "mean_generated_tokens": 2.955,
+      "unique_selected_masks": 61,
+      "hamming_vs_baseline_min": 0,
+      "hamming_vs_baseline_max": 0,
+      "selected_retrieval_heads_min": 22,
+      "selected_retrieval_heads_mean": 31.245,
+      "selected_retrieval_heads_max": 39,
+      "selected_pruned_heads_min": 17,
+      "selected_pruned_heads_mean": 24.755,
+      "selected_pruned_heads_max": 34,
+      "removed_tokens_by_kind": {
+        "retrieval": 34299136,
+        "pruned": 6968685
+      },
+      "text_changed_count": 0,
+      "generated_ids_changed_count": 0
+    },
+    "random_global_seed0": {
+      "rows": 200,
+      "eos_count": 200,
+      "no_eos_doc_ids": [],
+      "cap_doc_ids": [],
+      "cap_without_eos_doc_ids": [],
+      "first_token_changed_doc_ids": [],
+      "text_changed_doc_ids": [
+        15,
+        43,
+        64,
+        104,
+        111,
+        122,
+        145,
+        153,
+        173,
+        187
+      ],
+      "generated_ids_changed_doc_ids": [
+        15,
+        43,
+        64,
+        104,
+        111,
+        122,
+        145,
+        153,
+        173,
+        187
+      ],
+      "change_examples": [
+        {
+          "doc_id": 15,
+          "similarity": "clean spoon",
+          "random": "clean mouth"
+        },
+        {
+          "doc_id": 43,
+          "similarity": "cold",
+          "random": "cold outside"
+        },
+        {
+          "doc_id": 64,
+          "similarity": "interested in show",
+          "random": "interested in tv"
+        },
+        {
+          "doc_id": 104,
+          "similarity": "watching video",
+          "random": "watching child"
+        },
+        {
+          "doc_id": 111,
+          "similarity": "throw",
+          "random": "throw it"
+        }
+      ],
+      "selected_heads_per_record": [
+        56
+      ],
+      "effective_merges_per_record": [
+        56
+      ],
+      "removed_tokens_min": 136282,
+      "removed_tokens_max": 440053,
+      "removed_tokens_sum": 39098059,
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "mean_generated_tokens": 2.955,
+      "unique_selected_masks": 1,
+      "hamming_vs_baseline_min": 52,
+      "hamming_vs_baseline_max": 58,
+      "selected_retrieval_heads_min": 20,
+      "selected_retrieval_heads_mean": 28.735,
+      "selected_retrieval_heads_max": 38,
+      "selected_pruned_heads_min": 18,
+      "selected_pruned_heads_mean": 27.265,
+      "selected_pruned_heads_max": 36,
+      "removed_tokens_by_kind": {
+        "retrieval": 31473368,
+        "pruned": 7624691
+      },
+      "text_changed_count": 10,
+      "generated_ids_changed_count": 10
+    },
+    "random_global_seed1": {
+      "rows": 200,
+      "eos_count": 200,
+      "no_eos_doc_ids": [],
+      "cap_doc_ids": [],
+      "cap_without_eos_doc_ids": [],
+      "first_token_changed_doc_ids": [],
+      "text_changed_doc_ids": [
+        15,
+        43,
+        49,
+        64,
+        66,
+        70,
+        85,
+        96,
+        100,
+        102,
+        104,
+        111,
+        113,
+        122,
+        150,
+        172
+      ],
+      "generated_ids_changed_doc_ids": [
+        15,
+        43,
+        49,
+        64,
+        66,
+        70,
+        85,
+        96,
+        100,
+        102,
+        104,
+        111,
+        113,
+        122,
+        150,
+        172
+      ],
+      "change_examples": [
+        {
+          "doc_id": 15,
+          "similarity": "clean spoon",
+          "random": "clean mouth"
+        },
+        {
+          "doc_id": 43,
+          "similarity": "cold",
+          "random": "cold outside"
+        },
+        {
+          "doc_id": 49,
+          "similarity": "to spit out water",
+          "random": "to eat candy"
+        },
+        {
+          "doc_id": 64,
+          "similarity": "interested in show",
+          "random": "interested in tv"
+        },
+        {
+          "doc_id": 66,
+          "similarity": "on waist",
+          "random": "on his waist"
+        }
+      ],
+      "selected_heads_per_record": [
+        56
+      ],
+      "effective_merges_per_record": [
+        56
+      ],
+      "removed_tokens_min": 142693,
+      "removed_tokens_max": 468266,
+      "removed_tokens_sum": 40416938,
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "mean_generated_tokens": 2.98,
+      "unique_selected_masks": 1,
+      "hamming_vs_baseline_min": 60,
+      "hamming_vs_baseline_max": 66,
+      "selected_retrieval_heads_min": 23,
+      "selected_retrieval_heads_mean": 30.395,
+      "selected_retrieval_heads_max": 39,
+      "selected_pruned_heads_min": 17,
+      "selected_pruned_heads_mean": 25.605,
+      "selected_pruned_heads_max": 33,
+      "removed_tokens_by_kind": {
+        "retrieval": 33260336,
+        "pruned": 7156602
+      },
+      "text_changed_count": 16,
+      "generated_ids_changed_count": 16
+    },
+    "random_global_seed2": {
+      "rows": 200,
+      "eos_count": 200,
+      "no_eos_doc_ids": [],
+      "cap_doc_ids": [],
+      "cap_without_eos_doc_ids": [],
+      "first_token_changed_doc_ids": [],
+      "text_changed_doc_ids": [
+        17,
+        43,
+        96,
+        100,
+        104,
+        113,
+        116,
+        122,
+        173
+      ],
+      "generated_ids_changed_doc_ids": [
+        17,
+        43,
+        96,
+        100,
+        104,
+        113,
+        116,
+        122,
+        173
+      ],
+      "change_examples": [
+        {
+          "doc_id": 17,
+          "similarity": "play",
+          "random": "play as a toy"
+        },
+        {
+          "doc_id": 43,
+          "similarity": "cold",
+          "random": "cold outside"
+        },
+        {
+          "doc_id": 96,
+          "similarity": "help boy down",
+          "random": "help boy down slide"
+        },
+        {
+          "doc_id": 100,
+          "similarity": "look at person",
+          "random": "look at camera"
+        },
+        {
+          "doc_id": 104,
+          "similarity": "watching video",
+          "random": "watching child"
+        }
+      ],
+      "selected_heads_per_record": [
+        56
+      ],
+      "effective_merges_per_record": [
+        56
+      ],
+      "removed_tokens_min": 120360,
+      "removed_tokens_max": 432746,
+      "removed_tokens_sum": 35197043,
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "mean_generated_tokens": 2.96,
+      "unique_selected_masks": 1,
+      "hamming_vs_baseline_min": 54,
+      "hamming_vs_baseline_max": 62,
+      "selected_retrieval_heads_min": 16,
+      "selected_retrieval_heads_mean": 23.87,
+      "selected_retrieval_heads_max": 34,
+      "selected_pruned_heads_min": 22,
+      "selected_pruned_heads_mean": 32.13,
+      "selected_pruned_heads_max": 40,
+      "removed_tokens_by_kind": {
+        "retrieval": 26242448,
+        "pruned": 8954595
+      },
+      "text_changed_count": 9,
+      "generated_ids_changed_count": 9
+    }
+  },
+  "pairing": {
+    "random_vs_similarity_pairs": 600,
+    "all_pair_input_preselection_checks_equal": true,
+    "equal_pair_counts": {
+      "input_hashes": 600,
+      "input_shapes": 600,
+      "input_dtypes": 600,
+      "input_fingerprint_sha256": 600,
+      "reference_metadata": 600,
+      "source_video_id": 600,
+      "video_id": 600,
+      "input_tokens": 600,
+      "pre_selection_full_calibrated_category_budget_all_candidate_hashes": 600,
+      "baseline_native_mask": 600
+    },
+    "preselection_fingerprints_structure_checked": 235680,
+    "calibrated_category": "Full28x1x4 Boolean values independently repacked and compared to category tensor SHA; true/retrieval and false/pruned mapping partition verified.",
+    "head_scores": "Recorded float32 score values independently repacked into bytes and compared to all28 head-score tensor hashes; original mask selected scores form a valid global top56.",
+    "retained_budgets": "Full28x1x4 native budget table equal across all four arms; each actual merge records the corresponding unchanged per-head budget; final flattened cache capacity independently recomputed from sum(budget)+4*local_len+4*(generated_tokens-1).",
+    "native_budget_range_across_original_inputs": {
+      "min": 512,
+      "max": 2757
+    },
+    "work_policy": "Candidate expansion/removal and selected retrieval/static mixture may differ because selected head identities differ. Work is recomputed and reported; no equality/resampling/reallocation imposed."
+  },
+  "random_masks": {
+    "fixed_per_seed_across_all200": true,
+    "independent_uniform_rank_reconstruction_random_records": 600,
+    "recipe": "SHA256(compact JSON[seed,\"global\",28,4,0]) first16bytes as local Python random.Random seed; permutation(range112), select first56; no production rank helper imported",
+    "seed_pair_differences": [
+      {
+        "seeds": [
+          0,
+          1
+        ],
+        "intersection_heads": 26,
+        "hamming": 60
+      },
+      {
+        "seeds": [
+          0,
+          2
+        ],
+        "intersection_heads": 25,
+        "hamming": 62
+      },
+      {
+        "seeds": [
+          1,
+          2
+        ],
+        "intersection_heads": 28,
+        "hamming": 56
+      }
+    ],
+    "similarity_unique_masks": 61,
+    "no_eligibility_filter": "Every Random mask exactly matches the fixed uniform draw from all112 positions; no conditioned draw or work-matching resample."
+  },
+  "prior_similarity_baseline_equivalence": {
+    "reference_root": "outputs/ablations/rope_merge_qwen7b_200_20261106/hybridkv_kvrepack/nextqa_oe_test",
+    "reference_condition": "raw_reapply",
+    "current_condition": "similarity",
+    "paired_docs": 200,
+    "all_recorded_fields_equal": true,
+    "equal_doc_counts": {
+      "input_hashes": 200,
+      "input_shapes": 200,
+      "input_dtypes": 200,
+      "reference_metadata": 200,
+      "source_video_id": 200,
+      "video_id": 200,
+      "input_tokens": 200,
+      "generated_ids": 200,
+      "generated_tokens": 200,
+      "text": 200,
+      "prediction": 200,
+      "eos_token_id": 200,
+      "eos_reached": 200,
+      "final_cache_shapes": 200,
+      "config.task": 200,
+      "config.method": 200,
+      "config.model_snapshot": 200,
+      "config.frames": 200,
+      "config.budget_ratio": 200,
+      "config.algorithm_env": 200,
+      "config.min_pixels": 200,
+      "config.max_pixels": 200,
+      "config.dtype": 200,
+      "config.attention": 200,
+      "config.max_new_tokens": 200,
+      "config.use_cache": 200,
+      "config.do_sample": 200,
+      "config.model_seed": 200,
+      "config.effective_generation_config": 200,
+      "config.generation_overrides": 200,
+      "baseline_native_mask_sha": 200,
+      "head_scores_classification_maps": 200
+    },
+    "actual_native_merge_calls_compared": 11200,
+    "actual_native_merge_inputs_groups_identity_checks_passed": 11200,
+    "limits": "Full retained-budget/preselection snapshots were not recorded by the old RoPE adapter. Those complete snapshots are compared among new four arms; old/new equivalence compares all commonly available inputs/tokens/masks/scores/maps and actual selected merge inputs/groups/work."
+  },
+  "frozen_sources": {
+    "all_current_hashes_match": true,
+    "files": [
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_hybrid_head_selection.py",
+        "expected_sha256": "17603aebc04595e57c9d6c64c9ff5c6ee13f7c2736e5f47aeb6c1b09626a4343",
+        "current_sha256": "17603aebc04595e57c9d6c64c9ff5c6ee13f7c2736e5f47aeb6c1b09626a4343",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection.py",
+        "expected_sha256": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+        "current_sha256": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection_report.py",
+        "expected_sha256": "a9191e9e673e37a780a02a83c41f2bd1c82ec1329ed8388982f6c6e6de65613d",
+        "current_sha256": "a9191e9e673e37a780a02a83c41f2bd1c82ec1329ed8388982f6c6e6de65613d",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py",
+        "expected_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "current_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py",
+        "expected_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "current_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/head_selection.py",
+        "expected_sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+        "current_sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py",
+        "expected_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "current_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py",
+        "expected_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "current_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py",
+        "expected_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "current_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "expected_sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "current_sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+        "expected_sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+        "current_sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_cpu.py",
+        "expected_sha256": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+        "current_sha256": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "expected_sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "current_sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py",
+        "expected_sha256": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+        "current_sha256": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/configs/param_config.json",
+        "expected_sha256": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+        "current_sha256": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/data/head_score/qwen2_5.json",
+        "expected_sha256": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e",
+        "current_sha256": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e",
+        "matches": true
+      }
+    ],
+    "contract_sha256": "3d145eb431dd7c8286aa89c6736525b193b41368aae64e88d9a356d87903c87c",
+    "kernel": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/kvrepack_kernel.cpython-312-x86_64-linux-gnu.so",
+      "expected_sha256": "b57f2a5076de3ac67c984b6bc09e351ce7adcfdd86f477eb3bb424ad7092b01a",
+      "current_sha256": "b57f2a5076de3ac67c984b6bc09e351ce7adcfdd86f477eb3bb424ad7092b01a",
+      "matches": true
+    }
+  },
+  "integrity": {
+    "issue_count": 0,
+    "check_counts": {
+      "complete_200_800_state.checked": 1,
+      "complete_200_800_state.passed": 1,
+      "contract_scope_sha.checked": 1,
+      "contract_scope_sha.passed": 1,
+      "contiguous_original_doc_prefix.checked": 1,
+      "contiguous_original_doc_prefix.passed": 1,
+      "frozen_source_sha.checked": 16,
+      "frozen_source_sha.passed": 16,
+      "compiled_kernel_sha.checked": 1,
+      "compiled_kernel_sha.passed": 1,
+      "bundle_identity_coverage.checked": 200,
+      "bundle_identity_coverage.passed": 200,
+      "bundle_fairness_gate.checked": 200,
+      "bundle_fairness_gate.passed": 200,
+      "bundle_input_fingerprint_metadata.checked": 200,
+      "bundle_input_fingerprint_metadata.passed": 200,
+      "row_identity.checked": 800,
+      "row_identity.passed": 800,
+      "native28x1x4_layout.checked": 800,
+      "native28x1x4_layout.passed": 800,
+      "strategy_seed.checked": 800,
+      "strategy_seed.passed": 800,
+      "selected56_global_quota.checked": 800,
+      "selected56_global_quota.passed": 800,
+      "independent_original_or_random_rank.checked": 800,
+      "independent_original_or_random_rank.passed": 800,
+      "layer_counts.checked": 800,
+      "layer_counts.passed": 800,
+      "mask_overlap.checked": 800,
+      "mask_overlap.passed": 800,
+      "all_original_preselection_and_baseline_mask_equal.checked": 800,
+      "all_original_preselection_and_baseline_mask_equal.passed": 800,
+      "nonselection_config_source_contract.checked": 800,
+      "nonselection_config_source_contract.passed": 800,
+      "full_calibrated_category_values_sha.checked": 800,
+      "full_calibrated_category_values_sha.passed": 800,
+      "native_allocator_released_category_field.checked": 800,
+      "native_allocator_released_category_field.passed": 800,
+      "native_full_per_head_budget_table.checked": 800,
+      "native_full_per_head_budget_table.passed": 800,
+      "calibrated_category_mapping_partition.checked": 800,
+      "calibrated_category_mapping_partition.passed": 800,
+      "head_score_layer_coverage.checked": 800,
+      "head_score_layer_coverage.passed": 800,
+      "head_score_values_repack_sha.checked": 22400,
+      "head_score_values_repack_sha.passed": 22400,
+      "baseline_top56_score_order.checked": 800,
+      "baseline_top56_score_order.passed": 800,
+      "preselection_candidate_layer_coverage.checked": 800,
+      "preselection_candidate_layer_coverage.passed": 800,
+      "preselection_fingerprint_structure.checked": 235680,
+      "preselection_fingerprint_structure.passed": 235680,
+      "actual56_effective_native_merges.checked": 800,
+      "actual56_effective_native_merges.passed": 800,
+      "actual_removed_work_recomputed.checked": 800,
+      "actual_removed_work_recomputed.passed": 800,
+      "per_call_native_budget_category_target.checked": 44800,
+      "per_call_native_budget_category_target.passed": 44800,
+      "original_merge_output_shape.checked": 44800,
+      "original_merge_output_shape.passed": 44800,
+      "original_group_profile_shapes.checked": 44800,
+      "original_group_profile_shapes.passed": 44800,
+      "eos_cap_token_metadata.checked": 800,
+      "eos_cap_token_metadata.passed": 800,
+      "cache_layer_coverage.checked": 800,
+      "cache_layer_coverage.passed": 800,
+      "per_head_budget_preserved_in_final_cache_capacity.checked": 22400,
+      "per_head_budget_preserved_in_final_cache_capacity.passed": 22400,
+      "paired_input.input_hashes.checked": 600,
+      "paired_input.input_hashes.passed": 600,
+      "paired_input.input_shapes.checked": 600,
+      "paired_input.input_shapes.passed": 600,
+      "paired_input.input_dtypes.checked": 600,
+      "paired_input.input_dtypes.passed": 600,
+      "paired_input.input_fingerprint_sha256.checked": 600,
+      "paired_input.input_fingerprint_sha256.passed": 600,
+      "paired_input.reference_metadata.checked": 600,
+      "paired_input.reference_metadata.passed": 600,
+      "paired_input.source_video_id.checked": 600,
+      "paired_input.source_video_id.passed": 600,
+      "paired_input.video_id.checked": 600,
+      "paired_input.video_id.passed": 600,
+      "paired_input.input_tokens.checked": 600,
+      "paired_input.input_tokens.passed": 600,
+      "prior_similarity_equivalence.input_hashes.checked": 200,
+      "prior_similarity_equivalence.input_hashes.passed": 200,
+      "prior_similarity_equivalence.input_shapes.checked": 200,
+      "prior_similarity_equivalence.input_shapes.passed": 200,
+      "prior_similarity_equivalence.input_dtypes.checked": 200,
+      "prior_similarity_equivalence.input_dtypes.passed": 200,
+      "prior_similarity_equivalence.reference_metadata.checked": 200,
+      "prior_similarity_equivalence.reference_metadata.passed": 200,
+      "prior_similarity_equivalence.source_video_id.checked": 200,
+      "prior_similarity_equivalence.source_video_id.passed": 200,
+      "prior_similarity_equivalence.video_id.checked": 200,
+      "prior_similarity_equivalence.video_id.passed": 200,
+      "prior_similarity_equivalence.input_tokens.checked": 200,
+      "prior_similarity_equivalence.input_tokens.passed": 200,
+      "prior_similarity_equivalence.generated_ids.checked": 200,
+      "prior_similarity_equivalence.generated_ids.passed": 200,
+      "prior_similarity_equivalence.generated_tokens.checked": 200,
+      "prior_similarity_equivalence.generated_tokens.passed": 200,
+      "prior_similarity_equivalence.text.checked": 200,
+      "prior_similarity_equivalence.text.passed": 200,
+      "prior_similarity_equivalence.prediction.checked": 200,
+      "prior_similarity_equivalence.prediction.passed": 200,
+      "prior_similarity_equivalence.eos_token_id.checked": 200,
+      "prior_similarity_equivalence.eos_token_id.passed": 200,
+      "prior_similarity_equivalence.eos_reached.checked": 200,
+      "prior_similarity_equivalence.eos_reached.passed": 200,
+      "prior_similarity_equivalence.final_cache_shapes.checked": 200,
+      "prior_similarity_equivalence.final_cache_shapes.passed": 200,
+      "prior_similarity_equivalence.config.task.checked": 200,
+      "prior_similarity_equivalence.config.task.passed": 200,
+      "prior_similarity_equivalence.config.method.checked": 200,
+      "prior_similarity_equivalence.config.method.passed": 200,
+      "prior_similarity_equivalence.config.model_snapshot.checked": 200,
+      "prior_similarity_equivalence.config.model_snapshot.passed": 200,
+      "prior_similarity_equivalence.config.frames.checked": 200,
+      "prior_similarity_equivalence.config.frames.passed": 200,
+      "prior_similarity_equivalence.config.budget_ratio.checked": 200,
+      "prior_similarity_equivalence.config.budget_ratio.passed": 200,
+      "prior_similarity_equivalence.config.algorithm_env.checked": 200,
+      "prior_similarity_equivalence.config.algorithm_env.passed": 200,
+      "prior_similarity_equivalence.config.min_pixels.checked": 200,
+      "prior_similarity_equivalence.config.min_pixels.passed": 200,
+      "prior_similarity_equivalence.config.max_pixels.checked": 200,
+      "prior_similarity_equivalence.config.max_pixels.passed": 200,
+      "prior_similarity_equivalence.config.dtype.checked": 200,
+      "prior_similarity_equivalence.config.dtype.passed": 200,
+      "prior_similarity_equivalence.config.attention.checked": 200,
+      "prior_similarity_equivalence.config.attention.passed": 200,
+      "prior_similarity_equivalence.config.max_new_tokens.checked": 200,
+      "prior_similarity_equivalence.config.max_new_tokens.passed": 200,
+      "prior_similarity_equivalence.config.use_cache.checked": 200,
+      "prior_similarity_equivalence.config.use_cache.passed": 200,
+      "prior_similarity_equivalence.config.do_sample.checked": 200,
+      "prior_similarity_equivalence.config.do_sample.passed": 200,
+      "prior_similarity_equivalence.config.model_seed.checked": 200,
+      "prior_similarity_equivalence.config.model_seed.passed": 200,
+      "prior_similarity_equivalence.config.effective_generation_config.checked": 200,
+      "prior_similarity_equivalence.config.effective_generation_config.passed": 200,
+      "prior_similarity_equivalence.config.generation_overrides.checked": 200,
+      "prior_similarity_equivalence.config.generation_overrides.passed": 200,
+      "prior_baseline_native_mask_sha.checked": 200,
+      "prior_baseline_native_mask_sha.passed": 200,
+      "prior_head_scores_classification_maps.checked": 200,
+      "prior_head_scores_classification_maps.passed": 200,
+      "prior_native_call_coverage.checked": 200,
+      "prior_native_call_coverage.passed": 200,
+      "prior_native_merge_identity_input_groups_exact.checked": 11200,
+      "prior_native_merge_identity_input_groups_exact.passed": 11200,
+      "prior_actual_merge_work.checked": 200,
+      "prior_actual_merge_work.passed": 200,
+      "fairness_work_arrays_follow_actual_conditions.checked": 200,
+      "fairness_work_arrays_follow_actual_conditions.passed": 200
+    },
+    "sample_files_aggregate_sha256": "91192e1321352dd059f68188fe30caefb521bc337c32b8c4f0e7635691e2adf5"
+  },
+  "issues": [],
+  "execution": {
+    "new_gpu_runs": 0,
+    "gpu_status_or_permission_calls": 0,
+    "model_or_tensor_imports": false,
+    "video_preparation_runs": 0,
+    "scoring_runs": 0,
+    "only_new_file": "outputs/ablations/hybrid_random_head_nextqa_200_20261106/independent_execution_check.json"
+  },
+  "scope_limits": [
+    "This audits recorded execution and pairing, not a new WUPS calculation or significance test.",
+    "800 completed records all have56 effective merges in this prefix. This does not prove every arbitrary future input has56 eligible merges.",
+    "Output logits and numeric final K/V tensor contents were not stored or recomputed. Input/candidate hashes are compared as recorded.",
+    "The stopped RoPE run was only read as existing reference data and was never restarted.",
+    "Frozen source checks cover the16 contract files plus compiled kernel, not every installed package or checkpoint weight shard."
+  ]
+}

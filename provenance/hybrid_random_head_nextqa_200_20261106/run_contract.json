@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "task": "nextqa_oe_test",
+  "method": "hybridkv_kvrepack",
+  "target_docs": 200,
+  "target_generations": 800,
+  "conditions": [
+    [
+      "similarity",
+      "similarity",
+      0
+    ],
+    [
+      "random_global_seed0",
+      "random_global",
+      0
+    ],
+    [
+      "random_global_seed1",
+      "random_global",
+      1
+    ],
+    [
+      "random_global_seed2",
+      "random_global",
+      2
+    ]
+  ],
+  "dataset_rows": 9178,
+  "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "model_metadata": {
+    "chat_template.json": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96",
+    "config.json": "77d9ec7321cc572e3579e2c84799c9cadaded63c49ce93b101733349fc330c43",
+    "generation_config.json": "0a3aea82869fe29f20dc95ccf3e2bcff380eca1f5ad6447a4a4b37110b08e43e",
+    "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "model.safetensors.index.json": "73b333b0b16e5286ddba615d2caebcd495cf7e616f52eb217a81781393d79de9",
+    "preprocessor_config.json": "f2058c716eef96ccaed1cc1e2d0c08306b62586d535b28d9d08e691b2fab7ca0",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "4abd3520120e266da84c0864fee064d1fb10806f02225911a47253dd38dc5f56",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "arrow_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___n_ex_tqa/OE/0.0.0/a0d7729e38399da9c8a70c59aa4ad7f6996d3c00/n_ex_tqa-test.arrow",
+  "arrow_sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+  "video_root": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/nextqa/NExTVideo",
+  "task_yaml_sha256": "c81a2b515f03261b77250491ef77a1391672a53687ad86940e4bef17c7183f20",
+  "task_utils_sha256": "27c8baea98d4709e25c71484f01e6897e771c420072bff87f2be90deda72f2e4",
+  "included_yaml_sha256": "5e0d2f26789ffe92fcf1861bdb3879395a5419e462564748661f2909119eaf60",
+  "frames": 64,
+  "min_pixels": 200704,
+  "max_pixels": 1605632,
+  "budget_ratio": 0.1,
+  "algorithm_env": {
+    "BUDGET": "1024",
+    "BUDGET_RATIO": "0.1",
+    "RATIO": "0.1",
+    "HEAD_CLASSIFY": "head_ada",
+    "BUDGET_METHOD": "head_ada",
+    "HYBRID_KVREPACK_CHUNK_SIZE": "8",
+    "HYBRID_KVREPACK_COMPRESS_RATIO": ".50",
+    "K_DIFF_ALPHA": "2",
+    "HYBRID_KVREPACK_K_DIFF_ALPHA": "2",
+    "HYBRID_KVREPACK_MAX_GROUP_SIZE": "0",
+    "HYBRID_KVREPACK_BLOCK_META_WEIGHT": "uniform",
+    "HYBRID_KVREPACK_STATIC_MERGE_SCOPE": "visual",
+    "HYBRID_KVREPACK_K_MERGE_SPACE": "raw_reapply",
+    "HYBRID_KVREPACK_SIMHEAD_ENABLE": "1",
+    "HYBRID_KVREPACK_SIMHEAD_MERGE_RATIO": ".50",
+    "HYBRID_KVREPACK_SIMHEAD_SIM_SPACE": "raw",
+    "HYBRID_KVREPACK_VERBOSE": "0",
+    "HYBRIDKV_VERBOSE": "0",
+    "HYBRID_KVREPACK_MERGE_SCORE_MODE": "full"
+  },
+  "dtype": "bfloat16",
+  "attention": "flash_attention_2",
+  "max_new_tokens": 128,
+  "do_sample": false,
+  "use_cache": true,
+  "model_seed": 42,
+  "selected_heads": 56,
+  "source_files": {
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_hybrid_head_selection.py": "17603aebc04595e57c9d6c64c9ff5c6ee13f7c2736e5f47aeb6c1b09626a4343",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection.py": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection_report.py": "a9191e9e673e37a780a02a83c41f2bd1c82ec1329ed8388982f6c6e6de65613d",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/head_selection.py": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/modeling_qwen2_5_vl.py": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_cpu.py": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/configs/param_config.json": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/data/head_score/qwen2_5.json": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e"
+  },
+  "sources_sha256": {
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_hybrid_head_selection.py": "17603aebc04595e57c9d6c64c9ff5c6ee13f7c2736e5f47aeb6c1b09626a4343",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection.py": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection_report.py": "a9191e9e673e37a780a02a83c41f2bd1c82ec1329ed8388982f6c6e6de65613d",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/head_selection.py": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/modeling_qwen2_5_vl.py": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_cpu.py": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/configs/param_config.json": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/data/head_score/qwen2_5.json": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e"
+  },
+  "kernel": {
+    "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/kvrepack_kernel.cpython-312-x86_64-linux-gnu.so",
+    "sha256": "b57f2a5076de3ac67c984b6bc09e351ce7adcfdd86f477eb3bb424ad7092b01a"
+  },
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.52.3",
+    "flash-attn": "2.7.4.post1",
+    "qwen-vl-utils": "0.0.14",
+    "datasets": "2.19.2",
+    "decord": "0.6.0",
+    "numpy": "1.26.4"
+  },
+  "intervention": "Only global head identities change. Native classification and every per-head retained budget stay fixed. Total candidate expansion/removal may change with the identities of heterogeneous-budget heads.",
+  "input_policy": "Original first-prefix order; one CPU preparation, identical tensors for four conditions; no persistent tensor cache"
+}

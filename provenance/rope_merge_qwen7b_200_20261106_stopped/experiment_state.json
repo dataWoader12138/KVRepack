@@ -1,0 +1,33 @@
+{
+  "status": "stopped_by_user",
+  "started_utc": "2026-11-06T04:53:48.594270+00:00",
+  "target_generations": 1600,
+  "target_runs": 4,
+  "completed_runs": [
+    {
+      "method": "snapkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "report": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/snapkv_kvrepack/nextqa_oe_test/report"
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "report": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/hybridkv_kvrepack/nextqa_oe_test/report"
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "report": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/snapkv_kvrepack/vatex_test/report"
+    }
+  ],
+  "limit": 200,
+  "controller_pid": 9353,
+  "process_group": 9353,
+  "current_method": "hybridkv_kvrepack",
+  "current_task": "vatex_test",
+  "updated_utc": "2026-11-06T06:12:00.817732+00:00",
+  "worker_pid": 68937,
+  "stopped_utc": "2026-11-06T06:32:28.440462+00:00",
+  "resume_authorized": false,
+  "stop_reason": "User ended the RoPE merge-space attempt and switched to completing HybridKV+KVRepack Random-head ablation."
+}

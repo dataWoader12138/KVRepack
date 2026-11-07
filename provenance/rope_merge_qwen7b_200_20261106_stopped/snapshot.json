@@ -1,0 +1,93 @@
+{
+  "status": "stopped_by_user",
+  "resume_authorized": false,
+  "stop_reason": "User ended RoPE attempt and requested HybridKV+KVRepack Random-head completion",
+  "states": [
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "status": "complete",
+      "paired_samples": 200,
+      "generations": 400
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "vatex_test",
+      "status": "stopped_by_user",
+      "paired_samples": 97,
+      "generations": 194
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "status": "complete",
+      "paired_samples": 200,
+      "generations": 400
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "status": "complete",
+      "paired_samples": 200,
+      "generations": 400
+    }
+  ],
+  "committed_paired_samples": 697,
+  "committed_generations": 1394,
+  "completed_comparisons": [
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "metric": "WUPS",
+      "raw_reapply": 33.21990343057972,
+      "post_rope": 33.21990343057972,
+      "post_minus_raw": 0.0,
+      "inputs": 200
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "nextqa_oe_test",
+      "metric": "WUPS",
+      "raw_reapply": 32.917681214957476,
+      "post_rope": 32.7079200138263,
+      "post_minus_raw": -0.20976120113117247,
+      "inputs": 200
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "metric": "Bleu_4",
+      "raw_reapply": 0.21929443891845268,
+      "post_rope": 0.21285535349657733,
+      "post_minus_raw": -0.006439085421875351,
+      "inputs": 200
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "metric": "METEOR",
+      "raw_reapply": 0.21438874683941053,
+      "post_rope": 0.21166465255982836,
+      "post_minus_raw": -0.002724094279582173,
+      "inputs": 200
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "metric": "ROUGE_L",
+      "raw_reapply": 0.4259716611235004,
+      "post_rope": 0.4239324385424408,
+      "post_minus_raw": -0.0020392225810595965,
+      "inputs": 200
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "vatex_test",
+      "metric": "CIDEr",
+      "raw_reapply": 0.4630334566337397,
+      "post_rope": 0.4510144888131382,
+      "post_minus_raw": -0.012018967820601467,
+      "inputs": 200
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "stopped_by_user",
+  "task": "vatex_test",
+  "method": "hybridkv_kvrepack",
+  "target_docs": 200,
+  "target_generations": 400,
+  "completed_docs": 97,
+  "completed_generations": 194,
+  "contract_sha256": "9e76f96544232e02fe52255badadc236edb8abae503d3c0461d7ee546b820ca3",
+  "started_utc": "2026-11-06T06:12:05.469326+00:00",
+  "updated_utc": "2026-11-06T06:32:25.123178+00:00",
+  "conditions": [
+    "raw_reapply",
+    "post_rope"
+  ],
+  "estimated_remaining_seconds": 1295.0847606594416,
+  "current_doc_id": 97,
+  "current_variant": null,
+  "elapsed_current_session_seconds": 1219.6429299414158,
+  "stopped_utc": "2026-11-06T06:32:28.440462+00:00",
+  "resume_authorized": false,
+  "stop_reason": "User ended the RoPE merge-space attempt and switched to completing HybridKV+KVRepack Random-head ablation."
+}

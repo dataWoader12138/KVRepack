@@ -1,0 +1,5 @@
+variant,n_inputs,eos_count,reached_length_limit,capped_without_eos,generated_tokens_min,generated_tokens_mean,generated_tokens_max
+similarity,200,200,0,0,2,2.955,6
+random_global_seed0,200,200,0,0,2,2.955,6
+random_global_seed1,200,200,0,0,2,2.98,6
+random_global_seed2,200,200,0,0,2,2.96,6

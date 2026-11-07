@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "task": "nextqa_oe_test",
+  "method": "hybridkv_kvrepack",
+  "target_docs": 200,
+  "target_generations": 800,
+  "completed_docs": 200,
+  "completed_generations": 800,
+  "contract_sha256": "3d145eb431dd7c8286aa89c6736525b193b41368aae64e88d9a356d87903c87c",
+  "started_utc": "2026-11-06T07:00:00.808947+00:00",
+  "updated_utc": "2026-11-06T07:47:28.015437+00:00",
+  "conditions": [
+    "similarity",
+    "random_global_seed0",
+    "random_global_seed1",
+    "random_global_seed2"
+  ],
+  "estimated_remaining_seconds": 0,
+  "current_doc_id": 199,
+  "current_strategy": "random_global_seed2",
+  "elapsed_current_session_seconds": 2847.268096357584,
+  "finished_utc": "2026-11-06T07:47:28.028031+00:00"
+}

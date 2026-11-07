@@ -1,0 +1,592 @@
+{
+  "schema_version": 1,
+  "written_utc": "2026-11-06T06:04:04.913057+00:00",
+  "status": "supported_for_these_implementations_and_prefix",
+  "task": "nextqa_oe_test",
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "scope": {
+    "methods": [
+      "snapkv_kvrepack",
+      "hybridkv_kvrepack"
+    ],
+    "variants": [
+      "raw_reapply",
+      "post_rope"
+    ],
+    "doc_id_range": [
+      0,
+      199
+    ],
+    "paired_comparisons": 400,
+    "generation_sequences": 800
+  },
+  "source_conclusion": "For the two checked implementations, prefill attention in every layer consumes the original full K/V. Compressed/retrieved K/V are prepared as the cache for subsequent single-token decoding. Therefore this K-aggregation intervention has no structural data path into the first output token logits, given the same prompt/model/generation settings.",
+  "source_evidence": [
+    {
+      "source": "snapkv_prefill",
+      "lines": [
+        626,
+        643
+      ],
+      "finding": "Build prompt records and finalize compressed cache at last layer, then repeat the original complete key_states_rope and value_states for prefill attention."
+    },
+    {
+      "source": "snapkv_prefill",
+      "lines": [
+        658,
+        679
+      ],
+      "finding": "q_fa/k_fa/v_fa constructed from original complete prefill projections are the actual arguments to _flash_attention_forward."
+    },
+    {
+      "source": "snapkv_prefill",
+      "lines": [
+        496,
+        497
+      ],
+      "finding": "Compressed out_k/out_v are newly allocated tensors, separate from original complete key_states_rope/value_states."
+    },
+    {
+      "source": "snapkv_prefill",
+      "lines": [
+        84,
+        98
+      ],
+      "finding": "_set_layer_cache replaces entries of the cache key_cache/value_cache, rather than assigning compressed tensors into local prefill attention variables."
+    },
+    {
+      "source": "snapkv_prefill",
+      "lines": [
+        579,
+        590
+      ],
+      "finding": "q_len==1 switches to the baseline SnapKV decode implementation."
+    },
+    {
+      "source": "snapkv_decode",
+      "lines": [
+        85,
+        95
+      ],
+      "finding": "Single-token decode obtains K/V from past_key_value.update, so later outputs use the compressed cache."
+    },
+    {
+      "source": "hybrid_model",
+      "lines": [
+        825,
+        838
+      ],
+      "finding": "Complete K/V projections are constructed locally and K is rotated before entering the prefill branch."
+    },
+    {
+      "source": "hybrid_model",
+      "lines": [
+        868,
+        894
+      ],
+      "finding": "Last prefill layer finalizes compression and retrieval, then updates the cache using separately named key_states_compressed/value_states_compressed tensors."
+    },
+    {
+      "source": "hybrid_model",
+      "lines": [
+        896,
+        898
+      ],
+      "finding": "After last-layer cache finalization, prefill still repeats the original local key_states/value_states; it does not substitute key_states_compressed/value_states_compressed."
+    },
+    {
+      "source": "hybrid_model",
+      "lines": [
+        924,
+        948
+      ],
+      "finding": "Those original local K/V tensors are transposed and passed to prefill _flash_attention_forward with the complete q_len."
+    },
+    {
+      "source": "hybrid_model",
+      "lines": [
+        951,
+        987
+      ],
+      "finding": "Decode updates the cache and obtains K/V via get_retrieval_position_ids/get_key_value_cache before varlen attention."
+    },
+    {
+      "source": "hybrid_model",
+      "lines": [
+        2116,
+        2117
+      ],
+      "finding": "The Hybrid model language-model head computes logits from the returned hidden states."
+    },
+    {
+      "source": "hf_model",
+      "lines": [
+        1926,
+        1927
+      ],
+      "finding": "The HF Qwen2.5-VL head used by SnapKV computes logits from returned hidden states."
+    },
+    {
+      "source": "hf_generation",
+      "lines": [
+        3556,
+        3576
+      ],
+      "finding": "Generation performs the prefill forward, then reads outputs.logits at the last input position for the first output token."
+    },
+    {
+      "source": "hf_generation",
+      "lines": [
+        3598,
+        3604
+      ],
+      "finding": "With do_sample=False, token selection is argmax of the processed logits; the worker uses this greedy setting."
+    }
+  ],
+  "sources": {
+    "snapkv_prefill": {
+      "path": "src/kvrepack/qwen_model_snapkv_kvrepack.py",
+      "sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a"
+    },
+    "snapkv_decode": {
+      "path": "src/kvrepack/qwen_model.py",
+      "sha256": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7"
+    },
+    "hybrid_model": {
+      "path": "src/kvrepack/modeling_qwen2_5_vl.py",
+      "sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b"
+    },
+    "hf_generation": {
+      "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/generation/utils.py",
+      "sha256": "9456d3984643f9347b6772aead6392c239702eccbb5872ad0e3f52b492594ba5"
+    },
+    "hf_model": {
+      "path": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/transformers/models/qwen2_5_vl/modeling_qwen2_5_vl.py",
+      "sha256": "820feb130918d50c9cfad2a3853dc0cffa760da698be7416603ecd242f648ba6"
+    }
+  },
+  "record_evidence": {
+    "snapkv_kvrepack": {
+      "paired_docs": 200,
+      "equal_first_generated_token_pairs": 200,
+      "first_token_different_doc_ids": [],
+      "text_changed_count": 5,
+      "text_changed_doc_ids": [
+        15,
+        126,
+        165,
+        177,
+        186
+      ],
+      "full_generated_ids_changed_count": 5,
+      "full_generated_ids_changed_doc_ids": [
+        15,
+        126,
+        165,
+        177,
+        186
+      ],
+      "changed_sequence_first_divergences": [
+        {
+          "doc_id": 15,
+          "first_divergence_generated_position_1_based": 2,
+          "raw_text": "clean spoon",
+          "post_text": "clean mouth"
+        },
+        {
+          "doc_id": 126,
+          "first_divergence_generated_position_1_based": 2,
+          "raw_text": "play with toy",
+          "post_text": "play"
+        },
+        {
+          "doc_id": 165,
+          "first_divergence_generated_position_1_based": 2,
+          "raw_text": "show phone",
+          "post_text": "show toy"
+        },
+        {
+          "doc_id": 177,
+          "first_divergence_generated_position_1_based": 2,
+          "raw_text": "hold baby's hand",
+          "post_text": "hold hand"
+        },
+        {
+          "doc_id": 186,
+          "first_divergence_generated_position_1_based": 2,
+          "raw_text": "show to girl",
+          "post_text": "show her toy"
+        }
+      ],
+      "answer_lengths": {
+        "raw_reapply": {
+          "rows": 200,
+          "non_eos_token_length_histogram": {
+            "1": 66,
+            "2": 86,
+            "3": 36,
+            "4": 11,
+            "5": 1
+          },
+          "one_non_eos_token_doc_ids": [
+            0,
+            3,
+            5,
+            6,
+            9,
+            14,
+            17,
+            22,
+            23,
+            26,
+            29,
+            31,
+            34,
+            35,
+            43,
+            47,
+            54,
+            56,
+            58,
+            61,
+            63,
+            67,
+            71,
+            73,
+            74,
+            75,
+            81,
+            83,
+            87,
+            91,
+            94,
+            95,
+            101,
+            107,
+            108,
+            109,
+            110,
+            114,
+            118,
+            119,
+            121,
+            125,
+            128,
+            129,
+            131,
+            134,
+            139,
+            143,
+            147,
+            149,
+            152,
+            155,
+            158,
+            159,
+            163,
+            164,
+            166,
+            169,
+            172,
+            175,
+            176,
+            178,
+            179,
+            182,
+            188,
+            198
+          ],
+          "terminal_eos_count": 200,
+          "eos_before_terminal_doc_ids": [],
+          "total_generated_tokens_including_eos": 595,
+          "total_non_eos_tokens": 395,
+          "mean_non_eos_tokens": 1.975,
+          "one_or_two_non_eos_token_answers": 152
+        },
+        "post_rope": {
+          "rows": 200,
+          "non_eos_token_length_histogram": {
+            "1": 67,
+            "2": 87,
+            "3": 35,
+            "4": 10,
+            "5": 1
+          },
+          "one_non_eos_token_doc_ids": [
+            0,
+            3,
+            5,
+            6,
+            9,
+            14,
+            17,
+            22,
+            23,
+            26,
+            29,
+            31,
+            34,
+            35,
+            43,
+            47,
+            54,
+            56,
+            58,
+            61,
+            63,
+            67,
+            71,
+            73,
+            74,
+            75,
+            81,
+            83,
+            87,
+            91,
+            94,
+            95,
+            101,
+            107,
+            108,
+            109,
+            110,
+            114,
+            118,
+            119,
+            121,
+            125,
+            126,
+            128,
+            129,
+            131,
+            134,
+            139,
+            143,
+            147,
+            149,
+            152,
+            155,
+            158,
+            159,
+            163,
+            164,
+            166,
+            169,
+            172,
+            175,
+            176,
+            178,
+            179,
+            182,
+            188,
+            198
+          ],
+          "terminal_eos_count": 200,
+          "eos_before_terminal_doc_ids": [],
+          "total_generated_tokens_including_eos": 591,
+          "total_non_eos_tokens": 391,
+          "mean_non_eos_tokens": 1.955,
+          "one_or_two_non_eos_token_answers": 154
+        }
+      }
+    },
+    "hybridkv_kvrepack": {
+      "paired_docs": 200,
+      "equal_first_generated_token_pairs": 200,
+      "first_token_different_doc_ids": [],
+      "text_changed_count": 0,
+      "text_changed_doc_ids": [],
+      "full_generated_ids_changed_count": 0,
+      "full_generated_ids_changed_doc_ids": [],
+      "changed_sequence_first_divergences": [],
+      "answer_lengths": {
+        "raw_reapply": {
+          "rows": 200,
+          "non_eos_token_length_histogram": {
+            "1": 67,
+            "2": 87,
+            "3": 35,
+            "4": 10,
+            "5": 1
+          },
+          "one_non_eos_token_doc_ids": [
+            0,
+            3,
+            5,
+            6,
+            9,
+            14,
+            17,
+            22,
+            23,
+            26,
+            29,
+            31,
+            34,
+            35,
+            43,
+            47,
+            54,
+            56,
+            58,
+            61,
+            63,
+            67,
+            71,
+            73,
+            74,
+            75,
+            81,
+            83,
+            87,
+            91,
+            94,
+            95,
+            101,
+            107,
+            108,
+            109,
+            110,
+            111,
+            114,
+            118,
+            119,
+            121,
+            125,
+            128,
+            129,
+            131,
+            134,
+            139,
+            143,
+            147,
+            149,
+            152,
+            155,
+            158,
+            159,
+            163,
+            164,
+            166,
+            169,
+            172,
+            175,
+            176,
+            178,
+            179,
+            182,
+            188,
+            198
+          ],
+          "terminal_eos_count": 200,
+          "eos_before_terminal_doc_ids": [],
+          "total_generated_tokens_including_eos": 591,
+          "total_non_eos_tokens": 391,
+          "mean_non_eos_tokens": 1.955,
+          "one_or_two_non_eos_token_answers": 154
+        },
+        "post_rope": {
+          "rows": 200,
+          "non_eos_token_length_histogram": {
+            "1": 67,
+            "2": 87,
+            "3": 35,
+            "4": 10,
+            "5": 1
+          },
+          "one_non_eos_token_doc_ids": [
+            0,
+            3,
+            5,
+            6,
+            9,
+            14,
+            17,
+            22,
+            23,
+            26,
+            29,
+            31,
+            34,
+            35,
+            43,
+            47,
+            54,
+            56,
+            58,
+            61,
+            63,
+            67,
+            71,
+            73,
+            74,
+            75,
+            81,
+            83,
+            87,
+            91,
+            94,
+            95,
+            101,
+            107,
+            108,
+            109,
+            110,
+            111,
+            114,
+            118,
+            119,
+            121,
+            125,
+            128,
+            129,
+            131,
+            134,
+            139,
+            143,
+            147,
+            149,
+            152,
+            155,
+            158,
+            159,
+            163,
+            164,
+            166,
+            169,
+            172,
+            175,
+            176,
+            178,
+            179,
+            182,
+            188,
+            198
+          ],
+          "terminal_eos_count": 200,
+          "eos_before_terminal_doc_ids": [],
+          "total_generated_tokens_including_eos": 591,
+          "total_non_eos_tokens": 391,
+          "mean_non_eos_tokens": 1.955,
+          "one_or_two_non_eos_token_answers": 154
+        }
+      }
+    }
+  },
+  "length_definition": "Number of generated token IDs unequal to the row eos_token_id. This is a tokenizer-token count, not a word count. All checked sequences have EOS only at the terminal position.",
+  "interpretation": [
+    "All200 raw/post pairs in each method have the same first generated token, agreeing with the prefill data-flow analysis.",
+    "Answers contain only1..5 non-EOS tokens in this prefix. The first answer token is produced from full-prefill logits, so short responses offer fewer later answer-token positions at which the modified cache can change content.",
+    "A one-non-EOS-token answer is not immune: the decision to emit EOS or continue is already a decode step using the compressed cache.",
+    "This is a mechanism supported by source and this prefix, not a causal attribution of all observed low sensitivity. Logit margins and other possible influences were not measured here.",
+    "Unchanged first token or full generated IDs do not prove equal full-vocabulary logits, hidden states, retrieval indices or numeric caches.",
+    "Do not generalize to other KV methods, variants that alter prefill attention itself, other models, tasks or longer generations."
+  ],
+  "execution": {
+    "new_gpu_runs": 0,
+    "new_preprocessing_runs": 0,
+    "scoring_runs": 0,
+    "model_or_tensor_imports": false,
+    "only_new_file": "outputs/ablations/rope_merge_qwen7b_200_20261106/nextqa_prefill_scope_check.json"
+  }
+}

@@ -1,0 +1,3 @@
+variant,n_inputs,eos_count,reached_length_limit,capped_without_eos,generated_tokens_min,generated_tokens_mean,generated_tokens_max
+raw_reapply,200,200,0,0,2,2.975,6
+post_rope,200,200,0,0,2,2.955,6

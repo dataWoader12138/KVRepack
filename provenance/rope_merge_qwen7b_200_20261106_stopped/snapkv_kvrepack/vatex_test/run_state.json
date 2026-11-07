@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "task": "vatex_test",
+  "method": "snapkv_kvrepack",
+  "target_docs": 200,
+  "target_generations": 400,
+  "completed_docs": 200,
+  "completed_generations": 400,
+  "contract_sha256": "68e6901be854229a85f3b8f9fdcf668ca7d565da4ebabe1f26e0d85ee584666e",
+  "started_utc": "2026-11-06T05:36:06.058683+00:00",
+  "updated_utc": "2026-11-06T06:11:41.750907+00:00",
+  "conditions": [
+    "raw_reapply",
+    "post_rope"
+  ],
+  "estimated_remaining_seconds": 0,
+  "current_doc_id": 199,
+  "current_variant": "post_rope",
+  "elapsed_current_session_seconds": 2135.650645568967,
+  "finished_utc": "2026-11-06T06:11:41.765661+00:00"
+}

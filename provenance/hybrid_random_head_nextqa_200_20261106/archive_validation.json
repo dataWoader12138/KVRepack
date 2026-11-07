@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "samples": 200,
+  "generations": 800,
+  "archive_member_hashes_checked": 200,
+  "source_to_public_full_object_comparisons": 200,
+  "validator_calls": 400,
+  "differences_outside_declared_metadata_removals": 0,
+  "scoring_inputs_and_generated_predictions_unchanged": true,
+  "gpu_or_model_execution": false
+}

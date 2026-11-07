@@ -1,6 +1,6 @@
 # RoPE前后K聚合空间配对消融
 
-2026-11-06状态：四个方法/任务组合各一条、两条件共8次真实GPU检查及离线评分已通过。正式200条矩阵于UTC04:53:48启动，计划共1,600次生成，目前运行中，不能视为正式结果已完成。实际状态以矩阵experiment_state.json与各worker的run_state.json为准。
+2026-11-06状态：本尝试已按用户明确要求终止，停止时间为2026-11-06T06:32:28.440462+00:00。NExTQA两方法及VATEX SnapKV共三组各200条已完成；VATEX HybridKV仅保存97条完整配对，不计算其200条得分。已保存697组配对、1394次完整生成，不能记作计划1600次全部完成；不会自动续跑。见[停止快照与已完成结果](../provenance/rope_merge_qwen7b_200_20261106_stopped/README.md)。
 
 模型固定为Qwen/Qwen2.5-VL-7B-Instruct，快照cc594898137f460bfe9f0759e9844b3ce807cfb5。任务为NExTQA OE test与VATEX test，各使用原始doc_id 0..199，保持原顺序，不去重、不按答案筛选。每个任务分别运行HybridKV-KVRepack和SnapKV-KVRepack，每个方法包含两种K聚合条件，共200 × 2任务 × 2方法 × 2条件 = 1,600次生成。此次不是整个9,178题NExTQA或整个VATEX测试集。
 

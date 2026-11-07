@@ -1,0 +1,8 @@
+{
+  "status": "stopped_by_user",
+  "started_utc": "2026-11-06T04:57:52.055841+00:00",
+  "limit": 200,
+  "stopped_utc": "2026-11-06T06:32:28.440462+00:00",
+  "resume_authorized": false,
+  "stop_reason": "User ended the RoPE merge-space attempt and switched to completing HybridKV+KVRepack Random-head ablation."
+}

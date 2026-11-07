@@ -1,0 +1,5 @@
+variant,min,max,mean,total,inputs_differing_from_similarity,mean_minus_similarity
+similarity,142908,466674,206339.105,41267821,0,0.0
+random_global_seed0,136282,440053,195490.295,39098059,200,-10848.81
+random_global_seed1,142693,468266,202084.69,40416938,200,-4254.415
+random_global_seed2,120360,432746,175985.215,35197043,200,-30353.89

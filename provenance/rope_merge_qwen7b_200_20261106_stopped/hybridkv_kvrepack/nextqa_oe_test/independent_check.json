@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "written_utc": "2026-11-06T05:39:33.616234+00:00",
+  "status": "passed",
+  "audit_type": "Independent standard-library read-only audit of completed HybridKV NextQA raw/post-RoPE pairs; production validators not imported",
+  "result_root": "outputs/ablations/rope_merge_qwen7b_200_20261106/hybridkv_kvrepack/nextqa_oe_test",
+  "coverage": {
+    "doc_id_range": [
+      0,
+      199
+    ],
+    "sample_count": 200,
+    "generation_records": 400,
+    "condition_count": 2,
+    "source_video_clusters": 184,
+    "state": "complete",
+    "contract_sha256": "8ed9d73a78c989321a1f3fe007ea335fcfde021815dbdd0612f9c1469b3b02b3"
+  },
+  "pairing": {
+    "native_head_slots": 112,
+    "expected_selected_quota": 56,
+    "quota_rule": "ceil(28*4*.50)",
+    "actual_merge_calls_per_doc_min": 56,
+    "actual_merge_calls_per_doc_max": 56,
+    "actual_merge_calls_each_arm": 11200,
+    "actual_removed_tokens_per_doc_min": 142908,
+    "actual_removed_tokens_per_doc_max": 466674,
+    "all_pair_checks_passed": true,
+    "head_mask_rebuilt_from_actual_calls_doc_count": 200,
+    "head_mask_not_fully_reconstructible_doc_ids": [],
+    "unique_head_mask_fingerprints": 61,
+    "shared_fingerprints": "Input tensors, raw/post K candidates at every actual merge call, V/importance/positions, head score/mask and retrieval/pruned head classifications, original merge_idx/group_ids/group_size/start_mask, target lengths, actual calls and removed-token work"
+  },
+  "values": {
+    "bitwise_equal_doc_count": 195,
+    "nonexact_doc_ids": [
+      26,
+      68,
+      136,
+      147,
+      199
+    ],
+    "nonexact_merge_calls": 5,
+    "differing_elements_recorded": 5,
+    "max_abs_difference_recorded": 0.00390625,
+    "rounding_records": [
+      {
+        "doc_id": 26,
+        "nonexact_calls": 1,
+        "differing_elements_recorded": 1,
+        "max_abs_difference_recorded": 0.0009765625
+      },
+      {
+        "doc_id": 68,
+        "nonexact_calls": 1,
+        "differing_elements_recorded": 1,
+        "max_abs_difference_recorded": 0.00048828125
+      },
+      {
+        "doc_id": 136,
+        "nonexact_calls": 1,
+        "differing_elements_recorded": 1,
+        "max_abs_difference_recorded": 0.0001220703125
+      },
+      {
+        "doc_id": 147,
+        "nonexact_calls": 1,
+        "differing_elements_recorded": 1,
+        "max_abs_difference_recorded": 0.00048828125
+      },
+      {
+        "doc_id": 199,
+        "nonexact_calls": 1,
+        "differing_elements_recorded": 1,
+        "max_abs_difference_recorded": 0.00390625
+      }
+    ],
+    "gate_status": "All200 live pairing gates passed the declared one-representable-step BF16/FP16 V bound with identical original inputs/groups.",
+    "independent_limit": "Output fingerprints and live comparison counters were independently checked for consistency. Per-element ULP distances cannot be recomputed after tensors were discarded."
+  },
+  "keys": {
+    "changed_merge_calls": 11200,
+    "total_merge_calls_each_arm": 11200,
+    "all_executed_calls_changed_doc_count": 200,
+    "max_abs_difference_recorded": 15.015625,
+    "interpretation": "K output change proves this was an exercised K-space intervention, even if final generated tokens are unchanged."
+  },
+  "generation": {
+    "raw_reapply": {
+      "rows": 200,
+      "eos_count": 200,
+      "no_eos_doc_ids": [],
+      "cap_doc_ids": [],
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "actual_merge_calls_min": 56,
+      "actual_merge_calls_max": 56
+    },
+    "post_rope": {
+      "rows": 200,
+      "eos_count": 200,
+      "no_eos_doc_ids": [],
+      "cap_doc_ids": [],
+      "generated_tokens_min": 2,
+      "generated_tokens_max": 6,
+      "actual_merge_calls_min": 56,
+      "actual_merge_calls_max": 56
+    }
+  },
+  "post_vs_raw_predictions": {
+    "text_changed_count": 0,
+    "text_changed_doc_ids": [],
+    "generated_ids_changed_count": 0,
+    "generated_ids_changed_doc_ids": [],
+    "examples": []
+  },
+  "cache_scope": {
+    "final_cache_shape_equal_doc_count": 200,
+    "final_cache_shape_schema": "28 native layers, flattened [total_allocated_slots,128] K/V with BF16 dtype",
+    "prefill_cache_shapes_field_empty_in_both_arms": true,
+    "note": "Hybrid adapter does not capture assembled prefill tensors here. New K may change initial/decode retrieval indices and assembled cache V; no assembled K/V fingerprint or numeric equality was required or claimed."
+  },
+  "frozen_sources": {
+    "all_current_hashes_match": true,
+    "files": [
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_rope_merge.py",
+        "expected_sha256": "3b6faa0490a5ac89beaca963211f10c5cf0b3a06aacf0b8934d35fc123c930b6",
+        "current_sha256": "3b6faa0490a5ac89beaca963211f10c5cf0b3a06aacf0b8934d35fc123c930b6",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/rope_merge.py",
+        "expected_sha256": "62b5cca8d74043bf9945f00c5c9f0048d01d2d7e0a9aa4c9cedb86660a61e4be",
+        "current_sha256": "62b5cca8d74043bf9945f00c5c9f0048d01d2d7e0a9aa4c9cedb86660a61e4be",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py",
+        "expected_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "current_sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py",
+        "expected_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "current_sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py",
+        "expected_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "current_sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py",
+        "expected_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "current_sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py",
+        "expected_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "current_sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "expected_sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "current_sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+        "expected_sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+        "current_sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+        "matches": true
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_cpu.py",
+        "expected_sha256": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+        "current_sha256": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+        "matches": true
+      }
+    ],
+    "compiled_kernel": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/csrc/kvrepack_kernel.cpython-312-x86_64-linux-gnu.so",
+      "expected_sha256": "b57f2a5076de3ac67c984b6bc09e351ce7adcfdd86f477eb3bb424ad7092b01a",
+      "current_sha256": "b57f2a5076de3ac67c984b6bc09e351ce7adcfdd86f477eb3bb424ad7092b01a",
+      "matches": true
+    }
+  },
+  "integrity": {
+    "issue_count": 0,
+    "check_counts": {
+      "state_complete_200_400.checked": 1,
+      "state_complete_200_400.passed": 1,
+      "contract_identity.checked": 1,
+      "contract_identity.passed": 1,
+      "contiguous_docs_0_199.checked": 1,
+      "contiguous_docs_0_199.passed": 1,
+      "frozen_source_sha.checked": 10,
+      "frozen_source_sha.passed": 10,
+      "compiled_kernel_sha.checked": 1,
+      "compiled_kernel_sha.passed": 1,
+      "bundle_identity.checked": 200,
+      "bundle_identity.passed": 200,
+      "paired_input_metadata.checked": 200,
+      "paired_input_metadata.passed": 200,
+      "bundle_input_fingerprints.checked": 200,
+      "bundle_input_fingerprints.passed": 200,
+      "input_sha_structure.checked": 200,
+      "input_sha_structure.passed": 200,
+      "input_shapes.checked": 200,
+      "input_shapes.passed": 200,
+      "paired_nonintervention_config.checked": 200,
+      "paired_nonintervention_config.passed": 200,
+      "paired_head_selection_scores_classification.checked": 200,
+      "paired_head_selection_scores_classification.passed": 200,
+      "single_head_selection_capture.checked": 200,
+      "single_head_selection_capture.passed": 200,
+      "native_head_mask_shape_ratio.checked": 200,
+      "native_head_mask_shape_ratio.passed": 200,
+      "native_head_score_fingerprints.checked": 200,
+      "native_head_score_fingerprints.passed": 200,
+      "head_classification_partition.checked": 200,
+      "head_classification_partition.passed": 200,
+      "paired_merge_call_coverage.checked": 200,
+      "paired_merge_call_coverage.passed": 200,
+      "actual_merge_count_recomputed.checked": 200,
+      "actual_merge_count_recomputed.passed": 200,
+      "actual_removed_work_recomputed.checked": 200,
+      "actual_removed_work_recomputed.passed": 200,
+      "unique_native_merge_identities.checked": 200,
+      "unique_native_merge_identities.passed": 200,
+      "head_mask_rebuilt_from_actual_calls.checked": 200,
+      "head_mask_rebuilt_from_actual_calls.passed": 200,
+      "paired_call_inputs_groups_positions.checked": 11200,
+      "paired_call_inputs_groups_positions.passed": 11200,
+      "call_identity_target.checked": 11200,
+      "call_identity_target.passed": 11200,
+      "group_shape_and_output.checked": 11200,
+      "group_shape_and_output.passed": 11200,
+      "actual_merge_input_shapes.checked": 11200,
+      "actual_merge_input_shapes.passed": 11200,
+      "merged_output_shapes.checked": 11200,
+      "merged_output_shapes.passed": 11200,
+      "live_pairing_gate_passed.checked": 200,
+      "live_pairing_gate_passed.passed": 200,
+      "value_rounding_record_consistency.checked": 200,
+      "value_rounding_record_consistency.passed": 200,
+      "post_key_intervention_exercised.checked": 200,
+      "post_key_intervention_exercised.passed": 200,
+      "row_identity_variant.checked": 400,
+      "row_identity_variant.passed": 400,
+      "row_frozen_sources_contract.checked": 400,
+      "row_frozen_sources_contract.passed": 400,
+      "generation_eos_cap_metadata.checked": 400,
+      "generation_eos_cap_metadata.passed": 400,
+      "final_cache_layer_coverage.checked": 400,
+      "final_cache_layer_coverage.passed": 400,
+      "native_flattened_cache_shape.checked": 11200,
+      "native_flattened_cache_shape.passed": 11200,
+      "hybrid_prefill_shape_capture_scope.checked": 400,
+      "hybrid_prefill_shape_capture_scope.passed": 400
+    },
+    "sample_files_aggregate_sha256": "8761cd41b4f5affcf48ce5a7a99373fec82e69c78a8046cf8e36787c7b63afe3"
+  },
+  "issues": [],
+  "scope_limits": [
+    "No official or offline scores recalculated; reported WUPS/CI are separate pre-existing evidence.",
+    "No GPU, model/tensor imports, video preprocessing or tensor deserialization; only this independent_check.json was added.",
+    "This cell covers HybridKV/NextQA200 only, not the in-progress VATEX cells.",
+    "The200 questions share184 source videos; unchanged short predictions do not prove model/logit/cache equivalence.",
+    "Frozen-source verification covers the listed worker/adapter/core dependencies and compiled extension, not every checkpoint weight shard or installed library."
+  ]
+}

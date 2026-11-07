@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "task": "nextqa_oe_test",
+  "method": "hybridkv_kvrepack",
+  "target_docs": 200,
+  "target_generations": 400,
+  "completed_docs": 200,
+  "completed_generations": 400,
+  "contract_sha256": "8ed9d73a78c989321a1f3fe007ea335fcfde021815dbdd0612f9c1469b3b02b3",
+  "started_utc": "2026-11-06T05:13:41.573070+00:00",
+  "updated_utc": "2026-11-06T05:35:49.262519+00:00",
+  "conditions": [
+    "raw_reapply",
+    "post_rope"
+  ],
+  "estimated_remaining_seconds": 0,
+  "current_doc_id": 199,
+  "current_variant": "post_rope",
+  "elapsed_current_session_seconds": 1327.6888417936862,
+  "finished_utc": "2026-11-06T05:35:49.273930+00:00"
+}
