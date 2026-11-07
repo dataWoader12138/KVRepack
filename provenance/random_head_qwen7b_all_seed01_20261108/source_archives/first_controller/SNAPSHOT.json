@@ -1,0 +1,17 @@
+{
+  "reason": "Freeze exact executed runtime before diagnosing post-generation merge audit failure; completed Spot output unchanged",
+  "source_files_sha256": {
+    "src/kvrepack/ablations/head_selection.py": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+    "src/kvrepack/ablations/hybrid_head_selection.py": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+    "src/kvrepack/ablations/run_milebench_head_selection.py": "533cd0f99b66d50433b06372151421d73117f8df4ecc4a7992b09dda81efe054",
+    "src/kvrepack/ablations/milebench_paired_worker.py": "dd9f37cbc71e5fb615a92687533efe20f5bf38f4b2d0c85c94e876f14b9f3c1a",
+    "src/kvrepack/ablations/milebench_head_selection_report.py": "ea4c95eef15cdf03412f8a263a4eafa8c7eaa729fbe1026b18f1117dcf7a4554",
+    "src/kvrepack/benchmarks/milebench/dataset.py": "1eae65499c9aa4f8c4fb5ca70d5e7f6b83d9916a0dea63577a909dff52ceb55c",
+    "src/kvrepack/benchmarks/milebench/evaluate.py": "ce724b94ec19a42a0d388a42c9c269395183cd2cf6ea68d0a8271d2bc63c3e96",
+    "src/kvrepack/benchmarks/milebench/workers.py": "78e9012e8437989cae968d5a0072f3e659f47070f9bde8d815e295e41111913d",
+    "src/kvrepack/hybridkv_utils.py": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+    "src/kvrepack/qwen_model_snapkv_kvrepack.py": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a",
+    "src/kvrepack/modeling_qwen2_5_vl.py": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+    "src/kvrepack/configs/param_config.json": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "task": "MMCoQA",
+  "method": "snapkv_kvrepack",
+  "target_samples": 200,
+  "target_generations": 600,
+  "completed_samples": 200,
+  "completed_generations": 600,
+  "contract_sha256": "50ea6a6fabc251407c7474d9304ddece0f8030c3ca7c352b239d5a5ded4ba9fc",
+  "started_utc": "2026-11-07T18:08:57.878277+00:00",
+  "current_sample_id": 174,
+  "current_condition": "random_global_seed1",
+  "updated_utc": "2026-11-07T18:20:59.474275+00:00",
+  "finished_utc": "2026-11-07T18:20:59.474845+00:00"
+}

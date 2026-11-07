@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "task": "Spot-the-Diff",
+  "method": "hybridkv_kvrepack",
+  "target_samples": 200,
+  "target_generations": 600,
+  "completed_samples": 200,
+  "completed_generations": 600,
+  "contract_sha256": "1cd3c73f23be01e9290540205501e8c782ca3a213beb5426bf9f0eb8fd0bb4cf",
+  "started_utc": "2026-11-07T17:23:27.884183+00:00",
+  "current_sample_id": 199,
+  "current_condition": "random_global_seed1",
+  "updated_utc": "2026-11-07T17:33:48.661258+00:00",
+  "finished_utc": "2026-11-07T17:33:48.661873+00:00"
+}

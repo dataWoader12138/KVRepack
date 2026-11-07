@@ -2,19 +2,19 @@
 
 本文是随项目保存、可由用户和开发者审阅的交接摘要：记录已接受的要求、实现选择、验证证据和待办事项，供后续会话恢复项目背景。后续修改应以当前代码、报告和用户的新指示为准。密钥、凭证、模型权重、视频和数据集保存在项目外。
 
-2026-11-08当前任务：用户已授权GPU，并确认继续官方MileBench子集全量。当前为Qwen2.5-VL-7B、HybridKV-KVRepack/SnapKV-KVRepack、Spot-the-Diff/MMCoQA、仅random seeds0/1及similarity，共 `4×200×3=2400` 次计划生成。MileBench作者从源任务抽样构建各200条的官方子集，见[论文§3.2](https://arxiv.org/pdf/2404.18532)；本轮使用这两份子集的全部标注。本项目 `--all-samples` 不设条目cap，完整读取并冻结标注SHA和总条数，与显式 `--limit` 互斥；命令需显式 `--all-samples --head-seeds 0 1`。
+2026-11-08当前任务：用户已授权GPU，并确认继续官方MileBench子集全量。当前为Qwen2.5-VL-7B、HybridKV-KVRepack/SnapKV-KVRepack、Spot-the-Diff/MMCoQA、仅random seeds0/1及similarity，共 `4×200×3=2400` 次正式生成已全部完成。MileBench作者从源任务抽样构建各200条的官方子集，见[论文§3.2](https://arxiv.org/pdf/2404.18532)；本轮使用这两份子集的全部标注。本项目 `--all-samples` 不设条目cap，完整读取并冻结标注SHA和总条数，与显式 `--limit` 互斥；本轮明确使用 `--all-samples --head-seeds 0 1`；CLI默认三seed仅为历史参数兼容，不属于本轮实验。
 
-本机已从当前checkout构建kvrepack_kernel；两方法/两任务各1条的独立smoke全部通过（12次生成及评分）。正式Hybrid/Spot已完成200条、600次生成并重新核分通过。首个控制器在Hybrid/MMCoQA第2个生成样本（原sample_id=18）后置审计失败，原因是将56个选中头误等同56个有效合并头。现修复仅恢复参考Hybrid允许自然缺调用或noop、每条件有效合并数仍须大于0的语义；SnapKV仍要求34头有效匹配。预算、核心算法和随机mask未改，不能通过重抽mask或改预算满足门禁。缺调用及noop按观测记录，不据此推断未调用头的资格原因。
+本机已从当前checkout构建kvrepack_kernel；两方法/两任务各1条的独立smoke全部通过（12次生成及评分）。正式四组均complete，最终独立审计与完整核分通过，2400次生成全部EOS结束，无512-token上限截断。最新CPU测试共161项，160通过、1跳过。首个控制器在Hybrid/MMCoQA第2个生成样本（原sample_id=18）后置审计失败，原因是将56个选中头误等同56个有效合并头。现修复仅恢复参考Hybrid允许自然缺调用或noop、每条件有效合并数仍须大于0的语义；SnapKV仍要求34头有效匹配。预算、核心算法和随机mask未改，不能通过重抽mask或改预算满足门禁。缺调用及noop按观测记录，不据此推断未调用头的资格原因。
 
-当前正式根为 `outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108`，后台控制器PID5372，进度看 `controller_state.json` 及各 `ablation_state.json`。完整Hybrid/Spot的原合同、样本与报告按字节复制到新根复用，未重复600次生成；`reuse_manifest.json` 记录SHA，`source_archives/first_controller` 冻结旧12份绑定源码。原失败根 `outputs/ablations/random_head_qwen7b_all_seed01_20261108` 保持原样。其余三组GPU任务仍在运行，尚无完整四组结果；GPU证据只覆盖以上范围，不能推广到全部模型/方法或性能。运行期间禁止修改绑定源码和manifest。
+当前正式根为 `outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108`，GPU已释放，不启动重复运行。精简证据包为 `provenance/random_head_qwen7b_all_seed01_20261108`，详见 [Qwen7B结果](MILEBENCH_RANDOM_HEAD_QWEN7B_RESULTS.md)、[最终审计](../provenance/random_head_qwen7b_all_seed01_20261108/audit/audit.json)、[四组结果CSV](../provenance/random_head_qwen7b_all_seed01_20261108/audit/results.csv)。完整Hybrid/Spot的原合同、样本与报告按字节复制到新根复用，未重复600次生成；`reuse_manifest.json` 记录SHA，`source_archives/first_controller` 冻结旧12份绑定源码。原失败根 `outputs/ablations/random_head_qwen7b_all_seed01_20261108` 保持原样。最终审计已校验复用与剩余三组的完整结果；GPU证据只覆盖本轮Qwen7B两方法、两个官方子集，不能推广到全部模型/方法或性能。保留合同绑定源码和manifest用于追溯。
 
-四组完成后在新目录做独立审计，显式提供旧绑定源码归档：
+最终审计已通过，原报告位于 `outputs/audits/random_head_qwen7b_all_seed01_v2_20261108_final/audit.json`。需要离线复查时，显式提供旧绑定源码归档并使用另一个新输出目录：
 
 ```bash
 CUDA_VISIBLE_DEVICES='' PYTHONPATH=src python scripts/audit_milebench_random_head_run.py \
   --run-root outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108 \
   --source-archive outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/source_archives/first_controller \
-  --output outputs/audits/random_head_qwen7b_all_seed01_v2_20261108_final
+  --output outputs/audits/random_head_qwen7b_all_seed01_v2_20261108_recheck_new
 ```
 
 输出目录必须尚不存在。当前协议、运行命令、数据边界及评分见 [MILEBENCH_RANDOM_HEAD.md](MILEBENCH_RANDOM_HEAD.md)；首轮准备期CPU证据见 [milebench_random_head_validation.json](../provenance/milebench_random_head_validation.json)。参考提交为 `6c65bf8`，选择器精确迁入，本分支保留既有MileBench代码，没有合入远端main的大型历史结果。

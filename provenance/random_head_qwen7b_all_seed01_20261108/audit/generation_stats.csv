@@ -1,0 +1,13 @@
+method,task,condition,generation_count,eos_count,hit_max_new_tokens_count,truncated_without_eos_count,stopped_without_eos_below_limit_count,generated_tokens_total,generated_tokens_min,generated_tokens_max,generated_tokens_mean,generated_tokens_median,generated_tokens_sample_sd,input_tokens_min,input_tokens_max,generation_seconds_total
+hybridkv_kvrepack,Spot-the-Diff,similarity,200,200,0,0,0,3597,6,50,17.985,19.0,6.34397391428477,545,551,194.22496325150132
+hybridkv_kvrepack,Spot-the-Diff,random_global_seed0,200,200,0,0,0,3491,5,37,17.455,18.0,5.845410087878983,545,551,189.36400751769543
+hybridkv_kvrepack,Spot-the-Diff,random_global_seed1,200,200,0,0,0,3557,5,45,17.785,18.0,5.924887887750456,545,551,191.79169669002295
+hybridkv_kvrepack,MMCoQA,similarity,200,200,0,0,0,4444,2,150,22.22,16.0,22.740652726607493,595,12657,341.5952155068517
+hybridkv_kvrepack,MMCoQA,random_global_seed0,200,200,0,0,0,4328,2,147,21.64,15.5,21.94328917228437,595,12657,330.5200166888535
+hybridkv_kvrepack,MMCoQA,random_global_seed1,200,200,0,0,0,4546,2,186,22.73,16.0,25.139752100575535,595,12657,339.33283393085003
+snapkv_kvrepack,Spot-the-Diff,similarity,200,200,0,0,0,3233,5,50,16.165,18.0,6.405695879332117,545,551,112.49613056704402
+snapkv_kvrepack,Spot-the-Diff,random_global_seed0,200,200,0,0,0,3217,5,50,16.085,18.0,6.593568893533217,545,551,110.7166455425322
+snapkv_kvrepack,Spot-the-Diff,random_global_seed1,200,200,0,0,0,3234,5,50,16.17,18.0,6.737810508782605,545,551,111.13693493232131
+snapkv_kvrepack,MMCoQA,similarity,200,200,0,0,0,4271,2,135,21.355,17.0,18.82287112496217,595,12657,193.12707841023803
+snapkv_kvrepack,MMCoQA,random_global_seed0,200,200,0,0,0,4096,2,102,20.48,16.5,16.997179783805755,595,12657,187.90049954876304
+snapkv_kvrepack,MMCoQA,random_global_seed1,200,200,0,0,0,4190,2,139,20.95,16.0,18.443380694907493,595,12657,190.18800377100706

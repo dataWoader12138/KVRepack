@@ -1,0 +1,5 @@
+method,task,metric,sample_count,similarity_percent,seed0_percent,seed1_percent,random_mean_percent,random_sample_sd_percent,similarity_minus_seed0_points,similarity_minus_seed1_points,similarity_minus_random_mean_points
+hybridkv_kvrepack,Spot-the-Diff,Rouge-L f,200,29.837744027474145,29.436162611750223,29.20290615803561,29.31953438489292,0.16493722017712914,0.40158141572392125,0.6348378694385346,0.5182096425812261
+hybridkv_kvrepack,MMCoQA,Accuracy,200,65.5,62.5,61.5,62.0,0.7071067811865476,3.0,4.0,3.5
+snapkv_kvrepack,Spot-the-Diff,Rouge-L f,200,28.95576027344407,28.87433888621489,28.911760434419165,28.893049660317025,0.026461030497742132,0.08142138722918091,0.043999839024905896,0.06271061312704518
+snapkv_kvrepack,MMCoQA,Accuracy,200,59.0,58.5,58.0,58.25,0.3535533905932738,0.5,1.0,0.75

@@ -1,0 +1,13 @@
+{
+  "started_utc": "2026-11-07T17:42:17.421016+00:00",
+  "pid": 5372,
+  "process_group": 5372,
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_20261108_continuation_driver.py"
+  ],
+  "controller_log": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108_controller.log",
+  "output_root": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108",
+  "continuation_driver_sha256": "34fcb2279dfbee3c96345a19566391b5e700e47e6f8d79ae0127e493e0db584e",
+  "scope": "Official MileBench subsets all samples; each200. Hybrid/Snap x Spot/MMCoQA. similarity + seeds0/1. Completed HybridSpot copied unchanged and independently audited; remaining3 generated after reference-semantics audit correction."
+}

@@ -1,0 +1,708 @@
+{
+  "schema_version": 1,
+  "selected_method": {
+    "public_method": "hybridkv_kvrepack",
+    "internal_method": "hybridkv_kvrepack",
+    "model": "qwen2_5_vl",
+    "supported_models": [
+      "qwen2_5_vl",
+      "llava_ov"
+    ],
+    "baseline": "hybridkv",
+    "source_script": "HybridKV-opensource/hybridkv/eval_mile_hybridkv_repackKV_3b.sh",
+    "source_lines": "See provenance/milebench_sources.json for the exact source snapshot",
+    "implementation": [
+      "kvrepack.modeling_qwen2_5_vl",
+      "kvrepack.hybridkv_utils"
+    ],
+    "model_path": "custom_qwen2_5_vl",
+    "kernel": "kvrepack_kernel",
+    "defaults": {
+      "pretrained": "Qwen/Qwen2.5-VL-3B-Instruct",
+      "tasks": [
+        "CLEVR-Change",
+        "Spot-the-Diff",
+        "MMCoQA",
+        "IEdit",
+        "ALFRED",
+        "SceneTransition",
+        "DocVQA",
+        "MultiModalQA",
+        "SlideVQA",
+        "WebQA",
+        "WikiVQA"
+      ],
+      "limit": 200,
+      "env": {
+        "BUDGET": "512",
+        "BUDGET_RATIO": "0.1",
+        "RATIO": "0.1",
+        "HEAD_CLASSIFY": "head_ada",
+        "BUDGET_METHOD": "head_ada",
+        "HYBRID_KVREPACK_CHUNK_SIZE": "8",
+        "HYBRID_KVREPACK_COMPRESS_RATIO": "0.50",
+        "K_DIFF_ALPHA": "2",
+        "HYBRID_KVREPACK_K_DIFF_ALPHA": "2",
+        "HYBRID_KVREPACK_MAX_GROUP_SIZE": "0",
+        "HYBRID_KVREPACK_BLOCK_META_WEIGHT": "uniform",
+        "HYBRID_KVREPACK_STATIC_MERGE_SCOPE": "visual",
+        "HYBRID_KVREPACK_K_MERGE_SPACE": "raw_reapply",
+        "HYBRID_KVREPACK_SIMHEAD_ENABLE": "1",
+        "HYBRID_KVREPACK_SIMHEAD_MERGE_RATIO": "0.50",
+        "HYBRID_KVREPACK_SIMHEAD_SIM_SPACE": "raw",
+        "HYBRID_KVREPACK_VERBOSE": "0",
+        "HYBRIDKV_VERBOSE": "0",
+        "HYBRID_KVREPACK_MERGE_SCORE_MODE": "full"
+      },
+      "normalized_runtime_env": {
+        "CUDA_LAUNCH_BLOCKING": "0",
+        "OMP_NUM_THREADS": "4",
+        "DECORD_EOF_RETRY_MAX": "20480",
+        "TOKENIZERS_PARALLELISM": "false"
+      },
+      "generation": {
+        "max_new_tokens": 512,
+        "min_new_tokens": 1,
+        "do_sample": false,
+        "temperature": 0.0,
+        "top_p": null,
+        "num_beams": 1
+      }
+    },
+    "allowed_overrides": {
+      "BUDGET": {
+        "kind": "int",
+        "minimum": 1,
+        "maximum": null,
+        "choices": [],
+        "exclusive_minimum": false
+      },
+      "BUDGET_RATIO": {
+        "kind": "float",
+        "minimum": 0,
+        "maximum": 1,
+        "choices": [],
+        "exclusive_minimum": true
+      },
+      "RATIO": {
+        "kind": "float",
+        "minimum": 0,
+        "maximum": 1,
+        "choices": [],
+        "exclusive_minimum": true
+      },
+      "HEAD_CLASSIFY": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "head_ada"
+        ],
+        "exclusive_minimum": false
+      },
+      "BUDGET_METHOD": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "head_ada"
+        ],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_CHUNK_SIZE": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "8"
+        ],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_COMPRESS_RATIO": {
+        "kind": "float",
+        "minimum": 0,
+        "maximum": 1,
+        "choices": [],
+        "exclusive_minimum": true
+      },
+      "K_DIFF_ALPHA": {
+        "kind": "float",
+        "minimum": 0,
+        "maximum": null,
+        "choices": [],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_K_DIFF_ALPHA": {
+        "kind": "float",
+        "minimum": 0,
+        "maximum": null,
+        "choices": [],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_MAX_GROUP_SIZE": {
+        "kind": "int",
+        "minimum": 0,
+        "maximum": null,
+        "choices": [],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_BLOCK_META_WEIGHT": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "uniform"
+        ],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_STATIC_MERGE_SCOPE": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "visual",
+          "all"
+        ],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_K_MERGE_SPACE": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "raw_reapply",
+          "rope"
+        ],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_SIMHEAD_ENABLE": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "0",
+          "1"
+        ],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_SIMHEAD_MERGE_RATIO": {
+        "kind": "float",
+        "minimum": 0,
+        "maximum": 1,
+        "choices": [],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_SIMHEAD_SIM_SPACE": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "raw",
+          "rope"
+        ],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_VERBOSE": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "0",
+          "1"
+        ],
+        "exclusive_minimum": false
+      },
+      "HYBRIDKV_VERBOSE": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "0",
+          "1"
+        ],
+        "exclusive_minimum": false
+      },
+      "HYBRID_KVREPACK_MERGE_SCORE_MODE": {
+        "kind": "enum",
+        "minimum": null,
+        "maximum": null,
+        "choices": [
+          "full"
+        ],
+        "exclusive_minimum": false
+      }
+    },
+    "notes": [
+      "Canonical target core; image recipe selection alone does not prove historical numerical equivalence.",
+      "Qwen 3B recipes are also available for 7B as explicit configuration reuse, not a claim of historical 7B equivalence.",
+      "Qwen images are RGB JPEG and precede text; LLaVA images remain RGB PIL, following the original workers.",
+      "RATIO remains 0.1 independently of BUDGET_RATIO unless explicitly overridden.",
+      "All inference, quality and CUDA performance validation is pending.",
+      "The image backend defaults to Qwen3B consistently across baselines and upgrades; original 7B-only examples require explicit --pretrained to reproduce their model choice.",
+      "LLaVA shares target param_config budget_fixed_ratio=0.1 for baseline and upgrade; opensource currently uses 0.5. This is not source numerical-equivalence validation."
+    ],
+    "benchmark": "milebench",
+    "profile": "main11"
+  },
+  "core_manifest_sha256": "ed7798cb983c8ad6a2b9e91d3290162987f99cef380a7dc5f17208516a0912c1",
+  "milebench_manifest_sha256": "b68206876dac89a07ef754bba61f1625d7cab9aaa8dde173cb3dcd010f9b19c9",
+  "configuration_sources_sha256": {
+    "src/kvrepack/experiments/registry.py": "c2cf2ff1ec656c1cdab54c79822fdd78eb03869ddfb1f80940f361825894861b",
+    "src/kvrepack/experiments/milebench.py": "a8e8920c283fde5574f76c8b7ecb508436735a44feec4b0d6dd151f8e9ae26b7",
+    "src/kvrepack/experiments/runner.py": "c9a42abfe7dbf91e37083871b7384cbaa2f9bc7281ea274a86d2135d21ae38b0",
+    "src/kvrepack/run.py": "a3be62012bf3d8c54ac3840d6e12be80d16791f1d086ce7c9e1bed99a047842a",
+    "src/kvrepack/configs/milebench/main11.json": "5533b1ae464075eb8d870884dbb9ec43108e39bf6f4d4384dcd3525a42debd1c",
+    "src/kvrepack/experiments/random_head_images.py": "6e7533888e8597cc16a6f2fe14a546318e968624d9a9118c921af81f827bb04d",
+    "scripts/run_milebench_random_heads.py": "a9342c09abf585a988c7ab3ba8e78dd31ae14489040db2940a70e7c1b0565579",
+    "src/kvrepack/ablations/run_milebench_head_selection.py": "533cd0f99b66d50433b06372151421d73117f8df4ecc4a7992b09dda81efe054",
+    "src/kvrepack/ablations/milebench_head_selection_report.py": "ea4c95eef15cdf03412f8a263a4eafa8c7eaa729fbe1026b18f1117dcf7a4554"
+  },
+  "profile_sha256": "5533b1ae464075eb8d870884dbb9ec43108e39bf6f4d4384dcd3525a42debd1c",
+  "source_policy": "Only this checkout's canonical core is loaded; current opensource numerical equivalence is unverified.",
+  "environment_policy": "Only infrastructure variables inherited; image algorithm parameters resolved explicitly.",
+  "discarded_environment_names": [
+    "   ",
+    "AgentHost",
+    "AutoDLContainerMonitorSetting",
+    "AutoDLContainerUUID",
+    "AutoDLDataCenter",
+    "AutoDLRegion",
+    "AutoDLService6006URL",
+    "AutoDLService6008URL",
+    "AutoDLServiceURL",
+    "AutodlAutoPanelToken",
+    "CODEX_APPLY_PATCH_PRESERVE_LINE_ENDINGS",
+    "CODEX_CI",
+    "CODEX_SESSION_ID",
+    "CODEX_THREAD_ID",
+    "CODEX_TOOL_CALL_ID",
+    "CODEX_VERSION",
+    "COLORTERM",
+    "COLUMNS",
+    "CONDA_DEFAULT_ENV",
+    "CONDA_EXE",
+    "CONDA_PREFIX",
+    "CONDA_PROMPT_MODIFIER",
+    "CONDA_PYTHON_EXE",
+    "CONDA_SHLVL",
+    "CUDA_VERSION",
+    "DEBIAN_FRONTEND",
+    "GH_PAGER",
+    "GIT_PAGER",
+    "HOSTNAME",
+    "JUPYTER_SERVER_ROOT",
+    "JUPYTER_SERVER_URL",
+    "LINES",
+    "LS_COLORS",
+    "MKL_NUM_THREADS",
+    "NCCL_VERSION",
+    "NO_COLOR",
+    "NVARCH",
+    "NVIDIA_CTK_LIBCUDA_DIR",
+    "NVIDIA_DRIVER_CAPABILITIES",
+    "NVIDIA_PRODUCT_NAME",
+    "NVIDIA_REQUIRE_CUDA",
+    "NVIDIA_VISIBLE_DEVICES",
+    "NV_CUDA_CUDART_DEV_VERSION",
+    "NV_CUDA_CUDART_VERSION",
+    "NV_CUDA_LIB_VERSION",
+    "NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE",
+    "NV_CUDA_NSIGHT_COMPUTE_VERSION",
+    "NV_CUDNN_PACKAGE",
+    "NV_CUDNN_PACKAGE_DEV",
+    "NV_CUDNN_PACKAGE_NAME",
+    "NV_CUDNN_VERSION",
+    "NV_LIBCUBLAS_DEV_PACKAGE",
+    "NV_LIBCUBLAS_DEV_PACKAGE_NAME",
+    "NV_LIBCUBLAS_DEV_VERSION",
+    "NV_LIBCUBLAS_PACKAGE",
+    "NV_LIBCUBLAS_PACKAGE_NAME",
+    "NV_LIBCUBLAS_VERSION",
+    "NV_LIBCUSPARSE_DEV_VERSION",
+    "NV_LIBCUSPARSE_VERSION",
+    "NV_LIBNCCL_DEV_PACKAGE",
+    "NV_LIBNCCL_DEV_PACKAGE_NAME",
+    "NV_LIBNCCL_DEV_PACKAGE_VERSION",
+    "NV_LIBNCCL_PACKAGE",
+    "NV_LIBNCCL_PACKAGE_NAME",
+    "NV_LIBNCCL_PACKAGE_VERSION",
+    "NV_LIBNPP_DEV_PACKAGE",
+    "NV_LIBNPP_DEV_VERSION",
+    "NV_LIBNPP_PACKAGE",
+    "NV_LIBNPP_VERSION",
+    "NV_NVML_DEV_VERSION",
+    "NV_NVPROF_DEV_PACKAGE",
+    "NV_NVPROF_VERSION",
+    "NV_NVTX_VERSION",
+    "OMP_NUM_THREADS",
+    "PAGER",
+    "PWD",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONPATH",
+    "PYXTERM_DIMENSIONS",
+    "SHLVL",
+    "_",
+    "_CE_CONDA",
+    "_CE_M"
+  ],
+  "inherited_infrastructure_names": [
+    "HF_DATASETS_CACHE",
+    "HF_DATASETS_OFFLINE",
+    "HF_HOME",
+    "HF_HUB_CACHE",
+    "HF_HUB_OFFLINE",
+    "HOME",
+    "HUGGINGFACE_HUB_CACHE",
+    "LANG",
+    "LC_ALL",
+    "LC_CTYPE",
+    "LD_LIBRARY_PATH",
+    "LIBRARY_PATH",
+    "PATH",
+    "REQUESTS_CA_BUNDLE",
+    "SHELL",
+    "TERM",
+    "TRANSFORMERS_OFFLINE",
+    "TZ",
+    "http_proxy",
+    "https_proxy"
+  ],
+  "validation_status": "CPU integration only; GPU, model quality and performance unverified",
+  "python_executable": "/root/miniconda3/envs/hybridkv/bin/python",
+  "shared_param_config": {
+    "path": "src/kvrepack/configs/param_config.json",
+    "sha256": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+    "values": {
+      "llava_ov": {
+        "score_threshold": 0.9,
+        "budget_fixed_ratio": 0.1
+      },
+      "qwen2.5_vl": {
+        "score_threshold": 0.9,
+        "budget_fixed_ratio": 0.1
+      }
+    },
+    "policy": "Target canonical config shared by baseline and upgrade; source LLaVA budget_fixed_ratio=0.5 differs from target 0.1."
+  },
+  "random_head_reference_commit": "6c65bf801ab1e5d0cd85f1d24991e3d5399bebcf",
+  "random_head_protocol": {
+    "model_seed": 42,
+    "head_seeds": [
+      0,
+      1
+    ],
+    "conditions": [
+      {
+        "label": "similarity",
+        "strategy": "similarity",
+        "mask_seed": 0
+      },
+      {
+        "label": "random_global_seed0",
+        "strategy": "random_global",
+        "mask_seed": 0
+      },
+      {
+        "label": "random_global_seed1",
+        "strategy": "random_global",
+        "mask_seed": 1
+      }
+    ],
+    "image_adaptation": "MileBench image protocol and 512-token default; no video frame or WUPS scoring settings",
+    "gpu_validation": "pending",
+    "sample_selection": "complete_annotation",
+    "selected_sample_count": 200,
+    "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff"
+  },
+  "resolved_modules": {
+    "kvrepack": [
+      "/root/autodl-tmp/KVRepack/src/kvrepack/__init__.py"
+    ],
+    "kvrepack_kernel": [
+      "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/kvrepack_kernel.cpython-312-x86_64-linux-gnu.so"
+    ]
+  },
+  "dependency_versions": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.52.3",
+    "accelerate": "1.13.0",
+    "flash-attn": "2.7.4.post1",
+    "decord": "0.6.0",
+    "datasets": "2.19.2",
+    "qwen-vl-utils": "0.0.14"
+  },
+  "kernel_distribution": {
+    "name": "kvrepack-kernels",
+    "version": "0.1.0",
+    "build_source": "file:///root/autodl-tmp/KVRepack/csrc",
+    "origin": "/root/miniconda3/envs/hybridkv/lib/python3.12/site-packages/kvrepack_kernel.cpython-312-x86_64-linux-gnu.so",
+    "extension_sha256": "b27cf94842cb4220da2d9674b71b1279730524bca92f48fea4d568cf858b5a88"
+  },
+  "python_version": "3.12.9 | packaged by conda-forge | (main, Mar  4 2025, 22:48:41) [GCC 13.3.0]",
+  "source_verification": {
+    "manifest_sha256": "ed7798cb983c8ad6a2b9e91d3290162987f99cef380a7dc5f17208516a0912c1",
+    "verified_targets": [
+      {
+        "target_path": "src/kvrepack/baseline_utils.py",
+        "sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e"
+      },
+      {
+        "target_path": "src/kvrepack/qwen_model.py",
+        "sha256": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7"
+      },
+      {
+        "target_path": "src/kvrepack/qwen_model_croatt.py",
+        "sha256": "6f9d46f0d8a36ac842dc2e2beecccbc5be55194d5cfc47ff4379236f8dbf8cbf"
+      },
+      {
+        "target_path": "src/kvrepack/modeling_qwen2_5_vl.py",
+        "sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b"
+      },
+      {
+        "target_path": "src/kvrepack/hybridkv_utils.py",
+        "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97"
+      },
+      {
+        "target_path": "src/kvrepack/hybridkv_cpu.py",
+        "sha256": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641"
+      },
+      {
+        "target_path": "src/kvrepack/merge_score.py",
+        "sha256": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d"
+      },
+      {
+        "target_path": "src/kvrepack/qwen_model_snapkv_kvrepack.py",
+        "sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a"
+      },
+      {
+        "target_path": "src/kvrepack/qwen_model_sparsemm_kvrepack.py",
+        "sha256": "df69b680c900316145bb5b7ceb1191384f1fe3a64338bd1201d50b3094fbca2f"
+      },
+      {
+        "target_path": "src/kvrepack/qwen_model_madakv_kvrepack.py",
+        "sha256": "7a2ce16742e3d7f959417d0281c3e58faa1ec9426cba0c66ab14aa9007f92a1b"
+      },
+      {
+        "target_path": "src/kvrepack/qwen_model_lookm_kvrepack.py",
+        "sha256": "59ddc9cd387293e0bba05ad7cbd20bb921ff9119121369f1ae27a7d99540ed4b"
+      },
+      {
+        "target_path": "src/kvrepack/lookm_headsplit_kvrepack_utils.py",
+        "sha256": "1cae33d61dc02b1c57798def8ebc05ab2f3efdaa68cfc39e444cbba6ff97229b"
+      },
+      {
+        "target_path": "src/kvrepack/randomkv_utils.py",
+        "sha256": "847b88ff3d73166d9d74b907f8cf68b4e5ec31c2c015d5d9a1e54e2439689faa"
+      },
+      {
+        "target_path": "src/kvrepack/qwen_model_randomkv.py",
+        "sha256": "a55057dd40572be08b6f9a7046179363ba2af16e6fb0b161c09ba8fb0d57ee9a"
+      },
+      {
+        "target_path": "src/kvrepack/asymkv_official/__init__.py",
+        "sha256": "ba4df13eba96cad8c371d1924ed9cfbfecee1b23eed498a636a2d7c6f2c0d78d"
+      },
+      {
+        "target_path": "src/kvrepack/asymkv_official/attention.py",
+        "sha256": "f66c75f20b64304e9ea4cf799cd3a18ab2c3602a1c02784df4804029a7a3f865"
+      },
+      {
+        "target_path": "src/kvrepack/asymkv_official/cache.py",
+        "sha256": "1d06c401a6febe85a622fb4b8544dc092c985d1a5210eaecfc0f8714f68cefb2"
+      },
+      {
+        "target_path": "src/kvrepack/asymkv_official/compression.py",
+        "sha256": "c10fa7442b1dcd7e8b9ff48098bb105545af691ceeb37cce0ba651039797a3f9"
+      },
+      {
+        "target_path": "src/kvrepack/asymkv_official/generation.py",
+        "sha256": "f68dbd411938f9fef3fac74a57a9057e026ce1583667a5f23bdaef379d720508"
+      },
+      {
+        "target_path": "src/kvrepack/asymkv_official/integration.py",
+        "sha256": "2da76a65644ada05675274ef929210c9684bc89e39e5d479d9cb5524a280098e"
+      },
+      {
+        "target_path": "src/kvrepack/_asymkv_helpers.py",
+        "sha256": "5e701e6451f05537f2f942969f389cccb82400c8546139451734c1cf1c885b22"
+      },
+      {
+        "target_path": "src/kvrepack/hybrid_asymkv.py",
+        "sha256": "918e45ed4765c1f6ce836b6c31c8ddfd1491ee1f4de6e205669a22f80ca7fdea"
+      },
+      {
+        "target_path": "src/kvrepack/monkeypatch.py",
+        "sha256": "d642c5ec2545af737ae5b1ab1b162544f08ee7978aea4af34c09ceaf60f2a729"
+      },
+      {
+        "target_path": "src/kvrepack/configs/param_config.json",
+        "sha256": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd"
+      },
+      {
+        "target_path": "src/kvrepack/data/head_score/llava-ov.json",
+        "sha256": "85c6fa21d42696291de3c964db18afef6bb0dc600a99daff5947e73e437ded17"
+      },
+      {
+        "target_path": "src/kvrepack/data/head_score/qwen25-vl-3b.json",
+        "sha256": "0dc35454994f4a50277f974dac88a17aad6dbcbca0d2be9c15ca21209c6ab2ec"
+      },
+      {
+        "target_path": "src/kvrepack/data/head_score/qwen2_5.json",
+        "sha256": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e"
+      },
+      {
+        "target_path": "src/kvrepack/modeling_llava_onevision.py",
+        "sha256": "19e878b84203571cc661362f7f8c4e0a8b08037f80ffe0415993ef5beb240d5e"
+      },
+      {
+        "target_path": "src/kvrepack/modeling_qwen2.py",
+        "sha256": "22f740946c5a2eda71f538ff1d7979147ea12fd5ecb11641098e3c43fabf5ffa"
+      },
+      {
+        "target_path": "src/kvrepack/qwen2_model.py",
+        "sha256": "f78def7a50483e0a951cd67ab2e870b7ebec452c0b2f785e5ad6dc36eb2f098b"
+      },
+      {
+        "target_path": "src/kvrepack/qwen2_model_snapkv_kvrepack.py",
+        "sha256": "72de1e37446ab49aa8a606c4ac00193fd1889829275514eba3bfbe6c1fc5488b"
+      },
+      {
+        "target_path": "src/kvrepack/qwen2_model_sparsemm_kvrepack.py",
+        "sha256": "6ac7c67893b18c312f911a557858f6454a1d066df0c49fb8e18805182a36591c"
+      },
+      {
+        "target_path": "src/kvrepack/qwen2_model_madakv_kvrepack.py",
+        "sha256": "e6e3b0433ac80ba59c415326cd5d3947f71eb2037c0f5e397955ef6d2ccf756d"
+      },
+      {
+        "target_path": "src/kvrepack/modeling_qwen2_kvrepack.py",
+        "sha256": "36bbb49a30c485401574e3934263bd9e7bd8e28faac093dff59aeff0bbf40396"
+      },
+      {
+        "target_path": "src/kvrepack/hybridkv_utils_llava.py",
+        "sha256": "75385447a74a8c174f1c8e83af947b082780bbe851519558b9853bdeda04e6f6"
+      }
+    ]
+  },
+  "milebench_source_verification": {
+    "manifest_sha256": "b68206876dac89a07ef754bba61f1625d7cab9aaa8dde173cb3dcd010f9b19c9",
+    "verified_targets": [
+      {
+        "target_path": "src/kvrepack/run.py",
+        "sha256": "a3be62012bf3d8c54ac3840d6e12be80d16791f1d086ce7c9e1bed99a047842a"
+      },
+      {
+        "target_path": "src/kvrepack/experiments/registry.py",
+        "sha256": "c2cf2ff1ec656c1cdab54c79822fdd78eb03869ddfb1f80940f361825894861b"
+      },
+      {
+        "target_path": "src/kvrepack/experiments/runner.py",
+        "sha256": "c9a42abfe7dbf91e37083871b7384cbaa2f9bc7281ea274a86d2135d21ae38b0"
+      },
+      {
+        "target_path": "src/kvrepack/experiments/milebench.py",
+        "sha256": "a8e8920c283fde5574f76c8b7ecb508436735a44feec4b0d6dd151f8e9ae26b7"
+      },
+      {
+        "target_path": "src/kvrepack/experiments/llava_image_methods.py",
+        "sha256": "b720eb3f91b870d102bb3e475349c8b378328d687c20a7384950e2dbb18bebd8"
+      },
+      {
+        "target_path": "src/kvrepack/benchmarks/__init__.py",
+        "sha256": "076f2ddb7e1457209c4e4dc35235876a5c14e0073c43ee862f34c75c5f584b20"
+      },
+      {
+        "target_path": "scripts/check_milebench_sources.py",
+        "sha256": "02636c7c13e79496ff7943fbb4dea52546c3dcb7b2f3fc082cf562e2efa603b7"
+      },
+      {
+        "target_path": "scripts/plan_milebench.py",
+        "sha256": "2684946be8a22da74490cac0c88a3e327e559695eb08e30c04253c57c16989a1"
+      },
+      {
+        "target_path": "pyproject.toml",
+        "sha256": "956db4fb1bb17b5e158a395213482d8b72e2fd8f63939f9acb3189604ce21c1c"
+      },
+      {
+        "target_path": "src/kvrepack/benchmarks/milebench/__init__.py",
+        "sha256": "bf47db1838ddeda80d1af53b1643ae39744582601ce8820c11319ad2a2991aa0"
+      },
+      {
+        "target_path": "src/kvrepack/benchmarks/milebench/dataset.py",
+        "sha256": "1eae65499c9aa4f8c4fb5ca70d5e7f6b83d9916a0dea63577a909dff52ceb55c"
+      },
+      {
+        "target_path": "src/kvrepack/benchmarks/milebench/evaluate.py",
+        "sha256": "ce724b94ec19a42a0d388a42c9c269395183cd2cf6ea68d0a8271d2bc63c3e96"
+      },
+      {
+        "target_path": "src/kvrepack/benchmarks/milebench/generate.py",
+        "sha256": "ef7ad8b50f860899cc351f8313b4d0db2397fe6d1eae3699c62574d8fd0dbdbc"
+      },
+      {
+        "target_path": "src/kvrepack/benchmarks/milebench/score.py",
+        "sha256": "c8b4624f423de3cfd6e5cd1f7328fd5e9aa2ab89c92346bddc7ba49c74371b00"
+      },
+      {
+        "target_path": "src/kvrepack/benchmarks/milebench/workers.py",
+        "sha256": "78e9012e8437989cae968d5a0072f3e659f47070f9bde8d815e295e41111913d"
+      },
+      {
+        "target_path": "src/kvrepack/configs/milebench/image8.json",
+        "sha256": "79d56c92a5212125d3b4bb284f06b2caf06114842baf6515ef687d7ac64fa954"
+      },
+      {
+        "target_path": "src/kvrepack/configs/milebench/main11.json",
+        "sha256": "5533b1ae464075eb8d870884dbb9ec43108e39bf6f4d4384dcd3525a42debd1c"
+      },
+      {
+        "target_path": "src/kvrepack/ablations/__init__.py",
+        "sha256": "cc381c99a3b42dd4b7abd47391f509f391a1697899a0837d3eb547bac81b1a1b"
+      },
+      {
+        "target_path": "src/kvrepack/ablations/head_selection.py",
+        "sha256": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1"
+      },
+      {
+        "target_path": "src/kvrepack/ablations/hybrid_head_selection.py",
+        "sha256": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325"
+      },
+      {
+        "target_path": "src/kvrepack/ablations/milebench_head_selection_report.py",
+        "sha256": "ea4c95eef15cdf03412f8a263a4eafa8c7eaa729fbe1026b18f1117dcf7a4554"
+      },
+      {
+        "target_path": "src/kvrepack/ablations/milebench_paired_worker.py",
+        "sha256": "dd9f37cbc71e5fb615a92687533efe20f5bf38f4b2d0c85c94e876f14b9f3c1a"
+      },
+      {
+        "target_path": "src/kvrepack/ablations/run_milebench_head_selection.py",
+        "sha256": "533cd0f99b66d50433b06372151421d73117f8df4ecc4a7992b09dda81efe054"
+      },
+      {
+        "target_path": "src/kvrepack/experiments/random_head_images.py",
+        "sha256": "6e7533888e8597cc16a6f2fe14a546318e968624d9a9118c921af81f827bb04d"
+      },
+      {
+        "target_path": "scripts/run_milebench_random_heads.py",
+        "sha256": "a9342c09abf585a988c7ab3ba8e78dd31ae14489040db2940a70e7c1b0565579"
+      },
+      {
+        "target_path": "scripts/check_random_head_sources.py",
+        "sha256": "e1d564c9934153108cda44bf5f1dbedd76d2c66b79861fef288ad0f98f07905c"
+      },
+      {
+        "target_path": "provenance/random_head_selector_sources.json",
+        "sha256": "4514400df793f5d15dbbd28c4ae01319f3539454c101779a19879492fd2fe69c"
+      }
+    ]
+  },
+  "git_commit": "e92fafa59f6d3f5947a7f82a5b08a4e9a6ecff84",
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "-m",
+    "kvrepack.ablations.run_milebench_head_selection",
+    "--config",
+    "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_20261108/hybridkv_kvrepack/Spot-the-Diff/resolved_config.json"
+  ]
+}

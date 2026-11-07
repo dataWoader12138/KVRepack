@@ -2,15 +2,15 @@
 
 项目交接摘要与后续工作入口：[docs/HANDOFF.md](docs/HANDOFF.md)。
 
-当前 [Spot-the-Diff / MMCoQA Random-head 图片实验](docs/MILEBENCH_RANDOM_HEAD.md) 已进入用户授权的 Qwen2.5-VL-7B GPU 阶段：HybridKV-KVRepack 和 SnapKV-KVRepack 均运行 similarity 与 random seed0/1，读取两个官方 MileBench v1 子集全部标注，各200条，计划 `4×200×3=2400` 次生成。MileBench 作者已从源任务抽样构成这些子集，见[论文 §3.2](https://arxiv.org/pdf/2404.18532)；本项目的 `--all-samples` 不设条目上限。
+当前 [Spot-the-Diff / MMCoQA Random-head 图片实验](docs/MILEBENCH_RANDOM_HEAD.md) 已完成用户授权的 Qwen2.5-VL-7B GPU 运行：HybridKV-KVRepack 和 SnapKV-KVRepack 均运行 similarity 与 random seed0/1，读取两个官方 MileBench v1 子集全部标注，各200条，完成 `4×200×3=2400` 次生成。MileBench 作者已从源任务抽样构成这些子集，见[论文 §3.2](https://arxiv.org/pdf/2404.18532)；本项目的 `--all-samples` 不设条目上限。
 
 将 Qwen2.5-VL 与 LLaVA-OneVision 的 KV cache 基线及 KVRepack 改进整理到一个独立项目。视频入口包括 NextQA、VATEX、VideoChatGPT；新增 [MileBench 多图主实验](docs/MILEBENCH.md)，包含数据预检、图片生成、原协议评分和 JSON/CSV 汇总。图片配置与视频默认值分别管理，共享核心实现。
 
 本版本的代码参考由原工作区 `HybridKV-artifact/scripts/eval` 的实际调用链决定；FullKV 遵循该目录中显式选择 opensource 的对照脚本。项目运行不需要原来的两个目录，也不需要原机器软链接。首版完成整理和 CPU 静态验证；目前 GPU 实测仅覆盖上述 Qwen7B Random-head 运行范围，其他模型、方法及性能仍需分别验证。
 
-首版无 GPU 审计覆盖19个组合，并复现 LLaVA SparseMM 跨 prompt 预算复用及 AsymKV 分块边界末 token 遗漏。本次已单独修复前者并新增 CPU 回归；AsymKV 问题仍未修复且不在图片入口范围。历史证据见 [CPU 调用关系审计](docs/CPU_CALL_AUDIT.md)，图片扩展与本次实测范围见 [MileBench 验证报告](provenance/milebench_validation.json)。Qwen7B 两方法/两任务各1条的独立 smoke 已通过；正式 Hybrid/Spot 已完成200条、600次生成并重新核分通过，其余三组仍在运行，尚无完整四组结果，也未完成全项目 GPU 数值一致性或性能验证。
+首版无 GPU 审计覆盖19个组合，并复现 LLaVA SparseMM 跨 prompt 预算复用及 AsymKV 分块边界末 token 遗漏。本次已单独修复前者并新增 CPU 回归；AsymKV 问题仍未修复且不在图片入口范围。历史证据见 [CPU 调用关系审计](docs/CPU_CALL_AUDIT.md)，图片扩展与本次实测范围见 [MileBench 验证报告](provenance/milebench_validation.json)。Qwen7B 两方法/两任务各1条的独立 smoke 已通过；正式四组均已完成，最终独立审计及完整核分通过，2400次生成全部EOS结束，无512-token上限截断。最新CPU测试共161项，160通过、1跳过。这些结论仅适用于本轮Qwen7B两方法、两个官方子集，不代表全部模型/方法或性能已验证。详见 [Qwen7B结果](docs/MILEBENCH_RANDOM_HEAD_QWEN7B_RESULTS.md)、[审计JSON](provenance/random_head_qwen7b_all_seed01_20261108/audit/audit.json) 和 [结果CSV](provenance/random_head_qwen7b_all_seed01_20261108/audit/results.csv)。
 
-正式进度以 `outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/controller_state.json` 为准。首个控制器在 Hybrid/MMCoQA 第二个生成样本（原 `sample_id=18`）因后置审计错误地要求56个选中头全部有效合并而停止；现已恢复参考 Hybrid 允许自然缺调用或 noop、但有效合并数必须大于0的语义，SnapKV 仍要求34头有效匹配，预算、算法和随机 mask 未改。已完成 Hybrid/Spot 的原合同、样本及报告按字节复制复用，`reuse_manifest.json` 记录 SHA，旧12份绑定源码冻结于 `source_archives/first_controller`；未重复其600次生成。原失败目录保留。
+正式输出位于 `outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108`，精简证据包位于 `provenance/random_head_qwen7b_all_seed01_20261108`。GPU已释放，不启动重复运行。首个控制器在 Hybrid/MMCoQA 第二个生成样本（原 `sample_id=18`）因后置审计错误地要求56个选中头全部有效合并而停止；现已恢复参考 Hybrid 允许自然缺调用或 noop、但有效合并数必须大于0的语义，SnapKV 仍要求34头有效匹配，预算、算法和随机 mask 未改。已完成 Hybrid/Spot 的原合同、样本及报告按字节复制复用，`reuse_manifest.json` 记录 SHA，旧12份绑定源码冻结于 `source_archives/first_controller`；未重复其600次生成。原失败目录保留。
 
 ## 文件组织
 
@@ -65,7 +65,7 @@ PYTHONPATH=src python -m kvrepack.run --benchmark milebench \
 
 ## 安装与环境约束
 
-使用独立的 Python 3.12 环境。以下为依赖安装参考；本机已从当前 checkout 构建 `kvrepack_kernel` 并开始上述限定范围的 GPU 实测，不代表已验证全新机器安装或所有模型/方法。
+使用独立的 Python 3.12 环境。以下为依赖安装参考；本机已从当前 checkout 构建 `kvrepack_kernel` 并完成上述限定范围的 GPU 实测，不代表已验证全新机器安装或所有模型/方法。
 
 ```bash
 cd KVRepack

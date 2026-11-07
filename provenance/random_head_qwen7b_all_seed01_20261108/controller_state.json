@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "reference_commit": "6c65bf801ab1e5d0cd85f1d24991e3d5399bebcf",
+  "started_utc": "2026-11-07T17:42:17.512807+00:00",
+  "planned_runs": 4,
+  "completed_runs": 4,
+  "runs": [
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "Spot-the-Diff",
+      "output": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/hybridkv_kvrepack/Spot-the-Diff",
+      "status": "complete",
+      "returncode": 0,
+      "report": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/hybridkv_kvrepack/Spot-the-Diff/report",
+      "finished_utc": "2026-11-07T17:42:20.002096+00:00"
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "MMCoQA",
+      "output": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/hybridkv_kvrepack/MMCoQA",
+      "status": "complete",
+      "returncode": 0,
+      "report": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/hybridkv_kvrepack/MMCoQA/report",
+      "finished_utc": "2026-11-07T18:02:39.022515+00:00"
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "Spot-the-Diff",
+      "output": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/snapkv_kvrepack/Spot-the-Diff",
+      "status": "complete",
+      "returncode": 0,
+      "report": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/snapkv_kvrepack/Spot-the-Diff/report",
+      "finished_utc": "2026-11-07T18:08:57.472291+00:00"
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "task": "MMCoQA",
+      "output": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/snapkv_kvrepack/MMCoQA",
+      "status": "complete",
+      "returncode": 0,
+      "report": "/root/autodl-tmp/KVRepack/outputs/ablations/random_head_qwen7b_all_seed01_v2_20261108/snapkv_kvrepack/MMCoQA/report",
+      "finished_utc": "2026-11-07T18:21:01.189728+00:00"
+    }
+  ],
+  "current_run": 3,
+  "updated_utc": "2026-11-07T18:21:00.335339+00:00",
+  "finished_utc": "2026-11-07T18:21:01.189958+00:00"
+}

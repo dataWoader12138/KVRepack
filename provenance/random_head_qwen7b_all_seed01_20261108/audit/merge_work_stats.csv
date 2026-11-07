@@ -1,0 +1,13 @@
+method,task,condition,sample_count,selected_count_min,selected_count_max,selected_count_total,merge_invocation_count_min,merge_invocation_count_max,merge_invocation_count_total,effective_merge_count_min,effective_merge_count_max,effective_merge_count_total,no_op_call_count_min,no_op_call_count_max,no_op_call_count_total,selected_without_invocation_count_min,selected_without_invocation_count_max,selected_without_invocation_count_total,removed_tokens_min,removed_tokens_max,removed_tokens_total
+hybridkv_kvrepack,Spot-the-Diff,similarity,200,56,56,11200,56,56,11200,56,56,11200,0,0,0,0,0,0,8591,10939,1942063
+hybridkv_kvrepack,Spot-the-Diff,random_global_seed0,200,56,56,11200,56,56,11200,56,56,11200,0,0,0,0,0,0,8555,11216,1984501
+hybridkv_kvrepack,Spot-the-Diff,random_global_seed1,200,56,56,11200,56,56,11200,56,56,11200,0,0,0,0,0,0,8341,10758,1952814
+hybridkv_kvrepack,MMCoQA,similarity,200,56,56,11200,32,56,11070,32,56,11070,0,0,0,0,24,130,15385,180022,11235853
+hybridkv_kvrepack,MMCoQA,random_global_seed0,200,56,56,11200,15,56,9916,15,56,9916,0,0,0,0,41,1284,12880,153668,8540928
+hybridkv_kvrepack,MMCoQA,random_global_seed1,200,56,56,11200,19,56,10149,19,56,10149,0,0,0,0,37,1051,14000,164009,9411154
+snapkv_kvrepack,Spot-the-Diff,similarity,200,34,34,6800,34,34,6800,34,34,6800,0,0,0,0,0,0,816,816,163200
+snapkv_kvrepack,Spot-the-Diff,random_global_seed0,200,34,34,6800,34,34,6800,34,34,6800,0,0,0,0,0,0,816,816,163200
+snapkv_kvrepack,Spot-the-Diff,random_global_seed1,200,34,34,6800,34,34,6800,34,34,6800,0,0,0,0,0,0,816,816,163200
+snapkv_kvrepack,MMCoQA,similarity,200,34,34,6800,34,34,6800,34,34,6800,0,0,0,0,0,0,884,18462,828002
+snapkv_kvrepack,MMCoQA,random_global_seed0,200,34,34,6800,34,34,6800,34,34,6800,0,0,0,0,0,0,884,18462,828002
+snapkv_kvrepack,MMCoQA,random_global_seed1,200,34,34,6800,34,34,6800,34,34,6800,0,0,0,0,0,0,884,18462,828002
