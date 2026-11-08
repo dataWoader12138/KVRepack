@@ -1,5 +1,7 @@
 # KVRepack
 
+消融数据：[下载统一CSV汇总表](docs/ablation_results_summary.csv)。包含SnapKV/HybridKV的Random-head结果、已完成的RoPE聚合空间对照和20条试跑，共13个已完成指标行；另列HybridKV/VATEX仅97配对的停止状态，未评分项留空。差值统一为“基线−对照”，Random行对照为三seed均值；保留样本数、参数、标准差、区间和来源，UTF-8 BOM可用Excel直接打开。
+
 已完成：[HybridKV + KVRepack 的 Random-head 结果与图表](docs/HYBRID_RANDOM_HEAD_NEXTQA_200_RESULTS_20261106.md) · [协议与复现命令](docs/HYBRID_RANDOM_HEAD_NEXTQA_200.md)。2026-11-06完成Qwen2.5-VL-7B、NExTQA前200条的800次生成，11-07独立全量执行与评分复核均通过。相似度/Random均值WUPS为33.219903/33.088063，差值95%区间为[−0.778808,1.353447]，未显示稳定优势。四条件均选56头、保留原逐头预算，但异质预算使实际移除token量不同，不能称严格等合并工作量。此前[RoPE合并尝试](docs/ROPE_MERGE_ABLATION.md)仍按用户要求终止，不自动续跑。
 
 已完成：[NExTQA前200条 Random-head 消融结果](docs/RANDOM_HEAD_NEXTQA_200_RESULTS_20261104.md) · [协议与复现命令](docs/RANDOM_HEAD_NEXTQA_200.md)。2026-11-04完成Qwen2.5-VL-7B + SnapKV-KVRepack四条件800次生成，11-06复核；原策略/Random均值WUPS为32.917681/32.811042，差值区间跨0，未显示稳定优势。仅前200条，本轮未运行VATEX。
