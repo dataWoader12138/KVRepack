@@ -1,0 +1,2 @@
+Warming up PyWSD (takes ~10 secs)... took 3.9664716720581055 secs.
+{"status": "complete", "method": "lookm", "task": "nextqa_oe_test", "limit": 200, "metrics": {"WUPS": 33.8571440351094}, "scoring_seconds": 9.379844170063734, "output": "outputs/benchmarks/lookm_vs_kvrepack_20261109/lookm/nextqa_oe_test/report"}

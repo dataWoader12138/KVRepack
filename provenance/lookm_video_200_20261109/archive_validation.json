@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "samples": 400,
+  "generations": 400,
+  "full_source_to_public_object_comparisons": 400,
+  "validator_calls": 800,
+  "per_layer_native_lookm_budget_formula_checked": true,
+  "gpu_or_model_execution": false
+}

@@ -1,0 +1,20 @@
+{
+  "status": "stopped_by_user",
+  "started_utc": "2026-11-09T01:17:42.413928+00:00",
+  "target_generations": 800,
+  "completed_cases": [
+    {
+      "method": "lookm",
+      "task": "nextqa_oe_test"
+    }
+  ],
+  "controller_pid": 4690,
+  "process_group": 4690,
+  "resume_authorized": false,
+  "current_method": "hybridkv_kvrepack",
+  "current_task": "nextqa_oe_test",
+  "updated_utc": "2026-11-09T01:31:20.347957+00:00",
+  "worker_pid": 24389,
+  "stopped_utc": "2026-11-09T01:41:49.721831+00:00",
+  "stop_reason": "User requested no HybridKV+KVRepack rerun; retain LookM results only"
+}

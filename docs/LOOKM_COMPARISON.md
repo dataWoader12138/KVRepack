@@ -1,6 +1,6 @@
 # LookM：两个视频任务的10%名义预算测试
 
-2026-11-09最新指示：**“你不用重跑HybridKV+KVRepack，把LookM结果给我。”** 已停止原双方法控制器及Hybrid worker，原矩阵状态为`stopped_by_user`、`resume_authorized=false`。当前只补齐LookM：NExTQA原始前200条已完整生成并完成CPU评分，WUPS=33.857144；VATEX原始前200条由独立LookM worker运行中，尚未完成。Hybrid部分记录与此前RoPE实验均保留，不自动续跑。
+2026-11-09最新指示：**“你不用重跑HybridKV+KVRepack，把LookM结果给我。”** 已停止原双方法控制器及Hybrid worker，原矩阵状态为`stopped_by_user`、`resume_authorized=false`。当前只补齐LookM：NExTQA原始前200条已完整生成并完成CPU评分，WUPS=33.857144；VATEX原始前200条已完成生成与原四项corpus评分，400次LookM生成全部EOS、无截断，见[结果与CSV](LOOKM_RESULTS_20261109.md)。Hybrid部分记录与此前RoPE实验均保留，不自动续跑。
 
 本轮使用Qwen2.5-VL-7B-Instruct和原仓库LookM，在NExTQA OE/test及VATEX/test各运行原始前200行，共400次LookM生成；复用本轮已经完成的LookM/NExTQA预测，不再生成一遍，不拼接旧实验预测。该设置沿用此前明确约定的“全量指200条”，不扩大到NExTQA 9178条或VATEX 4478条。最初的LookM/Hybrid四格800次计划已被用户收窄，本页保留其预算来源说明供追溯，不继续执行双方法矩阵。
 
@@ -55,7 +55,7 @@ python scripts/run_lookm_video.py \
 
 ## 当前运行与单方法评分
 
-当前服务器只继续已启动的LookM/VATEX进程，已完成的LookM/NExTQA无需重新生成。两个任务分别使用`kvrepack.benchmarks.run_video_comparison --method lookm`，使用原Transformers模型及其LookM patch、新KV缓存和prompt状态。模型、原视频/Arrow缓存、NLTK/WordNet及VATEX Java评分资源按项目说明准备。
+当前服务器LookM GPU工作已全部结束，已完成的LookM/NExTQA无需重新生成。两个任务分别使用`kvrepack.benchmarks.run_video_comparison --method lookm`，使用原Transformers模型及其LookM patch、新KV缓存和prompt状态。模型、原视频/Arrow缓存、NLTK/WordNet及VATEX Java评分资源按项目说明准备。
 
 任务达到200个完整样本后，使用独立单方法CPU报告入口`kvrepack.benchmarks.single_video_report`；该入口不要求Hybrid记录或原四格矩阵完成。以下`CASE`指向一个已完成任务的目录，已有报告时遵循报告工具的覆盖限制，不为评分重跑生成：
 
@@ -79,7 +79,7 @@ CUDA_VISIBLE_DEVICES='' PYTHONPATH=src python -m kvrepack.benchmarks.single_vide
 
 LookM/NExTQA的200条于UTC01:31:19生成完成，保存在`lookm/nextqa_oe_test/`，原WUPS@0为33.8571440351094（0–100）；200次全部EOS、无截断，独立逐条复算与正式报告完全一致，平均活动缓存比例10.298789%。Hybrid/NExTQA留下119个完整样本，位于独立方法目录，停止且不续跑；不计为完成200条，也不混入LookM。
 
-新的LookM-only进程于UTC**01:42:55**启动，PID/PGID36304，只运行`lookm/vatex_test/`的200条。`lookm_only_state.json`记录该独立任务；VATEX仍在运行，实际剩余时间及计时以worker状态为准。结束后再补充LookM正式分数、实际计时与验证范围，不预判VATEX得分。
+新的LookM-only进程于UTC**01:42:55**启动，PID/PGID36304，只运行`lookm/vatex_test/`的200条。`lookm_only_state.json`记录该独立任务；VATEX现已完成200条，原任务四指标与实际计时见[结果页](LOOKM_RESULTS_20261109.md)，LookM-only状态complete，不再生成。
 
 启动前验证已写入同级`lookm_vs_kvrepack_20261109_preflight/summary.json`：
 
@@ -88,4 +88,4 @@ LookM/NExTQA的200条于UTC01:31:19生成完成，保存在`lookm/nextqa_oe_test
 - 两方法在各任务上的首条实际输入张量哈希配对一致；Hybrid两任务首条的输入和生成token序列分别与旧raw路径精确一致。
 - 控制器及benchmark入口4份源码SHA已记录；只读预算/来源审计保存在同级`lookm_vs_kvrepack_20261109_source_audit.json`。
 
-这些是原矩阵启动前的连通性与迁移检查，不是当前仍应继续执行Hybrid的授权。smoke的单条分数不用于推断正式优劣，也不把1条VATEX参考语料的CIDEr与200条语料混比。当前只等待LookM/VATEX完整生成与评分；原四格800次计划不再补齐，RoPE等历史停止任务同样不恢复。
+这些是原矩阵启动前的连通性与迁移检查，不是当前仍应继续执行Hybrid的授权。smoke的单条分数不用于推断正式优劣，也不把1条VATEX参考语料的CIDEr与200条语料混比。当前LookM两任务生成与评分均已完成；原四格800次计划不再补齐，RoPE等历史停止任务同样不恢复。

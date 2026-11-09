@@ -1,0 +1,497 @@
+{
+  "schema_version": 1,
+  "status": "historical_completed_200_run_verified_with_comparability_limits",
+  "generated_utc": "2026-11-09T01:51:19.056889+00:00",
+  "scope": {
+    "dataset": "VATEX",
+    "task": "vatex_test",
+    "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "historical_method_name": "hybrid_decouplekv",
+    "current_public_method": "hybridkv_kvrepack",
+    "reference_id": "P21",
+    "historical_run_date": "2026-07-05",
+    "actions": "Read existing files and cached Arrow only; no model/video preprocessing, generation, GPU, scoring or stopped-job resume."
+  },
+  "conclusion": {
+    "full_historical_200_completion_has_direct_log_evidence": true,
+    "historical_reference_metrics_can_be_shown_with_explicit_date_and_provenance": true,
+    "strict_same_input_bytes_and_same_current_runtime_pairing_proven": false,
+    "new_Hybrid_score_was_not_generated_by_this_audit": true,
+    "recommended_label": "Historical HybridKV+KVRepack reference (2026-07-05, original first200/64frames/nominal10%; current LookM measured separately).",
+    "comparison_level": "Macro settings and source-defined cap/prompt/scorer agree. Historical seed differs; exact checkpoint/input-byte/config/scorer-build identity is not fully logged. Do not present this as a newly rerun Hybrid baseline or as a byte-paired full200 current experiment."
+  },
+  "historical_metrics": {
+    "units": "Raw corpus scores, no x100 conversion and no new scoring performed.",
+    "Bleu_4": 0.22858326025712025,
+    "METEOR": 0.22443910293988592,
+    "ROUGE_L": 0.4338122442662807,
+    "CIDEr": 0.48891433670588336,
+    "mean4_retained_for_identifying_P21_not_a_new_primary_metric": 0.34393723604229254,
+    "precision_source": "Exact values copied from retained provenance P21 evidence.metrics_snapshot; surviving runtime log independently confirms rounded four-decimal values.",
+    "exact_snapshot": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/provenance/video_best_parameters.json",
+      "sha256": "6d2b2b7437df377e5b2921a31b2213db4f8c0b74e484ee254b447cd62a5f6d55",
+      "lf_line_numbers": [
+        1775,
+        1799,
+        1800,
+        1801,
+        1802,
+        1803,
+        1805,
+        1806,
+        1807,
+        1808
+      ]
+    },
+    "original_result_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/logs/vatex_test/hybrid_decouplekv/64/simhead_top0.50_chunk8_cr0.50_alpha2_corrnone_vmergemean_kspaceraw_reapply_metauniform_logscopeall_staticlog0_manual0_budget0.10_headhead_ada_allochead_ada_qwen7b_limit200/eval_outputs/Qwen__Qwen2.5-VL-7B-Instruct/20260705_143949_results.json",
+    "original_result_sha256_declared_in_retained_provenance": "e33e65a8081a3957c391b55c8006adc709e4e5e50c4ea451a03839359e50668d",
+    "original_result_file_currently_readable": false,
+    "original_per_sample_result_jsonl_currently_found": false
+  },
+  "actual_completion_evidence": {
+    "log": {
+      "path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.log",
+      "sha256": "31c4c1ed5e34c5f630a0574384257249282a38b6df7d9b51164ef890fe5b1e27"
+    },
+    "duplicate_nohup_log": {
+      "path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.nohup.log",
+      "sha256": "31c4c1ed5e34c5f630a0574384257249282a38b6df7d9b51164ef890fe5b1e27"
+    },
+    "two_log_copies_identical": true,
+    "launcher": {
+      "path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.sh",
+      "sha256": "79a5b738b5cb07f0c3e0291f1367afcafe72e7cec5eab7daa71e00adb75d1a52",
+      "lf_line_numbers": [
+        13,
+        15,
+        16,
+        22,
+        23,
+        24,
+        26,
+        27,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        42,
+        129,
+        132,
+        133,
+        135,
+        137,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        157,
+        158,
+        164,
+        166,
+        167,
+        168,
+        169,
+        172,
+        173
+      ]
+    },
+    "lf_line_evidence": [
+      {
+        "lf_line": 7,
+        "excerpt": "[RUN] pretrained=Qwen/Qwen2.5-VL-7B-Instruct task=vatex_test limit=200 frames=64"
+      },
+      {
+        "lf_line": 8,
+        "excerpt": "[RUN] shared budget: BUDGET=1024 BUDGET_RATIO=0.10 RATIO=0.10 MASK_RATIO=0.10 HEAD_CLASSIFY=head_ada BUDGET_METHOD=head_ada"
+      },
+      {
+        "lf_line": 9,
+        "excerpt": "[RUN] decouple best: simtop=0.50 chunk=8 cr=0.50 alpha=2 corr=none vmerge=mean kspace=raw_reapply meta=uniform staticlog=0 manual=0"
+      },
+      {
+        "lf_line": 11,
+        "excerpt": "[RUN] decouple output=/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/logs/vatex_test/hybrid_decouplekv/64/simhead_top0.50_chunk8_cr0.50_alpha2_corrnone_vmergemean_kspaceraw_reapply_metauniform_logscopeall_staticlog0_manual0_budget0.10_headhead_ada_allochead_ada_qwen7b_limit200/eval_outputs"
+      },
+      {
+        "lf_line": 765,
+        "excerpt": "[Hybrid-DecoupleKV] repo=/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact"
+      },
+      {
+        "lf_line": 766,
+        "excerpt": "[Hybrid-DecoupleKV] PYTHONPATH=/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact:/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/lmms-eval:/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/csrc"
+      },
+      {
+        "lf_line": 775,
+        "excerpt": "2026-07-05 14:39:49.429 | INFO     | __main__:cli_evaluate_single:378 - Evaluation tracker args: {'output_path': '/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/logs/vatex_test/hybrid_decouplekv/64/simhead_top0.50_chunk8_cr0.50_alpha2_corrnone_vmergemean_kspaceraw_reapply_metauniform_logscopeall_staticlog0_manual0_budget0.10_headhead_ada_allochead_ada_qwen7b_limit200/eval_outputs'}"
+      },
+      {
+        "lf_line": 777,
+        "excerpt": "2026-07-05 14:39:49.430 | INFO     | __main__:cli_evaluate_single:467 - Selected Tasks: ['vatex_test']"
+      },
+      {
+        "lf_line": 778,
+        "excerpt": "2026-07-05 14:39:49.431 | INFO     | lmms_eval.evaluator:simple_evaluate:159 - Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234"
+      },
+      {
+        "lf_line": 810,
+        "excerpt": "[Hybrid-DecoupleKV] no-log merge enabled: chunk_size=8 compress_ratio=0.5 simhead_ratio=0.5 k_diff_alpha=2.0 max_group_size=0 retrieval_budget=512 score_correction=none block_meta=uniform static_merge_scope=visual value_merge=mean k_merge_space=raw_reapply force_manual=0"
+      },
+      {
+        "lf_line": 3030,
+        "excerpt": "Model Responding: 200/200 [26:37...] (complete progress record; full LF retained in source log)"
+      },
+      {
+        "lf_line": 3100,
+        "excerpt": "2026-07-05 15:07:05.573 | INFO     | lmms_eval.loggers.evaluation_tracker:save_results_aggregated:188 - Saving results aggregated"
+      },
+      {
+        "lf_line": 3101,
+        "excerpt": "2026-07-05 15:07:05.574 | INFO     | lmms_eval.loggers.evaluation_tracker:save_results_samples:255 - Saving per-sample results for: vatex_test"
+      },
+      {
+        "lf_line": 3102,
+        "excerpt": "qwen2_5_vl (pretrained=Qwen/Qwen2.5-VL-7B-Instruct,max_num_frames=64,attn_implementation=flash_attention_2,method=hybrid_decouplekv,budget=1024,ratio=0.10,mask_ratio=0.10), gen_kwargs: (temperature=0), limit: 200.0, num_fewshot: None, batch_size: 1"
+      },
+      {
+        "lf_line": 3105,
+        "excerpt": "|vatex_test|      0|none  |     0|vatex_Bleu_4 |↑  |0.2286|±  |   N/A|"
+      },
+      {
+        "lf_line": 3106,
+        "excerpt": "|vatex_test|      0|none  |     0|vatex_CIDEr  |↑  |0.4889|±  |   N/A|"
+      },
+      {
+        "lf_line": 3107,
+        "excerpt": "|vatex_test|      0|none  |     0|vatex_METEOR |↑  |0.2244|±  |   N/A|"
+      },
+      {
+        "lf_line": 3108,
+        "excerpt": "|vatex_test|      0|none  |     0|vatex_ROUGE_L|↑  |0.4338|±  |   N/A|"
+      },
+      {
+        "lf_line": 3110,
+        "excerpt": "[Hybrid-DecoupleKV] completed_at=2026-07-05 15:07:07 CST"
+      },
+      {
+        "lf_line": 3112,
+        "excerpt": "[DONE] finished_at=2026-07-05 15:07:07 CST"
+      },
+      {
+        "lf_line": 3114,
+        "excerpt": "[DONE] decouple output=/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/logs/vatex_test/hybrid_decouplekv/64/simhead_top0.50_chunk8_cr0.50_alpha2_corrnone_vmergemean_kspaceraw_reapply_metauniform_logscopeall_staticlog0_manual0_budget0.10_headhead_ada_allochead_ada_qwen7b_limit200/eval_outputs"
+      }
+    ],
+    "note": "LF anchors count only newline bytes. Progress records contain internal carriage returns; the audit splits CR fragments only for parsing, preserving LF anchors."
+  },
+  "configuration_comparison": [
+    {
+      "field": "model_id",
+      "historical": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "current_lookm": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "status": "same identifier",
+      "limitation": "Historical model snapshot commit and weight/tokenizer SHA were not logged."
+    },
+    {
+      "field": "task/split/count",
+      "historical": "vatex_test/test, n200 of4478, original prefix",
+      "current_lookm": "vatex_test/test, n200 of4478, original prefix",
+      "status": "macro profile matches; historical count actual200 verified"
+    },
+    {
+      "field": "frames",
+      "historical": 64,
+      "current_lookm": 64,
+      "status": "direct log and contract agree"
+    },
+    {
+      "field": "nominal_budget_ratio",
+      "historical": 0.1,
+      "current_lookm": 0.1,
+      "status": "historical log LF8 directly prints BUDGET_RATIO=.10; launcher exports it",
+      "limitation": "Not equal absolute cache capacity or equal total VRAM; native method windows/allocators differ."
+    },
+    {
+      "field": "BUDGET compatibility setting",
+      "historical": 1024,
+      "current_lookm": 1024,
+      "status": "same initialization setting; not the actual fixed capacity"
+    },
+    {
+      "field": "max_new_tokens",
+      "historical": 64,
+      "current_lookm": 64,
+      "status": "historical source-supported, not explicitly printed by runtime",
+      "evidence": "Original and current task YAML identical at SHA3a154d...; YAML line42 cap64, evaluator line213 update=True retains it when CLI changes temperature, adapter lines382/405 forwards effective cap."
+    },
+    {
+      "field": "greedy/beam/cache/attention",
+      "historical": "temperature0 => do_sampleFalse, beams1, use_cache; flash_attention_2",
+      "current_lookm": "do_sampleFalse, beams1, use_cacheTrue; flash_attention_2",
+      "status": "source/launcher profile agrees"
+    },
+    {
+      "field": "repetition_penalty",
+      "historical": "not recorded; source generate omits explicit override and inherits checkpoint generation_config",
+      "current_lookm": 1.05,
+      "status": "indirect support only",
+      "evidence": "Currently cached generation_config.json is1.05 (SHA 0a3aea82869fe29f20dc95ccf3e2bcff380eca1f5ad6447a4a4b37110b08e43e); exact historical checkpoint config identity is not logged."
+    },
+    {
+      "field": "seed",
+      "historical": {
+        "python": 0,
+        "numpy": 1234,
+        "torch": 1234
+      },
+      "current_lookm": {
+        "python": 42,
+        "numpy": 42,
+        "torch": 42,
+        "reset_each_doc": true
+      },
+      "status": "known difference",
+      "evidence": "Historical log LF778 vs current contract model_seed42. Greedy decoding does not prove all possible nondeterminism is absent."
+    },
+    {
+      "field": "pixels/visual preprocessing",
+      "historical": "retained adapter defaults min200704/max1605632; native process_vision_info then linspace64",
+      "current_lookm": "min200704/max1605632, same source-derived input pipeline",
+      "status": "source profile matches; historical actual tensor SHAs unavailable"
+    }
+  ],
+  "hybrid_algorithm_parameters": {
+    "direct_runtime_and_launcher_evidence": {
+      "simhead_merge_ratio": 0.5,
+      "compress_ratio": 0.5,
+      "k_diff_alpha": 2.0,
+      "chunk_size": 8,
+      "max_group_size": 0,
+      "score_correction": "none",
+      "value_merge": "mean",
+      "k_merge_space": "raw_reapply",
+      "block_meta_weight": "uniform",
+      "static_merge_scope": "visual",
+      "force_manual_attention": 0,
+      "head_classify": "head_ada",
+      "budget_method": "head_ada"
+    },
+    "sim_space": {
+      "value": "raw",
+      "evidence_level": "launcher default/export; not printed in the no-log parameter line"
+    },
+    "merge_score_mode": {
+      "value": null,
+      "evidence_level": "not independently logged",
+      "retained_audit_note": "No score-mode ablation tag. The historical full merge formula matches current full; mode was not necessarily logged. Do not assume an unlogged environment variable was explicitly set.",
+      "limit": "The surviving launcher does not explicitly set/unset HYBRID_DECOUPLE_MERGE_SCORE_MODE or DECOUPLE_MERGE_SCORE_MODE. Current retained core defaults full, but its log format now includes the mode whereas the July log does not. Current mutable source cannot certify the historical ambient environment or exact July source revision."
+    },
+    "budget_evidence_update": "P21 earlier marked budget_env not_independently_verified. The present audit additionally read surviving LF8 and launcher exports, directly confirming the nominal .10 setting. No historical per-layer actual retained-cache audit was recovered."
+  },
+  "rows_and_references": {
+    "historical_original_n_in_retained_audit": 4478,
+    "historical_actual_generated_count": 200,
+    "historical_order_evidence": "Original task.py enumerates eval_docs_no_media with limit200 (line433). VATEX doc_to_text is constant across docs; adapter Collator sorts by text context, leaving equal-context input order stable. This supports, but is not a historical tensor-byte manifest for, original rows0..199.",
+    "reference_field_used_for_metrics": "doc.enCap; doc_to_target answer in YAML does not replace vatex_process_result.enCap",
+    "scorer": "Original vatex_process_result creates answer=doc[enCap], video_id=doc[videoID]; vatex_aggregation_result applies PTBTokenizer and corpus Bleu/METEOR/ROUGE/CIDEr against the200 references.",
+    "task_yaml_original_and_current_byte_equal": true,
+    "task_utils_original_and_current_byte_equal": true,
+    "task_yaml": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/vendor/lmms-eval/lmms_eval/tasks/vatex/vatex_test.yaml",
+      "sha256": "3a154d8593a5a26511f18c2961e4a511125da15629ca0aae85c8ae82870bc6d5",
+      "lf_line_numbers": [
+        1,
+        2,
+        3,
+        4,
+        8,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ]
+    },
+    "task_utils": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/vendor/lmms-eval/lmms_eval/tasks/vatex/utils.py",
+      "sha256": "a1adb3c156c9107c8e001dabb07d9047511770b076c600f856b6d34bf1d74479",
+      "lf_line_numbers": [
+        57,
+        67,
+        85,
+        86,
+        87,
+        90,
+        100,
+        102,
+        132,
+        133,
+        134,
+        135,
+        155,
+        156,
+        157,
+        161
+      ]
+    },
+    "historical_task_hash_from_result_snapshot": "0deaaa7e9bbf47d62856a75a21a9360f3cf228c7e11c37637b156f433d522fe1",
+    "historical_task_hash_limit": "This retained lmms task hash is not the YAML/Arrow byte SHA; no equality between these different hash types is asserted.",
+    "current_cached_arrow": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___vatex/vatex_test/0.0.0/73c2e83ade2892705080e9dadeb7c75c5b99e0f4/vatex-test.arrow",
+      "sha256_recomputed": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "sha256_matches_current_lookm_contract": true,
+      "actual_rows": 4478,
+      "prefix_rows": 200,
+      "prefix_source_video_count": 200,
+      "prefix_original_row_hashes_ordered_sha256": "2b83c9f5be4457a8bed24d2b9dc661e7480d681e5e6c6b486ce15ef6df89fa26",
+      "reference_counts": [
+        10
+      ],
+      "prefix_refs_ordered_sha256": "a7c0c485f105004ca0b012eae9cf6128e81adb881ea68deb84878ab374def7de"
+    },
+    "historical_arrow_or_video_or_input_tensor_sha_available": false
+  },
+  "stdout_and_prior_prefix_crosscheck": {
+    "historical_caption_count_recovered": 200,
+    "historical_prefill_token_length_count": 200,
+    "historical_printed_prompt_count": 182,
+    "historical_unique_printed_prompt_count": 1,
+    "historical_token_length_minimum": 8360,
+    "historical_token_length_maximum": 24744,
+    "historical_caption_sequence_sha256": "0db150c5481da796c0a4a9bf8ee80a7af0ef53b2192198512444668c825c7a6d",
+    "historical_token_length_sequence_sha256": "054928d0efb726fa2e60de5e34796965bc967b65a8b5548bb62be54d4fbeab0f",
+    "historical_first_caption": {
+      "lf_line": 813,
+      "text": "A person shines a pair of boots using a cloth and a brush."
+    },
+    "historical_last_caption": {
+      "lf_line": 3050,
+      "text": "A woman stands next to a horse, gesturing while speaking."
+    },
+    "prior_stopped_RoPE_raw97": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/hybridkv_kvrepack/vatex_test",
+      "records_read": 97,
+      "history_caption_text_differing_doc_ids": [],
+      "history_prefill_length_differing_doc_ids": [],
+      "current_arrow_row_hash_differing_doc_ids": [],
+      "no_resume_or_generation": true,
+      "limit": "The old97 prefix supports consistency of surviving historical stdout predictions and prefix order. It is not a completed new200 score, and was not restarted."
+    },
+    "current_lookm_partial_read_snapshot": {
+      "rows_available": 48,
+      "doc_ids": [
+        0,
+        47
+      ],
+      "history_prefill_length_differing_doc_ids": [],
+      "current_arrow_row_hash_differing_doc_ids": [],
+      "limit": "Only rows already committed at audit time were read. Equal token lengths are not equal tensor bytes, nor is this partial snapshot a completed LookM result."
+    }
+  },
+  "evidence_availability": {
+    "exact_original_P21_results_json_current_worktree": false,
+    "original_P21_results_json_in_checked_zip_indexes": false,
+    "checked_zip_names": [
+      "HybridKV-opensource.zip",
+      "KVRepack-source.zip",
+      "KVRepack-source-169aa1f.zip"
+    ],
+    "full_historical_log_available": true,
+    "historical_launcher_available": true,
+    "exact_metric_snapshot_and_declared_result_sha_retained": true
+  },
+  "safe_reporting": {
+    "allowed": "Show four original historical metrics beside the completed current LookM four metrics, with historical date/evidence and nominal10% wording; make provenance/runtime differences explicit.",
+    "not_verified": [
+      "historical model checkpoint/tokenizer byte identity",
+      "historical full200 input tensor/video bytes",
+      "historical explicit or effective repetition_penalty",
+      "historical merge_score_mode environment",
+      "historical Arrow byte SHA",
+      "all historical software/scorer binary versions",
+      "current full200 strict paired numerical/cache equality"
+    ],
+    "do_not_claim": [
+      "a new Hybrid200 rerun completed on2026-11-09",
+      "the stopped119/97 runs were resumed or completed",
+      "strict current full200 paired inputs or paired confidence interval based solely on this source audit",
+      "equal absolute GPU memory from nominal10% ratio"
+    ]
+  },
+  "additional_source_evidence": [
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+      "sha256": "25089c5d0188c0d20a05cdca8ff6a94e2afc46ee3a384a4bcdacb3197deb0703",
+      "lf_line_numbers": [
+        47,
+        48,
+        49,
+        250,
+        257,
+        258,
+        264,
+        265,
+        267,
+        270,
+        355,
+        357,
+        359,
+        361,
+        365,
+        366,
+        375,
+        376,
+        382,
+        386,
+        389,
+        390,
+        391,
+        397,
+        401,
+        404,
+        405,
+        406
+      ]
+    },
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/lmms-eval/lmms_eval/evaluator.py",
+      "sha256": "d93f0fe03334305560c606908df28a55c2c3e2e14666abb660c7160a07b6d210",
+      "lf_line_numbers": [
+        210,
+        211,
+        212,
+        213
+      ]
+    },
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/lmms-eval/lmms_eval/api/task.py",
+      "sha256": "b85d34191b6fdfa3b7864ef1e5e5c4f86d9aed1693df5b2989e9532bc0ada191",
+      "lf_line_numbers": [
+        397,
+        398,
+        399,
+        433,
+        466
+      ]
+    },
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_vs_kvrepack_20261109/lookm/vatex_test/run_contract.json",
+      "sha256": "2618ff7486a240f01225fc3ca3d8fe259bc1d37789fab54efa23e43b304f8ff7"
+    },
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5/generation_config.json",
+      "sha256": "0a3aea82869fe29f20dc95ccf3e2bcff380eca1f5ad6447a4a4b37110b08e43e"
+    }
+  ]
+}

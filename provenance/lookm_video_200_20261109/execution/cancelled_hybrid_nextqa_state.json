@@ -1,0 +1,18 @@
+{
+  "status": "stopped_by_user",
+  "method": "hybridkv_kvrepack",
+  "task": "nextqa_oe_test",
+  "target_docs": 200,
+  "target_generations": 200,
+  "completed_docs": 119,
+  "completed_generations": 119,
+  "contract_sha256": "161895bd2299f10bcee39dfbdceea01f165bb5354f06d0636b425ecae0a5ea1d",
+  "started_utc": "2026-11-09T01:31:24.574674+00:00",
+  "updated_utc": "2026-11-09T01:41:47.451921+00:00",
+  "estimated_remaining_seconds": 419.8293267121273,
+  "current_doc_id": 119,
+  "elapsed_current_session_seconds": 616.786294799298,
+  "resume_authorized": false,
+  "stopped_utc": "2026-11-09T01:41:49.721831+00:00",
+  "stop_reason": "User requested no HybridKV+KVRepack rerun; retain LookM results only"
+}

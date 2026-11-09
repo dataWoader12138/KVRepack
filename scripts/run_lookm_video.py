@@ -19,9 +19,14 @@ def main():
     parser.add_argument('--tasks',nargs='+',choices=('nextqa_oe_test','vatex_test'),default=['nextqa_oe_test','vatex_test'])
     parser.add_argument('--limit',type=int,choices=(1,200),default=200)
     parser.add_argument('--resume',action='store_true');args=parser.parse_args()
-    output=args.output.expanduser().resolve();output.mkdir(parents=True,exist_ok=True)
+    for name in ('pretrained','hf_home','output'):
+        setattr(args,name,getattr(args,name).expanduser().resolve())
+    output=args.output
     if output==ROOT or any(output.is_relative_to(ROOT/p) for p in ('src','vendor','csrc','provenance')):
         raise ValueError('Output must be outside source and published evidence')
+    if not args.pretrained.is_dir() or not args.hf_home.is_dir():
+        raise FileNotFoundError('Local model snapshot and dataset cache are required')
+    output.mkdir(parents=True,exist_ok=True)
     if len(set(args.tasks))!=len(args.tasks):raise ValueError('Duplicate tasks')
     with (output/'.controller.lock').open('a+') as lock:
         fcntl.flock(lock.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB)

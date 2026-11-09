@@ -1,0 +1,2 @@
+n_inputs,eos_count,reached_length_limit,capped_without_eos,generated_tokens_min,generated_tokens_mean,generated_tokens_max
+200,200,0,0,10,16.15,26

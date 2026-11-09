@@ -1,6 +1,6 @@
 # KVRepack
 
-当前只补LookM：[运行状态与预算口径](docs/LOOKM_COMPARISON.md)。2026-11-09按用户最新要求停止HybridKV + KVRepack重跑，原双方法矩阵不再恢复。Qwen2.5-VL-7B、名义10%预算下，LookM/NExTQA原始前200条已完成，WUPS=33.857144；LookM/VATEX前200条独立运行中。Hybrid的119条部分记录保留，不续跑、不当作完整结果；此前RoPE任务也保持停止。
+已完成：[LookM 两个视频任务的结果与CSV](docs/LOOKM_RESULTS_20261109.md) · [协议与单方法启动命令](docs/LOOKM_COMPARISON.md)。Qwen2.5-VL-7B、名义10%预算、64帧，NExTQA/VATEX各前200条共400次生成全部EOS、无截断；WUPS33.857144，VATEX BLEU4/METEOR/ROUGE-L/CIDEr为.219333/.219471/.432950/.472929。按用户要求只补LookM，Hybrid重跑和原双方法矩阵保持停止；已有Hybrid分数仅作注明来源的参考。
 
 消融数据：[下载统一CSV汇总表](docs/ablation_results_summary.csv)。包含SnapKV/HybridKV的Random-head结果、已完成的RoPE聚合空间对照和20条试跑，共13个已完成指标行；另列HybridKV/VATEX仅97配对的停止状态，未评分项留空。差值统一为“基线−对照”，Random行对照为三seed均值；保留样本数、参数、标准差、区间和来源，UTF-8 BOM可用Excel直接打开。
 

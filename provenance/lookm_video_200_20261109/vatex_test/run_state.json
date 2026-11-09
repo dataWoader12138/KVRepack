@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "method": "lookm",
+  "task": "vatex_test",
+  "target_docs": 200,
+  "target_generations": 200,
+  "completed_docs": 200,
+  "completed_generations": 200,
+  "contract_sha256": "92bf3c450c617c49e2b81dbee794a3f0761cfe33c21568965d71d16f8fb5d9bd",
+  "started_utc": "2026-11-09T01:43:00.266853+00:00",
+  "updated_utc": "2026-11-09T02:11:36.042765+00:00",
+  "estimated_remaining_seconds": 0,
+  "current_doc_id": 199,
+  "elapsed_current_session_seconds": 1715.8266868963838,
+  "finished_utc": "2026-11-09T02:11:36.057984+00:00"
+}

@@ -1,0 +1,6 @@
+﻿dataset,method,model,n_inputs,frames,nominal_budget_ratio,metric,value,units
+nextqa_oe_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,0.1,WUPS,33.8571440351094,0-100
+vatex_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,0.1,Bleu_4,0.2193327212159965,native corpus units
+vatex_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,0.1,METEOR,0.21947138133147506,native corpus units
+vatex_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,0.1,ROUGE_L,0.4329500116215331,native corpus units
+vatex_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,0.1,CIDEr,0.4729287767910361,native corpus units

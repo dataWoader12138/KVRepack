@@ -1,0 +1,7 @@
+# LookM-only video results,2026-11-09
+
+Qwen2.5-VL-7B-Instruct,64frames,nominal10% budget; original first200 rows each of NextQA and VATEX,400 completed LookM generations. See [results](../../docs/LOOKM_RESULTS_20261109.md) and [protocol](../../docs/LOOKM_COMPARISON.md). Hybrid rerun stopped at119 records on user request; that stopped state is preserved but its predictions are excluded from this LookM archive. No stopped experiment is resumed.
+
+Native LookM implementation is preserved. Per-head active prefill slots=floor(.1N)+32; active-cache payload is not total VRAM. Sources/preflight preserve original AST and regression evidence. NextQA independent native WUPS matches the formal single-case report; VATEX uses original corpus BLEU4/METEOR/ROUGE-L/CIDEr. Historical Hybrid reference is marked historical, with missing checkpoint/input-byte evidence disclosed.
+
+Extract samples.tar.gz into a fresh replay root and copy each task's contract/config/state files into the corresponding folders. Then run the single_video_report CLI for each task with a local matching HF_HOME reference Arrow cache and NLTK/Java resources. No model/GPU is loaded by that scorer. The archive strips only declared metadata fields; all400 records were compared against originals after that transformation. Videos, weights, tensors and credentials are excluded. Original local paths in contracts remain historical provenance.

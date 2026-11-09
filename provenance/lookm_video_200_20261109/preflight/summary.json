@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "cpu_tests": 235,
+  "cpu_passed": 234,
+  "cpu_skipped": 1,
+  "smoke_generations": 4,
+  "smoke_pairs_input_hashes_equal": true,
+  "previous_hybrid_first_sample_equivalence_both_tasks": true,
+  "source_sha256": {
+    "scripts/run_lookm_vs_kvrepack.py": "bd9d6d60467a4d75638654627e4196a653f853f0aab5c2e170292673214eeae6",
+    "src/kvrepack/benchmarks/__init__.py": "a3eb046bad696870271b5457ffc18af09ec493fc30d36c20d1a58412fbff007c",
+    "src/kvrepack/benchmarks/video_comparison_report.py": "d2d0b3cdd309bfe211125e654e47a2a21c1be6739db43453b4763021ea25674b",
+    "src/kvrepack/benchmarks/run_video_comparison.py": "e5a05724197155c537f80839a41fcb7419e8d0dc5f21319eb373fcb36033b9fe"
+  }
+}

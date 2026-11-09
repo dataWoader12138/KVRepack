@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "n_inputs": 200,
+  "lookm_current": "2026-11-09",
+  "hybrid_existing_run": "2026-11-06",
+  "checks": "All actual input tensor hashes/shapes/dtypes and original row/video IDs equal across200. No new Hybrid model inference.",
+  "lookm_WUPS": 33.8571440351094,
+  "existing_hybrid_WUPS": 33.21990343057972
+}
