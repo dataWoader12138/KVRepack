@@ -22,7 +22,8 @@ from types import SimpleNamespace
 from ..ablations.head_selection_report import (
     VATEX_METRICS, _canonical, _helper, _nextqa_namespace, _sha, offline_resources,
 )
-from .run_video_comparison import TASKS, json_sha, validate_sample
+from .run_video_comparison import (TASKS, STRICT_LOOKM_POLICY, LEGACY_LOOKM_POLICY,
+    json_sha, normalize_budget_policy, validate_budget_audit, validate_sample)
 
 
 def load_case(root, *, limit=200):
@@ -30,32 +31,35 @@ def load_case(root, *, limit=200):
     contract_path=root/"run_contract.json";state_path=root/"run_state.json"
     contract=json.loads(contract_path.read_text());state=json.loads(state_path.read_text())
     method,task=contract.get("method"),contract.get("task")
-    if (limit!=200 or contract.get("schema_version")!=1 or task not in TASKS
+    if (type(limit) is not int or limit not in (1,200) or contract.get("schema_version")!=1 or task not in TASKS
             or contract.get("target_docs")!=limit or contract.get("target_generations")!=limit
             or state.get("status")!="complete" or state.get("target_docs")!=limit
             or state.get("completed_docs")!=limit or state.get("target_generations")!=limit
             or state.get("completed_generations")!=limit):
-        raise ValueError("Require one completed method/task with exactly the original first200 inputs")
+        raise ValueError("Require one complete original-prefix run: explicit smoke1 or first200")
+    policy=normalize_budget_policy(method,contract.get("budget_policy"))
     identity=json_sha(contract);paths=sorted((root/"samples").glob("*.json"))
     if [path.name for path in paths]!=[f"{doc:06d}.json" for doc in range(limit)]:
         raise ValueError("Missing or out-of-prefix committed samples")
     rows,files,config=[],[],None
     for doc_id,path in enumerate(paths):
         payload=path.read_bytes();row=json.loads(payload)
-        validate_sample(row,doc_id=doc_id,contract_sha256=identity,method=method,task=task)
+        validate_sample(row,doc_id=doc_id,contract_sha256=identity,method=method,task=task,budget_policy=policy)
         if config is None:config=row["config"]
         if row["config"]!=config:raise ValueError("Method/model/generation configuration changed across inputs")
         if row["config"]["max_new_tokens"]!=contract.get("max_new_tokens"):
             raise ValueError("Actual generation cap differs from frozen contract")
         cache=row["cache_audit"];length=len(row["generated_ids"]);cap=contract["max_new_tokens"]
+        policy_status=validate_budget_audit(cache,method=method,budget_policy=policy)
         rows.append(dict(task=task,method=method,doc_id=doc_id,text=row["text"],source_video_id=row["source_video_id"],
             reference_metadata=row["reference_metadata"],generated_tokens=length,eos_reached=row["eos_reached"],
             reached_length_limit=length==cap,capped_without_eos=length==cap and not row["eos_reached"],
             prefill_tokens_total=cache["prefill_tokens_total"],uncompressed_tokens_total=cache["uncompressed_tokens_total"],
             actual_retained_ratio=cache["actual_retained_ratio"],cache_audit_sha256=hashlib.sha256(_canonical(cache).encode()).hexdigest()))
+        rows[-1].update(policy_status)
         if path.read_bytes()!=payload:raise ValueError("Committed sample changed while reading")
         files.append(dict(doc_id=doc_id,path=str(path.resolve()),sha256=hashlib.sha256(payload).hexdigest()))
-    return rows,dict(method=method,task=task,limit=limit,generation_contract=contract,config=config,contract_sha256=identity,
+    return rows,dict(method=method,task=task,limit=limit,budget_policy=policy,generation_contract=contract,config=config,contract_sha256=identity,
         contract_file_sha256=_sha(contract_path),state_file_sha256=_sha(state_path),sample_files=files,scoring_source_sha256=_sha(__file__))
 
 
@@ -74,6 +78,12 @@ def validate_references(rows,docs,reference,contract):
 
 def build_summary(rows,metrics,*,provenance,per_input=None):
     method,task=provenance["method"],provenance["task"]
+    count=len(rows)
+    if count not in (1,200):raise ValueError("Only the explicit smoke1 or original first200 report is supported")
+    policy=normalize_budget_policy(method,provenance["generation_contract"].get("budget_policy"))
+    if any(row.get("budget_policy")!=policy for row in rows):raise ValueError("Mixed legacy/strict budget policies in one report")
+    strict=policy==STRICT_LOOKM_POLICY
+    if strict and any(row.get("strict_budget_passed") is not True for row in rows):raise ValueError("Strict report lacks validated total-budget evidence")
     expected=("WUPS",) if task=="nextqa_oe_test" else VATEX_METRICS
     if set(metrics)!=set(expected) or any(type(value) not in (int,float) or not math.isfinite(value) for value in metrics.values()):
         raise ValueError("Require all native task metrics, including local METEOR for VATEX")
@@ -86,17 +96,21 @@ def build_summary(rows,metrics,*,provenance,per_input=None):
         reached_length_limit=sum(row["reached_length_limit"] for row in rows),capped_without_eos=sum(row["capped_without_eos"] for row in rows),
         generated_tokens_min=min(row["generated_tokens"] for row in rows),generated_tokens_max=max(row["generated_tokens"] for row in rows),
         generated_tokens_mean=statistics.fmean(row["generated_tokens"] for row in rows))
-    cache=dict(configured_budget_ratio=provenance["generation_contract"]["budget_ratio"],
+    cache=dict(budget_policy=policy,strict_budget_passed=True if strict else False if method=="lookm" else None,legacy_budget_result=policy==LEGACY_LOOKM_POLICY,
+        configured_budget_ratio=provenance["generation_contract"]["budget_ratio"],
         actual_retained_ratio_min=min(row["actual_retained_ratio"] for row in rows),actual_retained_ratio_mean=statistics.fmean(row["actual_retained_ratio"] for row in rows),
         actual_retained_ratio_max=max(row["actual_retained_ratio"] for row in rows),
         scope="Logical active prefill/decode KV slots; excludes backing history/offload stores and is not total VRAM")
     inputs=[dict(doc_id=row["doc_id"],source_video_id=row["source_video_id"],prediction_sha256=hashlib.sha256(row["text"].encode()).hexdigest(),**score)
             for row,score in zip(rows,per_input)] if per_input is not None else []
     return dict(schema_version=1,status="complete",method=method,task=task,limit=len(rows),n_generations=len(rows),metrics=metrics,
+        sample_scope="smoke_first1" if count==1 else "original_first200",formal_result=count==200,
+        budget_policy=policy,strict_budget_passed=cache["strict_budget_passed"],legacy_budget_result=cache["legacy_budget_result"],
+        budget_label="Strict total prefill including recent positions (v2)" if strict else "Legacy historical budget result; not a strict-v2 result" if method=="lookm" else "Native method-specific budget result",
         generation=generation,cache_budget=cache,provenance=provenance,scores_table=inputs,
-        cache_table=[{key:row[key] for key in ("doc_id","source_video_id","prefill_tokens_total","uncompressed_tokens_total","actual_retained_ratio","cache_audit_sha256")} for row in rows],
-        scope="Single completed method/task, exact original first200 inputs; no matrix requirement, contrast, delta or inferred comparison result",
-        metric_scope="Native NextQA WUPS@0 in 0–100 points; VATEX Bleu_4/METEOR/ROUGE_L/CIDEr in original corpus units using only the same selected200 reference videos for CIDEr DF; no composite or per-sentence CIDEr substitute",
+        cache_table=[{key:row[key] for key in ("doc_id","source_video_id","prefill_tokens_total","uncompressed_tokens_total","actual_retained_ratio","cache_audit_sha256","budget_policy","strict_budget_passed","legacy_budget_result")} for row in rows],
+        scope=f"Single completed method/task, exact original first{count} inputs; no matrix requirement, contrast, delta or inferred comparison result. "+("One-input smoke verifies the pipeline only; it is not a formal200 result or a basis for quality/bootstrap conclusions." if count==1 else "Fixed200-input prefix result."),
+        metric_scope=f"Native NextQA WUPS@0 in 0–100 points; VATEX Bleu_4/METEOR/ROUGE_L/CIDEr in original corpus units using only the same selected{count} reference videos for CIDEr DF; no composite or per-sentence CIDEr substitute",
         EOS_scope="At-cap includes EOS exactly at max_new_tokens; capped_without_eos counts capped outputs lacking EOS")
 
 
@@ -112,11 +126,11 @@ def write_report(summary,output):
         table("task_scores.csv",[dict(metric=key,score=value) for key,value in summary["metrics"].items()],["metric","score"])
         if summary["scores_table"]:table("scores.csv",summary["scores_table"],["doc_id","source_video_id","WUPS","WUPS_0_9","prediction_sha256"])
         table("generation_summary.csv",[summary["generation"]],["n_inputs","eos_count","reached_length_limit","capped_without_eos","generated_tokens_min","generated_tokens_mean","generated_tokens_max"])
-        table("cache_audit.csv",summary["cache_table"],["doc_id","source_video_id","prefill_tokens_total","uncompressed_tokens_total","actual_retained_ratio","cache_audit_sha256"])
+        table("cache_audit.csv",summary["cache_table"],["doc_id","source_video_id","prefill_tokens_total","uncompressed_tokens_total","actual_retained_ratio","cache_audit_sha256","budget_policy","strict_budget_passed","legacy_budget_result"])
         table("sample_files.csv",summary["provenance"]["sample_files"],["doc_id","path","sha256"])
         compact={key:value for key,value in summary.items() if not key.endswith("_table")}
         (target/"summary.json").write_text(json.dumps(compact,ensure_ascii=False,indent=2,allow_nan=False)+"\n",encoding="utf-8")
-        lines=["# Single video benchmark result","",f"Complete: `{summary['method']}` / `{summary['task']}`, original first {summary['limit']} inputs.","",summary["scope"],"",summary["metric_scope"],"","| Metric | Native score |","|---|---:|"]
+        lines=["# Single video benchmark result","",f"Complete: `{summary['method']}` / `{summary['task']}`, original first {summary['limit']} inputs.","",f"**{summary['budget_label']}**; policy `{summary['budget_policy']}`; strict_budget_passed={summary['strict_budget_passed']}.","",summary["scope"],"",summary["metric_scope"],"","| Metric | Native score |","|---|---:|"]
         for metric,value in summary["metrics"].items():lines.append(f"| {metric} | {value:.8f} |")
         gen=summary["generation"];cache=summary["cache_budget"]
         lines += ["",f"EOS: {gen['eos_count']}/{gen['n_inputs']}; at cap: {gen['reached_length_limit']}; capped without EOS: {gen['capped_without_eos']}.","",summary["EOS_scope"],"",cache["scope"],"",
@@ -131,7 +145,7 @@ def main(argv=None):
         os.execve(sys.executable,[sys.executable,"-B","-m","kvrepack.benchmarks.single_video_report",*sys.argv[1:]],dict(os.environ,LD_LIBRARY_PATH=runtime+os.pathsep+os.environ.get("LD_LIBRARY_PATH","")))
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-root",required=True,type=Path);parser.add_argument("--hf-home",required=True,type=Path);parser.add_argument("--output",required=True,type=Path)
-    parser.add_argument("--limit",type=int,choices=(200,),default=200)
+    parser.add_argument("--limit",type=int,choices=(1,200),default=200)
     parser.add_argument("--nltk-data",type=Path,default=Path(os.environ.get("NLTK_DATA",str(Path.home()/"nltk_data"))))
     java=Path(sys.prefix)/"lib/jvm";parser.add_argument("--java-home",type=Path,default=java if (java/"bin/java").is_file() else None)
     args=parser.parse_args(argv)
@@ -165,7 +179,10 @@ def main(argv=None):
         provenance["local_caption_resources_sha256"]={name:_sha(distribution.locate_file(name)) for name in ("pycocoevalcap/tokenizer/stanford-corenlp-3.4.1.jar","pycocoevalcap/meteor/meteor-1.5.jar","pycocoevalcap/meteor/data/paraphrase-en.gz")}
     summary=build_summary(rows,metrics,provenance=provenance,per_input=per_input);summary["scoring_seconds"]=time.monotonic()-began
     write_report(summary,args.output)
-    print(json.dumps(dict(status=summary["status"],method=summary["method"],task=task,limit=args.limit,metrics=metrics,scoring_seconds=summary["scoring_seconds"],output=str(args.output))))
+    print(json.dumps(dict(status=summary["status"],method=summary["method"],task=task,limit=args.limit,metrics=metrics,
+        sample_scope=summary["sample_scope"],formal_result=summary["formal_result"],
+        budget_policy=summary["budget_policy"],strict_budget_passed=summary["strict_budget_passed"],legacy_budget_result=summary["legacy_budget_result"],
+        scoring_seconds=summary["scoring_seconds"],output=str(args.output))))
     return 0
 
 

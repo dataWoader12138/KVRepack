@@ -25,6 +25,7 @@ from types import SimpleNamespace
 from ..ablations.head_selection_report import (
     VATEX_METRICS, _canonical, _helper, _nextqa_namespace, _sha, offline_resources,
 )
+from .run_video_comparison import STRICT_LOOKM_POLICY, normalize_budget_policy, validate_budget_audit
 
 TASKS = ("nextqa_oe_test", "vatex_test")
 COMMON_FIELDS = ("model_snapshot", "model_metadata", "frames", "min_pixels", "max_pixels",
@@ -54,7 +55,8 @@ def _cache_audit(audit, *, method, task, doc_id):
     if (audit.get("prefill_tokens_total") != actual or audit.get("uncompressed_tokens_total") != before
             or type(ratio) not in (int,float) or not math.isfinite(ratio) or abs(ratio-actual/before)>1e-12):
         raise ValueError("Native cache retained ratio/totals disagree")
-    return dict(prefill_tokens_total=actual,uncompressed_tokens_total=before,actual_retained_ratio=ratio)
+    return dict(prefill_tokens_total=actual,uncompressed_tokens_total=before,actual_retained_ratio=ratio,
+                **validate_budget_audit(audit,method=method))
 
 
 def load_matrix(root, *, limit=200, validator=None):
@@ -88,13 +90,14 @@ def load_matrix(root, *, limit=200, validator=None):
                     or state.get("completed_generations") != limit):
                 raise ValueError(f"Require all four complete runs with exactly {limit} original inputs: {method}/{task}")
             identity = _json_sha(contract)
+            policy = normalize_budget_policy(method,contract.get("budget_policy"))
             paths = sorted((directory/"samples").glob("*.json"))
             if [path.name for path in paths] != [f"{doc:06d}.json" for doc in range(limit)]:
                 raise ValueError("Missing, duplicate or out-of-prefix committed sample files")
             rows, files, common_config = [], [], None
             for doc_id, path in enumerate(paths):
                 payload = path.read_bytes(); row = json.loads(payload)
-                validator(row,doc_id=doc_id,contract_sha256=identity,method=method,task=task)
+                validator(row,doc_id=doc_id,contract_sha256=identity,method=method,task=task,budget_policy=policy)
                 meta, fingerprints, config = row.get("reference_metadata"), row.get("input_fingerprints"), row.get("config")
                 if (row.get("schema_version") != 1 or row.get("status") != "completed" or row.get("method") != method
                         or row.get("task") != task or row.get("doc_id") != doc_id or row.get("contract_sha256") != identity
@@ -109,6 +112,7 @@ def load_matrix(root, *, limit=200, validator=None):
                     raise ValueError("Method/model/generation configuration changed across inputs in one run")
                 audit = row.get("cache_audit", row.get("audit"))
                 cache_counts = _cache_audit(audit,method=method,task=task,doc_id=doc_id)
+                if cache_counts["budget_policy"] != policy: raise ValueError("Contract/cache budget policy mismatch")
                 ids, cap, eos_id = row.get("generated_ids"), row.get("max_new_tokens", config.get("max_new_tokens")), row.get("eos_token_id")
                 if (not isinstance(ids, list) or not ids or any(type(token) is not int or token < 0 for token in ids)
                         or type(cap) is not int or cap < 1 or cap != contract.get("max_new_tokens")
@@ -127,7 +131,7 @@ def load_matrix(root, *, limit=200, validator=None):
                 if path.read_bytes() != payload: raise ValueError("Committed sample changed while reading")
                 files.append(dict(doc_id=doc_id, path=str(path.resolve()), sha256=hashlib.sha256(payload).hexdigest()))
             runs[task][method] = rows
-            provenance["runs"][task][method] = dict(contract=contract, contract_sha256=identity,
+            provenance["runs"][task][method] = dict(contract=contract, contract_sha256=identity,budget_policy=policy,
                 contract_file_sha256=_sha(contract_path), state_file_sha256=_sha(state_path), config=common_config, files=files)
         first_contract, second_contract = [provenance["runs"][task][method]["contract"] for method in methods]
         if any(first_contract.get(key) != second_contract.get(key) for key in COMMON_FIELDS):
@@ -219,8 +223,12 @@ def build_summary(runs, metrics, per_input, *, provenance, bootstrap_samples=500
                 generated_tokens_min=min(row["generated_tokens"] for row in rows),generated_tokens_max=max(row["generated_tokens"] for row in rows),
                 generated_tokens_mean=statistics.fmean(row["generated_tokens"] for row in rows)))
             cache_rows.extend(dict(task=task,method=method,doc_id=row["doc_id"],cache_audit_sha256=row["cache_audit_sha256"],
-                **{key:row[key] for key in ("prefill_tokens_total","uncompressed_tokens_total","actual_retained_ratio")}) for row in rows)
+                **{key:row[key] for key in ("prefill_tokens_total","uncompressed_tokens_total","actual_retained_ratio","budget_policy","strict_budget_passed","legacy_budget_result")}) for row in rows)
+            policy=provenance["runs"][task][method]["budget_policy"]
+            if any(row["budget_policy"]!=policy for row in rows):raise ValueError("Mixed budget policies within one method/task")
+            if policy==STRICT_LOOKM_POLICY and any(row["strict_budget_passed"] is not True for row in rows):raise ValueError("Missing validated strict-v2 budget evidence")
             cache_summary.append(dict(task=task,method=method,configured_budget_ratio=.1,
+                budget_policy=policy,strict_budget_passed=all(row["strict_budget_passed"] is True for row in rows),legacy_budget_result=any(row["legacy_budget_result"] for row in rows),
                 actual_retained_ratio_min=min(row["actual_retained_ratio"] for row in rows),
                 actual_retained_ratio_mean=statistics.fmean(row["actual_retained_ratio"] for row in rows),
                 actual_retained_ratio_max=max(row["actual_retained_ratio"] for row in rows)))
@@ -264,8 +272,8 @@ def write_report(summary, output, *, plots=True):
         table("nextqa_scores.csv",summary["scores_table"],["task","method","doc_id","source_video_id","WUPS","WUPS_0_9","prediction_sha256"])
         table("nextqa_paired_scores.csv",summary["paired_table"],["doc_id","source_video_id","reference","candidate","difference"])
         table("generation_summary.csv",summary["generation"],["task","method","n_inputs","eos_count","reached_length_limit","capped_without_eos","generated_tokens_min","generated_tokens_mean","generated_tokens_max"])
-        table("cache_audit.csv",summary["cache_table"],["task","method","doc_id","cache_audit_sha256","prefill_tokens_total","uncompressed_tokens_total","actual_retained_ratio"])
-        table("cache_budget_summary.csv",summary["cache_budget_summary"],["task","method","configured_budget_ratio","actual_retained_ratio_min","actual_retained_ratio_mean","actual_retained_ratio_max"])
+        table("cache_audit.csv",summary["cache_table"],["task","method","doc_id","cache_audit_sha256","prefill_tokens_total","uncompressed_tokens_total","actual_retained_ratio","budget_policy","strict_budget_passed","legacy_budget_result"])
+        table("cache_budget_summary.csv",summary["cache_budget_summary"],["task","method","configured_budget_ratio","budget_policy","strict_budget_passed","legacy_budget_result","actual_retained_ratio_min","actual_retained_ratio_mean","actual_retained_ratio_max"])
         files=[dict(task=task,method=method,**row) for task,methods in summary["provenance"]["runs"].items() for method,run in methods.items() for row in run["files"]]
         table("sample_files.csv",files,["task","method","doc_id","path","sha256"])
         compact={key:value for key,value in summary.items() if not key.endswith("_table")}
@@ -276,6 +284,9 @@ def write_report(summary, output, *, plots=True):
             interval="—" if row["ci95"] is None else f"[{row['ci95'][0]:.6f}, {row['ci95'][1]:.6f}]"
             lines.append(f"| {row['task']} | {row['metric']} | {row['reference']:.6f} | {row['candidate']:.6f} | {row['difference']:.6f} | {interval} |")
         lines += ["",f"First: `{summary['conditions'][0]}`. Second: `{summary['conditions'][1]}`.","",summary["EOS_scope"],"", "NextQA intervals resample source videos with all member questions; these fixed-prefix comparisons do not establish general superiority."]
+        lines += ["","| Task / method | Budget policy | Strict passed | Legacy result |","|---|---|---|---|"]
+        for row in summary["cache_budget_summary"]:lines.append(f"| {row['task']} / {row['method']} | {row['budget_policy']} | {row['strict_budget_passed']} | {row['legacy_budget_result']} |")
+        lines += ["", "Legacy historical records do not represent a strict-v2 rerun, even if a particular measured ratio happens to fall below10%."]
         (target/"RESULTS.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
         if plots:
             import matplotlib

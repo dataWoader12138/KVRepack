@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/scripts/run_lookm_video.py", line 79, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/scripts/run_lookm_video.py", line 72, in main
+    if result.returncode:raise RuntimeError('LookM scoring failed; see scoring log')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: LookM scoring failed; see scoring log

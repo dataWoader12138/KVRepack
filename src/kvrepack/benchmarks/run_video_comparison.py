@@ -1,7 +1,7 @@
 """Stream an explicit original video prefix through one canonical method.
 
-The nominal budget is 10%. Native recent-window and heterogeneous-head budget
-rules are preserved; audits count active decode KV slots, not total VRAM or
+LookM uses a strict total prefill budget including its recent window. Other
+methods retain native budget rules. Audits count active decode KV slots, not total VRAM or
 HybridKV's full-history backing stores. No algorithm function is replaced by a
 new implementation: the instrumentation calls and returns each original once.
 """
@@ -12,6 +12,7 @@ from contextlib import ExitStack
 import importlib
 import importlib.metadata
 import json
+import math
 import os
 from pathlib import Path
 import random
@@ -26,6 +27,54 @@ from kvrepack.ablations.run_head_selection_full import output_lock, _fresh_promp
 METHODS = ('lookm', 'hybridkv_kvrepack', 'lookm_kvrepack')
 TASKS = ('nextqa_oe_test', 'vatex_test')
 NATIVE_HEADS, LAYERS = 4, 28
+STRICT_LOOKM_POLICY = 'total_prefill_including_recent_v2'
+LEGACY_LOOKM_POLICY = 'legacy_history_plus_recent_v1'
+NATIVE_BUDGET_POLICY = 'native_nominal_budget_v1'
+_OLD_POLICY_DESCRIPTION = 'Canonical nominal 10%; original window and per-head allocation unchanged; active KV slots audited separately from backing storage'
+
+
+def normalize_budget_policy(method, policy=None):
+    """Missing historical metadata is never promoted to the new strict policy."""
+    if method == 'lookm':
+        if policy == STRICT_LOOKM_POLICY: return STRICT_LOOKM_POLICY
+        if policy in (None, LEGACY_LOOKM_POLICY, _OLD_POLICY_DESCRIPTION): return LEGACY_LOOKM_POLICY
+        raise ValueError('Unknown LookM budget policy')
+    if policy in (None, NATIVE_BUDGET_POLICY, _OLD_POLICY_DESCRIPTION): return NATIVE_BUDGET_POLICY
+    raise ValueError('Unsupported budget policy for this method')
+
+
+def validate_budget_audit(cache, *, method, budget_policy=None):
+    policy = normalize_budget_policy(method, cache.get('budget_policy'))
+    if budget_policy is not None and policy != normalize_budget_policy(method, budget_policy):
+        raise ValueError('Cache budget policy differs from the declared contract/configuration')
+    if policy == STRICT_LOOKM_POLICY:
+        tokens = cache.get('input_tokens')
+        if type(tokens) is not int or tokens < 1: raise ValueError('Missing actual strict-budget input length')
+        capacity = math.floor(tokens*.1)
+        window = min(32, capacity)
+        if (capacity < 1 or cache.get('total_prefill_capacity') != capacity
+                or cache.get('strict_budget_passed') is not True or cache.get('nominal_budget_ratio') != .1):
+            raise ValueError('LookM total prefill capacity or strict-budget evidence is invalid')
+        for layer in cache.get('layers', []):
+            if (layer.get('before_tokens_per_head') != tokens or layer.get('head_lengths') != [capacity]*NATIVE_HEADS
+                    or layer.get('total_prefill_capacity') != capacity or layer.get('configured_recent_window') != 32
+                    or layer.get('recent_window') != window or layer.get('selected_history_tokens') != capacity-window):
+                raise ValueError('LookM prefill exceeds or disagrees with total capacity including recent positions')
+        if (cache.get('prefill_tokens_total') != LAYERS*NATIVE_HEADS*capacity
+                or cache.get('uncompressed_tokens_total') != LAYERS*NATIVE_HEADS*tokens
+                or cache.get('actual_retained_ratio', 1) > .1):
+            raise ValueError('LookM total prefill cache violates the strict ten-percent cap')
+    elif cache.get('strict_budget_passed') is True:
+        raise ValueError('Legacy/native budget records cannot claim the strict v2 budget passed')
+    return dict(budget_policy=policy, strict_budget_passed=True if policy==STRICT_LOOKM_POLICY else False if method=='lookm' else None,
+                legacy_budget_result=policy==LEGACY_LOOKM_POLICY)
+
+
+def validate_resume_contract(saved, current):
+    if (current.get('method')=='lookm' and current.get('budget_policy')==STRICT_LOOKM_POLICY
+            and saved.get('budget_policy')!=STRICT_LOOKM_POLICY):
+        raise ValueError('Legacy LookM samples cannot resume into strict v2; use a fresh output directory')
+    if saved != current: raise ValueError('Frozen run contract changed')
 
 
 def parse_args(argv=None):
@@ -87,7 +136,7 @@ def contract_for(args, data, plan):
         sources_sha256=sources, versions={n:importlib.metadata.version(n) for n in
             ('torch', 'transformers', 'flash-attn', 'qwen-vl-utils', 'datasets', 'decord', 'numpy')},
         input_policy='Original Arrow prefix, no filtering or deduplication; fresh prompt per sample',
-        budget_policy='Canonical nominal 10%; original window and per-head allocation unchanged; active KV slots audited separately from backing storage')
+        budget_policy=STRICT_LOOKM_POLICY if args.method=='lookm' else NATIVE_BUDGET_POLICY)
     if args.method == 'hybridkv_kvrepack':
         import kvrepack_kernel
         contract['kernel'] = dict(path=str(Path(kvrepack_kernel.__file__).resolve()),
@@ -97,8 +146,9 @@ def contract_for(args, data, plan):
 
 class PrefillBudgetAudit:
     """Read-only capture around native prefill cache builders, one prompt at a time."""
-    def __init__(self, method, *, module=None):
+    def __init__(self, method, *, module=None, budget_policy=None):
         self.method, self.module = method, module
+        self.budget_policy = normalize_budget_policy(method, budget_policy if budget_policy is not None else STRICT_LOOKM_POLICY if method=='lookm' else NATIVE_BUDGET_POLICY)
         self.rows = []
         self.sample = None
         self.original = None
@@ -128,9 +178,17 @@ class PrefillBudgetAudit:
             self.original = getattr(self.owner, self.name)
             def wrapped(obj, origin_key_states, query_states, origin_value_states):
                 result = self.original(obj, origin_key_states, query_states, origin_value_states)
+                details = dict(selected_history_tokens=int(obj.select_num),recent_window=int(obj.window_size),native_budget_ratio=float(obj.budget_ratio))
+                if self.budget_policy == STRICT_LOOKM_POLICY:
+                    capacity = math.floor(self.sample[2]*.1)
+                    if (int(origin_key_states.shape[-2]) != self.sample[2] or float(obj.budget_ratio) != .1
+                            or int(obj.window_size) != 32 or getattr(obj,'total_prefill_capacity',None) != capacity
+                            or getattr(obj,'effective_window_size',None) != min(32,capacity)
+                            or obj.select_num != capacity-min(32,capacity) or int(result[0].shape[-2]) != capacity):
+                        raise ValueError('Original LookM output/effective window violates strict total prefill capacity')
+                    details.update(total_prefill_capacity=capacity,configured_recent_window=int(obj.window_size),recent_window=int(obj.effective_window_size))
                 self._record(obj.layer_idx, result[0], result[1], [result[0].shape[-2]]*NATIVE_HEADS,
-                    selected_history_tokens=int(obj.select_num), recent_window=int(obj.window_size),
-                    native_budget_ratio=float(obj.budget_ratio))
+                    **details)
                 return result
         elif self.method == 'hybridkv_kvrepack':
             module = self.module or importlib.import_module('kvrepack.hybridkv_utils')
@@ -189,6 +247,9 @@ class PrefillBudgetAudit:
             nominal_budget_ratio=.1, prefill_tokens_total=total,
             uncompressed_tokens_total=denominator, actual_retained_ratio=total/denominator,
             scope='Logical active decode KV slots; excludes full-history offload/backing stores and is not total VRAM')
+        audit.update(budget_policy=self.budget_policy,strict_budget_passed=self.budget_policy==STRICT_LOOKM_POLICY if self.method=='lookm' else None)
+        if self.budget_policy == STRICT_LOOKM_POLICY: audit['total_prefill_capacity'] = math.floor(tokens*.1)
+        validate_budget_audit(audit,method=self.method,budget_policy=self.budget_policy)
         self.sample = None
         return audit
 
@@ -197,7 +258,7 @@ class PrefillBudgetAudit:
             setattr(self.owner, self.name, self.original)
 
 
-def validate_sample(row, *, doc_id, contract_sha256, method=None, task=None):
+def validate_sample(row, *, doc_id, contract_sha256, method=None, task=None, budget_policy=None):
     """Validate a newly committed/resumed row without importing model packages."""
     method, task = method or row.get('method'), task or row.get('task')
     if (row.get('schema_version') != 1 or row.get('status') != 'completed'
@@ -224,6 +285,15 @@ def validate_sample(row, *, doc_id, contract_sha256, method=None, task=None):
             or config.get('budget_ratio') != .1):
         raise ValueError('Generated tokens/configuration mismatch')
     audit, cache = row.get('audit', {}), row.get('cache_audit', {})
+    policy = normalize_budget_policy(method,config.get('budget_policy'))
+    if budget_policy is not None and policy != normalize_budget_policy(method,budget_policy):
+        raise ValueError('Sample configuration budget policy differs from the frozen contract')
+    validate_budget_audit(cache,method=method,budget_policy=policy)
+    if policy==STRICT_LOOKM_POLICY:
+        tokens=cache['input_tokens']
+        if (row.get('input_tokens')!=tokens or meta.get('input_tokens')!=tokens
+                or fp.get('input_shapes',{}).get('input_ids')!=[1,tokens]):
+            raise ValueError('Strict budget denominator differs from actual prefill input length')
     layers = cache.get('layers', [])
     if (audit.get('status') != 'completed' or cache.get('status') != 'completed'
             or cache.get('method') != method or cache.get('task') != task or cache.get('doc_id') != doc_id
@@ -266,8 +336,7 @@ def run_locked(args):
     contract = contract_for(args, data, plan)
     contract_path = args.output/'run_contract.json'
     if args.resume:
-        if json.loads(contract_path.read_text()) != contract:
-            raise ValueError('Frozen run contract changed')
+        validate_resume_contract(json.loads(contract_path.read_text()),contract)
     else:
         atomic_json(contract_path, contract)
     identity = json_sha(contract)
@@ -276,7 +345,7 @@ def run_locked(args):
         raise ValueError('Resume requires a contiguous completed original prefix')
     for doc_id, path in enumerate(paths):
         validate_sample(json.loads(path.read_text()), doc_id=doc_id, contract_sha256=identity,
-            method=args.method, task=args.task)
+            method=args.method, task=args.task,budget_policy=contract['budget_policy'])
     initial = len(paths)
     state_path = args.output/'run_state.json'
     previous = json.loads(state_path.read_text()) if args.resume and state_path.exists() else {}
@@ -309,7 +378,7 @@ def run_locked(args):
             repetition_penalty=1.05, use_cache=True, return_dict_in_generate=True, output_scores=False)
         fields = ('method', 'task', 'model_snapshot', 'frames', 'budget_ratio', 'algorithm_env',
             'min_pixels', 'max_pixels', 'dtype', 'attention', 'model_seed', 'max_new_tokens',
-            'do_sample', 'use_cache', 'repetition_penalty')
+            'do_sample', 'use_cache', 'repetition_penalty','budget_policy')
         config = {key:contract[key] for key in fields}
         config.update(stream_contract_sha256=identity, source_files=contract['sources_sha256'],
             effective_generation_config=model.generation_config.to_dict(), generation_overrides=kwargs)
@@ -332,7 +401,7 @@ def run_locked(args):
                     layer.self_attn.config._lookm_kvrepack_records = []
             state.update(status='running', updated_utc=timestamp()); atomic_json(state_path, state)
             with ExitStack() as stack:
-                recorder = stack.enter_context(PrefillBudgetAudit(args.method))
+                recorder = stack.enter_context(PrefillBudgetAudit(args.method,budget_policy=contract['budget_policy']))
                 recorder.set_sample(args.task, doc_id, metadata['input_tokens'])
                 selector = None
                 if args.method == 'hybridkv_kvrepack':
@@ -363,7 +432,7 @@ def run_locked(args):
                     peak_allocated_gib=torch.cuda.max_memory_allocated()/2**30), completed_utc=timestamp())
             if tensor_fingerprints(batch) != fingerprints:
                 raise ValueError('Generation mutated the shared CPU input')
-            validate_sample(row, doc_id=doc_id, contract_sha256=identity, method=args.method, task=args.task)
+            validate_sample(row, doc_id=doc_id, contract_sha256=identity, method=args.method, task=args.task,budget_policy=contract['budget_policy'])
             path = args.output/'samples'/f'{doc_id:06d}.json'
             if path.exists():
                 raise ValueError('Refusing to overwrite a committed sample')

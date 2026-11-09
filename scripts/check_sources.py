@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import copy
 import ast
+import difflib
 import hashlib
 import json
 import re
@@ -100,6 +101,51 @@ def normalized_source(text, *, branded=False):
     return NormalizeSource().visit(ast.parse(rename_brand(text) if branded else text))
 
 
+def qualified_definition(tree, name):
+    container = tree.body
+    for part in name.split('.'):
+        matches = [(index, node) for index, node in enumerate(container)
+                   if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == part]
+        assert len(matches) == 1, f'Missing or ambiguous declared definition: {name}'
+        index, node = matches[0]
+        if part != name.split('.')[-1]:
+            container = node.body
+    return container, index, node
+
+
+def verify_behavior_patch(target_text, record):
+    """Recover the exact old integration and reject changes outside named functions."""
+    base = target_text
+    edits = record['reversible_edits']
+    assert edits == sorted(edits, key=lambda edit: edit['target_start'])
+    last_end = 0
+    for edit in edits:
+        start, end = edit['target_start'], edit['target_end']
+        assert last_end <= start <= end <= len(target_text)
+        assert target_text[start:end] == edit['after']
+        last_end = end
+    for edit in reversed(edits):
+        base = base[:edit['target_start']] + edit['before'] + base[edit['target_end']:]
+    assert digest(base.encode()) == record['previous_target_sha256'], 'Pre-fix integration changed'
+    base_tree, restored = ast.parse(base), ast.parse(target_text)
+    assert ast_digest(base_tree) == record['previous_target_ast_sha256']
+    names = [change['name'] for change in record['function_changes']]
+    assert len(names) == len(set(names)) and names, 'Declare each changed function exactly once'
+    for change in record['function_changes']:
+        _, _, original = qualified_definition(base_tree, change['name'])
+        body, index, corrected = qualified_definition(restored, change['name'])
+        assert ast_digest(original) == change['before_ast_sha256']
+        assert ast_digest(corrected) == change['after_ast_sha256']
+        body[index] = copy.deepcopy(original)
+    assert ast_digest(restored) == ast_digest(base_tree), 'Undeclared algorithm changes outside patched functions'
+    patch = ROOT / record['patch_path']
+    expected = ''.join(difflib.unified_diff(base.splitlines(keepends=True), target_text.splitlines(keepends=True),
+                       fromfile=record['patch_from'], tofile=record['patch_to']))
+    assert digest(patch.read_bytes()) == record['patch_sha256']
+    assert patch.read_text() == expected, 'Declared patch does not reproduce the recorded source change'
+    return base_tree
+
+
 def selected_wrapper(tree, removed_test):
     result = copy.deepcopy(function(tree, "prepare_inputs_for_generation_qwen"))
     test_ast = ast_digest(ast.parse(removed_test, mode="eval").body)
@@ -130,6 +176,10 @@ def check_core(source_root):
         assert digest(target.read_bytes()) == e["target_sha256"], f"Changed target: {target}"
         target_tree = ast.parse(target.read_text()) if target.suffix == ".py" else None
         previous_tree = target_tree
+        comparison_tree = target_tree
+        if 'behavior_patch' in e:
+            comparison_tree = verify_behavior_patch(target.read_text(), e['behavior_patch'])
+            previous_tree = comparison_tree
         if "branding" in e:
             previous_tree = verify_branding_record(target.read_text(), e["branding"])
         source_tree = renamed_tree = None
@@ -141,7 +191,7 @@ def check_core(source_root):
                 renamed_tree = normalized_source(source.read_text(), branded=True)
         if e["kind"] == "byte_copy":
             assert e["source_sha256"] == e["target_sha256"]
-        elif e["kind"] == "mechanical_copy":
+        elif e["kind"] in {"mechanical_copy", "mechanical_copy_with_declared_patch"}:
             if source_tree is not None:
                 for tree in (source_tree, renamed_tree):
                     if "relocate_head_score_resources" in e["transformations"]:
@@ -149,8 +199,8 @@ def check_core(source_root):
                 assert ast_digest(source_tree) == e["source_ast_sha256"], f"Original source AST drift: {target}"
                 assert ast_digest(source_tree) == ast_digest(previous_tree), f"Pre-branding algorithm drift: {target}"
                 assert ast_digest(renamed_tree) == e["renamed_source_ast_sha256"]
-                assert ast_digest(renamed_tree) == ast_digest(target_tree), f"Unexpected algorithm change: {target}"
-            assert ast_digest(target_tree) == e["renamed_source_ast_sha256"], f"Algorithm drift: {target}"
+                assert ast_digest(renamed_tree) == ast_digest(comparison_tree), f"Unexpected algorithm change: {target}"
+            assert ast_digest(comparison_tree) == e["renamed_source_ast_sha256"], f"Algorithm drift: {target}"
         elif e["kind"] == "selected_functions":
             for f in e["function_verification"]:
                 assert ast_digest(function(previous_tree, f["name"])) == f["source_ast_sha256"]

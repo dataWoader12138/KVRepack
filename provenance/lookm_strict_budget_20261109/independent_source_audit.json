@@ -1,0 +1,857 @@
+{
+  "schema_version": 1,
+  "status": "source_audit_complete_implementation_changes_required",
+  "generated_utc": "2026-11-09T02:25:18.402327+00:00",
+  "scope": {
+    "task": "Strict total-prefill LookM10% budget and original/official semantic audit",
+    "source_under_test": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/baseline_utils.py",
+    "only_new_file": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_source_audit_20261109.json",
+    "source_files_modified": false,
+    "GPU_or_model_or_dataset_experiment_run": false,
+    "CPU_small_tensor_calls": true
+  },
+  "primary_sources": {
+    "paper": {
+      "url": "https://aclanthology.org/2024.findings-emnlp.235.pdf",
+      "doi": "10.18653/v1/2024.findings-emnlp.235",
+      "relevant_sections": [
+        "3.2 Eqs5–8",
+        "3.3 Eqs9–11"
+      ],
+      "summary": "The paper counts selected history plus recent window as the compressed cache, and merges evicted keys into conserved keys with shared routing for V."
+    },
+    "official_repository": "https://github.com/SUSTechBruce/LOOK-M",
+    "official_main_commit_at_read": "ecf0f51a9c416c2d85e47faf2638502f01a6d748",
+    "official_source_files": {
+      "cache": {
+        "url": "https://github.com/SUSTechBruce/LOOK-M/blob/ecf0f51a9c416c2d85e47faf2638502f01a6d748/LLaVA-mix_merge_v1/llava/model/kv_token_merge/modify_llama.py",
+        "raw_url": "https://raw.githubusercontent.com/SUSTechBruce/LOOK-M/ecf0f51a9c416c2d85e47faf2638502f01a6d748/LLaVA-mix_merge_v1/llava/model/kv_token_merge/modify_llama.py",
+        "sha256": "8ae8cabe408aec6f9050f450143ac01c74ab0eda33702c1ce60e16a0dc2eefbe",
+        "bytes": 135111,
+        "lines": [
+          636,
+          649,
+          661,
+          664,
+          679,
+          688,
+          693,
+          694,
+          700,
+          701,
+          704,
+          705,
+          706,
+          707,
+          708,
+          709,
+          710,
+          711,
+          719,
+          723,
+          724
+        ]
+      },
+      "all_layers": {
+        "url": "https://github.com/SUSTechBruce/LOOK-M/blob/ecf0f51a9c416c2d85e47faf2638502f01a6d748/LLaVA-mix_merge_v1/llava/model/language_model/llava_llama.py",
+        "raw_url": "https://raw.githubusercontent.com/SUSTechBruce/LOOK-M/ecf0f51a9c416c2d85e47faf2638502f01a6d748/LLaVA-mix_merge_v1/llava/model/language_model/llava_llama.py",
+        "sha256": "95b18b2f8df25c498bb290d9ab090bba3fd4acfcfb1d1ae8e53f3582d6e9d546",
+        "bytes": 17139,
+        "lines": [
+          111,
+          112,
+          113
+        ]
+      },
+      "example": {
+        "url": "https://github.com/SUSTechBruce/LOOK-M/blob/ecf0f51a9c416c2d85e47faf2638502f01a6d748/scripts/text-prior-pivot-merge_eval.sh",
+        "raw_url": "https://raw.githubusercontent.com/SUSTechBruce/LOOK-M/ecf0f51a9c416c2d85e47faf2638502f01a6d748/scripts/text-prior-pivot-merge_eval.sh",
+        "sha256": "b8ac0bf4cbcd4d12c7acfd9b035dc88132fbfbf5b6eea1ad6e72dfd742b937f4",
+        "bytes": 3020,
+        "lines": [
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    "discovery": "The paper itself links the official repository. No direct LookM official link was found in the searched local HybridKV README files; only method names in local code/docs.",
+    "lookup_limit": "GitHub API tree lookup returned403 rate limit. Public official HTML resolved currentOid and commit-pinned raw sources were fetched read-only instead."
+  },
+  "local_source": {
+    "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/baseline_utils.py",
+    "sha256": "e59c37edd0e267199496b958d671d26c60784e0335abf9d2222d0b02f46fe0b4",
+    "lines": [
+      51,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      75,
+      78,
+      81,
+      85,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      480,
+      509,
+      510,
+      511,
+      516,
+      527,
+      528,
+      529,
+      531,
+      533,
+      537,
+      538,
+      544,
+      545,
+      550,
+      553,
+      554,
+      558,
+      559,
+      561,
+      562
+    ]
+  },
+  "strict_budget_contract": {
+    "requested_scope": "Total cached prompt/prefill positions per native KV head, including the recent window, at cache construction.",
+    "prompt_length": "N = full valid prefill input length, including expanded visual tokens, text and special tokens; benchmark batch1 has no padding.",
+    "total_capacity": "C=floor(N*r), r=.1; enforce output_prefill_len<=C in every native KV head/layer.",
+    "partition": "For C>0 use W_eff=min(configured_recent_window,N,C); K_history=min(N-W_eff,max(0,C-W_eff)). For ordinary long video inputs W_eff32 and K_history=C-32.",
+    "must_not_do": [
+      "Do not keep C historical positions and append32 recent positions.",
+      "Do not return full prompt when K_history0 if N>C.",
+      "Do not preserve an oversized window beyond C.",
+      "Do not silently replace C0 with capacity1 or full input."
+    ],
+    "zero_capacity_policy": "C0 requires either a correctly supported empty prompt cache or an explicit unsupported/ValueError before inference; never claim strict0-capacity while retaining prompt tokens.",
+    "no_compression_case": "When C>=N, return original full K/V without topk/empty-history reductions.",
+    "decode_scope": "This cap is for cached prompt history at prefill. Later generated-token K/V appends normally. After G generated tokens, the final cache typically includes C+(G-1) positions per head; a permanent total decode cap would require a separate explicit eviction policy and user decision.",
+    "official_comparison": "Official cache_size is hh_size+recent_size (:649,:662–664); the official example uses hh_ratio.1 and recent_ratio.1, hence nominal20% total, not a canonical total10% protocol. The present strict10% partition must be declared as the requested Qwen adaptation."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "must_fix_correctness",
+      "issue": "Dropped positions leak across heads and batches.",
+      "local_lines": [
+        61,
+        67
+      ],
+      "actual": "torch.isin operates on globally flattened positions. A token selected in any head or batch disappears from every other head/batch drop set; it can consequently vanish from both kept and merged positions in another head.",
+      "official_evidence": "Commit-pinned TextPivot computes a per-head expanded keep mask and its complement (:694–700), rather than global position membership.",
+      "required_fix": "Build a Boolean historical keep mask independently for each[b,h], scatter selected positions in that mask, and gather its exact complement for that same head. Exclude recent positions from the historical drop domain.",
+      "tests": [
+        "Different head selections cannot change another head output.",
+        "Different batch samples cannot change another batch output.",
+        "Each head partitions its own historical positions exactly into selected and dropped; selected+drop count=N-W."
+      ]
+    },
+    {
+      "id": "F2",
+      "severity": "must_fix_requested_budget",
+      "issue": "Original current select_num=floor(N*r) plus32 violates requested total10%.",
+      "local_lines": [
+        509,
+        510,
+        511,
+        558,
+        562
+      ],
+      "required_fix": "Use the explicit total C partition, including zero-selection/window-clamp and no-compression guards. Preserve the observed long-video default window32 within C."
+    },
+    {
+      "id": "F3",
+      "severity": "must_fix_general_shape_safety",
+      "issue": "Cosine/gather index expansion hardcodes128.",
+      "local_lines": [
+        81,
+        85,
+        94
+      ],
+      "official_note": "Official TextPivot has the same128 assumption, consistent with its original backbone. This does not make it shape-general.",
+      "required_fix": "Use broadcasting/unsqueeze and the actual head_dim for gather/scatter index expansion. Preserve existing128-dimensional outputs apart from other explicitly corrected issues."
+    },
+    {
+      "id": "F4",
+      "severity": "must_fix_numerical_definition",
+      "issue": "Zero-norm keys produce NaN cosine and can silently choose the wrong pivot even when final K/V remain finite.",
+      "local_lines": [
+        81,
+        82
+      ],
+      "required_fix": "Define finite cosine with FP32 normalization and positive epsilon, retaining signed cosine. Deterministically handle zero vectors; using zero cosine for a zero vector is a stated safe convention.",
+      "limit": "This defines behavior where mathematical cosine is undefined. It is a stability fix, not proof zero vectors occurred in earlier benchmark runs."
+    },
+    {
+      "id": "F5",
+      "severity": "must_fix_boundary_safety",
+      "issue": "N<window, window0, history0/select0, and r1 can error or violate capacity.",
+      "local_lines": [
+        511,
+        516,
+        518,
+        537,
+        538,
+        550
+      ],
+      "required_fix": "Validate ratio/window domains; clamp the effective retained window; guard empty history before max/topk; explicitly construct recent-only or empty outputs instead of slicing with -0. For the public default32 path, rejecting a configured nonpositive window is acceptable if documented."
+    },
+    {
+      "id": "F6",
+      "severity": "preserve_pivot_semantics",
+      "issue": "Recent retained positions participate in nearest-neighbor matching and can change K/V values.",
+      "local_lines": [
+        75,
+        78,
+        81,
+        89,
+        92
+      ],
+      "official_lines": [
+        694,
+        700,
+        701,
+        705,
+        706,
+        707,
+        708,
+        709,
+        710,
+        711
+      ],
+      "action": "Keep selected history plus recent window as the conserved pivot set. Protected recent means retained positions, not immutable original K/V values. Excluding recent pivots would be a separate algorithm change."
+    },
+    {
+      "id": "F7",
+      "severity": "preserve_pivot_weights",
+      "issue": "Pivot pair averaging followed by scatter mean includes the original pivot.",
+      "formula": "For conserved p with m assigned evicted values e_j: p_out=(p+sum_j((e_j+p)/2))/(m+1)=((m+2)*p+sum_j e_j)/(2*(m+1)). Same routing and formula for V.",
+      "single_evicted": "p_out=.75*p+.25*e, not ordinary .5*(p+e).",
+      "equality": "The inspected local scatter_reduce(mean,include_self=True) and official TextPivot pair-average/scatter lines705–711 implement this same formula; the paper Eq11 describes it.",
+      "action": "Preserve include_self and pair averaging; do not replace with a simple group mean or count-weighted mass merge."
+    },
+    {
+      "id": "F8",
+      "severity": "preserve_Qwen_GQA_adaptation",
+      "issue": "Qwen native4KV heads are scored via repeatedK and aggregated query-head groups.",
+      "local_lines": [
+        504,
+        508,
+        528,
+        529,
+        531,
+        533
+      ],
+      "action": "Preserve native K/V storage and contiguous-group GQA mean. Do not merge/query-head-repeat the stored native cache or change mean to max as part of budget repair.",
+      "basis": "repeat_kv duplicates each native KV head consecutively, so reshaping query scores[B,Hkv,G,history] and reducing G maps scores back to the right native heads. The official LLaVA code is not a Qwen GQA reference."
+    },
+    {
+      "id": "F9",
+      "severity": "preserve_Qwen_text_priority_adaptation",
+      "issue": "Local text max-score boost followed by fixed topk is a bounded text-prior adaptation.",
+      "local_lines": [
+        537,
+        538,
+        544,
+        545,
+        548,
+        550
+      ],
+      "action": "Preserve text priority within K_history, with correct per-batch Boolean masks and padding exclusion. Do not append all text positions outside C or declare all text necessarily retained when text count exceeds K_history.",
+      "official_limit": "The official TextPivot uses fixed576-token image spans and a sign mask (:679–696), which can retain unselected positive text scores. Do not transplant this image-specific path to Qwen video or use it to waive the requested capacity invariant."
+    },
+    {
+      "id": "F10",
+      "severity": "preserve_and_disclose_existing_Qwen_schedule",
+      "issue": "The first5% layer skip and last32-query score window are local HybridKV adaptations, not universal official LOOK-M settings.",
+      "local_lines": [
+        516,
+        527,
+        553
+      ],
+      "action": "Preserve these choices during the requested budget/bug repair. Qwen7B28layers currently0/1 prune-only,2..27pivot; all layers must still obey totalC.",
+      "official_lines": "Official llava_llama.py:111–113 installs TextPivot on every layer. Official score accumulation modify_llama.py:719–724 sums attention scores; it does not define this local last32-query/first5% schedule."
+    }
+  ],
+  "CPU_reproducer": {
+    "device": "CPU only",
+    "torch_version": "2.6.0+cu124",
+    "cuda_initialized_after_calls": false,
+    "method": "AST-extract actual original merge_kv/repeat_kv/LookMCluster without importing the project; no fake production algorithm is substituted.",
+    "code": "import os\nos.environ['CUDA_VISIBLE_DEVICES']=''\nos.environ['OMP_NUM_THREADS']='1'\nimport ast, math, torch\nfrom pathlib import Path\npath=Path('/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/baseline_utils.py')\nnodes=[n for n in ast.parse(path.read_text()).body if isinstance(n,(ast.FunctionDef,ast.ClassDef)) and n.name in {'merge_kv','repeat_kv','LookMCluster'}]\nns={'torch':torch,'math':math,'nn':torch.nn}\nexec(compile(ast.Module(body=nodes,type_ignores=[]),str(path),'exec'),ns)\nmerge=ns['merge_kv']; results={}\nfor name,b,h in [('cross_head',1,2),('cross_batch',2,1)]:\n    k=torch.zeros(b,h,4,128);k[...,0]=1\n    v=torch.tensor([0.,100.,20.,30.]).view(1,1,4,1).expand(b,h,4,128).clone()\n    idx=torch.tensor([0,1]).reshape(b,h,1,1).expand(b,h,1,128)\n    actual=merge(k,v,idx,1,'pivot')[1][...,0,0].reshape(-1).tolist()\n    results[name]={'actual_selected_V':actual,'correct_per_head_pivot_expected':[20.,70.]}\n    if name=='cross_head':\n        other=idx.clone();other[:,1]=0\n        results['head_independence']={'head0_before':actual[0],'head0_after_only_head1_selection_changes':float(merge(k,v,other,1,'pivot')[1][0,0,0,0])}\ntry:\n    merge(torch.ones(1,1,4,2),torch.ones(1,1,4,2),torch.zeros(1,1,1,2,dtype=torch.long),1,'pivot')\nexcept RuntimeError as error:results['D2']={'error':str(error)}\nk=torch.zeros(1,1,3,128);k[:,:,1:,0]=1\nv=torch.tensor([0.,20.,100.]).view(1,1,3,1).expand_as(k).clone()\nidx=torch.zeros(1,1,1,128,dtype=torch.long)\nresults['zero_norm']={'actual_V':merge(k,v,idx,1,'pivot')[1][0,0,:,0].tolist(),'finite_cosine_expected_V':[0.,80.]}\nk=torch.zeros(1,1,3,128);k[:,:,0,1]=1;k[:,:,1:,0]=1\nresults['recent_is_pivot']={'actual_V':merge(k,v,idx,1,'pivot')[1][0,0,:,0].tolist(),'recent_before':100.}\nfor n,ratio,w in [(8,.1,32),(16,.1,32),(64,1.,32),(320,.1,32),(64,.1,0)]:\n    tag=f'N{n}_ratio{ratio}_window{w}'\n    cluster=ns['LookMCluster'](window_size=w,max_capacity_prompt=1024,layer_idx=27,num_hidden_layers=28,budget_ratio=ratio,is_text_token_mask=torch.zeros(1,n,dtype=torch.bool))\n    tensor=torch.ones(1,1,n,128)\n    try:results[tag]={'actual_tokens':cluster.update_kv(tensor,tensor,tensor)[0].shape[-2],'strict_total_cap':int(n*ratio)}\n    except RuntimeError as error:results[tag]={'error':str(error)}\nresults['cuda_initialized']=torch.cuda.is_initialized()\n",
+    "actual_results": {
+      "cross_head": {
+        "actual_selected_V": [
+          5.0,
+          80.0
+        ],
+        "correct_per_head_pivot_expected": [
+          20.0,
+          70.0
+        ]
+      },
+      "head_independence": {
+        "head0_before": 5.0,
+        "head0_after_only_head1_selection_changes": 20.0
+      },
+      "cross_batch": {
+        "actual_selected_V": [
+          5.0,
+          80.0
+        ],
+        "correct_per_head_pivot_expected": [
+          20.0,
+          70.0
+        ]
+      },
+      "D2": {
+        "error": "The size of tensor a (2) must match the size of tensor b (128) at non-singleton dimension 3"
+      },
+      "zero_norm": {
+        "actual_V": [
+          5.0,
+          100.0
+        ],
+        "finite_cosine_expected_V": [
+          0.0,
+          80.0
+        ]
+      },
+      "recent_is_pivot": {
+        "actual_V": [
+          0.0,
+          80.0
+        ],
+        "recent_before": 100.0
+      },
+      "N8_ratio0.1_window32": {
+        "actual_tokens": 8,
+        "strict_total_cap": 0
+      },
+      "N16_ratio0.1_window32": {
+        "error": "The size of tensor a (16) must match the size of tensor b (32) at non-singleton dimension 3"
+      },
+      "N64_ratio1.0_window32": {
+        "error": "selected index k out of range"
+      },
+      "N320_ratio0.1_window32": {
+        "actual_tokens": 64,
+        "strict_total_cap": 32
+      },
+      "N64_ratio0.1_window0": {
+        "error": "The size of tensor a (64) must match the size of tensor b (0) at non-singleton dimension 3"
+      },
+      "cuda_initialized": false
+    },
+    "independent_expected_values": "Cross-head and cross-batch expected[20,70] follow the exact preserved pivot formula applied to each head’s own complement. The epsilon-safe zero-norm convention yields[0,80].",
+    "scope_limit": "Small tensor structural/numerical edge tests; not GPU inference, model quality testing or a claim about prevalence in earlier long-video data."
+  },
+  "implementation_review_acceptance": [
+    "For every layer and native KV head, actual prefill length<=floor(.1*N), including recent positions; assert with real returned tensors.",
+    "Default long-input32-window leaves history capacity C-32; zero-history, short-prompt and full-capacity cases do not exceed C or crash accidentally.",
+    "Dropped positions are a per-batch/per-head exact complement, not a global union.",
+    "All dimensions are dynamic; zero-norm cosine is finite by an explicit convention; signed similarities remain signed.",
+    "Native GQA grouping, bounded text-score boost, local layer schedule and selected+recent pivot membership remain unchanged.",
+    "Pivot weights remain pair-average plus include_self mean for both K and V; prefill still computes its output attention with full originalK/V and stores only the compressed cache for later decode.",
+    "Fresh prompt cluster/cache and RoPE-state reset remain in effect; generated-token decode appends are reported separately from the prefillC cap.",
+    "Provenance must mark this as deliberate behavior change from the prior AST-identical migration. Earlier nominal10%+window results remain dated unchanged."
+  ],
+  "additional_local_evidence": [
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model.py",
+      "sha256": "1c6b166411bbac2002fc1a9fb3c5cd90f4425cf77780f213c63a2d1f40582375",
+      "lines": [
+        321,
+        322,
+        323,
+        354,
+        356,
+        358,
+        360,
+        363,
+        364,
+        367,
+        368
+      ]
+    },
+    {
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/baseline_utils.py",
+      "sha256": "e59c37edd0e267199496b958d671d26c60784e0335abf9d2222d0b02f46fe0b4",
+      "lines": [
+        805,
+        810,
+        812,
+        814,
+        816,
+        828,
+        829,
+        832,
+        833,
+        834,
+        835,
+        836,
+        837,
+        838,
+        839,
+        840
+      ]
+    }
+  ],
+  "fix_validation": {
+    "status": "main_budget_and_isolation_fixes_passed_with_semantic_boundary_issues",
+    "checked_utc": "2026-11-09T02:28:00.761301+00:00",
+    "core_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+    "core_sha256": "af765defc8670644414404b919c321c3786d925c22100a719e3ef95c0dc14bc7",
+    "executed_symbols": [
+      {
+        "name": "merge_kv",
+        "line": 51,
+        "end_line": 93,
+        "ast_sha256": "e7ce4338732b57ba416ae4d4864cd40552bf3a29cdbf530dd9ac32ebc80fdd81"
+      },
+      {
+        "name": "update_kv",
+        "line": 488,
+        "end_line": 561,
+        "ast_sha256": "1df682cb31a4981c87840280d10f7f94666fdc569ca3fcd4221c2fca6854462a"
+      }
+    ],
+    "independence": "AST-executed the actual two corrected functions plus existing repeat_kv on CPU; no project test helper or reference implementation from the implementation agent was called.",
+    "expected_value_basis": "Independent scalar pivot weighting: [p+sum((e+p)/2)]/(m+1), each batch/head own historical complement; epsilon-normalized zero-key convention.",
+    "cuda_initialized_after_calls": false,
+    "passed_checks": [
+      {
+        "name": "cross_head_and_cross_batch",
+        "shape_cases": [
+          [
+            1,
+            2,
+            4,
+            2
+          ],
+          [
+            2,
+            1,
+            4,
+            2
+          ]
+        ],
+        "V_by_position": [
+          0,
+          100,
+          20,
+          30
+        ],
+        "selected_positions": [
+          0,
+          1
+        ],
+        "actual_selected_V": [
+          20,
+          70
+        ],
+        "independent_expected_selected_V": [
+          20,
+          70
+        ]
+      },
+      {
+        "name": "head_independence",
+        "same_head_result_before": 20,
+        "same_head_after_changing_other_head_selection_only": 20
+      },
+      {
+        "name": "D2_and_zero_norm",
+        "K_by_position": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "V_by_position": [
+          0,
+          20,
+          100
+        ],
+        "selected_position": 0,
+        "recent_window": 1,
+        "actual_V": [
+          0,
+          80
+        ],
+        "independent_expected_V": [
+          0,
+          80
+        ]
+      },
+      {
+        "name": "zero_total_capacity",
+        "N": 8,
+        "ratio": 0.1,
+        "actual": "Explicit ValueError: total prefill budget is zero; no full-cache fallback"
+      },
+      {
+        "name": "small_prompt_total_capacity",
+        "N": 16,
+        "ratio": 0.1,
+        "actual_cache_shape": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "capacity": 1
+      },
+      {
+        "name": "C_equals_window_total_capacity",
+        "N": 320,
+        "ratio": 0.1,
+        "actual_cache_shape": [
+          1,
+          1,
+          32,
+          2
+        ],
+        "capacity": 32
+      },
+      {
+        "name": "ratio_one_capacity",
+        "N": 64,
+        "ratio": 1,
+        "actual_cache_shape": [
+          1,
+          1,
+          64,
+          2
+        ],
+        "capacity": 64
+      }
+    ],
+    "remaining_boundary_findings": [
+      {
+        "id": "V1",
+        "severity": "semantic_boundary_not_exercised_by_long_video_C_over32",
+        "issue": "When select_num0, update_kv returns recent-only even in pivot-enabled layers, skipping merge of dropped historical tokens into recent pivots.",
+        "reproducer": "N320,r.1,window32,layer27; all K=e0; V positions0..319. TotalC32 gives empty history topk but288 evicted historical tokens.",
+        "actual_update_first_retained_V": 288.0,
+        "independent_official_pivot_formula_expected_first_V": 216.0,
+        "corrected_merge_kv_direct_empty_topk_actual_first_V": 216.0,
+        "formula": "(288+.5*(sum(range(288))+288*288))/289=216",
+        "recommendation": "If preserving pivot semantics at zero history selection, let pivot-enabled layers call the corrected merge_kv with empty indices and the nonempty recent pivot set. Keep prune-only layers recent-only. Otherwise explicitly document this additional short-budget algorithm change."
+      },
+      {
+        "id": "V2",
+        "severity": "no_compression_order_change",
+        "issue": "For ratio1,N64 all slots are preserved but topk reorders historical cache positions unnecessarily.",
+        "reproducer": "All K=e0,V=0..63,layer27,window32; output first V17 rather than0.",
+        "actual_first_V": 17.0,
+        "original_input_first_V": 0.0,
+        "recommendation": "Return original K/V directly for capacity>=N to make the no-compression case a no-op. Cached RoPE attention can be permutation invariant mathematically, but this audit does not claim bitwise-equivalent decode after reordering."
+      },
+      {
+        "id": "V3",
+        "severity": "stability_scope_limit",
+        "issue": "Corrected source uses F.normalize in original tensor dtype, not the FP32 normalization recommended in this audit.",
+        "observed_behavior": "Zero-norm D2 CPU case is fixed with the finite epsilon convention. This validation did not establish overflow/underflow safety for every finite value/dtype.",
+        "recommendation": "Either use FP32 matching normalization or state the original-dtype compatibility tradeoff; do not claim an unexecuted FP32 normalization change."
+      }
+    ],
+    "scope": "Budget invariants and original small-tensor bug triggers checked without GPU/model/scoring; long-video benchmark quality is outside this validation."
+  },
+  "validation_v2fix": {
+    "status": "passed",
+    "checked_utc": "2026-11-09T02:30:56.547951+00:00",
+    "core_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+    "core_sha256": "ee1baadace05c657f233f4b3f82624933b81b4a4fae018e2db4852fee6a275ff",
+    "independent_check_count": 20,
+    "checks": [
+      {
+        "name": "cross_head",
+        "status": "passed",
+        "actual": [
+          20.0,
+          70.0
+        ],
+        "independent_expected": [
+          20.0,
+          70.0
+        ],
+        "basis": "Scalar per-head own-complement pivot equation"
+      },
+      {
+        "name": "head_independence",
+        "status": "passed",
+        "actual": 20.0,
+        "independent_expected": 20.0
+      },
+      {
+        "name": "cross_batch",
+        "status": "passed",
+        "actual": [
+          20.0,
+          70.0
+        ],
+        "independent_expected": [
+          20.0,
+          70.0
+        ],
+        "basis": "Scalar per-head own-complement pivot equation"
+      },
+      {
+        "name": "D2_zero_norm",
+        "status": "passed",
+        "actual": [
+          0.0,
+          80.0
+        ],
+        "independent_expected": [
+          0.0,
+          80.0
+        ],
+        "basis": "Zero-key cosine0 versus exact recent nonzero cosine1; single-evicted V=.75*100+.25*20"
+      },
+      {
+        "name": "FP16_D128_matching_norm_overflow",
+        "status": "passed",
+        "actual": [
+          0.0,
+          80.0
+        ],
+        "independent_expected": [
+          0.0,
+          80.0
+        ],
+        "all_outputs_finite": true,
+        "input_component": 6000.0,
+        "expected_true_cosines": [
+          0.08838834764831843,
+          1.0
+        ],
+        "half_norm_of_dropped_key": "inf (the old-dtype normalization failure trigger)"
+      },
+      {
+        "name": "FP64_matching_precision_preserved",
+        "status": "passed",
+        "actual": [
+          0.0,
+          80.0
+        ],
+        "independent_expected": [
+          0.0,
+          80.0
+        ],
+        "basis": "Exact recent match must outrank a very near selected key; FP32 would erase this small cosine difference"
+      },
+      {
+        "name": "signed_negative_cosine",
+        "status": "passed",
+        "actual": [
+          0.0,
+          80.0
+        ],
+        "independent_expected": [
+          0.0,
+          80.0
+        ],
+        "basis": "Recent cosine-.5 outranks selected cosine-1; clamping negatives to0 would route incorrectly"
+      },
+      {
+        "name": "N16_layer0_total_capacity",
+        "status": "passed",
+        "actual": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "independent_expected": [
+          1,
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "name": "N16_layer0_pivot_value",
+        "status": "passed",
+        "actual": 15.0,
+        "independent_expected": 15.0,
+        "basis": "Early layer retains only recent; late layer applies original pivot weight to all evicted history even with empty topk"
+      },
+      {
+        "name": "N16_layer27_total_capacity",
+        "status": "passed",
+        "actual": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "independent_expected": [
+          1,
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "name": "N16_layer27_pivot_value",
+        "status": "passed",
+        "actual": 11.25,
+        "independent_expected": 11.25,
+        "basis": "Early layer retains only recent; late layer applies original pivot weight to all evicted history even with empty topk"
+      },
+      {
+        "name": "N320_layer0_total_capacity",
+        "status": "passed",
+        "actual": [
+          1,
+          1,
+          32,
+          2
+        ],
+        "independent_expected": [
+          1,
+          1,
+          32,
+          2
+        ]
+      },
+      {
+        "name": "N320_layer0_pivot_value",
+        "status": "passed",
+        "actual": 288.0,
+        "independent_expected": 288.0,
+        "basis": "Early layer retains only recent; late layer applies original pivot weight to all evicted history even with empty topk"
+      },
+      {
+        "name": "N320_layer27_total_capacity",
+        "status": "passed",
+        "actual": [
+          1,
+          1,
+          32,
+          2
+        ],
+        "independent_expected": [
+          1,
+          1,
+          32,
+          2
+        ]
+      },
+      {
+        "name": "N320_layer27_pivot_value",
+        "status": "passed",
+        "actual": 216.0,
+        "independent_expected": 216.0,
+        "basis": "Early layer retains only recent; late layer applies original pivot weight to all evicted history even with empty topk"
+      },
+      {
+        "name": "ratio1_original_tensor_identity",
+        "status": "passed",
+        "actual": true,
+        "independent_expected": true
+      },
+      {
+        "name": "C0_explicit_rejection",
+        "status": "passed",
+        "actual": true,
+        "independent_expected": true,
+        "error": "LookM total prefill budget is zero; a nonempty KV cache cannot satisfy it"
+      },
+      {
+        "name": "GQA_native_cache_shape",
+        "status": "passed",
+        "actual": [
+          1,
+          2,
+          40,
+          3
+        ],
+        "independent_expected": [
+          1,
+          2,
+          40,
+          3
+        ]
+      },
+      {
+        "name": "GQA_head0_text_priority_bounded_top8",
+        "status": "passed",
+        "actual": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0
+        ],
+        "independent_expected": [
+          0,
+          10,
+          20,
+          30,
+          40,
+          50,
+          60,
+          70
+        ]
+      },
+      {
+        "name": "GQA_head1_text_priority_bounded_top8",
+        "status": "passed",
+        "actual": [
+          0.0,
+          10.0,
+          20.0,
+          30.0,
+          40.0,
+          50.0,
+          60.0,
+          70.0
+        ],
+        "independent_expected": [
+          0,
+          10,
+          20,
+          30,
+          40,
+          50,
+          60,
+          70
+        ]
+      }
+    ],
+    "resolved_prior_findings": [
+      "V1 zero-history-selection recent-pivot merge preserved in late layers",
+      "V2 ratio1 returns original tensor identity",
+      "V3 lower-precision matching normalized in FP32, FP64 precision preserved"
+    ],
+    "method": "AST execution of current merge_kv/repeat_kv/LookMCluster only; independent scalar formulas and hand-constructed vectors, no implementation-agent test/reference helper called.",
+    "torch_version": "2.6.0+cu124",
+    "cuda_initialized_after_calls": false,
+    "scope": "CPU structural and numerical fixture checks only; not GPU inference, quality scoring or full-benchmark reproduction."
+  }
+}

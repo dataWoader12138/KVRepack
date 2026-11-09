@@ -8,7 +8,8 @@ import unittest
 
 import torch
 
-from kvrepack.benchmarks.run_video_comparison import PrefillBudgetAudit, validate_sample
+from kvrepack.benchmarks.run_video_comparison import (PrefillBudgetAudit, validate_sample,
+    STRICT_LOOKM_POLICY,LEGACY_LOOKM_POLICY,NATIVE_BUDGET_POLICY,validate_budget_audit,validate_resume_contract)
 
 PACKAGE = Path(__file__).resolve().parents[1]/'src/kvrepack'
 
@@ -18,12 +19,13 @@ def actual_lookm():
     names = {'repeat_kv', 'merge_kv', 'LookMCluster'}
     tree = ast.parse(path.read_text())
     nodes = [n for n in tree.body if isinstance(n, (ast.FunctionDef, ast.ClassDef)) and n.name in names]
-    scope = dict(torch=torch, nn=torch.nn, math=math)
+    scope = dict(torch=torch, nn=torch.nn, F=torch.nn.functional, math=math)
     exec(compile(ast.Module(body=nodes, type_ignores=[]), str(path), 'exec'), scope)
     return SimpleNamespace(**scope)
 
 
-def row_fixture(method='lookm'):
+def row_fixture(method='lookm', *, strict=False):
+    policy=STRICT_LOOKM_POLICY if strict else LEGACY_LOOKM_POLICY if method=='lookm' else NATIVE_BUDGET_POLICY
     inputs = dict(input_hashes={'input_ids':'actual-input-bytes'},
         input_shapes={'input_ids':[1,100]}, input_dtypes={'input_ids':'torch.int64'})
     layers = [dict(layer=i, before_tokens_per_head=100, head_lengths=[42]*4,
@@ -31,16 +33,24 @@ def row_fixture(method='lookm'):
     cache = dict(status='completed', method=method, task='nextqa_oe_test', doc_id=0,
         input_tokens=100, native_kv_heads=4, layers=layers, layers_count=28,
         nominal_budget_ratio=.1, prefill_tokens_total=4704, uncompressed_tokens_total=11200,
-        actual_retained_ratio=.42)
+        actual_retained_ratio=.42,budget_policy=policy,strict_budget_passed=False if method=='lookm' else None)
     final = [dict(layer=i, key_shape=[1,4,43,128], value_shape=[1,4,43,128]) for i in range(28)]
-    return dict(schema_version=1, status='completed', method=method, task='nextqa_oe_test', doc_id=0,
+    row=dict(schema_version=1, status='completed', method=method, task='nextqa_oe_test', doc_id=0,
         contract_sha256='frozen', source_video_id='video', video_id='video',
         reference_metadata=dict(task='nextqa_oe_test', doc_id=0, source_video_id='video', video_id='video'),
         input_fingerprints=inputs, **deepcopy(inputs), generated_ids=[7,2], generated_tokens=2,
         text='answer', prediction='answer', eos_token_id=2, eos_reached=True,
         config=dict(method=method, task='nextqa_oe_test', max_new_tokens=128,
-            stream_contract_sha256='frozen', budget_ratio=.1),
+            stream_contract_sha256='frozen', budget_ratio=.1,budget_policy=policy),
         audit=dict(status='completed'), cache_audit=cache, final_cache_shapes=final)
+    if strict:
+        row['input_tokens']=100;row['reference_metadata']['input_tokens']=100
+        cache.update(strict_budget_passed=True,total_prefill_capacity=10,prefill_tokens_total=1120,actual_retained_ratio=.1)
+        for layer in cache['layers']:
+            layer.update(head_lengths=[10]*4,after_tokens_total=40,key_shape=[1,4,10,128],value_shape=[1,4,10,128],
+                total_prefill_capacity=10,configured_recent_window=32,recent_window=10,selected_history_tokens=0)
+        row['final_cache_shapes']=[dict(layer=i,key_shape=[1,4,11,128],value_shape=[1,4,11,128]) for i in range(28)]
+    return row
 
 
 class VideoComparisonTests(unittest.TestCase):
@@ -55,7 +65,7 @@ class VideoComparisonTests(unittest.TestCase):
         module.LookMCluster.update_kv = spy
         torch.set_num_threads(1)
         with PrefillBudgetAudit('lookm', module=module) as audit:
-            for sample, tokens in enumerate((64, 96)):
+            for sample, tokens in enumerate((64, 96,400,480)):
                 audit.set_sample('nextqa_oe_test', sample, tokens)
                 common = torch.randn((1,1,tokens,128), generator=torch.Generator().manual_seed(42))
                 key = common.expand(1,4,tokens,128).clone()
@@ -68,12 +78,15 @@ class VideoComparisonTests(unittest.TestCase):
                     result = cluster.update_kv(key, query, value)
                     self.assertIs(result, returned[-1])
                     self.assertEqual(cluster.budget_ratio, .1)
-                    self.assertEqual(result[0].shape[-2], int(tokens*.1)+32)
+                    self.assertEqual(result[0].shape[-2], int(tokens*.1))
                     final.append(dict(layer=layer, key_shape=list(result[0].shape), value_shape=list(result[1].shape)))
                 row = audit.finish_sample(final, 1)
-                self.assertEqual(row['prefill_tokens_total'], 112*(int(tokens*.1)+32))
-                self.assertEqual(row['actual_retained_ratio'], (int(tokens*.1)+32)/tokens)
-        self.assertEqual(len(returned), 56)
+                self.assertEqual(row['prefill_tokens_total'], 112*int(tokens*.1))
+                self.assertEqual(row['actual_retained_ratio'], int(tokens*.1)/tokens)
+                self.assertEqual(row['budget_policy'],STRICT_LOOKM_POLICY)
+                self.assertTrue(row['strict_budget_passed'])
+                self.assertTrue(all(layer['recent_window']==min(32,int(tokens*.1)) for layer in row['layers']))
+        self.assertEqual(len(returned), 112)
         self.assertIs(module.LookMCluster.update_kv, spy)
 
     def test_actual_hybrid_prefill_update_original_return_and_heterogeneous_lengths(self):
@@ -104,9 +117,40 @@ class VideoComparisonTests(unittest.TestCase):
             self.assertEqual(record['layers'][0]['head_lengths'], [5,6,7,8])
         self.assertIs(module.HybridKVCache.update, native)
 
-    def test_valid_row_does_not_require_exact_ten_percent(self):
+    def test_explicit_legacy_row_is_readable_but_never_strict(self):
         row = row_fixture()
         self.assertIs(validate_sample(row, doc_id=0, contract_sha256='frozen'), row)
+        result=validate_budget_audit(row['cache_audit'],method='lookm')
+        self.assertTrue(result['legacy_budget_result']);self.assertFalse(result['strict_budget_passed'])
+        row['config'].pop('budget_policy');row['cache_audit'].pop('budget_policy');row['cache_audit'].pop('strict_budget_passed')
+        self.assertIs(validate_sample(row,doc_id=0,contract_sha256='frozen'),row)
+        self.assertEqual(validate_budget_audit(row['cache_audit'],method='lookm')['budget_policy'],LEGACY_LOOKM_POLICY)
+
+    def test_strict_row_and_posthoc_overbudget_or_decode_tampering(self):
+        row=row_fixture(strict=True)
+        self.assertIs(validate_sample(row,doc_id=0,contract_sha256='frozen',budget_policy=STRICT_LOOKM_POLICY),row)
+        for mode in ('extra_window','capacity','window','denominator','decode','policy'):
+            with self.subTest(mode=mode):
+                row=row_fixture(strict=True)
+                if mode=='extra_window':
+                    for layer in row['cache_audit']['layers']:
+                        layer.update(head_lengths=[42]*4,after_tokens_total=168,key_shape=[1,4,42,128],value_shape=[1,4,42,128])
+                    row['cache_audit'].update(prefill_tokens_total=4704,actual_retained_ratio=.42)
+                    row['final_cache_shapes']=[dict(layer=i,key_shape=[1,4,43,128],value_shape=[1,4,43,128]) for i in range(28)]
+                elif mode=='capacity':row['cache_audit']['total_prefill_capacity']=11
+                elif mode=='window':row['cache_audit']['layers'][0]['recent_window']=32
+                elif mode=='denominator':
+                    row['input_fingerprints']['input_shapes']['input_ids']=[1,101]
+                    row['input_shapes']['input_ids']=[1,101]
+                elif mode=='decode':row['final_cache_shapes'][0].update(key_shape=[1,4,12,128],value_shape=[1,4,12,128])
+                else:row['config']['budget_policy']=LEGACY_LOOKM_POLICY
+                with self.assertRaises(ValueError):validate_sample(row,doc_id=0,contract_sha256='frozen',budget_policy=STRICT_LOOKM_POLICY)
+
+    def test_legacy_resume_cannot_mix_with_strict_sources_or_policy(self):
+        strict=dict(method='lookm',budget_policy=STRICT_LOOKM_POLICY,sources_sha256={'core':'new'})
+        validate_resume_contract(deepcopy(strict),strict)
+        for saved in (dict(method='lookm',sources_sha256={'core':'new'}),dict(method='lookm',budget_policy=LEGACY_LOOKM_POLICY,sources_sha256={'core':'old'}),dict(method='lookm',budget_policy=STRICT_LOOKM_POLICY,sources_sha256={'core':'old'})):
+            with self.assertRaises(ValueError):validate_resume_contract(saved,strict)
 
     def test_identity_generation_and_cache_tampering_rejected(self):
         changes = (

@@ -1,0 +1,7 @@
+# Strict LookM budget and source verification,2026-11-09
+
+Total prefill positions per native KV head are floor(r*N), including the recent window. See docs/LOOKM_STRICT_BUDGET.md. Original source SHA is preserved; core_sources.json and patches/lookm_strict_budget_v2.patch declare/replay the exact two-function behavior change. Head-local complement, arbitrary dimensions, zero/low-precision cosine, zero-history recent-pivot merging and full-capacity identity are covered.
+
+Full CPU suite260:259 pass/1 existing skip; independent20 oracle checks passed. After a CLI repair for explicit one-input scoring,6 affected report tests and both real GPU smoke cases passed. Qwen2.5-VL-7B,64frames,one input each ofNextQA/VATEX:all28x4 prefill lengths match floor(.1N) and measured ratios<=.1. These are diagnostic checks, not new200-input scores. Historical400 scores exceeded the requested cap and are not eligible for a strict-budget comparison.
+
+Raw reports/contract/state and numerical records are preserved. Six free-input/local-path metadata fields are removed from the two published samples; model/video/tensor payloads and credentials are excluded. Initial failed CLI log and resolution remain as execution evidence. Full original-workspace comparison was unavailable due to a missing unrelated opensource LLaVA file; the changed LookM original file was available and its complete normalized AST was compared to the recovered integration.

@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "method": "lookm",
+  "task": "nextqa_oe_test",
+  "target_docs": 1,
+  "target_generations": 1,
+  "completed_docs": 1,
+  "completed_generations": 1,
+  "contract_sha256": "6dd176d44f099dbe65f0ec6d45365573bc07491da95e59d74a38e25c3bab74f2",
+  "started_utc": "2026-11-09T02:32:35.097004+00:00",
+  "updated_utc": "2026-11-09T02:32:43.887752+00:00",
+  "estimated_remaining_seconds": 0,
+  "current_doc_id": 0,
+  "elapsed_current_session_seconds": 8.790117487311363,
+  "finished_utc": "2026-11-09T02:32:43.896166+00:00"
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "budget_policy": "total_prefill_including_recent_v2",
+  "core_sha256": "ee1baadace05c657f233f4b3f82624933b81b4a4fae018e2db4852fee6a275ff",
+  "cpu_suite": {
+    "run": 260,
+    "passed": 259,
+    "skipped": 1,
+    "log": "cpu_suite.log"
+  },
+  "later_affected_report_tests": {
+    "passed": 6,
+    "scope": "CLI/load_case explicit1 and200, strict-smoke metadata; after one-sample report fix"
+  },
+  "independent_cpu_checks": 20,
+  "gpu_smoke_inputs": 2,
+  "gpu_actual_budget_checks": [
+    {
+      "task": "nextqa_oe_test",
+      "input_tokens": 9607,
+      "total_per_head": 960,
+      "recent": 32,
+      "selected_history": 928,
+      "actual_prefill_ratio": 0.09992713646299574,
+      "layers": 28,
+      "native_kv_heads": 4,
+      "strict_budget_passed": true,
+      "generated_tokens": 2
+    },
+    {
+      "task": "vatex_test",
+      "input_tokens": 9736,
+      "total_per_head": 973,
+      "recent": 32,
+      "selected_history": 941,
+      "actual_prefill_ratio": 0.09993837304847987,
+      "layers": 28,
+      "native_kv_heads": 4,
+      "strict_budget_passed": true,
+      "generated_tokens": 16
+    }
+  ],
+  "formal_strict_200_results_available": false,
+  "legacy_400_eligible_for_strict_10pct": false,
+  "source_replay": "Original LookM file normalization compared to recovered pre-fix integration; exact declared patch only two functions; full unrelated opensource source tree absent",
+  "generation_scope": "Prefill includes recent/text positions. Newly decoded tokens append under original decode logic.",
+  "smoke_resolution": "First Next generation passed; scorer CLI initially rejected limit1. Fixed CLI and resumed without regenerating Next; both case reports completed. Controller elapsed includes repair wait."
+}

@@ -49,62 +49,51 @@ def repeat_kv(hidden_states: torch.Tensor, n_rep: int) -> torch.Tensor:
     return hidden_states.reshape(batch, num_key_value_heads * n_rep, slen, head_dim)
 
 def merge_kv(key_states, value_states, indices, window_size, merge):
-    # merge methods in LOOK-M
-
+    """Merge each LookM head's unselected history into its own retained pivots."""
     bsz, num_heads, k_len, head_dim = key_states.shape
+    if merge not in {"pivot", "averaged"}:
+        raise ValueError('Merge method not supported')
+    if not 0 <= window_size <= k_len or value_states.shape != key_states.shape:
+        raise ValueError('LookM requires equal K/V shapes and a valid recent window')
+    history_len = k_len - window_size
+    selected_keys = key_states.gather(dim=2, index=indices)
+    selected_values = value_states.gather(dim=2, index=indices)
 
-    # kv-selected
-    selected_keys = key_states.gather(dim=2, index=indices)  # [bsz, num_heads, topk_len, head_dim]
-    selected_values = value_states.gather(dim=2, index=indices)  # [bsz, num_heads, topk_len, head_dim]
-
-    # kv-drop
-    all_indices = torch.arange(k_len - window_size, device=key_states.device).unsqueeze(0).unsqueeze(0).expand(bsz, num_heads, k_len - window_size)
-    all_indices_flattened = all_indices.flatten()  # [bsz * num_heads * (k_len-window_size)]
-    selected_indices_flattened = indices.flatten()  # [bsz * num_heads * topk_len]
-    is_selected = torch.isin(all_indices_flattened, selected_indices_flattened)
-    drop_indices_flattened = all_indices_flattened[~is_selected]
-    drop_len = drop_indices_flattened.shape[0] // (all_indices.shape[0] * all_indices.shape[1])
-    drop_indices = drop_indices_flattened.reshape(all_indices.shape[0], all_indices.shape[1], drop_len) # [bsz * num_heads * (k_len-window_size-topk_len)]
-    drop_indices = drop_indices.unsqueeze(-1).expand(-1, -1, -1, head_dim)  # [bsz, num_heads, (k_len-window_size-topk_len), head_dim]
+    # Selection is independent for every (batch, KV head). A flattened isin
+    # would incorrectly remove tokens selected only in another head or sample.
+    selected_history = torch.zeros((bsz, num_heads, history_len), device=key_states.device, dtype=torch.bool)
+    selected_history.scatter_(2, indices[..., 0], True)
+    history_indices = torch.arange(history_len, device=key_states.device).view(1, 1, -1).expand(bsz, num_heads, -1)
+    drop_len = history_len - indices.shape[-2]
+    drop_indices = history_indices[~selected_history].reshape(bsz, num_heads, drop_len)
+    drop_indices = drop_indices.unsqueeze(-1).expand(-1, -1, -1, head_dim)
     drop_keys = key_states.gather(dim=2, index=drop_indices)
     drop_values = value_states.gather(dim=2, index=drop_indices)
+    retained_keys = torch.cat([selected_keys, key_states[:, :, history_len:, :]], dim=2)
+    retained_values = torch.cat([selected_values, value_states[:, :, history_len:, :]], dim=2)
+    if retained_keys.shape[-2] == 0:
+        raise ValueError('LookM cannot merge a nonempty history into zero retained tokens')
+    if drop_len == 0:
+        return retained_keys, retained_values
 
-    ##### apply merge #####
-    # prepare for merge
-    k_hh_pruned = drop_keys  # [bsz, num_heads, k_len-topk_len-window_size, head_dim]
-    k_hh_recent = torch.cat([selected_keys, key_states[:, :, -window_size:, :], ], dim=2)  # [bsz, num_heads, topk_len+window_size, head_dim]
-    # k_hh_recent = selected_keys
-    v_hh_pruned = drop_values  # [bsz, num_heads, k_len-topk_len-window_size, head_dim]
-    v_hh_recent = torch.cat([selected_values, value_states[:, :, -window_size:, :]], dim=2)  # [bsz, num_heads, topk_len+window_size, head_dim]
-    # v_hh_recent = selected_values
-    # similarity matrix
-    similarity = (k_hh_pruned / torch.norm(k_hh_pruned, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128)) @ ((k_hh_recent / (torch.norm(k_hh_recent, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128))).transpose(-1, -2)) # cosin
-    max_values, max_indices = similarity.max(dim=-1)
-    # pivot merge
-    if merge=="pivot":
-        # print("Pivot merge")
-        merged_indices = max_indices.unsqueeze(-1).repeat(1, 1, 1, 128)
-        k_hh_selected = torch.gather(input=k_hh_recent, dim=2, index=merged_indices)
-        k_hh_merged = (k_hh_pruned + k_hh_selected)/2
-        k_hh_recent = torch.scatter_reduce(input=k_hh_recent, dim=2, index=merged_indices, src=k_hh_merged, reduce='mean', include_self=True) # include_self=True seems decrease the performance
-        v_hh_selected = torch.gather(input=v_hh_recent, dim=2, index=merged_indices)
-        v_hh_merged = (v_hh_pruned + v_hh_selected)/2
-        v_hh_recent = torch.scatter_reduce(input=v_hh_recent, dim=2, index=merged_indices, src=v_hh_merged, reduce='mean', include_self=True)
-    elif merge=="averaged":
-        merged_indices = max_indices.unsqueeze(-1).repeat(1, 1, 1, 128)
-        k_hh_selected = torch.gather(input=k_hh_recent, dim=2, index=merged_indices)
-        k_hh_merged = k_hh_pruned
-        k_hh_recent = torch.scatter_reduce(input=k_hh_recent, dim=2, index=merged_indices, src=k_hh_merged, reduce='mean', include_self=True) # include_self=True seems decrease the performance
-        v_hh_selected = torch.gather(input=v_hh_recent, dim=2, index=merged_indices)
-        v_hh_merged = v_hh_pruned
-        v_hh_recent = torch.scatter_reduce(input=v_hh_recent, dim=2, index=merged_indices, src=v_hh_merged, reduce='mean', include_self=True)
+    # Match low-precision keys in FP32: finite FP16 vectors can already have an
+    # overflowing FP16 norm. Keep FP64 inputs in FP64 and KV aggregation native.
+    score_dtype = torch.float32 if key_states.dtype in (torch.float16, torch.bfloat16) else key_states.dtype
+    score_drop = drop_keys.to(score_dtype)
+    score_retained = retained_keys.to(score_dtype)
+    similarity = F.normalize(score_drop, dim=-1, eps=1e-12) @ F.normalize(score_retained, dim=-1, eps=1e-12).transpose(-1, -2)
+    nearest = similarity.argmax(dim=-1).unsqueeze(-1).expand(-1, -1, -1, head_dim)
+    if merge == "pivot":
+        # Preserve the original pair-with-pivot weighting and include_self=True:
+        # each dropped token contributes (token + its retained pivot) / 2.
+        merge_keys = (drop_keys + retained_keys.gather(2, nearest)) / 2
+        merge_values = (drop_values + retained_values.gather(2, nearest)) / 2
     else:
-        raise ValueError('Merge method not supported')
-
-    # TODO: other merge strategies
-    # weight merge
-
-    return k_hh_recent, v_hh_recent
+        merge_keys, merge_values = drop_keys, drop_values
+    return (
+        torch.scatter_reduce(retained_keys, 2, nearest, merge_keys, reduce='mean', include_self=True),
+        torch.scatter_reduce(retained_values, 2, nearest, merge_values, reduce='mean', include_self=True),
+    )
 class DynamicCacheSplitHeadFlatten(Cache):
     '''
     adapt from https://github.com/FFY0/AdaKV.
@@ -506,25 +495,42 @@ class LookMCluster():
         # check if prefix phase
         assert key_states.shape[-2] == query_states.shape[-2]
         bsz, num_heads, q_len, head_dim = query_states.shape
-        # self.select_num = int(q_len * self.budget_ratio - self.window_size)
-        self.select_num = int(q_len * self.budget_ratio)
-        if self.select_num <= 0:
+        if not math.isfinite(self.budget_ratio) or not 0 < self.budget_ratio <= 1:
+            raise ValueError('LookM budget_ratio must be finite and in (0, 1]')
+        if self.window_size < 1:
+            raise ValueError('LookM requires a positive recent window')
+        # The total prefill budget includes the recent window. A zero history
+        # selection still merges historical tokens in the native merge layers.
+        self.total_prefill_capacity = math.floor(q_len * self.budget_ratio)
+        if self.total_prefill_capacity < 1:
+            raise ValueError('LookM total prefill budget is zero; a nonempty KV cache cannot satisfy it')
+        self.effective_window_size = min(self.window_size, self.total_prefill_capacity)
+        self.select_num = self.total_prefill_capacity - self.effective_window_size
+        window = self.effective_window_size
+        if self.total_prefill_capacity >= q_len:
             return origin_key_states, origin_value_states
+        if self.select_num == 0:
+            if self.layer_idx >= (self.num_hidden_layers * self.merge_layer_ratio):
+                indices = torch.empty((*origin_key_states.shape[:2], 0, head_dim),
+                                      dtype=torch.long, device=origin_key_states.device)
+                return merge_kv(origin_key_states, origin_value_states, indices, window, "pivot")
+            return (origin_key_states[:, :, -window:, :].contiguous(),
+                    origin_value_states[:, :, -window:, :].contiguous())
         else:
             # compute attention
             # [bsz, heads, q_len, k_len]
-            attn_weights = torch.matmul(query_states[..., -self.window_size:, :], key_states.transpose(2, 3)) / math.sqrt(head_dim)
+            attn_weights = torch.matmul(query_states[..., -window:, :], key_states.transpose(2, 3)) / math.sqrt(head_dim)
             
-            mask = torch.full((self.window_size, self.window_size), torch.finfo(attn_weights.dtype).min, device=attn_weights.device)
+            mask = torch.full((window, window), torch.finfo(attn_weights.dtype).min, device=attn_weights.device)
             mask_cond = torch.arange(mask.size(-1), device=attn_weights.device)
             mask.masked_fill_(mask_cond < (mask_cond + 1).view(mask.size(-1), 1), 0)
             mask = mask.to(attn_weights.device)
             attention_mask = mask[None, None, :, :]
             # 是否需要softmax？
-            attn_weights[:, :, -self.window_size:, -self.window_size:] += attention_mask
+            attn_weights[:, :, -window:, -window:] += attention_mask
             attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query_states.dtype)
             # [LOOK-M]
-            attn_weights_sum = attn_weights[:, :, -self.window_size:, : -self.window_size].sum(dim = -2) #[bsz, heads, k_len]
+            attn_weights_sum = attn_weights[:, :, -window:, : -window].sum(dim = -2) #[bsz, heads, k_len]
             attn_weights_sum = attn_weights_sum.view(attn_weights_sum.shape[0], num_heads//self.num_key_value_groups,self.num_key_value_groups, -1)
             # [bsz, kv_heads, k_len]
             if self.gqa_func == 'max':
@@ -536,7 +542,7 @@ class LookMCluster():
             
             # Text token Add Max Score(Text Prefer)
             attn_weights_max = attn_weights_sum.max(dim = -1).values #[bsz, kv_heads]
-            text_index = self.is_text_token_mask[:, :-self.window_size] #[bsz, k_len]  k_len = q_len - window_size
+            text_index = self.is_text_token_mask[:, :-window] #[bsz, k_len]  k_len = q_len - window_size
             text_index = text_index.unsqueeze(1).expand(attn_weights_sum.shape) #[bsz, kv_heads, k_len]
             text_index = text_index.to(attn_weights_sum.device)
             assert text_index.shape[-1] == attn_weights_sum.shape[-1]
@@ -551,12 +557,12 @@ class LookMCluster():
             indices = indices.unsqueeze(-1).expand(-1, -1, -1, head_dim)
             # merge kv 
             if self.layer_idx >= (self.num_hidden_layers * self.merge_layer_ratio):
-                key_states, value_states = merge_kv(origin_key_states, origin_value_states, indices, self.window_size, "pivot")
+                key_states, value_states = merge_kv(origin_key_states, origin_value_states, indices, window, "pivot")
             else:
-                k_past_compress = origin_key_states[:, :, :-self.window_size, :].gather(dim = 2, index = indices)
-                v_past_compress = origin_value_states[:, :, :-self.window_size, :].gather(dim = 2, index = indices)
-                k_cur = origin_key_states[:, :, -self.window_size:, :]
-                v_cur = origin_value_states[:, :, -self.window_size:, :]
+                k_past_compress = origin_key_states[:, :, :-window, :].gather(dim = 2, index = indices)
+                v_past_compress = origin_value_states[:, :, :-window, :].gather(dim = 2, index = indices)
+                k_cur = origin_key_states[:, :, -window:, :]
+                v_cur = origin_value_states[:, :, -window:, :]
 
                 key_states = torch.cat([k_past_compress, k_cur], dim = 2)
                 value_states = torch.cat([v_past_compress, v_cur], dim = 2)

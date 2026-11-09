@@ -2,7 +2,7 @@
   "schema_version": 2,
   "source_path_base": "original workspace (KVRepack parent directory by default)",
   "target_path_base": "KVRepack repository root",
-  "scope": "Selected Qwen2.5-VL evaluation paths and Llava-OneVision Qwen2 baselines. Selected DecoupleKV branding is renamed to KVRepack in owned code; original source paths, bytes, hashes and source AST fingerprints remain unchanged. No improved LLaVA algorithm is introduced.",
+  "scope": "Selected Qwen2.5-VL evaluation paths and Llava-OneVision Qwen2 baselines. Selected DecoupleKV branding is renamed to KVRepack in owned code; original source paths, bytes, hashes and source AST fingerprints remain unchanged. No improved LLaVA algorithm is introduced. LookM now has an explicitly declared behavioral patch for strict total prefill budget and correct head-local merging; it is no longer claimed AST-identical to the old LookM adaptation.",
   "transform_definitions": {
     "rename_python_import_root": "Replace the root hybridkv only in Python import/from statements with kvrepack; do not rename algorithm variables, class names, method names or environment literals.",
     "rename_cuda_module": "Replace whole-word mmko_kernel identifiers with kvrepack_kernel, including matching commented kernel examples.",
@@ -54,7 +54,8 @@
       "scope": "Owned Python code text, including identifiers, environment names, method strings, docstrings and comments. Five module filenames follow the same lowercase rule. Historical source paths and entrypoint references are protected. RandomDecoupledKV and ordinary decoupled are preserved.",
       "reversibility": "Each changed file records exact target character spans and original/replacement fragments. Reverse these spans to recover the previous integration bytes and SHA-256; replay ordered rules to recover current bytes. A global inverse replacement is intentionally not used.",
       "algorithm_verification": "Apply identical ordered rules to the original source text before existing import/kernel/resource normalization and compare complete or selected ASTs. Original pre-branding source AST fingerprints are retained; derived renamed_source_* fingerprints are added."
-    }
+    },
+    "lookm_total_prefill_budget_and_head_local_drop_v2": "After the preserved mechanical integration, apply the shipped exact unified diff. Reverse declared text spans to prove the prior target SHA, verify before/after AST of only two functions, restore those functions to prove the remainder is unchanged, then compare the original source AST against the recovered integration."
   },
   "validation_plan": {
     "mechanical_copy": "Apply declared import/kernel/resource-location changes to source and compare full ast.dump(include_attributes=False) with target.",
@@ -62,19 +63,21 @@
     "selected_dispatcher": "Compare every retained method branch body AST after package import normalization; compare prepare_inputs_for_generation_qwen AST after removing exactly the recorded unreachable token-mask if. Assert removed methods have no dispatcher branch.",
     "resources": "Require source and target SHA-256 equality.",
     "llava_dispatcher": "Compare all four retained branch bodies with opensource replace_llava_onevision. Remove only two leading imports and final fallback else, then compare the whole function AST. Require unchanged Qwen function AST.",
-    "branding": "Reverse span edits and verify previous target SHA, replay exact ordered naming rules, verify old source AST against recovered integration AST and branded original source AST against new target AST. No AST normalization removes arithmetic, branching, function arguments or non-brand string values."
+    "branding": "Reverse span edits and verify previous target SHA, replay exact ordered naming rules, verify old source AST against recovered integration AST and branded original source AST against new target AST. No AST normalization removes arithmetic, branching, function arguments or non-brand string values.",
+    "behavior_patch": "Verify reversible patch and full unchanged AST outside declared definitions; compare unmodified original-source normalization to recovered pre-fix target. Never replace original source hashes with corrected target hashes."
   },
   "entries": [
     {
       "source_path": "HybridKV-artifact/hybridkv/baseline_utils.py",
       "source_sha256": "e59c37edd0e267199496b958d671d26c60784e0335abf9d2222d0b02f46fe0b4",
       "target_path": "src/kvrepack/baseline_utils.py",
-      "target_sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
-      "kind": "mechanical_copy",
+      "target_sha256": "ee1baadace05c657f233f4b3f82624933b81b4a4fae018e2db4852fee6a275ff",
+      "kind": "mechanical_copy_with_declared_patch",
       "transformations": [
         "rename_python_import_root",
         "rename_cuda_module",
-        "relocate_head_score_resources"
+        "relocate_head_score_resources",
+        "lookm_total_prefill_budget_and_head_local_drop_v2"
       ],
       "entrypoint_refs": [
         "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
@@ -83,7 +86,116 @@
         "HybridKV-artifact/scripts/eval/llava_ov_hybridkv.sh"
       ],
       "source_ast_sha256": "f64ffd8d26f33fc3dea5193f9dbb718daf270bbc791bc1f6187109310efb6be6",
-      "renamed_source_ast_sha256": "f64ffd8d26f33fc3dea5193f9dbb718daf270bbc791bc1f6187109310efb6be6"
+      "renamed_source_ast_sha256": "f64ffd8d26f33fc3dea5193f9dbb718daf270bbc791bc1f6187109310efb6be6",
+      "behavior_patch": {
+        "id": "lookm_total_budget_and_per_head_merge_v2",
+        "reason": "Enforce floor(r*N) total prefill tokens including recent window; correct per-batch/head dropped-token complement, arbitrary head dimension, zero/low-precision cosine stability; preserve recent-pivot merging for zero history selection and return original tensors when the full input fits.",
+        "previous_target_sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "previous_target_ast_sha256": "f64ffd8d26f33fc3dea5193f9dbb718daf270bbc791bc1f6187109310efb6be6",
+        "patch_path": "provenance/patches/lookm_strict_budget_v2.patch",
+        "patch_sha256": "b57ec9b0124df5087bdc4a1043532d599505442f31fc3538deb28a9f3b979cdb",
+        "patch_from": "a/src/kvrepack/baseline_utils.py",
+        "patch_to": "b/src/kvrepack/baseline_utils.py",
+        "function_changes": [
+          {
+            "name": "merge_kv",
+            "before_ast_sha256": "495704427e307ffa0018adba986e96e5e97365387c86d29999d8a1d8999eb39d",
+            "after_ast_sha256": "838fd0a09d544836ce9552159a262f44279d522c8f78da30629c66d24b5c0a6a"
+          },
+          {
+            "name": "LookMCluster.update_kv",
+            "before_ast_sha256": "843098ed570d97313bada4181b7a927f07a7ad360e80d491130affc8c055ad4c",
+            "after_ast_sha256": "0480d96c492e97e5413ccc5e1da8c56e948c60afbd912785251748f48ca4b362"
+          }
+        ],
+        "reversible_edits": [
+          {
+            "target_start": 1790,
+            "target_end": 2354,
+            "before": "    # merge methods in LOOK-M\n",
+            "after": "    \"\"\"Merge each LookM head's unselected history into its own retained pivots.\"\"\"\n    bsz, num_heads, k_len, head_dim = key_states.shape\n    if merge not in {\"pivot\", \"averaged\"}:\n        raise ValueError('Merge method not supported')\n    if not 0 <= window_size <= k_len or value_states.shape != key_states.shape:\n        raise ValueError('LookM requires equal K/V shapes and a valid recent window')\n    history_len = k_len - window_size\n    selected_keys = key_states.gather(dim=2, index=indices)\n    selected_values = value_states.gather(dim=2, index=indices)\n"
+          },
+          {
+            "target_start": 2355,
+            "target_end": 3002,
+            "before": "    bsz, num_heads, k_len, head_dim = key_states.shape\n\n    # kv-selected\n    selected_keys = key_states.gather(dim=2, index=indices)  # [bsz, num_heads, topk_len, head_dim]\n    selected_values = value_states.gather(dim=2, index=indices)  # [bsz, num_heads, topk_len, head_dim]\n\n    # kv-drop\n    all_indices = torch.arange(k_len - window_size, device=key_states.device).unsqueeze(0).unsqueeze(0).expand(bsz, num_heads, k_len - window_size)\n    all_indices_flattened = all_indices.flatten()  # [bsz * num_heads * (k_len-window_size)]\n    selected_indices_flattened = indices.flatten()  # [bsz * num_heads * topk_len]\n    is_selected = torch.isin(all_indices_flattened, selected_indices_flattened)\n    drop_indices_flattened = all_indices_flattened[~is_selected]\n    drop_len = drop_indices_flattened.shape[0] // (all_indices.shape[0] * all_indices.shape[1])\n    drop_indices = drop_indices_flattened.reshape(all_indices.shape[0], all_indices.shape[1], drop_len) # [bsz * num_heads * (k_len-window_size-topk_len)]\n    drop_indices = drop_indices.unsqueeze(-1).expand(-1, -1, -1, head_dim)  # [bsz, num_heads, (k_len-window_size-topk_len), head_dim]\n",
+            "after": "    # Selection is independent for every (batch, KV head). A flattened isin\n    # would incorrectly remove tokens selected only in another head or sample.\n    selected_history = torch.zeros((bsz, num_heads, history_len), device=key_states.device, dtype=torch.bool)\n    selected_history.scatter_(2, indices[..., 0], True)\n    history_indices = torch.arange(history_len, device=key_states.device).view(1, 1, -1).expand(bsz, num_heads, -1)\n    drop_len = history_len - indices.shape[-2]\n    drop_indices = history_indices[~selected_history].reshape(bsz, num_heads, drop_len)\n    drop_indices = drop_indices.unsqueeze(-1).expand(-1, -1, -1, head_dim)\n"
+          },
+          {
+            "target_start": 3128,
+            "target_end": 3509,
+            "before": "",
+            "after": "    retained_keys = torch.cat([selected_keys, key_states[:, :, history_len:, :]], dim=2)\n    retained_values = torch.cat([selected_values, value_states[:, :, history_len:, :]], dim=2)\n    if retained_keys.shape[-2] == 0:\n        raise ValueError('LookM cannot merge a nonempty history into zero retained tokens')\n    if drop_len == 0:\n        return retained_keys, retained_values\n"
+          },
+          {
+            "target_start": 3510,
+            "target_end": 4415,
+            "before": "    ##### apply merge #####\n    # prepare for merge\n    k_hh_pruned = drop_keys  # [bsz, num_heads, k_len-topk_len-window_size, head_dim]\n    k_hh_recent = torch.cat([selected_keys, key_states[:, :, -window_size:, :], ], dim=2)  # [bsz, num_heads, topk_len+window_size, head_dim]\n    # k_hh_recent = selected_keys\n    v_hh_pruned = drop_values  # [bsz, num_heads, k_len-topk_len-window_size, head_dim]\n    v_hh_recent = torch.cat([selected_values, value_states[:, :, -window_size:, :]], dim=2)  # [bsz, num_heads, topk_len+window_size, head_dim]\n    # v_hh_recent = selected_values\n    # similarity matrix\n    similarity = (k_hh_pruned / torch.norm(k_hh_pruned, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128)) @ ((k_hh_recent / (torch.norm(k_hh_recent, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128))).transpose(-1, -2)) # cosin\n    max_values, max_indices = similarity.max(dim=-1)\n    # pivot merge\n    if merge==\"pivot\":\n        # print(\"Pivot merge\")\n        merged_indices = max_indices.unsqueeze(-1).repeat(1, 1, 1, 128)\n        k_hh_selected = torch.gather(input=k_hh_recent, dim=2, index=merged_indices)\n        k_hh_merged = (k_hh_pruned + k_hh_selected)/2\n        k_hh_recent = torch.scatter_reduce(input=k_hh_recent, dim=2, index=merged_indices, src=k_hh_merged, reduce='mean', include_self=True) # include_self=True seems decrease the performance\n        v_hh_selected = torch.gather(input=v_hh_recent, dim=2, index=merged_indices)\n        v_hh_merged = (v_hh_pruned + v_hh_selected)/2\n        v_hh_recent = torch.scatter_reduce(input=v_hh_recent, dim=2, index=merged_indices, src=v_hh_merged, reduce='mean', include_self=True)\n    elif merge==\"averaged\":\n        merged_indices = max_indices.unsqueeze(-1).repeat(1, 1, 1, 128)\n        k_hh_selected = torch.gather(input=k_hh_recent, dim=2, index=merged_indices)\n        k_hh_merged = k_hh_pruned\n        k_hh_recent = torch.scatter_reduce(input=k_hh_recent, dim=2, index=merged_indices, src=k_hh_merged, reduce='mean', include_self=True) # include_self=True seems decrease the performance\n        v_hh_selected = torch.gather(input=v_hh_recent, dim=2, index=merged_indices)\n        v_hh_merged = v_hh_pruned\n        v_hh_recent = torch.scatter_reduce(input=v_hh_recent, dim=2, index=merged_indices, src=v_hh_merged, reduce='mean', include_self=True)\n",
+            "after": "    # Match low-precision keys in FP32: finite FP16 vectors can already have an\n    # overflowing FP16 norm. Keep FP64 inputs in FP64 and KV aggregation native.\n    score_dtype = torch.float32 if key_states.dtype in (torch.float16, torch.bfloat16) else key_states.dtype\n    score_drop = drop_keys.to(score_dtype)\n    score_retained = retained_keys.to(score_dtype)\n    similarity = F.normalize(score_drop, dim=-1, eps=1e-12) @ F.normalize(score_retained, dim=-1, eps=1e-12).transpose(-1, -2)\n    nearest = similarity.argmax(dim=-1).unsqueeze(-1).expand(-1, -1, -1, head_dim)\n    if merge == \"pivot\":\n        # Preserve the original pair-with-pivot weighting and include_self=True:\n        # each dropped token contributes (token + its retained pivot) / 2.\n        merge_keys = (drop_keys + retained_keys.gather(2, nearest)) / 2\n        merge_values = (drop_values + retained_values.gather(2, nearest)) / 2\n"
+          },
+          {
+            "target_start": 4425,
+            "target_end": 4712,
+            "before": "        raise ValueError('Merge method not supported')\n\n    # TODO: other merge strategies\n    # weight merge\n\n    return k_hh_recent, v_hh_recent\n",
+            "after": "        merge_keys, merge_values = drop_keys, drop_values\n    return (\n        torch.scatter_reduce(retained_keys, 2, nearest, merge_keys, reduce='mean', include_self=True),\n        torch.scatter_reduce(retained_values, 2, nearest, merge_values, reduce='mean', include_self=True),\n    )\n"
+          },
+          {
+            "target_start": 25396,
+            "target_end": 26311,
+            "before": "        # self.select_num = int(q_len * self.budget_ratio - self.window_size)\n        self.select_num = int(q_len * self.budget_ratio)\n        if self.select_num <= 0:\n",
+            "after": "        if not math.isfinite(self.budget_ratio) or not 0 < self.budget_ratio <= 1:\n            raise ValueError('LookM budget_ratio must be finite and in (0, 1]')\n        if self.window_size < 1:\n            raise ValueError('LookM requires a positive recent window')\n        # The total prefill budget includes the recent window. A zero history\n        # selection still merges historical tokens in the native merge layers.\n        self.total_prefill_capacity = math.floor(q_len * self.budget_ratio)\n        if self.total_prefill_capacity < 1:\n            raise ValueError('LookM total prefill budget is zero; a nonempty KV cache cannot satisfy it')\n        self.effective_window_size = min(self.window_size, self.total_prefill_capacity)\n        self.select_num = self.total_prefill_capacity - self.effective_window_size\n        window = self.effective_window_size\n        if self.total_prefill_capacity >= q_len:\n"
+          },
+          {
+            "target_start": 26369,
+            "target_end": 26900,
+            "before": "",
+            "after": "        if self.select_num == 0:\n            if self.layer_idx >= (self.num_hidden_layers * self.merge_layer_ratio):\n                indices = torch.empty((*origin_key_states.shape[:2], 0, head_dim),\n                                      dtype=torch.long, device=origin_key_states.device)\n                return merge_kv(origin_key_states, origin_value_states, indices, window, \"pivot\")\n            return (origin_key_states[:, :, -window:, :].contiguous(),\n                    origin_value_states[:, :, -window:, :].contiguous())\n"
+          },
+          {
+            "target_start": 26987,
+            "target_end": 27109,
+            "before": "            attn_weights = torch.matmul(query_states[..., -self.window_size:, :], key_states.transpose(2, 3)) / math.sqrt(head_dim)\n",
+            "after": "            attn_weights = torch.matmul(query_states[..., -window:, :], key_states.transpose(2, 3)) / math.sqrt(head_dim)\n"
+          },
+          {
+            "target_start": 27122,
+            "target_end": 27235,
+            "before": "            mask = torch.full((self.window_size, self.window_size), torch.finfo(attn_weights.dtype).min, device=attn_weights.device)\n",
+            "after": "            mask = torch.full((window, window), torch.finfo(attn_weights.dtype).min, device=attn_weights.device)\n"
+          },
+          {
+            "target_start": 27527,
+            "target_end": 27596,
+            "before": "            attn_weights[:, :, -self.window_size:, -self.window_size:] += attention_mask\n",
+            "after": "            attn_weights[:, :, -window:, -window:] += attention_mask\n"
+          },
+          {
+            "target_start": 27734,
+            "target_end": 27840,
+            "before": "            attn_weights_sum = attn_weights[:, :, -self.window_size:, : -self.window_size].sum(dim = -2) #[bsz, heads, k_len]\n",
+            "after": "            attn_weights_sum = attn_weights[:, :, -window:, : -window].sum(dim = -2) #[bsz, heads, k_len]\n"
+          },
+          {
+            "target_start": 28470,
+            "target_end": 28575,
+            "before": "            text_index = self.is_text_token_mask[:, :-self.window_size] #[bsz, k_len]  k_len = q_len - window_size\n",
+            "after": "            text_index = self.is_text_token_mask[:, :-window] #[bsz, k_len]  k_len = q_len - window_size\n"
+          },
+          {
+            "target_start": 29424,
+            "target_end": 29542,
+            "before": "                key_states, value_states = merge_kv(origin_key_states, origin_value_states, indices, self.window_size, \"pivot\")\n",
+            "after": "                key_states, value_states = merge_kv(origin_key_states, origin_value_states, indices, window, \"pivot\")\n"
+          },
+          {
+            "target_start": 29560,
+            "target_end": 29894,
+            "before": "                k_past_compress = origin_key_states[:, :, :-self.window_size, :].gather(dim = 2, index = indices)\n                v_past_compress = origin_value_states[:, :, :-self.window_size, :].gather(dim = 2, index = indices)\n                k_cur = origin_key_states[:, :, -self.window_size:, :]\n                v_cur = origin_value_states[:, :, -self.window_size:, :]\n",
+            "after": "                k_past_compress = origin_key_states[:, :, :-window, :].gather(dim = 2, index = indices)\n                v_past_compress = origin_value_states[:, :, :-window, :].gather(dim = 2, index = indices)\n                k_cur = origin_key_states[:, :, -window:, :]\n                v_cur = origin_value_states[:, :, -window:, :]\n"
+          }
+        ],
+        "scope": "Only the two declared LookM functions change. Original source paths/SHA and pre-correction mechanical AST evidence remain intact."
+      }
     },
     {
       "source_path": "HybridKV-artifact/hybridkv/qwen_model.py",

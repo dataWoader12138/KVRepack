@@ -10,6 +10,7 @@ from kvrepack.benchmarks.video_comparison_report import (
     TASKS, VATEX_METRICS, _canonical, _json_sha, build_summary, load_matrix,
     paired_interval, write_report,
 )
+from kvrepack.benchmarks.run_video_comparison import LEGACY_LOOKM_POLICY,NATIVE_BUDGET_POLICY,STRICT_LOOKM_POLICY
 
 
 def fixture(root, methods=("lookm","hybridkv_kvrepack")):
@@ -17,16 +18,17 @@ def fixture(root, methods=("lookm","hybridkv_kvrepack")):
     (root/"matrix.json").write_text(json.dumps(matrix))
     for task in TASKS:
         for method in methods:
+            policy=LEGACY_LOOKM_POLICY if method=="lookm" else NATIVE_BUDGET_POLICY
             directory=root/method/task;(directory/"samples").mkdir(parents=True)
-            contract=dict(schema_version=1,method=method,task=task,target_docs=1,target_generations=1,frames=64,budget_ratio=.1,max_new_tokens=128 if task==TASKS[0] else 64,model_snapshot="qwen7b",repetition_penalty=1.05)
+            contract=dict(schema_version=1,method=method,task=task,target_docs=1,target_generations=1,frames=64,budget_ratio=.1,max_new_tokens=128 if task==TASKS[0] else 64,model_snapshot="qwen7b",repetition_penalty=1.05,budget_policy=policy)
             (directory/"run_contract.json").write_text(json.dumps(contract))
             (directory/"run_state.json").write_text(json.dumps(dict(status="complete",target_docs=1,target_generations=1,completed_docs=1,completed_generations=1)))
             meta=dict(task=task,doc_id=0,source_video_id="video",video_id="video",arrow_sha256="arrow",original_row_sha256="row")
             inputs=dict(input_hashes={"input_ids":"actual-bytes"},input_shapes={"input_ids":[1,100]},input_dtypes={"input_ids":"torch.int64"})
             lengths=10 if method==methods[0] else 12
             layers=[dict(layer=i,before_tokens_per_head=100,head_lengths=[lengths]*4,after_tokens_total=4*lengths) for i in range(28)]
-            audit=dict(status="completed",method=method,task=task,doc_id=0,native_kv_heads=4,layers_count=28,layers=layers,nominal_budget_ratio=.1,prefill_tokens_total=112*lengths,uncompressed_tokens_total=11200,actual_retained_ratio=lengths/100)
-            row=dict(schema_version=1,status="completed",method=method,task=task,doc_id=0,contract_sha256=_json_sha(contract),text="answer",prediction="answer",reference_metadata=meta,input_fingerprints=inputs,**inputs,source_video_id="video",config=dict(method=method,max_new_tokens=contract["max_new_tokens"]),generated_ids=[7,2],generated_tokens=2,eos_token_id=2,eos_reached=True,max_new_tokens=contract["max_new_tokens"],cache_audit=audit)
+            audit=dict(status="completed",method=method,task=task,doc_id=0,native_kv_heads=4,layers_count=28,layers=layers,nominal_budget_ratio=.1,prefill_tokens_total=112*lengths,uncompressed_tokens_total=11200,actual_retained_ratio=lengths/100,budget_policy=policy,strict_budget_passed=False if method=="lookm" else None)
+            row=dict(schema_version=1,status="completed",method=method,task=task,doc_id=0,contract_sha256=_json_sha(contract),text="answer",prediction="answer",reference_metadata=meta,input_fingerprints=inputs,**inputs,source_video_id="video",config=dict(method=method,max_new_tokens=contract["max_new_tokens"],budget_policy=policy),generated_ids=[7,2],generated_tokens=2,eos_token_id=2,eos_reached=True,max_new_tokens=contract["max_new_tokens"],cache_audit=audit)
             (directory/"samples/000000.json").write_text(json.dumps(row))
     return matrix
 
@@ -52,6 +54,8 @@ class VideoComparisonReportTests(unittest.TestCase):
                 self.assertIsNone(s["comparisons"][0]["ci95"])
                 self.assertTrue(all(row["ci95"] is None for row in s["comparisons"][1:]))
                 self.assertNotEqual(s["cache_budget_summary"][0]["actual_retained_ratio_mean"],s["cache_budget_summary"][1]["actual_retained_ratio_mean"])
+                self.assertTrue(s["cache_budget_summary"][0]["legacy_budget_result"])
+                self.assertFalse(s["cache_budget_summary"][0]["strict_budget_passed"])
                 output=Path(directory)/"report";write_report(s,output,plots=False)
                 for name in ("comparison.csv","nextqa_scores.csv","nextqa_paired_scores.csv","generation_summary.csv","cache_audit.csv","cache_budget_summary.csv","sample_files.csv","summary.json","RESULTS.md"):
                     self.assertGreater((output/name).stat().st_size,20)

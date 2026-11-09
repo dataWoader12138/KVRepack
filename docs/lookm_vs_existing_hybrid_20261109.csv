@@ -1,6 +1,6 @@
-﻿dataset,metric,lookm,existing_hybrid_kvrepack,lookm_minus_existing,reference_type
-NExTQA,WUPS,33.8571440351094,33.21990343057972,0.6372406045296799,existing run; actual input hashes matched
-VATEX,Bleu_4,0.2193327212159965,0.22858326025712025,-0.009250539041123745,July historical snapshot/log; not strict current input-byte pairing
-VATEX,METEOR,0.21947138133147506,0.22443910293988592,-0.004967721608410858,July historical snapshot/log; not strict current input-byte pairing
-VATEX,ROUGE_L,0.4329500116215331,0.4338122442662807,-0.0008622326447475515,July historical snapshot/log; not strict current input-byte pairing
-VATEX,CIDEr,0.4729287767910361,0.48891433670588336,-0.015985559914847236,July historical snapshot/log; not strict current input-byte pairing
+﻿dataset,metric,lookm,existing_hybrid_kvrepack,lookm_minus_existing,reference_type,lookm_budget_policy,valid_for_strict_10pct
+NExTQA,WUPS,33.8571440351094,33.21990343057972,0.6372406045296799,existing run; actual input hashes matched,legacy_history_plus_recent_v1,False
+VATEX,Bleu_4,0.2193327212159965,0.22858326025712025,-0.009250539041123745,July historical snapshot/log; not strict current input-byte pairing,legacy_history_plus_recent_v1,False
+VATEX,METEOR,0.21947138133147506,0.22443910293988592,-0.004967721608410858,July historical snapshot/log; not strict current input-byte pairing,legacy_history_plus_recent_v1,False
+VATEX,ROUGE_L,0.4329500116215331,0.4338122442662807,-0.0008622326447475515,July historical snapshot/log; not strict current input-byte pairing,legacy_history_plus_recent_v1,False
+VATEX,CIDEr,0.4729287767910361,0.48891433670588336,-0.015985559914847236,July historical snapshot/log; not strict current input-byte pairing,legacy_history_plus_recent_v1,False

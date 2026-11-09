@@ -1,5 +1,7 @@
 # 文件整理与实现选择
 
+2026-11-09补充：LookM已按用户要求加入[严格总预算与合并正确性修正](LOOKM_STRICT_BUDGET.md)。这两处函数是明确记录的行为补丁，不属于仅改名的原样迁移；原文件SHA、旧integration和精确补丁均可核验。旧“10%＋32”分数只作历史记录，不能当作新严格10%结果。
+
 本项目在原工作区旁新建，保留两个原目录。执行来源以 `HybridKV-artifact/scripts/eval` 中的脚本为依据；这些原入口的完整文本作为 JSON 数据保存在 `provenance/reference_entrypoints.json`，不会作为可运行的旧路径入口保留。
 
 ## 收敛后的文件

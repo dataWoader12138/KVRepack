@@ -11,6 +11,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from kvrepack.ablations.run_head_selection import atomic_json,timestamp
+from kvrepack.benchmarks.run_video_comparison import STRICT_LOOKM_POLICY
 
 
 def main():
@@ -34,7 +35,7 @@ def main():
         state_path=output/'lookm_state.json'
         prior=json.loads(state_path.read_text()) if state_path.exists() else {}
         if prior.get('resume_authorized') is False or prior.get('status')=='stopped_by_user':raise ValueError('Stopped run cannot be resumed automatically')
-        spec=dict(method='lookm',tasks=args.tasks,limit=args.limit,budget_ratio=.1,pretrained=str(args.pretrained.resolve()),hf_home=str(args.hf_home.resolve()))
+        spec=dict(method='lookm',tasks=args.tasks,limit=args.limit,budget_ratio=.1,budget_policy=STRICT_LOOKM_POLICY,pretrained=str(args.pretrained.resolve()),hf_home=str(args.hf_home.resolve()))
         if prior and prior['spec']!=spec:raise ValueError('Resume specification changed')
         state=dict(status='starting',spec=spec,started_utc=prior.get('started_utc',timestamp()),completed_tasks=[],controller_pid=os.getpid(),process_group=os.getpgrp())
         atomic_json(state_path,state)
@@ -43,6 +44,10 @@ def main():
         try:
             for task in args.tasks:
                 case=output/task;common=['--run-root',str(case),'--hf-home',str(args.hf_home.resolve()),'--output',str(case/'report'),'--limit',str(args.limit)]
+                if (case/'run_contract.json').exists():
+                    saved=json.loads((case/'run_contract.json').read_text())
+                    if saved.get('budget_policy')!=STRICT_LOOKM_POLICY:
+                        raise ValueError('Legacy LookM used an extra recent window; select a fresh strict-budget output directory')
                 existing=json.loads((case/'run_state.json').read_text()) if (case/'run_state.json').exists() else {}
                 ready=existing.get('status')=='complete' and existing.get('completed_docs')==args.limit and existing.get('completed_generations')==args.limit
                 if not ready:
@@ -54,7 +59,10 @@ def main():
                         state['worker_pid']=child.pid;atomic_json(state_path,state)
                         if child.wait():raise RuntimeError('LookM generation failed; see task log')
                 report=case/'report'
-                try:scored=json.loads((report/'summary.json').read_text()).get('status')=='complete'
+                try:
+                    saved_report=json.loads((report/'summary.json').read_text())
+                    scored=(saved_report.get('status')=='complete' and saved_report.get('strict_budget_passed') is True
+                            and saved_report.get('budget_policy')==STRICT_LOOKM_POLICY)
                 except (OSError,ValueError):scored=False
                 if not scored:
                     if report.exists():report.rename(case/('report_incomplete_'+timestamp().replace(':','')))
