@@ -1,0 +1,5 @@
+task,method,n_inputs,eos_count,reached_length_limit,capped_without_eos,generated_tokens_min,generated_tokens_mean,generated_tokens_max
+nextqa_oe_test,lookm,1,1,0,0,2,2.0,2
+nextqa_oe_test,hybridkv_kvrepack,1,1,0,0,2,2.0,2
+vatex_test,lookm,1,1,0,0,21,21.0,21
+vatex_test,hybridkv_kvrepack,1,1,0,0,15,15.0,15

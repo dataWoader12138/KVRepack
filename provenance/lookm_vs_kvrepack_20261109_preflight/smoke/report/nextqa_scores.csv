@@ -1,0 +1,3 @@
+task,method,doc_id,source_video_id,WUPS,WUPS_0_9,prediction_sha256
+nextqa_oe_test,lookm,0,4924794333,100,100,9390298f3fb0c5b160498935d79cb139aef28e1c47358b4bbba61862b9c26e59
+nextqa_oe_test,hybridkv_kvrepack,0,4924794333,100,100,9390298f3fb0c5b160498935d79cb139aef28e1c47358b4bbba61862b9c26e59

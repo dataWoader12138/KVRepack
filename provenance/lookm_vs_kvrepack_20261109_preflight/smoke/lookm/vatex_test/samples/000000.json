@@ -1,0 +1,2530 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "method": "lookm",
+  "task": "vatex_test",
+  "doc_id": 0,
+  "contract_sha256": "6d6e278c895cc183dbc504df499e0acc38e43553376c439adc71acd33e55aac8",
+  "source_video_id": "5-xGskbsBgI",
+  "video_id": "5-xGskbsBgI_000055_000065",
+  "reference_metadata": {
+    "task": "vatex_test",
+    "doc_id": 0,
+    "video_id": "5-xGskbsBgI_000055_000065",
+    "source_video_id": "5-xGskbsBgI",
+    "video_bytes": 20189458,
+    "video_grid_thw": [
+      32,
+      26,
+      46
+    ],
+    "input_tokens": 9736,
+    "original_row_sha256": "a7761c78bb9c4876ef7ef64d7ca7158848d9714d3796a96004191890eb160df2",
+    "expanded_text_sha256": "d256751524b35364e7fc70002e4c51a9ebecdd06cf2d772d29b10cfa83175f54",
+    "frame_sampling": {
+      "original_frames": 746,
+      "originalframes": 746,
+      "requested_frames": 64,
+      "selected_indices": [
+        0,
+        11,
+        23,
+        35,
+        47,
+        59,
+        70,
+        82,
+        94,
+        106,
+        118,
+        130,
+        141,
+        153,
+        165,
+        177,
+        189,
+        201,
+        212,
+        224,
+        236,
+        248,
+        260,
+        271,
+        283,
+        295,
+        307,
+        319,
+        331,
+        342,
+        354,
+        366,
+        378,
+        390,
+        402,
+        413,
+        425,
+        437,
+        449,
+        461,
+        473,
+        484,
+        496,
+        508,
+        520,
+        532,
+        543,
+        555,
+        567,
+        579,
+        591,
+        603,
+        614,
+        626,
+        638,
+        650,
+        662,
+        674,
+        685,
+        697,
+        709,
+        721,
+        733,
+        745
+      ],
+      "selected_frames": 64,
+      "unique_frames": 64,
+      "repeated_frames": 0
+    },
+    "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+    "task_yaml_sha256": "3a154d8593a5a26511f18c2961e4a511125da15629ca0aae85c8ae82870bc6d5",
+    "task_utils_sha256": "a1adb3c156c9107c8e001dabb07d9047511770b076c600f856b6d34bf1d74479"
+  },
+  "text": "A man picks up a can of shoe polish, a towel, and a brush from a table.",
+  "prediction": "A man picks up a can of shoe polish, a towel, and a brush from a table.",
+  "generated_ids": [
+    32,
+    883,
+    21895,
+    705,
+    264,
+    646,
+    315,
+    28977,
+    44029,
+    11,
+    264,
+    42613,
+    11,
+    323,
+    264,
+    15625,
+    504,
+    264,
+    1965,
+    13,
+    151645
+  ],
+  "generated_tokens": 21,
+  "input_fingerprints": {
+    "input_hashes": {
+      "attention_mask": "7d5c5ca3689dc58d97168a7e934709de10ee15028b982a98f59c8c9b85e19e02",
+      "input_ids": "d9c508d2797a7969d948ed8f8f771ced67560839c7aac16570f71c4c06662029",
+      "pixel_values_videos": "4cf0eaa3d4daef1daca6bb934cf1dcd202411838a5e2738cc24d52637d738b5f",
+      "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+      "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08"
+    },
+    "input_shapes": {
+      "attention_mask": [
+        1,
+        9736
+      ],
+      "input_ids": [
+        1,
+        9736
+      ],
+      "pixel_values_videos": [
+        38272,
+        1176
+      ],
+      "second_per_grid_ts": [
+        1
+      ],
+      "video_grid_thw": [
+        1,
+        3
+      ]
+    },
+    "input_dtypes": {
+      "attention_mask": "torch.int64",
+      "input_ids": "torch.int64",
+      "pixel_values_videos": "torch.float32",
+      "second_per_grid_ts": "torch.float32",
+      "video_grid_thw": "torch.int64"
+    }
+  },
+  "input_hashes": {
+    "attention_mask": "7d5c5ca3689dc58d97168a7e934709de10ee15028b982a98f59c8c9b85e19e02",
+    "input_ids": "d9c508d2797a7969d948ed8f8f771ced67560839c7aac16570f71c4c06662029",
+    "pixel_values_videos": "4cf0eaa3d4daef1daca6bb934cf1dcd202411838a5e2738cc24d52637d738b5f",
+    "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+    "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08"
+  },
+  "input_shapes": {
+    "attention_mask": [
+      1,
+      9736
+    ],
+    "input_ids": [
+      1,
+      9736
+    ],
+    "pixel_values_videos": [
+      38272,
+      1176
+    ],
+    "second_per_grid_ts": [
+      1
+    ],
+    "video_grid_thw": [
+      1,
+      3
+    ]
+  },
+  "input_dtypes": {
+    "attention_mask": "torch.int64",
+    "input_ids": "torch.int64",
+    "pixel_values_videos": "torch.float32",
+    "second_per_grid_ts": "torch.float32",
+    "video_grid_thw": "torch.int64"
+  },
+  "input_tokens": 9736,
+  "config": {
+    "method": "lookm",
+    "task": "vatex_test",
+    "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "frames": 64,
+    "budget_ratio": 0.1,
+    "algorithm_env": {
+      "BUDGET": "1024",
+      "BUDGET_RATIO": "0.1",
+      "RATIO": "0.1"
+    },
+    "min_pixels": 200704,
+    "max_pixels": 1605632,
+    "dtype": "bfloat16",
+    "attention": "flash_attention_2",
+    "model_seed": 42,
+    "max_new_tokens": 64,
+    "do_sample": false,
+    "use_cache": true,
+    "repetition_penalty": 1.05,
+    "stream_contract_sha256": "6d6e278c895cc183dbc504df499e0acc38e43553376c439adc71acd33e55aac8",
+    "source_files": {
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/benchmarks/run_video_comparison.py": "e5a05724197155c537f80839a41fcb7419e8d0dc5f21319eb373fcb36033b9fe",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model.py": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_croatt.py": "6f9d46f0d8a36ac842dc2e2beecccbc5be55194d5cfc47ff4379236f8dbf8cbf",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/monkeypatch.py": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py": "59ddc9cd387293e0bba05ad7cbd20bb921ff9119121369f1ae27a7d99540ed4b",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/modeling_qwen2_5_vl.py": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_cpu.py": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection.py": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/head_selection.py": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/configs/param_config.json": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/data/head_score/qwen2_5.json": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e"
+    },
+    "effective_generation_config": {
+      "max_length": 20,
+      "max_new_tokens": null,
+      "min_length": 0,
+      "min_new_tokens": null,
+      "early_stopping": false,
+      "max_time": null,
+      "stop_strings": null,
+      "do_sample": true,
+      "num_beams": 1,
+      "num_beam_groups": 1,
+      "penalty_alpha": null,
+      "dola_layers": null,
+      "use_cache": true,
+      "cache_implementation": null,
+      "cache_config": null,
+      "return_legacy_cache": null,
+      "prefill_chunk_size": null,
+      "temperature": 1e-06,
+      "top_k": 50,
+      "top_p": 1.0,
+      "min_p": null,
+      "typical_p": 1.0,
+      "epsilon_cutoff": 0.0,
+      "eta_cutoff": 0.0,
+      "diversity_penalty": 0.0,
+      "repetition_penalty": 1.05,
+      "encoder_repetition_penalty": 1.0,
+      "length_penalty": 1.0,
+      "no_repeat_ngram_size": 0,
+      "bad_words_ids": null,
+      "force_words_ids": null,
+      "renormalize_logits": false,
+      "constraints": null,
+      "forced_bos_token_id": null,
+      "forced_eos_token_id": null,
+      "remove_invalid_values": false,
+      "exponential_decay_length_penalty": null,
+      "suppress_tokens": null,
+      "begin_suppress_tokens": null,
+      "forced_decoder_ids": null,
+      "sequence_bias": null,
+      "token_healing": false,
+      "guidance_scale": null,
+      "low_memory": null,
+      "watermarking_config": null,
+      "num_return_sequences": 1,
+      "output_attentions": false,
+      "output_hidden_states": false,
+      "output_scores": false,
+      "output_logits": null,
+      "return_dict_in_generate": false,
+      "pad_token_id": 151643,
+      "bos_token_id": 151643,
+      "eos_token_id": [
+        151645,
+        151643
+      ],
+      "encoder_no_repeat_ngram_size": 0,
+      "decoder_start_token_id": null,
+      "is_assistant": false,
+      "num_assistant_tokens": 20,
+      "num_assistant_tokens_schedule": "constant",
+      "assistant_confidence_threshold": 0.4,
+      "prompt_lookup_num_tokens": null,
+      "max_matching_ngram_size": null,
+      "assistant_early_exit": null,
+      "assistant_lookbehind": 10,
+      "target_lookbehind": 10,
+      "disable_compile": false,
+      "generation_kwargs": {},
+      "_from_model_config": false,
+      "transformers_version": "4.52.3",
+      "attn_implementation": "flash_attention_2"
+    },
+    "generation_overrides": {
+      "eos_token_id": 151645,
+      "pad_token_id": 151643,
+      "do_sample": false,
+      "temperature": null,
+      "top_p": null,
+      "num_beams": 1,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.05,
+      "use_cache": true,
+      "return_dict_in_generate": true,
+      "output_scores": false
+    }
+  },
+  "audit": {
+    "status": "completed",
+    "method": "lookm",
+    "task": "vatex_test",
+    "doc_id": 0,
+    "input_tokens": 9736,
+    "native_kv_heads": 4,
+    "layers": [
+      {
+        "layer": 0,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 1,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 2,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 3,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 4,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 5,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 6,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 7,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 8,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 9,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 10,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 11,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 12,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 13,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 14,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 15,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 16,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 17,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 18,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 19,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 20,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 21,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 22,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 23,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 24,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 25,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 26,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 27,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      }
+    ],
+    "layers_count": 28,
+    "nominal_budget_ratio": 0.1,
+    "prefill_tokens_total": 112560,
+    "uncompressed_tokens_total": 1090432,
+    "actual_retained_ratio": 0.10322514379622022,
+    "scope": "Logical active decode KV slots; excludes full-history offload/backing stores and is not total VRAM"
+  },
+  "cache_audit": {
+    "status": "completed",
+    "method": "lookm",
+    "task": "vatex_test",
+    "doc_id": 0,
+    "input_tokens": 9736,
+    "native_kv_heads": 4,
+    "layers": [
+      {
+        "layer": 0,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 1,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 2,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 3,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 4,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 5,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 6,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 7,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 8,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 9,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 10,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 11,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 12,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 13,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 14,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 15,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 16,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 17,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 18,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 19,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 20,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 21,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 22,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 23,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 24,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 25,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 26,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      },
+      {
+        "layer": 27,
+        "before_tokens_per_head": 9736,
+        "head_lengths": [
+          1005,
+          1005,
+          1005,
+          1005
+        ],
+        "after_tokens_total": 4020,
+        "key_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "value_shape": [
+          1,
+          4,
+          1005,
+          128
+        ],
+        "key_dtype": "torch.bfloat16",
+        "value_dtype": "torch.bfloat16",
+        "selected_history_tokens": 973,
+        "recent_window": 32,
+        "native_budget_ratio": 0.1,
+        "final_tokens_total": 4100,
+        "decode_added_tokens_per_head": 20
+      }
+    ],
+    "layers_count": 28,
+    "nominal_budget_ratio": 0.1,
+    "prefill_tokens_total": 112560,
+    "uncompressed_tokens_total": 1090432,
+    "actual_retained_ratio": 0.10322514379622022,
+    "scope": "Logical active decode KV slots; excludes full-history offload/backing stores and is not total VRAM"
+  },
+  "max_new_tokens": 64,
+  "eos_token_id": 151645,
+  "eos_reached": true,
+  "final_cache_shapes": [
+    {
+      "layer": 0,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 1,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 2,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 3,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 4,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 5,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 6,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 7,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 8,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 9,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 10,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 11,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 12,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 13,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 14,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 15,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 16,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 17,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 18,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 19,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 20,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 21,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 22,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 23,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 24,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 25,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 26,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 27,
+      "key_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "value_shape": [
+        1,
+        4,
+        1025,
+        128
+      ],
+      "key_dtype": "torch.bfloat16",
+      "value_dtype": "torch.bfloat16"
+    }
+  ],
+  "runtime": {
+    "generation_seconds": 2.976994775235653,
+    "peak_allocated_gib": 18.498095512390137
+  },
+  "completed_utc": "2026-11-09T01:15:53.146079+00:00"
+}

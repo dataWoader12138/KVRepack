@@ -1,0 +1,6 @@
+task,metric,reference_method,candidate_method,reference,candidate,difference,ci95_low,ci95_high,n_inputs,n_source_videos
+nextqa_oe_test,WUPS,lookm,hybridkv_kvrepack,100.0,100.0,0.0,,,1,1
+vatex_test,Bleu_4,lookm,hybridkv_kvrepack,0.7085876411484379,0.3406227681539254,-0.36796487299451247,,,1,
+vatex_test,METEOR,lookm,hybridkv_kvrepack,0.5060885389194472,0.26056686336721213,-0.24552167555223503,,,1,
+vatex_test,ROUGE_L,lookm,hybridkv_kvrepack,0.914085914085914,0.4739178690344062,-0.4401680450515078,,,1,
+vatex_test,CIDEr,lookm,hybridkv_kvrepack,0.0,0.0,0.0,,,1,

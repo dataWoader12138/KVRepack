@@ -1,0 +1,586 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "audit_kind": "read_only_source_relationship_and_budget_semantics",
+  "generated_utc": "2026-11-09T01:15:17.355767+00:00",
+  "scope": {
+    "repo_root": "/root/autodl-tmp/HybridKV-artifact/KVRepack",
+    "reference_workspace": "/root/autodl-tmp/HybridKV-artifact",
+    "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "native_kv_layout": {
+      "layers": 28,
+      "kv_heads_per_layer": 4,
+      "total_native_kv_head_slots": 112
+    },
+    "tasks": [
+      "nextqa_oe_test",
+      "vatex_test"
+    ],
+    "planned_prefix_doc_ids": [
+      0,
+      199
+    ],
+    "planned_budget_ratio": 0.1,
+    "planned_frames": 64,
+    "candidate_ours_method": "hybridkv_kvrepack",
+    "comparison_method_choice_requires_parent_user_confirmation": true,
+    "actions_performed": [
+      "source reads",
+      "AST comparisons",
+      "targeted existing-log filename searches",
+      "stdlib JSON generation"
+    ],
+    "actions_not_performed": [
+      "GPU operations",
+      "video preparation",
+      "model loading",
+      "new generations",
+      "scoring",
+      "source modifications",
+      "restarting stopped experiments"
+    ]
+  },
+  "conclusions": [
+    "The migrated LookM implementation preserves the inspected original LookM functions exactly at AST level; whole-file bytes differ because of packaging/import transformations.",
+    "LookM uses floor(0.1 * full_prefill_input_length) historical positions plus a 32-position recent window per native KV head. BUDGET=1024 and constructor max_capacity_prompt=2048 do not make this a fixed-1024/fixed-2048 policy: update_kv overwrites select_num from the current prompt length.",
+    "HybridKV+KVRepack uses a nominal global historical budget based on 112 * floor(0.1 * full_prefill_input_length), heterogeneous native-head allocation, and a recent window of 32 + input_length % 8 per head. Rounding, clipping and head allocation mean actual activity must be measured.",
+    "A common nominal 10% setting is reproducible, but neither method has an exact 10% total active cache once its recent window is included. Active attention-cache slots must be distinguished from Hybrid retrieval backing storage and total GPU memory.",
+    "LookM creates a fresh prompt-specific cluster and current masks on every prefill; its ratio/config defaults persist in the attention config, so a method/ratio-changing benchmark should use independent model processes or explicitly reset those config fields.",
+    "The surviving source snapshot proves a Qwen7B LookM 10%/64-frame/200-example entry existed. The targeted current-tree searches did not find a readable completed LookM7B result/run log; this is not proof the old experiment never ran."
+  ],
+  "reference_entrypoint": {
+    "source_path": "HybridKV-artifact/scripts/eval/qwen_ratio.sh",
+    "source_sha256": "f320d49d3480f09f62fb6d50320e686ffc027206752d32a0a6577a628d5090c7",
+    "physical_source_currently_exists": false,
+    "retained_snapshot": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/provenance/reference_entrypoints.json",
+      "sha256": "a6bd3de95745276e464bf7520cda3be5b2af09d5792390f8848fcb87492cc630"
+    },
+    "reference_text_sha256": "f320d49d3480f09f62fb6d50320e686ffc027206752d32a0a6577a628d5090c7",
+    "reference_text_sha_matches_declared_source": true,
+    "snapshot_line_evidence": [
+      {
+        "line": 1,
+        "text": "budget_ratios=(0.1)"
+      },
+      {
+        "line": 2,
+        "text": "methods=(\"sparsemm\" \"snapkv\" \"lookm\" \"madakv\")"
+      },
+      {
+        "line": 3,
+        "text": "model_type=\"qwen2_5_vl\""
+      },
+      {
+        "line": 6,
+        "text": "limit=200"
+      },
+      {
+        "line": 7,
+        "text": "num_frame=64"
+      },
+      {
+        "line": 8,
+        "text": "tasks=(\"videochatgpt_gen\" \"videochatgpt_temporal\" \"videochatgpt_consistency\" \"vatex_test\" \"nextqa_oe_test\")"
+      },
+      {
+        "line": 15,
+        "text": "            export METHOD=${method}"
+      },
+      {
+        "line": 16,
+        "text": "            export BUDGET=1024"
+      },
+      {
+        "line": 17,
+        "text": "            export BUDGET_RATIO=${budget_ratio}"
+      },
+      {
+        "line": 18,
+        "text": "            export RATIO=0.1"
+      },
+      {
+        "line": 22,
+        "text": "            accelerate launch --num_processes 1 --main_process_port 54338 -m lmms_eval \\"
+      },
+      {
+        "line": 23,
+        "text": "                --model qwen2_5_vl \\"
+      },
+      {
+        "line": 24,
+        "text": "                --model_args pretrained=Qwen/Qwen2.5-VL-7B-Instruct,max_num_frames=${num_frame},attn_implementation=flash_attention_2,method=${method} \\"
+      },
+      {
+        "line": 25,
+        "text": "                --tasks ${task} \\"
+      },
+      {
+        "line": 26,
+        "text": "                --batch_size 1 \\"
+      },
+      {
+        "line": 29,
+        "text": "                --output_path ./logs/${task}/${method}/${num_frame}/${budget_ratio} \\"
+      },
+      {
+        "line": 30,
+        "text": "                --gen_kwargs temperature=0 \\"
+      },
+      {
+        "line": 31,
+        "text": "                --limit ${limit}"
+      }
+    ],
+    "configuration": {
+      "methods": [
+        "sparsemm",
+        "snapkv",
+        "lookm",
+        "madakv"
+      ],
+      "pretrained": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "budget_ratio": 0.1,
+      "BUDGET": 1024,
+      "RATIO": 0.1,
+      "frames": 64,
+      "limit": 200,
+      "batch_size": 1,
+      "attention": "flash_attention_2",
+      "temperature": 0
+    },
+    "runtime_import_limit": "This snapshot sets no PYTHONPATH or working-directory guard. Historical effective import sources require runtime evidence; the inspected migration is source-pinned separately."
+  },
+  "call_chain": [
+    {
+      "stage": "original_entry",
+      "target": "accelerate launch -m lmms_eval --model qwen2_5_vl --model_args ... method=lookm",
+      "evidence": "reference_entrypoint.snapshot_line_evidence"
+    },
+    {
+      "stage": "current_adapter",
+      "target": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py -> kvrepack.monkeypatch.replace_qwen"
+    },
+    {
+      "stage": "LookM monkeypatch",
+      "target": "native transformers Qwen2_5_VLForConditionalGeneration with patched Model/TextModel/DecoderLayer/FlashAttention2, not the Hybrid custom model class",
+      "source": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/monkeypatch.py",
+        "sha256": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+        "lines": [
+          30,
+          41
+        ]
+      }
+    },
+    {
+      "stage": "current per-prompt vision/text masks",
+      "target": "qwen_vl_forward_cross_attn -> cross_attn_qwen_forward_unflatten -> cross_attn_qwen_decoder_forward -> attention",
+      "source": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_croatt.py",
+        "sha256": "6f9d46f0d8a36ac842dc2e2beecccbc5be55194d5cfc47ff4379236f8dbf8cbf",
+        "lines": [
+          27,
+          514
+        ]
+      }
+    },
+    {
+      "stage": "LookM attention",
+      "target": "qwen_flash_attn2_forward_LookM -> init_lookm -> LookMCluster.update_kv -> optional merge_kv",
+      "source": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model.py",
+        "sha256": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7",
+        "lines": [
+          303,
+          426
+        ]
+      }
+    }
+  ],
+  "original_migration_function_comparison": [
+    {
+      "symbol": "merge_kv",
+      "original": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/baseline_utils.py",
+        "start_line": 51,
+        "end_line": 107,
+        "ast_sha256": "495704427e307ffa0018adba986e96e5e97365387c86d29999d8a1d8999eb39d"
+      },
+      "migrated": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "start_line": 51,
+        "end_line": 107,
+        "ast_sha256": "495704427e307ffa0018adba986e96e5e97365387c86d29999d8a1d8999eb39d"
+      },
+      "ast_identical": true
+    },
+    {
+      "symbol": "LookMCluster",
+      "original": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/baseline_utils.py",
+        "start_line": 480,
+        "end_line": 564,
+        "ast_sha256": "f0809c7e570f437b24eb5bf245fd13e1f2bc08b618ae2ce8747ce9430f81cb57"
+      },
+      "migrated": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "start_line": 480,
+        "end_line": 564,
+        "ast_sha256": "f0809c7e570f437b24eb5bf245fd13e1f2bc08b618ae2ce8747ce9430f81cb57"
+      },
+      "ast_identical": true
+    },
+    {
+      "symbol": "init_lookm",
+      "original": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/baseline_utils.py",
+        "start_line": 805,
+        "end_line": 840,
+        "ast_sha256": "7b1256fb42c8ddb00667549edc83001a95c7d5570476e18c67c554b70f727716"
+      },
+      "migrated": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "start_line": 805,
+        "end_line": 840,
+        "ast_sha256": "7b1256fb42c8ddb00667549edc83001a95c7d5570476e18c67c554b70f727716"
+      },
+      "ast_identical": true
+    },
+    {
+      "symbol": "qwen_flash_attn2_forward_LookM",
+      "original": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model.py",
+        "start_line": 303,
+        "end_line": 426,
+        "ast_sha256": "ef5e4a0df1c0949bb1c64a3276ca70aeda3ea505b41fce16cb21c77aa39b4ac5"
+      },
+      "migrated": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model.py",
+        "start_line": 303,
+        "end_line": 426,
+        "ast_sha256": "ef5e4a0df1c0949bb1c64a3276ca70aeda3ea505b41fce16cb21c77aa39b4ac5"
+      },
+      "ast_identical": true
+    },
+    {
+      "symbol": "qwen_vl_forward_cross_attn",
+      "original": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_croatt.py",
+        "start_line": 27,
+        "end_line": 184,
+        "ast_sha256": "064f1624f7d5532a5577cbc7a2dba1f1a4f4517918c44943d01e57fd73305e95"
+      },
+      "migrated": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_croatt.py",
+        "start_line": 27,
+        "end_line": 184,
+        "ast_sha256": "064f1624f7d5532a5577cbc7a2dba1f1a4f4517918c44943d01e57fd73305e95"
+      },
+      "ast_identical": true
+    },
+    {
+      "symbol": "cross_attn_qwen_forward_unflatten",
+      "original": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_croatt.py",
+        "start_line": 187,
+        "end_line": 308,
+        "ast_sha256": "f99e0ad6d7347d87223197b926f335b2c21afd12f99b4dbeeb068ee36154afe9"
+      },
+      "migrated": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_croatt.py",
+        "start_line": 187,
+        "end_line": 308,
+        "ast_sha256": "f99e0ad6d7347d87223197b926f335b2c21afd12f99b4dbeeb068ee36154afe9"
+      },
+      "ast_identical": true
+    },
+    {
+      "symbol": "cross_attn_qwen_decoder_forward",
+      "original": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/hybridkv/qwen_model_croatt.py",
+        "start_line": 444,
+        "end_line": 514,
+        "ast_sha256": "72a336039883600a837b851ba8f9044602d1876f6270b90c43f46c9765d71961"
+      },
+      "migrated": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_croatt.py",
+        "start_line": 444,
+        "end_line": 514,
+        "ast_sha256": "72a336039883600a837b851ba8f9044602d1876f6270b90c43f46c9765d71961"
+      },
+      "ast_identical": true
+    }
+  ],
+  "lookm_budget": {
+    "length_definition": "N = full prefill q_len, including expanded visual tokens, natural text and special tokens; not visual-token count alone.",
+    "long_prompt_history_slots_per_native_kv_head": "k = floor(N * BUDGET_RATIO)",
+    "recent_window_slots_per_native_kv_head": 32,
+    "long_prompt_prefill_active_slots_per_native_kv_head": "k + 32",
+    "long_prompt_all_layer_active_slots": "112 * (floor(0.1*N) + 32)",
+    "effective_active_ratio": "(floor(0.1*N) + 32) / N",
+    "not_a_fixed_token_budget": {
+      "constructor_capacity": 2048,
+      "entry_environment_BUDGET": 1024,
+      "explanation": "select_num initially capacity-window; the active update overwrites it with int(q_len*budget_ratio). BUDGET is still required by init_lookm int(os.getenv(\"BUDGET\")) on first initialization."
+    },
+    "text_priority": "Historical text attention scores receive each-head max-score boost before topk. Text positions compete within k; no separate unbounded all-text retention is appended.",
+    "merge_layers_for_28_layer_7b": {
+      "prune_only": [
+        0,
+        1
+      ],
+      "pivot_merge": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "threshold": "layer_idx >= num_hidden_layers*0.05"
+    },
+    "recent_window_values": "The recent32 positions remain in the output slots. In pivot-merge layers dropped history can be scatter-mean merged into any selected or recent position, so their K/V values need not remain unchanged.",
+    "short_prompt_edge": "If int(N*ratio)<=0, update_kv returns the uncompressed input. The k+32 formulas describe the long video prompts intended here.",
+    "evidence": [
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "lines": [
+          480,
+          564
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "lines": [
+          51,
+          107
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "lines": [
+          805,
+          840
+        ]
+      }
+    ]
+  },
+  "hybridkv_kvrepack_budget": {
+    "length_definition": "N = complete inputs_embeds.shape[1] at cache construction, including expanded video tokens, text and special tokens.",
+    "nominal_average_history_budget": "a = floor(N * BUDGET_RATIO)",
+    "nominal_global_history_budget": "112*a (per sample, across all28 layers and4 native KV heads)",
+    "head_allocation": "HEAD_CLASSIFY=head_ada; BUDGET_METHOD=head_ada. Retrieval/dynamic heads receive a common retrieval budget; remaining global budget is divided over static/pruning heads using a fixed part and attention-score part.",
+    "initial_7b_dynamic_history_budget": "max(nearest_power_of_2(floor(N*0.1*0.75)),64)",
+    "recent_window_formula": "chunks=floor(N/8)-4; local=N-8*chunks=32+(N%8)",
+    "recent_window_range": [
+      32,
+      39
+    ],
+    "native_head_actual_history_budgets": "b[l,h] = final sparse_budget_per_head[l][0][h], after allocation, capacity clipping and KVRepack retrieval8-slot alignment; do not infer every b from a alone.",
+    "actual_prefill_active_slots": "sum_{l=0..27,h=0..3} b[l,h] + 112*local",
+    "actual_prefill_active_ratio": "(sum_{l,h} b[l,h] + 112*local)/(112*N)",
+    "denominator_explanation": "112*N counts original uncompressed positions once per native KV head and layer; count a K/V position pair once. K and V tensors each occupy those positions. Byte accounting must additionally multiply dimensions/dtypes and include backing/index buffers.",
+    "allocation_rounding_limits": "Fixed-budget integer division can leave a remainder. Per-head sequence limits and final retrieval chunk clipping/alignment can change the actual sum. Thus 112*a is an allocation target, not an unconditional exact final identity.",
+    "backing_storage_warning": "Hybrid additionally retains retrieval history/backing caches and index metadata; active sparse decode cache capacity is not the total amount of live K/V storage or total GPU memory. Current GPU Hybrid path keeps retrieval backing tensors on the model device.",
+    "evidence": [
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/modeling_qwen2_5_vl.py",
+        "sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+        "lines": [
+          1289,
+          1315
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "lines": [
+          49,
+          67
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "lines": [
+          367,
+          415
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "lines": [
+          1443,
+          1450
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "lines": [
+          1970,
+          2101
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "lines": [
+          2317,
+          2335
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "lines": [
+          220,
+          231
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "lines": [
+          1469,
+          1535
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py",
+        "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "lines": [
+          1557,
+          1582
+        ]
+      }
+    ]
+  },
+  "prompt_reset": {
+    "LookM_new_cluster_each_prefill": true,
+    "condition": "q_len != 1",
+    "current_masks_passed_each_prefill": true,
+    "LookM_budget_recomputed_from_current_N": true,
+    "persistent_fields": [
+      "self.config.window_size",
+      "self.config.max_capacity_prompt",
+      "self.config.budget_ratio"
+    ],
+    "persistent_field_limit": "init_lookm sets config defaults only when absent; changing environment ratio on an existing model is insufficient. Its newly constructed cluster receives the current function mask arguments, so old config mask fields do not replace those arguments.",
+    "recommendation": "Run LookM and HybridKV+KVRepack in separate fresh processes/models. Use a fresh past_key_values cache per doc and reset model RoPE deltas and prompt-specific attention clusters; retain each native method class/dispatcher.",
+    "evidence": [
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model.py",
+        "sha256": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7",
+        "lines": [
+          321,
+          364
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "lines": [
+          805,
+          840
+        ]
+      },
+      {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_croatt.py",
+        "sha256": "6f9d46f0d8a36ac842dc2e2beecccbc5be55194d5cfc47ff4379236f8dbf8cbf",
+        "lines": [
+          67,
+          116
+        ]
+      }
+    ]
+  },
+  "preserved_native_behavior_to_disclose": [
+    {
+      "behavior": "merge_kv flattens selected index membership across heads for torch.isin when constructing dropped positions, rather than a separate per-head membership test. This is shared by the inspected original and migrated implementation and was not repaired for this comparison.",
+      "source": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "lines": [
+          61,
+          67
+        ]
+      }
+    },
+    {
+      "behavior": "Pivot cosine reshape assumes head_dim128; this matches the target7B native head dimension.",
+      "source": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py",
+        "sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+        "lines": [
+          80,
+          84
+        ]
+      }
+    }
+  ],
+  "historical_7b_log_evidence": {
+    "completed_LookM7b_run_identified": false,
+    "searched_scopes": [
+      "HybridKV-artifact/scripts/logs filenames and readable result/run-log candidates",
+      "current workspace result-json filenames excluding giantcsrc/deps/output trees",
+      "/root top-level LookM-named shell-entry filenames",
+      "retained nextqa_vatex/video_best parameter provenance rows"
+    ],
+    "positive_evidence": "Retained qwen_ratio.sh source snapshot includes LookM,7B,0.1,64frames,limit200 and both tasks.",
+    "limitation": "A source entry or empty method directory is not an execution record. Missing current logs do not establish historical non-execution."
+  },
+  "comparison_reporting_requirements": [
+    "Use the same cached doc IDs0..199, exact prepared input tensors,64frames, local7B checkpoint, generation settings and task references.",
+    "Set and record BUDGET_RATIO=0.1 and RATIO=0.1 explicitly for both; set BUDGET=1024 for compatible initialization but identify it as not the active LookM ratio capacity.",
+    "Preserve each native window, head allocation and merge behavior. Label the setting nominal10%; report actual active prefill slots and effective ratio per doc, separately from backing memory/peakGPU memory.",
+    "Record method-specific model class and source hashes. Do not run patched baseline LookM on the Hybrid custom model class.",
+    "Avoid claiming identical absolute memory budgets from equal nominal ratios, or completed historical LookM7B results without a matching run record."
+  ],
+  "controller_review": {
+    "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/scripts/run_lookm_vs_kvrepack.py",
+    "syntax_ast_parse": "passed",
+    "first_launch_blocking_issue_found": false,
+    "note": "Read-only review only; no child process was started. Worker not independently reviewed in this audit.",
+    "previously_reviewed_sha256": "bd9d6d60467a4d75638654627e4196a653f853f0aab5c2e170292673214eeae6",
+    "sha256": "bd9d6d60467a4d75638654627e4196a653f853f0aab5c2e170292673214eeae6",
+    "previous_nonblocking_resume_issue": {
+      "lines": [
+        83,
+        94
+      ],
+      "issue": "The scorer is skipped when the report directory exists, even if a previous interrupted/failed scoring attempt left no complete summary. A resume then fails on missing/noncomplete summary without re-running scoring.",
+      "recommended_action": "Use a validated complete summary as the skip criterion, and permit an incomplete report to be rebuilt or scored into a fresh atomic directory."
+    },
+    "resume_issue_resolution": {
+      "status": "fixed_and_source_rechecked",
+      "criterion": "Only a readable report summary with status complete skips scoring. Incomplete report directories are preserved by rename before a new scoring attempt.",
+      "start_line": 83
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "started_utc": "2026-11-09T01:14:58.251659+00:00",
+  "target_generations": 4,
+  "completed_cases": [
+    {
+      "method": "lookm",
+      "task": "nextqa_oe_test"
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "nextqa_oe_test"
+    },
+    {
+      "method": "lookm",
+      "task": "vatex_test"
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "task": "vatex_test"
+    }
+  ],
+  "controller_pid": 3557,
+  "process_group": 3557,
+  "resume_authorized": true,
+  "current_method": "hybridkv_kvrepack",
+  "current_task": "vatex_test",
+  "updated_utc": "2026-11-09T01:16:15.971115+00:00",
+  "worker_pid": 4162,
+  "finished_utc": "2026-11-09T01:16:39.942147+00:00"
+}
