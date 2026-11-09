@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-11-09T02:54:24.855722+00:00",
+  "commit": "bc8ebee7aabd27288c33536bd83deb24ed0cd5b1",
+  "source_sha256": {
+    "src/kvrepack/baseline_utils.py": "ee1baadace05c657f233f4b3f82624933b81b4a4fae018e2db4852fee6a275ff",
+    "src/kvrepack/benchmarks/run_video_comparison.py": "802336e0f206271317060bc9ece373bd79b528dc78add610ca6862578d7d900a",
+    "src/kvrepack/benchmarks/single_video_report.py": "968b697b342c0ad0719bccea907d1bc37713043dbcffb798ee06aadca7507bc0",
+    "scripts/run_lookm_video.py": "b9c6624b5a4f89426eabcefc73ec3d61980a65f78079b3fa439bc72af44a7cbc",
+    "provenance/core_sources.json": "49d09af765d8a445aad2ba334eacdb5591405b1328462def3ebe3e14282834af",
+    "provenance/patches/lookm_strict_budget_v2.patch": "b57ec9b0124df5087bdc4a1043532d599505442f31fc3538deb28a9f3b979cdb"
+  },
+  "budget_policy": "total_prefill_including_recent_v2",
+  "tasks": [
+    "nextqa_oe_test",
+    "vatex_test"
+  ],
+  "limit_per_task": 200,
+  "generations": 400
+}

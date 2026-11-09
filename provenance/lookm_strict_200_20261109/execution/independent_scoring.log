@@ -1,0 +1,15 @@
+Warming up PyWSD (takes ~10 secs)... took 3.7621421813964844 secs.
+PTBTokenizer tokenized 33357 tokens at 421743.14 tokens per second.
+PTBTokenizer tokenized 3121 tokens at 62206.07 tokens per second.
+{"stage": "independent_vatex_metric", "metric": "Bleu_4", "value": 0.2082951516285398}
+PTBTokenizer tokenized 33357 tokens at 397456.75 tokens per second.
+PTBTokenizer tokenized 3121 tokens at 61677.62 tokens per second.
+{"stage": "independent_vatex_metric", "metric": "METEOR", "value": 0.21383848595491528}
+PTBTokenizer tokenized 33357 tokens at 400535.72 tokens per second.
+PTBTokenizer tokenized 3121 tokens at 62735.98 tokens per second.
+{"stage": "independent_vatex_metric", "metric": "ROUGE_L", "value": 0.41671987966003704}
+PTBTokenizer tokenized 33357 tokens at 414704.45 tokens per second.
+PTBTokenizer tokenized 3121 tokens at 65977.24 tokens per second.
+{"stage": "independent_vatex_metric", "metric": "CIDEr", "value": 0.45664620189428}
+PTBTokenizer tokenized 33357 tokens at 407787.94 tokens per second.
+{"status": "passed", "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/independent_scoring_check.json", "elapsed_seconds": 18.31505763158202, "metrics": {"nextqa_oe_test": {"WUPS": 31.111145486845444}, "vatex_test": {"Bleu_4": 0.2082951516285398, "METEOR": 0.21383848595491528, "ROUGE_L": 0.41671987966003704, "CIDEr": 0.45664620189428}}, "maximum_absolute_errors": {"cache_CSV_prefill_tokens_total": 0.0, "cache_CSV_uncompressed_tokens_total": 0.0, "cache_CSV_actual_retained_ratio": 0.0, "NextQA_per_input_WUPS": 0.0, "NextQA_per_input_WUPS_0_9": 0.0, "NextQA_native_aggregate_vs_input_mean": 0.0, "native_metric_JSON_WUPS": 0.0, "native_metric_CSV_WUPS": 0.0, "generation_summary_n_inputs": 0.0, "generation_CSV_n_inputs": 0.0, "generation_summary_eos_count": 0.0, "generation_CSV_eos_count": 0.0, "generation_summary_reached_length_limit": 0.0, "generation_CSV_reached_length_limit": 0.0, "generation_summary_capped_without_eos": 0.0, "generation_CSV_capped_without_eos": 0.0, "generation_summary_generated_tokens_min": 0.0, "generation_CSV_generated_tokens_min": 0.0, "generation_summary_generated_tokens_max": 0.0, "generation_CSV_generated_tokens_max": 0.0, "generation_summary_generated_tokens_mean": 0.0, "generation_CSV_generated_tokens_mean": 0.0, "strict_cache_summary_actual_retained_ratio_min": 0.0, "strict_cache_summary_actual_retained_ratio_mean": 0.0, "strict_cache_summary_actual_retained_ratio_max": 0.0, "native_metric_JSON_Bleu_4": 0.0, "native_metric_CSV_Bleu_4": 0.0, "native_metric_JSON_METEOR": 0.0, "native_metric_CSV_METEOR": 0.0, "native_metric_JSON_ROUGE_L": 0.0, "native_metric_CSV_ROUGE_L": 0.0, "native_metric_JSON_CIDEr": 0.0, "native_metric_CSV_CIDEr": 0.0}, "error": null}

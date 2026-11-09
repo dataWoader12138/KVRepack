@@ -1,6 +1,6 @@
 # KVRepack
 
-LookM 已改为[严格10%总prefill预算](docs/LOOKM_STRICT_BUDGET.md)：32个近期位置计入总额度，并修正逐head合并补集。旧400条结果使用“10%＋32”口径，只保留为[历史记录](docs/LOOKM_RESULTS_20261109.md)，不能用于严格10%比较；新正式200条分数尚未重跑。Hybrid与RoPE的已停止任务继续保持停止。
+已完成：[LookM严格10%总prefill预算的重跑结果与CSV](docs/LOOKM_STRICT_RESULTS_20261109.md)。Qwen2.5-VL-7B、64帧，NExTQA/VATEX各原始前200条，共400次全新生成；WUPS31.111145，VATEX BLEU4/METEOR/ROUGE-L/CIDEr为0.208295/0.213838/0.416720/0.456646。400条预算与独立评分复核均通过，最大prefill保留比例10%，全部EOS无截断。旧10%＋32结果仍是legacy；Hybrid与RoPE继续保持停止。
 
 消融数据：[下载统一CSV汇总表](docs/ablation_results_summary.csv)。包含SnapKV/HybridKV的Random-head结果、已完成的RoPE聚合空间对照和20条试跑，共13个已完成指标行；另列HybridKV/VATEX仅97配对的停止状态，未评分项留空。差值统一为“基线−对照”，Random行对照为三seed均值；保留样本数、参数、标准差、区间和来源，UTF-8 BOM可用Excel直接打开。
 

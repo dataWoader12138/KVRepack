@@ -1,0 +1,663 @@
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+You have video processor config saved in `preprocessor.json` file which is deprecated. Video processor configs should be saved in their own `video_preprocessor.json` file. You can rename the file or load and save the processor back which renames it automatically. Loading from `preprocessor.json` will be removed in v5.0.
+Using LookM!
+Loading checkpoint shards:   0%|                                                                                                                                    | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|████████████████████████▊                                                                                                   | 1/5 [00:00<00:03,  1.10it/s]Loading checkpoint shards:  40%|█████████████████████████████████████████████████▌                                                                          | 2/5 [00:01<00:02,  1.32it/s]Loading checkpoint shards:  60%|██████████████████████████████████████████████████████████████████████████▍                                                 | 3/5 [00:02<00:01,  1.39it/s]Loading checkpoint shards:  80%|███████████████████████████████████████████████████████████████████████████████████████████████████▏                        | 4/5 [00:02<00:00,  1.45it/s]Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:03<00:00,  1.96it/s]Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 5/5 [00:03<00:00,  1.63it/s]
+qwen-vl-utils using decord to read video.
+The given max_pixels[1605632] exceeds limit[242136.19302949062].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 0, "completed_docs": 1, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09993837304847987}
+[h264 @ 0x5574d27af080] mmco: unref short failure
+[h264 @ 0x5574d27af080] mmco: unref short failure
+[h264 @ 0x5574d27af080] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 1, "completed_docs": 2, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[564480.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 2, "completed_docs": 3, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.0999645515774548}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 3, "completed_docs": 4, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09994922139471903}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 4, "completed_docs": 5, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 5, "completed_docs": 6, "target_docs": 200, "generated_tokens": 27, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 6, "completed_docs": 7, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 7, "completed_docs": 8, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 8, "completed_docs": 9, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 9, "completed_docs": 10, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 10, "completed_docs": 11, "target_docs": 200, "generated_tokens": 21, "actual_retained_ratio": 0.09994922139471903}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 11, "completed_docs": 12, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 12, "completed_docs": 13, "target_docs": 200, "generated_tokens": 23, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[453853.2663316583].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 13, "completed_docs": 14, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 14, "completed_docs": 15, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 15, "completed_docs": 16, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09993036211699165}
+The given max_pixels[1605632] exceeds limit[284911.0410094637].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 16, "completed_docs": 17, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09992962702322308}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 17, "completed_docs": 18, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[250880.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 18, "completed_docs": 19, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 19, "completed_docs": 20, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[306158.6440677966].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 20, "completed_docs": 21, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 21, "completed_docs": 22, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 22, "completed_docs": 23, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09993036211699165}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 23, "completed_docs": 24, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[241488.77005347595].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 24, "completed_docs": 25, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 25, "completed_docs": 26, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.09994922139471903}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 26, "completed_docs": 27, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 27, "completed_docs": 28, "target_docs": 200, "generated_tokens": 12, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 28, "completed_docs": 29, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+[h264 @ 0x557510eacf40] mmco: unref short failure
+[h264 @ 0x557510eacf40] mmco: unref short failure
+[h264 @ 0x557510eacf40] mmco: unref short failure
+[h264 @ 0x557510eacf40] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 29, "completed_docs": 30, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[578953.8461538461].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 30, "completed_docs": 31, "target_docs": 200, "generated_tokens": 11, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 31, "completed_docs": 32, "target_docs": 200, "generated_tokens": 11, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 32, "completed_docs": 33, "target_docs": 200, "generated_tokens": 26, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 33, "completed_docs": 34, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.0999550763701707}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 34, "completed_docs": 35, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 35, "completed_docs": 36, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[477866.6666666667].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 36, "completed_docs": 37, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 37, "completed_docs": 38, "target_docs": 200, "generated_tokens": 11, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 38, "completed_docs": 39, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.09998602571268865}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 39, "completed_docs": 40, "target_docs": 200, "generated_tokens": 24, "actual_retained_ratio": 0.09998383446492079}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 40, "completed_docs": 41, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[447112.8712871287].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 41, "completed_docs": 42, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09991235758106924}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 42, "completed_docs": 43, "target_docs": 200, "generated_tokens": 11, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 43, "completed_docs": 44, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 44, "completed_docs": 45, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 45, "completed_docs": 46, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[368640.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 46, "completed_docs": 47, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.09997242140099283}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 47, "completed_docs": 48, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 48, "completed_docs": 49, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 49, "completed_docs": 50, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[269602.3880597015].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 50, "completed_docs": 51, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09998029944838456}
+The given max_pixels[1605632] exceeds limit[274519.1489361702].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 51, "completed_docs": 52, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[272860.4229607251].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 52, "completed_docs": 53, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09998029944838456}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 53, "completed_docs": 54, "target_docs": 200, "generated_tokens": 12, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[467962.69430051814].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 54, "completed_docs": 55, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 55, "completed_docs": 56, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 56, "completed_docs": 57, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 57, "completed_docs": 58, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 58, "completed_docs": 59, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 59, "completed_docs": 60, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[544077.108433735].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 60, "completed_docs": 61, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.0999627004848937}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 61, "completed_docs": 62, "target_docs": 200, "generated_tokens": 21, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 62, "completed_docs": 63, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 63, "completed_docs": 64, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09993036211699165}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 64, "completed_docs": 65, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[308248.46416382253].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 65, "completed_docs": 66, "target_docs": 200, "generated_tokens": 12, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[472862.82722513087].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 66, "completed_docs": 67, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 67, "completed_docs": 68, "target_docs": 200, "generated_tokens": 12, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 68, "completed_docs": 69, "target_docs": 200, "generated_tokens": 11, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 69, "completed_docs": 70, "target_docs": 200, "generated_tokens": 11, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 70, "completed_docs": 71, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.0999550763701707}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 71, "completed_docs": 72, "target_docs": 200, "generated_tokens": 24, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[513163.63636363635].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 72, "completed_docs": 73, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.09991235758106924}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 73, "completed_docs": 74, "target_docs": 200, "generated_tokens": 12, "actual_retained_ratio": 0.09996552912788693}
+[h264 @ 0x557511016e00] mmco: unref short failure
+[h264 @ 0x557511016e00] mmco: unref short failure
+[h264 @ 0x557511016e00] mmco: unref short failure
+[h264 @ 0x557511016e00] mmco: unref short failure
+[h264 @ 0x557511016e00] mmco: unref short failure
+[h264 @ 0x55752093f3c0] mmco: unref short failure
+[h264 @ 0x55752093f3c0] mmco: unref short failure
+[h264 @ 0x557511016e00] mmco: unref short failure
+[h264 @ 0x557511016e00] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[482977.5401069519].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 74, "completed_docs": 75, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 75, "completed_docs": 76, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 76, "completed_docs": 77, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09993674889310562}
+The given max_pixels[1605632] exceeds limit[326053.42960288806].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 77, "completed_docs": 78, "target_docs": 200, "generated_tokens": 24, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 78, "completed_docs": 79, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 79, "completed_docs": 80, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.09991235758106924}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 80, "completed_docs": 81, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[257312.8205128205].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 81, "completed_docs": 82, "target_docs": 200, "generated_tokens": 21, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[560973.9130434783].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 82, "completed_docs": 83, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 83, "completed_docs": 84, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 84, "completed_docs": 85, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 85, "completed_docs": 86, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 86, "completed_docs": 87, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.1}
+[h264 @ 0x557510c7e340] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 87, "completed_docs": 88, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09993837304847987}
+[h264 @ 0x557511028e40] mmco: unref short failure
+[h264 @ 0x557511028e40] mmco: unref short failure
+[h264 @ 0x557510ef1480] Missing reference picture, default is 65530
+[h264 @ 0x557511028e40] mmco: unref short failure
+[h264 @ 0x557511028e40] mmco: unref short failure
+[h264 @ 0x557511028e40] mmco: unref short failure
+[h264 @ 0x557510f93dc0] mmco: unref short failure
+[h264 @ 0x557510f93dc0] mmco: unref short failure
+[h264 @ 0x557510d54f80] mmco: unref short failure
+[h264 @ 0x557510d54f80] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[490852.17391304346].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 88, "completed_docs": 89, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[268002.37388724036].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 89, "completed_docs": 90, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 90, "completed_docs": 91, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 91, "completed_docs": 92, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 92, "completed_docs": 93, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 93, "completed_docs": 94, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 94, "completed_docs": 95, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 95, "completed_docs": 96, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.09990917347865577}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 96, "completed_docs": 97, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.1}
+[h264 @ 0x557510daecc0] mmco: unref short failure
+[h264 @ 0x557510daecc0] mmco: unref short failure
+[h264 @ 0x557510daecc0] mmco: unref short failure
+[h264 @ 0x557510daecc0] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 97, "completed_docs": 98, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 98, "completed_docs": 99, "target_docs": 200, "generated_tokens": 11, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 99, "completed_docs": 100, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 100, "completed_docs": 101, "target_docs": 200, "generated_tokens": 9, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[550712.1951219512].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 101, "completed_docs": 102, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[434215.3846153846].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 102, "completed_docs": 103, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 103, "completed_docs": 104, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[493534.4262295082].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 104, "completed_docs": 105, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 105, "completed_docs": 106, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 106, "completed_docs": 107, "target_docs": 200, "generated_tokens": 12, "actual_retained_ratio": 0.09990917347865577}
+The given max_pixels[1605632] exceeds limit[358400.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 107, "completed_docs": 108, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 108, "completed_docs": 109, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 109, "completed_docs": 110, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 110, "completed_docs": 111, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 111, "completed_docs": 112, "target_docs": 200, "generated_tokens": 12, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[392681.73913043475].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 112, "completed_docs": 113, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.09993036211699165}
+The given max_pixels[1605632] exceeds limit[362718.0722891566].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 113, "completed_docs": 114, "target_docs": 200, "generated_tokens": 24, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 114, "completed_docs": 115, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 115, "completed_docs": 116, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 116, "completed_docs": 117, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 117, "completed_docs": 118, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.09993036211699165}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 118, "completed_docs": 119, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 119, "completed_docs": 120, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 120, "completed_docs": 121, "target_docs": 200, "generated_tokens": 21, "actual_retained_ratio": 0.09994922139471903}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 121, "completed_docs": 122, "target_docs": 200, "generated_tokens": 11, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 122, "completed_docs": 123, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 123, "completed_docs": 124, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 124, "completed_docs": 125, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.09994922139471903}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 125, "completed_docs": 126, "target_docs": 200, "generated_tokens": 22, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 126, "completed_docs": 127, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 127, "completed_docs": 128, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 128, "completed_docs": 129, "target_docs": 200, "generated_tokens": 21, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 129, "completed_docs": 130, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 130, "completed_docs": 131, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 131, "completed_docs": 132, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 132, "completed_docs": 133, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[338265.1685393258].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 133, "completed_docs": 134, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+[h264 @ 0x557510ef1480] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 134, "completed_docs": 135, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[387625.7510729614].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 135, "completed_docs": 136, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 136, "completed_docs": 137, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[412405.4794520548].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 137, "completed_docs": 138, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 138, "completed_docs": 139, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[513163.63636363635].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 139, "completed_docs": 140, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 140, "completed_docs": 141, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 141, "completed_docs": 142, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 142, "completed_docs": 143, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09990917347865577}
+The given max_pixels[1605632] exceeds limit[238933.33333333334].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 143, "completed_docs": 144, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 144, "completed_docs": 145, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 145, "completed_docs": 146, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09993036211699165}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 146, "completed_docs": 147, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 147, "completed_docs": 148, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 148, "completed_docs": 149, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[442729.4117647059].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 149, "completed_docs": 150, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09998825739783936}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 150, "completed_docs": 151, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 151, "completed_docs": 152, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.09994922139471903}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 152, "completed_docs": 153, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 153, "completed_docs": 154, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 154, "completed_docs": 155, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 155, "completed_docs": 156, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 156, "completed_docs": 157, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 157, "completed_docs": 158, "target_docs": 200, "generated_tokens": 10, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 158, "completed_docs": 159, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09993036211699165}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 159, "completed_docs": 160, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 160, "completed_docs": 161, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 161, "completed_docs": 162, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 162, "completed_docs": 163, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[351427.2373540856].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 163, "completed_docs": 164, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 164, "completed_docs": 165, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 165, "completed_docs": 166, "target_docs": 200, "generated_tokens": 11, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 166, "completed_docs": 167, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[405008.0717488789].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 167, "completed_docs": 168, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 168, "completed_docs": 169, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[273687.2727272727].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 169, "completed_docs": 170, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 170, "completed_docs": 171, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 171, "completed_docs": 172, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 172, "completed_docs": 173, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 173, "completed_docs": 174, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[394396.5065502183].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 174, "completed_docs": 175, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.09991235758106924}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 175, "completed_docs": 176, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.09993036211699165}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 176, "completed_docs": 177, "target_docs": 200, "generated_tokens": 17, "actual_retained_ratio": 0.09994922139471903}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 177, "completed_docs": 178, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 178, "completed_docs": 179, "target_docs": 200, "generated_tokens": 21, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 179, "completed_docs": 180, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[374758.50622406637].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 180, "completed_docs": 181, "target_docs": 200, "generated_tokens": 21, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[560973.9130434783].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 181, "completed_docs": 182, "target_docs": 200, "generated_tokens": 20, "actual_retained_ratio": 0.0999645515774548}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 182, "completed_docs": 183, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 183, "completed_docs": 184, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 184, "completed_docs": 185, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 185, "completed_docs": 186, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 186, "completed_docs": 187, "target_docs": 200, "generated_tokens": 27, "actual_retained_ratio": 0.1}
+[h264 @ 0x5574d5ee4640] Missing reference picture, default is 65530
+[h264 @ 0x5575109735c0] mmco: unref short failure
+[h264 @ 0x5575109735c0] mmco: unref short failure
+[h264 @ 0x5574d5e60dc0] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 187, "completed_docs": 188, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 188, "completed_docs": 189, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 189, "completed_docs": 190, "target_docs": 200, "generated_tokens": 18, "actual_retained_ratio": 0.09994922139471903}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 190, "completed_docs": 191, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 191, "completed_docs": 192, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 192, "completed_docs": 193, "target_docs": 200, "generated_tokens": 16, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 193, "completed_docs": 194, "target_docs": 200, "generated_tokens": 13, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 194, "completed_docs": 195, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 195, "completed_docs": 196, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09996552912788693}
+The given max_pixels[1605632] exceeds limit[602112].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 196, "completed_docs": 197, "target_docs": 200, "generated_tokens": 19, "actual_retained_ratio": 0.1}
+The given max_pixels[1605632] exceeds limit[365655.06072874495].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 197, "completed_docs": 198, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09993837304847987}
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+[h264 @ 0x55752289f740] mmco: unref short failure
+The given max_pixels[1605632] exceeds limit[235200.0].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 198, "completed_docs": 199, "target_docs": 200, "generated_tokens": 14, "actual_retained_ratio": 0.09993837304847987}
+The given max_pixels[1605632] exceeds limit[382698.30508474575].
+Unused or unrecognized kwargs: fps, return_tensors.
+{"stage": "sample_committed", "method": "lookm", "task": "vatex_test", "doc_id": 199, "completed_docs": 200, "target_docs": 200, "generated_tokens": 15, "actual_retained_ratio": 0.09996004262120405}

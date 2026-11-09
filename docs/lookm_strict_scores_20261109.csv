@@ -1,0 +1,6 @@
+﻿dataset,method,model,n_inputs,frames,budget_policy,nominal_budget_ratio,metric,value,units,formal_result,strict_budget_passed
+nextqa_oe_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,total_prefill_including_recent_v2,0.1,WUPS,31.111145486845444,0-100 WUPS points,True,True
+vatex_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,total_prefill_including_recent_v2,0.1,Bleu_4,0.2082951516285398,native corpus units,True,True
+vatex_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,total_prefill_including_recent_v2,0.1,METEOR,0.21383848595491528,native corpus units,True,True
+vatex_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,total_prefill_including_recent_v2,0.1,ROUGE_L,0.41671987966003704,native corpus units,True,True
+vatex_test,lookm,Qwen2.5-VL-7B-Instruct,200,64,total_prefill_including_recent_v2,0.1,CIDEr,0.45664620189428,native corpus units,True,True

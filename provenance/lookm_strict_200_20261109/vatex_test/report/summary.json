@@ -1,0 +1,1494 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "method": "lookm",
+  "task": "vatex_test",
+  "limit": 200,
+  "n_generations": 200,
+  "metrics": {
+    "Bleu_4": 0.2082951516285398,
+    "METEOR": 0.21383848595491528,
+    "ROUGE_L": 0.41671987966003704,
+    "CIDEr": 0.45664620189428
+  },
+  "sample_scope": "original_first200",
+  "formal_result": true,
+  "budget_policy": "total_prefill_including_recent_v2",
+  "strict_budget_passed": true,
+  "legacy_budget_result": false,
+  "budget_label": "Strict total prefill including recent positions (v2)",
+  "generation": {
+    "n_inputs": 200,
+    "eos_count": 200,
+    "reached_length_limit": 0,
+    "capped_without_eos": 0,
+    "generated_tokens_min": 9,
+    "generated_tokens_max": 27,
+    "generated_tokens_mean": 16.28
+  },
+  "cache_budget": {
+    "budget_policy": "total_prefill_including_recent_v2",
+    "strict_budget_passed": true,
+    "legacy_budget_result": false,
+    "configured_budget_ratio": 0.1,
+    "actual_retained_ratio_min": 0.09990917347865577,
+    "actual_retained_ratio_mean": 0.0999752509846791,
+    "actual_retained_ratio_max": 0.1,
+    "scope": "Logical active prefill/decode KV slots; excludes backing history/offload stores and is not total VRAM"
+  },
+  "provenance": {
+    "method": "lookm",
+    "task": "vatex_test",
+    "limit": 200,
+    "budget_policy": "total_prefill_including_recent_v2",
+    "generation_contract": {
+      "schema_version": 1,
+      "experiment": "lookm_vs_kvrepack",
+      "method": "lookm",
+      "task": "vatex_test",
+      "target_docs": 200,
+      "target_generations": 200,
+      "dataset_rows": 4478,
+      "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+      "model_metadata": {
+        "chat_template.json": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96",
+        "config.json": "77d9ec7321cc572e3579e2c84799c9cadaded63c49ce93b101733349fc330c43",
+        "generation_config.json": "0a3aea82869fe29f20dc95ccf3e2bcff380eca1f5ad6447a4a4b37110b08e43e",
+        "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+        "model.safetensors.index.json": "73b333b0b16e5286ddba615d2caebcd495cf7e616f52eb217a81781393d79de9",
+        "preprocessor_config.json": "f2058c716eef96ccaed1cc1e2d0c08306b62586d535b28d9d08e691b2fab7ca0",
+        "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+        "tokenizer_config.json": "4abd3520120e266da84c0864fee064d1fb10806f02225911a47253dd38dc5f56",
+        "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+      },
+      "arrow_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___vatex/vatex_test/0.0.0/73c2e83ade2892705080e9dadeb7c75c5b99e0f4/vatex-test.arrow",
+      "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "video_root": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/vatex_test",
+      "task_yaml_sha256": "3a154d8593a5a26511f18c2961e4a511125da15629ca0aae85c8ae82870bc6d5",
+      "task_utils_sha256": "a1adb3c156c9107c8e001dabb07d9047511770b076c600f856b6d34bf1d74479",
+      "included_yaml_sha256": null,
+      "frames": 64,
+      "min_pixels": 200704,
+      "max_pixels": 1605632,
+      "budget_ratio": 0.1,
+      "algorithm_env": {
+        "BUDGET": "1024",
+        "BUDGET_RATIO": "0.1",
+        "RATIO": "0.1"
+      },
+      "model_seed": 42,
+      "dtype": "bfloat16",
+      "attention": "flash_attention_2",
+      "do_sample": false,
+      "use_cache": true,
+      "repetition_penalty": 1.05,
+      "max_new_tokens": 64,
+      "sources_sha256": {
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/benchmarks/run_video_comparison.py": "802336e0f206271317060bc9ece373bd79b528dc78add610ca6862578d7d900a",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py": "ee1baadace05c657f233f4b3f82624933b81b4a4fae018e2db4852fee6a275ff",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model.py": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_croatt.py": "6f9d46f0d8a36ac842dc2e2beecccbc5be55194d5cfc47ff4379236f8dbf8cbf",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/monkeypatch.py": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py": "59ddc9cd387293e0bba05ad7cbd20bb921ff9119121369f1ae27a7d99540ed4b",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/modeling_qwen2_5_vl.py": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_cpu.py": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection.py": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/head_selection.py": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/configs/param_config.json": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/data/head_score/qwen2_5.json": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e"
+      },
+      "versions": {
+        "torch": "2.6.0+cu124",
+        "transformers": "4.52.3",
+        "flash-attn": "2.7.4.post1",
+        "qwen-vl-utils": "0.0.14",
+        "datasets": "2.19.2",
+        "decord": "0.6.0",
+        "numpy": "1.26.4"
+      },
+      "input_policy": "Original Arrow prefix, no filtering or deduplication; fresh prompt per sample",
+      "budget_policy": "total_prefill_including_recent_v2"
+    },
+    "config": {
+      "method": "lookm",
+      "task": "vatex_test",
+      "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+      "frames": 64,
+      "budget_ratio": 0.1,
+      "algorithm_env": {
+        "BUDGET": "1024",
+        "BUDGET_RATIO": "0.1",
+        "RATIO": "0.1"
+      },
+      "min_pixels": 200704,
+      "max_pixels": 1605632,
+      "dtype": "bfloat16",
+      "attention": "flash_attention_2",
+      "model_seed": 42,
+      "max_new_tokens": 64,
+      "do_sample": false,
+      "use_cache": true,
+      "repetition_penalty": 1.05,
+      "budget_policy": "total_prefill_including_recent_v2",
+      "stream_contract_sha256": "1df288b943fd4f93eae2f7ca43492ac6a0cfa116ccdcea25f1b8cabf628b3d5e",
+      "source_files": {
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/benchmarks/run_video_comparison.py": "802336e0f206271317060bc9ece373bd79b528dc78add610ca6862578d7d900a",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/runner.py": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/experiments/registry.py": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection.py": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_head_selection_full.py": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/baseline_utils.py": "ee1baadace05c657f233f4b3f82624933b81b4a4fae018e2db4852fee6a275ff",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model.py": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_croatt.py": "6f9d46f0d8a36ac842dc2e2beecccbc5be55194d5cfc47ff4379236f8dbf8cbf",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/monkeypatch.py": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/qwen_model_lookm_kvrepack.py": "59ddc9cd387293e0bba05ad7cbd20bb921ff9119121369f1ae27a7d99540ed4b",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/merge_score.py": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/modeling_qwen2_5_vl.py": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_utils.py": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/hybridkv_cpu.py": "8baee6974668028d2e331fb5493b89cb3ddf8becdea3923b9a8ac816e9515641",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/hybrid_head_selection.py": "c5d6e254e6b305ed148f9cc8881ee2294bace31933eb29d668ba754a3b3c8325",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/head_selection.py": "cddc80d9c9d8b13b9869c7ba0ae517556f7fbc34965e704b3cc41b0698ff63d1",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/configs/param_config.json": "42902132b26d6ca540979f5d1876359f180a37d1f633915d1d5cf3a92f0a81cd",
+        "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/data/head_score/qwen2_5.json": "11771c05a5d8715324804b6d5c40a0f5664fd5aa8a32604f8f64fc772ae0754e"
+      },
+      "effective_generation_config": {
+        "max_length": 20,
+        "max_new_tokens": null,
+        "min_length": 0,
+        "min_new_tokens": null,
+        "early_stopping": false,
+        "max_time": null,
+        "stop_strings": null,
+        "do_sample": true,
+        "num_beams": 1,
+        "num_beam_groups": 1,
+        "penalty_alpha": null,
+        "dola_layers": null,
+        "use_cache": true,
+        "cache_implementation": null,
+        "cache_config": null,
+        "return_legacy_cache": null,
+        "prefill_chunk_size": null,
+        "temperature": 1e-06,
+        "top_k": 50,
+        "top_p": 1.0,
+        "min_p": null,
+        "typical_p": 1.0,
+        "epsilon_cutoff": 0.0,
+        "eta_cutoff": 0.0,
+        "diversity_penalty": 0.0,
+        "repetition_penalty": 1.05,
+        "encoder_repetition_penalty": 1.0,
+        "length_penalty": 1.0,
+        "no_repeat_ngram_size": 0,
+        "bad_words_ids": null,
+        "force_words_ids": null,
+        "renormalize_logits": false,
+        "constraints": null,
+        "forced_bos_token_id": null,
+        "forced_eos_token_id": null,
+        "remove_invalid_values": false,
+        "exponential_decay_length_penalty": null,
+        "suppress_tokens": null,
+        "begin_suppress_tokens": null,
+        "forced_decoder_ids": null,
+        "sequence_bias": null,
+        "token_healing": false,
+        "guidance_scale": null,
+        "low_memory": null,
+        "watermarking_config": null,
+        "num_return_sequences": 1,
+        "output_attentions": false,
+        "output_hidden_states": false,
+        "output_scores": false,
+        "output_logits": null,
+        "return_dict_in_generate": false,
+        "pad_token_id": 151643,
+        "bos_token_id": 151643,
+        "eos_token_id": [
+          151645,
+          151643
+        ],
+        "encoder_no_repeat_ngram_size": 0,
+        "decoder_start_token_id": null,
+        "is_assistant": false,
+        "num_assistant_tokens": 20,
+        "num_assistant_tokens_schedule": "constant",
+        "assistant_confidence_threshold": 0.4,
+        "prompt_lookup_num_tokens": null,
+        "max_matching_ngram_size": null,
+        "assistant_early_exit": null,
+        "assistant_lookbehind": 10,
+        "target_lookbehind": 10,
+        "disable_compile": false,
+        "generation_kwargs": {},
+        "_from_model_config": false,
+        "transformers_version": "4.52.3",
+        "attn_implementation": "flash_attention_2"
+      },
+      "generation_overrides": {
+        "eos_token_id": 151645,
+        "pad_token_id": 151643,
+        "do_sample": false,
+        "temperature": null,
+        "top_p": null,
+        "num_beams": 1,
+        "max_new_tokens": 64,
+        "repetition_penalty": 1.05,
+        "use_cache": true,
+        "return_dict_in_generate": true,
+        "output_scores": false
+      }
+    },
+    "contract_sha256": "1df288b943fd4f93eae2f7ca43492ac6a0cfa116ccdcea25f1b8cabf628b3d5e",
+    "contract_file_sha256": "b3aa10c2bdfd4a54e9f8f6a183e14b7c84aece8252c8ba47ae792d30df753513",
+    "state_file_sha256": "c1dbeab681f5063f7b06801c6c2e73cc83e823b9e7fcb3c0ce7d6457bd4df448",
+    "sample_files": [
+      {
+        "doc_id": 0,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000000.json",
+        "sha256": "4f51847a956ce689fc41a9509aa9eddd4ec7b61e04ffb64ad82ab2dcad20f99e"
+      },
+      {
+        "doc_id": 1,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000001.json",
+        "sha256": "fb96bdd259b752cd19c86eb5eed6bc21ac654a3700961052c56b77539595d343"
+      },
+      {
+        "doc_id": 2,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000002.json",
+        "sha256": "43d74b89317d44e639f392a44522de13bb4494027933b3e48178814657d5c737"
+      },
+      {
+        "doc_id": 3,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000003.json",
+        "sha256": "a54c4966bde62e25396d70f2ae5cbf6829a0f205cecac8efb70e3b6f730d3c97"
+      },
+      {
+        "doc_id": 4,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000004.json",
+        "sha256": "a047fd01c7c270192bed18bc50e4bca840bab52a5248b0f5c93473789a484566"
+      },
+      {
+        "doc_id": 5,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000005.json",
+        "sha256": "4262e46f64fb98a4507901c1622c4265b50785d227bf92ea4668d574263baa88"
+      },
+      {
+        "doc_id": 6,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000006.json",
+        "sha256": "b01561c4bd0b5515d0a19d096f4dd974cdb5be54f6c1314d510428a1ff476036"
+      },
+      {
+        "doc_id": 7,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000007.json",
+        "sha256": "25b959dbe754c15ec3efd3b71fc83c8bf96a9ad61a2d307eb8354ade517af3d0"
+      },
+      {
+        "doc_id": 8,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000008.json",
+        "sha256": "93d4eea9a6a98fe06eb8efb8d021d4d1cd099bd67c4ba7d8add24d74da220d3a"
+      },
+      {
+        "doc_id": 9,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000009.json",
+        "sha256": "7197643388de44a91bb66eee55e0997c77bc1224ac2aedb97d7dee4056d4aeb4"
+      },
+      {
+        "doc_id": 10,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000010.json",
+        "sha256": "087160243685188cc60a12adc24d9a8bdc121b9ecb7671120eb96013df631c2a"
+      },
+      {
+        "doc_id": 11,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000011.json",
+        "sha256": "1d2efd60b716e67178567206ca3016b7a8795c7fda04fa0d737d82d640ebb028"
+      },
+      {
+        "doc_id": 12,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000012.json",
+        "sha256": "edfe7b1f74f55fa499c55cdc1a9f325dbdcc90e61ce595566916304cd8f28e5e"
+      },
+      {
+        "doc_id": 13,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000013.json",
+        "sha256": "25faa333e2139fe637d11b101f26f73588fa8d3611c1162b72d96ead9d6b6306"
+      },
+      {
+        "doc_id": 14,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000014.json",
+        "sha256": "8089cd67bac1c79a9fc1d6c4d152a0bf17c0175ff65f32f39d890c2eaab61d23"
+      },
+      {
+        "doc_id": 15,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000015.json",
+        "sha256": "5baeaab575d892f44c6122d6ce1a050e6f915960b982c745c4f189520c627a9e"
+      },
+      {
+        "doc_id": 16,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000016.json",
+        "sha256": "932d0cfdc0e03375737a8b613ea35534d28fa583b61efdbd63dfd02afca2b47c"
+      },
+      {
+        "doc_id": 17,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000017.json",
+        "sha256": "fb9fbe8f6aa3c140369b803a973e27af819db222a456efa435747a893e212601"
+      },
+      {
+        "doc_id": 18,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000018.json",
+        "sha256": "464f89315a4c5e7f00998e3942c70cc845f1b0012f50831b16756688347ff257"
+      },
+      {
+        "doc_id": 19,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000019.json",
+        "sha256": "0895a0005ffc533906cd24e2b60cd925d0b4e18f75497da98cb2eedf2256ddab"
+      },
+      {
+        "doc_id": 20,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000020.json",
+        "sha256": "69dcc1def7f4bc2af4ac23d228d1b1be6e08632992c6620e591ec082ed556555"
+      },
+      {
+        "doc_id": 21,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000021.json",
+        "sha256": "c5c5ea62f985ab67639f72a6e8c7b94a067094d7383b1e34aaab7c2f58db5736"
+      },
+      {
+        "doc_id": 22,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000022.json",
+        "sha256": "bc65c7abb508a1f1d33030c1dd3b05f261317556d24d1d0073bbc5258974cd9b"
+      },
+      {
+        "doc_id": 23,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000023.json",
+        "sha256": "83b9904e1a7495fbc486ed317ae75ef990a06c955ea6eb3ea4da102147fa9818"
+      },
+      {
+        "doc_id": 24,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000024.json",
+        "sha256": "ee87a0a9833613c0eec312fcb33399f9bdb04620e8c4abc6da644b08fb504b83"
+      },
+      {
+        "doc_id": 25,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000025.json",
+        "sha256": "010247358588d9c35e4ceb3277ba498522d9a2d257f15956ad3468596fa399d2"
+      },
+      {
+        "doc_id": 26,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000026.json",
+        "sha256": "da8ba742223afe015d2aca76559266300ac38fba2df0973bcb93c347c2204f25"
+      },
+      {
+        "doc_id": 27,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000027.json",
+        "sha256": "4a685d0b5626a5f0a9ecebfc926a4b62218bf4c4f91ca0f446660f4683b14d2a"
+      },
+      {
+        "doc_id": 28,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000028.json",
+        "sha256": "7bb900400fda810b8c9e08fa65ce65ad8a979def6c1d1dfe91ca29a02ede7139"
+      },
+      {
+        "doc_id": 29,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000029.json",
+        "sha256": "aaadc7e3c17acadb6c5df41b25b6dbcfd95b072d31a72de8cfb097bd7a081da0"
+      },
+      {
+        "doc_id": 30,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000030.json",
+        "sha256": "04cc56d61abddb38ee44b5bda9fea03904d10012dfbe32f995e7c0abdbc10988"
+      },
+      {
+        "doc_id": 31,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000031.json",
+        "sha256": "c17bbd737dc2fcf9511c92243d0fea168ef2c28acd9cd67ca9adbdd09ef6cafe"
+      },
+      {
+        "doc_id": 32,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000032.json",
+        "sha256": "15d4a5dfe3ebd08cc77ac126fbde967934cbe57baa687c94da26b8c7b613982f"
+      },
+      {
+        "doc_id": 33,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000033.json",
+        "sha256": "c30bf5b6939697622995bce5fa01239deeabb2516782dee831f3980412197188"
+      },
+      {
+        "doc_id": 34,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000034.json",
+        "sha256": "ce65433d16f4179ed7bafc1d92148da834c88a6931bebca6e9bf266953952d34"
+      },
+      {
+        "doc_id": 35,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000035.json",
+        "sha256": "0ce996601cc7a26614ce4b7fab0a7b1c254802975899e9835b1927f8f5d7c639"
+      },
+      {
+        "doc_id": 36,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000036.json",
+        "sha256": "cec1c14359fee95fdb7bf57cae160a477f3be04bd5a4bc6834695db867e2e788"
+      },
+      {
+        "doc_id": 37,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000037.json",
+        "sha256": "bc5f011eef49c967f61e8b2311809fabf960dc8b61dda339f064a19b04f283a3"
+      },
+      {
+        "doc_id": 38,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000038.json",
+        "sha256": "98839d09211370b86027728f277b097a011e550dfa29c0f4a031fb6e6dd78310"
+      },
+      {
+        "doc_id": 39,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000039.json",
+        "sha256": "b72653585e183b2a77bf6e5d705bd424db525f5b707231f6a2b40b2b3312855c"
+      },
+      {
+        "doc_id": 40,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000040.json",
+        "sha256": "84063d8fe0402bc1738afebd2b348ff26a3580dc6251c3f559b3985adf8ec94b"
+      },
+      {
+        "doc_id": 41,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000041.json",
+        "sha256": "12fa640a688ae0f8efe83ffe73d4bf9ca2370160bb9945f885e947b68b6e658a"
+      },
+      {
+        "doc_id": 42,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000042.json",
+        "sha256": "570198c4294e60fe5c61dd1d6dc31a9a854d9290cb5224a729930d0d1c3c270d"
+      },
+      {
+        "doc_id": 43,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000043.json",
+        "sha256": "38ce87e6a395774b8e87604ee6181312cfc2f6fa93a08365768bcb6d3ceff011"
+      },
+      {
+        "doc_id": 44,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000044.json",
+        "sha256": "1bc8447890f0111d7702d0ba398909eb7a1e6f051cc4c4ac4d3feb53de87cd74"
+      },
+      {
+        "doc_id": 45,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000045.json",
+        "sha256": "01ba064516e19bc4f07bd2fc2e9e4e4e1c05ead2e418994f0d9c6a774daf8581"
+      },
+      {
+        "doc_id": 46,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000046.json",
+        "sha256": "e6caddb395cfa8e03100393cd60c7c2ed98f556e7e5dcec1e4397d29ab27b71f"
+      },
+      {
+        "doc_id": 47,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000047.json",
+        "sha256": "3868bc67433d30c39e1dc7a1b4f32fe4c402772096f7133af8243b9e2fdb20ff"
+      },
+      {
+        "doc_id": 48,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000048.json",
+        "sha256": "590afbf4dfdc6e5380fd668d762cedeff41a62ef6fdb81953a5a7a069e2a4ebc"
+      },
+      {
+        "doc_id": 49,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000049.json",
+        "sha256": "1922dbb5bc34a3fad82ae50a1c43d891ccf4d3b4a8e0433d9af6434cbcbeee8a"
+      },
+      {
+        "doc_id": 50,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000050.json",
+        "sha256": "dc251c7fb68753bef0b7beeedc04c564b48dc07e7a3d1035aa1207a0cd600b2e"
+      },
+      {
+        "doc_id": 51,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000051.json",
+        "sha256": "6a7ce883995a7ea8c9b4bbb4ad58d6b9f29803abda68a5fe2fb5cd1350c066c2"
+      },
+      {
+        "doc_id": 52,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000052.json",
+        "sha256": "82b58f162e80caa4d28663e2b5c1927410d67a6bc1503801f5f44a4f8f435cb4"
+      },
+      {
+        "doc_id": 53,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000053.json",
+        "sha256": "87d7ae26423accbd28e2f3cd77d599f4d87adb0136834e04f38152f7c8bd6216"
+      },
+      {
+        "doc_id": 54,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000054.json",
+        "sha256": "84f7bbffb84c722fda7e4b1592629b0df886aec370c490a3baedfc78b135e02a"
+      },
+      {
+        "doc_id": 55,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000055.json",
+        "sha256": "7d135b12e72fff89fdeef8ef9790dd1ad26e0b15e8558917c5697f6adf0ccb49"
+      },
+      {
+        "doc_id": 56,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000056.json",
+        "sha256": "9a1047048913109d8cc1e5f37437214b369032640ad738162d4b7b4dd183a552"
+      },
+      {
+        "doc_id": 57,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000057.json",
+        "sha256": "315b9bc1266eff908d5fc8f8d3b142c39f17b57e3d3577e1c20f03c5e5e62903"
+      },
+      {
+        "doc_id": 58,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000058.json",
+        "sha256": "787f397f3b70b5562fc6c14e2c1b2fb812ad88e25166dab82df623406dda6a72"
+      },
+      {
+        "doc_id": 59,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000059.json",
+        "sha256": "3e427a5c7c3afc1500dd1a353d67f9d3d790bd6c84744a91a65ffc6039272d19"
+      },
+      {
+        "doc_id": 60,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000060.json",
+        "sha256": "b696414edfc717971d72774b6b76a458d669876c08e750d073e699d02e7998c0"
+      },
+      {
+        "doc_id": 61,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000061.json",
+        "sha256": "2c5615429b7d4481e85913d9498844994da737eba76d9d3287793dc0ab10740f"
+      },
+      {
+        "doc_id": 62,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000062.json",
+        "sha256": "b3a3fe5971154eedc765e10d6f743594d4cd2af536f3b2ebc295061f713cc0f9"
+      },
+      {
+        "doc_id": 63,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000063.json",
+        "sha256": "dc37749d1814bffdf059b68145bc5f2b6ace924d0a5fe9e919e3bdfd266f47f7"
+      },
+      {
+        "doc_id": 64,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000064.json",
+        "sha256": "4a9dd2b9a7264f0bd2075089f566441825311e699554784b5feb2c41e368fc55"
+      },
+      {
+        "doc_id": 65,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000065.json",
+        "sha256": "1bad4a051530ab4517cc9c21f5345bf06e93f4258acb276cd52070daa06da21a"
+      },
+      {
+        "doc_id": 66,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000066.json",
+        "sha256": "04fd46167a3825df64b3e0d2706ff6269d18c22153f837d144c316e4bc22f315"
+      },
+      {
+        "doc_id": 67,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000067.json",
+        "sha256": "c3b39cb66a5dc650eb8bcb60face7a53c885095f7e5436f5bfaacd0995dab08f"
+      },
+      {
+        "doc_id": 68,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000068.json",
+        "sha256": "204566e67137edfd963306ea20ec55061ae3bbd87d8847a2785f498bcaca3742"
+      },
+      {
+        "doc_id": 69,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000069.json",
+        "sha256": "0c9e5eac3701805ccd646e10d3fb6855adc0aea3fd98f4d41cf215df91ead0fb"
+      },
+      {
+        "doc_id": 70,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000070.json",
+        "sha256": "409b17619188488cd357160c903c83f185d37205ab1d17821d3c9a0bb8689fc9"
+      },
+      {
+        "doc_id": 71,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000071.json",
+        "sha256": "82890b0b0bd3a686b8a66bf866f80578b9a932350fa7b9d2701bff6a6a2e59e8"
+      },
+      {
+        "doc_id": 72,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000072.json",
+        "sha256": "3e6b069107206f1be840539e8ca9b45c56d55bac0b22d7463d7e77d0b4bfa5ce"
+      },
+      {
+        "doc_id": 73,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000073.json",
+        "sha256": "ee29d0ffbc6ef4d02f676c34e7146b418df34e5b88a57f83f68728d5b366300f"
+      },
+      {
+        "doc_id": 74,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000074.json",
+        "sha256": "2d02f03b1974423efb17a1b5ccbbf008967c9b6dd8ddc9b65105954cd904a0f9"
+      },
+      {
+        "doc_id": 75,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000075.json",
+        "sha256": "672a745f60226679ca40c13b8a921ccf574be26f9d1cf0336f5f803e490005a4"
+      },
+      {
+        "doc_id": 76,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000076.json",
+        "sha256": "342f8d6424515528f7b4566a47482a68b99dd312c83097341e1ff29f68b4b9c8"
+      },
+      {
+        "doc_id": 77,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000077.json",
+        "sha256": "ec71e68cb322271e60f459f76aa561e2f51889d76b24ebc255bc85872d61349a"
+      },
+      {
+        "doc_id": 78,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000078.json",
+        "sha256": "431985462725ba2adf55d87a7b504f097ee1146e3ae65fbef03a5158f1c454cb"
+      },
+      {
+        "doc_id": 79,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000079.json",
+        "sha256": "1ec3b9774340a86ca90603a18166f3c8ea74945a4a8ff10c8b6b20e4b7d9da8d"
+      },
+      {
+        "doc_id": 80,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000080.json",
+        "sha256": "49fba75c5de6fda1dac8f7e9d266d1656223a9daa82ce75b91f526b27089cbf2"
+      },
+      {
+        "doc_id": 81,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000081.json",
+        "sha256": "72d84ca2507277549086e1983cd035258ec6e4fe2ab16e3c280413660aa241e3"
+      },
+      {
+        "doc_id": 82,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000082.json",
+        "sha256": "27aeccd745f0f69cf621812f5b951d3324222c253ff5fbe4edb42732e7c059dd"
+      },
+      {
+        "doc_id": 83,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000083.json",
+        "sha256": "ee6bb523eb891760233e4edca450b69b99a01e5fcb790eb298789f49ca42c475"
+      },
+      {
+        "doc_id": 84,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000084.json",
+        "sha256": "0ba128db2386133d6e6bd9f3ba1466de8eca6f70ccdb182edb2fce6a48a3892b"
+      },
+      {
+        "doc_id": 85,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000085.json",
+        "sha256": "75882471e696d439c18f64dcb3c63a5c466367ab0e20366974d34dadc880136c"
+      },
+      {
+        "doc_id": 86,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000086.json",
+        "sha256": "b2bb7e7f82882bab896d9ae7a59eb1da66d2792892edadd6c2048a6526aedf73"
+      },
+      {
+        "doc_id": 87,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000087.json",
+        "sha256": "52d15b21f469f01485c965c1f86e5d07aa8a42e4a971ae0c2395874206d08763"
+      },
+      {
+        "doc_id": 88,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000088.json",
+        "sha256": "575ffa3db6692cdc4cca6cf6b40691ce1d6865d2ea896fe9bb90e4601d6a7500"
+      },
+      {
+        "doc_id": 89,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000089.json",
+        "sha256": "eca85dca723192b0a1db5ec18f21f712b75931945a3d2c1398162a664b275f7e"
+      },
+      {
+        "doc_id": 90,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000090.json",
+        "sha256": "b8ed12ec837765d495ddef9a443186924337cd6a1ff70e6df500da05eab668fe"
+      },
+      {
+        "doc_id": 91,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000091.json",
+        "sha256": "c9a71dfc70b3015c1627ae7547b2f5e983e7fa26fa0be78a262e745bc8317abe"
+      },
+      {
+        "doc_id": 92,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000092.json",
+        "sha256": "880684cb15608ff0423faf75f82f5e3cfa78924355ca50810990e740131aa670"
+      },
+      {
+        "doc_id": 93,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000093.json",
+        "sha256": "461659838b9328dc0f4fb3d5c5597279cf6fa9acdd485a691a835f0bbf2b382e"
+      },
+      {
+        "doc_id": 94,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000094.json",
+        "sha256": "7f80d0ee0a9c59cd426687987f0b1720ab633592b296f55e679dfb9e18b0dd5a"
+      },
+      {
+        "doc_id": 95,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000095.json",
+        "sha256": "02590f55c862578c3054f60bcdbab6cc32ca4f96cf14f903e298372b4f8bd8d0"
+      },
+      {
+        "doc_id": 96,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000096.json",
+        "sha256": "8569245a68d3dff126f46afd88c4191e54b83842f68171a75c23b95d9055eac5"
+      },
+      {
+        "doc_id": 97,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000097.json",
+        "sha256": "a3befc716f83d74e8f258c8cd2855ff3a5c10f69ed4608634706a7410290e0f7"
+      },
+      {
+        "doc_id": 98,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000098.json",
+        "sha256": "b4268bced207b1d19df55ff48c071b8701f02c4371a78637fcb61686b7b668a5"
+      },
+      {
+        "doc_id": 99,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000099.json",
+        "sha256": "3cc4d8e9a5b103960d63609f897c6f7b4f7634611accad0a004deed29aac32e1"
+      },
+      {
+        "doc_id": 100,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000100.json",
+        "sha256": "3e38c300e2568adeba006aa516a9800dbca05d369f1dd40f1a13bc595da29a50"
+      },
+      {
+        "doc_id": 101,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000101.json",
+        "sha256": "9c1d25499811f1db66d467c875a3e964843882bd650777065e3b6dc52b353246"
+      },
+      {
+        "doc_id": 102,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000102.json",
+        "sha256": "015ff507a4461833492d81040457ea399ffa78de9302474a726321da6cdcd36c"
+      },
+      {
+        "doc_id": 103,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000103.json",
+        "sha256": "207804dc3a01879b930917e38dc185d02b13175d02443999c98cffea0fde588c"
+      },
+      {
+        "doc_id": 104,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000104.json",
+        "sha256": "406c6a186ffcd2dec36d3f43386e5c670d2c16e017859dae8dec816d1c98e3bd"
+      },
+      {
+        "doc_id": 105,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000105.json",
+        "sha256": "76f06aeeb23ce6573e8f12dedd6236168b439e5db5f52db7467794352e2fcf7b"
+      },
+      {
+        "doc_id": 106,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000106.json",
+        "sha256": "3bef291437defdd4f2f5ba7a70cebdfcfb66367deb1383504e95bde9c0ecff1d"
+      },
+      {
+        "doc_id": 107,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000107.json",
+        "sha256": "9c224dec37dea450a9f64eb3489769ff9174eb6768b6a02038f716186f5c3779"
+      },
+      {
+        "doc_id": 108,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000108.json",
+        "sha256": "95f78a60d2cf231d97b59e4469aff3e7502e265fbf6279b6db294834732e7974"
+      },
+      {
+        "doc_id": 109,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000109.json",
+        "sha256": "1a48d43a8c5a3eee2d3dc14c2c8bf8ebc058cbf68d48beebd2942ce2caf2aa31"
+      },
+      {
+        "doc_id": 110,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000110.json",
+        "sha256": "f6f2e9a4518117be89546d5ce37e1ca4ee5dba411f1fb9ee7de7b231f159c111"
+      },
+      {
+        "doc_id": 111,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000111.json",
+        "sha256": "39c722d06bb8dc03984bf22053225731768b04899cb72005f36d0e0c991035f4"
+      },
+      {
+        "doc_id": 112,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000112.json",
+        "sha256": "430da4402b4312259a34246af60f1f46dc41459aced667cb5490628bba06161f"
+      },
+      {
+        "doc_id": 113,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000113.json",
+        "sha256": "405fe64e07177f4014c9467e787875ae917014d7c4c53b352ccf497ea4cf34cb"
+      },
+      {
+        "doc_id": 114,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000114.json",
+        "sha256": "b6c12e20746e8ba5fb1b9f12d96160d7bdcaa5221c8eda2d4af6cdc18d958db5"
+      },
+      {
+        "doc_id": 115,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000115.json",
+        "sha256": "d39cd185bd9c7feb746e1e6f5a3f7bb81c1b458f850abc1579ffdcb1fe12c63c"
+      },
+      {
+        "doc_id": 116,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000116.json",
+        "sha256": "3cc93de394293c428d9e6dd63077448f711e155e4148c754c1c962efe2633638"
+      },
+      {
+        "doc_id": 117,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000117.json",
+        "sha256": "a13bfa383bb32a4a53d16cc4131b16fcb666c23d2d6b10e8f6ad91d526a88dee"
+      },
+      {
+        "doc_id": 118,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000118.json",
+        "sha256": "bb20f6cefe35f5743b0628ea5540efba47251ba14f9fde85d025407154586828"
+      },
+      {
+        "doc_id": 119,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000119.json",
+        "sha256": "a32d7f50600e1ae59f97dd76cc6f06ed0d699a2851fa1280cef2bd664dcdc27b"
+      },
+      {
+        "doc_id": 120,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000120.json",
+        "sha256": "aeb5a948fa31c1f08b83c6c4df4511cfaf2a44bac70482ed969a00baa16388e0"
+      },
+      {
+        "doc_id": 121,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000121.json",
+        "sha256": "3b52cc4a5dc21019172beea2a3179845820b09828a9842441ad1a144aa37119f"
+      },
+      {
+        "doc_id": 122,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000122.json",
+        "sha256": "665e6ecff088cb2aa8e05219c5bd3476c0b9f7b8d2887b4af80facdcb9c6ed85"
+      },
+      {
+        "doc_id": 123,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000123.json",
+        "sha256": "9bcea6fa0b650c26abdf76e5db5582a6f415e6c11821759efae55b32fa8ec9be"
+      },
+      {
+        "doc_id": 124,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000124.json",
+        "sha256": "95a26a5e90e61906b85e0068f9aa5c14b6e2152e866e12de3ff388634f66c0a0"
+      },
+      {
+        "doc_id": 125,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000125.json",
+        "sha256": "d24be191d8002e4d407a4f6d7d642d01a5ad7bd44bc4a686dbcf43a7126f61a1"
+      },
+      {
+        "doc_id": 126,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000126.json",
+        "sha256": "45b4c00ab2847500e3c328c5fc0a26496368b699e8d3fb056cf7576897abe0e5"
+      },
+      {
+        "doc_id": 127,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000127.json",
+        "sha256": "198496f9d22991c5a696708da30d6bce3dd938e40c313909d3864eb32f724353"
+      },
+      {
+        "doc_id": 128,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000128.json",
+        "sha256": "4ed81aa31f78ee7232bc1f4a9c109e67d3f9655d5a42561063ae419bf9e203b4"
+      },
+      {
+        "doc_id": 129,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000129.json",
+        "sha256": "6730ea3a7e81bf21b6bdc16b5d5e900ba3fa4bebdd2216df3fc0abd0ba414aa8"
+      },
+      {
+        "doc_id": 130,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000130.json",
+        "sha256": "4d759094e0d5bd41fb36f4988e08a57209539992de75baddef58312d03073148"
+      },
+      {
+        "doc_id": 131,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000131.json",
+        "sha256": "b3f046e3457a5c19a113a6200a814a75df84fa384895e66ee95df9677ffebf52"
+      },
+      {
+        "doc_id": 132,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000132.json",
+        "sha256": "05345a7ffae328b616b3a2ff976a749640f5af74af109bb4484c3091b65c8488"
+      },
+      {
+        "doc_id": 133,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000133.json",
+        "sha256": "a13d30dd7d0ceaf3add75c4d75f0051492fb0119792393b21655458b68869bbc"
+      },
+      {
+        "doc_id": 134,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000134.json",
+        "sha256": "04dd102f75aaddfc38a098abd2acea99752837b520a322d5bc24157568bcf56e"
+      },
+      {
+        "doc_id": 135,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000135.json",
+        "sha256": "3ed4f0a8fbe6c8befe9530647257da039e5e94449bdb007e4c4a4d2f7b1ece0d"
+      },
+      {
+        "doc_id": 136,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000136.json",
+        "sha256": "8f1f2ec39c6a10a0d43d34d6eee82c5aea67b6333a33e33231a863149514a1fc"
+      },
+      {
+        "doc_id": 137,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000137.json",
+        "sha256": "eb104de2db75137b2b5e06d8ee42bf5cefffe608683c9a11c980110484a32a60"
+      },
+      {
+        "doc_id": 138,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000138.json",
+        "sha256": "42e28a7d065d8a15897572491a45df1f3a5a211c1ed4af33a4d269b20c257db1"
+      },
+      {
+        "doc_id": 139,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000139.json",
+        "sha256": "e30eaba32337e9573ba1be25769fd81694b44100ab6f79119938d669e0e3139c"
+      },
+      {
+        "doc_id": 140,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000140.json",
+        "sha256": "9a37891436b039e4c2966237a79ab74fc3308665a205a7eea24e1b1f312ba58f"
+      },
+      {
+        "doc_id": 141,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000141.json",
+        "sha256": "d932ce0b53f887e24481674c8a7cadc1f35dbe66f55fa57e86522a8ac57b48a5"
+      },
+      {
+        "doc_id": 142,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000142.json",
+        "sha256": "805a8ebdeca55248735307d83ddf91916ec94e1b6c762373f70e402e9fe08642"
+      },
+      {
+        "doc_id": 143,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000143.json",
+        "sha256": "3d28d1e341f2677819abc2dd66d0e593b64075fc3ba7ccc61729e6218fe53652"
+      },
+      {
+        "doc_id": 144,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000144.json",
+        "sha256": "3e2ba557f4a01735a83b3875ee876a8daecab9c4aca15873c6d3293e185c2cf1"
+      },
+      {
+        "doc_id": 145,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000145.json",
+        "sha256": "dc441c8fa1dd4a42a5fa210c3d9c44ace958c19915b1623f533f9a2d92ba5e70"
+      },
+      {
+        "doc_id": 146,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000146.json",
+        "sha256": "36e9ee7efd45b9f3f58a535cafb83b102d96e7d6ad7ab52718d4409f5ce4e0c1"
+      },
+      {
+        "doc_id": 147,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000147.json",
+        "sha256": "0e2d6c9c1e00eb7ec2ff352f429e4919e0867e7003f33dc5f6171406e47a9406"
+      },
+      {
+        "doc_id": 148,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000148.json",
+        "sha256": "e7b56cc25c106b0b43b286ee116c1d8557fbb5422942fd46888eacdbc08a915f"
+      },
+      {
+        "doc_id": 149,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000149.json",
+        "sha256": "2d5eda494ce214ede410e7cc16ed55d9a189f5bdc2031e5100734cae28f1180c"
+      },
+      {
+        "doc_id": 150,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000150.json",
+        "sha256": "c9f9961ccfbe1a4dd174f23ce8535d7c5a3deaf2749a9f0a7d8645afbbc7b68b"
+      },
+      {
+        "doc_id": 151,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000151.json",
+        "sha256": "b3b6a8174c0a719768d65e21d92207b51271efaab13647fa6ab4c90c84d4814c"
+      },
+      {
+        "doc_id": 152,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000152.json",
+        "sha256": "21ed32fb2281949d779eea4fc2a019e501a1cd67f2e8a8dbc732940ad51ef5c4"
+      },
+      {
+        "doc_id": 153,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000153.json",
+        "sha256": "ffd9577d06bcea3cba79c199b1dbc3d2fba071bf632367d720b98609a37996c2"
+      },
+      {
+        "doc_id": 154,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000154.json",
+        "sha256": "1e76962d77517edd0cf6e8e6e1888c36df7e4e3f0edaef158411285e9a334ad4"
+      },
+      {
+        "doc_id": 155,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000155.json",
+        "sha256": "ae719ef7593031d4cbd4698751524d9105c8533d203c0272aef6e5a4692be4c9"
+      },
+      {
+        "doc_id": 156,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000156.json",
+        "sha256": "a4f4d75c92aa784d49acbea7cd01d74638af5d1e472a07da33b29e7d461cbdcb"
+      },
+      {
+        "doc_id": 157,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000157.json",
+        "sha256": "a7aff1d6c73efdf384fa81845c78e311d873fde6d6b8922188257a03bddeb2bb"
+      },
+      {
+        "doc_id": 158,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000158.json",
+        "sha256": "dc6e69e8f173789519ca78c7e8934e8b1e6207d210f22234571ecb49f93e01b8"
+      },
+      {
+        "doc_id": 159,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000159.json",
+        "sha256": "2fa312f02499eabd6730a479feeca08073f1dc04a07ab1682cdc8b8d920c3c50"
+      },
+      {
+        "doc_id": 160,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000160.json",
+        "sha256": "831ba36099097083418c72eea17448050409234884e666962da62eab693355b8"
+      },
+      {
+        "doc_id": 161,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000161.json",
+        "sha256": "11cd4f5e73af6b7c904d7c23bb249f52dff547960f705d0089fc47e931707788"
+      },
+      {
+        "doc_id": 162,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000162.json",
+        "sha256": "cb50a9137f7623f91b3169db5a2b7ab38e2d562ca19486f3791be2553993814a"
+      },
+      {
+        "doc_id": 163,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000163.json",
+        "sha256": "039f0e11f9d2f9ddb359577f1a59fc68dc8f9e23ad1d03e16ae611a39a61bbea"
+      },
+      {
+        "doc_id": 164,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000164.json",
+        "sha256": "94af2017d09cef262afa20b9997e58db360453fb14908b1d9a44387fd181ad2f"
+      },
+      {
+        "doc_id": 165,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000165.json",
+        "sha256": "b1575438d353b8ddabe4026af2fc45c0d4e37ee9901aa62784eb40901d9f8a50"
+      },
+      {
+        "doc_id": 166,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000166.json",
+        "sha256": "319cc6975c866c2e1c284d891e64474832986554ad552bc663afa737716d329a"
+      },
+      {
+        "doc_id": 167,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000167.json",
+        "sha256": "ea18b883fc4a83ae42c664e789cc2fe5343f8e38251f9bffbdd97055480175c5"
+      },
+      {
+        "doc_id": 168,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000168.json",
+        "sha256": "e672887b4670d101b74d99ef1c27e0130b0d9bf9fae2e57618b9de323ff06789"
+      },
+      {
+        "doc_id": 169,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000169.json",
+        "sha256": "45558a9b6a656f8fe5341bf00ada9d14b390982ddf842f94257b8e9bb8504e76"
+      },
+      {
+        "doc_id": 170,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000170.json",
+        "sha256": "f2533d36a4bd15756ade423080805ee6f78bf86a8a13aa0fa80605b0ef7312da"
+      },
+      {
+        "doc_id": 171,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000171.json",
+        "sha256": "5bd049fcb3fcf6f8ec11004961ac86a8938c85a0d303104ccd722ab7dc328e3b"
+      },
+      {
+        "doc_id": 172,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000172.json",
+        "sha256": "3eaf4d59431f58ce8f94f50edf624a2fdf7395ea6f9cd819d50b6d5db758beb7"
+      },
+      {
+        "doc_id": 173,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000173.json",
+        "sha256": "4ac4d5c011660e44e6c4adb01b295d71f645535b5498e9bb95517b0ec98e236c"
+      },
+      {
+        "doc_id": 174,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000174.json",
+        "sha256": "9820be7e62528919d5801f2cd20d465a9b3e86e97dce27ed37bb86e22024c900"
+      },
+      {
+        "doc_id": 175,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000175.json",
+        "sha256": "b6eb4850c82dd5d84cf05328d9be8123a0aa6ab86765ba64c10145ea731be470"
+      },
+      {
+        "doc_id": 176,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000176.json",
+        "sha256": "c94787a96699648cd2279cc4147ceb1efb1795cd81b236bb8bd412a3ab375713"
+      },
+      {
+        "doc_id": 177,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000177.json",
+        "sha256": "69008c60bb79f2dc05609d012abdc5ef131e29004010a2a26ddb798e874802e0"
+      },
+      {
+        "doc_id": 178,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000178.json",
+        "sha256": "b214499f593e84dc36c30e298a8350c8da5cda75b6d8709e37ee210b0a60c02e"
+      },
+      {
+        "doc_id": 179,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000179.json",
+        "sha256": "92a7d35e89cfe1741f4b651c8e731018a4ef8ff5db51031e3c3d6ccad9b86093"
+      },
+      {
+        "doc_id": 180,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000180.json",
+        "sha256": "26f2dd0e4d978b606699364f4e06326ab330942a7aa3e6441d63975e4e807d12"
+      },
+      {
+        "doc_id": 181,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000181.json",
+        "sha256": "7e4fe775c8a2e6b4bf410e6733d481e7c42fdf97a4913963e3b512de5a8895ef"
+      },
+      {
+        "doc_id": 182,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000182.json",
+        "sha256": "ef212d71d3a2cfd5787a773903d3e0c50b0995ee6c869892b438bd4b0a19161d"
+      },
+      {
+        "doc_id": 183,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000183.json",
+        "sha256": "57a348a7f687667a0e4cb768a1750ec32b8053deccdb6c08c246e9e80317baba"
+      },
+      {
+        "doc_id": 184,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000184.json",
+        "sha256": "9a62a59183b65c2d3d2cfa7f86805b7f810b0aa40b4ff1912b2d5c073b65518c"
+      },
+      {
+        "doc_id": 185,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000185.json",
+        "sha256": "d9070fe573a4a3aeb00e4789f29aede51b8ee0ef33f911d3fb0363837204b2ee"
+      },
+      {
+        "doc_id": 186,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000186.json",
+        "sha256": "944b4c2a939cd0be7ca93cf2e77fbc73e3e96b7118c3795abb4d588944d09c65"
+      },
+      {
+        "doc_id": 187,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000187.json",
+        "sha256": "772bfaec493b31f9f18c2d16fc5ad129b9cc6928cd89cb61cbc85f3a4b19fb2a"
+      },
+      {
+        "doc_id": 188,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000188.json",
+        "sha256": "3605645af8b70794c714d9e8d46f3cc8c41a57c34d012fc728532180b100b0b7"
+      },
+      {
+        "doc_id": 189,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000189.json",
+        "sha256": "4f8986bbdb8f2e14d191caee9328614c1c37dcce0f927cf33299ee7c9b0003bb"
+      },
+      {
+        "doc_id": 190,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000190.json",
+        "sha256": "29f171ec53aec242970afd4681b9b1f60674401327fff4027a9a2a562e6977f0"
+      },
+      {
+        "doc_id": 191,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000191.json",
+        "sha256": "781a1ecac5e9a5d9aaa958ecdbf758e5035db7a711f6d3a3e197555d81650922"
+      },
+      {
+        "doc_id": 192,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000192.json",
+        "sha256": "c9f53a5e03ba3b9faf12df432ae678438a9c655e97cf3910b3fd25fca237dc50"
+      },
+      {
+        "doc_id": 193,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000193.json",
+        "sha256": "aa18893d4dace24dd316f01242cffffa0c9da0e48fdf860f4fc5f6478d357313"
+      },
+      {
+        "doc_id": 194,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000194.json",
+        "sha256": "f7f8d4dfa5d9136e9f8e52476fc30f1c4dc2c216897c7806641cdb334c246a22"
+      },
+      {
+        "doc_id": 195,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000195.json",
+        "sha256": "4bf6f7ecb81ada81648060a3a4354936859f32781920fa89e2aa92c49223e99d"
+      },
+      {
+        "doc_id": 196,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000196.json",
+        "sha256": "bf24a01ace04291e06f49a12faf424a3b16bba7051779a65efe60f9a51edb19a"
+      },
+      {
+        "doc_id": 197,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000197.json",
+        "sha256": "f42d36e6c21163842940c412bdc4aa46f47ead0d0c648710ed9a90942fe01ff2"
+      },
+      {
+        "doc_id": 198,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000198.json",
+        "sha256": "58e3621d4949e441143873dfe4e008e8692506695acd8facc29ade3cf81fb605"
+      },
+      {
+        "doc_id": 199,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109/vatex_test/samples/000199.json",
+        "sha256": "6e48ea1029a80bafa47c8d9f9366c7ae181899aa04211eade3c64d636a8a653e"
+      }
+    ],
+    "scoring_source_sha256": "968b697b342c0ad0719bccea907d1bc37713043dbcffb798ee06aadca7507bc0",
+    "reference": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___vatex/vatex_test/0.0.0/73c2e83ade2892705080e9dadeb7c75c5b99e0f4/vatex-test.arrow",
+      "sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "split_rows": 4478,
+      "selected_rows": 200,
+      "full_split": false,
+      "doc_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ],
+      "doc_ids_sha256": "3aff9a6fb6509b8968896ebe61adb4c30173323aa5a8564336c4474b2f015a25",
+      "selected_reference_rows_sha256": "a7c0c485f105004ca0b012eae9cf6128e81adb881ea68deb84878ab374def7de"
+    },
+    "task_scorer": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/vendor/lmms-eval/lmms_eval/tasks/vatex/utils.py",
+      "source_sha256": "a1adb3c156c9107c8e001dabb07d9047511770b076c600f856b6d34bf1d74479",
+      "function_ast_sha256": {
+        "vatex_process_result": "664786a7681350ca55590738e5846c0ebe9603fa2a128c10e8d9bfc791577794",
+        "vatex_aggregation_result": "86bcff7e17d5d7286260377384b59fdc33f0bc3919f95fb05a2d23409a79a10c"
+      }
+    },
+    "helper_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/provenance/full_video_retest_20261104/helpers/score_full_runs.py",
+    "helper_sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+    "execution": "Original task aggregation AST and all four real local scorers; same selected200-reference corpus/DF",
+    "dependency_versions": {
+      "pycocoevalcap": "1.2",
+      "pycocotools": "2.0.11",
+      "pyarrow": "23.0.1"
+    },
+    "local_caption_resources_sha256": {
+      "pycocoevalcap/tokenizer/stanford-corenlp-3.4.1.jar": "2fcb91bb7a111f93d71e264f4ee0e3afd19ba0dde6d21b38605088df9e940399",
+      "pycocoevalcap/meteor/meteor-1.5.jar": "1e57b4c72c0830ebe68558f1c799a624e96cbc1b6045c9f6330e26dcff6eafc2",
+      "pycocoevalcap/meteor/data/paraphrase-en.gz": "c147ac7d2c91f2fbb3ad31e4b352235061eb83145e0434daf217ee9ca5975f48"
+    }
+  },
+  "scope": "Single completed method/task, exact original first200 inputs; no matrix requirement, contrast, delta or inferred comparison result. Fixed200-input prefix result.",
+  "metric_scope": "Native NextQA WUPS@0 in 0–100 points; VATEX Bleu_4/METEOR/ROUGE_L/CIDEr in original corpus units using only the same selected200 reference videos for CIDEr DF; no composite or per-sentence CIDEr substitute",
+  "EOS_scope": "At-cap includes EOS exactly at max_new_tokens; capped_without_eos counts capped outputs lacking EOS",
+  "scoring_seconds": 8.797702644020319
+}

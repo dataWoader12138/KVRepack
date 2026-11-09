@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "samples": 400,
+  "generations": 400,
+  "source_public_full_object_comparisons": 400,
+  "validator_calls": 800,
+  "strict_budget_v2_validated": true,
+  "gpu_or_model_execution": false
+}

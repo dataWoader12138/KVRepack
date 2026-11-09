@@ -1,0 +1,21 @@
+{
+  "started_utc": "2026-11-09T02:49:37.573894+00:00",
+  "controller_pid": 58558,
+  "process_group": 58558,
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "-B",
+    "scripts/run_lookm_video.py",
+    "--pretrained",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "--hf-home",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "--output",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109",
+    "--limit",
+    "200"
+  ],
+  "log": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109_controller.log",
+  "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/lookm_strict_200_20261109",
+  "scope": "Only strict v2 LookM, two original first200 tasks,400 fresh generations"
+}
