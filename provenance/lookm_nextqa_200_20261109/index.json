@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "task": "nextqa_oe_test",
+  "method": "lookm",
+  "n_inputs": 200,
+  "files_sha256": {
+    "README.md": "ccacfb2d608d2d130b6e092e4078aa225b67ed97a102a2501a1c62390d547fe3",
+    "independent_nextqa_score.json": "96ee4aaa134fc6430ab9bcba9f1769d5ca254b69fda4aa50056cd14690ef4e9e",
+    "report/RESULTS.md": "c4a231735d630e151e8faac11c0b3770fdb05aec9ddce441b5bd5873556d2b32",
+    "report/cache_audit.csv": "67a374d0a6667f50d754f30474ebff116fc40429180825a4a9af497c6a6703fd",
+    "report/generation_summary.csv": "88905a03ac060a7f61d1c5cef01cf3d3d3500a660df820a187900827a667201e",
+    "report/sample_files.csv": "c4d14b16b1dedc0ea5521186e51e87a2da6eadf1f5dbc7dd162e40ef9022df6f",
+    "report/scores.csv": "aa840762c6504339f22f0e6e9b86789559d85571546ccd214c430ac17e29a3aa",
+    "report/summary.json": "bc0fdb608483e9f587c46f19448db606b25bdee45e00ea4a55e7e20b3ef6fd82",
+    "report/task_scores.csv": "2fe197e30b9ec6467b8d21abbdff98775fe4a4a24eacc33fc822d90b5d4d3799",
+    "run_config.json": "558fce6cdd20276c2f92cb02d2c5f249f4e03f54d91c5f6694c0aefe3d39aff9",
+    "run_contract.json": "25bb875f9723b4ea350d462ea7c52dde0e313e712a6be927f529c135b43f7b12",
+    "run_state.json": "87532317f1345ceed348d0d225faebd75ff6e93ed29e0ff6c78849881621be68"
+  }
+}
