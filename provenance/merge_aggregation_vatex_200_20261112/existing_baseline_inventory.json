@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-11T17:45:49.459116+00:00",
+  "task": "existing VATEX Qwen2.5-VL7B KVRepack baseline inventory",
+  "gpu_execution": false,
+  "source_modified": false,
+  "search_scope": [
+    "KVRepack outputs/ablations/rope_merge_qwen7b_200_20261106",
+    "KVRepack outputs/ablations/merge_vatex_200_20261112",
+    "kvrepack-full-work",
+    "KVRepack provenance/video_parameter_audit/nextqa_vatex.json",
+    "Original artifact scripts/logs/vatex_test paths from audit"
+  ],
+  "conclusion": {
+    "complete200_same_protocol_strict_e2e_baseline_found": false,
+    "snapkv_existing_complete200_quality": "available raw_reapply; nominal+32 budget; audited timing not comparable E2E",
+    "hybrid_existing_complete200_records_found": false,
+    "hybrid_existing_raw_records": 97,
+    "snapkv_current_strict_paired_prefix": 114,
+    "recommendation": "Run only the four authorized LookM/AsymKV arms to200; keep historical baselines separate. Snap strict prefix may supply paired auxiliary comparisons with explicit n; do not manufacture a matched200 KVRepack row."
+  },
+  "entries": [
+    {
+      "id": "rope_raw_snapkv_kvrepack",
+      "kind": "existing_raw_reapply_baseline",
+      "method": "snapkv_kvrepack",
+      "case_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/snapkv_kvrepack/vatex_test",
+      "samples_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/snapkv_kvrepack/vatex_test/samples",
+      "contract_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/snapkv_kvrepack/vatex_test/run_contract.json",
+      "run_state": {
+        "status": "complete",
+        "task": "vatex_test",
+        "method": "snapkv_kvrepack",
+        "target_docs": 200,
+        "target_generations": 400,
+        "completed_docs": 200,
+        "completed_generations": 400,
+        "contract_sha256": "68e6901be854229a85f3b8f9fdcf668ca7d565da4ebabe1f26e0d85ee584666e",
+        "started_utc": "2026-11-06T05:36:06.058683+00:00",
+        "updated_utc": "2026-11-06T06:11:41.750907+00:00",
+        "conditions": [
+          "raw_reapply",
+          "post_rope"
+        ],
+        "estimated_remaining_seconds": 0,
+        "current_doc_id": 199,
+        "current_variant": "post_rope",
+        "elapsed_current_session_seconds": 2135.650645568967,
+        "finished_utc": "2026-11-06T06:11:41.765661+00:00"
+      },
+      "coverage": {
+        "n": 200,
+        "doc_id_min": 0,
+        "doc_id_max": 199,
+        "contiguous": true
+      },
+      "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+      "model": "Qwen2.5-VL-7B-Instruct",
+      "frames": 64,
+      "min_pixels": 200704,
+      "max_pixels": 1605632,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.05,
+      "do_sample": false,
+      "algorithm_env": {
+        "BUDGET_RATIO": "0.1",
+        "SNAPKV_SIMHEAD_MERGE_RATIO": ".15",
+        "SNAPKV_SIMHEAD_SIM_SPACE": "raw",
+        "SNAPKV_KVREPACK_COMPRESS_RATIO": ".70",
+        "K_DIFF_ALPHA": ".5",
+        "SNAPKV_KVREPACK_SCORE_CORRECTION": "none",
+        "SNAPKV_KVREPACK_ENABLE": "1",
+        "SNAPKV_KVREPACK_WINDOW_SIZE": "32",
+        "SNAPKV_KVREPACK_KERNEL_SIZE": "5",
+        "SNAPKV_KVREPACK_POOLING": "avgpool",
+        "SNAPKV_KVREPACK_GQA_FUNC": "mean",
+        "SNAPKV_KVREPACK_MERGE_SCORE_MODE": "full"
+      },
+      "budget": {
+        "nominal_ratio": 0.1,
+        "policy": "native_nominal_history_plus_recent32",
+        "actual_global_prefill_ratio": {
+          "n": 200,
+          "mean": 0.1030468205590244,
+          "median": 0.10343347639484979,
+          "min": 0.10127707727125768,
+          "max": 0.10382775119617225,
+          "sum": 20.60936411180488
+        },
+        "strict_final10_pass": false,
+        "evidence": "record.audit.prefill_cache_shapes"
+      },
+      "generation_seconds": {
+        "n": 200,
+        "mean": 2.2002582105621697,
+        "median": 1.767442224547267,
+        "min": 1.4938625656068325,
+        "max": 4.418504260480404,
+        "sum": 440.0516421124339
+      },
+      "end_to_end_seconds": null,
+      "timing_scope": "generate wall time including merge-side CPU tensor/hash/profiler audit; excludes video read/decode, processor, H2D and text decode; adapter.finish_sample after timer",
+      "timing_source": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_rope_merge.py:182-185 and rope_merge.py _merge",
+      "quality_metrics": {
+        "Bleu_4": 0.21929443891845268,
+        "METEOR": 0.21438874683941053,
+        "ROUGE_L": 0.4259716611235004,
+        "CIDEr": 0.4630334566337397
+      },
+      "quality_metrics_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/snapkv_kvrepack/vatex_test/report/summary.json",
+      "overlap_current_strict_snap": {
+        "compared": 114,
+        "identical_input_fingerprints": 114,
+        "identical_generated_ids": 88
+      },
+      "same_protocol_reference_usable": false,
+      "reasons": [
+        "Budget policy differs from the new strict total-active-prefill cap.",
+        "Old generation time contains synchronous CPU/audit work and excludes preprocessing; cannot be used as matched E2E latency."
+      ],
+      "allowed_use": "historical quality reference only, clearly separated from new four-row strict200 table; no resume authorized"
+    },
+    {
+      "id": "rope_raw_hybridkv_kvrepack",
+      "kind": "existing_raw_reapply_baseline",
+      "method": "hybridkv_kvrepack",
+      "case_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/hybridkv_kvrepack/vatex_test",
+      "samples_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/hybridkv_kvrepack/vatex_test/samples",
+      "contract_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/rope_merge_qwen7b_200_20261106/hybridkv_kvrepack/vatex_test/run_contract.json",
+      "run_state": {
+        "status": "stopped_by_user",
+        "task": "vatex_test",
+        "method": "hybridkv_kvrepack",
+        "target_docs": 200,
+        "target_generations": 400,
+        "completed_docs": 97,
+        "completed_generations": 194,
+        "contract_sha256": "9e76f96544232e02fe52255badadc236edb8abae503d3c0461d7ee546b820ca3",
+        "started_utc": "2026-11-06T06:12:05.469326+00:00",
+        "updated_utc": "2026-11-06T06:32:25.123178+00:00",
+        "conditions": [
+          "raw_reapply",
+          "post_rope"
+        ],
+        "estimated_remaining_seconds": 1295.0847606594416,
+        "current_doc_id": 97,
+        "current_variant": null,
+        "elapsed_current_session_seconds": 1219.6429299414158,
+        "stopped_utc": "2026-11-06T06:32:28.440462+00:00",
+        "resume_authorized": false,
+        "stop_reason": "User ended the RoPE merge-space attempt and switched to completing HybridKV+KVRepack Random-head ablation."
+      },
+      "coverage": {
+        "n": 97,
+        "doc_id_min": 0,
+        "doc_id_max": 96,
+        "contiguous": true
+      },
+      "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+      "model": "Qwen2.5-VL-7B-Instruct",
+      "frames": 64,
+      "min_pixels": 200704,
+      "max_pixels": 1605632,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.05,
+      "do_sample": false,
+      "algorithm_env": {
+        "BUDGET": "1024",
+        "BUDGET_RATIO": "0.1",
+        "RATIO": "0.1",
+        "HEAD_CLASSIFY": "head_ada",
+        "BUDGET_METHOD": "head_ada",
+        "HYBRID_KVREPACK_CHUNK_SIZE": "8",
+        "HYBRID_KVREPACK_COMPRESS_RATIO": ".50",
+        "K_DIFF_ALPHA": "2",
+        "HYBRID_KVREPACK_K_DIFF_ALPHA": "2",
+        "HYBRID_KVREPACK_MAX_GROUP_SIZE": "0",
+        "HYBRID_KVREPACK_BLOCK_META_WEIGHT": "uniform",
+        "HYBRID_KVREPACK_STATIC_MERGE_SCOPE": "visual",
+        "HYBRID_KVREPACK_K_MERGE_SPACE": "raw_reapply",
+        "HYBRID_KVREPACK_SIMHEAD_ENABLE": "1",
+        "HYBRID_KVREPACK_SIMHEAD_MERGE_RATIO": ".50",
+        "HYBRID_KVREPACK_SIMHEAD_SIM_SPACE": "raw",
+        "HYBRID_KVREPACK_VERBOSE": "0",
+        "HYBRIDKV_VERBOSE": "0",
+        "HYBRID_KVREPACK_MERGE_SCORE_MODE": "full"
+      },
+      "budget": {
+        "nominal_ratio": 0.1,
+        "policy": "native_heterogeneous_history_plus_local_chunk_rounding",
+        "actual_global_prefill_ratio": {
+          "n": 97,
+          "mean": 0.10303377470100492,
+          "median": 0.10341240036787247,
+          "min": 0.10126986051452588,
+          "max": 0.10381493506493507,
+          "sum": 9.994276145997476
+        },
+        "strict_final10_pass": false,
+        "evidence": "Raw record.audit.prefill_cache_shapes is empty; inferred from final_cache_shapes minus112*(generated_tokens-1), using native append-one-per-head decode behavior",
+        "direct_prefill_shape_evidence": false
+      },
+      "generation_seconds": {
+        "n": 97,
+        "mean": 2.711999220677565,
+        "median": 2.2599190697073936,
+        "min": 1.9674237556755543,
+        "max": 5.278498284518719,
+        "sum": 263.0639244057238
+      },
+      "end_to_end_seconds": null,
+      "timing_scope": "generate wall time including merge-side CPU tensor/hash/profiler audit; excludes video read/decode, processor, H2D and text decode; adapter.finish_sample after timer",
+      "timing_source": "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/ablations/run_rope_merge.py:182-185 and rope_merge.py _merge",
+      "quality_metrics": null,
+      "quality_metrics_path": null,
+      "overlap_current_strict_snap": null,
+      "same_protocol_reference_usable": false,
+      "reasons": [
+        "Budget policy differs from the new strict total-active-prefill cap.",
+        "Old generation time contains synchronous CPU/audit work and excludes preprocessing; cannot be used as matched E2E latency.",
+        "Only 97 samples; not a complete200 baseline."
+      ],
+      "allowed_use": "historical quality reference only, clearly separated from new four-row strict200 table; no resume authorized"
+    },
+    {
+      "id": "current_strict_snap_kvrepack_prefix",
+      "kind": "same_run_paired_partial_baseline",
+      "method": "snapkv_kvrepack",
+      "case_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack",
+      "samples_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples",
+      "contract_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/run_contract.json",
+      "coverage": {
+        "n": 114,
+        "doc_id_min": 0,
+        "doc_id_max": 113,
+        "contiguous": true
+      },
+      "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+      "frames": 64,
+      "max_new_tokens": 64,
+      "repetition_penalty": 1.05,
+      "algorithm_env": {
+        "BUDGET_RATIO": "0.1",
+        "SNAPKV_SIMHEAD_MERGE_RATIO": ".15",
+        "SNAPKV_SIMHEAD_SIM_SPACE": "raw",
+        "SNAPKV_KVREPACK_COMPRESS_RATIO": ".70",
+        "K_DIFF_ALPHA": ".5",
+        "SNAPKV_KVREPACK_SCORE_CORRECTION": "none",
+        "SNAPKV_KVREPACK_ENABLE": "1",
+        "SNAPKV_KVREPACK_WINDOW_SIZE": "32",
+        "SNAPKV_KVREPACK_KERNEL_SIZE": "5",
+        "SNAPKV_KVREPACK_POOLING": "avgpool",
+        "SNAPKV_KVREPACK_GQA_FUNC": "mean",
+        "SNAPKV_KVREPACK_MERGE_SCORE_MODE": "full"
+      },
+      "budget_policy": "total_active_prefill_including_local_global_cap_v1",
+      "actual_global_prefill_ratio": {
+        "n": 114,
+        "mean": 0.09997466807132176,
+        "median": 0.1,
+        "min": 0.09990917347865577,
+        "max": 0.1,
+        "sum": 11.39711216013068
+      },
+      "end_to_end_seconds": {
+        "n": 114,
+        "mean": 8.298082024283838,
+        "median": 4.697799261659384,
+        "min": 1.7507859468460083,
+        "max": 79.75244072452188,
+        "sum": 945.9813507683575
+      },
+      "generation_seconds": {
+        "n": 114,
+        "mean": 1.959630284066263,
+        "median": 1.629541739821434,
+        "min": 1.3484177961945534,
+        "max": 4.02447297424078,
+        "sum": 223.39785238355398
+      },
+      "timing_scope": "video read/decode+processor+H2D+Fisher(if AsymKV)+generate+text decode; synchronized GPU; excludes model load/warmup/audit hashing/writes/scoring",
+      "audit": false,
+      "same_protocol_reference_usable": true,
+      "full200_baseline": false,
+      "allowed_use": "paired-prefix auxiliary latency/quality comparison only; n remains 114; do not populate a200-row baseline or continue generation"
+    },
+    {
+      "id": "migration_snap_3b_200",
+      "kind": "excluded_wrong_model_migration_trace",
+      "case_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_repack",
+      "samples_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_repack/trace.jsonl",
+      "contract_path": "/root/autodl-tmp/HybridKV-artifact/kvrepack-full-work/snapkv_vatex_repack/trace_contract.json",
+      "coverage": {
+        "n": 200,
+        "target200": true
+      },
+      "config": {
+        "model": "Qwen2.5-VL-3B-Instruct",
+        "model_snapshot": "66285546d2b821cf421d4f5eb2576359d3770cd3",
+        "method": "snapkv_kvrepack",
+        "task": "vatex_test",
+        "dataset_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+        "frames": 64,
+        "dtype": "bfloat16",
+        "attention": "flash_attention_2",
+        "batch_size": 1,
+        "algorithm_env": {
+          "BUDGET_RATIO": "0.1",
+          "SNAPKV_SIMHEAD_MERGE_RATIO": "0.7",
+          "SNAPKV_SIMHEAD_SIM_SPACE": "raw",
+          "SNAPKV_KVREPACK_COMPRESS_RATIO": "0.9",
+          "K_DIFF_ALPHA": "2",
+          "SNAPKV_KVREPACK_SCORE_CORRECTION": "none",
+          "SNAPKV_KVREPACK_ENABLE": "1",
+          "SNAPKV_KVREPACK_WINDOW_SIZE": "32",
+          "SNAPKV_KVREPACK_KERNEL_SIZE": "5",
+          "SNAPKV_KVREPACK_POOLING": "avgpool",
+          "SNAPKV_KVREPACK_GQA_FUNC": "mean",
+          "SNAPKV_KVREPACK_MERGE_SCORE_MODE": "full"
+        },
+        "budget_ratio": 0.1,
+        "min_pixels": 200704,
+        "max_pixels": 1605632,
+        "use_cache": true,
+        "max_new_tokens": 64,
+        "generation": {
+          "do_sample": false,
+          "temperature": null,
+          "top_p": null,
+          "num_beams": 1
+        },
+        "seeds": {
+          "random": 0,
+          "numpy": 1234,
+          "torch": 1234,
+          "fewshot": 1234
+        }
+      },
+      "same_protocol_reference_usable": false,
+      "reasons": [
+        "Qwen2.5-VL-3B, not7B;36layers rather than28.",
+        "Different gate/cr/alpha=.7/.9/2.",
+        "Native history budget plus32recent and intensive trace audit.",
+        "Migration comparison failed one V-cache hash atdoc75 although generated IDs/logits matched; not a strict-baseline timing result."
+      ]
+    },
+    {
+      "id": "historic_audit_hybridkv_kvrepack",
+      "kind": "archived_metric_summary_original_artifact",
+      "evidence_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/provenance/video_parameter_audit/nextqa_vatex.json",
+      "model": "Qwen2.5-VL-7B",
+      "method": "hybridkv_kvrepack",
+      "n_declared": 200,
+      "frames": 64,
+      "params": {
+        "simtop": 0.5,
+        "compress_ratio": 0.5,
+        "alpha": 2.0,
+        "budget_ratio": 0.1,
+        "chunk_size": 8,
+        "max_group_size": 0,
+        "k_merge_space": "raw_reapply",
+        "static_merge_scope": "visual",
+        "block_meta_weight": "uniform",
+        "head_classify": "head_ada",
+        "budget_method": "head_ada",
+        "sim_space": "raw",
+        "score_correction": "none"
+      },
+      "quality_metrics": {
+        "Bleu_4": 0.22858326025712025,
+        "CIDEr": 0.48891433670588336,
+        "METEOR": 0.22443910293988592,
+        "ROUGE_L": 0.4338122442662807,
+        "mean4": 0.34393723604229254
+      },
+      "result_config": {
+        "limit": 200.0,
+        "model_args": "pretrained=Qwen/Qwen2.5-VL-7B-Instruct,max_num_frames=64,attn_implementation=flash_attention_2,method=hybrid_decouplekv,budget=1024,ratio=0.10,mask_ratio=0.10",
+        "gen_kwargs": {
+          "temperature": 0
+        }
+      },
+      "source_paths": [
+        {
+          "recorded_path": "HybridKV-artifact/scripts/logs/vatex_test/hybrid_decouplekv/64/simhead_top0.50_chunk8_cr0.50_alpha2_corrnone_vmergemean_kspaceraw_reapply_metauniform_logscopeall_staticlog0_manual0_budget0.10_headhead_ada_allochead_ada_qwen7b_limit200/eval_outputs/Qwen__Qwen2.5-VL-7B-Instruct/20260705_143949_results.json",
+          "resolved_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/logs/vatex_test/hybrid_decouplekv/64/simhead_top0.50_chunk8_cr0.50_alpha2_corrnone_vmergemean_kspaceraw_reapply_metauniform_logscopeall_staticlog0_manual0_budget0.10_headhead_ada_allochead_ada_qwen7b_limit200/eval_outputs/Qwen__Qwen2.5-VL-7B-Instruct/20260705_143949_results.json",
+          "exists_now": false
+        },
+        {
+          "recorded_path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.log",
+          "resolved_path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.log",
+          "exists_now": true
+        },
+        {
+          "recorded_path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.nohup.log",
+          "resolved_path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.nohup.log",
+          "exists_now": true
+        }
+      ],
+      "generated_records_located": false,
+      "same_protocol_reference_usable": false,
+      "latency": null,
+      "budget_verified_strict10": false,
+      "reasons": [
+        "Only archived prior audit summary remains; original result/runtime paths are absent on this machine.",
+        "No independently verified strict10 active-cache counts or compatible E2E measurement.",
+        "Historical model_args/temperature alone do not prove the same generation configuration."
+      ],
+      "allowed_use": "historical reference with evidence limitations only"
+    },
+    {
+      "id": "historic_audit_snapkv_kvrepack",
+      "kind": "archived_metric_summary_original_artifact",
+      "evidence_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/provenance/video_parameter_audit/nextqa_vatex.json",
+      "model": "Qwen2.5-VL-7B",
+      "method": "snapkv_kvrepack",
+      "n_declared": 200,
+      "frames": 64,
+      "params": {
+        "simtop": 0.15,
+        "compress_ratio": 0.7,
+        "alpha": 0.5,
+        "budget_ratio": 0.1,
+        "sim_space": "raw",
+        "score_correction": "none"
+      },
+      "quality_metrics": {
+        "Bleu_4": 0.21929443891845268,
+        "CIDEr": 0.4630334566337397,
+        "METEOR": 0.21438874683941053,
+        "ROUGE_L": 0.4259716611235004,
+        "mean4": 0.33067207587877584
+      },
+      "result_config": {
+        "limit": 200.0,
+        "model_args": "pretrained=Qwen/Qwen2.5-VL-7B-Instruct,max_num_frames=64,attn_implementation=flash_attention_2,method=snapkv_decouplekv,budget=1024,ratio=0.10,mask_ratio=0.10",
+        "gen_kwargs": {
+          "temperature": 0
+        }
+      },
+      "source_paths": [
+        {
+          "recorded_path": "HybridKV-artifact/scripts/logs/vatex_test/snapkv_decouplekv_simhead/64/budget0.10_simtop0.15_cr0.70_alpha0.5_simraw_corrnone_qwen7b_limit200_snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5/eval_outputs/Qwen__Qwen2.5-VL-7B-Instruct/20260710_203213_results.json",
+          "resolved_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/logs/vatex_test/snapkv_decouplekv_simhead/64/budget0.10_simtop0.15_cr0.70_alpha0.5_simraw_corrnone_qwen7b_limit200_snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5/eval_outputs/Qwen__Qwen2.5-VL-7B-Instruct/20260710_203213_results.json",
+          "exists_now": false
+        },
+        {
+          "recorded_path": "/tmp/snapkv_repackkv_vatex_tune_20260710_r2.log",
+          "resolved_path": "/tmp/snapkv_repackkv_vatex_tune_20260710_r2.log",
+          "exists_now": true
+        },
+        {
+          "recorded_path": "/tmp/snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5.log",
+          "resolved_path": "/tmp/snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5.log",
+          "exists_now": true
+        }
+      ],
+      "generated_records_located": false,
+      "same_protocol_reference_usable": false,
+      "latency": null,
+      "budget_verified_strict10": false,
+      "reasons": [
+        "Only archived prior audit summary remains; original result/runtime paths are absent on this machine.",
+        "No independently verified strict10 active-cache counts or compatible E2E measurement.",
+        "Historical model_args/temperature alone do not prove the same generation configuration."
+      ],
+      "allowed_use": "historical reference with evidence limitations only"
+    }
+  ]
+}

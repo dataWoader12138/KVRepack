@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/scripts/check_sources.py", line 337, in <module>
+    main()
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/scripts/check_sources.py", line 330, in main
+    core = check_core(args.source_root.resolve() if args.source_root else None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/HybridKV-artifact/KVRepack/scripts/check_sources.py", line 237, in check_core
+    assert digest(llava_source.read_bytes()) == e["llava_source"]["source_sha256"]
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/hybridkv/lib/python3.12/pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/envs/hybridkv/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/HybridKV-artifact/HybridKV-opensource/hybridkv/monkeypatch.py'

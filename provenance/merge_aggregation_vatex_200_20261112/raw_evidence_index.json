@@ -1,0 +1,3061 @@
+{
+  "files": [
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/experiment_state.json",
+      "size": 1225,
+      "sha256": "dfc446488f89f111b09a28317a4907d5f322a662ddbabc375993b3cb7d36eb69"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/postprocess_state.json",
+      "size": 211,
+      "sha256": "5b0e6505e01b40beb412520e5bb11f88fee66b72fe379eb1f5ee2b54e65d16e3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/environment.json",
+      "size": 441,
+      "sha256": "f1b03edac275d7a2b951149b39c9fa043b1ab6e5cfd350cdd2e44710b99d8b76"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/run_contract.json",
+      "size": 5189,
+      "sha256": "a7e959710753b69777f2d33a78db95ec48eeff7a76889e48856c34b37cfbeccc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/run_state.json",
+      "size": 863,
+      "sha256": "22ef96c1579cce9d24e87b7acc8d88f01594168f08ff40fa5ca3a3ab5e99b524"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000000.json",
+      "size": 156624,
+      "sha256": "63c27bce4fd27a3e174964a9252b3d39398357f7afd3274d4a8d90e702ae8c82"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000001.json",
+      "size": 156541,
+      "sha256": "6e6e307cf07e7ccfffde22bb030e6325e0f67726cb641e2172a9bb00a2f33b40"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000002.json",
+      "size": 156767,
+      "sha256": "7c7ac34531e377dedad685d99b58032508de49c35e7bb4b4212e68e37fa91836"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000003.json",
+      "size": 157127,
+      "sha256": "f0c2936dd3cea563c231593ae76d8a2887bcb52379ea1a71dbc37d1331139d88"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000004.json",
+      "size": 156480,
+      "sha256": "0bd810c84c6a222ad8c98644d849dd486025f7bdb9dc7cffd92821ac7adf2755"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000005.json",
+      "size": 156021,
+      "sha256": "1f40ee2fc417531d4721becb759dd16e537844cbf83bfa979e6220c00a782cc3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000006.json",
+      "size": 156761,
+      "sha256": "96bc5f007b1bfef1dc9551e5f9aed3cacd5798e70d1deb6a4674862ccec374f4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000007.json",
+      "size": 156204,
+      "sha256": "5cfb1644dc9411ea146a673744d7cf1f792ed1a7bd19c09e58eed44ac5046c39"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000008.json",
+      "size": 156729,
+      "sha256": "7c3cf736a165208c25225631c802fd48b22914764aefe96882b1ef442b0765a9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000009.json",
+      "size": 156821,
+      "sha256": "dbec0f29ff7f3610bc9c487a8f2b497c38d440bb21b1be9c119f9582650f87f0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000010.json",
+      "size": 156527,
+      "sha256": "07cbc9ccd679419d3787bffcfe7946deef580e7a5426d578eb144981bd2970dc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000011.json",
+      "size": 157034,
+      "sha256": "19d56f8e3596c33e5b9b561a3021927d1e41811e8299004530044528f36c47ed"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000012.json",
+      "size": 156815,
+      "sha256": "9789d3ad8e84e515cd06a8e02637af4a003d87957d38710977b0d4b080c898c4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000013.json",
+      "size": 157458,
+      "sha256": "51df9fa3de9314c0322d24df167a6a7f5f67fbb0de8e1e5c7e7d7dbabe9ee8a1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000014.json",
+      "size": 156164,
+      "sha256": "9d7d0635d68e5fbaffa938362cc26348c4697e128e6c1b80884f6a9e8ebdab75"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000015.json",
+      "size": 156299,
+      "sha256": "d3529aa03a27b50c06284a58d3ebd0af6e756e5cf7f8ace299326e9233836fdf"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000016.json",
+      "size": 157664,
+      "sha256": "c753b92147f0eeb7bf5fea45a1d4304a3776d9b31d3223eb48ceb99083597698"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000017.json",
+      "size": 156502,
+      "sha256": "ebbd58eb3971f6c59d2092c7961f04201e46d959659cb9e739b582c4ab81f73d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000018.json",
+      "size": 156314,
+      "sha256": "189453fbaa5fff19d90b501cc90792df6288103f76b3a5e98fbaf31b9572cbf3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000019.json",
+      "size": 156804,
+      "sha256": "18ff64daca90b585c171367a4e09cc9d7559a9400bea82348b1a10ca6daf454b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000020.json",
+      "size": 157189,
+      "sha256": "34ac06e88ded0e3dada61cdc9cbbb483e3324858f74f4816c19b9ded592fe228"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000021.json",
+      "size": 157456,
+      "sha256": "2235ed71142ac57e87da11ce212886e26cef345c8f199e211699d13fa7e3ccec"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000022.json",
+      "size": 156529,
+      "sha256": "77a219190d3bf704a75d6e5ce7cf49ba52f5cf073ffe528fa0e2404a3bad7455"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000023.json",
+      "size": 156344,
+      "sha256": "d60af8b6a6e1c89a16171eca4ab7344b0818e2e0d5357465a23989c2a66066d2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000024.json",
+      "size": 156734,
+      "sha256": "c24eb131fa9c92ef60b371587dd9798a4accf96e783330220f1e19a53cade823"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000025.json",
+      "size": 156725,
+      "sha256": "8cf5ad2164aa50d8718d02beac6d1697b74bcce82ede273d35011c2fd177e9dd"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000026.json",
+      "size": 156561,
+      "sha256": "ddaa21dd23c7c8eb67b974c1826b9216edd67bb3b717e7989e8dd2457d086ce2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000027.json",
+      "size": 156253,
+      "sha256": "12df71741703f7c23b79b864f6d0394f76bb793f7723b8c5eefa47205a163e69"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000028.json",
+      "size": 157289,
+      "sha256": "4d3a40937bf88293913a77e17e772dae2f896a35740ed920d2f4140488f5f7d5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000029.json",
+      "size": 156424,
+      "sha256": "1ddf3e409bcf810b650ec923172c367d5f938dc3deb87fc4a8086f718c894a60"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000030.json",
+      "size": 156793,
+      "sha256": "9ee74b4b8722f43d6cbbc14bc10112e8009e96137bc37678c0a9a205245d056d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000031.json",
+      "size": 155988,
+      "sha256": "6214295deb5fc4905aca634d70c68686264a54ecbce4d025d98e1957dbea4a25"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000032.json",
+      "size": 156917,
+      "sha256": "d317fa891b570c399f25db9cdb8f2b7bf1a66fecbe86876625c0da3ee74d69ac"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000033.json",
+      "size": 156058,
+      "sha256": "48c2e74db161b5e61493d66f63fcb21c16422df0f0169c68447db2ad32d36b4e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000034.json",
+      "size": 156275,
+      "sha256": "8414d13d96f3652ac1a9e92a4104a4da1886acce8e0d77a4935ecdbc8311af56"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000035.json",
+      "size": 156560,
+      "sha256": "0a473bfc6dbb56eb3cc6cce31a17bb1ff45bc6644013439bc905545aec8de1a2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000036.json",
+      "size": 157046,
+      "sha256": "901467cddb41933cac06a4e1b23d113906d045975cdb5b9fc3f1683b5bbd7163"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000037.json",
+      "size": 156233,
+      "sha256": "abd4ab4bf0579d1fdbc9ed47eaca1f9c1db1182b35c403ec0345ffb10f1544da"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000038.json",
+      "size": 156540,
+      "sha256": "4775644f9078109d36d51f556ca13dffeb1cb2883adbcc8d625783fa16434e56"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000039.json",
+      "size": 157299,
+      "sha256": "10102d637729da62ea607f396896c067541e4279048f69031ddd4d0f4082d40b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000040.json",
+      "size": 156169,
+      "sha256": "e393540ae9f53b9fb83ced97ccfa018ade32b4b88b87fdb221de4c6d7c82e6d8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000041.json",
+      "size": 156597,
+      "sha256": "1e7dfe05f20e2d16ef7db6e23335348bcc5e326d43eacdaaa2d4eda91f2c1394"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000042.json",
+      "size": 156251,
+      "sha256": "f0a2c7786e90059f648a66ecf277e1a27ccdf82d8207833b64886b7b4df29861"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000043.json",
+      "size": 156678,
+      "sha256": "256761e8260765a4b9115cd96c9bf4e3b813928b64b5d3647591707448adc638"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000044.json",
+      "size": 157696,
+      "sha256": "ed9ef15ebce172e88570ee08c7e9012726e4a47b161479caf6ee11efffdadc14"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000045.json",
+      "size": 157027,
+      "sha256": "2391ff6b1250f7e712636ba9049fde99cfb7ed0381e99456f347a951a0339aef"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000046.json",
+      "size": 157021,
+      "sha256": "c76592735d39975c08a12323decc5ee8c56fc4442b1e2f5ce397a74e32695a72"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000047.json",
+      "size": 156573,
+      "sha256": "9516a9252b8ec51458070ba4101d7bc1ba9879f96ca2db6eb0a51dfb232208e1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000048.json",
+      "size": 156576,
+      "sha256": "d0ec8d1b99eac18bff4dc4e1564360ba18ffa325d78d02eb50e7edcaabc3b0b2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000049.json",
+      "size": 156625,
+      "sha256": "2f6b78ef95f24cb9b943941e4936f2303b81ee5629036bfa702ad82af623562b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000050.json",
+      "size": 156913,
+      "sha256": "a11619f90b74114fddd9fd18a65cb4cf5e7e0d8c59753caa29c7075f8779e257"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000051.json",
+      "size": 156974,
+      "sha256": "22ef4cd9c33a267ac5d9620290448860ea930a531caabe1e728f321c7e04f648"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000052.json",
+      "size": 156878,
+      "sha256": "e498a062d00a0cc3442b6cba2267c392d6bbe5f38e04871eb44f81a68fb1230f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000053.json",
+      "size": 156361,
+      "sha256": "e879e226373864d6ba388b79182662490f38cd2764bef70d96fe9ac2a1100a84"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000054.json",
+      "size": 156916,
+      "sha256": "f9d7610a566fbe33a6e986940e5ba97996832fa95bb46d4f8be83e98b2e825f4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000055.json",
+      "size": 156847,
+      "sha256": "0cff96f7d697ab394b3a5d12b9139a3c477bbc06efc6c51fc2dc5c545bb0d0d0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000056.json",
+      "size": 156679,
+      "sha256": "3490cf1de6188e74346d81cf1e536fe483563257d2b65049eb31c7c92245f1e1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000057.json",
+      "size": 156228,
+      "sha256": "11870cf9e4ae94b98e91560cf0723cc2d5061c1bdef8eb6bac293d80f885232f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000058.json",
+      "size": 157476,
+      "sha256": "6fa00bac4ee113090db2748bfbeb16e49e5fc1d1316ad4f2b449fb9d37519d71"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000059.json",
+      "size": 156987,
+      "sha256": "4b11246d4ae9a940e85f7233f51fd72a095556dea9bfb6eacdfae1df47ed87ea"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000060.json",
+      "size": 156808,
+      "sha256": "e7164fd8ca009c8cd15ec282a6edb22534c045ebb3abecab787c8bdd5fb13aed"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000061.json",
+      "size": 157042,
+      "sha256": "17335e95184f55e28e57630d3aaf23162f3eac4c12cd3b241c0a37b5d6176db6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000062.json",
+      "size": 156232,
+      "sha256": "cc3d05491f102dc931def4163aed939cb74446bcc601d327ccf228e7554c261c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000063.json",
+      "size": 157138,
+      "sha256": "0af7d6d9e19ec79686703b324311fba425078307dc35082212097d651799b953"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000064.json",
+      "size": 157569,
+      "sha256": "6338370a08ffb07d7360c908cca25c3a67f6536b6663da24f04a1c61c723fc6e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000065.json",
+      "size": 156707,
+      "sha256": "a66c0b766b7fc0f19e0627f9a8cc0ba67025d46bf145211e5e0d0a9a76aa2e76"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000066.json",
+      "size": 156839,
+      "sha256": "25c44f2f796ae278423c67e65197b39e8c3211e09fc18a5c2e2ad36349028f41"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000067.json",
+      "size": 156190,
+      "sha256": "b7ee64944ae0b91fb7fa5a0517f6e50366ffb06b14137ae4fe03b5587a36a92b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000068.json",
+      "size": 156173,
+      "sha256": "20f3368bf1bff3ff752cdd23937f49f2251da9e24e7496e75a6c74fe9da73b9b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000069.json",
+      "size": 156129,
+      "sha256": "d540c74c0f75dfa9e86f7a715dec9ed7194b0cc5320fc7d6eb246b0a06fa33f5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000070.json",
+      "size": 156363,
+      "sha256": "12701ebf9adc6a3d8f7cdb2116586af2700f97f36f49c76c0286bb083b7d4d2b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000071.json",
+      "size": 157236,
+      "sha256": "31ce707ed5b62e0bb9dea2c50a3909c763213a152183466c542ca07a650745fc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000072.json",
+      "size": 156818,
+      "sha256": "433a33e87151b2fe7b4d8b3c64a6eb2e1a22463ee93ada17bdeb75757a684d72"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000073.json",
+      "size": 156919,
+      "sha256": "ddf8da8f22c097d88017547a41e2302391822006397f2f66c5d3bd50f0e2a35e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000074.json",
+      "size": 156675,
+      "sha256": "4d78102173745f2271095f34fcbfa49f617a59ca51a6cd6770ef5fe70adb1b77"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000075.json",
+      "size": 156316,
+      "sha256": "b093e82e137af1b01fede2e564f5e2ea21003d4e7729c3e9b515d23d5d4594d2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000076.json",
+      "size": 156473,
+      "sha256": "d8b0adf46f617984c593ba4258de14b2f8a7d7a7c76c13079924321fc65c4e1c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000077.json",
+      "size": 156639,
+      "sha256": "bf919b7746be9365e28567af127786ac7d5ad08144477218d48833e9aa3cb869"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000078.json",
+      "size": 156331,
+      "sha256": "8dfe3650b8525f30115578bc72ef3da9c48bcf8c0d4fb63f595ef44a127d92c6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000079.json",
+      "size": 156336,
+      "sha256": "05229956271d4b4210daf488f6aa89499a04d6a4b2d5263294b46e09cfbc4694"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000080.json",
+      "size": 156891,
+      "sha256": "43ff2c3f0e9959f649a14bd5327cde0ad9be8ded9af650bd3d8bc9dfcd98ec35"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000081.json",
+      "size": 156930,
+      "sha256": "0b95d5f0a6d450353b8693f4675a8b52b2c34f76dc01fbc5d02d9a39157a887f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000082.json",
+      "size": 156666,
+      "sha256": "bb9da027255e01ba4b2184e51d411f99e65d05f3f905a29fb98b178328e5d364"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000083.json",
+      "size": 156861,
+      "sha256": "9e9c2b066daa4e0d848ea2fdb59cc181a6b1f991af9d173b93190d66b0444272"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000084.json",
+      "size": 156634,
+      "sha256": "a3ac5a413a1baccd544d07540308f7d47408ef97abfde35bc0b55b9231e5769f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000085.json",
+      "size": 157012,
+      "sha256": "10c13ba406d0697f3ad0921399426cd6a02479f17bb1483aece36d741fc9a880"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000086.json",
+      "size": 156954,
+      "sha256": "6a2fa0ac20e651fe50fa76dda3c35b5bcd98c9d002b0ac32d7fcc7968f4e56b6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000087.json",
+      "size": 156561,
+      "sha256": "eeecbba3296a249d94af6a78d4586fafe7eebcacb2f10eee88aeda636b964bc0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000088.json",
+      "size": 156679,
+      "sha256": "3b6740af3bfec903e3433589fbc254a5b0ccd4f2b4bc94534d54394dcd7cd516"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000089.json",
+      "size": 156502,
+      "sha256": "118e6b332428eaeb457f4fd780315d5faa0cd5959470769f061563bcbcbe08a8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000090.json",
+      "size": 156384,
+      "sha256": "0a89dc411ecec718829bacc9ef6a23bf07f45bde2809b89c34f861e206a4e16d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000091.json",
+      "size": 156586,
+      "sha256": "59ee4a5ce7bf01feebc30c5e025aa2556778f39b69ebee712901bca3f850b723"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000092.json",
+      "size": 156129,
+      "sha256": "5c63eca7ad29443761eb1cf820137ef8d114cacf9c370d01a6b84fcfb729c3df"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000093.json",
+      "size": 156302,
+      "sha256": "eac79acc31efcc1c6a5072a0d25326c72cc96a9a53070c9a475ed0f84b58b81c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000094.json",
+      "size": 156794,
+      "sha256": "3e467527c5812078fe6264d25b252b7c1f117e1817efcd1f21a7a8e6e0fb08a0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000095.json",
+      "size": 156372,
+      "sha256": "5b0e2e187f9d65b522628969c22c1510e118fe5eec8bd500adc87a075d9f7205"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000096.json",
+      "size": 156286,
+      "sha256": "6b92c9860dac14549442a1eff62f3d0948427094d1b73c7c4a5681f2606eb138"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000097.json",
+      "size": 156692,
+      "sha256": "ef46a9b0bcf245a3c29670beed884ae6071839d57520a480565fe5f6414222b8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000098.json",
+      "size": 156197,
+      "sha256": "fa8fe5e6d67dc8b0844b1cfd1ed593e703ecf46226ea4063df3ea51f30248a04"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000099.json",
+      "size": 156587,
+      "sha256": "41de0a865526277bddfbddc58db8b4f6da79c6487ddd3e87d274499bc6a3d806"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000100.json",
+      "size": 156909,
+      "sha256": "e661c94fb33411779cfa306df724ea0ff4cb3e7ba5f099b15729789e4c83f4f3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000101.json",
+      "size": 156636,
+      "sha256": "1fd18b8311b6774b336d192b4191999ad870f89ce321276bda1003cfed7cd2c0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000102.json",
+      "size": 156536,
+      "sha256": "6cf22910f5d2b4802cd47198130e78503a89edecb746fab0b84ad619c3950a15"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000103.json",
+      "size": 156433,
+      "sha256": "68c4105f466b677ce7a9334ccf90e93999f4670fb241ad99ca4aff9de5f26add"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000104.json",
+      "size": 156366,
+      "sha256": "75c93f46e4c8dea8ff9f643cf9c133a06e6e6069414780139d5bcd678fc7e5ea"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000105.json",
+      "size": 156198,
+      "sha256": "b8f0bd4c16017070d8d3c6cd2a41d68a653938fa4f36c90b81459d68413d6d01"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000106.json",
+      "size": 156038,
+      "sha256": "2d2c66d94a829aaadfd13019bf2beb5883de98030a199875346bc0e177d1852f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000107.json",
+      "size": 156603,
+      "sha256": "0b758e7e24d784972de0e9549c3e6028dc1243487e69b579595653e6292893d2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000108.json",
+      "size": 156471,
+      "sha256": "39e0ea0e9e254805a290baa4d51f77e8a77d7cd502d23de6007ec50139396217"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000109.json",
+      "size": 156516,
+      "sha256": "12e4073418225515eef0ead18e7d433bf79dc02aca844fddd8a4580a705c97bc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000110.json",
+      "size": 156797,
+      "sha256": "3f4a9ef12153c7bfe0538cc43819864e15ce32d96adf2ed8eb97ce9ef6251f4a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000111.json",
+      "size": 156401,
+      "sha256": "20771ea2f36f112e999b97982402ff98010f810fab1764bc1ffb0fd6f6fb30f6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000112.json",
+      "size": 156588,
+      "sha256": "85fecb6744fa579869b157a49b38caf222df3fae92541ea850b542832d2b6781"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/samples/000113.json",
+      "size": 157007,
+      "sha256": "8d9546f048e6b03c6f7ae7a476513cc9f2214b7ec0a0d7f44786d540c9b5e4da"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/transform_asymkv.json",
+      "size": 12731,
+      "sha256": "0e129ba721e3f6b69cd6acd499241c943468f5078399689e8561acf877e8fe0a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/transform_kvrepack.json",
+      "size": 3027,
+      "sha256": "a99808e5d07c1f41f0b79cdc607076793c5a254b9e9850e062f28ec94f0d08e1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack/transform_lookm.json",
+      "size": 2786,
+      "sha256": "6db9179d2ddc31ecc1a1ffd7bba4734c7fa02e8b4fed240646f57dee1b813b88"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_200_20261112/snapkv_kvrepack.log",
+      "size": 193567,
+      "sha256": "e6f6793d30c89fa8e33932c82908ebc53cfd32878b3e11f339cc26271c754dfb"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/experiment_state.json",
+      "size": 1631,
+      "sha256": "00ad33b47ac44bc1349c0d00e794ef33f97e6adf013cd66e9b05539d7f239322"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/environment.json",
+      "size": 441,
+      "sha256": "f1b03edac275d7a2b951149b39c9fa043b1ab6e5cfd350cdd2e44710b99d8b76"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/run_contract.json",
+      "size": 5525,
+      "sha256": "8d088497122e3703cbaa94023df5cb135f940a7a95df83d34fdf351d3b0a7d90"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/run_state.json",
+      "size": 738,
+      "sha256": "2fde015b4a6dc197bfe2a14c432fe7369acf5bc228cdf4638ff93ca95da2704f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000000.json",
+      "size": 184370,
+      "sha256": "47a5a907f1411b22067681d50bf4751e08497187ad8397156495d6549f4be864"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000001.json",
+      "size": 184259,
+      "sha256": "1a37bda2925fb4de100d529c5b9987ee8c2de9e1c587e418c259ece98b5417d0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000002.json",
+      "size": 184830,
+      "sha256": "1d2cc97cecdc8e2b324af6aec8b2fd40c19ab61776dee2152881ff97e1176145"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000003.json",
+      "size": 185639,
+      "sha256": "fa22b203532f25bb1b12b199bab4644be5d64ef21e1f0cc9894807bcf741c217"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000004.json",
+      "size": 184206,
+      "sha256": "c4ff1cfd61a3b0398a04f4dfa2d28de0cbe4a99057ebe74536a8e4877727dfb7"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000005.json",
+      "size": 184132,
+      "sha256": "8d06176e60612d92fc0e06492373035cd46b7946100edee6083fcc856b7276c4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000006.json",
+      "size": 184332,
+      "sha256": "a2b38764c05e711ad32f4ab4d4696a4a01408a38ae73842a180dabd510b4f8dc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000007.json",
+      "size": 183944,
+      "sha256": "adeeb4b2943eec23a2de608c739350abaf71646f5f6e1b35f8d67eb5ce116233"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000008.json",
+      "size": 184521,
+      "sha256": "f0a7a30971385f771e95dec556de7bf5f39763713c153cd21328b26998f3bc2f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000009.json",
+      "size": 185333,
+      "sha256": "35f746dc209bc5731cfacfca78ecc7e99637a9525dadfd704e2358bd5adaec7f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000010.json",
+      "size": 184497,
+      "sha256": "babcf39c9e9bb2c3ad6fd71db12a2a5d83a79654f7782d6f75c13cd1d21c532a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000011.json",
+      "size": 185071,
+      "sha256": "0df2abda2549dae65d7b31f984391f0b282a50ab5797cac0cd12382890156be3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000012.json",
+      "size": 184219,
+      "sha256": "6812cb3e544f580b84d2b405ecadf988e2b179974905548add7b341282b959db"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000013.json",
+      "size": 185129,
+      "sha256": "687fb84cd9d8d2f12903662600db4cab50443062977fd73df51491c1c1473c3d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000014.json",
+      "size": 183953,
+      "sha256": "2ff3a3f0ce4fca61fa863be591a91298d8e78729f8f357bf27d2b4e722c3af3b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000015.json",
+      "size": 184230,
+      "sha256": "bf8a5b468d7a990d643363a894f36aaa0a03325cdb2b782026e950ac01d0392c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000016.json",
+      "size": 184755,
+      "sha256": "b28ecce265a037fbe1090351c4826d6f54d543c9c6dcc54c0e0a0f3fa42cd623"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000017.json",
+      "size": 184333,
+      "sha256": "531b1be269c4e585b269980c0a494b095268297f4cbbecd72a4b01aecf00db00"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000018.json",
+      "size": 184113,
+      "sha256": "0e4331b82ac2c417126303805d26a26e2edb231f17959253e16c265ba4c9ef16"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000019.json",
+      "size": 184435,
+      "sha256": "1f1ebf2dfe1daa4e9b49aabb48392ff5f3450eeefcbefe7e880f379a1a8f095e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000020.json",
+      "size": 184522,
+      "sha256": "1d07d89788fd39039c9a3329cb6d966de2a5f722892bde6858ba4a88306312b6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000021.json",
+      "size": 184246,
+      "sha256": "d49ee1e2228cd9cc57d8916b0220b28c562e64863cc5586d717f884cc5c72bac"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000022.json",
+      "size": 184078,
+      "sha256": "c61ac525957bb60021af94881f8ae127ca6b87e6f59d70fb43bf2e14f511668e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000023.json",
+      "size": 183962,
+      "sha256": "aa45bf5550f55ff1acb2d5becec29d956527fe57170e256573d88cde9eb32e4b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000024.json",
+      "size": 184290,
+      "sha256": "cfc519d15ce2307afce8212bf69662a3df982fe8d662fad162a171e504c6901f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000025.json",
+      "size": 184853,
+      "sha256": "62c2f0060ba848bff486c2ce8d3718bea8534d1cbaf813b93163155b284d0acc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000026.json",
+      "size": 184342,
+      "sha256": "1bfec2c4183ef24372b641e07c6b83a951e7df6761d20ea83a23bdc2ca30ea9c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000027.json",
+      "size": 184018,
+      "sha256": "cea1129fdd7b9878f4baae68e17dc940372fbd56c7f10769eae7db27739bf507"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000028.json",
+      "size": 184491,
+      "sha256": "736c9be31807e6411d895e20f507b08257541ab47b39dece0fd1ac1867ae6361"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000029.json",
+      "size": 183888,
+      "sha256": "23d1e95a92fea616958987d2e687604ac9079edeae7df1eaec66befcfc1fcba9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000030.json",
+      "size": 185101,
+      "sha256": "2f84e5e35d1fc1b533ae8d95b9f945d8fa0db7964194ddc911cbfc1cd1ca8377"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000031.json",
+      "size": 184241,
+      "sha256": "126252835502d601c5a7467ce6d8f862231f01a448e4bfb1639bbe05e9b651f2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000032.json",
+      "size": 185061,
+      "sha256": "731d76fa0d1dc7a7e159fc50ed576f8bb8295ef5ae0101b969eed8b424b4e35b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000033.json",
+      "size": 184049,
+      "sha256": "8851fcc62683942438cac4b19d24e954cf928070534e8967e9c1bde002600323"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000034.json",
+      "size": 184101,
+      "sha256": "9e831eb234d2d84bbb29c1e7f46bbb4f9f95f62cef6e15a653a6e5cf80b0730a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000035.json",
+      "size": 184166,
+      "sha256": "ba5f399019401d3c480565a72f447e5fddb1e173b6b49ccfa0619daa03af0c64"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000036.json",
+      "size": 184878,
+      "sha256": "424e19913ca6e6391a9edcea697f65f6c95fb7bce72e28e53bda96ec30660ba0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000037.json",
+      "size": 183961,
+      "sha256": "7aa3d5f2fdebc4ca18c5a2c41f4d480f963529ea85169851e32f65a6119a4605"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000038.json",
+      "size": 185019,
+      "sha256": "a9522ae20286aa145a87ec60e0723f7617ec0d011472856d287ffe9cfa47b598"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000039.json",
+      "size": 185285,
+      "sha256": "5a40d5a3b75b1031718b84c49c92a9be3a58e1896603000eca7a758c7f344f96"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000040.json",
+      "size": 184195,
+      "sha256": "52a0050224d8e2b3f0b5984965d24a95094e7873dc853133189f21bb8d504cc2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000041.json",
+      "size": 184469,
+      "sha256": "1e437d6b8bfd8b05093cefe0da1c5c26bee91ad0757a3ed8ea9a00a6ee539a96"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000042.json",
+      "size": 184040,
+      "sha256": "ee8595af7e2a8aa8e18380913a47d2f56921fbd7a71127653db95a486cc54549"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000043.json",
+      "size": 184314,
+      "sha256": "546669f3102181f902dc45e658247f43d161c1b13ef8f24c5ec60c3b1936311c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000044.json",
+      "size": 185694,
+      "sha256": "55d5cca2c01fc114d53e2c760f238be5a8b5350b24225a82d8f1a1f5307c814c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000045.json",
+      "size": 185039,
+      "sha256": "1f939dc6f11a0d114e391e8f88b5d05738e86c49f67508a4dd338b790a0a6e88"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000046.json",
+      "size": 185568,
+      "sha256": "349a177b650e05db690ad490d48d0a58417c07250fc95483a907d580db1c8478"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000047.json",
+      "size": 184382,
+      "sha256": "27269afae65c352df4741cfb2127fba2f400831d2b1984ea42824cb2b67abef3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000048.json",
+      "size": 184070,
+      "sha256": "81ed096ffb1e6d3095f54465c99bd6ad1838af3debc5593a8ea6021af79738d5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000049.json",
+      "size": 184364,
+      "sha256": "c053151e2da4448caab197c95999f24adb0d8730d048366b6c4f37546a359358"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000050.json",
+      "size": 184955,
+      "sha256": "f6bf07e57230252da947b7345a1e68e0380e69732e7bf008b4b1e4761760064a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000051.json",
+      "size": 184541,
+      "sha256": "0187379a27ecaf1a24b0e58fa0c99895cf56a0dbcdda5e301e7f510325f8d19a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000052.json",
+      "size": 184695,
+      "sha256": "bff8b9e9e6c8454ead071037492867640f8dde7fae58154c87d632e423261282"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000053.json",
+      "size": 184342,
+      "sha256": "ed7fbc2929c20e999360be2c42675c64dd05912815a2524e78fa7dd87d463d27"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000054.json",
+      "size": 184739,
+      "sha256": "e7191dd297100a424464a231a4e07b9f4038f61781bdd45fd34417580eb278f7"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000055.json",
+      "size": 184826,
+      "sha256": "69082fc03a9435bd1714e359f556593720f79738ce22f95c048ba5b307b73143"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000056.json",
+      "size": 184332,
+      "sha256": "7c78970acdeb53c2cef1e74575dc77f8f7ff356e5ab04c6550344252b2a96c88"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000057.json",
+      "size": 184330,
+      "sha256": "19723762be688d7d85d08d245e696d8a78219e80b12ded5c93e4737293717d99"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000058.json",
+      "size": 184408,
+      "sha256": "351de72feb71479cc44eb338ac45c419296543bd3516b9303547b2c7df8b0533"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000059.json",
+      "size": 184982,
+      "sha256": "dee1bf562e9b07bc1d3a9e9d23e9c424e3ae7a4721321609cf5066a0b340ea66"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000060.json",
+      "size": 184845,
+      "sha256": "30868b9838a032ddc4fba87d9b4a763fe3c11f7eb6c05d91a4bfb287f0a9f56f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000061.json",
+      "size": 185228,
+      "sha256": "66ea9886a9458ae72dae349b67587c8b23c024ee2b416f70ce2ad19bc12eca93"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000062.json",
+      "size": 184266,
+      "sha256": "b77783a6f0edaa3ca3df286e92607e96e405059d5fec9b4edb0cc5fbcffdcce6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000063.json",
+      "size": 184907,
+      "sha256": "a4573ac342fd09a32905fce93f5bb93dec972bc6d5d6c04b9d637a6117897ff2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000064.json",
+      "size": 184031,
+      "sha256": "e18e262d2bd0c6b2cd04cd1af56ed541139f9839ed24971436b4685c59fc7ce1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000065.json",
+      "size": 184210,
+      "sha256": "6743eff97e73e70ca24ced1437f21fbfc6720065cc071a3ec601ca78dafb4008"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000066.json",
+      "size": 184777,
+      "sha256": "ecbe87d1feebf3f665cd705edc7e4455556e65a4d12d20753e7a07437723577a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000067.json",
+      "size": 184130,
+      "sha256": "ff72f4f0ffccea5598c001fd50b5530824a80071da2432ce43648f42c62cf470"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000068.json",
+      "size": 183864,
+      "sha256": "6b6d84ef987f309a141fec7a902832bcb2bb8bad539538eb5aab776400231b05"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000069.json",
+      "size": 183992,
+      "sha256": "4084b70a9e57c1ece77763bd936bf22cea80cc2db24ddf837aed5764bf9ef1e3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000070.json",
+      "size": 183985,
+      "sha256": "9ffd23b451cbc6fd107c44d04b5a7c83fd4944bb06eb53726ec999b599fc9fe0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000071.json",
+      "size": 185106,
+      "sha256": "0b24a0ae0c0735074b4a5bdd1c52fef7e98d248e6dac877a5c0231b030468ae1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000072.json",
+      "size": 184371,
+      "sha256": "b6742040b1f94f5268dc01fd2c735a72595ccf4022a802046a08a711c7fcd668"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000073.json",
+      "size": 184936,
+      "sha256": "9365b76e257129a5896813d8a756f1550d194ec0cf561dbf0833fb39e7bbefd5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000074.json",
+      "size": 184351,
+      "sha256": "57a01c020e9c945d107168ddecd71c28851204a5f5394162868d1cc9354003da"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000075.json",
+      "size": 184550,
+      "sha256": "6ca89cf39df2e303216a9bfa027ea9fda5472478bd38d1c7c39284d6e5b2113a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000076.json",
+      "size": 185095,
+      "sha256": "71396563ae08d72d6a2f0f4ae258d1c11d24f62ab8ff2efefce06cbf1dcc69a4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000077.json",
+      "size": 184133,
+      "sha256": "bb4c11c1e0c99b64cbb54a2f02fca53f2f13e871bc39c5e6dd8a9e2e61165e32"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000078.json",
+      "size": 184193,
+      "sha256": "cb71e41cd7dbbbdde76f3bff21c12c111f8532850b8aa08dfe1eb8b4410ff504"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000079.json",
+      "size": 184430,
+      "sha256": "d899b7b9e24058dabb69b915f668cae4c4a900c56c962560a7ecea43bb4385de"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000080.json",
+      "size": 184339,
+      "sha256": "97d2625b4994555b775aeb5eefff2f0ec24cec509aa72ca24e43f0fe33969d17"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000081.json",
+      "size": 184530,
+      "sha256": "b7c0c7d3691f1b9e93c11be89fb2a4dc4137679fbd3b72ea70055bbb578a7cc6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000082.json",
+      "size": 184301,
+      "sha256": "56d4fa158aab7815acf07e1acc4a61eab3d0a56c6c65da87e793a1a04f0693b4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000083.json",
+      "size": 184793,
+      "sha256": "a767f7aebd6dbc7366c075c001dfe55b9924ca1e22dbbeb0444850dc057c2561"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000084.json",
+      "size": 184508,
+      "sha256": "fa2ff640de4997ab6cba770d032cb44a7180101b16feecdf23dcf28b6a995099"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000085.json",
+      "size": 185102,
+      "sha256": "0e33af3b04da61a6f30814c0935945510f520fbc211df0602dd1705a6f7e36ac"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000086.json",
+      "size": 184419,
+      "sha256": "b1fcd2f8ae5bc2dc16998d2679df8f26eb1b65f8ac9cf201fb5f034614a686db"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000087.json",
+      "size": 184296,
+      "sha256": "4a001818ddba40b1e6ff5b0e5b98b169981bff374a6cdd0d20c74d91aae7a196"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000088.json",
+      "size": 184335,
+      "sha256": "964108f642e07782c35b1ed05b4cd59913e40a816d5d1ac4085f39bd82ec4720"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000089.json",
+      "size": 184210,
+      "sha256": "c5db0552e87c0e9aa2c23fc93cac678afbce4252a88bb780dd722133761591f8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000090.json",
+      "size": 184058,
+      "sha256": "6e72dbf34a841e701c7a598c1abb7d5f53ee70505dfbee593892a4ba8e2c0bcf"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000091.json",
+      "size": 184522,
+      "sha256": "e82444c30d3b1e9382f1a7792705eea2e517d37f095bbe67c4b0b637158a3478"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000092.json",
+      "size": 183835,
+      "sha256": "772ba7b2473786f405e662ad96db1eb12de48e7484e4cfcf80cf652d79910c21"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000093.json",
+      "size": 184166,
+      "sha256": "5b62d5ab2944f5beaba479708b29077233a20a5bb740b7d69a25bc9864b325d8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000094.json",
+      "size": 184567,
+      "sha256": "c08fac8182a42b92e15abc7bd41691f3e1ca1bdff8a517cb965f4aa295cad48e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000095.json",
+      "size": 184240,
+      "sha256": "b0e502d0d4715e98663a27e67069c9e86530d3883f5f22972d814561949d7d69"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000096.json",
+      "size": 183895,
+      "sha256": "fdc4ba88d5e068d4b47b248c95dd81d82206316595a25bab77d4af16bb26402b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000097.json",
+      "size": 184609,
+      "sha256": "2ecd1a6c6eaf51508dc822209de23c9dd33a3b33afe2263eb43d83578e125996"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000098.json",
+      "size": 183765,
+      "sha256": "b6b096cb63f538707c68e9e90ce12946a6d44905e5bdaaea7430e0c18297551c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000099.json",
+      "size": 184615,
+      "sha256": "67338c49aa1559fd3144196e87140fab111525f412f2f9ffa40d80af155c9f40"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000100.json",
+      "size": 184419,
+      "sha256": "6d9d10b88cf380803f35f9202dc91dac776b722cea9200899e498d085acc24a1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000101.json",
+      "size": 184246,
+      "sha256": "c4abfbc55ef95c388ca7320a3edf9861daf32ac02eedc213b6415008f4eaf127"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000102.json",
+      "size": 184364,
+      "sha256": "7b719f3b890b34f7140ef1a3e999d668fcdbb5dc76347a7058e9bfc22e6003da"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000103.json",
+      "size": 184111,
+      "sha256": "a9dc6017ebf9f5f36609283347ec573dd5b4ad7e9d23cd7344b0b9f8b5ca50eb"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000104.json",
+      "size": 184329,
+      "sha256": "71223ec797301d7f2f29b87b34141af2bbcfbe7455c80d3f41ebdcc363875f78"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000105.json",
+      "size": 184048,
+      "sha256": "32bb3cf38ddc19064faa147c5b6ba4cb5e3f31dd4a5105b22354d1aeca52e5d9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000106.json",
+      "size": 183914,
+      "sha256": "b7ce9ab21ac10ae717907378680fdf437b70a89070c559446ed1794c136cbdee"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000107.json",
+      "size": 184586,
+      "sha256": "5ed53a5e7ed6a90458a28a3bcc827ee3e293dfc1d28ef3f825ddb7a6c21777fe"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000108.json",
+      "size": 184288,
+      "sha256": "4b9ffde89ea70e787a73304733562c8ba509291521b4439852147a9e4abec5bd"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000109.json",
+      "size": 184196,
+      "sha256": "86bfc0b92c192e4581a89f3830d76eeb7307f9fd61246608b8f2dfd8710ddb71"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000110.json",
+      "size": 184718,
+      "sha256": "11531ac5cafd40de7d9c02806873683d543b18779371ab9c34be4edbb5203a49"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000111.json",
+      "size": 184361,
+      "sha256": "63fd082bfae7736e48953f806ad8c27539b103363cf0f6b96a2ca386d2dc8067"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000112.json",
+      "size": 184539,
+      "sha256": "4be971c75a13d4786cb380051b0317fcc4cbffc5cd270fad0c927b9880f9400f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000113.json",
+      "size": 184591,
+      "sha256": "3ba9ae45cbacd1c75b3ae3f8c6a175f5b6074404c152898ccc96e7c09aa764b3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000114.json",
+      "size": 183878,
+      "sha256": "521d8169d6bc4869f5086683826d35935e56c056ab6f5cf9336c7bae859183da"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000115.json",
+      "size": 184282,
+      "sha256": "2dad09a36610c6e0edd58df03bc1ca8eb1633fb2ccfad41e0d7f1665426ca34b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000116.json",
+      "size": 184300,
+      "sha256": "c2544cf214a859864bd38298d5792ce489e1a1764d0e1e3128a2d0cecce65bc6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000117.json",
+      "size": 184356,
+      "sha256": "6a56788ef5e87188d257c37c831b18a14dd29bce07447e8aab1aeec04d8721e3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000118.json",
+      "size": 185094,
+      "sha256": "037102d5d6097fc5ea284ba67ce3b7884d8c0ca3d35a7c0367267e8026eb71d9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000119.json",
+      "size": 184837,
+      "sha256": "282feb60c656095afcd871b9e1db5caaccf2c60a8c6e1935f6d5f7329c6ee867"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000120.json",
+      "size": 184539,
+      "sha256": "aea665719acb6919324c272773be88923945c2e53e6d80f27c8b3f6af09589c8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000121.json",
+      "size": 183954,
+      "sha256": "035274578608e41d8fa86e69ce92a0198e54ae82ee2a56e7dea617e02666e432"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000122.json",
+      "size": 184154,
+      "sha256": "53611632c9beec1e1318eeda1abefda17533d54fffa73a016a290ba740a8b9ab"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000123.json",
+      "size": 184175,
+      "sha256": "9fe59d161cf87807959c8acbf0ec1c59d3bdae0ff566c88cba658f5169125179"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000124.json",
+      "size": 184676,
+      "sha256": "7c7d64e58cde7936a6f1fdfe0deed3bfa9d138d7103bac10e30a6439da06d31e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000125.json",
+      "size": 184142,
+      "sha256": "e81d5b16a70bdfe1998b3a122639526ae147dc2e8afbea9dd00e3a4006881128"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000126.json",
+      "size": 183894,
+      "sha256": "7cbad689e7f77fb84a1fd3b02c03ba1a82baf4cbb28080b8cf9fdce32c82af9c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000127.json",
+      "size": 184890,
+      "sha256": "5ba984ac50c6084ac4493f2b2a227ae0f095c1eda1b319354a966456fa1f2e90"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000128.json",
+      "size": 185095,
+      "sha256": "7ac516d3658ddd4957e49df2940c622d1f675111a30bad942a01eda93e168be9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000129.json",
+      "size": 184082,
+      "sha256": "f30dd3f3da2b13ab23a670a4dcd68a907a106febdc2aff067e6dca3aca6d34fa"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000130.json",
+      "size": 184026,
+      "sha256": "1efff43846167842331d54bf0c9df919daa8651cf37c8c20217afda07406b8aa"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000131.json",
+      "size": 184135,
+      "sha256": "760e507a9d4da888e9f3866905b0baa2637d26e47ff0a2bd3348691dd87c21be"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000132.json",
+      "size": 185226,
+      "sha256": "a8fa9407e4d63dfad9070b024e7025d038c209db8473823cb3c01cc30d7fefb7"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000133.json",
+      "size": 184668,
+      "sha256": "468ab5e14bc12d73853fbccacb12dbadda6740d7af3e13346915e20efedebe9c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000134.json",
+      "size": 184509,
+      "sha256": "82503bac433607aca76e6165a1f0e5ca357652d889ed08618c0f8c2dfea693eb"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000135.json",
+      "size": 184134,
+      "sha256": "adf48e7bc4ce06ebd048a8b723bbf72779e2b15168385535b1ac509fb3b1c920"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000136.json",
+      "size": 184954,
+      "sha256": "f14678f00ba4c5cfb44cce7829b365ecfcbcba3e2b8f01349533a25a528a1eef"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000137.json",
+      "size": 184329,
+      "sha256": "091951747fbe142900d1402bab2f11c5668d9ee2f3ba44d43328d0461657adf4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000138.json",
+      "size": 183867,
+      "sha256": "14add00993458a4d68195c6f63b0253ca35dd5d7e09d719a26eea8b9bd4daeb7"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000139.json",
+      "size": 185399,
+      "sha256": "1afdbe9ac2ced86e0ccfd0e4c06187d0e608b696f63a3744bd5048f8eb31f894"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000140.json",
+      "size": 184305,
+      "sha256": "ba330bbfd95aa0c40b2a9af6e0ee0d2fcc07c376987497234430cb54b6eb49a6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000141.json",
+      "size": 184933,
+      "sha256": "ea8d8134a50d044bd089fdbb3d41f75935b4a42432fcdb207ab9e8b9f1508f33"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000142.json",
+      "size": 184241,
+      "sha256": "4b2b2af6bfd8608cc80dd4c8fa6bacbd1c0cc1b42521ea212cf48fc428f9b8f5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000143.json",
+      "size": 184578,
+      "sha256": "cc8cd6ead6c83ccdcbf4e09372ac1a3db10aeac19588837e69000b466728425a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000144.json",
+      "size": 184345,
+      "sha256": "585e486cedb93928b55acdf885576319400711c4a6f74232ac915643d918296b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000145.json",
+      "size": 184248,
+      "sha256": "f364d76970fa20297c58ca0e932445362eaf5533f50fd2887a771dd16b9c8278"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000146.json",
+      "size": 185003,
+      "sha256": "6588984e7839c184d64ed0a3e1e07a0dba52a66a4d9efa23fda74986d82ea529"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000147.json",
+      "size": 185513,
+      "sha256": "a84992e646b18d6031e6925a08be502ea0f1b04b24dfe013ba3c676876dc8a3d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000148.json",
+      "size": 184218,
+      "sha256": "b01308fe8f39d18bd5faac5639b268bc42d782fa91a0860e05c85919e4a732a1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000149.json",
+      "size": 184750,
+      "sha256": "42a00e44fac0fe07ee7408f037cfda4cc24c8fbb23c690657571635daa59e372"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000150.json",
+      "size": 184088,
+      "sha256": "ea109a302be4d9b9fb357202b2e87cc7816f9c5edc189422a2e366e12c8a2810"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000151.json",
+      "size": 184529,
+      "sha256": "cde85898863483eceb5c8ebeb90749af21e1ee71b8825a9f96e75c82452fd79a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000152.json",
+      "size": 185983,
+      "sha256": "0b12e7c89ec4536255b609e944c69c5b4bc1eecb7a4671c154086da45f54732a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000153.json",
+      "size": 184597,
+      "sha256": "7c635f4629a9bada8be1718912aa7186a3ad7eb5cf623fee5ca2a77d75d2754a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000154.json",
+      "size": 184330,
+      "sha256": "5653a192661c01d1ad5acba5f7bbf47b3c1b154661b6bde07d0e56d54fb07adb"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000155.json",
+      "size": 183984,
+      "sha256": "f82871bdd7879fd87d2aeba1ce67c85733a23095cdd18574be086e57412b893c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000156.json",
+      "size": 184312,
+      "sha256": "a89b12a8a3f15e7545d6ba373e5d40025d48f1cc259ee5b74bc9cdb0e0451c65"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000157.json",
+      "size": 183850,
+      "sha256": "f8bd62e6cf73023489199f0af9ec24339cade74a856629f16bd5ff72f28727c0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000158.json",
+      "size": 183989,
+      "sha256": "0ad231841000548bfca2460200625d86b2e698855231ec72cb717eaeb0174271"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000159.json",
+      "size": 184053,
+      "sha256": "6079eb57cddbdbd79f963c88dbae356d58bc972c45f2738698a4d795ce84d9e1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000160.json",
+      "size": 184390,
+      "sha256": "739c52e13f19a37789c129be9267e13735326572347fa36f89a204a493b63489"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000161.json",
+      "size": 184234,
+      "sha256": "4bebc9d9cae55213ef3dd8ca3b222fde38593063306f88422a1688e1bfda405b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000162.json",
+      "size": 183900,
+      "sha256": "2810133f41f2bb417c4d6423bddb746d30aafed27c853d681fb6ed6faa570af3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000163.json",
+      "size": 184245,
+      "sha256": "3b927e4af6031fb865ea7a10fb3a4e9ae96c1872aa257f929de66530954f55a1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000164.json",
+      "size": 184227,
+      "sha256": "86c88f6b337e9bc04ce89d96fc861e0791ade6d54bb60876d82e4140c0e1e4e8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000165.json",
+      "size": 184256,
+      "sha256": "306ef123d6d833cf90c56ebc8d0f3e43e8fc6c8a279e37a0b956bd4ee9788cf2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000166.json",
+      "size": 184191,
+      "sha256": "597ecd96b87032fcbb518a5dbe0e2878751c2dff76741eac58f3e45418b4030f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000167.json",
+      "size": 183893,
+      "sha256": "c27cf0cdeeaad072a8d28f46808e014d83c0d7329116e4843662760b2d88ff82"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000168.json",
+      "size": 183829,
+      "sha256": "723633d751a65166f637b1f3b46b62616e30781e233d76a1c1eb8cac7672f29f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000169.json",
+      "size": 184939,
+      "sha256": "5de06aae483e18fc23ac44ffbfe891480e274b7f63f8fff4b1038e3a356c8357"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000170.json",
+      "size": 184448,
+      "sha256": "c822131673037016ff6730cbcd83e97ce4be48fdb6f46533288f9269d62ccf83"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000171.json",
+      "size": 184838,
+      "sha256": "46aa409b921bfc31eafd5d99cb1e06501c04f38d2874820b6e0e9ce1c3ce3b35"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000172.json",
+      "size": 183907,
+      "sha256": "89897f697f55fed6cc6ddccd6c2a989ae247cd730c36f5b806651ce2953d60fd"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000173.json",
+      "size": 184064,
+      "sha256": "be7a14e31db8afca9fcd637d22a4efd5c0d7a2f9a1a4c8d581224782fec6f5f2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000174.json",
+      "size": 184254,
+      "sha256": "9a001be8376e96b895eacdd27c0941f3cfb1948da71e5e0a2e8e0640c578044e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000175.json",
+      "size": 183919,
+      "sha256": "d1a40a0700144ea94847d0229612b8fa4d6df97e45e6cbf60af408e6526d4099"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000176.json",
+      "size": 184634,
+      "sha256": "ff55297fee09796ba92a9dfc56fcafe39886a9e04784a2fa957cccaba8392a97"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000177.json",
+      "size": 185005,
+      "sha256": "fcafca5edfb9802b8ec6a6d36f74c5f9cd15abdb413eeecfbb4638080a9713a4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000178.json",
+      "size": 185102,
+      "sha256": "dc83e1b3358895eaafb50ad4b1287102becfd925ff90a4139693f1383c1de026"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000179.json",
+      "size": 184654,
+      "sha256": "f2566663f1cb9e0e3f5d0eb73d89dd77287e2d97be8bebd8d006c979e12dace1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000180.json",
+      "size": 184637,
+      "sha256": "fb32a439ac3252aeb23ebcc2c6236356d3d05c55bd7d268ae8190b9d9319def7"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000181.json",
+      "size": 185054,
+      "sha256": "b4e76f1e11e5a814020faaed57fb92f7c911558278a4b808afe184f56cf225d9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000182.json",
+      "size": 184143,
+      "sha256": "eed2cf4f08c4ba71a2d6ecfe405b6659a61f4ff3a62a9934e0dc3c07875d9205"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000183.json",
+      "size": 185865,
+      "sha256": "cfd9b1d15b1b5207ccb0bd7fd70a2b9025eb3f2db4eabff247ff82ff9ca9a84d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000184.json",
+      "size": 184247,
+      "sha256": "f081bc08fed0a5f55c2759de73a751b933a32330f079510f37bf54620f2c474a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000185.json",
+      "size": 184925,
+      "sha256": "7332ad719c1e46ecb6f262dc6b50fd343612e4e8ab5dd67617395e30cf0ba105"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000186.json",
+      "size": 184278,
+      "sha256": "26de6cd8c2f9fb337798f28811867dc13afa3b13315046041a4a032b17d48ad5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000187.json",
+      "size": 184240,
+      "sha256": "2a9b37737c952639186efa31408b22dca6f5a8cc5bf1fa007a29df3c7728be64"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000188.json",
+      "size": 184741,
+      "sha256": "1383c0c0c7eed26582b4f6790e064c37b8ec8689635b761e52e7e9bef4be91f7"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000189.json",
+      "size": 185695,
+      "sha256": "b1213eeecb283cba27a5765ce8918569d7591912ded2e648cedcc3a394117cae"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000190.json",
+      "size": 184793,
+      "sha256": "c3d8631a4038008df7fc0c4ee072ed5d55d3eea18e1fa223ba9333d3414bbdc3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000191.json",
+      "size": 184848,
+      "sha256": "7381ba4f5f749189b5f8ece4a006b1fd97e52c7ba6720c6329ff4d31c1ccb255"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000192.json",
+      "size": 184075,
+      "sha256": "a7a5804ba0a8eb0e82814e7ce361338dd9334550e804f39376947e6a50ed09e5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000193.json",
+      "size": 184281,
+      "sha256": "7cbaa5833713cef0b36bdf2be88906109a00f6a2b9fde29aa5154194892f5e3c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000194.json",
+      "size": 184409,
+      "sha256": "83788373f1bec8268200ce823be811b6f1bdb5e4eba77ba64f381d8c8d7d57a4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000195.json",
+      "size": 184479,
+      "sha256": "dbd35b8e7ba2d6440edf9cdb019551999faf9f6bca47f419c2835a19b0692b9d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000196.json",
+      "size": 184614,
+      "sha256": "26646a3e827afcbb3b01d3b84cad52f0eff59a08bc809e0e77a534a319b75dab"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000197.json",
+      "size": 184407,
+      "sha256": "f5171352871e115405d70dae191ffc5b03e525664b04ab0f51496a9efd317862"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000198.json",
+      "size": 184660,
+      "sha256": "1b3b7b28bf20e6757120096909f76ac2bde8c597b223e0a37c77e5f43462e71a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/samples/000199.json",
+      "size": 184765,
+      "sha256": "3a9c6c80a081dbb0d6995bf8f04ad77dc3b4a80996b594f9112e7f7473aa1b97"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/transform_asymkv.json",
+      "size": 26586,
+      "sha256": "e58703cf30e062eba44fc184cb5168c67f4f2d6870adb5579440aca600579c34"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack/transform_lookm.json",
+      "size": 8664,
+      "sha256": "10258fe5779196c0fc64a95d394de272dda35d0374b518dfc79fe035c1e6207b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/hybridkv_kvrepack.log",
+      "size": 227614,
+      "sha256": "b22a1e5b29733da99117a27bcce9bc73552fd5ce420934c141004a5714beba17"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/independent_audit.json",
+      "size": 259067,
+      "sha256": "a6db2eaa74f099bd33a0ddd2dd8b8d3f4849424762d68309e04e1a78016e45de"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/postprocess_state.json",
+      "size": 234,
+      "sha256": "c0454d6bc4755d7751622b7a58a1724a24b0dda18a8471bfdd478e1fb05b5c03"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/RESULTS.md",
+      "size": 3102,
+      "sha256": "f995195249cfc3817ebde445922d3f486eab63903c2f3016bf5fa9b62d03bfc6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/comparison.csv",
+      "size": 2576,
+      "sha256": "df344a640e1dc1caafd4bf410ff8bb82bcbebe4de9437d59aab58430e3bb85cf"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/hybridkv_kvrepack/asymkv/metrics.json",
+      "size": 8043,
+      "sha256": "c907d36119da19d2eb9ab1c63277b565129f187b0136c82ddab32e45fac09e30"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/hybridkv_kvrepack/asymkv/predictions.jsonl",
+      "size": 26882,
+      "sha256": "63b51aa8c96635612a8ed9497369bd51a6e1bc3c4cf7e761f09d7a9c074f5561"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/hybridkv_kvrepack/asymkv/scoring.log",
+      "size": 838,
+      "sha256": "4df679f60b0b2c4a7b5c80f819d4dd9d2b3f1e72c6b3f921c69f2bd66c73ae65"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/hybridkv_kvrepack/lookm/metrics.json",
+      "size": 8040,
+      "sha256": "f42c26434c9d659f8ef646fef658fda08d7df5cad9009b9439e8fcaea1f8718f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/hybridkv_kvrepack/lookm/predictions.jsonl",
+      "size": 24538,
+      "sha256": "3a722d452a84f8de656c9a2faf3a0f7629eeb3bddfcd139eff1c432017217f77"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/hybridkv_kvrepack/lookm/scoring.log",
+      "size": 719,
+      "sha256": "047162e66839a52d8556ef04f222636b645bc60f6879e5b58fd8eb5bcfa41813"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/latency_comparison.pdf",
+      "size": 19592,
+      "sha256": "78551029f58f482081a6a818e0d7675fd6257197d51747cd96d4006b5696127f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/latency_comparison.png",
+      "size": 106937,
+      "sha256": "a1d15a5f1229671a34fd055cfcf0c9631b778b98d5d270e3c24e4ea19ab6255c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/latency_comparison.svg",
+      "size": 57177,
+      "sha256": "a2ca75e25cd5e40279888fe5d5f82bbd6dc55428497d08f7833f1abad37edcab"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_comparison.csv",
+      "size": 2317,
+      "sha256": "7ca2e83bceda57d9bdb0522e247d08d670fdc02f53f667910acc4426acf074f6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_comparison.json",
+      "size": 5285,
+      "sha256": "ea76812fa342f5c2711f6f030ad7e7a930b6980e66756a508438d10188309e05"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_comparison.md",
+      "size": 741,
+      "sha256": "8da4994d038ffe39e3f9d15daa420069fdcb71f25159c70b4c866dc89f3ff445"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_latency.csv",
+      "size": 1871,
+      "sha256": "86165f10b1eb511bb2b2f22aad252aaa32e76896a6ea71ffab41c38fd66abb7d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_latency.json",
+      "size": 4356,
+      "sha256": "d145d11ace6aaea0b8a18638b149c16b74f6b54f5f6d551e108eb8ef6b592585"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_scoring/asymkv/metrics.json",
+      "size": 7109,
+      "sha256": "9079365be5b9573e512754c9b86dad637a4ae9a947321ad76d883b6cf59880b5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_scoring/asymkv/predictions.jsonl",
+      "size": 15377,
+      "sha256": "4e9c8b409c02e1407183fa616fa50b8e43387fab31e9fe6839ea8581f78f4422"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_scoring/asymkv/scoring.log",
+      "size": 734,
+      "sha256": "440783a9beb4c8ec4e312c9963ef73f189ceba9bf768f363ea3c3add3d32d5fd"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_scoring/kvrepack/metrics.json",
+      "size": 7109,
+      "sha256": "fabfbe645defe3cb54f7a8a32ca350636cc64a8b9927253fcd02cbe39fd593bf"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_scoring/kvrepack/predictions.jsonl",
+      "size": 13956,
+      "sha256": "f65e5884cfa9bafcf9e78e0b11367e3f19aee2923faad86c6e8c13d0e661f7dc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_scoring/kvrepack/scoring.log",
+      "size": 734,
+      "sha256": "e3a22b23f3f940ce2063c258b8c0e70cdcbf44232e7aca8a7178f6ae8d30e226"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_scoring/lookm/metrics.json",
+      "size": 7106,
+      "sha256": "2c32fbe154f80627193824eec1c0ede6372ac91be8dcf5c4abd091e8d131aeb3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_scoring/lookm/predictions.jsonl",
+      "size": 13860,
+      "sha256": "8ec811d809b4052e3723948f122ff1cbe6ab1c48f6224e5ceabb6619ff764fb5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_scoring/lookm/scoring.log",
+      "size": 731,
+      "sha256": "9257c9cad2c85d0620fa43122dfd4c524a1bb8f703d697a228c3f226687e1242"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/per_input_latency.csv",
+      "size": 142763,
+      "sha256": "23509a55d2df12dd79660e162ea89967e9ffe38e0b502344b61bd7f42f6c0c4a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/snapkv_kvrepack/asymkv/metrics.json",
+      "size": 8038,
+      "sha256": "608a7ccda8c65fccab1c00f339f0e5dd7b51600d3455c0bd5234041acb9ff16d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/snapkv_kvrepack/asymkv/predictions.jsonl",
+      "size": 26828,
+      "sha256": "47716dc01f23ee68d48d8d8d5b8f7b8e83dcb3c630fa052862688c150d33c5d3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/snapkv_kvrepack/asymkv/scoring.log",
+      "size": 833,
+      "sha256": "c6a19dd0e869779173ca6965eda35c9d3b532177fd69eaee8798ec1000f3d038"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/snapkv_kvrepack/lookm/metrics.json",
+      "size": 8037,
+      "sha256": "33bb3d97d953aaa451bbc7f18d1bec29dfd3ad63262c0d79054cb315e5f540ad"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/snapkv_kvrepack/lookm/predictions.jsonl",
+      "size": 23886,
+      "sha256": "0233257674d7b6755874b6c864950cc267dd006e4c6a5257218a9a5a7a823b20"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/snapkv_kvrepack/lookm/scoring.log",
+      "size": 716,
+      "sha256": "9e7d9005d4867c9e3e0b5e37f9f0279497d63530f54a70bce4826059bda365a4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/summary.json",
+      "size": 38010,
+      "sha256": "a9607babd633d77d15eab1cec3d1994a3caafb3ab5eed6dce2fccb5e7fcc58c2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/scoring.log",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/environment.json",
+      "size": 441,
+      "sha256": "f1b03edac275d7a2b951149b39c9fa043b1ab6e5cfd350cdd2e44710b99d8b76"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/run_contract.json",
+      "size": 6100,
+      "sha256": "1bf49a76f43b14443e0d1b422012ca53e55526ad3f696c10f0adbb6b522dbd1b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/run_state.json",
+      "size": 738,
+      "sha256": "2f9b1acf5576a24362c0b0961dd182c9414db2456412a6bf5ec28238447544c7"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000000.json",
+      "size": 106678,
+      "sha256": "fdd37eefae380e8ad86a17263aa9b39ee083ac7e9a5fe0b83adca899339ec63d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000001.json",
+      "size": 106648,
+      "sha256": "2351759bf902aa115b8f402391919c013bfd450d437f6eb9c314fa1878edfe53"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000002.json",
+      "size": 106812,
+      "sha256": "46bbabb9b497bbb0fa132fb1eddb5ff2e7d7e54f102934d56c374d68fd380b16"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000003.json",
+      "size": 107054,
+      "sha256": "b41e8cf848aeeefcf28d623456fe78538f0c8934c9ae4a4d43c0fc4dcb36bc1b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000004.json",
+      "size": 106617,
+      "sha256": "7daee5c7df70634025e2b3988f735f67edd1a2ddad5888ac6dc3f019a06dff6a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000005.json",
+      "size": 106252,
+      "sha256": "6a614f1849a639f6c336bde186fef86c34f3ac902b61272e36040b11b208a0f3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000006.json",
+      "size": 106754,
+      "sha256": "480f90c2467d58bee0f1cc1df5d9cf3b27e77f799ac7218547a1370b242507f1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000007.json",
+      "size": 106423,
+      "sha256": "43b1c50dc39c9a4745d5b7b29d5d048c7dfe8c603338159e1f716c3a7a1d1790"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000008.json",
+      "size": 106804,
+      "sha256": "cf7ea68a90633078b259677d7962b6fa602954f747fcecc5019f0e465cd10dd0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000009.json",
+      "size": 106788,
+      "sha256": "37e6848b7caf2a6482ce0255e1b2d4b53eba0013c7d8e2d8ffffb2f5d0e56617"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000010.json",
+      "size": 106664,
+      "sha256": "5534083934df26d7043176762c981d4aada0cd8e5e8d913b8019519fc5beb5e9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000011.json",
+      "size": 107158,
+      "sha256": "3d38a67a5235b129a723fc5b46d5ea2ee82ef05d38ee67dedfa0512f7d761394"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000012.json",
+      "size": 106830,
+      "sha256": "0e3683f87d6bab94b818dc367cdff84b9b6fed1a977c8a501906a39cec44786f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000013.json",
+      "size": 107200,
+      "sha256": "e49fe209b5399dbe2fce47375739c9aaf780268757624262f5341b7093511b63"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000014.json",
+      "size": 106379,
+      "sha256": "80b643d59fc63c1dd4e3c95aa284ec929b5115db19026c8bdcfe69bd8b249d85"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000015.json",
+      "size": 106486,
+      "sha256": "3e25fde2ce3ba1601e2c5ebc7547403d06a629eb67181627008c5c8bd6000bc9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000016.json",
+      "size": 107387,
+      "sha256": "744db17d8d42b12c258406625bcb5defe4baef4bcb897a47024459fa61ba42fd"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000017.json",
+      "size": 106642,
+      "sha256": "a3f95ca61769b3a1214427ef852abaf31c57c87d8d88d44e9fd9b7d814bb09ed"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000018.json",
+      "size": 106490,
+      "sha256": "0fa43d81f07e66898a58a465b04258241e9a4876aa9ee6ff426210177946c569"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000019.json",
+      "size": 106824,
+      "sha256": "bf9530f15e68b0a23c04aa3c13e3254ed36a774569efb5dc69693ae2bdff1c99"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000020.json",
+      "size": 107268,
+      "sha256": "57cafa5dec48712665d742813482aaefb8e318e966abd385da6757b2e306c9f6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000021.json",
+      "size": 107608,
+      "sha256": "be392ace23596615932e796c1d4a19ca645118dc0d1bd0f183829beedfd12758"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000022.json",
+      "size": 106639,
+      "sha256": "4ebefb721a11789668015658d1d8c51c2cff934519c96e43b7d448da876ae05c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000023.json",
+      "size": 106515,
+      "sha256": "dcd95fd1f7679fa08b2cffaf27cbbbea3f1710e6951e77e11a6989b94d2646c5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000024.json",
+      "size": 106779,
+      "sha256": "990f853e4e8703a8a4ee23543278bce185c5c920534e52b4fa6c6cca734b437e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000025.json",
+      "size": 106780,
+      "sha256": "7c7628436732dc78ca9179e00887f9d6b3d245e6f8f982778a37a907dd7c2899"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000026.json",
+      "size": 106642,
+      "sha256": "5a143c4c8b0ba433b1fb199d6c438d27301c22ab5a696dc086b5f6ce938142c2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000027.json",
+      "size": 106456,
+      "sha256": "eb74ac5b7a823f3ae523ac05e182607dea7ac31d5315d4ed31e6089a1098cac4"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000028.json",
+      "size": 107435,
+      "sha256": "7b958aa306bd2b8dfbd4503ddd34c522f13491a90e586758f5b08362c7f043d1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000029.json",
+      "size": 106565,
+      "sha256": "2576d5d5c94dbf932c2fd5ebfc76e89b56b9a74714df398e2c115decddae703f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000030.json",
+      "size": 106756,
+      "sha256": "8030c130091931c204278e4046b958486a20127b077b985fe58312b0d202a62f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000031.json",
+      "size": 106283,
+      "sha256": "4512aa271401283917cdad113c47b5bcc72e313d904cc19214e2eb32bb73cda1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000032.json",
+      "size": 106921,
+      "sha256": "d3d374b6165bc4ef082e82b46d0b8c9232f7c926ab997f12929612a75d0905f1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000033.json",
+      "size": 106326,
+      "sha256": "5e6ce894015d132f65c5da1c0f42b60c6cfbe83d2ccf11ccac0e8aead2f4a916"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000034.json",
+      "size": 106466,
+      "sha256": "41ee70a0d3136ac253c275b57fdbcab38fc5ac9e4b41755413713cd619aa805a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000035.json",
+      "size": 106675,
+      "sha256": "a6f84aa36dda0119d5c6a5944c122b55de8a77e8637d124529aff106d38881ef"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000036.json",
+      "size": 106996,
+      "sha256": "31031aeba92da5e56995ed03c5d47bbd9e552dbbe14f255c6eead2861829ad53"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000037.json",
+      "size": 106513,
+      "sha256": "b8833877a308b911b84b01a2d85cf4ebfddffa266627a68cb35eabce1285dcfc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000038.json",
+      "size": 106680,
+      "sha256": "2cc7df4882548c5aeefde84ec8ff2ad48019ef3081813d42dcca888048544ac6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000039.json",
+      "size": 107163,
+      "sha256": "581638ad0f5aa887aa28742ce78df1e04be5cda97a47addcfe7e81c4b0eac708"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000040.json",
+      "size": 106400,
+      "sha256": "66cc18fff85b1f5c724081b02e0a9a8da2f60161bff2d39361f604ad0c1c906b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000041.json",
+      "size": 106674,
+      "sha256": "614582782465bd1ce894747a3b550955ce2fa81214f088ae5f4dfd0e853176b9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000042.json",
+      "size": 106436,
+      "sha256": "2a9ed75fc63d167acecbcfb4f6b32ec8e460b22936bc96fa343752390796f91f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000043.json",
+      "size": 106742,
+      "sha256": "bc3eb6eddcd58f9e1c5fc78e14ae6adc91459d57dc87fb119b6383ebc6783b11"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000044.json",
+      "size": 107670,
+      "sha256": "9f90b98d7f6b42894c7ad6155c75f9d8e4fe431a6601fcd60bff0775bf33a0de"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000045.json",
+      "size": 107022,
+      "sha256": "02e14ba6d30980b203a6ae373f71a409a621464201ffbfcd49cfe042f6c9e8f1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000046.json",
+      "size": 107018,
+      "sha256": "f4902e2f19ead0831be04cc13b56c59271ecf9b7538d40abd94072c2071ba29f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000047.json",
+      "size": 106667,
+      "sha256": "5ed80b4dcc12cfe6200999284b6bdf76686c2537058cdef01b1dfad52609d132"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000048.json",
+      "size": 106671,
+      "sha256": "470ee3a902a9ebedeb5b534ece30db3dd976d4251ea8d1d2fd5ea2add88d22b1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000049.json",
+      "size": 106652,
+      "sha256": "752a7e9eb64894de2e7f82f8beb6f8f92e0adb0c081d1d9745fe070084d0aae7"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000050.json",
+      "size": 106906,
+      "sha256": "ad98f339a0b60fd21f4000939b99d3cb5b09529b0cc36129e7e6022a91c2b97b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000051.json",
+      "size": 106937,
+      "sha256": "b8a74925774e53f5d90295114b10d759991e92cc7e42bf0335392a703b020b9d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000052.json",
+      "size": 106917,
+      "sha256": "54acf4fb02499e4652ad63c1c65d94f7857f90e982de158b1577e036fb51951d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000053.json",
+      "size": 106531,
+      "sha256": "bcd52754952aa0269fb7c3643bfd5cb47fd71f0254caa4e3bc05fb2a05fa4f68"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000054.json",
+      "size": 106905,
+      "sha256": "ddb402e0b7643245048462ed0d0c2ba9632d99fef6b993cef2fbefd8ae38d917"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000055.json",
+      "size": 106861,
+      "sha256": "b113d0fdc3d1463113d212017fab960e35eb35e66f7faf540aebaa42068d2a4e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000056.json",
+      "size": 106741,
+      "sha256": "079120595b7f4b4159ded8c7e2888afd7f4c1a9f3cd62a6ad471dfcfae8a24da"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000057.json",
+      "size": 106496,
+      "sha256": "389e5041abca8d92a27c1f1f7cdd2759cc4bd4b2b63889955b46bc08597f9c51"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000058.json",
+      "size": 107587,
+      "sha256": "e482c51029548630de819cdb658e91e13812d87aaf7820c396c9adbb1d290ab3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000059.json",
+      "size": 106976,
+      "sha256": "73a997f3b4471fbcd6465e8c5af039cd7f4382ad8466c8ce9e800b6f5101fa41"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000060.json",
+      "size": 106836,
+      "sha256": "99f3101192e9d7ff3b12a54b410b4c3fd3a1e079224d2ead6b867f1b060c43bb"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000061.json",
+      "size": 107059,
+      "sha256": "db7d0cf26a936b25fff5c0e071757802e2e5ed1f9b4a7771f5c2ee9af6a68467"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000062.json",
+      "size": 106443,
+      "sha256": "feb55d95a924b8c708cc09b243b00c0f322af53de054cd4ca3cf7c4ed589520e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000063.json",
+      "size": 107324,
+      "sha256": "7a6572edce9913b38e023a8cf6133d0742fc344fc48634908af1022bfbcf7ded"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000064.json",
+      "size": 107668,
+      "sha256": "7e38e32f7962ac88bc5498174af86be96629abc7af9fe39bb5e772025e4eb05d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000065.json",
+      "size": 106739,
+      "sha256": "67613026b590ff78660492e430bec9b760a38ec609028180ef3bc03e3fc6317a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000066.json",
+      "size": 106837,
+      "sha256": "b1171d020920c426e3467fb7e4be9da2a15491b418bda8b0144857186cc06ec6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000067.json",
+      "size": 106428,
+      "sha256": "5fa2c2744bf7419829f5bebf03ed83d655ad997c8251f6ed8211fd6d6bee569e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000068.json",
+      "size": 106402,
+      "sha256": "db8ed2ed563ad6324705c701e442f9b2468f22ea246812ef33c30b26f4e8564f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000069.json",
+      "size": 106299,
+      "sha256": "50ceb2bccc65ac07089c3406893009418387a57ad79f4c5b0dd819ed32743e17"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000070.json",
+      "size": 106507,
+      "sha256": "bc42c7e4377e4ffa42fdd3109ac3a1f3387a1ae31f88caa9fd45c888af3fff21"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000071.json",
+      "size": 107129,
+      "sha256": "5bbc656b6da730519d6d1b9ad21e46f3e7b3d651fb622dd49c422c2c34a6fab2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000072.json",
+      "size": 106694,
+      "sha256": "d7f504f4c6d2c5712cc3c78fa063e4bfd5fcb87e34296927897b286b1f223860"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000073.json",
+      "size": 106933,
+      "sha256": "4f051c3544271465b9bdbfc356690ff3f3217ee031521eff880c0cf66dfe00ab"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000074.json",
+      "size": 106762,
+      "sha256": "37645fcc6b889098132714d4eda409d9f72671d14925d37ada9a6939b38143c8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000075.json",
+      "size": 106497,
+      "sha256": "13aabcc1a962b413912b78281730ad178d1ea13794f9fdb689e6f44e2efcc3ec"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000076.json",
+      "size": 106546,
+      "sha256": "9e6ec880d33843cc42249a5807994f976a5bc63c12c33354e09bbc7ac18984aa"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000077.json",
+      "size": 106721,
+      "sha256": "5ec85444a4d7d83e42b1384662351522196badd0bdeeae45f612000d15532b9e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000078.json",
+      "size": 106506,
+      "sha256": "1532f26a82872c4e7e45d983aaf4e12bfa216f6037f459da25dadbc8c4a55cef"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000079.json",
+      "size": 106447,
+      "sha256": "5e5babfcc0da163b91c7f699c129f0b8d446dcf1c020643e56bd870ab9dcd533"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000080.json",
+      "size": 107101,
+      "sha256": "05399e735d6a34edc45acdbf372622a38ae2a358d8fc887a09459124cd157478"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000081.json",
+      "size": 106953,
+      "sha256": "cfcb52568488970bb26f4aef337b20b9254f7a39ccc7359f69cb4e2261368fb6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000082.json",
+      "size": 106732,
+      "sha256": "6ce51370124ae280142ec5b7808a4c951761255a3b4dc1590de64afa4dfcc34d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000083.json",
+      "size": 106879,
+      "sha256": "20806c3676d2049a4f33cd128364ac0ee4e7537e972050a7a0c23780bb90565f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000084.json",
+      "size": 106706,
+      "sha256": "d34b14a1e3e5c5c9c3823bb5c0166ea5c3fb6bddd41307f3ca3827fbd3a04fcf"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000085.json",
+      "size": 106902,
+      "sha256": "11cd167f66644807d00ff9038d90a389c4dafa9545589b18e7e6f2248db8c386"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000086.json",
+      "size": 106924,
+      "sha256": "746ccee6a4b957f60e4e4a68d6b0ef999122a991a56209a792379c51d6e3a12f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000087.json",
+      "size": 106672,
+      "sha256": "787de9d5da64494896157b01d1a2029c58db1f4841b31f3840e534ef19461d4d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000088.json",
+      "size": 106721,
+      "sha256": "e4ae43d755dfe6f14169b8286f469130d6ca09129351c8911a1be1a538800115"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000089.json",
+      "size": 106652,
+      "sha256": "4fca5bfa1aa48f49a3c85d1ebbb187a176ea7453d1bbe4f877925299f97f24e2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000090.json",
+      "size": 106529,
+      "sha256": "ca09dc3092f54abc0f765aea30c17e3485478a51028841f466295d13c83f20dd"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000091.json",
+      "size": 106677,
+      "sha256": "4af3e152fce3c40c2647f9b5d153c32f97710c9eb5ec29dca394927ddaa28679"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000092.json",
+      "size": 106372,
+      "sha256": "62e5365f7c6c06eb05cc8c2feba70e705768abb9363c52024cde51c64523d980"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000093.json",
+      "size": 106476,
+      "sha256": "58d986abb618f92a378ef607732c080897b8da3a2fefde2707c04cba9b2b9631"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000094.json",
+      "size": 106981,
+      "sha256": "6bfd3c72d9193020fb62625a95d1b44567b7a09cca69479b8af022992f3ce0d0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000095.json",
+      "size": 106619,
+      "sha256": "713fc6353562009a865bbbbf7c3b1efbbd80612b377dcc314d7fe740c5a6443e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000096.json",
+      "size": 106506,
+      "sha256": "7334959aa2016bc633964e416e793c4dae3139d3a2698ca5a656a8762a726261"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000097.json",
+      "size": 106772,
+      "sha256": "cb623a815c1d015f0ec3fa8d06cc9d66f6c8e7aefe7f4edbc911972b9e71d3ff"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000098.json",
+      "size": 106437,
+      "sha256": "0a1271477a89846cdd89f6426fb5c0b63ef44d44d9d8b1d58015723f8a899bcc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000099.json",
+      "size": 106677,
+      "sha256": "d7a3f676222323bc5faeb3f2ab9ea1b712a6c820d1307f040d5b184f4cad9d23"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000100.json",
+      "size": 107049,
+      "sha256": "290bf3399280d3aa07ad3c071762a0ad311e981306415ff5d1010d644d867176"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000101.json",
+      "size": 106681,
+      "sha256": "ef824d30002e54a2aa2391e800d0e68d51e6dbbce7ec9dd0c9c81b8fc11e4d59"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000102.json",
+      "size": 106643,
+      "sha256": "d0b7582f74548f196f3ef9bdbd1455b3db5b3a6deb47997aebe9de52af2e0456"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000103.json",
+      "size": 106577,
+      "sha256": "97ea09f5da7f575ef180732c1afa06ec12bd232093f13aee27dff47907d4fca2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000104.json",
+      "size": 106535,
+      "sha256": "ff07ca698cbb5fda6b4f0a4777d5d2d980c7d5918172fb66ee1b40e374412829"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000105.json",
+      "size": 106446,
+      "sha256": "1344d88148d08cde7943f5cea758d502dbe1443e04beea17a221066a9856619c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000106.json",
+      "size": 106313,
+      "sha256": "cb971af900f8dee39879978888885696da40870580dc8e779d1c7618a8a6ac44"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000107.json",
+      "size": 106713,
+      "sha256": "f95fa7f5a976503d302a0edfa46e8bef20ddf291a7de4d8014f62f12ba0aadd1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000108.json",
+      "size": 106602,
+      "sha256": "f5309a8b99e513b7cb3c8454626fcf4323e775b6166e750d080a4addcdd201a3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000109.json",
+      "size": 106603,
+      "sha256": "7e328815573ee74a997cf50bedc7f2a75d7836f36e60343e6bd69813e1c0aefe"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000110.json",
+      "size": 106829,
+      "sha256": "365e0f3225f6ea3ec112d4b8818ec9f7eda3253c8d5911f38d4347c886bbd291"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000111.json",
+      "size": 106590,
+      "sha256": "ec38c7f8ba41fd92082e3fdcac7010e417767d6c0eb6c7e923f6ddb55808340e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000112.json",
+      "size": 106719,
+      "sha256": "8eb7ac8680794f836fbecc79e405b4f810da1c25b626d00515db8790ac50a98d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000113.json",
+      "size": 106958,
+      "sha256": "4c6bed59ebb1248ca3e1b8fb7d352e209eb39770797cec27f09c223d24b8934e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000114.json",
+      "size": 106534,
+      "sha256": "a3bbc522aeaac653e03d773ee154796f809348f02cd4cd992a558aba004d1cec"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000115.json",
+      "size": 105552,
+      "sha256": "8d561cc31822ca307c9c00d2c90f599c31e358ed3f3341e7111127249b11c36d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000116.json",
+      "size": 105593,
+      "sha256": "90f48d4936f0de650899a794ba883a863dc43d1b6b00b15d079e8ee6dc7c343e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000117.json",
+      "size": 105474,
+      "sha256": "a72965985b8fd0312a3fc97a6f470d70de25bfc6ac04fa8d48f15b599bf51f00"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000118.json",
+      "size": 105680,
+      "sha256": "2acd1bb8aa9ff90eb6b995d653c302aca37b86df7f26fa0e3f9fa3e1dec6c120"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000119.json",
+      "size": 105940,
+      "sha256": "90a83a7bfaaa4aa8a7dfe269b8fb9f13d6bfa6c1a365da2c1f71498dd6bd7a26"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000120.json",
+      "size": 105836,
+      "sha256": "521ba30ac263d4a7a0dcae23540307baf10b004fa0612542408dfaed4739fba0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000121.json",
+      "size": 105483,
+      "sha256": "4b14b68963c6062022b1eec6f4a649f830337c2a433adb276dfe0265d70cd07b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000122.json",
+      "size": 105569,
+      "sha256": "da9313c4601ec4b430d8a24c157fb206dffa6aca3164b39b3558e8b87f5bc843"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000123.json",
+      "size": 105473,
+      "sha256": "619161be84842e2bb9d6d027939f475076524fc63f63f29d2810886290091a46"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000124.json",
+      "size": 105962,
+      "sha256": "b229075638b7fa3493ac8ddee2f8e4ea7826159e3d1793bd390c0727e70e3cf5"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000125.json",
+      "size": 105599,
+      "sha256": "6e4a9bb62d98d71e3ea6d7d512e34d6b721e44e28b85b57fba1f10a8e233a7d9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000126.json",
+      "size": 105391,
+      "sha256": "d999d09c4403418afedd10f920ec0b9da892c43f88e2b05055b3715ea8a5d365"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000127.json",
+      "size": 106088,
+      "sha256": "37add603848b7d47c409e5315e894aa6b81d7b3d57ed6ac5acae601338d534d0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000128.json",
+      "size": 106249,
+      "sha256": "8292d5afcdb2f55d463088e310378ef96791e24983e4d6f1f2c7e819f5d6dbc2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000129.json",
+      "size": 105517,
+      "sha256": "373138e99b0713d64aafa151a7110e992747f9f708434648f3ca7feff8dc90c6"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000130.json",
+      "size": 105595,
+      "sha256": "bb5b1316addf2b2cc9049b238785001a4ba5a9283a24787edf2edeadc49817a8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000131.json",
+      "size": 105525,
+      "sha256": "d11f52b9f4cbc6519d61fc38460a45454e31f7b196dba3b9b94797828ae61167"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000132.json",
+      "size": 106258,
+      "sha256": "a748beff861c659a1ecfac9c440f567959db3eb16e31e292fe3c3ac2a206f404"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000133.json",
+      "size": 106021,
+      "sha256": "c105c886c3a37d782e02e746e688b119e083fbf747e65c6242becece4d025cbe"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000134.json",
+      "size": 105733,
+      "sha256": "a084a073039641f1b39f1862db884bcd312c65baa13baf63a94471ee9647135d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000135.json",
+      "size": 105660,
+      "sha256": "08a7389ed4ee6a8f4da2a20d6e647ca94b11241b245340cb4fabd2b7dadb741d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000136.json",
+      "size": 105646,
+      "sha256": "abd55503e8d518206ad986e4dd74d8da921edf8b3f75ca7b1756684beb7c922a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000137.json",
+      "size": 105679,
+      "sha256": "97b77ddb5f443e31e84ef972096408c2dadb5babce429b5503e430de6f495807"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000138.json",
+      "size": 105476,
+      "sha256": "ac5cc4ab5cc5529fd03460236afd9c0a9db5055df9f740f1e52e113e1bfe0759"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000139.json",
+      "size": 105663,
+      "sha256": "8f6b2e1b7d257645ea0f7e7c16a80dfa5aa750c2214e940957e5f158730338d8"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000140.json",
+      "size": 105618,
+      "sha256": "3024e3bd17649f6788459378cba6ddf2054fe4fa79246824ddfe184463a4965b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000141.json",
+      "size": 106522,
+      "sha256": "b2f151776499099febe804e2961a166cfa75719a1cd9e13608bcc52fbc1ee70d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000142.json",
+      "size": 105446,
+      "sha256": "3e62f34e98057f549090a48e1c218e8f03540f3ce58b0c81fb48e686be9d0784"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000143.json",
+      "size": 105394,
+      "sha256": "812ce98764aa0ac77a4c581e0b93ce2a7b4d0a06ac124f0ddad1f26d9234a328"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000144.json",
+      "size": 106766,
+      "sha256": "30a3dc49202b66b0f10640898590ddd2894dcd9b5522e0e93265dfa6202a343e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000145.json",
+      "size": 105693,
+      "sha256": "0eac736491b26bf7fae3e1291b898348df0e714839c058fca441655d6b012ab2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000146.json",
+      "size": 105969,
+      "sha256": "e74ffe78b52117f00825c8da46a3fe64310c744d890c19926319f24734df0e14"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000147.json",
+      "size": 105748,
+      "sha256": "77881ae7ae05cfd64f45d46fcad67172cc84bb3dd69d668f5e9fb57d6f6adb86"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000148.json",
+      "size": 105969,
+      "sha256": "af8a338b10a624811f0f8a37a37599fe91960d72665c6ef59513a6d5b05a20b0"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000149.json",
+      "size": 106079,
+      "sha256": "141a4c2adb74ed93b2b3fd5196e4cf6d9e239cada025fc0daa233461112deb04"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000150.json",
+      "size": 105438,
+      "sha256": "2bc039fe3a32fdef6ed71d4a09d4653140fa89a7ac21524ea402e005d987306a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000151.json",
+      "size": 105829,
+      "sha256": "52cc657bb6c9cb969ea01edb3a1cd1729a98090bf45e50eb5ab70cd84c217988"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000152.json",
+      "size": 107098,
+      "sha256": "eb176163f11222c840934ddb1dcd500d530389cd7b1c19074645c81cb229da5f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000153.json",
+      "size": 105847,
+      "sha256": "f9282963dc4cee07905ef32aea53029136494ed473b32abb68f7dd432578048c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000154.json",
+      "size": 105759,
+      "sha256": "399e70f29665cd78f5baf2403f40ba71de076cb3a582681146b228b46cc13a4f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000155.json",
+      "size": 105706,
+      "sha256": "6f373d3d8891e9d1d3285f0588fa92e0160487d9d486fa8137614c201b0b88aa"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000156.json",
+      "size": 105599,
+      "sha256": "4d12d617e4b63416aa0a8574c63fa28e9bf05401ae1d40e2c11c3d70cdf1759d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000157.json",
+      "size": 105444,
+      "sha256": "9bdff4e654ed8700c5f531dc34bfb84cdf8e2745dc8b3decc6a9d697b461913a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000158.json",
+      "size": 105538,
+      "sha256": "a88edc27eda182b2c0dac9dfaac2baa8ddaffbf222c8ef4160b5e93d1c236d3d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000159.json",
+      "size": 105443,
+      "sha256": "ff315cebe3b98dba016a95afe6f2d90a4df15de9262e58e004a7f48a5d8d848d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000160.json",
+      "size": 105704,
+      "sha256": "3913b3a560477794ea26c9b66d04f597ceea90248bd820cd0ecc00b7f21cb221"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000161.json",
+      "size": 105607,
+      "sha256": "d2a1320e4334485267f5cff39f34afe0d605c05944aec47544bc52d9fa84cf7c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000162.json",
+      "size": 105486,
+      "sha256": "0f2b8034ef52bfafb0c7deaf9245090b8a44aee86a1684249ca49d3c9f63ae02"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000163.json",
+      "size": 105510,
+      "sha256": "887dbdb547d83912847425239ca9aea3a8014dca88c779c9a3a75548df4fc518"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000164.json",
+      "size": 105512,
+      "sha256": "2db8ad00721110749ce45d046faf9fcf3b828c6767a09eb2895f60d3d8ff2dd3"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000165.json",
+      "size": 105735,
+      "sha256": "48e5570df37315d2f156537dff8780ab0f14ff0526ed7140b8f9c70b5ee90f7e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000166.json",
+      "size": 105455,
+      "sha256": "36428499a666035bdd8f5c82cb2a3895e36ec53ad9baf1f64ca80d7e05d65ef2"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000167.json",
+      "size": 105521,
+      "sha256": "579197eefdf5691a4b4d8163ecc639ab70bc6db1a7d25989d380a610c02f95dc"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000168.json",
+      "size": 105739,
+      "sha256": "dd0503891fa475982dbf794b0cbe9d2b6b5ae374f1b8d580533c0d44897e5fee"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000169.json",
+      "size": 106352,
+      "sha256": "fffe890aa9403302223bb28bd17b3f5ead24f161116ce494cd558e9acbd87e42"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000170.json",
+      "size": 105718,
+      "sha256": "c24d2dc63a46bc6edbae57db7b43c345d11d41087b10f2509ad690ed4b5ace3d"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000171.json",
+      "size": 105850,
+      "sha256": "c6d1048d6a673cc02c8e2f9a38b2ae277b6f7e4a9678bb5ab5004e36468ebd63"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000172.json",
+      "size": 105830,
+      "sha256": "6a8cd832b73e9e7a6058f76d6fd4324415571d6e3153dece6b212f1b326990ae"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000173.json",
+      "size": 105424,
+      "sha256": "0f723a2c23ba188883c1b8ec3b7789e5e87ce5be6b526ecbc9c3ff9d300b5334"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000174.json",
+      "size": 105560,
+      "sha256": "e85baa4bb40ecef947279a27893d826765ae529805de7b24ee66638ba3f9cf11"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000175.json",
+      "size": 105489,
+      "sha256": "1c94c42d4adc4525ae80a816e2abd16e35ab108948951e5d4828b6b049f97a97"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000176.json",
+      "size": 105778,
+      "sha256": "a27532197aa7d1c46b2369690c0deff768b9207be9b99cc33206ddbec3ab3759"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000177.json",
+      "size": 105933,
+      "sha256": "0738b615b611534acb4ca7af6c4a17cd24d8c80598e8e13e64035af4a3a5882f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000178.json",
+      "size": 106037,
+      "sha256": "41f23c8f3e336043779ecf408da15303c020bdf446163d6ecc504441f08a4e17"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000179.json",
+      "size": 105983,
+      "sha256": "af30ed6c1469c9ff44105d15d7dcc1c606422e9833f778bef43aea79c8cb3a8f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000180.json",
+      "size": 105873,
+      "sha256": "b6726283d9227dbf4b16a568fff999287b31441ed1187e2a0a3f0c8f12ff4597"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000181.json",
+      "size": 105920,
+      "sha256": "4170bc4142072870181ddf4779cd5a49b2a0f0a8dba22640eb579954de6b1500"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000182.json",
+      "size": 105520,
+      "sha256": "7ff282cd33a26df14a989f9cf6858e6cc468ffb22edfc6e886ef56f6e4dd71f1"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000183.json",
+      "size": 106953,
+      "sha256": "8c8a8342bdac9b9f7ae3e0827021f849499fc16efa5806250c5d79646b3d3d7e"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000184.json",
+      "size": 105622,
+      "sha256": "a95a9a9b67d1e165ad7b76b5c9cb63bca35b5d069ae28415a0a626d45acc77fb"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000185.json",
+      "size": 105950,
+      "sha256": "7cbbc3dfdd224a66f7b0d076456431157397e3b56521c06f33d83afd77d73de9"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000186.json",
+      "size": 105704,
+      "sha256": "a1245ca8289aeb0ecaac07ac6d204f28300147d202891f6d4e1ddcf0ff34e641"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000187.json",
+      "size": 105648,
+      "sha256": "4c534e8aab49cf9b85c6030dcd5527819645a83f435ca75b42409e6f28682d32"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000188.json",
+      "size": 105792,
+      "sha256": "6dd4b91f1215d733e10a44b8ef1f136c35a73f99fbc29c0a652154afedfb9d95"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000189.json",
+      "size": 106934,
+      "sha256": "b74c21337d0e3306b745d024887d53f9f3fab7344d867a0ac932b5ae4a4b8c1a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000190.json",
+      "size": 105825,
+      "sha256": "62f5235a8e84310becd20163c18a197ddcf2bc48b06634f402c0a9c00d6ac262"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000191.json",
+      "size": 106043,
+      "sha256": "aa573dcc03ad25bf1f30f5f846af2b729533c87e01e0e23c287bbe3edeca26bd"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000192.json",
+      "size": 105553,
+      "sha256": "50cbb550e6960d8f422600a30ac83730f270227c9a2f2888f44175924160ff8f"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000193.json",
+      "size": 105618,
+      "sha256": "d0a16a975d90d66b8929c483c190dd0747c7d99dcd38f6ed1ef90d736f3e3838"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000194.json",
+      "size": 105399,
+      "sha256": "0fbfd36bd07955b06cb7104038fdd0c626cfbe73138cf9210665ffef6b932902"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000195.json",
+      "size": 105709,
+      "sha256": "c37b9b90c4b2d3803228da8ccc772be6cd4a52f6099025750f06d45925ba1694"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000196.json",
+      "size": 106074,
+      "sha256": "96db4618aac7a31d0acb951afa622d7e06e3dd21afcdc22e8fdd4ceb1416c7ff"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000197.json",
+      "size": 105551,
+      "sha256": "89d6c5407dbdcd6afd6a62a433ca25bf483c890da6a6286887404f69d244470a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000198.json",
+      "size": 105598,
+      "sha256": "39a480a5df94ba049f3f8bad76bc0f02661bb4ccd44624b937ebbd635749423c"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/samples/000199.json",
+      "size": 105954,
+      "sha256": "1e276223a76d0278bd4d7c04f6c047dbda304aaec73b04e021c9cb09bf56513b"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/transform_asymkv.json",
+      "size": 12731,
+      "sha256": "0e129ba721e3f6b69cd6acd499241c943468f5078399689e8561acf877e8fe0a"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack/transform_lookm.json",
+      "size": 2786,
+      "sha256": "6db9179d2ddc31ecc1a1ffd7bba4734c7fa02e8b4fed240646f57dee1b813b88"
+    },
+    {
+      "path": "outputs/ablations/merge_vatex_mergeonly_200_20261112/snapkv_kvrepack.log",
+      "size": 99695,
+      "sha256": "615912739e0750059a4f1cc4acc04ccb64ad6677732bd52ac6cc914f97edbf6f"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/scripts/run_merge_vatex.py",
+      "size": 4802,
+      "sha256": "33d275e91207fa757da97d1507eb7deefedb25a56de2c8b39884d8a3224ddf40"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/ablations/merge_comparison_report.py",
+      "size": 18042,
+      "sha256": "5549168f27beefc6be5ee2cc829c88ab30d5245f07a867ffe2259eee545f410e"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/ablations/merge_hybrid.py",
+      "size": 20156,
+      "sha256": "3a8d886fbafe779f84a7077e8495b8236dcd3d5c5e249eb96b3c83a4e03d656a"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/ablations/merge_operators.py",
+      "size": 30214,
+      "sha256": "5a535917242b6dbc137d0dd2b4debd4c782c2a0d7fff2c360749a8aa2dcee479"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/ablations/merge_snap.py",
+      "size": 17670,
+      "sha256": "ce1535898076679b91d0a96e5b72d97ccff360934e9a51db7366333ba21b9d5f"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/ablations/run_head_selection.py",
+      "size": 17568,
+      "sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/ablations/run_head_selection_full.py",
+      "size": 21165,
+      "sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/ablations/run_merge_comparison.py",
+      "size": 18035,
+      "sha256": "3e2b2861e86fedc14a46aa86893211c17433a22320db61ceb59cc11130fc39f7"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/ablations/run_rope_merge.py",
+      "size": 15204,
+      "sha256": "3b6faa0490a5ac89beaca963211f10c5cf0b3a06aacf0b8934d35fc123c930b6"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/asymkv_official/attention.py",
+      "size": 5611,
+      "sha256": "f66c75f20b64304e9ea4cf799cd3a18ab2c3602a1c02784df4804029a7a3f865"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/experiments/registry.py",
+      "size": 17084,
+      "sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/experiments/runner.py",
+      "size": 21268,
+      "sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/hybrid_asymkv.py",
+      "size": 3321,
+      "sha256": "918e45ed4765c1f6ce836b6c31c8ddfd1491ee1f4de6e205669a22f80ca7fdea"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/hybridkv_utils.py",
+      "size": 130047,
+      "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/merge_score.py",
+      "size": 1210,
+      "sha256": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/modeling_qwen2_5_vl.py",
+      "size": 115820,
+      "sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/monkeypatch.py",
+      "size": 9794,
+      "sha256": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/observations/inputs.py",
+      "size": 14305,
+      "sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/qwen_model.py",
+      "size": 29933,
+      "sha256": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot/src/kvrepack/qwen_model_snapkv_kvrepack.py",
+      "size": 28560,
+      "sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a"
+    },
+    {
+      "path": "provenance/merge_vatex_scope_change_20261112/source_snapshot.json",
+      "size": 5373,
+      "sha256": "dc93ec52224c0dccef994d945828c5974d837916218e84805579d94e2cc7f69a"
+    },
+    {
+      "path": "src/kvrepack/ablations/merge_hybrid.py",
+      "size": 20156,
+      "sha256": "3a8d886fbafe779f84a7077e8495b8236dcd3d5c5e249eb96b3c83a4e03d656a"
+    },
+    {
+      "path": "src/kvrepack/ablations/merge_operators.py",
+      "size": 30214,
+      "sha256": "5a535917242b6dbc137d0dd2b4debd4c782c2a0d7fff2c360749a8aa2dcee479"
+    },
+    {
+      "path": "src/kvrepack/ablations/merge_snap.py",
+      "size": 17670,
+      "sha256": "ce1535898076679b91d0a96e5b72d97ccff360934e9a51db7366333ba21b9d5f"
+    },
+    {
+      "path": "src/kvrepack/ablations/run_head_selection.py",
+      "size": 17568,
+      "sha256": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814"
+    },
+    {
+      "path": "src/kvrepack/ablations/run_head_selection_full.py",
+      "size": 21165,
+      "sha256": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c"
+    },
+    {
+      "path": "src/kvrepack/ablations/run_merge_comparison.py",
+      "size": 23691,
+      "sha256": "3caf5a994ecc99938c695ebc787ececd8910e69095c630cf865eb4ff1b6bc738"
+    },
+    {
+      "path": "src/kvrepack/ablations/run_rope_merge.py",
+      "size": 15204,
+      "sha256": "3b6faa0490a5ac89beaca963211f10c5cf0b3a06aacf0b8934d35fc123c930b6"
+    },
+    {
+      "path": "src/kvrepack/asymkv_official/attention.py",
+      "size": 5611,
+      "sha256": "f66c75f20b64304e9ea4cf799cd3a18ab2c3602a1c02784df4804029a7a3f865"
+    },
+    {
+      "path": "src/kvrepack/experiments/registry.py",
+      "size": 17084,
+      "sha256": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc"
+    },
+    {
+      "path": "src/kvrepack/experiments/runner.py",
+      "size": 21268,
+      "sha256": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa"
+    },
+    {
+      "path": "src/kvrepack/hybrid_asymkv.py",
+      "size": 3321,
+      "sha256": "918e45ed4765c1f6ce836b6c31c8ddfd1491ee1f4de6e205669a22f80ca7fdea"
+    },
+    {
+      "path": "src/kvrepack/hybridkv_utils.py",
+      "size": 130047,
+      "sha256": "d4df3f8ef6d2f3d3b75f2ac0035aedc5ab8fc27377ff6e76357cb5d3a9023b97"
+    },
+    {
+      "path": "src/kvrepack/merge_score.py",
+      "size": 1210,
+      "sha256": "42bfbc836d691310f7dbc1096f0fdb7b332374927829d12afbeb01cb6ba6db9d"
+    },
+    {
+      "path": "src/kvrepack/modeling_qwen2_5_vl.py",
+      "size": 115820,
+      "sha256": "ec97009514ccecebea9cf5b5b48b0bff9cf17c48f071af0186691928180fdd5b"
+    },
+    {
+      "path": "src/kvrepack/monkeypatch.py",
+      "size": 9794,
+      "sha256": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5"
+    },
+    {
+      "path": "src/kvrepack/observations/inputs.py",
+      "size": 14305,
+      "sha256": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543"
+    },
+    {
+      "path": "src/kvrepack/qwen_model.py",
+      "size": 29933,
+      "sha256": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7"
+    },
+    {
+      "path": "src/kvrepack/qwen_model_snapkv_kvrepack.py",
+      "size": 28560,
+      "sha256": "eeb22ec26d676fa2982b0960db5bf249e691f8bd99324d72d90cd208b456f19a"
+    }
+  ],
+  "archive_sha256": "35c2f532c9644385a13665636e9c4e1a420235858a7f21ce55fde75a34c13091",
+  "archive_size": 11130469
+}

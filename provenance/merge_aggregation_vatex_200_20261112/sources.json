@@ -1,0 +1,8 @@
+{
+  "status": "unavailable_original_reference",
+  "requested_command": "python scripts/check_sources.py --source-root /root/autodl-tmp/HybridKV-artifact",
+  "exit_code": 1,
+  "error": "Original reference missing: /root/autodl-tmp/HybridKV-artifact/HybridKV-opensource/hybridkv/monkeypatch.py",
+  "stderr_path": "sources.stderr.log",
+  "local_only_check_path": "sources_local.json"
+}

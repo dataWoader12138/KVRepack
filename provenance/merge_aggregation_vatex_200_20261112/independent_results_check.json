@@ -1,0 +1,3999 @@
+{
+  "status": "passed",
+  "gpu_execution": false,
+  "created_utc": "2026-11-11T19:21:20.445476+00:00",
+  "independent_script_sha256": "52754d111ad4d07aa18604c05fa9b2e7fb1053917cbf98d7caeaaab1d74f24dc",
+  "source_modified": false,
+  "numerical_tolerance": {
+    "relative": 1e-10,
+    "absolute": 1e-10
+  },
+  "numeric_comparisons": 496,
+  "max_absolute_error": 0.0,
+  "completed_main_corpora": 4,
+  "completed_parent_corpora": 3,
+  "decoded_unique_generations": 914,
+  "reused_main_docs": 114,
+  "reused_main_generations": 228,
+  "immutable_raw_files": 514,
+  "immutable_report_files": 33,
+  "report_files_unchanged": true,
+  "raw_files_unchanged": true,
+  "scoring": "Fresh native task scoring from independently rebuilt raw-generated predictions and pinned Arrow; no metrics reuse; CIDEr DF recomputed separately for each200/114 corpus",
+  "results": [
+    {
+      "scope": "main200",
+      "method": "hybridkv_kvrepack",
+      "variant": "lookm",
+      "n": 200,
+      "end_to_end_seconds_mean": 8.173605326898397,
+      "end_to_end_seconds_total": 1634.7210653796792,
+      "end_to_end_seconds_p50": 5.066912619397044,
+      "end_to_end_seconds_p95": 25.197799686342442,
+      "preprocessing_seconds_mean": 5.793960602860897,
+      "preprocessing_seconds_total": 1158.7921205721796,
+      "preprocessing_seconds_p50": 2.464097773656249,
+      "preprocessing_seconds_p95": 23.126723603159153,
+      "h2d_seconds_mean": 0.02187293816357851,
+      "h2d_seconds_total": 4.374587632715702,
+      "h2d_seconds_p50": 0.01647711545228958,
+      "h2d_seconds_p95": 0.04256966114044189,
+      "fisher_seconds_mean": 0.0,
+      "fisher_seconds_total": 0.0,
+      "fisher_seconds_p50": 0.0,
+      "fisher_seconds_p95": 0.0,
+      "generation_seconds_mean": 2.3575748036243023,
+      "generation_seconds_total": 471.51496072486043,
+      "generation_seconds_p50": 1.956698564812541,
+      "generation_seconds_p95": 4.168190799653529,
+      "text_decode_seconds_mean": 0.00018812313675880431,
+      "text_decode_seconds_total": 0.037624627351760864,
+      "text_decode_seconds_p50": 0.00016747228801250458,
+      "text_decode_seconds_p95": 0.00026683453470468496,
+      "e2e_p50_seconds": 5.066912619397044,
+      "e2e_p95_seconds": 25.197799686342442,
+      "model_end_to_end_seconds_mean": 2.357583662737161,
+      "model_end_to_end_seconds_total": 471.5167325474322,
+      "model_end_to_end_seconds_p50": 1.956706428900361,
+      "model_end_to_end_seconds_p95": 4.168199553154408,
+      "generated_tokens_mean": 16.93,
+      "generated_tokens_total": 3386,
+      "generated_tokens_min": 7,
+      "generated_tokens_max": 64,
+      "generated_tokens_p50": 16.0,
+      "generated_tokens_p95": 23.0,
+      "tokens_per_generation_second": 7.181108304166423,
+      "eos_count": 199,
+      "capped_without_eos": 1,
+      "actual_retained_ratio_mean": 0.09976762858821274,
+      "actual_retained_ratio_max": 0.09992800746626208,
+      "peak_allocated_gib_max": 23.608553409576416,
+      "peak_allocated_gib_mean": 19.379927668571472,
+      "Bleu_4": 0.21963315051318535,
+      "METEOR": 0.2216191690615447,
+      "ROUGE_L": 0.42741745899599964,
+      "CIDEr": 0.4681652142057084,
+      "VATEX_Avg": 0.3342087481941095
+    },
+    {
+      "scope": "main200",
+      "method": "hybridkv_kvrepack",
+      "variant": "asymkv",
+      "n": 200,
+      "end_to_end_seconds_mean": 10.017877786830068,
+      "end_to_end_seconds_total": 2003.5755573660135,
+      "end_to_end_seconds_p50": 6.823432620614767,
+      "end_to_end_seconds_p95": 26.74183727428314,
+      "preprocessing_seconds_mean": 5.810666964016855,
+      "preprocessing_seconds_total": 1162.133392803371,
+      "preprocessing_seconds_p50": 2.4915613494813442,
+      "preprocessing_seconds_p95": 23.203367450460757,
+      "h2d_seconds_mean": 0.02149519558995962,
+      "h2d_seconds_total": 4.299039117991924,
+      "h2d_seconds_p50": 0.01667855866253376,
+      "h2d_seconds_p95": 0.041803776286542416,
+      "fisher_seconds_mean": 1.6125166780315339,
+      "fisher_seconds_total": 322.5033356063068,
+      "fisher_seconds_p50": 1.2338710520416498,
+      "fisher_seconds_p95": 3.2437910310924054,
+      "generation_seconds_mean": 2.5729342030361293,
+      "generation_seconds_total": 514.5868406072259,
+      "generation_seconds_p50": 2.093084132298827,
+      "generation_seconds_p95": 4.385337312705815,
+      "text_decode_seconds_mean": 0.00026474615558981897,
+      "text_decode_seconds_total": 0.05294923111796379,
+      "text_decode_seconds_p50": 0.0001773405820131302,
+      "text_decode_seconds_p95": 0.0005633249878883263,
+      "e2e_p50_seconds": 6.823432620614767,
+      "e2e_p95_seconds": 26.74183727428314,
+      "model_end_to_end_seconds_mean": 4.185450881067664,
+      "model_end_to_end_seconds_total": 837.0901762135327,
+      "model_end_to_end_seconds_p50": 3.3419992439448833,
+      "model_end_to_end_seconds_p95": 7.631850891746581,
+      "generated_tokens_mean": 19.845,
+      "generated_tokens_total": 3969,
+      "generated_tokens_min": 10,
+      "generated_tokens_max": 64,
+      "generated_tokens_p50": 17.0,
+      "generated_tokens_p95": 42.44999999999985,
+      "tokens_per_generation_second": 7.712983867439122,
+      "eos_count": 192,
+      "capped_without_eos": 8,
+      "actual_retained_ratio_mean": 0.09976762858821274,
+      "actual_retained_ratio_max": 0.09992800746626208,
+      "peak_allocated_gib_max": 27.986948013305664,
+      "peak_allocated_gib_mean": 21.564452714920044,
+      "Bleu_4": 0.17899548783545902,
+      "METEOR": 0.20711225102469735,
+      "ROUGE_L": 0.4104413680748222,
+      "CIDEr": 0.38772476593184524,
+      "VATEX_Avg": 0.29606846821670596
+    },
+    {
+      "scope": "main200",
+      "method": "snapkv_kvrepack",
+      "variant": "lookm",
+      "n": 200,
+      "end_to_end_seconds_mean": 7.909556867275387,
+      "end_to_end_seconds_total": 1581.9113734550774,
+      "end_to_end_seconds_p50": 4.726064808666706,
+      "end_to_end_seconds_p95": 25.817936023510978,
+      "preprocessing_seconds_mean": 5.887013711016625,
+      "preprocessing_seconds_total": 1177.402742203325,
+      "preprocessing_seconds_p50": 2.510294772684574,
+      "preprocessing_seconds_p95": 24.07160408254711,
+      "h2d_seconds_mean": 0.0214302222058177,
+      "h2d_seconds_total": 4.28604444116354,
+      "h2d_seconds_p50": 0.016722485423088074,
+      "h2d_seconds_p95": 0.041766890510916706,
+      "fisher_seconds_mean": 0.0,
+      "fisher_seconds_total": 0.0,
+      "fisher_seconds_p50": 0.0,
+      "fisher_seconds_p95": 0.0,
+      "generation_seconds_mean": 2.0009163403883576,
+      "generation_seconds_total": 400.1832680776715,
+      "generation_seconds_p50": 1.6182912793010473,
+      "generation_seconds_p95": 3.6970234055072067,
+      "text_decode_seconds_mean": 0.0001876521110534668,
+      "text_decode_seconds_total": 0.03753042221069336,
+      "text_decode_seconds_p50": 0.00016521848738193512,
+      "text_decode_seconds_p95": 0.00025391951203346247,
+      "e2e_p50_seconds": 4.726064808666706,
+      "e2e_p95_seconds": 25.817936023510978,
+      "model_end_to_end_seconds_mean": 2.000925281941891,
+      "model_end_to_end_seconds_total": 400.18505638837814,
+      "model_end_to_end_seconds_p50": 1.618299813941121,
+      "model_end_to_end_seconds_p95": 3.6970321007072924,
+      "generated_tokens_mean": 16.0,
+      "generated_tokens_total": 3200,
+      "generated_tokens_min": 10,
+      "generated_tokens_max": 27,
+      "generated_tokens_p50": 16.0,
+      "generated_tokens_p95": 21.0,
+      "tokens_per_generation_second": 7.996336317036904,
+      "eos_count": 200,
+      "capped_without_eos": 0,
+      "actual_retained_ratio_mean": 0.0999752509846791,
+      "actual_retained_ratio_max": 0.1,
+      "peak_allocated_gib_max": 23.20574426651001,
+      "peak_allocated_gib_mean": 19.183917274475096,
+      "Bleu_4": 0.21615858440158,
+      "METEOR": 0.21340824260982716,
+      "ROUGE_L": 0.42618149931882554,
+      "CIDEr": 0.45844429886416804,
+      "VATEX_Avg": 0.3285481562986002
+    },
+    {
+      "scope": "main200",
+      "method": "snapkv_kvrepack",
+      "variant": "asymkv",
+      "n": 200,
+      "end_to_end_seconds_mean": 9.640830132812262,
+      "end_to_end_seconds_total": 1928.1660265624523,
+      "end_to_end_seconds_p50": 6.3918269742280245,
+      "end_to_end_seconds_p95": 27.14753514528273,
+      "preprocessing_seconds_mean": 5.880153727140278,
+      "preprocessing_seconds_total": 1176.0307454280555,
+      "preprocessing_seconds_p50": 2.496614757925272,
+      "preprocessing_seconds_p95": 23.904120295867305,
+      "h2d_seconds_mean": 0.021809815652668475,
+      "h2d_seconds_total": 4.361963130533695,
+      "h2d_seconds_p50": 0.01668880507349968,
+      "h2d_seconds_p95": 0.041958406567573533,
+      "fisher_seconds_mean": 1.6152466843836009,
+      "fisher_seconds_total": 323.0493368767202,
+      "fisher_seconds_p50": 1.2351836655288935,
+      "fisher_seconds_p95": 3.2482891177758573,
+      "generation_seconds_mean": 2.1233784217387437,
+      "generation_seconds_total": 424.67568434774876,
+      "generation_seconds_p50": 1.6771954912692308,
+      "generation_seconds_p95": 3.848453976027667,
+      "text_decode_seconds_mean": 0.0002414838969707489,
+      "text_decode_seconds_total": 0.04829677939414978,
+      "text_decode_seconds_p50": 0.00017681904137134552,
+      "text_decode_seconds_p95": 0.0007819870486855501,
+      "e2e_p50_seconds": 6.3918269742280245,
+      "e2e_p95_seconds": 27.14753514528273,
+      "model_end_to_end_seconds_mean": 3.7386251061223446,
+      "model_end_to_end_seconds_total": 747.725021224469,
+      "model_end_to_end_seconds_p50": 2.915635211393237,
+      "model_end_to_end_seconds_p95": 7.10341528635472,
+      "generated_tokens_mean": 19.645,
+      "generated_tokens_total": 3929,
+      "generated_tokens_min": 7,
+      "generated_tokens_max": 64,
+      "generated_tokens_p50": 16.0,
+      "generated_tokens_p95": 53.0,
+      "tokens_per_generation_second": 9.251765864660879,
+      "eos_count": 191,
+      "capped_without_eos": 9,
+      "actual_retained_ratio_mean": 0.0999752509846791,
+      "actual_retained_ratio_max": 0.1,
+      "peak_allocated_gib_max": 27.972498416900635,
+      "peak_allocated_gib_mean": 21.565829815864564,
+      "Bleu_4": 0.181163059762875,
+      "METEOR": 0.19908477382255793,
+      "ROUGE_L": 0.40320139689705525,
+      "CIDEr": 0.3542237754137695,
+      "VATEX_Avg": 0.2844182514740644
+    },
+    {
+      "scope": "parent114",
+      "method": "snapkv_kvrepack",
+      "variant": "kvrepack",
+      "n": 114,
+      "end_to_end_seconds_mean": 8.298082024283838,
+      "end_to_end_seconds_total": 945.9813507683575,
+      "end_to_end_seconds_p50": 4.697799261659384,
+      "end_to_end_seconds_p95": 26.18417317606508,
+      "preprocessing_seconds_mean": 6.317155521657122,
+      "preprocessing_seconds_total": 720.1557294689119,
+      "preprocessing_seconds_p50": 2.580693520605564,
+      "preprocessing_seconds_p95": 24.487374522164455,
+      "h2d_seconds_mean": 0.021107001132086703,
+      "h2d_seconds_total": 2.406198129057884,
+      "h2d_seconds_p50": 0.01666649617254734,
+      "h2d_seconds_p95": 0.04149507749825716,
+      "fisher_seconds_mean": 0.0,
+      "fisher_seconds_total": 0.0,
+      "fisher_seconds_p50": 0.0,
+      "fisher_seconds_p95": 0.0,
+      "generation_seconds_mean": 1.959630284066263,
+      "generation_seconds_total": 223.39785238355398,
+      "generation_seconds_p50": 1.629541739821434,
+      "generation_seconds_p95": 3.6528874397277833,
+      "text_decode_seconds_mean": 0.0001798879943395916,
+      "text_decode_seconds_total": 0.02050723135471344,
+      "text_decode_seconds_p50": 0.0001676063984632492,
+      "text_decode_seconds_p95": 0.0002436460927128791,
+      "e2e_p50_seconds": 4.697799261659384,
+      "e2e_p95_seconds": 26.18417317606508,
+      "model_end_to_end_seconds_mean": 1.9596396135002898,
+      "model_end_to_end_seconds_total": 223.39891593903303,
+      "model_end_to_end_seconds_p50": 1.6295516677200794,
+      "model_end_to_end_seconds_p95": 3.652895848825574,
+      "generated_tokens_mean": 16.42105263157895,
+      "generated_tokens_total": 1872,
+      "generated_tokens_min": 11,
+      "generated_tokens_max": 27,
+      "generated_tokens_p50": 16.0,
+      "generated_tokens_p95": 23.0,
+      "tokens_per_generation_second": 8.379668739097566,
+      "eos_count": 114,
+      "capped_without_eos": 0,
+      "actual_retained_ratio_mean": 0.09997466807132176,
+      "actual_retained_ratio_max": 0.1,
+      "peak_allocated_gib_max": 23.20574426651001,
+      "peak_allocated_gib_mean": 19.090153317702445,
+      "Bleu_4": 0.2343339772234395,
+      "METEOR": 0.22027484815360626,
+      "ROUGE_L": 0.42792431953388727,
+      "CIDEr": 0.4821170574037898,
+      "VATEX_Avg": 0.3411625505786807
+    },
+    {
+      "scope": "parent114",
+      "method": "snapkv_kvrepack",
+      "variant": "lookm",
+      "n": 114,
+      "end_to_end_seconds_mean": 8.26679045988018,
+      "end_to_end_seconds_total": 942.4141124263406,
+      "end_to_end_seconds_p50": 4.6619446612894535,
+      "end_to_end_seconds_p95": 26.07933122720569,
+      "preprocessing_seconds_mean": 6.281399416949665,
+      "preprocessing_seconds_total": 716.0795335322618,
+      "preprocessing_seconds_p50": 2.541494945064187,
+      "preprocessing_seconds_p95": 24.367160729505116,
+      "h2d_seconds_mean": 0.020778920174690716,
+      "h2d_seconds_total": 2.3687968999147415,
+      "h2d_seconds_p50": 0.016475219279527664,
+      "h2d_seconds_p95": 0.04121772143989801,
+      "fisher_seconds_mean": 0.0,
+      "fisher_seconds_total": 0.0,
+      "fisher_seconds_p50": 0.0,
+      "fisher_seconds_p95": 0.0,
+      "generation_seconds_mean": 1.9644331833380355,
+      "generation_seconds_total": 223.94538290053606,
+      "generation_seconds_p50": 1.6372220944613218,
+      "generation_seconds_p95": 3.6684495838359,
+      "text_decode_seconds_mean": 0.00017002643200389125,
+      "text_decode_seconds_total": 0.019383013248443604,
+      "text_decode_seconds_p50": 0.00016387924551963806,
+      "text_decode_seconds_p95": 0.00021398868411779404,
+      "e2e_p50_seconds": 4.6619446612894535,
+      "e2e_p95_seconds": 26.07933122720569,
+      "model_end_to_end_seconds_mean": 1.9644420963238205,
+      "model_end_to_end_seconds_total": 223.94639898091555,
+      "model_end_to_end_seconds_p50": 1.6372312307357788,
+      "model_end_to_end_seconds_p95": 3.668458314798772,
+      "generated_tokens_mean": 16.236842105263158,
+      "generated_tokens_total": 1851,
+      "generated_tokens_min": 11,
+      "generated_tokens_max": 27,
+      "generated_tokens_p50": 16.0,
+      "generated_tokens_p95": 23.0,
+      "tokens_per_generation_second": 8.265408181342636,
+      "eos_count": 114,
+      "capped_without_eos": 0,
+      "actual_retained_ratio_mean": 0.09997466807132176,
+      "actual_retained_ratio_max": 0.1,
+      "peak_allocated_gib_max": 23.20574426651001,
+      "peak_allocated_gib_mean": 19.090153317702445,
+      "Bleu_4": 0.23273720319921304,
+      "METEOR": 0.21714056435448048,
+      "ROUGE_L": 0.4302551942365765,
+      "CIDEr": 0.48060454495021027,
+      "VATEX_Avg": 0.3401843766851201
+    },
+    {
+      "scope": "parent114",
+      "method": "snapkv_kvrepack",
+      "variant": "asymkv",
+      "n": 114,
+      "end_to_end_seconds_mean": 9.964289508858009,
+      "end_to_end_seconds_total": 1135.929004009813,
+      "end_to_end_seconds_p50": 6.26279759965837,
+      "end_to_end_seconds_p95": 27.38319986313581,
+      "preprocessing_seconds_mean": 6.28454088952327,
+      "preprocessing_seconds_total": 716.4376614056528,
+      "preprocessing_seconds_p50": 2.5246648248285055,
+      "preprocessing_seconds_p95": 24.26195990033447,
+      "h2d_seconds_mean": 0.020753731885761545,
+      "h2d_seconds_total": 2.365925434976816,
+      "h2d_seconds_p50": 0.016369378194212914,
+      "h2d_seconds_p95": 0.04120958931744098,
+      "fisher_seconds_mean": 1.5736346025542731,
+      "fisher_seconds_total": 179.39434469118714,
+      "fisher_seconds_p50": 1.2358558159321547,
+      "fisher_seconds_p95": 3.2478338645771148,
+      "generation_seconds_mean": 2.085130282236557,
+      "generation_seconds_total": 237.70485217496753,
+      "generation_seconds_p50": 1.700079657137394,
+      "generation_seconds_p95": 3.7749466959387057,
+      "text_decode_seconds_mean": 0.00023000265814756093,
+      "text_decode_seconds_total": 0.026220303028821945,
+      "text_decode_seconds_p50": 0.0001744106411933899,
+      "text_decode_seconds_p95": 0.0007425842806696886,
+      "e2e_p50_seconds": 6.26279759965837,
+      "e2e_p95_seconds": 27.38319986313581,
+      "model_end_to_end_seconds_mean": 3.6587648847908305,
+      "model_end_to_end_seconds_total": 417.09919686615467,
+      "model_end_to_end_seconds_p50": 2.964145416393876,
+      "model_end_to_end_seconds_p95": 7.021791678480803,
+      "generated_tokens_mean": 19.789473684210527,
+      "generated_tokens_total": 2256,
+      "generated_tokens_min": 7,
+      "generated_tokens_max": 64,
+      "generated_tokens_p50": 16.0,
+      "generated_tokens_p95": 49.74999999999997,
+      "tokens_per_generation_second": 9.49076125017181,
+      "eos_count": 110,
+      "capped_without_eos": 4,
+      "actual_retained_ratio_mean": 0.09997466807132176,
+      "actual_retained_ratio_max": 0.1,
+      "peak_allocated_gib_max": 27.972498416900635,
+      "peak_allocated_gib_mean": 21.41640745966058,
+      "Bleu_4": 0.20256743400827867,
+      "METEOR": 0.20755540541202103,
+      "ROUGE_L": 0.41175420679475794,
+      "CIDEr": 0.38707932209045115,
+      "VATEX_Avg": 0.3022390920763772
+    }
+  ],
+  "corpora": [
+    {
+      "label": "main200/hybridkv_kvrepack/lookm",
+      "n": 200,
+      "predictions_sha256": "3a722d452a84f8de656c9a2faf3a0f7629eeb3bddfcd139eff1c432017217f77",
+      "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "scoring_helper_sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+      "scoring_identity": {
+        "task": "vatex_test",
+        "n": 200,
+        "prediction_corpus_sha256": "4c712b26e505bb431bbc593cafade421f9452997ac544d0fd13ce33e49a6e555",
+        "reference_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+        "selected_reference_rows_sha256": "a7c0c485f105004ca0b012eae9cf6128e81adb881ea68deb84878ab374def7de",
+        "doc_ids_sha256": "3aff9a6fb6509b8968896ebe61adb4c30173323aa5a8564336c4474b2f015a25",
+        "scorer_identity_sha256": "9d923033d1479a85dd824a95df9781824128a14c7a2cb579d5c17cc0c6da6f62"
+      },
+      "metrics_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_20261112_preflight/independent_final_audit/main200/hybridkv_kvrepack/lookm/native_metrics.json"
+    },
+    {
+      "label": "main200/hybridkv_kvrepack/asymkv",
+      "n": 200,
+      "predictions_sha256": "63b51aa8c96635612a8ed9497369bd51a6e1bc3c4cf7e761f09d7a9c074f5561",
+      "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "scoring_helper_sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+      "scoring_identity": {
+        "task": "vatex_test",
+        "n": 200,
+        "prediction_corpus_sha256": "f3ff9e76aa736b5056ff8a114c5f8bb4a164533cc05bab28c19bc4811b59f21f",
+        "reference_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+        "selected_reference_rows_sha256": "a7c0c485f105004ca0b012eae9cf6128e81adb881ea68deb84878ab374def7de",
+        "doc_ids_sha256": "3aff9a6fb6509b8968896ebe61adb4c30173323aa5a8564336c4474b2f015a25",
+        "scorer_identity_sha256": "9d923033d1479a85dd824a95df9781824128a14c7a2cb579d5c17cc0c6da6f62"
+      },
+      "metrics_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_20261112_preflight/independent_final_audit/main200/hybridkv_kvrepack/asymkv/native_metrics.json"
+    },
+    {
+      "label": "main200/snapkv_kvrepack/lookm",
+      "n": 200,
+      "predictions_sha256": "0233257674d7b6755874b6c864950cc267dd006e4c6a5257218a9a5a7a823b20",
+      "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "scoring_helper_sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+      "scoring_identity": {
+        "task": "vatex_test",
+        "n": 200,
+        "prediction_corpus_sha256": "47c0c9c7931eadced017da6df70f9ea76138fd31f4703ae9ca62fe4540184070",
+        "reference_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+        "selected_reference_rows_sha256": "a7c0c485f105004ca0b012eae9cf6128e81adb881ea68deb84878ab374def7de",
+        "doc_ids_sha256": "3aff9a6fb6509b8968896ebe61adb4c30173323aa5a8564336c4474b2f015a25",
+        "scorer_identity_sha256": "9d923033d1479a85dd824a95df9781824128a14c7a2cb579d5c17cc0c6da6f62"
+      },
+      "metrics_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_20261112_preflight/independent_final_audit/main200/snapkv_kvrepack/lookm/native_metrics.json"
+    },
+    {
+      "label": "main200/snapkv_kvrepack/asymkv",
+      "n": 200,
+      "predictions_sha256": "47716dc01f23ee68d48d8d8d5b8f7b8e83dcb3c630fa052862688c150d33c5d3",
+      "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "scoring_helper_sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+      "scoring_identity": {
+        "task": "vatex_test",
+        "n": 200,
+        "prediction_corpus_sha256": "d59abcf152ee4804a859d582053272c3be6d2bada0ec6b71147937907cd158df",
+        "reference_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+        "selected_reference_rows_sha256": "a7c0c485f105004ca0b012eae9cf6128e81adb881ea68deb84878ab374def7de",
+        "doc_ids_sha256": "3aff9a6fb6509b8968896ebe61adb4c30173323aa5a8564336c4474b2f015a25",
+        "scorer_identity_sha256": "9d923033d1479a85dd824a95df9781824128a14c7a2cb579d5c17cc0c6da6f62"
+      },
+      "metrics_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_20261112_preflight/independent_final_audit/main200/snapkv_kvrepack/asymkv/native_metrics.json"
+    },
+    {
+      "label": "parent114/snapkv_kvrepack/kvrepack",
+      "n": 114,
+      "predictions_sha256": "f65e5884cfa9bafcf9e78e0b11367e3f19aee2923faad86c6e8c13d0e661f7dc",
+      "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "scoring_helper_sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+      "scoring_identity": {
+        "task": "vatex_test",
+        "n": 114,
+        "prediction_corpus_sha256": "02b98ab91ffaa0686f5303f4fa7e789f1aac709cfa9a6ae467a1928a5fff38a0",
+        "reference_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+        "selected_reference_rows_sha256": "d76b268eccad6616cd882431a947d7447d18375107c2bfef014954e749d98119",
+        "doc_ids_sha256": "a731887e9fc9949be1235bc1779a2565095579c216ac30a181dcb32dee47c717",
+        "scorer_identity_sha256": "9d923033d1479a85dd824a95df9781824128a14c7a2cb579d5c17cc0c6da6f62"
+      },
+      "metrics_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_20261112_preflight/independent_final_audit/parent114/snapkv_kvrepack/kvrepack/native_metrics.json"
+    },
+    {
+      "label": "parent114/snapkv_kvrepack/lookm",
+      "n": 114,
+      "predictions_sha256": "8ec811d809b4052e3723948f122ff1cbe6ab1c48f6224e5ceabb6619ff764fb5",
+      "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "scoring_helper_sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+      "scoring_identity": {
+        "task": "vatex_test",
+        "n": 114,
+        "prediction_corpus_sha256": "036354bd18b3bef170c174d7c79aa0da5e8fadcdfca81caab5cda987d75d3801",
+        "reference_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+        "selected_reference_rows_sha256": "d76b268eccad6616cd882431a947d7447d18375107c2bfef014954e749d98119",
+        "doc_ids_sha256": "a731887e9fc9949be1235bc1779a2565095579c216ac30a181dcb32dee47c717",
+        "scorer_identity_sha256": "9d923033d1479a85dd824a95df9781824128a14c7a2cb579d5c17cc0c6da6f62"
+      },
+      "metrics_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_20261112_preflight/independent_final_audit/parent114/snapkv_kvrepack/lookm/native_metrics.json"
+    },
+    {
+      "label": "parent114/snapkv_kvrepack/asymkv",
+      "n": 114,
+      "predictions_sha256": "4e9c8b409c02e1407183fa616fa50b8e43387fab31e9fe6839ea8581f78f4422",
+      "arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+      "scoring_helper_sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+      "scoring_identity": {
+        "task": "vatex_test",
+        "n": 114,
+        "prediction_corpus_sha256": "9e38b0c656040f749e761777bb2a9105ded37d1e4bc2535480da0cf9b972f6b7",
+        "reference_arrow_sha256": "f205496db84b17a054ac8d0f4e0aaf130982722a9c593274f9fd50573ad8b27f",
+        "selected_reference_rows_sha256": "d76b268eccad6616cd882431a947d7447d18375107c2bfef014954e749d98119",
+        "doc_ids_sha256": "a731887e9fc9949be1235bc1779a2565095579c216ac30a181dcb32dee47c717",
+        "scorer_identity_sha256": "9d923033d1479a85dd824a95df9781824128a14c7a2cb579d5c17cc0c6da6f62"
+      },
+      "metrics_path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_20261112_preflight/independent_final_audit/parent114/snapkv_kvrepack/asymkv/native_metrics.json"
+    }
+  ],
+  "checks": [
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "n",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 8.173605326898397,
+      "reported": 8.173605326898397,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "end_to_end_seconds_total",
+      "expected": 1634.7210653796792,
+      "reported": 1634.7210653796792,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 5.793960602860897,
+      "reported": 5.793960602860897,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "preprocessing_seconds_total",
+      "expected": 1158.7921205721796,
+      "reported": 1158.7921205721796,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.02187293816357851,
+      "reported": 0.02187293816357851,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "h2d_seconds_total",
+      "expected": 4.374587632715702,
+      "reported": 4.374587632715702,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "generation_seconds_mean",
+      "expected": 2.3575748036243023,
+      "reported": 2.3575748036243023,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "generation_seconds_total",
+      "expected": 471.51496072486043,
+      "reported": 471.51496072486043,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00018812313675880431,
+      "reported": 0.00018812313675880431,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.037624627351760864,
+      "reported": 0.037624627351760864,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "e2e_p50_seconds",
+      "expected": 5.066912619397044,
+      "reported": 5.066912619397044,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "e2e_p95_seconds",
+      "expected": 25.197799686342442,
+      "reported": 25.197799686342442,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 2.357583662737161,
+      "reported": 2.357583662737161,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "generated_tokens_mean",
+      "expected": 16.93,
+      "reported": 16.93,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "tokens_per_generation_second",
+      "expected": 7.181108304166423,
+      "reported": 7.181108304166423,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "eos_count",
+      "expected": 199,
+      "reported": 199.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "capped_without_eos",
+      "expected": 1,
+      "reported": 1.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09976762858821274,
+      "reported": 0.09976762858821274,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.09992800746626208,
+      "reported": 0.09992800746626208,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/json",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.608553409576416,
+      "reported": 23.608553409576416,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "n",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "end_to_end_seconds_mean",
+      "expected": 8.173605326898397,
+      "reported": 8.173605326898397,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "end_to_end_seconds_total",
+      "expected": 1634.7210653796792,
+      "reported": 1634.7210653796792,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "preprocessing_seconds_mean",
+      "expected": 5.793960602860897,
+      "reported": 5.793960602860897,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "preprocessing_seconds_total",
+      "expected": 1158.7921205721796,
+      "reported": 1158.7921205721796,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "h2d_seconds_mean",
+      "expected": 0.02187293816357851,
+      "reported": 0.02187293816357851,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "h2d_seconds_total",
+      "expected": 4.374587632715702,
+      "reported": 4.374587632715702,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "generation_seconds_mean",
+      "expected": 2.3575748036243023,
+      "reported": 2.3575748036243023,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "generation_seconds_total",
+      "expected": 471.51496072486043,
+      "reported": 471.51496072486043,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00018812313675880431,
+      "reported": 0.00018812313675880431,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "text_decode_seconds_total",
+      "expected": 0.037624627351760864,
+      "reported": 0.037624627351760864,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "e2e_p50_seconds",
+      "expected": 5.066912619397044,
+      "reported": 5.066912619397044,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "e2e_p95_seconds",
+      "expected": 25.197799686342442,
+      "reported": 25.197799686342442,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 2.357583662737161,
+      "reported": 2.357583662737161,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "generated_tokens_mean",
+      "expected": 16.93,
+      "reported": 16.93,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "tokens_per_generation_second",
+      "expected": 7.181108304166423,
+      "reported": 7.181108304166423,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "eos_count",
+      "expected": 199,
+      "reported": 199.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "capped_without_eos",
+      "expected": 1,
+      "reported": 1.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09976762858821274,
+      "reported": 0.09976762858821274,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.09992800746626208,
+      "reported": 0.09992800746626208,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/csv",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.608553409576416,
+      "reported": 23.608553409576416,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_json",
+      "field": "Bleu_4",
+      "expected": 0.21963315051318535,
+      "reported": 0.21963315051318535,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_json",
+      "field": "METEOR",
+      "expected": 0.2216191690615447,
+      "reported": 0.2216191690615447,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_json",
+      "field": "ROUGE_L",
+      "expected": 0.42741745899599964,
+      "reported": 0.42741745899599964,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_json",
+      "field": "CIDEr",
+      "expected": 0.4681652142057084,
+      "reported": 0.4681652142057084,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_json",
+      "field": "VATEX_Avg",
+      "expected": 0.3342087481941095,
+      "reported": 0.3342087481941095,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_csv",
+      "field": "Bleu_4",
+      "expected": 0.21963315051318535,
+      "reported": 0.21963315051318535,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_csv",
+      "field": "METEOR",
+      "expected": 0.2216191690615447,
+      "reported": 0.2216191690615447,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_csv",
+      "field": "ROUGE_L",
+      "expected": 0.42741745899599964,
+      "reported": 0.42741745899599964,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_csv",
+      "field": "CIDEr",
+      "expected": 0.4681652142057084,
+      "reported": 0.4681652142057084,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/quality_csv",
+      "field": "VATEX_Avg",
+      "expected": 0.3342087481941095,
+      "reported": 0.3342087481941095,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/metric_file",
+      "field": "Bleu_4",
+      "expected": 0.21963315051318535,
+      "reported": 0.21963315051318535,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/metric_file",
+      "field": "METEOR",
+      "expected": 0.2216191690615447,
+      "reported": 0.2216191690615447,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/metric_file",
+      "field": "ROUGE_L",
+      "expected": 0.42741745899599964,
+      "reported": 0.42741745899599964,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/metric_file",
+      "field": "CIDEr",
+      "expected": 0.4681652142057084,
+      "reported": 0.4681652142057084,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/lookm/metric_file",
+      "field": "VATEX_Avg",
+      "expected": 0.3342087481941095,
+      "reported": 0.3342087481941095,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "n",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 10.017877786830068,
+      "reported": 10.017877786830068,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "end_to_end_seconds_total",
+      "expected": 2003.5755573660135,
+      "reported": 2003.5755573660135,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 5.810666964016855,
+      "reported": 5.810666964016855,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "preprocessing_seconds_total",
+      "expected": 1162.133392803371,
+      "reported": 1162.133392803371,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.02149519558995962,
+      "reported": 0.02149519558995962,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "h2d_seconds_total",
+      "expected": 4.299039117991924,
+      "reported": 4.299039117991924,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "fisher_seconds_mean",
+      "expected": 1.6125166780315339,
+      "reported": 1.6125166780315339,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "fisher_seconds_total",
+      "expected": 322.5033356063068,
+      "reported": 322.5033356063068,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "generation_seconds_mean",
+      "expected": 2.5729342030361293,
+      "reported": 2.5729342030361293,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "generation_seconds_total",
+      "expected": 514.5868406072259,
+      "reported": 514.5868406072259,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00026474615558981897,
+      "reported": 0.00026474615558981897,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.05294923111796379,
+      "reported": 0.05294923111796379,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "e2e_p50_seconds",
+      "expected": 6.823432620614767,
+      "reported": 6.823432620614767,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "e2e_p95_seconds",
+      "expected": 26.74183727428314,
+      "reported": 26.74183727428314,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 4.185450881067664,
+      "reported": 4.185450881067664,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "generated_tokens_mean",
+      "expected": 19.845,
+      "reported": 19.845,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "tokens_per_generation_second",
+      "expected": 7.712983867439122,
+      "reported": 7.712983867439122,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "eos_count",
+      "expected": 192,
+      "reported": 192.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "capped_without_eos",
+      "expected": 8,
+      "reported": 8.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09976762858821274,
+      "reported": 0.09976762858821274,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.09992800746626208,
+      "reported": 0.09992800746626208,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/json",
+      "field": "peak_allocated_gib_max",
+      "expected": 27.986948013305664,
+      "reported": 27.986948013305664,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "n",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "end_to_end_seconds_mean",
+      "expected": 10.017877786830068,
+      "reported": 10.017877786830068,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "end_to_end_seconds_total",
+      "expected": 2003.5755573660135,
+      "reported": 2003.5755573660135,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "preprocessing_seconds_mean",
+      "expected": 5.810666964016855,
+      "reported": 5.810666964016855,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "preprocessing_seconds_total",
+      "expected": 1162.133392803371,
+      "reported": 1162.133392803371,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "h2d_seconds_mean",
+      "expected": 0.02149519558995962,
+      "reported": 0.02149519558995962,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "h2d_seconds_total",
+      "expected": 4.299039117991924,
+      "reported": 4.299039117991924,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "fisher_seconds_mean",
+      "expected": 1.6125166780315339,
+      "reported": 1.6125166780315339,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "fisher_seconds_total",
+      "expected": 322.5033356063068,
+      "reported": 322.5033356063068,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "generation_seconds_mean",
+      "expected": 2.5729342030361293,
+      "reported": 2.5729342030361293,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "generation_seconds_total",
+      "expected": 514.5868406072259,
+      "reported": 514.5868406072259,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00026474615558981897,
+      "reported": 0.00026474615558981897,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "text_decode_seconds_total",
+      "expected": 0.05294923111796379,
+      "reported": 0.05294923111796379,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "e2e_p50_seconds",
+      "expected": 6.823432620614767,
+      "reported": 6.823432620614767,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "e2e_p95_seconds",
+      "expected": 26.74183727428314,
+      "reported": 26.74183727428314,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 4.185450881067664,
+      "reported": 4.185450881067664,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "generated_tokens_mean",
+      "expected": 19.845,
+      "reported": 19.845,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "tokens_per_generation_second",
+      "expected": 7.712983867439122,
+      "reported": 7.712983867439122,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "eos_count",
+      "expected": 192,
+      "reported": 192.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "capped_without_eos",
+      "expected": 8,
+      "reported": 8.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09976762858821274,
+      "reported": 0.09976762858821274,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.09992800746626208,
+      "reported": 0.09992800746626208,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/csv",
+      "field": "peak_allocated_gib_max",
+      "expected": 27.986948013305664,
+      "reported": 27.986948013305664,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_json",
+      "field": "Bleu_4",
+      "expected": 0.17899548783545902,
+      "reported": 0.17899548783545902,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_json",
+      "field": "METEOR",
+      "expected": 0.20711225102469735,
+      "reported": 0.20711225102469735,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_json",
+      "field": "ROUGE_L",
+      "expected": 0.4104413680748222,
+      "reported": 0.4104413680748222,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_json",
+      "field": "CIDEr",
+      "expected": 0.38772476593184524,
+      "reported": 0.38772476593184524,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_json",
+      "field": "VATEX_Avg",
+      "expected": 0.29606846821670596,
+      "reported": 0.29606846821670596,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_csv",
+      "field": "Bleu_4",
+      "expected": 0.17899548783545902,
+      "reported": 0.17899548783545902,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_csv",
+      "field": "METEOR",
+      "expected": 0.20711225102469735,
+      "reported": 0.20711225102469735,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_csv",
+      "field": "ROUGE_L",
+      "expected": 0.4104413680748222,
+      "reported": 0.4104413680748222,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_csv",
+      "field": "CIDEr",
+      "expected": 0.38772476593184524,
+      "reported": 0.38772476593184524,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/quality_csv",
+      "field": "VATEX_Avg",
+      "expected": 0.29606846821670596,
+      "reported": 0.29606846821670596,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/metric_file",
+      "field": "Bleu_4",
+      "expected": 0.17899548783545902,
+      "reported": 0.17899548783545902,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/metric_file",
+      "field": "METEOR",
+      "expected": 0.20711225102469735,
+      "reported": 0.20711225102469735,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/metric_file",
+      "field": "ROUGE_L",
+      "expected": 0.4104413680748222,
+      "reported": 0.4104413680748222,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/metric_file",
+      "field": "CIDEr",
+      "expected": 0.38772476593184524,
+      "reported": 0.38772476593184524,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/hybridkv_kvrepack/asymkv/metric_file",
+      "field": "VATEX_Avg",
+      "expected": 0.29606846821670596,
+      "reported": 0.29606846821670596,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "n",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 7.909556867275387,
+      "reported": 7.909556867275387,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "end_to_end_seconds_total",
+      "expected": 1581.9113734550774,
+      "reported": 1581.9113734550774,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 5.887013711016625,
+      "reported": 5.887013711016625,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "preprocessing_seconds_total",
+      "expected": 1177.402742203325,
+      "reported": 1177.402742203325,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.0214302222058177,
+      "reported": 0.0214302222058177,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "h2d_seconds_total",
+      "expected": 4.28604444116354,
+      "reported": 4.28604444116354,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "generation_seconds_mean",
+      "expected": 2.0009163403883576,
+      "reported": 2.0009163403883576,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "generation_seconds_total",
+      "expected": 400.1832680776715,
+      "reported": 400.1832680776715,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.0001876521110534668,
+      "reported": 0.0001876521110534668,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.03753042221069336,
+      "reported": 0.03753042221069336,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "e2e_p50_seconds",
+      "expected": 4.726064808666706,
+      "reported": 4.726064808666706,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "e2e_p95_seconds",
+      "expected": 25.817936023510978,
+      "reported": 25.817936023510978,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 2.000925281941891,
+      "reported": 2.000925281941891,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "generated_tokens_mean",
+      "expected": 16.0,
+      "reported": 16.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "tokens_per_generation_second",
+      "expected": 7.996336317036904,
+      "reported": 7.996336317036904,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "eos_count",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "capped_without_eos",
+      "expected": 0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.0999752509846791,
+      "reported": 0.0999752509846791,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/json",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.20574426651001,
+      "reported": 23.20574426651001,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "n",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "end_to_end_seconds_mean",
+      "expected": 7.909556867275387,
+      "reported": 7.909556867275387,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "end_to_end_seconds_total",
+      "expected": 1581.9113734550774,
+      "reported": 1581.9113734550774,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "preprocessing_seconds_mean",
+      "expected": 5.887013711016625,
+      "reported": 5.887013711016625,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "preprocessing_seconds_total",
+      "expected": 1177.402742203325,
+      "reported": 1177.402742203325,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "h2d_seconds_mean",
+      "expected": 0.0214302222058177,
+      "reported": 0.0214302222058177,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "h2d_seconds_total",
+      "expected": 4.28604444116354,
+      "reported": 4.28604444116354,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "generation_seconds_mean",
+      "expected": 2.0009163403883576,
+      "reported": 2.0009163403883576,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "generation_seconds_total",
+      "expected": 400.1832680776715,
+      "reported": 400.1832680776715,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.0001876521110534668,
+      "reported": 0.0001876521110534668,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "text_decode_seconds_total",
+      "expected": 0.03753042221069336,
+      "reported": 0.03753042221069336,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "e2e_p50_seconds",
+      "expected": 4.726064808666706,
+      "reported": 4.726064808666706,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "e2e_p95_seconds",
+      "expected": 25.817936023510978,
+      "reported": 25.817936023510978,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 2.000925281941891,
+      "reported": 2.000925281941891,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "generated_tokens_mean",
+      "expected": 16.0,
+      "reported": 16.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "tokens_per_generation_second",
+      "expected": 7.996336317036904,
+      "reported": 7.996336317036904,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "eos_count",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "capped_without_eos",
+      "expected": 0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.0999752509846791,
+      "reported": 0.0999752509846791,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/csv",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.20574426651001,
+      "reported": 23.20574426651001,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_json",
+      "field": "Bleu_4",
+      "expected": 0.21615858440158,
+      "reported": 0.21615858440158,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_json",
+      "field": "METEOR",
+      "expected": 0.21340824260982716,
+      "reported": 0.21340824260982716,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_json",
+      "field": "ROUGE_L",
+      "expected": 0.42618149931882554,
+      "reported": 0.42618149931882554,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_json",
+      "field": "CIDEr",
+      "expected": 0.45844429886416804,
+      "reported": 0.45844429886416804,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_json",
+      "field": "VATEX_Avg",
+      "expected": 0.3285481562986002,
+      "reported": 0.3285481562986002,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_csv",
+      "field": "Bleu_4",
+      "expected": 0.21615858440158,
+      "reported": 0.21615858440158,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_csv",
+      "field": "METEOR",
+      "expected": 0.21340824260982716,
+      "reported": 0.21340824260982716,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_csv",
+      "field": "ROUGE_L",
+      "expected": 0.42618149931882554,
+      "reported": 0.42618149931882554,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_csv",
+      "field": "CIDEr",
+      "expected": 0.45844429886416804,
+      "reported": 0.45844429886416804,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/quality_csv",
+      "field": "VATEX_Avg",
+      "expected": 0.3285481562986002,
+      "reported": 0.3285481562986002,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/metric_file",
+      "field": "Bleu_4",
+      "expected": 0.21615858440158,
+      "reported": 0.21615858440158,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/metric_file",
+      "field": "METEOR",
+      "expected": 0.21340824260982716,
+      "reported": 0.21340824260982716,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/metric_file",
+      "field": "ROUGE_L",
+      "expected": 0.42618149931882554,
+      "reported": 0.42618149931882554,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/metric_file",
+      "field": "CIDEr",
+      "expected": 0.45844429886416804,
+      "reported": 0.45844429886416804,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/lookm/metric_file",
+      "field": "VATEX_Avg",
+      "expected": 0.3285481562986002,
+      "reported": 0.3285481562986002,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "n",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 9.640830132812262,
+      "reported": 9.640830132812262,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "end_to_end_seconds_total",
+      "expected": 1928.1660265624523,
+      "reported": 1928.1660265624523,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 5.880153727140278,
+      "reported": 5.880153727140278,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "preprocessing_seconds_total",
+      "expected": 1176.0307454280555,
+      "reported": 1176.0307454280555,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.021809815652668475,
+      "reported": 0.021809815652668475,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "h2d_seconds_total",
+      "expected": 4.361963130533695,
+      "reported": 4.361963130533695,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "fisher_seconds_mean",
+      "expected": 1.6152466843836009,
+      "reported": 1.6152466843836009,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "fisher_seconds_total",
+      "expected": 323.0493368767202,
+      "reported": 323.0493368767202,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "generation_seconds_mean",
+      "expected": 2.1233784217387437,
+      "reported": 2.1233784217387437,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "generation_seconds_total",
+      "expected": 424.67568434774876,
+      "reported": 424.67568434774876,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.0002414838969707489,
+      "reported": 0.0002414838969707489,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.04829677939414978,
+      "reported": 0.04829677939414978,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "e2e_p50_seconds",
+      "expected": 6.3918269742280245,
+      "reported": 6.3918269742280245,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "e2e_p95_seconds",
+      "expected": 27.14753514528273,
+      "reported": 27.14753514528273,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 3.7386251061223446,
+      "reported": 3.7386251061223446,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "generated_tokens_mean",
+      "expected": 19.645,
+      "reported": 19.645,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "tokens_per_generation_second",
+      "expected": 9.251765864660879,
+      "reported": 9.251765864660879,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "eos_count",
+      "expected": 191,
+      "reported": 191.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "capped_without_eos",
+      "expected": 9,
+      "reported": 9.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.0999752509846791,
+      "reported": 0.0999752509846791,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/json",
+      "field": "peak_allocated_gib_max",
+      "expected": 27.972498416900635,
+      "reported": 27.972498416900635,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "n",
+      "expected": 200,
+      "reported": 200.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "end_to_end_seconds_mean",
+      "expected": 9.640830132812262,
+      "reported": 9.640830132812262,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "end_to_end_seconds_total",
+      "expected": 1928.1660265624523,
+      "reported": 1928.1660265624523,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "preprocessing_seconds_mean",
+      "expected": 5.880153727140278,
+      "reported": 5.880153727140278,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "preprocessing_seconds_total",
+      "expected": 1176.0307454280555,
+      "reported": 1176.0307454280555,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "h2d_seconds_mean",
+      "expected": 0.021809815652668475,
+      "reported": 0.021809815652668475,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "h2d_seconds_total",
+      "expected": 4.361963130533695,
+      "reported": 4.361963130533695,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "fisher_seconds_mean",
+      "expected": 1.6152466843836009,
+      "reported": 1.6152466843836009,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "fisher_seconds_total",
+      "expected": 323.0493368767202,
+      "reported": 323.0493368767202,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "generation_seconds_mean",
+      "expected": 2.1233784217387437,
+      "reported": 2.1233784217387437,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "generation_seconds_total",
+      "expected": 424.67568434774876,
+      "reported": 424.67568434774876,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.0002414838969707489,
+      "reported": 0.0002414838969707489,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "text_decode_seconds_total",
+      "expected": 0.04829677939414978,
+      "reported": 0.04829677939414978,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "e2e_p50_seconds",
+      "expected": 6.3918269742280245,
+      "reported": 6.3918269742280245,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "e2e_p95_seconds",
+      "expected": 27.14753514528273,
+      "reported": 27.14753514528273,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 3.7386251061223446,
+      "reported": 3.7386251061223446,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "generated_tokens_mean",
+      "expected": 19.645,
+      "reported": 19.645,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "tokens_per_generation_second",
+      "expected": 9.251765864660879,
+      "reported": 9.251765864660879,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "eos_count",
+      "expected": 191,
+      "reported": 191.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "capped_without_eos",
+      "expected": 9,
+      "reported": 9.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.0999752509846791,
+      "reported": 0.0999752509846791,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/csv",
+      "field": "peak_allocated_gib_max",
+      "expected": 27.972498416900635,
+      "reported": 27.972498416900635,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_json",
+      "field": "Bleu_4",
+      "expected": 0.181163059762875,
+      "reported": 0.181163059762875,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_json",
+      "field": "METEOR",
+      "expected": 0.19908477382255793,
+      "reported": 0.19908477382255793,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_json",
+      "field": "ROUGE_L",
+      "expected": 0.40320139689705525,
+      "reported": 0.40320139689705525,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_json",
+      "field": "CIDEr",
+      "expected": 0.3542237754137695,
+      "reported": 0.3542237754137695,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_json",
+      "field": "VATEX_Avg",
+      "expected": 0.2844182514740644,
+      "reported": 0.2844182514740644,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "Bleu_4",
+      "expected": 0.181163059762875,
+      "reported": 0.181163059762875,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "METEOR",
+      "expected": 0.19908477382255793,
+      "reported": 0.19908477382255793,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "ROUGE_L",
+      "expected": 0.40320139689705525,
+      "reported": 0.40320139689705525,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "CIDEr",
+      "expected": 0.3542237754137695,
+      "reported": 0.3542237754137695,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "VATEX_Avg",
+      "expected": 0.2844182514740644,
+      "reported": 0.2844182514740644,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/metric_file",
+      "field": "Bleu_4",
+      "expected": 0.181163059762875,
+      "reported": 0.181163059762875,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/metric_file",
+      "field": "METEOR",
+      "expected": 0.19908477382255793,
+      "reported": 0.19908477382255793,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/metric_file",
+      "field": "ROUGE_L",
+      "expected": 0.40320139689705525,
+      "reported": 0.40320139689705525,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/metric_file",
+      "field": "CIDEr",
+      "expected": 0.3542237754137695,
+      "reported": 0.3542237754137695,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "main200/snapkv_kvrepack/asymkv/metric_file",
+      "field": "VATEX_Avg",
+      "expected": 0.2844182514740644,
+      "reported": 0.2844182514740644,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "n",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 8.298082024283838,
+      "reported": 8.298082024283838,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "end_to_end_seconds_total",
+      "expected": 945.9813507683575,
+      "reported": 945.9813507683575,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 6.317155521657122,
+      "reported": 6.317155521657122,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "preprocessing_seconds_total",
+      "expected": 720.1557294689119,
+      "reported": 720.1557294689119,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.021107001132086703,
+      "reported": 0.021107001132086703,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "h2d_seconds_total",
+      "expected": 2.406198129057884,
+      "reported": 2.406198129057884,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "generation_seconds_mean",
+      "expected": 1.959630284066263,
+      "reported": 1.959630284066263,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "generation_seconds_total",
+      "expected": 223.39785238355398,
+      "reported": 223.39785238355398,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.0001798879943395916,
+      "reported": 0.0001798879943395916,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.02050723135471344,
+      "reported": 0.02050723135471344,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "e2e_p50_seconds",
+      "expected": 4.697799261659384,
+      "reported": 4.697799261659384,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "e2e_p95_seconds",
+      "expected": 26.18417317606508,
+      "reported": 26.18417317606508,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 1.9596396135002898,
+      "reported": 1.9596396135002898,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "generated_tokens_mean",
+      "expected": 16.42105263157895,
+      "reported": 16.42105263157895,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "tokens_per_generation_second",
+      "expected": 8.379668739097566,
+      "reported": 8.379668739097566,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "eos_count",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "capped_without_eos",
+      "expected": 0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09997466807132176,
+      "reported": 0.09997466807132176,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/json",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.20574426651001,
+      "reported": 23.20574426651001,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "n",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "end_to_end_seconds_mean",
+      "expected": 8.298082024283838,
+      "reported": 8.298082024283838,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "end_to_end_seconds_total",
+      "expected": 945.9813507683575,
+      "reported": 945.9813507683575,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "preprocessing_seconds_mean",
+      "expected": 6.317155521657122,
+      "reported": 6.317155521657122,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "preprocessing_seconds_total",
+      "expected": 720.1557294689119,
+      "reported": 720.1557294689119,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "h2d_seconds_mean",
+      "expected": 0.021107001132086703,
+      "reported": 0.021107001132086703,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "h2d_seconds_total",
+      "expected": 2.406198129057884,
+      "reported": 2.406198129057884,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "generation_seconds_mean",
+      "expected": 1.959630284066263,
+      "reported": 1.959630284066263,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "generation_seconds_total",
+      "expected": 223.39785238355398,
+      "reported": 223.39785238355398,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.0001798879943395916,
+      "reported": 0.0001798879943395916,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "text_decode_seconds_total",
+      "expected": 0.02050723135471344,
+      "reported": 0.02050723135471344,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "e2e_p50_seconds",
+      "expected": 4.697799261659384,
+      "reported": 4.697799261659384,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "e2e_p95_seconds",
+      "expected": 26.18417317606508,
+      "reported": 26.18417317606508,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 1.9596396135002898,
+      "reported": 1.9596396135002898,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "generated_tokens_mean",
+      "expected": 16.42105263157895,
+      "reported": 16.42105263157895,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "tokens_per_generation_second",
+      "expected": 8.379668739097566,
+      "reported": 8.379668739097566,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "eos_count",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "capped_without_eos",
+      "expected": 0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09997466807132176,
+      "reported": 0.09997466807132176,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/csv",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.20574426651001,
+      "reported": 23.20574426651001,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "n",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 8.298082024283838,
+      "reported": 8.298082024283838,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "end_to_end_seconds_total",
+      "expected": 945.9813507683575,
+      "reported": 945.9813507683575,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 6.317155521657122,
+      "reported": 6.317155521657122,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "preprocessing_seconds_total",
+      "expected": 720.1557294689119,
+      "reported": 720.1557294689119,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.021107001132086703,
+      "reported": 0.021107001132086703,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "h2d_seconds_total",
+      "expected": 2.406198129057884,
+      "reported": 2.406198129057884,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "generation_seconds_mean",
+      "expected": 1.959630284066263,
+      "reported": 1.959630284066263,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "generation_seconds_total",
+      "expected": 223.39785238355398,
+      "reported": 223.39785238355398,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.0001798879943395916,
+      "reported": 0.0001798879943395916,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.02050723135471344,
+      "reported": 0.02050723135471344,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "e2e_p50_seconds",
+      "expected": 4.697799261659384,
+      "reported": 4.697799261659384,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "e2e_p95_seconds",
+      "expected": 26.18417317606508,
+      "reported": 26.18417317606508,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 1.9596396135002898,
+      "reported": 1.9596396135002898,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "generated_tokens_mean",
+      "expected": 16.42105263157895,
+      "reported": 16.42105263157895,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "tokens_per_generation_second",
+      "expected": 8.379668739097566,
+      "reported": 8.379668739097566,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "eos_count",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "capped_without_eos",
+      "expected": 0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09997466807132176,
+      "reported": 0.09997466807132176,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/latency_json",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.20574426651001,
+      "reported": 23.20574426651001,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_json",
+      "field": "Bleu_4",
+      "expected": 0.2343339772234395,
+      "reported": 0.2343339772234395,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_json",
+      "field": "METEOR",
+      "expected": 0.22027484815360626,
+      "reported": 0.22027484815360626,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_json",
+      "field": "ROUGE_L",
+      "expected": 0.42792431953388727,
+      "reported": 0.42792431953388727,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_json",
+      "field": "CIDEr",
+      "expected": 0.4821170574037898,
+      "reported": 0.4821170574037898,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_json",
+      "field": "VATEX_Avg",
+      "expected": 0.3411625505786807,
+      "reported": 0.3411625505786807,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_csv",
+      "field": "Bleu_4",
+      "expected": 0.2343339772234395,
+      "reported": 0.2343339772234395,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_csv",
+      "field": "METEOR",
+      "expected": 0.22027484815360626,
+      "reported": 0.22027484815360626,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_csv",
+      "field": "ROUGE_L",
+      "expected": 0.42792431953388727,
+      "reported": 0.42792431953388727,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_csv",
+      "field": "CIDEr",
+      "expected": 0.4821170574037898,
+      "reported": 0.4821170574037898,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/quality_csv",
+      "field": "VATEX_Avg",
+      "expected": 0.3411625505786807,
+      "reported": 0.3411625505786807,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/metric_file",
+      "field": "Bleu_4",
+      "expected": 0.2343339772234395,
+      "reported": 0.2343339772234395,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/metric_file",
+      "field": "METEOR",
+      "expected": 0.22027484815360626,
+      "reported": 0.22027484815360626,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/metric_file",
+      "field": "ROUGE_L",
+      "expected": 0.42792431953388727,
+      "reported": 0.42792431953388727,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/metric_file",
+      "field": "CIDEr",
+      "expected": 0.4821170574037898,
+      "reported": 0.4821170574037898,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/kvrepack/metric_file",
+      "field": "VATEX_Avg",
+      "expected": 0.3411625505786807,
+      "reported": 0.3411625505786807,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "n",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 8.26679045988018,
+      "reported": 8.26679045988018,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "end_to_end_seconds_total",
+      "expected": 942.4141124263406,
+      "reported": 942.4141124263406,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 6.281399416949665,
+      "reported": 6.281399416949665,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "preprocessing_seconds_total",
+      "expected": 716.0795335322618,
+      "reported": 716.0795335322618,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.020778920174690716,
+      "reported": 0.020778920174690716,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "h2d_seconds_total",
+      "expected": 2.3687968999147415,
+      "reported": 2.3687968999147415,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "generation_seconds_mean",
+      "expected": 1.9644331833380355,
+      "reported": 1.9644331833380355,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "generation_seconds_total",
+      "expected": 223.94538290053606,
+      "reported": 223.94538290053606,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00017002643200389125,
+      "reported": 0.00017002643200389125,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.019383013248443604,
+      "reported": 0.019383013248443604,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "e2e_p50_seconds",
+      "expected": 4.6619446612894535,
+      "reported": 4.6619446612894535,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "e2e_p95_seconds",
+      "expected": 26.07933122720569,
+      "reported": 26.07933122720569,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 1.9644420963238205,
+      "reported": 1.9644420963238205,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "generated_tokens_mean",
+      "expected": 16.236842105263158,
+      "reported": 16.236842105263158,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "tokens_per_generation_second",
+      "expected": 8.265408181342636,
+      "reported": 8.265408181342636,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "eos_count",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "capped_without_eos",
+      "expected": 0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09997466807132176,
+      "reported": 0.09997466807132176,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/json",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.20574426651001,
+      "reported": 23.20574426651001,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "n",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "end_to_end_seconds_mean",
+      "expected": 8.26679045988018,
+      "reported": 8.26679045988018,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "end_to_end_seconds_total",
+      "expected": 942.4141124263406,
+      "reported": 942.4141124263406,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "preprocessing_seconds_mean",
+      "expected": 6.281399416949665,
+      "reported": 6.281399416949665,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "preprocessing_seconds_total",
+      "expected": 716.0795335322618,
+      "reported": 716.0795335322618,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "h2d_seconds_mean",
+      "expected": 0.020778920174690716,
+      "reported": 0.020778920174690716,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "h2d_seconds_total",
+      "expected": 2.3687968999147415,
+      "reported": 2.3687968999147415,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "generation_seconds_mean",
+      "expected": 1.9644331833380355,
+      "reported": 1.9644331833380355,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "generation_seconds_total",
+      "expected": 223.94538290053606,
+      "reported": 223.94538290053606,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00017002643200389125,
+      "reported": 0.00017002643200389125,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "text_decode_seconds_total",
+      "expected": 0.019383013248443604,
+      "reported": 0.019383013248443604,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "e2e_p50_seconds",
+      "expected": 4.6619446612894535,
+      "reported": 4.6619446612894535,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "e2e_p95_seconds",
+      "expected": 26.07933122720569,
+      "reported": 26.07933122720569,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 1.9644420963238205,
+      "reported": 1.9644420963238205,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "generated_tokens_mean",
+      "expected": 16.236842105263158,
+      "reported": 16.236842105263158,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "tokens_per_generation_second",
+      "expected": 8.265408181342636,
+      "reported": 8.265408181342636,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "eos_count",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "capped_without_eos",
+      "expected": 0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09997466807132176,
+      "reported": 0.09997466807132176,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/csv",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.20574426651001,
+      "reported": 23.20574426651001,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "n",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 8.26679045988018,
+      "reported": 8.26679045988018,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "end_to_end_seconds_total",
+      "expected": 942.4141124263406,
+      "reported": 942.4141124263406,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 6.281399416949665,
+      "reported": 6.281399416949665,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "preprocessing_seconds_total",
+      "expected": 716.0795335322618,
+      "reported": 716.0795335322618,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.020778920174690716,
+      "reported": 0.020778920174690716,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "h2d_seconds_total",
+      "expected": 2.3687968999147415,
+      "reported": 2.3687968999147415,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "fisher_seconds_mean",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "fisher_seconds_total",
+      "expected": 0.0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "generation_seconds_mean",
+      "expected": 1.9644331833380355,
+      "reported": 1.9644331833380355,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "generation_seconds_total",
+      "expected": 223.94538290053606,
+      "reported": 223.94538290053606,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00017002643200389125,
+      "reported": 0.00017002643200389125,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.019383013248443604,
+      "reported": 0.019383013248443604,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "e2e_p50_seconds",
+      "expected": 4.6619446612894535,
+      "reported": 4.6619446612894535,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "e2e_p95_seconds",
+      "expected": 26.07933122720569,
+      "reported": 26.07933122720569,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 1.9644420963238205,
+      "reported": 1.9644420963238205,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "generated_tokens_mean",
+      "expected": 16.236842105263158,
+      "reported": 16.236842105263158,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "tokens_per_generation_second",
+      "expected": 8.265408181342636,
+      "reported": 8.265408181342636,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "eos_count",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "capped_without_eos",
+      "expected": 0,
+      "reported": 0.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09997466807132176,
+      "reported": 0.09997466807132176,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/latency_json",
+      "field": "peak_allocated_gib_max",
+      "expected": 23.20574426651001,
+      "reported": 23.20574426651001,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_json",
+      "field": "Bleu_4",
+      "expected": 0.23273720319921304,
+      "reported": 0.23273720319921304,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_json",
+      "field": "METEOR",
+      "expected": 0.21714056435448048,
+      "reported": 0.21714056435448048,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_json",
+      "field": "ROUGE_L",
+      "expected": 0.4302551942365765,
+      "reported": 0.4302551942365765,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_json",
+      "field": "CIDEr",
+      "expected": 0.48060454495021027,
+      "reported": 0.48060454495021027,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_json",
+      "field": "VATEX_Avg",
+      "expected": 0.3401843766851201,
+      "reported": 0.3401843766851201,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_csv",
+      "field": "Bleu_4",
+      "expected": 0.23273720319921304,
+      "reported": 0.23273720319921304,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_csv",
+      "field": "METEOR",
+      "expected": 0.21714056435448048,
+      "reported": 0.21714056435448048,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_csv",
+      "field": "ROUGE_L",
+      "expected": 0.4302551942365765,
+      "reported": 0.4302551942365765,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_csv",
+      "field": "CIDEr",
+      "expected": 0.48060454495021027,
+      "reported": 0.48060454495021027,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/quality_csv",
+      "field": "VATEX_Avg",
+      "expected": 0.3401843766851201,
+      "reported": 0.3401843766851201,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/metric_file",
+      "field": "Bleu_4",
+      "expected": 0.23273720319921304,
+      "reported": 0.23273720319921304,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/metric_file",
+      "field": "METEOR",
+      "expected": 0.21714056435448048,
+      "reported": 0.21714056435448048,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/metric_file",
+      "field": "ROUGE_L",
+      "expected": 0.4302551942365765,
+      "reported": 0.4302551942365765,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/metric_file",
+      "field": "CIDEr",
+      "expected": 0.48060454495021027,
+      "reported": 0.48060454495021027,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/lookm/metric_file",
+      "field": "VATEX_Avg",
+      "expected": 0.3401843766851201,
+      "reported": 0.3401843766851201,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "n",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 9.964289508858009,
+      "reported": 9.964289508858009,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "end_to_end_seconds_total",
+      "expected": 1135.929004009813,
+      "reported": 1135.929004009813,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 6.28454088952327,
+      "reported": 6.28454088952327,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "preprocessing_seconds_total",
+      "expected": 716.4376614056528,
+      "reported": 716.4376614056528,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.020753731885761545,
+      "reported": 0.020753731885761545,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "h2d_seconds_total",
+      "expected": 2.365925434976816,
+      "reported": 2.365925434976816,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "fisher_seconds_mean",
+      "expected": 1.5736346025542731,
+      "reported": 1.5736346025542731,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "fisher_seconds_total",
+      "expected": 179.39434469118714,
+      "reported": 179.39434469118714,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "generation_seconds_mean",
+      "expected": 2.085130282236557,
+      "reported": 2.085130282236557,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "generation_seconds_total",
+      "expected": 237.70485217496753,
+      "reported": 237.70485217496753,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00023000265814756093,
+      "reported": 0.00023000265814756093,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.026220303028821945,
+      "reported": 0.026220303028821945,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "e2e_p50_seconds",
+      "expected": 6.26279759965837,
+      "reported": 6.26279759965837,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "e2e_p95_seconds",
+      "expected": 27.38319986313581,
+      "reported": 27.38319986313581,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 3.6587648847908305,
+      "reported": 3.6587648847908305,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "generated_tokens_mean",
+      "expected": 19.789473684210527,
+      "reported": 19.789473684210527,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "tokens_per_generation_second",
+      "expected": 9.49076125017181,
+      "reported": 9.49076125017181,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "eos_count",
+      "expected": 110,
+      "reported": 110.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "capped_without_eos",
+      "expected": 4,
+      "reported": 4.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09997466807132176,
+      "reported": 0.09997466807132176,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/json",
+      "field": "peak_allocated_gib_max",
+      "expected": 27.972498416900635,
+      "reported": 27.972498416900635,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "n",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "end_to_end_seconds_mean",
+      "expected": 9.964289508858009,
+      "reported": 9.964289508858009,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "end_to_end_seconds_total",
+      "expected": 1135.929004009813,
+      "reported": 1135.929004009813,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "preprocessing_seconds_mean",
+      "expected": 6.28454088952327,
+      "reported": 6.28454088952327,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "preprocessing_seconds_total",
+      "expected": 716.4376614056528,
+      "reported": 716.4376614056528,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "h2d_seconds_mean",
+      "expected": 0.020753731885761545,
+      "reported": 0.020753731885761545,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "h2d_seconds_total",
+      "expected": 2.365925434976816,
+      "reported": 2.365925434976816,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "fisher_seconds_mean",
+      "expected": 1.5736346025542731,
+      "reported": 1.5736346025542731,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "fisher_seconds_total",
+      "expected": 179.39434469118714,
+      "reported": 179.39434469118714,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "generation_seconds_mean",
+      "expected": 2.085130282236557,
+      "reported": 2.085130282236557,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "generation_seconds_total",
+      "expected": 237.70485217496753,
+      "reported": 237.70485217496753,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00023000265814756093,
+      "reported": 0.00023000265814756093,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "text_decode_seconds_total",
+      "expected": 0.026220303028821945,
+      "reported": 0.026220303028821945,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "e2e_p50_seconds",
+      "expected": 6.26279759965837,
+      "reported": 6.26279759965837,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "e2e_p95_seconds",
+      "expected": 27.38319986313581,
+      "reported": 27.38319986313581,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 3.6587648847908305,
+      "reported": 3.6587648847908305,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "generated_tokens_mean",
+      "expected": 19.789473684210527,
+      "reported": 19.789473684210527,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "tokens_per_generation_second",
+      "expected": 9.49076125017181,
+      "reported": 9.49076125017181,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "eos_count",
+      "expected": 110,
+      "reported": 110.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "capped_without_eos",
+      "expected": 4,
+      "reported": 4.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09997466807132176,
+      "reported": 0.09997466807132176,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/csv",
+      "field": "peak_allocated_gib_max",
+      "expected": 27.972498416900635,
+      "reported": 27.972498416900635,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "n",
+      "expected": 114,
+      "reported": 114.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "end_to_end_seconds_mean",
+      "expected": 9.964289508858009,
+      "reported": 9.964289508858009,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "end_to_end_seconds_total",
+      "expected": 1135.929004009813,
+      "reported": 1135.929004009813,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "preprocessing_seconds_mean",
+      "expected": 6.28454088952327,
+      "reported": 6.28454088952327,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "preprocessing_seconds_total",
+      "expected": 716.4376614056528,
+      "reported": 716.4376614056528,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "h2d_seconds_mean",
+      "expected": 0.020753731885761545,
+      "reported": 0.020753731885761545,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "h2d_seconds_total",
+      "expected": 2.365925434976816,
+      "reported": 2.365925434976816,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "fisher_seconds_mean",
+      "expected": 1.5736346025542731,
+      "reported": 1.5736346025542731,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "fisher_seconds_total",
+      "expected": 179.39434469118714,
+      "reported": 179.39434469118714,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "generation_seconds_mean",
+      "expected": 2.085130282236557,
+      "reported": 2.085130282236557,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "generation_seconds_total",
+      "expected": 237.70485217496753,
+      "reported": 237.70485217496753,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "text_decode_seconds_mean",
+      "expected": 0.00023000265814756093,
+      "reported": 0.00023000265814756093,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "text_decode_seconds_total",
+      "expected": 0.026220303028821945,
+      "reported": 0.026220303028821945,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "e2e_p50_seconds",
+      "expected": 6.26279759965837,
+      "reported": 6.26279759965837,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "e2e_p95_seconds",
+      "expected": 27.38319986313581,
+      "reported": 27.38319986313581,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "model_end_to_end_seconds_mean",
+      "expected": 3.6587648847908305,
+      "reported": 3.6587648847908305,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "generated_tokens_mean",
+      "expected": 19.789473684210527,
+      "reported": 19.789473684210527,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "tokens_per_generation_second",
+      "expected": 9.49076125017181,
+      "reported": 9.49076125017181,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "eos_count",
+      "expected": 110,
+      "reported": 110.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "capped_without_eos",
+      "expected": 4,
+      "reported": 4.0,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "actual_retained_ratio_mean",
+      "expected": 0.09997466807132176,
+      "reported": 0.09997466807132176,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "actual_retained_ratio_max",
+      "expected": 0.1,
+      "reported": 0.1,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/latency_json",
+      "field": "peak_allocated_gib_max",
+      "expected": 27.972498416900635,
+      "reported": 27.972498416900635,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_json",
+      "field": "Bleu_4",
+      "expected": 0.20256743400827867,
+      "reported": 0.20256743400827867,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_json",
+      "field": "METEOR",
+      "expected": 0.20755540541202103,
+      "reported": 0.20755540541202103,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_json",
+      "field": "ROUGE_L",
+      "expected": 0.41175420679475794,
+      "reported": 0.41175420679475794,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_json",
+      "field": "CIDEr",
+      "expected": 0.38707932209045115,
+      "reported": 0.38707932209045115,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_json",
+      "field": "VATEX_Avg",
+      "expected": 0.3022390920763772,
+      "reported": 0.3022390920763772,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "Bleu_4",
+      "expected": 0.20256743400827867,
+      "reported": 0.20256743400827867,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "METEOR",
+      "expected": 0.20755540541202103,
+      "reported": 0.20755540541202103,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "ROUGE_L",
+      "expected": 0.41175420679475794,
+      "reported": 0.41175420679475794,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "CIDEr",
+      "expected": 0.38707932209045115,
+      "reported": 0.38707932209045115,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/quality_csv",
+      "field": "VATEX_Avg",
+      "expected": 0.3022390920763772,
+      "reported": 0.3022390920763772,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/metric_file",
+      "field": "Bleu_4",
+      "expected": 0.20256743400827867,
+      "reported": 0.20256743400827867,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/metric_file",
+      "field": "METEOR",
+      "expected": 0.20755540541202103,
+      "reported": 0.20755540541202103,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/metric_file",
+      "field": "ROUGE_L",
+      "expected": 0.41175420679475794,
+      "reported": 0.41175420679475794,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/metric_file",
+      "field": "CIDEr",
+      "expected": 0.38707932209045115,
+      "reported": 0.38707932209045115,
+      "absolute_error": 0.0
+    },
+    {
+      "target": "parent114/snapkv_kvrepack/asymkv/metric_file",
+      "field": "VATEX_Avg",
+      "expected": 0.3022390920763772,
+      "reported": 0.3022390920763772,
+      "absolute_error": 0.0
+    }
+  ],
+  "seconds": 59.13989328965545
+}

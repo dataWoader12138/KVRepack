@@ -1,0 +1,8 @@
+{"stage": "corpus_verified", "label": "main200/hybridkv_kvrepack/lookm", "n": 200}
+{"stage": "corpus_verified", "label": "main200/hybridkv_kvrepack/asymkv", "n": 200}
+{"stage": "corpus_verified", "label": "main200/snapkv_kvrepack/lookm", "n": 200}
+{"stage": "corpus_verified", "label": "main200/snapkv_kvrepack/asymkv", "n": 200}
+{"stage": "corpus_verified", "label": "parent114/snapkv_kvrepack/kvrepack", "n": 114}
+{"stage": "corpus_verified", "label": "parent114/snapkv_kvrepack/lookm", "n": 114}
+{"stage": "corpus_verified", "label": "parent114/snapkv_kvrepack/asymkv", "n": 114}
+{"status": "passed", "numeric_comparisons": 496, "max_absolute_error": 0.0, "decoded_unique_generations": 914, "seconds": 59.13989328965545}

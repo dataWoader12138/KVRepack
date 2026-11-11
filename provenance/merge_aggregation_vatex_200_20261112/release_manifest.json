@@ -1,0 +1,29 @@
+{
+  "status": "verified_complete",
+  "created_utc": "2026-11-11T19:29:43.230496+00:00",
+  "scope": "VATEX first200 only, two backbones x LookM/AsymKV aggregation",
+  "target_generations": 800,
+  "reused": 228,
+  "fresh": 572,
+  "baseline_not_continued": true,
+  "baseline_parent_n": 114,
+  "cpu_tests": {
+    "total": 313,
+    "passed": 312,
+    "skipped": 1
+  },
+  "source_check": {
+    "status": "passed",
+    "core_files": 30,
+    "local_modules_and_adapter": 67,
+    "vendor_python_files": 329,
+    "vendor_build_files": 2382,
+    "original_source_comparison": false
+  },
+  "structure_audit_status": "passed_complete",
+  "independent_results_status": "passed",
+  "quality_numeric_checks": 496,
+  "max_numeric_error": 0,
+  "unique_token_decodes": 914,
+  "source_core_modified": false
+}
