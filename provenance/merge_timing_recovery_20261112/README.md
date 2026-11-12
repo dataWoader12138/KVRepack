@@ -11,3 +11,5 @@
 论文表为 `docs/merge_compensation_table_with_timing.txt`，恢复原三列与方法分组，只追加 SnapKV 三种合并行。原稿分数保留；不同运行的历史时延参考标†并明确脚注。配对114条、模型阶段计时继续保留在实验报告/本目录证据中；standalone完整E2E缺失仍--。原始来源与所有数值见论文表同名 `_sources.json`。
 
 历史响应循环计时亦已恢复：原生 HybridKV **26:28 / 200 ≈ 7.94s/条**，HybridKV+KVRepack **26:37 / 200 ≈ 7.99s/条**，SnapKV+KVRepack **24:31 / 200 ≈ 7.36s/条**。这段 tqdm 计时覆盖读视频、processor、H2D、generate、文本解码、响应缓存和循环工作，不含模型加载和任务评分；有整秒显示精度限制，不能冒充本轮精确逐样本同步 E2E。末行证据见 `historical_response_loop_excerpts.txt`。旧冻结 inventory 所说原结果 JSON 缺失仍然正确，但“仅剩质量摘要/没有时延”的结论已由此次日志追溯补正。
+
+原生 SnapKV（7B、VATEX200、64帧、nominal0.10）亦已恢复：Avg **0.331264461087091**，响应循环 **23:59 / 200 ≈ 7.20s/条**。来源为 `.log.stopped_20260706_095548` 快照首个 RUN block，补充完整日志gzip、精确summary和计时摘录；与SnapKV+KVRepack明确区分，主表只新增一行基线并沿用†脚注。

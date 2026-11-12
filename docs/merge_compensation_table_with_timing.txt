@@ -12,9 +12,10 @@
     \quad + LOOK-M-style merging & 0.3342 & 8.174 \\
     \quad + \method              & \textbf{0.3447} & $\approx 7.99^{\dagger}$ \\
     \midrule
-    SnapKV + AsymKV-style merging & 0.2844 & 9.641 \\
-    SnapKV + LOOK-M-style merging & 0.3285 & 7.910 \\
-    SnapKV + \method              & 0.3307 & $\approx 7.36^{\dagger}$ \\
+    SnapKV                       & 0.3313 & $\approx 7.20^{\dagger}$ \\
+    \quad + AsymKV-style merging & 0.2844 & 9.641 \\
+    \quad + LOOK-M-style merging & 0.3285 & 7.910 \\
+    \quad + \method              & 0.3307 & $\approx 7.36^{\dagger}$ \\
     \midrule
     AsymKV (standalone)          & 0.3013 & -- \\
     LOOK-M (standalone)          & 0.3239 & -- \\

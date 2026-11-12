@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "gpu_execution": false,
+  "scope": "read-only recovery of existing 7B VATEX200 baseline",
+  "checks": [
+    "Original run method/model/frames/budget/limit confirmed in stopped log block",
+    "All four exact metrics match independent sweep summary",
+    "Final 200/200 response-loop23:59 and7.20s/it confirmed",
+    "Original log gzip decompresses byte-for-byte",
+    "TXT equals TEX; three columns and10 data rows; manuscript .3447 retained"
+  ]
+}

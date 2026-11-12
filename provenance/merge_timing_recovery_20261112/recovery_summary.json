@@ -87,6 +87,37 @@
       "continuous_full_e2e_seconds": null,
       "vision_preprocessing_seconds_mean": 5.477131963968277,
       "matching_new_protocol": false
+    },
+    "snapkv": {
+      "original_log_path": "/tmp/run_qwen7b_common_decouple_sweep_20260706.log.stopped_20260706_095548",
+      "archived_log": "provenance/merge_timing_recovery_20261112/run_qwen7b_common_decouple_sweep_20260706.log.stopped_20260706_095548.gz",
+      "original_log_sha256": "013534210f7e3f014a3f219e4c9601ba61aaba6d0caa1d038e33cd4c666ef584",
+      "section": "first RUN opensource_snapkv_vatex_test block",
+      "n": 200,
+      "model": "Qwen2.5-VL-7B-Instruct",
+      "frames": 64,
+      "nominal_budget_ratio": 0.1,
+      "method": "snapkv",
+      "metrics": {
+        "Bleu_4": 0.21949013330245307,
+        "CIDEr": 0.4647378473014616,
+        "METEOR": 0.21565633601766654,
+        "ROUGE_L": 0.42517352772678274
+      },
+      "VATEX_Avg": 0.331264461087091,
+      "generation_seconds_mean": null,
+      "continuous_full_e2e_seconds": null,
+      "historical_response_loop_e2e": {
+        "elapsed_display": "23:59",
+        "n": 200,
+        "response_loop_seconds_display": 1439,
+        "elapsed_seconds_display_resolution": 1,
+        "printed_seconds_per_sample": 7.2,
+        "approximate_seconds_per_sample": 7.195,
+        "synchronized_per_sample_measurement": false,
+        "source": "final Model Responding progress line"
+      },
+      "matching_new_protocol": false
     }
   },
   "verification": [
@@ -191,6 +222,16 @@
       "printed_seconds_per_sample": 7.94,
       "source": "final Model Responding progress line; total response loop divided by n",
       "synchronized_per_sample_measurement": false
+    },
+    "snapkv": {
+      "elapsed_display": "23:59",
+      "n": 200,
+      "response_loop_seconds_display": 1439,
+      "elapsed_seconds_display_resolution": 1,
+      "printed_seconds_per_sample": 7.2,
+      "approximate_seconds_per_sample": 7.195,
+      "synchronized_per_sample_measurement": false,
+      "source": "final Model Responding progress line"
     }
   }
 }

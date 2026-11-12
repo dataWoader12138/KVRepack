@@ -3,7 +3,7 @@
   "status": "original_three_column_layout_restored",
   "updated_utc": "2026-11-12T04:02:28.455183+00:00",
   "gpu_experiments_started": false,
-  "policy": "Original Method / VATEX Avg. / absolute E2E seconds layout; preserve manuscript scores; add only three SnapKV merge rows; historical timing references marked explicitly.",
+  "policy": "Original three columns and backbone/indented merge structure; native SnapKV row added; preserve manuscript scores and historical timing footnotes.",
   "full_pipeline_table": "docs/merge_compensation_table_with_timing.txt",
   "current_report": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/comparison.csv",
   "matched_report": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_comparison.csv",
@@ -165,6 +165,37 @@
       "continuous_full_e2e_seconds": null,
       "vision_preprocessing_seconds_mean": 5.477131963968277,
       "matching_new_protocol": false
+    },
+    "snapkv": {
+      "original_log_path": "/tmp/run_qwen7b_common_decouple_sweep_20260706.log.stopped_20260706_095548",
+      "archived_log": "provenance/merge_timing_recovery_20261112/run_qwen7b_common_decouple_sweep_20260706.log.stopped_20260706_095548.gz",
+      "original_log_sha256": "013534210f7e3f014a3f219e4c9601ba61aaba6d0caa1d038e33cd4c666ef584",
+      "section": "first RUN opensource_snapkv_vatex_test block",
+      "n": 200,
+      "model": "Qwen2.5-VL-7B-Instruct",
+      "frames": 64,
+      "nominal_budget_ratio": 0.1,
+      "method": "snapkv",
+      "metrics": {
+        "Bleu_4": 0.21949013330245307,
+        "CIDEr": 0.4647378473014616,
+        "METEOR": 0.21565633601766654,
+        "ROUGE_L": 0.42517352772678274
+      },
+      "VATEX_Avg": 0.331264461087091,
+      "generation_seconds_mean": null,
+      "continuous_full_e2e_seconds": null,
+      "historical_response_loop_e2e": {
+        "elapsed_display": "23:59",
+        "n": 200,
+        "response_loop_seconds_display": 1439,
+        "elapsed_seconds_display_resolution": 1,
+        "printed_seconds_per_sample": 7.2,
+        "approximate_seconds_per_sample": 7.195,
+        "synchronized_per_sample_measurement": false,
+        "source": "final Model Responding progress line"
+      },
+      "matching_new_protocol": false
     }
   },
   "manuscript_reference_scores": [
@@ -200,12 +231,12 @@
     "old_figure_used_in_current_tables": false
   },
   "missing_matching_timings": [
-    "native SnapKV full/model E2E",
     "FullKV full/model E2E",
     "manuscript HybridKV+KVRepack score .3447 run full/model E2E",
     "standalone AsymKV complete E2E",
     "standalone LOOK-M complete E2E",
-    "native HybridKV exact synchronized per-sample E2E/model Generation; approximate historical loop E2E recovered"
+    "native HybridKV exact synchronized per-sample E2E/model Generation; approximate historical loop E2E recovered",
+    "native SnapKV exact synchronized per-sample full/model Generation; historical loop E2E now recovered"
   ],
   "notes": [
     "The recovered SnapKV+KVRepack July run has 200 Generation times averaging 2.100160s, distinct from November RoPE diagnostic times averaging 2.200258s.",
@@ -218,7 +249,8 @@
     "Historical original HybridKV loop elapsed 26:28/200 gives approximate E2E7.94s; improved HybridKV loop26:37/200 gives7.985s (printed7.99); SnapKV improved24:31/200 gives7.355s (printed7.36).",
     "These are response-loop timings excluding model load and scoring, not whole-worker duration divided by sample count. They include loop work and lack exact synchronized per-sample timestamps.",
     "Old baseline inventory statements describing only a surviving metric summary are superseded by this recovery of /tmp logs; frozen historical experiment files were not edited.",
-    "User explicitly requested the original compact table, preserving manuscript scores; removed auxiliary 114-sample panels and the separate model table. The 114-sample raw evidence remains intact in the existing experiment report."
+    "User explicitly requested the original compact table, preserving manuscript scores; removed auxiliary 114-sample panels and the separate model table. The 114-sample raw evidence remains intact in the existing experiment report.",
+    "Native SnapKV7B VATEX200 recovered from the .log.stopped snapshot; exact Avg .331264461087091 and final response loop23:59/200 printed7.20s/it are from the same first block. No GPU execution or new benchmark."
   ],
   "historical_response_loop_e2e": {
     "snapkv_kvrepack": {
@@ -250,6 +282,16 @@
       "printed_seconds_per_sample": 7.94,
       "source": "final Model Responding progress line; total response loop divided by n",
       "synchronized_per_sample_measurement": false
+    },
+    "snapkv": {
+      "elapsed_display": "23:59",
+      "n": 200,
+      "response_loop_seconds_display": 1439,
+      "elapsed_seconds_display_resolution": 1,
+      "printed_seconds_per_sample": 7.2,
+      "approximate_seconds_per_sample": 7.195,
+      "synchronized_per_sample_measurement": false,
+      "source": "final Model Responding progress line"
     }
   },
   "published_sources": {
@@ -283,6 +325,13 @@
       "historical_timing_reference": true,
       "score_and_timing_same_run": false,
       "timed_run_VATEX_Avg": 0.34393723604229254
+    },
+    {
+      "method": "SnapKV",
+      "VATEX_Avg": 0.331264461087091,
+      "e2e_seconds_approx": 7.2,
+      "historical_timing_reference": true,
+      "score_and_timing_same_run": true
     },
     {
       "method": "SnapKV + AsymKV-style merging",

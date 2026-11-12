@@ -1,5 +1,7 @@
 # KVRepack 项目交接（2026-11-04）
 
+**原生 SnapKV 基线已补齐（2026-11-12）：** 用户要求自身质量/时延也写进原表，现 `merge_compensation_table_with_timing.{txt,tex}` 在Snap三个merge前加 `SnapKV .3313 / ≈7.20†`，其三merge改为与Hybrid相同的缩进行；总10数据行三列，其余分数/时延不变。精确Avg .331264461087091，旧完整响应循环200/20023:59（日志7.20s/it），均来自 `/tmp/run_qwen7b_common_decouple_sweep_20260706.log.stopped_20260706_095548` 首block；summary第1行同4指标独立核对一致。原记录是7B/64帧/前200/nominal.1、纯snapkv，不是3B或表示观察。完整gzip/summary/摘录及来源已随既有追溯证据保存；此前“未找到纯Snap基线”结论已补正。本次只恢复旧记录，没有GPU实验。
+
 **2026-11-12 用户纠正排版：只按原表直接填结果，保留原稿分数，不要多 panel、多版本或114条辅助表。** `docs/merge_compensation_table_with_timing.{txt,tex}` 已恢复原三列 Method / VATEX Avg. / E2E秒，Hybrid原4行＋Snap三种merge＋两standalone共9行。原Hybrid+KVRepack .3447保持，时延≈7.99†仅旧run参考（该timed-run Avg .343937），caption明确分数与时延不同run；原Hybrid≈7.94†，Snap+KV .3307/≈7.36†。新4组各200条全部完成，new quality/time分别HAsym .2961/10.018、HLook .3342/8.174、SAsym .2844/9.641、SLook .3285/7.910。standalone两行分数已有但完整E2E缺失，保留--，不启动补跑。删除额外模型E2E表，114与历史证据仍保留在原实验报告/归档内；不再引用旧20样本图或另改原稿分数。
 
 **2026-11-12 论文时延表修正：此前将 VATEX 时延除以另一任务 FullKV 图值的百分比已撤回。** 用户要求按真实端到端秒数比较并补上 SnapKV 各 merge。完整流程三列表为 `docs/merge_compensation_table_with_timing.{txt,tex}`；模型端到端三列表另存 `docs/merge_compensation_table_model_timing.{txt,tex}`。当前 first200 四种新 merge 和 Snap first114 三种同输入聚合分 panel，不拼样本数/计时口径。旧原生Hybrid响应循环E2E已恢复约7.94s；原生SnapKV/FullKV及manuscript Hybrid+KVRepack=.3447对应的兼容时延仍未找到，不拼协议声称加merge更快。
