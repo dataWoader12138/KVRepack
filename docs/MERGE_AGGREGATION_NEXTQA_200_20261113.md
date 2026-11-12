@@ -43,3 +43,5 @@ python scripts/run_nextqa_merge_comparison.py \
 新style worker为`kvrepack.ablations.run_style_comparison`，原版/KVRepack worker为`run_baseline_completion --task nextqa_oe_test`，二者共用`video_e2e_inputs.prepare_input`无offset/二次tokenization原生输入流程。原VATEX style worker保持冻结。三十份核心算法文件不修改。
 
 四个GPU进程串行运行，根`experiment_state.json`和`{style,baseline}/{snapkv,hybridkv}/run_state.json`记录实际进度。全部生成后控制器自动调用`nextqa_merge_report`，保存WUPS、逐样本完整E2E/模型E2E及预算比较。正式目录为`outputs/ablations/merge_nextqa_200_20261113/`；联调为`outputs/ablations/merge_nextqa_20261113_preflight/pilot1/`；来源与检查证据为`provenance/merge_nextqa_200_20261113/`。当前是否启动/完成以状态文件为准，不将联调称为200条结果。
+
+正式任务已启动，控制器PID/PG34513，源版本`baa323f`；实际UTC启动记录见`provenance/merge_nextqa_200_20261113/formal_launch.json`。先运行SnapKV的LOOK-M/AsymKV两臂各200条，后续三case及最终评分由同一控制器自动衔接；当前是运行中，尚未完成200条结果。

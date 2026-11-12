@@ -1,0 +1,34 @@
+{
+  "status": "launched_not_complete",
+  "task": "nextqa_oe_test",
+  "recorded_utc": "2026-11-12T17:28:58.262207+00:00",
+  "controller_pid": 34513,
+  "process_group": 34513,
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "-B",
+    "scripts/run_nextqa_merge_comparison.py",
+    "--pretrained",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "--hf-home",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "--output",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_nextqa_200_20261113",
+    "--limit",
+    "200",
+    "--warmup",
+    "2"
+  ],
+  "source_commit": "baa323f4579cebdd35b32c08b546921019c8d7f1",
+  "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_nextqa_200_20261113",
+  "formal_generations": 1600,
+  "warmup_generations": 16,
+  "source_sha256": {
+    "scripts/run_nextqa_merge_comparison.py": "25c2869631e504e6dbc7c0abfc871f0901e5eabec8ccf7257fa8962a015b42f0",
+    "src/kvrepack/ablations/run_style_comparison.py": "868e1a3ff72a65e89146688816eeebf880ba729fb7582c93b2219608ff73f293",
+    "src/kvrepack/ablations/run_baseline_completion.py": "0084869cb561b694c42ce309c19fa580add4fceb3536ad4257cccd46303f6d06",
+    "src/kvrepack/ablations/video_e2e_inputs.py": "cba3a8111c867d958d5fd146a0e4c47af667196e56975ca32f4e7fa85e518a1d",
+    "src/kvrepack/ablations/nextqa_merge_report.py": "12e65c8624226dd3d691a21fe11a6ec64170bee6f846b9d35f2e896268edd845"
+  },
+  "timing_scope": "Clean synchronized video->output full E2E; Fisher included; model load/warmup/audit/writes/scoring excluded."
+}
