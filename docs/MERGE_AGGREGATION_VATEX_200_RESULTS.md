@@ -2,7 +2,7 @@
 
 Qwen2.5-VL-7B、A800-SXM4-80GB、64帧、VATEX原始前200条。四组共800个结果：228个保留自先前已完成记录，572个新增；用户要求停止后，未再补跑KVRepack基线。
 
-论文用三列 LaTeX/TXT：[完整视频至文本 E2E](merge_compensation_table_with_timing.txt) · [模型 E2E 与恢复的历史记录](merge_compensation_table_model_timing.txt)。时延均为秒/条；不使用其他任务图中的 FullKV 值归一化。
+论文用原格式三列 LaTeX/TXT：[结果表](merge_compensation_table_with_timing.txt)。保留原稿分数，追加 SnapKV 三种合并；时延为秒/条，历史时延参考用†及脚注注明。
 
 LookM与AsymKV只迁入聚合规则及必要的Fisher/LMA依赖，候选、选头、分组、anchor、raw-K重施mRoPE和活跃KV预算在同骨干内一致。它们不是完整原算法结果。协议见[实验方案](MERGE_AGGREGATION_VATEX_200.md)。
 
@@ -53,8 +53,8 @@ LookM与AsymKV只迁入聚合规则及必要的Fisher/LMA依赖，候选、选�
 
 ## 旧运行计时追溯（2026-11-12）
 
-从 `/tmp` 专用日志恢复了 VATEX7B、64帧、200条的历史模型生成计时：SnapKV+KVRepack 为 **2.100160s**（Avg **0.330672**），HybridKV+KVRepack 为 **2.443860s**（同运行 Avg **0.343937**，不能配另一行 manuscript **0.3447**）。旧 Generation 包含视觉编码、prefill、decode，但无显式 CUDA 同步；不含视频处理/H2D/文本解码。旧预算另加近期窗口，生成配置也未与本轮完全冻结一致；因此在模型 E2E 表中单列为历史参考，不能和上面完整 E2E 混填。
+从 `/tmp` 专用日志恢复了 VATEX7B、64帧、200条的历史模型生成计时：SnapKV+KVRepack 为 **2.100160s**（Avg **0.330672**），HybridKV+KVRepack 为 **2.443860s**（同运行 Avg **0.343937**，原稿 **0.3447** 来自另一运行，论文表保留原分数并将旧时延标为†参考）。旧 Generation 包含视觉编码、prefill、decode，但无显式 CUDA 同步；不含视频处理/H2D/文本解码。旧预算另加近期窗口，生成配置也未与本轮完全冻结一致；模型阶段计时保留在来源记录中；论文表只填写完整流程 E2E，历史响应循环近似计时标†。
 
-原生 HybridKV 的旧 pair 日志缺少 Generation 打印，但 tqdm 保留了响应循环总耗时：原生 **26:28/200≈7.94s/条**、HybridKV+KVRepack **26:37/200≈7.99s/条**；SnapKV+KVRepack 为 **24:31/200≈7.36s/条**。这段循环包含视频处理至文本输出及循环工作，排除模型加载和评分，只有整秒显示精度，故在完整 E2E 表中用≈并单独分组。新四组与历史预算/生成/计时设置不同，不据此计算严格配对加速比；原生 SnapKV/FullKV 的对应记录仍未找到。原日志、400条阶段值和来源核对见[追溯证据](../provenance/merge_timing_recovery_20261112/README.md)。旧计时存在不等于与本轮具有相同计时范围。
+原生 HybridKV 的旧 pair 日志缺少 Generation 打印，但 tqdm 保留了响应循环总耗时：原生 **26:28/200≈7.94s/条**、HybridKV+KVRepack **26:37/200≈7.99s/条**；SnapKV+KVRepack 为 **24:31/200≈7.36s/条**。这段循环包含视频处理至文本输出及循环工作，排除模型加载和评分，只有整秒显示精度，故在论文 E2E 表中用≈和†脚注。新四组与历史预算/生成/计时设置不同，不据此计算严格配对加速比；原生 SnapKV/FullKV 的对应记录仍未找到。原日志、400条阶段值和来源核对见[追溯证据](../provenance/merge_timing_recovery_20261112/README.md)。旧计时存在不等于与本轮具有相同计时范围。
 
 SnapKV 同输入114条中，LOOK-M 完整 E2E 比 KVRepack 少0.031292s，主要来自预处理少0.035756s；模型生成反而多0.004803s。这些完整时延包含预处理波动及生成长度差异，不能当成纯 merge 算子耗时或稳定加速证据。

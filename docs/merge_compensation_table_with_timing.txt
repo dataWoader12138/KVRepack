@@ -1,5 +1,3 @@
-% Requires booktabs; \method is defined in the manuscript.
-% Absolute seconds/sample; no normalization to an external figure.
 \begin{table}[t]
   \centering
   \begingroup
@@ -9,30 +7,26 @@
     \toprule
     \textbf{Method} & \textbf{VATEX Avg.} & $t_{\mathrm{E2E}}$ (s) \\
     \midrule
-    \multicolumn{3}{@{}l}{\textit{VATEX: first 200 samples}} \\
-    HybridKV + AsymKV-style merging & 0.2961 & 10.018 \\
-    HybridKV + LOOK-M-style merging & 0.3342 & 8.174 \\
+    HybridKV                     & 0.3426 & $\approx 7.94^{\dagger}$ \\
+    \quad + AsymKV-style merging & 0.2961 & 10.018 \\
+    \quad + LOOK-M-style merging & 0.3342 & 8.174 \\
+    \quad + \method              & \textbf{0.3447} & $\approx 7.99^{\dagger}$ \\
+    \midrule
     SnapKV + AsymKV-style merging & 0.2844 & 9.641 \\
     SnapKV + LOOK-M-style merging & 0.3285 & 7.910 \\
+    SnapKV + \method              & 0.3307 & $\approx 7.36^{\dagger}$ \\
     \midrule
-    \multicolumn{3}{@{}l}{\textit{Historical first 200: approximate E2E}} \\
-    HybridKV & 0.3426 & $\approx 7.94$ \\
-    HybridKV + \method & 0.3439 & $\approx 7.99$ \\
-    SnapKV + \method & 0.3307 & $\approx 7.36$ \\
-    \midrule
-    \multicolumn{3}{@{}l}{\textit{SnapKV: matched first 114 samples}} \\
-    SnapKV + AsymKV-style merging & 0.3022 & 9.964 \\
-    SnapKV + LOOK-M-style merging & 0.3402 & 8.267 \\
-    SnapKV + \method & 0.3412 & 8.298 \\
-    \midrule
-    \multicolumn{3}{@{}l}{\textit{Other scores; matching E2E unavailable}} \\
-    HybridKV + \method & 0.3447 & -- \\
-    AsymKV (standalone) & 0.3013 & -- \\
-    LOOK-M (standalone) & 0.3239 & -- \\
+    AsymKV (standalone)          & 0.3013 & -- \\
+    LOOK-M (standalone)          & 0.3239 & -- \\
     \bottomrule
   \end{tabular*}
   \endgroup
 
-  \caption{KV merging on Qwen2.5-VL-7B, VATEX, 64 frames. Current per-sample E2E includes video processing, H2D, Fisher where required, prefill, decode, and text output; model loading, warm-up, audits, writes, and scoring are excluded. Current 200-sample and matched 114-sample results use a strict 10\% active-cache budget including recent positions, and their quality scores use separate reference corpora. Historical approximate E2E is recovered from response-loop elapsed time divided by 200, including loop overhead. Historical runs use a separate budget/generation/timing protocol and are reference measurements, not matched-protocol speed comparisons. The historical timed HybridKV + \method{} run scored 0.3439; matching timing for the manuscript score 0.3447 is unavailable. Dashes denote missing matching E2E.}
+  \caption{KV merging on Qwen2.5-VL-7B, VATEX first 200 samples.
+    $t_{\mathrm{E2E}}$ is mean end-to-end latency in seconds per sample.
+    $\dagger$ marks historical response-loop timing references with a
+    different budget/timing protocol; the HybridKV + \method{} score
+    and timing come from different runs (timed-run Avg.: 0.3439).
+    Dashes indicate unavailable complete end-to-end timings.}
   \label{tab:kvrepack_asymkv}
 \end{table}

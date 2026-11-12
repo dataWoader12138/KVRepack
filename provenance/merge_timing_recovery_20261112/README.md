@@ -8,6 +8,6 @@
 - `historical_adapter_timing_excerpt.txt` 来自当前残存旧 adapter，用于核查计时位置；没有把它冒充 7 月冻结源码。Generation 不含预处理、H2D、文本解码，也没有显式 CUDA 同步。两阶段求和仍不是连续完整 E2E。
 - 旧预算为 nominal history 10% 另加近期位置，新实验为近期位置计入严格总 10%；不能据此构造同协议加速结论。
 
-主完整流程表为 `docs/merge_compensation_table_with_timing.txt`；模型 E2E 表为 `docs/merge_compensation_table_model_timing.txt`。每张均保持 Method / Avg. / 时延三列，200 条和配对 114 条分开；缺失的原生基线和 standalone 完整 E2E 留空。两者的原始来源及全部数值见同名 `_sources.json`。
+论文表为 `docs/merge_compensation_table_with_timing.txt`，恢复原三列与方法分组，只追加 SnapKV 三种合并行。原稿分数保留；不同运行的历史时延参考标†并明确脚注。配对114条、模型阶段计时继续保留在实验报告/本目录证据中；standalone完整E2E缺失仍--。原始来源与所有数值见论文表同名 `_sources.json`。
 
 历史响应循环计时亦已恢复：原生 HybridKV **26:28 / 200 ≈ 7.94s/条**，HybridKV+KVRepack **26:37 / 200 ≈ 7.99s/条**，SnapKV+KVRepack **24:31 / 200 ≈ 7.36s/条**。这段 tqdm 计时覆盖读视频、processor、H2D、generate、文本解码、响应缓存和循环工作，不含模型加载和任务评分；有整秒显示精度限制，不能冒充本轮精确逐样本同步 E2E。末行证据见 `historical_response_loop_excerpts.txt`。旧冻结 inventory 所说原结果 JSON 缺失仍然正确，但“仅剩质量摘要/没有时延”的结论已由此次日志追溯补正。

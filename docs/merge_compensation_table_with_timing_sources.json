@@ -1,11 +1,10 @@
 {
   "schema_version": 2,
-  "status": "corrected_latency_scopes_and_recovered_historical_timers",
+  "status": "original_three_column_layout_restored",
   "updated_utc": "2026-11-12T04:02:28.455183+00:00",
   "gpu_experiments_started": false,
-  "policy": "absolute_seconds_only; each panel keeps sample count and timing scope; no external figure baseline",
+  "policy": "Original Method / VATEX Avg. / absolute E2E seconds layout; preserve manuscript scores; add only three SnapKV merge rows; historical timing references marked explicitly.",
   "full_pipeline_table": "docs/merge_compensation_table_with_timing.txt",
-  "model_e2e_table": "docs/merge_compensation_table_model_timing.txt",
   "current_report": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/comparison.csv",
   "matched_report": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_comparison.csv",
   "measured_rows": [
@@ -218,7 +217,8 @@
     "All seven current latency means verified against raw per-sample records; metrics are averaged within their own 200/114-sample reference corpus.",
     "Historical original HybridKV loop elapsed 26:28/200 gives approximate E2E7.94s; improved HybridKV loop26:37/200 gives7.985s (printed7.99); SnapKV improved24:31/200 gives7.355s (printed7.36).",
     "These are response-loop timings excluding model load and scoring, not whole-worker duration divided by sample count. They include loop work and lack exact synchronized per-sample timestamps.",
-    "Old baseline inventory statements describing only a surviving metric summary are superseded by this recovery of /tmp logs; frozen historical experiment files were not edited."
+    "Old baseline inventory statements describing only a surviving metric summary are superseded by this recovery of /tmp logs; frozen historical experiment files were not edited.",
+    "User explicitly requested the original compact table, preserving manuscript scores; removed auxiliary 114-sample panels and the separate model table. The 114-sample raw evidence remains intact in the existing experiment report."
   ],
   "historical_response_loop_e2e": {
     "snapkv_kvrepack": {
@@ -258,5 +258,57 @@
     "original_current_raw_archive": "provenance/merge_aggregation_vatex_200_20261112/raw_evidence.tar.gz",
     "recovered_history": "provenance/merge_timing_recovery_20261112/recovery_summary.json",
     "recovery_verification": "provenance/merge_timing_recovery_20261112/verification.json"
-  }
+  },
+  "rendered_rows": [
+    {
+      "method": "HybridKV",
+      "VATEX_Avg": 0.3426,
+      "e2e_seconds_approx": 7.94,
+      "historical_timing_reference": true
+    },
+    {
+      "method": "HybridKV + AsymKV-style merging",
+      "VATEX_Avg": 0.29606846821670596,
+      "e2e_seconds": 10.017877786830068
+    },
+    {
+      "method": "HybridKV + LOOK-M-style merging",
+      "VATEX_Avg": 0.3342087481941095,
+      "e2e_seconds": 8.173605326898397
+    },
+    {
+      "method": "HybridKV + KVRepack",
+      "VATEX_Avg": 0.3447,
+      "e2e_seconds_approx": 7.99,
+      "historical_timing_reference": true,
+      "score_and_timing_same_run": false,
+      "timed_run_VATEX_Avg": 0.34393723604229254
+    },
+    {
+      "method": "SnapKV + AsymKV-style merging",
+      "VATEX_Avg": 0.2844182514740644,
+      "e2e_seconds": 9.640830132812262
+    },
+    {
+      "method": "SnapKV + LOOK-M-style merging",
+      "VATEX_Avg": 0.3285481562986002,
+      "e2e_seconds": 7.909556867275387
+    },
+    {
+      "method": "SnapKV + KVRepack",
+      "VATEX_Avg": 0.33067207587877584,
+      "e2e_seconds_approx": 7.36,
+      "historical_timing_reference": true
+    },
+    {
+      "method": "AsymKV (standalone)",
+      "VATEX_Avg": 0.3013,
+      "e2e_seconds": null
+    },
+    {
+      "method": "LOOK-M (standalone)",
+      "VATEX_Avg": 0.32387492978444304,
+      "e2e_seconds": null
+    }
+  ]
 }
