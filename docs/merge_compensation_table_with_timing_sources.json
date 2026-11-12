@@ -41,8 +41,23 @@
   },
   "standalone_lookm_legacy_generation_only_seconds": 2.2864941669255496,
   "notes": [
-    "VATEX and Video-ChatGPT timings are not combined into a common percentage.",
-    "Retained figure baseline 35.55 as supplied; original recovered-experiment FullKV differs and was not substituted.",
-    "Standalone legacy generation-only timing is not inserted into the complete E2E column."
-  ]
+    "Restored original Method / VATEX Avg. / Delta E2E (%) layout; removed extra absolute-latency columns.",
+    "All available percentages use 100*(t/35.551-1), using the existing figure reference as requested.",
+    "The two new style rows use VATEX200 timings, whereas the figure reference uses Video-ChatGPT20; daggers explicitly mark these as cross-setting numerical reference ratios.",
+    "Existing HybridKV/-33.2% and KVRepack/-33.0% figure values are unchanged.",
+    "Standalone complete E2E remains unavailable; generation-only LOOK-M timing is not substituted."
+  ],
+  "latency_table_policy": "Three original columns only; all available percentages numerically normalized to the figure FullKV at user request",
+  "latency_reference_seconds": 35.551,
+  "relative_e2e_percent": {
+    "hybridkv": -33.174875530927395,
+    "hybridkv_kvrepack": -32.958285280301546,
+    "hybridkv_asym_style": -71.82110830404189,
+    "hybridkv_lookm_style": -77.00878926922337
+  },
+  "cross_setting_reference_rows": [
+    "hybridkv_asym_style",
+    "hybridkv_lookm_style"
+  ],
+  "matched_setting_speedup_claim_for_new_style_rows": false
 }
