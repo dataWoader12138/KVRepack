@@ -2,6 +2,8 @@
 
 400/400规定输入已完成，GPU已释放。文本为Qwen2.5-7B-Instruct处理LongBench/qasper原0..199，图文为Qwen2.5-VL-7B-Instruct处理OCRBench原0、5…995。全部输入token参与非自身全配对，未截断、换样本或抽样token；[固定协议与复现命令](MIXKV_REFERENCE_200.md)。
 
+**2026-11-12 绘图更新：** 主图与 raw-K 补图已改为连续高斯核密度曲线（KDE），参考 MixKV 图1(b)的分布展示形式。配色取用户提供 PDF：纯文本金棕 `#B98A2F`，图文深蓝 `#2F4373`；浅色填充和虚线分别表示密度估计与原始均值。仍使用每模型112个层/KV头均值，400条原始记录、所有CSV、均值和置信区间的文件哈希均未改变。只重绘，没有运行GPU或重新采样。[绘图核对](../provenance/mixkv_reference_qwen25_200_20261104/continuous_plot_update_20261112.json)。
+
 **扩大到200＋200后，post-RoPE K和V仍为图文组均值更高；raw K仍是文本组更高。**
 
 | 指标 | 纯文本 | 图文 | 图文减纯文本 | 差值95%来源聚类区间 |

@@ -20,9 +20,9 @@ from .report import read_jsonl
 
 GROUPS = {
     "text": {"model_id": "Qwen/Qwen2.5-7B-Instruct", "doc_ids": (0, 1, 2, 3, 4),
-             "label": "Qwen2.5-7B · LongBench qasper", "color": "#E68A2E"},
+             "label": "Qwen2.5-7B · LongBench qasper", "color": "#B98A2F"},
     "vision": {"model_id": "Qwen/Qwen2.5-VL-7B-Instruct", "doc_ids": (0, 200, 400, 600, 800),
-               "label": "Qwen2.5-VL-7B · OCRBench", "color": "#377EB8"},
+               "label": "Qwen2.5-VL-7B · OCRBench", "color": "#2F4373"},
 }
 METRICS = ("k_raw", "k_rope", "v")
 LAYERS, HEADS, HEAD_DIM = 28, 4, 128
@@ -242,15 +242,48 @@ def _csv(path, rows, fields):
         writer.writerows(rows)
 
 
+def _density_curve(values, grid):
+    """Scott Gaussian KDE reflected at the cosine boundaries, without SciPy."""
+    import numpy as np
+
+    values = np.asarray(values, dtype=np.float64)
+    if values.ndim != 1 or len(values) != LAYERS*HEADS or not np.isfinite(values).all():
+        raise ValueError("Require all 112 finite native layer/head means")
+    if np.any(np.abs(values) > 1):
+        raise ValueError("Cosines must remain within [-1,1]")
+    bandwidth = float(values.std(ddof=1))*len(values)**(-.2)
+    # Constant synthetic inputs and nearly identical heads still have a
+    # well-defined display; this floor is fixed before inspecting results.
+    bandwidth = max(bandwidth, .01)
+    density = np.zeros_like(grid, dtype=np.float64)
+    for centers in (values, -2-values, 2-values):
+        offsets = (grid[:, None]-centers[None, :])/bandwidth
+        density += np.exp(-.5*offsets**2).sum(axis=1)
+    density /= len(values)*bandwidth*math.sqrt(2*math.pi)
+    area = float(np.sum((density[:-1]+density[1:])*np.diff(grid)) / 2)
+    if not math.isfinite(area) or area <= 0:
+        raise ValueError("KDE has invalid probability mass")
+    density /= area
+    return density, bandwidth
+
+
 def _plot(summary, output, *, raw=False):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import numpy as np
 
-    histogram_metadata = []
+    curve_metadata = []
+    grid = np.linspace(-1, 1, 2049)
+    # Match MixKV's compact distribution view while retaining every head.
+    # Expand the left bound automatically if a signed observation needs it.
+    displayed_metrics = ("k_raw" if raw else "k_rope", "v")
+    minimum = min(row["mean"] for row in summary["head_table"] if row["metric"] in displayed_metrics)
+    display_left = max(-1., min(-.2, math.floor((minimum-.1)*10)/10))
     with plt.rc_context({"font.family": "DejaVu Sans", "font.size": 9, "pdf.fonttype": 42,
-                         "ps.fonttype": 42, "svg.fonttype": "none"}):
+                         "ps.fonttype": 42, "svg.fonttype": "none", "text.color": "#30343B",
+                         "axes.labelcolor": "#70747A", "xtick.color": "#70747A", "ytick.color": "#70747A",
+                         "axes.edgecolor": "#C8CBD0", "axes.titleweight": "regular"}):
         fig, axes = plt.subplots(2, 1, figsize=(6.8, 5.5), sharex=True)
         for axis, (metric, label) in zip(axes, (("k_raw" if raw else "k_rope", "K before RoPE" if raw else "K after RoPE"), ("v", "V"))):
             for group, specification in GROUPS.items():
@@ -260,26 +293,38 @@ def _plot(summary, output, *, raw=False):
                 counts, edges = np.histogram(values, bins=np.linspace(-1, 1, 31))
                 if int(counts.sum()) != LAYERS*HEADS:
                     raise ValueError("Histogram failed to retain all signed head means")
-                histogram_metadata.append(dict(group=group, metric=metric, n_head_means=len(values), bin_counts=counts.tolist()))
-                axis.hist(values, bins=edges, density=True, histtype="stepfilled", color=specification["color"], alpha=.35, label=specification["label"])
-                axis.hist(values, bins=edges, density=True, histtype="step", color=specification["color"], linewidth=.9)
-                axis.axvline(summary["groups"][group]["metrics"][metric]["mean"], color=specification["color"], linestyle="--", linewidth=1)
-            axis.set(ylabel="Density", title=label, xlim=(-1, 1), xticks=[-1, -.5, 0, .5, 1])
+                density, bandwidth = _density_curve(values, grid)
+                curve_metadata.append(dict(group=group, metric=metric, n_head_means=len(values),
+                    bin_counts=counts.tolist(), bandwidth=bandwidth,
+                    density_area=float(np.sum((density[:-1]+density[1:])*np.diff(grid)) / 2),
+                    observed_min=min(values), observed_max=max(values), color=specification["color"]))
+                axis.fill_between(grid, 0, density, color=specification["color"], alpha=.16, linewidth=0)
+                axis.plot(grid, density, color=specification["color"], linewidth=2,
+                          label=specification["label"])
+                axis.axvline(summary["groups"][group]["metrics"][metric]["mean"], color=specification["color"], linestyle="--", linewidth=1, alpha=.8)
+            axis.set(ylabel="Density", title=label, xlim=(display_left, 1), ylim=(0, None))
+            axis.set_xticks([x for x in (-1, -.5, -.2, 0, .2, .4, .6, .8, 1) if x >= display_left])
             axis.spines[["top", "right"]].set_visible(False)
-            axis.grid(axis="y", alpha=.15)
+            axis.set_axisbelow(True)
+            axis.grid(color="#E2E4E7", linewidth=.65, linestyle=(0, (2, 2)))
         axes[0].legend(frameon=False, fontsize=8, loc="upper left")
         axes[-1].set_xlabel("Full-input, within-head mean cosine")
         count = summary["sample_count"]
         fig.suptitle(f"Qwen2.5-7B vs Qwen2.5-VL-7B: {count} + {count} full inputs", fontsize=10.5)
         fig.text(.5, .015, f"112 layer/KV-head means per curve; equal weights for {count} full inputs/model. Dashed lines: means.\n"
-                 "Descriptive head distributions. Models, datasets and full context lengths differ.",
+                 "Gaussian KDE; descriptive head distributions. Models, datasets and full context lengths differ.",
                  ha="center", va="bottom", fontsize=7.4)
         fig.subplots_adjust(left=.095, right=.985, bottom=.16, top=.88, hspace=.34)
         name = "reference_raw" if raw else "reference_main"
         for extension in ("png", "pdf", "svg"):
-            fig.savefig(output/f"{name}.{extension}", dpi=300, bbox_inches="tight")
+            path = output/f"{name}.{extension}"
+            fig.savefig(path, dpi=300, bbox_inches="tight")
+            if extension == "svg":
+                path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines())+"\n")
         plt.close(fig)
-    return dict(bin_edges=edges.tolist(), bins=30, range=[-1, 1], curves=histogram_metadata)
+    return dict(representation="boundary-reflected Gaussian KDE", bandwidth_rule="Scott; minimum 0.01",
+                bin_edges=edges.tolist(), bins=30, range=[-1, 1], display_range=[display_left, 1],
+                grid_points=len(grid), histogram_counts="audit only; no histogram drawn", curves=curve_metadata)
 
 
 def write_report(summary, output, *, plots=True):

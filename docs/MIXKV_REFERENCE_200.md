@@ -63,3 +63,13 @@ PYTHONPATH=src python -m kvrepack.observations.reference_report \
 报告生成主图和raw补图的PNG/PDF/SVG，逐输入、逐层、逐头、来源聚类和组间比较CSV。模型/任务/输入hash、真实长度、每层捕获次数和时长随记录保存。
 
 这是参考MixKV图1(b)形式的Qwen2.5适配。原图的精确采集点未公开确认，本轮明确采用post-RoPE K主图且同时保留raw K。两模型的参数、语料、位置布局与完整输入长度不同，本实验不隔离同一VLM的模态因果效应，也不证明合并无损。
+
+## 只重绘连续分布图（CPU）
+
+已有归档包含绘图所需的全部层/头均值，无需模型和GPU：
+
+```bash
+python scripts/replot_reference_observation.py --report provenance/mixkv_reference_qwen25_200_20261104/report
+```
+
+生成 `reference_main` 与 `reference_raw` 的 PNG/PDF/SVG；脚本核对672个唯一层/头/指标身份，并校验原始summary与CSV均未改变。平滑采用Scott带宽（最低0.01）及余弦边界反射；这只是明确的绘图选择，并不声称复刻MixKV未披露的具体平滑实现。物理支持范围保留[-1,1]，当前可视范围[-0.2,1]覆盖全部实际头均值；若出现更小的有符号值，绘图范围自动扩展。
