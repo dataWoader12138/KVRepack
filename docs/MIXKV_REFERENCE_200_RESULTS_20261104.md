@@ -4,7 +4,11 @@
 
 **2026-11-12 绘图更新：** 主图与 raw-K 补图已改为连续高斯核密度曲线（KDE），参考 MixKV 图1(b)的分布展示形式。配色取用户提供 PDF：纯文本金棕 `#B98A2F`，图文深蓝 `#2F4373`；浅色填充和虚线分别表示密度估计与原始均值。仍使用每模型112个层/KV头均值，400条原始记录、所有CSV、均值和置信区间的文件哈希均未改变。只重绘，没有运行GPU或重新采样。[绘图核对](../provenance/mixkv_reference_qwen25_200_20261104/continuous_plot_update_20261112.json)。
 
-图内已删去总标题和底部灰字说明，图例只保留模型名。各200输入、每曲线112个层/KV头均值及KDE定义见正文；虚线表示原始经验均值。
+图内不保留长段说明；Key和Value分别使用用户指定标题、各自的Cosine Similarity横轴和模型图例。各200输入、每曲线112个层/KV头均值及KDE定义见正文；虚线表示原始经验均值。
+
+[独立 Key 图 PDF](../provenance/mixkv_reference_qwen25_200_20261104/report/reference_key.pdf) · [独立 Value 图 PDF](../provenance/mixkv_reference_qwen25_200_20261104/report/reference_value.pdf) · [K/V 叠加图 PDF](../provenance/mixkv_reference_qwen25_200_20261104/report/reference_combined.pdf)
+
+叠加版同模型保持同色，Key统一用实线与斜纹，Value统一用虚线与点纹；低透明度填色与纹理位于全部曲线下层，避免遮挡。四条曲线沿用原始密度，未按峰高缩放；叠加版不画均值竖线，分图仍保留。
 
 **扩大到200＋200后，post-RoPE K和V仍为图文组均值更高；raw K仍是文本组更高。**
 

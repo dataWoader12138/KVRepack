@@ -1,0 +1,136 @@
+{
+  "status": "passed",
+  "updated_utc": "2026-11-12T12:09:41.899118+00:00",
+  "gpu_execution": false,
+  "change": "Give both panels requested titles, their own Cosine Similarity axis and model legend; additionally export individual Key/Value figures and a four-curve overlay.",
+  "prior_git_commit": "a324b056faab3ac0937548b22c50230793f8356d",
+  "source_sha256": {
+    "src/kvrepack/observations/reference_report.py": "2e2432b5baa3ebc3d6220d5799b7da60434675d97f2df710d34a4e705e3eeb4f",
+    "scripts/replot_reference_observation.py": "acd2d27952a53eecf91f8e905478c90b2f42ab321b11a9ad85ab9baa311a564e"
+  },
+  "original_data_statistics_and_density_values_unchanged": true,
+  "kde_function_unchanged": true,
+  "model_colors": {
+    "text": "#B98A2F",
+    "vision": "#2F4373"
+  },
+  "cache_styles": {
+    "k_rope": {
+      "linestyle": "-",
+      "hatch": "/",
+      "label": "Key"
+    },
+    "v": {
+      "linestyle": [
+        0,
+        [
+          4,
+          2
+        ]
+      ],
+      "hatch": ".",
+      "label": "Value"
+    }
+  },
+  "overlap_control": {
+    "face_alpha": 0.025,
+    "hatch_alpha": 0.28,
+    "hatch_linewidth": 0.4,
+    "fills_zorder": 1,
+    "curves_zorder": 4,
+    "mean_markers": false
+  },
+  "empirical_mean_lines": "Retained in separate panels; omitted from four-curve overlay to distinguish dashed Value curves.",
+  "no_peak_rescaling": true,
+  "one_legend_per_panel": true,
+  "one_x_axis_label_per_panel": true,
+  "existing_render_tests_passed": 2,
+  "independent_visual_review": "passed; overlapping textures do not obstruct four curve outlines",
+  "original_data_sha256": {
+    "provenance/mixkv_reference_qwen25_200_20261104/records.jsonl": "3bd570b07c037cc9e0d963f0afe2bc7640e4ee6ec5cb32f0c9336c182ef7473d",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/comparison_summary.csv": "21a212c1d56a78a6b1f27cfd557d71f51d47869dbe788d781e5053fa7bf01b69",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/group_summary.csv": "5dfb541978857a3651148b01da58a63c1fefb2e7b798e0fe4db66f6963bcaa8e",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/head_summary.csv": "d5da49fef247430a938dea71e45b90c3d25a4cd9c7ac22270c9e1d0dd28093ba",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/layer_summary.csv": "3f9e748fbe14c7658ecf53df233773b552b556b2112f9320c363c401ea994dc4",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/record_summary.csv": "2e8e1bc6c69f5da812453b2d5cc32c084ba300f01decb8c0d5eed18a5696318a",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/source_inputs.csv": "cd3662d37018db2760ffb618af0ed7a941f8cde11a450d6249f00495376b2441",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/summary.json": "d95eff1f9327bb3da2fc771fdef1ec5ee879c19df88e9daaa933f754ea6c60bf"
+  },
+  "artifacts": {
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_main.png": {
+      "sha256": "93bcfd6990f3bb59477769db198a20142df4ce8e009d9fb783cf92abb0a1d00b",
+      "bytes": 249297,
+      "previous_sha256": "64f18179345a0564572528a1759a258c79aa1599c7894c8a8d6ed1408771d715"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_main.pdf": {
+      "sha256": "539dbd4bb58d8f268eec00f35363c0a3cfb1bae2bf43b4e9ce54d47e8c126ef1",
+      "bytes": 107991,
+      "previous_sha256": "5c64d603ae1971368976ad53a49fd8d7953aa3b94081522c50c97f276cadfa86"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_main.svg": {
+      "sha256": "cc0f131ebf35654f7c115cf15a98d54d1536fca8bca4d981ad37458ffb832fcc",
+      "bytes": 423684,
+      "previous_sha256": "a6b6503f0301c55ad62b25f427369450533062d05c59f8a1ad8deaf5cff79936"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_raw.png": {
+      "sha256": "65d299e0ee4834ddf652d14c7cb49d3cb9d733f36e7ed8fc52b823c5534db819",
+      "bytes": 250678,
+      "previous_sha256": "2edd1b2e6ec6b29f2eb2ee5b5d5972f29473463136149f0a4a5c86bf293cf566"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_raw.pdf": {
+      "sha256": "3c298250af5376961cdd4127c0433fc42e51aac6a33339aef109209a6a339b59",
+      "bytes": 108680,
+      "previous_sha256": "9c31b5cf81f3ea1ad514bcd476d2a9768ea6444579c0b20d9eefea383c11bc75"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_raw.svg": {
+      "sha256": "449622212ee9f41a6fad4edde3b8adb4be490a45d374ca4f8993d1335af3922d",
+      "bytes": 423413,
+      "previous_sha256": "3ad2b17fb9a0055c65a60842c636b9322b2bd5ddbb142afc4d1c7bd740e592d8"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_key.png": {
+      "sha256": "745546da199343e7dc3bdf7b612ee3f6145c7fa3e1cef52943c5f98ed41b5d17",
+      "bytes": 153749,
+      "previous_sha256": null
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_key.pdf": {
+      "sha256": "2cd4fda4435d62003084a3731f38d50b900cdccfadb9277ff0617689e02bc161",
+      "bytes": 61812,
+      "previous_sha256": null
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_key.svg": {
+      "sha256": "85834dcc2fbb5e46bdf63f1387f94c0bde1ff4079d244fc8505305e9e03589ed",
+      "bytes": 213223,
+      "previous_sha256": null
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_value.png": {
+      "sha256": "82c72fefdb1575bbacbe2f1d5f9ea82277c49618527aa3ee8cc1955da4d129f0",
+      "bytes": 130464,
+      "previous_sha256": null
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_value.pdf": {
+      "sha256": "d260b03c69263564ee5405c7ff17b159eb85f973cdfa481c6dd7677c74b1821e",
+      "bytes": 57236,
+      "previous_sha256": null
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_value.svg": {
+      "sha256": "a9a692f154ebc78dc758c835cebd7c16f9715ed2668e06f3edcc1fc18842ab2b",
+      "bytes": 215433,
+      "previous_sha256": null
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_combined.png": {
+      "sha256": "f116b038c74ff3fa98ecd82781baf0864297d1a5b0a8cdccbd81ac6c2ab7f2d7",
+      "bytes": 214130,
+      "previous_sha256": null
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_combined.pdf": {
+      "sha256": "3b65abb3339cee96e822b53b50d160e406bebe0a1686585c31924498a44384c1",
+      "bytes": 125627,
+      "previous_sha256": null
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_combined.svg": {
+      "sha256": "c0994eb4eacdf25d49aaa173809ba40a574dadd2b71775c49ffc6be05f59a223",
+      "bytes": 493802,
+      "previous_sha256": null
+    }
+  }
+}

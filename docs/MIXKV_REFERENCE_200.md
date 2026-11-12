@@ -72,4 +72,4 @@ PYTHONPATH=src python -m kvrepack.observations.reference_report \
 python scripts/replot_reference_observation.py --report provenance/mixkv_reference_qwen25_200_20261104/report
 ```
 
-生成 `reference_main` 与 `reference_raw` 的 PNG/PDF/SVG；脚本核对672个唯一层/头/指标身份，并校验原始summary与CSV均未改变。平滑采用Scott带宽（最低0.01）及余弦边界反射；这只是明确的绘图选择，并不声称复刻MixKV未披露的具体平滑实现。物理支持范围保留[-1,1]，当前可视范围[-0.2,1]覆盖全部实际头均值；若出现更小的有符号值，绘图范围自动扩展。
+生成双面板 `reference_main` / `reference_raw`、独立 `reference_key` / `reference_value` 和四曲线叠加 `reference_combined` 的 PNG/PDF/SVG；脚本核对672个唯一层/头/指标身份，并校验原始summary与CSV均未改变。平滑采用Scott带宽（最低0.01）及余弦边界反射；这只是明确的绘图选择，并不声称复刻MixKV未披露的具体平滑实现。物理支持范围保留[-1,1]，当前可视范围[-0.2,1]覆盖全部实际头均值；若出现更小的有符号值，绘图范围自动扩展。

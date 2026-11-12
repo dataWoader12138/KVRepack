@@ -1,5 +1,7 @@
 # KVRepack 项目交接（2026-11-04）
 
+**2026-11-12 分图标题/图例与K/V叠加试绘完成：** 用户指定Key Similarity Distribution Comparison、Value Similarity Distribution Comparison两个标题，每面板各有Cosine Similarity横轴和模型legend，主图/原raw图已同步。另存reference_key/value/combined三组PNG/PDF/SVG；叠加同模型同色，K实线斜纹、V虚线点纹，face.025/hatch.28、填充z1曲线z4，交叠纹理不遮轮廓；叠加无均值竖线以免和V虚线混淆，不做峰高重缩放。原400raw/CSV/summary及主图四曲线density metadata全不变，_density_curve和统计函数AST不变。2项现有渲染测试（含15个输出文件）通过，独立视觉审阅通过；来源comparison_layout_update_20261112.json，index仅更新图和绘图meta并追加新资产。outputs副本也已更新，无GPU；用户TXT和配色PDF未改。
+
 **2026-11-12 图内文字精简：** 用户要求尽可能去掉不必要灰字，已删除200＋200 Qwen连续主图/补图的全局总标题与底部两行说明，legend仅模型名，横轴缩为Mean cosine similarity并用深色；保留K before/afterRoPE、V、Density、均值虚线。PNG/PDF/SVG与outputs副本均重绘。输入/统计文件SHA、全部密度metadata和_density_curve函数AST均不变，仅_plot可见文字/布局改变；2项现有render测试通过。证据minimal_labels_update_20261112.json，artifact_index同步；没有GPU或新实验。用户时延TXT改动和输入调色PDF仍未碰。
 
 **2026-11-12 Qwen2.5文本/VL观察图已按用户要求改成连续曲线：** 最终200＋200的 `provenance/mixkv_reference_qwen25_200_20261104/report/reference_main/raw.{png,pdf,svg}` 已重绘，outputs同名图同步。主图post-RoPEK/V、补图rawK/V不变；每曲线仍112真实head均值，ScottGaussianKDE、余弦边界反射，金棕text#B98A2F与深蓝VL#2F4373来自用户 `fullkv_k_head_envelope (1).pdf`。只改渲染，400raw、summary、所有CSV/均值/CI逐文件SHA不变；AST确认原统计函数全不变。重绘入口 `scripts/replot_reference_observation.py`；14项已有reportCPU测试及来源检查通过，未运行GPU。数据/旧新图SHA与密度积分验证见continuous_plot_update_20261112.json，artifact_index仅更新真实改动的六图并追加此次证据。用户原PDF与其修改的时延TXT保持不动，不将它们随此绘图更新提交。

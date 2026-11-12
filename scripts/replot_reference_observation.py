@@ -38,7 +38,9 @@ def redraw(report):
             if abs(mean-summary["groups"][group]["metrics"][metric]["mean"]) > 1e-12:
                 raise ValueError("Saved head means disagree with the original group statistic")
     summary["head_table"] = rows
-    plots = dict(main=_plot(summary, report), raw_supplement=_plot(summary, report, raw=True))
+    plots = dict(main=_plot(summary, report), raw_supplement=_plot(summary, report, raw=True),
+        key=_plot(summary, report, view="key"), value=_plot(summary, report, view="value"),
+        combined=_plot(summary, report, view="combined"))
     after = {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in data_files}
     if before != after:
         raise ValueError("Replot changed an original statistics file")

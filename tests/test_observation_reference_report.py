@@ -211,7 +211,10 @@ class ReferenceReportTests(unittest.TestCase):
             for filename in ("summary.json", "RESULTS.md", "group_summary.csv", "comparison_summary.csv",
                              "record_summary.csv", "head_summary.csv", "layer_summary.csv",
                              "reference_main.png", "reference_main.pdf", "reference_main.svg",
-                             "reference_raw.png", "reference_raw.pdf", "reference_raw.svg"):
+                             "reference_raw.png", "reference_raw.pdf", "reference_raw.svg",
+                             "reference_key.png", "reference_key.pdf", "reference_key.svg",
+                             "reference_value.png", "reference_value.pdf", "reference_value.svg",
+                             "reference_combined.png", "reference_combined.pdf", "reference_combined.svg"):
                 self.assertGreater((root/filename).stat().st_size, 20)
             for figure in compact["artifacts"]["plots"].values():
                 self.assertEqual(figure["range"], [-1, 1])
@@ -232,7 +235,9 @@ class ReferenceReportTests(unittest.TestCase):
             self.assertEqual(compact["sample_count"], 200)
             self.assertIn("Qwen2.5-7B", svg)
             self.assertIn("Qwen2.5-VL-7B", svg)
-            self.assertIn("Mean cosine similarity", svg)
+            self.assertIn("Key Similarity Distribution Comparison", svg)
+            self.assertIn("Value Similarity Distribution Comparison", svg)
+            self.assertEqual(svg.count(">Cosine Similarity</text>"), 2)
             self.assertNotIn("full inputs", svg)
             self.assertNotIn("LongBench", svg)
             self.assertNotIn("OCRBench", svg)

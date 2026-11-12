@@ -267,25 +267,43 @@ def _density_curve(values, grid):
     return density, bandwidth
 
 
-def _plot(summary, output, *, raw=False):
+def _plot(summary, output, *, raw=False, view="panels"):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib.colors import to_rgba
+    from matplotlib.legend_handler import HandlerTuple
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
     import numpy as np
 
+    if view not in ("panels", "key", "value", "combined"):
+        raise ValueError("Unknown comparison view")
+    key_metric = "k_raw" if raw else "k_rope"
+    displayed_metrics = (key_metric,) if view == "key" else (("v",) if view == "value" else (key_metric, "v"))
+    titles = {key_metric: "Key Similarity Distribution Comparison" + (" (before RoPE)" if raw else ""),
+              "v": "Value Similarity Distribution Comparison"}
+    channel_styles = {key_metric: {"linestyle": "-", "hatch": "/", "label": "Key"},
+                      "v": {"linestyle": (0, (4, 2)), "hatch": ".", "label": "Value"}}
     curve_metadata = []
     grid = np.linspace(-1, 1, 2049)
     # Match MixKV's compact distribution view while retaining every head.
     # Expand the left bound automatically if a signed observation needs it.
-    displayed_metrics = ("k_raw" if raw else "k_rope", "v")
     minimum = min(row["mean"] for row in summary["head_table"] if row["metric"] in displayed_metrics)
     display_left = max(-1., min(-.2, math.floor((minimum-.1)*10)/10))
     with plt.rc_context({"font.family": "DejaVu Sans", "font.size": 9, "pdf.fonttype": 42,
                          "ps.fonttype": 42, "svg.fonttype": "none", "text.color": "#30343B",
                          "axes.labelcolor": "#30343B", "xtick.color": "#70747A", "ytick.color": "#70747A",
-                         "axes.edgecolor": "#C8CBD0", "axes.titleweight": "regular"}):
-        fig, axes = plt.subplots(2, 1, figsize=(6.8, 4.8), sharex=True)
-        for axis, (metric, label) in zip(axes, (("k_raw" if raw else "k_rope", "K before RoPE" if raw else "K after RoPE"), ("v", "V"))):
+                         "axes.edgecolor": "#C8CBD0", "axes.titleweight": "regular", "hatch.linewidth": .4}):
+        if view == "panels":
+            fig, axes = plt.subplots(2, 1, figsize=(6.8, 5.6), sharex=True)
+            metric_axes = list(zip(displayed_metrics, axes))
+        else:
+            fig, axis = plt.subplots(figsize=(7.2, 4.1) if view == "combined" else (6.8, 3.25))
+            axes = [axis]
+            metric_axes = [(metric, axis) for metric in displayed_metrics]
+        legend_handles, legend_labels = [], []
+        for metric, axis in metric_axes:
             for group, specification in GROUPS.items():
                 values = [row["mean"] for row in summary["head_table"] if row["group"] == group and row["metric"] == metric]
                 if len(values) != LAYERS*HEADS:
@@ -298,19 +316,46 @@ def _plot(summary, output, *, raw=False):
                     bin_counts=counts.tolist(), bandwidth=bandwidth,
                     density_area=float(np.sum((density[:-1]+density[1:])*np.diff(grid)) / 2),
                     observed_min=min(values), observed_max=max(values), color=specification["color"]))
-                axis.fill_between(grid, 0, density, color=specification["color"], alpha=.16, linewidth=0)
-                axis.plot(grid, density, color=specification["color"], linewidth=2,
-                          label=specification["model_id"].split("/")[-1].removesuffix("-Instruct"))
-                axis.axvline(summary["groups"][group]["metrics"][metric]["mean"], color=specification["color"], linestyle="--", linewidth=1, alpha=.8)
-            axis.set(ylabel="Density", title=label, xlim=(display_left, 1), ylim=(0, None))
+                model_label = specification["model_id"].split("/")[-1].removesuffix("-Instruct")
+                color = specification["color"]
+                style = channel_styles[metric]
+                if view == "combined":
+                    # The same cache type uses the same globally aligned hatch
+                    # across models. Every outline is above every shaded area.
+                    axis.fill_between(grid, 0, density, facecolor=to_rgba(color, .025),
+                        edgecolor=to_rgba(color, .28), hatch=style["hatch"], linewidth=0, zorder=1)
+                    axis.plot(grid, density, color=color, linewidth=2.1,
+                              linestyle=style["linestyle"], zorder=4)
+                    legend_handles.append((
+                        Patch(facecolor=to_rgba(color, .04), edgecolor=to_rgba(color, .45),
+                              hatch=style["hatch"], linewidth=.4),
+                        Line2D([], [], color=color, linewidth=2.1, linestyle=style["linestyle"])))
+                    legend_labels.append(model_label+" · "+style["label"])
+                else:
+                    axis.fill_between(grid, 0, density, color=color, alpha=.16, linewidth=0)
+                    axis.plot(grid, density, color=color, linewidth=2, label=model_label)
+                    axis.axvline(summary["groups"][group]["metrics"][metric]["mean"],
+                                 color=color, linestyle="--", linewidth=1, alpha=.8)
+        for axis in axes:
+            axis.set(ylabel="Density", xlabel="Cosine Similarity", xlim=(display_left, 1), ylim=(0, None))
             axis.set_xticks([x for x in (-1, -.5, -.2, 0, .2, .4, .6, .8, 1) if x >= display_left])
+            axis.tick_params(axis="x", labelbottom=True)
             axis.spines[["top", "right"]].set_visible(False)
             axis.set_axisbelow(True)
             axis.grid(color="#E2E4E7", linewidth=.65, linestyle=(0, (2, 2)))
-        axes[0].legend(frameon=False, fontsize=8, loc="upper left")
-        axes[-1].set_xlabel("Mean cosine similarity")
-        fig.subplots_adjust(left=.095, right=.985, bottom=.12, top=.92, hspace=.34)
-        name = "reference_raw" if raw else "reference_main"
+        if view == "combined":
+            axes[0].set_title("Key and Value Similarity Distribution Comparison")
+            axes[0].legend(legend_handles, legend_labels, handler_map={tuple: HandlerTuple(ndivide=1)},
+                           frameon=False, fontsize=8, loc="upper right", ncol=2, columnspacing=1.2)
+        else:
+            for metric, axis in metric_axes:
+                axis.set_title(titles[metric])
+                axis.legend(frameon=False, fontsize=8, loc="upper left")
+        fig.subplots_adjust(left=.095, right=.985, bottom=.12 if view == "panels" else .16,
+                            top=.93 if view == "panels" else .89, hspace=.62)
+        name = ("reference_raw" if raw else "reference_main") if view == "panels" else "reference_"+view
+        if raw and view != "panels":
+            name = "reference_raw_"+view
         for extension in ("png", "pdf", "svg"):
             path = output/f"{name}.{extension}"
             fig.savefig(path, dpi=300, bbox_inches="tight")
@@ -319,7 +364,11 @@ def _plot(summary, output, *, raw=False):
         plt.close(fig)
     return dict(representation="boundary-reflected Gaussian KDE", bandwidth_rule="Scott; minimum 0.01",
                 bin_edges=edges.tolist(), bins=30, range=[-1, 1], display_range=[display_left, 1],
-                grid_points=len(grid), histogram_counts="audit only; no histogram drawn", curves=curve_metadata)
+                grid_points=len(grid), histogram_counts="audit only; no histogram drawn", curves=curve_metadata,
+                view=view, cache_styles=channel_styles if view == "combined" else None,
+                overlapping_fills=(dict(face_alpha=.025, hatch_alpha=.28, hatch_linewidth=.4,
+                                        fills_zorder=1, curves_zorder=4,
+                                        mean_markers=False) if view == "combined" else None))
 
 
 def write_report(summary, output, *, plots=True):
@@ -351,7 +400,9 @@ def write_report(summary, output, *, plots=True):
     compact = {key: value for key, value in summary.items() if not key.endswith("_table")}
     compact["artifacts"] = dict(tables=["record_summary.csv", "head_summary.csv", "layer_summary.csv", "group_summary.csv", "comparison_summary.csv", "source_inputs.csv"], plots="disabled")
     if plots and summary["status"] == "complete":
-        compact["artifacts"]["plots"] = dict(main=_plot(summary, output), raw_supplement=_plot(summary, output, raw=True))
+        compact["artifacts"]["plots"] = dict(main=_plot(summary, output), raw_supplement=_plot(summary, output, raw=True),
+            key=_plot(summary, output, view="key"), value=_plot(summary, output, view="value"),
+            combined=_plot(summary, output, view="combined"))
     count = summary["sample_count"]
     lines = [f"# Reference-style full-input {count}+{count} observation", "", f"Status: **{summary['status']}**.", "", summary["interpretation"], "", summary["statistic"], "", summary["aggregation"], "", summary["histogram_unit"], "", summary["uncertainty"], "",
              f"| Quantity | Text model ({count} inputs) | Vision-language model ({count} inputs) | Vision − text |", "|---|---:|---:|---:|"]
