@@ -1,0 +1,14 @@
+{
+  "files": {
+    "README.md": "964f55440e6c05ea65fa9b80b0e6e67fc2d7f92fb1fb5a92be01cef4f873a79a",
+    "historical_adapter_timing_excerpt.txt": "3d4ca1447a58cdaf4223aa35f0dc2f97407b3593c5a46dba3b58c88f6aad91f6",
+    "historical_per_sample_stages.csv": "9d2287cdd5a7539304c9d2aa85e9d97bd97ee95565da12a12e554781db13d2fe",
+    "historical_response_loop_excerpts.txt": "0ab629553d97a332850da58fd3cd5198118cb08d9c119439956cde9dfd4f5d44",
+    "hybrid_quality_audit_excerpt.json": "d09e2f2b58ab95262f1114b721340332522567c7ac691cc934c2cacb01a6716b",
+    "recovery_summary.json": "a6a0ce91fdd4dd184988f6d65a6aa4687b5b9cb8f90b68879ecbd524a478f212",
+    "run_vatex_hybridkv_pair_qwen7b_20260705.log.gz": "41f499b6f6d7a85416946cf6f678dac353b839012161951c0e118a003496adf0",
+    "snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5.log.gz": "6ff4ab18c7f0a33d560893671e212100a7b1731c1c3eddd762102fb2ee1f74ed",
+    "snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5_summary.jsonl": "d9a3506f9bc073085568342665eb06aab636ecceae97581d25d43a0d9482b3c1",
+    "verification.json": "f63803c75f6357b39487f828d47ca00178dd9e74f0b480e18e7b54121454d0e8"
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "status": "verified_existing_logs_only",
+  "gpu_execution": false,
+  "rows": {
+    "snapkv_kvrepack": {
+      "original_log_path": "/tmp/snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5.log",
+      "archived_log": "provenance/merge_timing_recovery_20261112/snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5.log.gz",
+      "original_log_sha256": "500186ed0313a10dae340f6e40e547db4e671c227be878fd85aaec803b1963d1",
+      "n": 200,
+      "generation_seconds_mean": 2.100160058736801,
+      "vision_preprocessing_seconds_mean": 5.134271973371506,
+      "recorded_stage_sum_seconds_mean": 7.234432032108307,
+      "continuous_full_e2e_seconds": null,
+      "cuda_synchronize_explicit": false,
+      "nominal_budget_ratio": 0.1,
+      "budget_policy": "history10percent_plus_local_window_not_strict_total10percent",
+      "matching_new_protocol": false,
+      "metrics": {
+        "Bleu_4": 0.21929443891845268,
+        "CIDEr": 0.4630334566337397,
+        "METEOR": 0.21438874683941053,
+        "ROUGE_L": 0.4259716611235004
+      },
+      "VATEX_Avg": 0.33067207587877584,
+      "historical_response_loop_e2e": {
+        "elapsed_display": "24:31",
+        "elapsed_seconds_display_resolution": 1,
+        "response_loop_seconds_display": 1471,
+        "n": 200,
+        "approximate_seconds_per_sample": 7.355,
+        "printed_seconds_per_sample": 7.36,
+        "source": "final Model Responding progress line; total response loop divided by n",
+        "synchronized_per_sample_measurement": false
+      }
+    },
+    "hybridkv_kvrepack": {
+      "original_log_path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.log",
+      "archived_log": "provenance/merge_timing_recovery_20261112/run_vatex_hybridkv_pair_qwen7b_20260705.log.gz",
+      "original_log_sha256": "31c4c1ed5e34c5f630a0574384257249282a38b6df7d9b51164ef890fe5b1e27",
+      "n": 200,
+      "generation_seconds_mean": 2.44386039018631,
+      "vision_preprocessing_seconds_mean": 5.396028072834015,
+      "recorded_stage_sum_seconds_mean": 7.8398884630203245,
+      "continuous_full_e2e_seconds": null,
+      "cuda_synchronize_explicit": false,
+      "nominal_budget_ratio": 0.1,
+      "budget_policy": "history10percent_plus_local_window_not_strict_total10percent",
+      "matching_new_protocol": false,
+      "metrics": {
+        "Bleu_4": 0.22858326025712025,
+        "CIDEr": 0.48891433670588336,
+        "METEOR": 0.22443910293988592,
+        "ROUGE_L": 0.4338122442662807
+      },
+      "VATEX_Avg": 0.34393723604229254,
+      "quality_source": "provenance/video_parameter_audit/nextqa_vatex.json: all_candidates matching 20260705_143949_results.json",
+      "historical_response_loop_e2e": {
+        "elapsed_display": "26:37",
+        "elapsed_seconds_display_resolution": 1,
+        "response_loop_seconds_display": 1597,
+        "n": 200,
+        "approximate_seconds_per_sample": 7.985,
+        "printed_seconds_per_sample": 7.99,
+        "source": "final Model Responding progress line; total response loop divided by n",
+        "synchronized_per_sample_measurement": false
+      }
+    },
+    "hybridkv": {
+      "original_log_path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.log",
+      "archived_log": "provenance/merge_timing_recovery_20261112/run_vatex_hybridkv_pair_qwen7b_20260705.log.gz",
+      "original_log_sha256": "31c4c1ed5e34c5f630a0574384257249282a38b6df7d9b51164ef890fe5b1e27",
+      "section": "[1/2] OpenSource HybridKV 7B VATEX",
+      "n": 200,
+      "VATEX_Avg": 0.3426,
+      "quality_precision": "four-decimal metrics printed in same log, matching manuscript",
+      "historical_response_loop_e2e": {
+        "elapsed_display": "26:28",
+        "elapsed_seconds_display_resolution": 1,
+        "response_loop_seconds_display": 1588,
+        "n": 200,
+        "approximate_seconds_per_sample": 7.94,
+        "printed_seconds_per_sample": 7.94,
+        "source": "final Model Responding progress line; total response loop divided by n",
+        "synchronized_per_sample_measurement": false
+      },
+      "generation_seconds_mean": null,
+      "continuous_full_e2e_seconds": null,
+      "vision_preprocessing_seconds_mean": 5.477131963968277,
+      "matching_new_protocol": false
+    }
+  },
+  "verification": [
+    {
+      "scope": "first200",
+      "method": "hybridkv_kvrepack",
+      "variant": "lookm",
+      "n": 200,
+      "raw_manifest_sha256": "e98df2cadada2137ca569222afada1c7a5134e9f4676b461b9bb9aaf94d323a6",
+      "full_e2e_seconds": 8.173605326898397,
+      "model_e2e_seconds": 2.357583662737161,
+      "vatex_avg": 0.3342087481941095
+    },
+    {
+      "scope": "first200",
+      "method": "hybridkv_kvrepack",
+      "variant": "asymkv",
+      "n": 200,
+      "raw_manifest_sha256": "e98df2cadada2137ca569222afada1c7a5134e9f4676b461b9bb9aaf94d323a6",
+      "full_e2e_seconds": 10.017877786830068,
+      "model_e2e_seconds": 4.185450881067664,
+      "vatex_avg": 0.29606846821670596
+    },
+    {
+      "scope": "first200",
+      "method": "snapkv_kvrepack",
+      "variant": "lookm",
+      "n": 200,
+      "raw_manifest_sha256": "2e0772ca8b2f6d0b55d8622a38dc62bac076cd8adfb2a2a4ec04a7378768aa22",
+      "full_e2e_seconds": 7.909556867275387,
+      "model_e2e_seconds": 2.000925281941891,
+      "vatex_avg": 0.3285481562986002
+    },
+    {
+      "scope": "first200",
+      "method": "snapkv_kvrepack",
+      "variant": "asymkv",
+      "n": 200,
+      "raw_manifest_sha256": "2e0772ca8b2f6d0b55d8622a38dc62bac076cd8adfb2a2a4ec04a7378768aa22",
+      "full_e2e_seconds": 9.640830132812262,
+      "model_e2e_seconds": 3.7386251061223446,
+      "vatex_avg": 0.2844182514740644
+    },
+    {
+      "scope": "matched_first114",
+      "method": "snapkv_kvrepack",
+      "variant": "kvrepack",
+      "n": 114,
+      "raw_manifest_sha256": "c6ab438346cc3e01a31217cd1f599e9b89f29dba015669bb78bf8437dea81569",
+      "full_e2e_seconds": 8.298082024283838,
+      "model_e2e_seconds": 1.9596396135002898,
+      "vatex_avg": 0.3411625505786807
+    },
+    {
+      "scope": "matched_first114",
+      "method": "snapkv_kvrepack",
+      "variant": "lookm",
+      "n": 114,
+      "raw_manifest_sha256": "c6ab438346cc3e01a31217cd1f599e9b89f29dba015669bb78bf8437dea81569",
+      "full_e2e_seconds": 8.26679045988018,
+      "model_e2e_seconds": 1.9644420963238205,
+      "vatex_avg": 0.3401843766851201
+    },
+    {
+      "scope": "matched_first114",
+      "method": "snapkv_kvrepack",
+      "variant": "asymkv",
+      "n": 114,
+      "raw_manifest_sha256": "c6ab438346cc3e01a31217cd1f599e9b89f29dba015669bb78bf8437dea81569",
+      "full_e2e_seconds": 9.964289508858009,
+      "model_e2e_seconds": 3.6587648847908305,
+      "vatex_avg": 0.3022390920763772
+    }
+  ],
+  "response_loop_e2e": {
+    "snapkv_kvrepack": {
+      "elapsed_display": "24:31",
+      "elapsed_seconds_display_resolution": 1,
+      "response_loop_seconds_display": 1471,
+      "n": 200,
+      "approximate_seconds_per_sample": 7.355,
+      "printed_seconds_per_sample": 7.36,
+      "source": "final Model Responding progress line; total response loop divided by n",
+      "synchronized_per_sample_measurement": false
+    },
+    "hybridkv_kvrepack": {
+      "elapsed_display": "26:37",
+      "elapsed_seconds_display_resolution": 1,
+      "response_loop_seconds_display": 1597,
+      "n": 200,
+      "approximate_seconds_per_sample": 7.985,
+      "printed_seconds_per_sample": 7.99,
+      "source": "final Model Responding progress line; total response loop divided by n",
+      "synchronized_per_sample_measurement": false
+    },
+    "hybridkv": {
+      "elapsed_display": "26:28",
+      "elapsed_seconds_display_resolution": 1,
+      "response_loop_seconds_display": 1588,
+      "n": 200,
+      "approximate_seconds_per_sample": 7.94,
+      "printed_seconds_per_sample": 7.94,
+      "source": "final Model Responding progress line; total response loop divided by n",
+      "synchronized_per_sample_measurement": false
+    }
+  }
+}

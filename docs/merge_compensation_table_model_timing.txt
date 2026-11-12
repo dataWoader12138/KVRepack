@@ -1,0 +1,33 @@
+% Requires booktabs; \method is defined in the manuscript.
+% Absolute seconds/sample; no normalization to an external figure.
+\begin{table}[t]
+  \centering
+  \begingroup
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcc@{}}
+    \toprule
+    \textbf{Method} & \textbf{VATEX Avg.} & $t_{\mathrm{model\ E2E}}$ (s) \\
+    \midrule
+    \multicolumn{3}{@{}l}{\textit{VATEX first 200: current protocol}} \\
+    HybridKV + AsymKV-style merging & 0.2961 & 4.185 \\
+    HybridKV + LOOK-M-style merging & 0.3342 & 2.358 \\
+    SnapKV + AsymKV-style merging & 0.2844 & 3.739 \\
+    SnapKV + LOOK-M-style merging & 0.3285 & 2.001 \\
+    \midrule
+    \multicolumn{3}{@{}l}{\textit{SnapKV: matched first 114 samples}} \\
+    SnapKV + AsymKV-style merging & 0.3022 & 3.659 \\
+    SnapKV + LOOK-M-style merging & 0.3402 & 1.964 \\
+    SnapKV + \method & 0.3412 & 1.960 \\
+    \midrule
+    \multicolumn{3}{@{}l}{\textit{Historical first 200; separate protocol}} \\
+    HybridKV & 0.3426 & -- \\
+    HybridKV + \method & 0.3439 & 2.444 \\
+    SnapKV + \method & 0.3307 & 2.100 \\
+    \bottomrule
+  \end{tabular*}
+  \endgroup
+
+  \caption{Model end-to-end latency on Qwen2.5-VL-7B, VATEX, 64 frames. Current measurements start with inputs on the GPU and include Fisher computation where required, visual encoding, prefill, and decode, with explicit CUDA synchronization; video preprocessing, H2D, and text decoding are excluded. The final panel recovers historical Generation timers around model.generate, without explicit synchronization. Historical runs used a nominal 10\% history budget plus recent positions, and their generation settings were not frozen identically to the current runs. They are reference measurements, not matched-protocol speed comparisons. The original HybridKV run has no Generation timer; its response-loop E2E is recorded separately in the complete E2E table. The historical HybridKV score is 0.3439 for that timing run, rather than the separate manuscript value 0.3447.}
+  \label{tab:kvrepack_merge_model_e2e}
+\end{table}

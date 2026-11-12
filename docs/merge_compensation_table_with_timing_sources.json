@@ -1,63 +1,262 @@
 {
-  "status": "table_filled_from_existing_measurements",
+  "schema_version": 2,
+  "status": "corrected_latency_scopes_and_recovered_historical_timers",
+  "updated_utc": "2026-11-12T04:02:28.455183+00:00",
   "gpu_experiments_started": false,
-  "new_hybrid_style_source": "docs/merge_aggregation_vatex_200.csv",
-  "new_hybrid_asym_avg": 0.29606846821670596,
-  "new_hybrid_lookm_avg": 0.3342087481941095,
-  "vatEX_complete_e2e_seconds": {
-    "asym": 10.017877786830068,
-    "lookm": 8.173605326898397
-  },
-  "vatEX_model_e2e_seconds": {
-    "asym": 4.185450881067664,
-    "lookm": 2.357583662737161
-  },
-  "historical_accuracy": {
-    "hybridkv": 0.3426,
-    "hybridkv_kvrepack": 0.3447,
-    "asymkv_standalone": 0.3013,
-    "lookm_standalone": 0.32387492978444304
-  },
-  "old_style_value_provenance": {
-    ".3239": "Standalone strict LOOK-M VATEX200; moved to standalone row",
-    ".2936": "Historical HybridKV-selected-pair K/V Grouping; not relabeled as standalone AsymKV"
-  },
-  "vcg_figure_source": {
-    "path": "/root/autodl-tmp/HybridKV-artifact/overhead_v5_01_vs_fullkv.csv",
-    "sha256": "95c07b15228b7d85d45f946bbcbdfbd179c7300e8cd03a54562c24420309c968",
-    "fullkv_plot_seconds": 35.551,
-    "manuscript_reference_seconds": 35.55,
-    "hybridkv_plot_seconds": 23.757,
-    "hybridkv_kvrepack_plot_seconds": 23.834,
-    "delta_percent_as_provided": {
-      "hybridkv": -33.2,
-      "hybridkv_kvrepack": -33.0
+  "policy": "absolute_seconds_only; each panel keeps sample count and timing scope; no external figure baseline",
+  "full_pipeline_table": "docs/merge_compensation_table_with_timing.txt",
+  "model_e2e_table": "docs/merge_compensation_table_model_timing.txt",
+  "current_report": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/comparison.csv",
+  "matched_report": "outputs/ablations/merge_vatex_mergeonly_200_20261112/report/parent_matched_prefix_comparison.csv",
+  "measured_rows": [
+    {
+      "scope": "first200",
+      "method": "hybridkv_kvrepack",
+      "variant": "lookm",
+      "n": 200,
+      "raw_manifest_sha256": "e98df2cadada2137ca569222afada1c7a5134e9f4676b461b9bb9aaf94d323a6",
+      "full_e2e_seconds": 8.173605326898397,
+      "model_e2e_seconds": 2.357583662737161,
+      "vatex_avg": 0.3342087481941095
     },
-    "provenance": "Existing figure input, not a new GPU measurement"
+    {
+      "scope": "first200",
+      "method": "hybridkv_kvrepack",
+      "variant": "asymkv",
+      "n": 200,
+      "raw_manifest_sha256": "e98df2cadada2137ca569222afada1c7a5134e9f4676b461b9bb9aaf94d323a6",
+      "full_e2e_seconds": 10.017877786830068,
+      "model_e2e_seconds": 4.185450881067664,
+      "vatex_avg": 0.29606846821670596
+    },
+    {
+      "scope": "first200",
+      "method": "snapkv_kvrepack",
+      "variant": "lookm",
+      "n": 200,
+      "raw_manifest_sha256": "2e0772ca8b2f6d0b55d8622a38dc62bac076cd8adfb2a2a4ec04a7378768aa22",
+      "full_e2e_seconds": 7.909556867275387,
+      "model_e2e_seconds": 2.000925281941891,
+      "vatex_avg": 0.3285481562986002
+    },
+    {
+      "scope": "first200",
+      "method": "snapkv_kvrepack",
+      "variant": "asymkv",
+      "n": 200,
+      "raw_manifest_sha256": "2e0772ca8b2f6d0b55d8622a38dc62bac076cd8adfb2a2a4ec04a7378768aa22",
+      "full_e2e_seconds": 9.640830132812262,
+      "model_e2e_seconds": 3.7386251061223446,
+      "vatex_avg": 0.2844182514740644
+    },
+    {
+      "scope": "matched_first114",
+      "method": "snapkv_kvrepack",
+      "variant": "kvrepack",
+      "n": 114,
+      "raw_manifest_sha256": "c6ab438346cc3e01a31217cd1f599e9b89f29dba015669bb78bf8437dea81569",
+      "full_e2e_seconds": 8.298082024283838,
+      "model_e2e_seconds": 1.9596396135002898,
+      "vatex_avg": 0.3411625505786807
+    },
+    {
+      "scope": "matched_first114",
+      "method": "snapkv_kvrepack",
+      "variant": "lookm",
+      "n": 114,
+      "raw_manifest_sha256": "c6ab438346cc3e01a31217cd1f599e9b89f29dba015669bb78bf8437dea81569",
+      "full_e2e_seconds": 8.26679045988018,
+      "model_e2e_seconds": 1.9644420963238205,
+      "vatex_avg": 0.3401843766851201
+    },
+    {
+      "scope": "matched_first114",
+      "method": "snapkv_kvrepack",
+      "variant": "asymkv",
+      "n": 114,
+      "raw_manifest_sha256": "c6ab438346cc3e01a31217cd1f599e9b89f29dba015669bb78bf8437dea81569",
+      "full_e2e_seconds": 9.964289508858009,
+      "model_e2e_seconds": 3.6587648847908305,
+      "vatex_avg": 0.3022390920763772
+    }
+  ],
+  "historical_recovered_runs": {
+    "snapkv_kvrepack": {
+      "original_log_path": "/tmp/snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5.log",
+      "archived_log": "provenance/merge_timing_recovery_20261112/snapkv_repackkv_vatex_tune_20260710_r2_vatex_s0p15_cr0p70_a0p5.log.gz",
+      "original_log_sha256": "500186ed0313a10dae340f6e40e547db4e671c227be878fd85aaec803b1963d1",
+      "n": 200,
+      "generation_seconds_mean": 2.100160058736801,
+      "vision_preprocessing_seconds_mean": 5.134271973371506,
+      "recorded_stage_sum_seconds_mean": 7.234432032108307,
+      "continuous_full_e2e_seconds": null,
+      "cuda_synchronize_explicit": false,
+      "nominal_budget_ratio": 0.1,
+      "budget_policy": "history10percent_plus_local_window_not_strict_total10percent",
+      "matching_new_protocol": false,
+      "metrics": {
+        "Bleu_4": 0.21929443891845268,
+        "CIDEr": 0.4630334566337397,
+        "METEOR": 0.21438874683941053,
+        "ROUGE_L": 0.4259716611235004
+      },
+      "VATEX_Avg": 0.33067207587877584,
+      "historical_response_loop_e2e": {
+        "elapsed_display": "24:31",
+        "elapsed_seconds_display_resolution": 1,
+        "response_loop_seconds_display": 1471,
+        "n": 200,
+        "approximate_seconds_per_sample": 7.355,
+        "printed_seconds_per_sample": 7.36,
+        "source": "final Model Responding progress line; total response loop divided by n",
+        "synchronized_per_sample_measurement": false
+      }
+    },
+    "hybridkv_kvrepack": {
+      "original_log_path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.log",
+      "archived_log": "provenance/merge_timing_recovery_20261112/run_vatex_hybridkv_pair_qwen7b_20260705.log.gz",
+      "original_log_sha256": "31c4c1ed5e34c5f630a0574384257249282a38b6df7d9b51164ef890fe5b1e27",
+      "n": 200,
+      "generation_seconds_mean": 2.44386039018631,
+      "vision_preprocessing_seconds_mean": 5.396028072834015,
+      "recorded_stage_sum_seconds_mean": 7.8398884630203245,
+      "continuous_full_e2e_seconds": null,
+      "cuda_synchronize_explicit": false,
+      "nominal_budget_ratio": 0.1,
+      "budget_policy": "history10percent_plus_local_window_not_strict_total10percent",
+      "matching_new_protocol": false,
+      "metrics": {
+        "Bleu_4": 0.22858326025712025,
+        "CIDEr": 0.48891433670588336,
+        "METEOR": 0.22443910293988592,
+        "ROUGE_L": 0.4338122442662807
+      },
+      "VATEX_Avg": 0.34393723604229254,
+      "quality_source": "provenance/video_parameter_audit/nextqa_vatex.json: all_candidates matching 20260705_143949_results.json",
+      "historical_response_loop_e2e": {
+        "elapsed_display": "26:37",
+        "elapsed_seconds_display_resolution": 1,
+        "response_loop_seconds_display": 1597,
+        "n": 200,
+        "approximate_seconds_per_sample": 7.985,
+        "printed_seconds_per_sample": 7.99,
+        "source": "final Model Responding progress line; total response loop divided by n",
+        "synchronized_per_sample_measurement": false
+      }
+    },
+    "hybridkv": {
+      "original_log_path": "/tmp/run_vatex_hybridkv_pair_qwen7b_20260705.log",
+      "archived_log": "provenance/merge_timing_recovery_20261112/run_vatex_hybridkv_pair_qwen7b_20260705.log.gz",
+      "original_log_sha256": "31c4c1ed5e34c5f630a0574384257249282a38b6df7d9b51164ef890fe5b1e27",
+      "section": "[1/2] OpenSource HybridKV 7B VATEX",
+      "n": 200,
+      "VATEX_Avg": 0.3426,
+      "quality_precision": "four-decimal metrics printed in same log, matching manuscript",
+      "historical_response_loop_e2e": {
+        "elapsed_display": "26:28",
+        "elapsed_seconds_display_resolution": 1,
+        "response_loop_seconds_display": 1588,
+        "n": 200,
+        "approximate_seconds_per_sample": 7.94,
+        "printed_seconds_per_sample": 7.94,
+        "source": "final Model Responding progress line; total response loop divided by n",
+        "synchronized_per_sample_measurement": false
+      },
+      "generation_seconds_mean": null,
+      "continuous_full_e2e_seconds": null,
+      "vision_preprocessing_seconds_mean": 5.477131963968277,
+      "matching_new_protocol": false
+    }
   },
-  "standalone_matching_e2e": {
-    "asymkv": null,
-    "lookm": null
+  "manuscript_reference_scores": [
+    {
+      "method": "HybridKV",
+      "VATEX_Avg": 0.3426,
+      "matching_full_e2e_seconds": null
+    },
+    {
+      "method": "HybridKV + \\method",
+      "VATEX_Avg": 0.3447,
+      "matching_full_e2e_seconds": null
+    },
+    {
+      "method": "AsymKV (standalone)",
+      "VATEX_Avg": 0.3013,
+      "matching_full_e2e_seconds": null
+    },
+    {
+      "method": "LOOK-M (standalone)",
+      "VATEX_Avg": 0.32387492978444304,
+      "matching_full_e2e_seconds": null
+    }
+  ],
+  "historical_adapter": {
+    "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+    "sha256": "25089c5d0188c0d20a05cdca8ff6a94e2afc46ee3a384a4bcdacb3197deb0703",
+    "excerpt": "provenance/merge_timing_recovery_20261112/historical_adapter_timing_excerpt.txt",
+    "limitation": "Current surviving adapter shows timer boundaries; no claim that this is a source-frozen July snapshot."
   },
-  "standalone_lookm_legacy_generation_only_seconds": 2.2864941669255496,
+  "withdrawn": {
+    "reason": "VATEX latency was incorrectly normalized by a different dataset/configuration FullKV figure; all such percentages removed from active tables.",
+    "old_figure_used_in_current_tables": false
+  },
+  "missing_matching_timings": [
+    "native SnapKV full/model E2E",
+    "FullKV full/model E2E",
+    "manuscript HybridKV+KVRepack score .3447 run full/model E2E",
+    "standalone AsymKV complete E2E",
+    "standalone LOOK-M complete E2E",
+    "native HybridKV exact synchronized per-sample E2E/model Generation; approximate historical loop E2E recovered"
+  ],
   "notes": [
-    "Restored original Method / VATEX Avg. / Delta E2E (%) layout; removed extra absolute-latency columns.",
-    "All available percentages use 100*(t/35.551-1), using the existing figure reference as requested.",
-    "The two new style rows use VATEX200 timings, whereas the figure reference uses Video-ChatGPT20; daggers explicitly mark these as cross-setting numerical reference ratios.",
-    "Existing HybridKV/-33.2% and KVRepack/-33.0% figure values are unchanged.",
-    "Standalone complete E2E remains unavailable; generation-only LOOK-M timing is not substituted."
+    "The recovered SnapKV+KVRepack July run has 200 Generation times averaging 2.100160s, distinct from November RoPE diagnostic times averaging 2.200258s.",
+    "Historical Generation is model-level end-to-end wall time, not continuous video-to-text end-to-end time.",
+    "Historical preprocessing plus Generation stage sums omit intervals such as H2D and text decoding; never used as complete E2E.",
+    "Historical HybridKV+KVRepack timed run quality .343937 is not the manuscript .3447 row.",
+    "A lack of complete E2E does not mean historical model end-to-end timing is absent.",
+    "Full E2E changes include preprocessing variation and generated output lengths; no claim a merge method cannot ever have a shorter measured E2E.",
+    "All seven current latency means verified against raw per-sample records; metrics are averaged within their own 200/114-sample reference corpus.",
+    "Historical original HybridKV loop elapsed 26:28/200 gives approximate E2E7.94s; improved HybridKV loop26:37/200 gives7.985s (printed7.99); SnapKV improved24:31/200 gives7.355s (printed7.36).",
+    "These are response-loop timings excluding model load and scoring, not whole-worker duration divided by sample count. They include loop work and lack exact synchronized per-sample timestamps.",
+    "Old baseline inventory statements describing only a surviving metric summary are superseded by this recovery of /tmp logs; frozen historical experiment files were not edited."
   ],
-  "latency_table_policy": "Three original columns only; all available percentages numerically normalized to the figure FullKV at user request",
-  "latency_reference_seconds": 35.551,
-  "relative_e2e_percent": {
-    "hybridkv": -33.174875530927395,
-    "hybridkv_kvrepack": -32.958285280301546,
-    "hybridkv_asym_style": -71.82110830404189,
-    "hybridkv_lookm_style": -77.00878926922337
+  "historical_response_loop_e2e": {
+    "snapkv_kvrepack": {
+      "elapsed_display": "24:31",
+      "elapsed_seconds_display_resolution": 1,
+      "response_loop_seconds_display": 1471,
+      "n": 200,
+      "approximate_seconds_per_sample": 7.355,
+      "printed_seconds_per_sample": 7.36,
+      "source": "final Model Responding progress line; total response loop divided by n",
+      "synchronized_per_sample_measurement": false
+    },
+    "hybridkv_kvrepack": {
+      "elapsed_display": "26:37",
+      "elapsed_seconds_display_resolution": 1,
+      "response_loop_seconds_display": 1597,
+      "n": 200,
+      "approximate_seconds_per_sample": 7.985,
+      "printed_seconds_per_sample": 7.99,
+      "source": "final Model Responding progress line; total response loop divided by n",
+      "synchronized_per_sample_measurement": false
+    },
+    "hybridkv": {
+      "elapsed_display": "26:28",
+      "elapsed_seconds_display_resolution": 1,
+      "response_loop_seconds_display": 1588,
+      "n": 200,
+      "approximate_seconds_per_sample": 7.94,
+      "printed_seconds_per_sample": 7.94,
+      "source": "final Model Responding progress line; total response loop divided by n",
+      "synchronized_per_sample_measurement": false
+    }
   },
-  "cross_setting_reference_rows": [
-    "hybridkv_asym_style",
-    "hybridkv_lookm_style"
-  ],
-  "matched_setting_speedup_claim_for_new_style_rows": false
+  "published_sources": {
+    "current_first200_csv": "docs/merge_aggregation_vatex_200.csv",
+    "matched_first114_csv": "docs/merge_aggregation_snapkv_114_matched.csv",
+    "original_current_raw_archive": "provenance/merge_aggregation_vatex_200_20261112/raw_evidence.tar.gz",
+    "recovered_history": "provenance/merge_timing_recovery_20261112/recovery_summary.json",
+    "recovery_verification": "provenance/merge_timing_recovery_20261112/verification.json"
+  }
 }

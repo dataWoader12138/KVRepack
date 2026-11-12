@@ -1,6 +1,5 @@
 % Requires booktabs; \method is defined in the manuscript.
-% Delta = 100 * (method E2E / 35.551 - 1), using the figure's Full KV.
-% Standalone AsymKV=0.3013; old 0.2936 was HybridKV + K/V Grouping.
+% Absolute seconds/sample; no normalization to an external figure.
 \begin{table}[t]
   \centering
   \begingroup
@@ -8,42 +7,32 @@
   \setlength{\tabcolsep}{4pt}
   \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcc@{}}
     \toprule
-    \textbf{Method} & \textbf{VATEX Avg.}
-      & $\Delta t_{\mathrm{E2E}}$ (\%) \\
+    \textbf{Method} & \textbf{VATEX Avg.} & $t_{\mathrm{E2E}}$ (s) \\
     \midrule
-    HybridKV
-      & 0.3426 & $-33.2$ \\
-    \quad + AsymKV-style merging
-      & 0.2961 & $-71.8^{\dagger}$ \\
-    \quad + LOOK-M-style merging
-      & 0.3342 & $-77.0^{\dagger}$ \\
-    \quad + \method
-      & \textbf{0.3447} & $-33.0$ \\
+    \multicolumn{3}{@{}l}{\textit{VATEX: first 200 samples}} \\
+    HybridKV + AsymKV-style merging & 0.2961 & 10.018 \\
+    HybridKV + LOOK-M-style merging & 0.3342 & 8.174 \\
+    SnapKV + AsymKV-style merging & 0.2844 & 9.641 \\
+    SnapKV + LOOK-M-style merging & 0.3285 & 7.910 \\
     \midrule
-    AsymKV (standalone)
-      & 0.3013 & -- \\
-    LOOK-M (standalone)
-      & 0.3239 & -- \\
+    \multicolumn{3}{@{}l}{\textit{Historical first 200: approximate E2E}} \\
+    HybridKV & 0.3426 & $\approx 7.94$ \\
+    HybridKV + \method & 0.3439 & $\approx 7.99$ \\
+    SnapKV + \method & 0.3307 & $\approx 7.36$ \\
+    \midrule
+    \multicolumn{3}{@{}l}{\textit{SnapKV: matched first 114 samples}} \\
+    SnapKV + AsymKV-style merging & 0.3022 & 9.964 \\
+    SnapKV + LOOK-M-style merging & 0.3402 & 8.267 \\
+    SnapKV + \method & 0.3412 & 8.298 \\
+    \midrule
+    \multicolumn{3}{@{}l}{\textit{Other scores; matching E2E unavailable}} \\
+    HybridKV + \method & 0.3447 & -- \\
+    AsymKV (standalone) & 0.3013 & -- \\
+    LOOK-M (standalone) & 0.3239 & -- \\
     \bottomrule
   \end{tabular*}
   \endgroup
 
-  \caption{KV merging on Qwen2.5-VL-7B at the 10\% active-cache setting.
-    Indented rows apply the indicated merging rule to HybridKV.
-    $\Delta t_{\mathrm{E2E}}=100(t/t_{\mathrm{FullKV}}-1)$ uses the
-    figure's Full-KV reference of 35.551\,s/sample (35.55 when rounded).
-    The HybridKV and HybridKV + \method{} timing changes follow the existing
-    figure on 20 Video-ChatGPT samples.
-    $\dagger$ denotes numerical normalization of the new VATEX-first200
-    end-to-end timings to that reference; these cross-setting ratios
-    are not matched-setting speedups.
-    The two style-merging accuracy rows are newly measured; other
-    accuracy values follow the existing manuscript.
-    Dashes indicate unavailable matching end-to-end measurements.}
-  % Daggered raw times: AsymKV-style 10.017877786830068 s/sample;
-  % LOOK-M-style 8.173605326898397 s/sample. These include video
-  % processing, H2D, Fisher where required, generation, and text decoding.
-  % Standalone LOOK-M's legacy 2.286494 s is generation-only and is not
-  % used as a complete E2E measurement.
+  \caption{KV merging on Qwen2.5-VL-7B, VATEX, 64 frames. Current per-sample E2E includes video processing, H2D, Fisher where required, prefill, decode, and text output; model loading, warm-up, audits, writes, and scoring are excluded. Current 200-sample and matched 114-sample results use a strict 10\% active-cache budget including recent positions, and their quality scores use separate reference corpora. Historical approximate E2E is recovered from response-loop elapsed time divided by 200, including loop overhead. Historical runs use a separate budget/generation/timing protocol and are reference measurements, not matched-protocol speed comparisons. The historical timed HybridKV + \method{} run scored 0.3439; matching timing for the manuscript score 0.3447 is unavailable. Dashes denote missing matching E2E.}
   \label{tab:kvrepack_asymkv}
 \end{table}

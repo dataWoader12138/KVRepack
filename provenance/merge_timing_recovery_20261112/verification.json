@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "gpu_execution": false,
+  "checks": [
+    "merge_compensation_table_with_timing: identical TXT/TEX, 3 columns, no withdrawn references",
+    "merge_compensation_table_model_timing: identical TXT/TEX, 3 columns, no withdrawn references",
+    "Historical log archives exactly match originals",
+    "400 extracted stages match recovered means",
+    "7 current rows already verified against raw bundles and corpus metric means"
+  ],
+  "latex_compilation": "not run; no LaTeX compiler available; structural checks only",
+  "scope": "documentation/data reconstruction; no model or algorithm change"
+}

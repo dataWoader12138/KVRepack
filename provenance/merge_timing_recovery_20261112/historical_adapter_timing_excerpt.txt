@@ -1,0 +1,106 @@
+325:                         {
+326:                             "role": "user",
+327:                             "content": processed_visuals + [{"type": "text", "text": context}],
+328:                         }
+329:                     )
+330:                 else:  # currently support find <image x> in the context
+331:                     image_placeholders = re.findall(r"<image \d+>", context)
+332:                     content_parts = []
+333:                     text_parts = re.split(r"<image \d+>", context)
+334:                     if text_parts[0]:
+335:                         content_parts.append({"type": "text", "text": text_parts[0]})
+336:
+337:                     for i, placeholder in enumerate(image_placeholders):
+338:                         img_idx = int(re.search(r"<image (\d+)>", placeholder).group(1)) - 1
+339:                         image_idx = min(img_idx, len(processed_visuals) - 1) if processed_visuals else 0
+340:                         if processed_visuals and image_idx < len(processed_visuals):
+341:                             content_parts.append(processed_visuals[image_idx])
+342:                         if i + 1 < len(text_parts) and text_parts[i + 1]:
+343:                             content_parts.append({"type": "text", "text": text_parts[i + 1]})
+344:
+345:                     message.append(
+346:                         {
+347:                             "role": "user",
+348:                             "content": content_parts,
+349:                         }
+350:                     )
+351:
+352:
+353:                 batched_messages.append(message)
+354:             start_time = time.time()
+355:             texts = [self.processor.apply_chat_template(msg, tokenize=False, add_generation_prompt=True) for msg in batched_messages]
+356:             print(texts)
+357:             image_inputs, video_inputs = process_vision_info(batched_messages)
+358:             if video_inputs is not None:
+359:                 total_frames = video_inputs[0].shape[0]
+360:                 print(total_frames)
+361:                 indices = np.linspace(0, total_frames - 1, self.max_num_frames, dtype=int)
+362:                 # Append the last frame index if not already included
+363:                 if total_frames - 1 not in indices:
+364:                     indices = np.append(indices, total_frames - 1)
+365:                 video_inputs[0] = video_inputs[0][indices]
+366:             inputs = self.processor(text=texts, images=image_inputs, videos=video_inputs, padding=True, return_tensors="pt")
+367:             end_time = time.time()
+368:             print(f"Vision Preprocessing: {end_time - start_time} seconds")
+369:             if self.device_map == "auto":
+370:                 inputs = inputs.to("cuda")
+371:             else:
+372:                 inputs = inputs.to(self.device)
+373:
+374:             # Set default generation kwargs
+375:             default_gen_kwargs = {
+376:                 "max_new_tokens": 128,
+377:                 "temperature": 0.0,  # Set to 0 for greedy default
+378:                 "top_p": None,
+379:                 "num_beams": 1,
+380:             }
+381:             # Update with provided kwargs
+382:             current_gen_kwargs = {**default_gen_kwargs, **gen_kwargs}
+383:             # print(current_gen_kwargs)
+384:             pad_token_id = self.tokenizer.pad_token_id
+385:
+386:             if current_gen_kwargs["temperature"] > 0:
+387:                 current_gen_kwargs["do_sample"] = True
+388:             else:
+389:                 current_gen_kwargs["do_sample"] = False
+390:                 current_gen_kwargs["temperature"] = None
+391:                 current_gen_kwargs["top_p"] = None
+392:
+393:             token_len = inputs["input_ids"].shape[1]
+394:             print(f"Token Length: {token_len}")
+395:             start_time = time.time()
+396:
+397:             cont = self.model.generate(
+398:                 **inputs,
+399:                 eos_token_id=self.tokenizer.eos_token_id,
+400:                 pad_token_id=pad_token_id,
+401:                 do_sample=current_gen_kwargs["do_sample"],
+402:                 temperature=current_gen_kwargs["temperature"],
+403:                 top_p=current_gen_kwargs["top_p"],
+404:                 num_beams=current_gen_kwargs["num_beams"],
+405:                 max_new_tokens=current_gen_kwargs["max_new_tokens"],
+406:                 use_cache=self.use_cache,
+407:             )
+408:             # print(cont)
+409:             end_time = time.time()
+410:             print(f"Generation: {end_time - start_time} seconds")
+411:             generated_ids_trimmed = [out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, cont)]
+412:             answers = self.processor.batch_decode(generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False)
+413:             print(answers)
+414:             for i, ans in enumerate(answers):
+415:                 for term in until:
+416:                     if len(term) > 0:
+417:                         ans = ans.split(term)[0]
+418:                 answers[i] = ans
+419:
+420:             for ans, context in zip(answers, contexts):
+421:                 res.append(ans)
+422:                 self.cache_hook.add_partial("generate_until", (context, gen_kwargs), ans)
+423:                 pbar.update(1)
+424:             # reorder this group of results back to original unsorted form
+425:         res = re_ords.get_original(res)
+426:
+427:         pbar.close()
+428:         return res
+429:
+430:     def generate_until_multi_round(self, requests) -> List[str]:
