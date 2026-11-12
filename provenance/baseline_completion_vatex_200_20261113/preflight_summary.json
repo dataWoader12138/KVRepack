@@ -1,0 +1,21 @@
+{
+  "status": "preflight_passed_formal_not_started",
+  "created_utc": "2026-11-12T16:39:00.101932+00:00",
+  "new_formal_generations": 800,
+  "reused_style_generations": 800,
+  "final_comparison_generations": 1600,
+  "warmup_generations": 8,
+  "preflight_generations": 8,
+  "model": "Qwen2.5-VL-7B-Instruct",
+  "dataset": "VATEX original first200",
+  "strict_total_active_budget": 0.1,
+  "existing_targeted_cpu_tests": 18,
+  "core_implementation_modified": false,
+  "old_stopped_runs_resumed": false,
+  "source_files_sha256": {
+    "src/kvrepack/ablations/run_baseline_completion.py": "36ad95df31a79760afc2e218b4193c8bb84441261c2cd257f57bfe0f9304dca2",
+    "src/kvrepack/ablations/strict_pruning.py": "5643c50fe59b3f19734842300a0c6aef9820500e3a175828a353f8c3db0c7c6b",
+    "src/kvrepack/ablations/baseline_completion_report.py": "d445c8bb03a764c9c133304f4ebf730f40e441230c048a42d883c581e404295a",
+    "scripts/run_baseline_completion.py": "cf0802f3f2f10bb5422e5674396d4ca4367c48f695502b1ba3594bf0be83dc6c"
+  }
+}

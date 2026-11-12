@@ -1,0 +1,10 @@
+{
+  "method": "hybridkv",
+  "budget_ratio": 0.1,
+  "scope": "Budget-only native pruning; no aggregation, candidate or scoring replacement",
+  "allocate_budget_by_ratio": {
+    "transformation": "Original native allocation followed by shared global active-prefill shrink",
+    "original_source_sha256": "7558c978f75f371f388d39df2cae5cbe611f82c5a7f21520b8af77363ba0fd52",
+    "shrink_source_sha256": "311a60c61d0369d92e832060dc879809d9f9fc7b192abd4ad12b18b2989555cd"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "new_kvrepack_matches_original_strict_parent": true,
+  "generated_ids_equal": true,
+  "input_fingerprints_equal": true,
+  "selected_head_masks_equal": true,
+  "budget_equal": true,
+  "native_repack_prefill_total": 108976
+}

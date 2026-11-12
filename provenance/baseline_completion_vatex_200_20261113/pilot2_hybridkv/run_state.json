@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "backbone": "hybridkv",
+  "method": "hybridkv",
+  "task": "vatex_test",
+  "target_docs": 1,
+  "target_generations": 2,
+  "completed_docs": 1,
+  "completed_generations": 2,
+  "contract_sha256": "321ed4190e65f4edb7180f4689de8195b51233459971a4a33630d99eafc6a617",
+  "pid": 4199,
+  "started_utc": "2026-11-12T16:29:48.770417+00:00",
+  "model_load_seconds": 3.183039929717779,
+  "warmup_per_arm": 1,
+  "warmup_seconds": 20.1233471930027,
+  "current_doc_id": 0,
+  "current_variant": "kvrepack",
+  "updated_utc": "2026-11-12T16:30:32.496790+00:00",
+  "elapsed_formal_seconds": 19.331865392625332,
+  "estimated_remaining_seconds": 0,
+  "finished_utc": "2026-11-12T16:30:32.497325+00:00",
+  "process_seconds": 43.726423777639866
+}

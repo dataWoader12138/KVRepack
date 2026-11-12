@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "backbone": "snapkv",
+  "method": "snapkv",
+  "task": "vatex_test",
+  "target_docs": 1,
+  "target_generations": 2,
+  "completed_docs": 1,
+  "completed_generations": 2,
+  "contract_sha256": "96a73e487accebefb2a6b09d1b3b3112830547dc771e7f7c3b73b1b397a3cbfd",
+  "pid": 3408,
+  "started_utc": "2026-11-12T16:25:58.039941+00:00",
+  "model_load_seconds": 6.183491475880146,
+  "warmup_per_arm": 1,
+  "warmup_seconds": 20.221210166811943,
+  "current_doc_id": 0,
+  "current_variant": "kvrepack",
+  "updated_utc": "2026-11-12T16:26:44.293969+00:00",
+  "elapsed_formal_seconds": 18.809390671551228,
+  "estimated_remaining_seconds": 0,
+  "finished_utc": "2026-11-12T16:26:44.294796+00:00",
+  "process_seconds": 46.2542558722198
+}

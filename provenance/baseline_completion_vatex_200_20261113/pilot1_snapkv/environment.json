@@ -1,0 +1,18 @@
+{
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "torch": "2.6.0+cu124",
+  "transformers": "4.52.3",
+  "generation_kwargs": {
+    "eos_token_id": 151645,
+    "pad_token_id": 151643,
+    "do_sample": false,
+    "temperature": null,
+    "top_p": null,
+    "num_beams": 1,
+    "max_new_tokens": 64,
+    "repetition_penalty": 1.05,
+    "use_cache": true,
+    "return_dict_in_generate": true,
+    "output_scores": false
+  }
+}
