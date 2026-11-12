@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "method": "snapkv_kvrepack",
+  "target_docs": 1,
+  "completed_docs": 1,
+  "target_generations": 2,
+  "completed_generations": 2,
+  "reused_docs": 0,
+  "task": "nextqa_oe_test",
+  "started_utc": "2026-11-12T17:21:19.096519+00:00",
+  "pid": 31012,
+  "contract_sha256": "335eea3042a5497cffc111d7fd2d66439b6a2a5a11e75bd6738aa6561e256b2c",
+  "model_load_seconds": 2.983140829950571,
+  "warmup_per_arm": 1,
+  "warmup_seconds": 8.405036464333534,
+  "current_doc_id": 0,
+  "current_variant": "asymkv",
+  "updated_utc": "2026-11-12T17:21:34.540592+00:00",
+  "elapsed_formal_seconds": 7.537391372025013,
+  "estimated_remaining_seconds": 0,
+  "finished_utc": "2026-11-12T17:21:38.940492+00:00",
+  "process_seconds": 19.843233540654182
+}

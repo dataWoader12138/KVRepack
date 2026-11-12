@@ -1,5 +1,7 @@
 # KVRepack
 
+当前用户指定 **NExTQA前200条** 的八条件合并规则/E2E对照，见[实验协议与启动命令](docs/MERGE_AGGREGATION_NEXTQA_200_20261113.md)。此前误启VATEX补跑已停止，当前进度以新目录状态为准。
+
 已完成：[VATEX前200条固定分组合并：质量、端到端时延与图表](docs/MERGE_AGGREGATION_VATEX_200_RESULTS.md)。Qwen2.5-VL-7B、A800-80GB，HybridKV/SnapKV各测LookM与AsymKV式聚合，共800个结果（228保留、572新增）；原KVRepack基线按用户要求停止于Snap114条，另列同输入配对对照。独立复算7组原生指标与时延、914个唯一生成解码均通过，数值最大误差0；GPU已释放。
 
 已完成：[LookM严格10%总prefill预算的重跑结果与CSV](docs/LOOKM_STRICT_RESULTS_20261109.md)。Qwen2.5-VL-7B、64帧，NExTQA/VATEX各原始前200条，共400次全新生成；WUPS31.111145，VATEX BLEU4/METEOR/ROUGE-L/CIDEr为0.208295/0.213838/0.416720/0.456646。400条预算与独立评分复核均通过，最大prefill保留比例10%，全部EOS无截断。旧10%＋32结果仍是legacy；Hybrid与RoPE继续保持停止。

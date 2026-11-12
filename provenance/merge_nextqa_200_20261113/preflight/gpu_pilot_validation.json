@@ -1,0 +1,117 @@
+{
+  "status": "passed_generation_only",
+  "pilot_not_formal": true,
+  "observed_utc": "2026-11-12T17:26:13.754337+00:00",
+  "checks": [
+    "actual_input_tensor_SHA_and_metadata",
+    "same_candidates_heads_groups_anchors_across_merge_arms",
+    "native_no_merge",
+    "28_layer_physical_KV_counts_with_decode_removed",
+    "nextqa_max128_strict_total10"
+  ],
+  "measurements": [
+    {
+      "backbone": "snapkv",
+      "variant": "native",
+      "doc_id": 0,
+      "generated_tokens": 2,
+      "input_tokens": 9607,
+      "prefill_tokens_total": 107520,
+      "capacity": 107520,
+      "full_e2e_seconds": 2.8783254995942116,
+      "fisher_seconds": 0.0
+    },
+    {
+      "backbone": "snapkv",
+      "variant": "kvrepack",
+      "doc_id": 0,
+      "generated_tokens": 2,
+      "input_tokens": 9607,
+      "prefill_tokens_total": 107520,
+      "capacity": 107520,
+      "full_e2e_seconds": 2.8202445656061172,
+      "fisher_seconds": 0.0
+    },
+    {
+      "backbone": "snapkv",
+      "variant": "lookm",
+      "doc_id": 0,
+      "generated_tokens": 2,
+      "input_tokens": 9607,
+      "prefill_tokens_total": 107520,
+      "capacity": 107520,
+      "full_e2e_seconds": 2.9752846993505955,
+      "fisher_seconds": 0.0
+    },
+    {
+      "backbone": "snapkv",
+      "variant": "asymkv",
+      "doc_id": 0,
+      "generated_tokens": 2,
+      "input_tokens": 9607,
+      "prefill_tokens_total": 107520,
+      "capacity": 107520,
+      "full_e2e_seconds": 4.216504879295826,
+      "fisher_seconds": 1.2864915430545807
+    },
+    {
+      "backbone": "hybridkv",
+      "variant": "native",
+      "doc_id": 0,
+      "generated_tokens": 2,
+      "input_tokens": 9607,
+      "prefill_tokens_total": 107335,
+      "capacity": 107520,
+      "full_e2e_seconds": 2.9594625532627106,
+      "fisher_seconds": 0.0
+    },
+    {
+      "backbone": "hybridkv",
+      "variant": "kvrepack",
+      "doc_id": 0,
+      "generated_tokens": 2,
+      "input_tokens": 9607,
+      "prefill_tokens_total": 107335,
+      "capacity": 107520,
+      "full_e2e_seconds": 3.084118992090225,
+      "fisher_seconds": 0.0
+    },
+    {
+      "backbone": "hybridkv",
+      "variant": "lookm",
+      "doc_id": 0,
+      "generated_tokens": 2,
+      "input_tokens": 9607,
+      "prefill_tokens_total": 107335,
+      "capacity": 107520,
+      "full_e2e_seconds": 3.118715725839138,
+      "fisher_seconds": 0.0
+    },
+    {
+      "backbone": "hybridkv",
+      "variant": "asymkv",
+      "doc_id": 0,
+      "generated_tokens": 2,
+      "input_tokens": 9607,
+      "prefill_tokens_total": 107335,
+      "capacity": 107520,
+      "full_e2e_seconds": 4.322768904268742,
+      "fisher_seconds": 1.2862284146249294
+    }
+  ],
+  "files_sha256": {
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/baseline/snapkv/run_contract.json": "1d0490dce09e99afecf95bdc7df597c4ff0f6b524138c57ff8fc472380301a7a",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/baseline/snapkv/run_state.json": "3f764f28f33fc755f533b3d967283296fe3ecb947e25825767fec35fc4ecec1a",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/baseline/snapkv/samples/000000.json": "5e89a4cf3bf533ea1ebffd9d1f486c9bad6a45ac994d9ef24ffdf6ffd9d3d962",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/style/snapkv/run_contract.json": "c2264ea243d4dea44707438e3c1a39963e86507c6f5d1ac55505835dd8c5db37",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/style/snapkv/run_state.json": "bcc840b6410c7f7efc7276c613f7ffbc12160790f57a441ee4f4cd345d111819",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/style/snapkv/samples/000000.json": "0c85bee5b3b53c4cc7bfc7ee0b03471e93e051b14420fbfb76ed2cf9a8981f20",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/baseline/hybridkv/run_contract.json": "b07bf68e34b6d90c635c2ab36cd303f415a9d670f16905b2676cdefa92c6c053",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/baseline/hybridkv/run_state.json": "cbc19c0fb461649d19a5b6504fdd1c7ca04ce57ac4500871b613f21c898d101d",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/baseline/hybridkv/samples/000000.json": "5ee34a07ced53bbebd43db43fe656a564b5edc0fabd9565e50dae44b6820bb99",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/style/hybridkv/run_contract.json": "a42d525fc9ebc36fa87725ea2262b8df6b0b92e8f03f4ba12063c9371a327b7b",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/style/hybridkv/run_state.json": "6d00be4beff4b4329a778eb05e186f9ef2706cd858882d7e56f8068add6d1d60",
+    "outputs/ablations/merge_nextqa_20261113_preflight/pilot1/style/hybridkv/samples/000000.json": "f107f197e3ff4636c7a3a5a0e126635ec7e36dcb81ff063d13798a77e923a5e8"
+  },
+  "initial_scoring_issue": "Report module was not yet written; CPU controller resume will score completed raw without GPU regeneration."
+}

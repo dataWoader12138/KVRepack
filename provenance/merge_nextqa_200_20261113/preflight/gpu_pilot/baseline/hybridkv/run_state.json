@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "backbone": "hybridkv",
+  "method": "hybridkv",
+  "task": "nextqa_oe_test",
+  "target_docs": 1,
+  "target_generations": 2,
+  "completed_docs": 1,
+  "completed_generations": 2,
+  "contract_sha256": "f396d08d1adc47379a1f8cf857e116690bfea6273c98ccecb9c3326f4eccc79e",
+  "pid": 32261,
+  "started_utc": "2026-11-12T17:22:30.487609+00:00",
+  "model_load_seconds": 2.699764810502529,
+  "warmup_per_arm": 1,
+  "warmup_seconds": 7.217450153082609,
+  "current_doc_id": 0,
+  "current_variant": "kvrepack",
+  "updated_utc": "2026-11-12T17:22:47.742955+00:00",
+  "elapsed_formal_seconds": 6.379171211272478,
+  "estimated_remaining_seconds": 0,
+  "finished_utc": "2026-11-12T17:22:47.743742+00:00",
+  "process_seconds": 17.25551340356469
+}

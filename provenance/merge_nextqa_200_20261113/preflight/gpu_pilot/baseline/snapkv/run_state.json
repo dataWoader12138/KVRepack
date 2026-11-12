@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "backbone": "snapkv",
+  "method": "snapkv",
+  "task": "nextqa_oe_test",
+  "target_docs": 1,
+  "target_generations": 2,
+  "completed_docs": 1,
+  "completed_generations": 2,
+  "contract_sha256": "5c4a2d41ab289faa71a735965da4e64c9ec6722430534e3685ad5662cb10b601",
+  "pid": 31843,
+  "started_utc": "2026-11-12T17:22:08.951595+00:00",
+  "model_load_seconds": 2.681589137762785,
+  "warmup_per_arm": 1,
+  "warmup_seconds": 7.053418654948473,
+  "current_doc_id": 0,
+  "current_variant": "kvrepack",
+  "updated_utc": "2026-11-12T17:22:25.575365+00:00",
+  "elapsed_formal_seconds": 6.024549748748541,
+  "estimated_remaining_seconds": 0,
+  "finished_utc": "2026-11-12T17:22:25.575945+00:00",
+  "process_seconds": 16.62384419888258
+}

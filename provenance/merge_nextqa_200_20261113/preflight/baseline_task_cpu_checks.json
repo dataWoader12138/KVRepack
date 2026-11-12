@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "utc": "2026-11-12T17:23:25.486630+00:00",
+  "scope": "CPU only, no model or CUDA inference",
+  "timing_one_complete_ast_equal_after_vatex_task_cap_substitution": true,
+  "timing_one_normalized_ast_sha256": "9d8ec4b146b080793677846ad6b6e806076695ad420d108faa986e752da28b01",
+  "historical_worker_commit": "f0cae2734f14c7aa4d438eddf2808556a0549669",
+  "historical_worker_sha256": "36ad95df31a79760afc2e218b4193c8bb84441261c2cd257f57bfe0f9304dca2",
+  "tests": [
+    {
+      "file": "tests/test_video_e2e_inputs.py",
+      "passed": 8,
+      "failed": 0,
+      "seconds": 3.874
+    },
+    {
+      "file": "tests/test_strict_pruning.py",
+      "passed": 12,
+      "failed": 0,
+      "seconds": 1.199
+    },
+    {
+      "file": "tests/test_baseline_completion_report.py",
+      "passed": 6,
+      "failed": 0,
+      "seconds": 1.994
+    }
+  ],
+  "total_passed": 26,
+  "source_sha256": {
+    "src/kvrepack/ablations/run_baseline_completion.py": "0084869cb561b694c42ce309c19fa580add4fceb3536ad4257cccd46303f6d06",
+    "src/kvrepack/ablations/video_e2e_inputs.py": "cba3a8111c867d958d5fd146a0e4c47af667196e56975ca32f4e7fa85e518a1d",
+    "tests/test_video_e2e_inputs.py": "b74fbd4d5886baf6008198710b4022397f500ed95ce191dafd4192ed9bab8ae0"
+  }
+}

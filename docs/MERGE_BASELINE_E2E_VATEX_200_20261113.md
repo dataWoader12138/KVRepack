@@ -1,5 +1,7 @@
 # VATEX200 合并规则与原版／KVRepack 时延对照
 
+> **已停止：用户纠正目标为NExTQA。** 以下为此前误用VATEX的历史安排；保留原始记录，不恢复此任务，不计入当前NExTQA比较。新协议见 [NExTQA前200条](MERGE_AGGREGATION_NEXTQA_200_20261113.md)。
+
 用户授权核查既有结果，补足 SnapKV、HybridKV 的原版和 KVRepack 版完整端到端计时。数据集沿用 VATEX 原始前200条，模型为 Qwen2.5-VL-7B-Instruct。正式比较最终为8组、1,600条输出；本轮新增4组、800条。预热及联调不计入正式分数或时延。
 
 | 骨干 | 条件 | 样本数 | 本轮安排 |
@@ -49,4 +51,4 @@ python scripts/run_baseline_completion.py \
 
 GPU联调已完成每骨干各1条原生／改进配对，不当成正式200条结果。Snap实际prefill位置均108976；Hybrid均108659（总cap108976）；输入指纹一致。Snap KVRepack与原严格前缀的token、选头mask及预算完全一致。原生Snap另有真实CPU逐元素oracle，保持原评分／top-k结果和recent token；不通过只刷新哈希掩盖算法变更。
 
-正式任务已启动，控制器PID/PG为5481，源版本`1d1edd1`；本机目录`outputs/ablations/baseline_completion_vatex_200_20261113/`，启动证据见`provenance/baseline_completion_vatex_200_20261113/formal_launch.json`。这是运行中状态，不是已完成结果。
+此前误启的正式任务使用控制器PID/PG5481、源版本`1d1edd1`，现因用户纠正数据集为NExTQA已停止。Snap保留116个完整原生/KVRepack配对（232次生成），Hybrid尚未开始；两级状态均禁止恢复，不将它们当作完成的VATEX或NExTQA200结果。原始目录`outputs/ablations/baseline_completion_vatex_200_20261113/`；启动证据保留，停止与样本SHA见`provenance/merge_nextqa_200_20261113/vatex_stop_and_dataset_correction.json`。

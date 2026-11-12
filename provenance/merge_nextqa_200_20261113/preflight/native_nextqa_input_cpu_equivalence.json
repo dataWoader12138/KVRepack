@@ -1,0 +1,131 @@
+{
+  "status": "passed",
+  "utc": "2026-11-12T17:20:32.865169+00:00",
+  "scope": "CPU real cached NExTQA row0 + real Qwen2.5-VL-7B processor, no model or CUDA execution",
+  "task": "nextqa_oe_test",
+  "doc_id": 0,
+  "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "arrow_sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+  "native_input_metadata": {
+    "task": "nextqa_oe_test",
+    "doc_id": 0,
+    "video_id": "4924794333",
+    "source_video_id": "4924794333",
+    "video_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/nextqa/NExTVideo/4924794333.mp4",
+    "input_tokens": 9607,
+    "frame_indices": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      8,
+      9,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17,
+      19,
+      20,
+      22,
+      23,
+      24,
+      26,
+      27,
+      29,
+      30,
+      31,
+      33,
+      34,
+      35,
+      37,
+      38,
+      40,
+      41,
+      42,
+      44,
+      45,
+      46,
+      48,
+      49,
+      51,
+      52,
+      53,
+      55,
+      56,
+      58,
+      59,
+      60,
+      62,
+      63,
+      64,
+      66,
+      67,
+      69,
+      70,
+      71,
+      73,
+      74,
+      75,
+      77,
+      78,
+      80,
+      81,
+      82,
+      84,
+      85,
+      87
+    ],
+    "decoded_frames": 88,
+    "arrow_sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+    "original_row_sha256": "a394e39d39d9190a3aee7bd8ca6e182890f30faaf518d43b44dc8c200aa7cfb3"
+  },
+  "tensor_fingerprints": {
+    "input_hashes": {
+      "attention_mask": "1f3408477a4392babbd96e8b3dfadeccc001a04551b7a430f80324750ae1d0fd",
+      "input_ids": "cd59627f40c558b3300db000423b313f99664195e3d5535d98b8986321c7ee62",
+      "pixel_values_videos": "463d16a88962d8eec89be93d4309486cb4d88f6129bcb8db01f46d998f8e9591",
+      "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+      "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08"
+    },
+    "input_shapes": {
+      "attention_mask": [
+        1,
+        9607
+      ],
+      "input_ids": [
+        1,
+        9607
+      ],
+      "pixel_values_videos": [
+        38272,
+        1176
+      ],
+      "second_per_grid_ts": [
+        1
+      ],
+      "video_grid_thw": [
+        1,
+        3
+      ]
+    },
+    "input_dtypes": {
+      "attention_mask": "torch.int64",
+      "input_ids": "torch.int64",
+      "pixel_values_videos": "torch.float32",
+      "second_per_grid_ts": "torch.float32",
+      "video_grid_thw": "torch.int64"
+    }
+  },
+  "all_native_tensors_identical_to_existing_prepare_sample": true,
+  "native_cpu_preparation_seconds": 1.6719972677528858,
+  "observation_cpu_preparation_seconds": 1.626043390482664,
+  "source_sha256": {
+    "src/kvrepack/ablations/video_e2e_inputs.py": "cba3a8111c867d958d5fd146a0e4c47af667196e56975ca32f4e7fa85e518a1d",
+    "src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+    "src/kvrepack/ablations/run_baseline_completion.py": "0084869cb561b694c42ce309c19fa580add4fceb3536ad4257cccd46303f6d06"
+  }
+}

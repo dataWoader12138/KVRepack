@@ -1,4 +1,4 @@
-"""Paired native/KVRepack VATEX baselines with the merge experiment's E2E scope.
+"""Paired native/KVRepack video baselines with the merge experiment's E2E scope.
 
 This is a separate worker: completed and stopped historical runs stay frozen.
 Native compression uses its own original implementation, with only the shared
@@ -19,7 +19,8 @@ from types import SimpleNamespace
 from .run_head_selection import (FRAMES, MIN_PIXELS, MAX_PIXELS, MODEL_SEED,
     atomic_json, json_sha, sha256, tensor_fingerprints, timestamp)
 from .run_head_selection_full import output_lock, _fresh_prompt
-from .run_merge_comparison import prepare_input, active_prefill, sources as shared_sources
+from .run_merge_comparison import active_prefill, sources as shared_sources
+from .video_e2e_inputs import prepare_input
 
 VARIANTS = ("native", "kvrepack")
 
@@ -27,7 +28,8 @@ VARIANTS = ("native", "kvrepack")
 def sources():
     result = shared_sources()
     root = Path(__file__).resolve().parents[3]
-    for name in ("ablations/run_baseline_completion.py", "ablations/strict_pruning.py", "baseline_utils.py"):
+    for name in ("ablations/run_baseline_completion.py", "ablations/strict_pruning.py",
+                 "ablations/video_e2e_inputs.py", "baseline_utils.py"):
         relative = "src/kvrepack/"+name
         result[relative] = sha256(root/relative)
     return result
@@ -48,10 +50,10 @@ def apply_plan(plan, hf_home):
 def plans_for(args):
     from ..experiments.runner import build_plan
     from .run_rope_merge import configure
-    native = build_plan(args.backbone, task="vatex_test", pretrained=str(args.pretrained),
+    native = build_plan(args.backbone, task=args.task, pretrained=str(args.pretrained),
         model_type="qwen2_5_vl-7b", frames=FRAMES, limit=args.limit, budget_ratio=.1,
         output=args.output, overrides=())
-    improved = configure(SimpleNamespace(method=args.backbone+"_kvrepack", task="vatex_test",
+    improved = configure(SimpleNamespace(method=args.backbone+"_kvrepack", task=args.task,
         pretrained=args.pretrained, hf_home=args.hf_home, limit=args.limit, output=args.output))
     return {"native": native, "kvrepack": improved}
 
@@ -83,6 +85,7 @@ def validate_bundle(bundle, identity, backbone, doc_id):
         expected_method = backbone if variant == "native" else backbone+"_kvrepack"
         if (row.get("status") != "completed" or row.get("method") != expected_method
                 or row.get("doc_id") != doc_id or row.get("variant") != variant
+                or row.get("task") != reference.get("task")
                 or row.get("text") != row.get("prediction") or not row.get("generated_ids")
                 or row.get("generated_tokens") != len(row["generated_ids"])
                 or row.get("warmup") is not False
@@ -99,6 +102,7 @@ def validate_bundle(bundle, identity, backbone, doc_id):
 
 
 def run(args):
+    max_new_tokens = 128 if args.task == "nextqa_oe_test" else 64
     plans = plans_for(args)
     import numpy as np
     import torch
@@ -112,14 +116,14 @@ def run(args):
     torch.backends.cudnn.allow_tf32 = False
     random.seed(MODEL_SEED); np.random.seed(MODEL_SEED); torch.manual_seed(MODEL_SEED)
     apply_plan(plans["kvrepack"], args.hf_home)
-    data = load_task(args.hf_home, "vatex_test")
+    data = load_task(args.hf_home, args.task)
     frozen = sources()
     contract = dict(schema_version=1, experiment="strict_baseline_completion", backbone=args.backbone,
-        method=args.backbone, variants=list(VARIANTS), task="vatex_test", target_docs=args.limit,
+        method=args.backbone, variants=list(VARIANTS), task=args.task, target_docs=args.limit,
         target_generations=2*args.limit, frames=FRAMES, min_pixels=MIN_PIXELS, max_pixels=MAX_PIXELS,
         model_snapshot=str(args.pretrained), hf_home=str(args.hf_home), budget_ratio=.1,
         budget_policy="total_active_prefill_including_local_global_cap_v1", diagnostic_audit=False,
-        max_new_tokens=64, repetition_penalty=1.05, do_sample=False, dtype="bfloat16", model_seed=MODEL_SEED,
+        max_new_tokens=max_new_tokens, repetition_penalty=1.05, do_sample=False, dtype="bfloat16", model_seed=MODEL_SEED,
         arrow_sha256=data["arrow_sha256"], dataset_rows=len(data["dataset"]),
         task_yaml_sha256=data["task_yaml_sha256"], task_utils_sha256=data["task_utils_sha256"],
         source_sha256=frozen, warmup_per_arm=args.warmup,
@@ -145,7 +149,7 @@ def run(args):
         raise ValueError("Only complete contiguous prefix can be resumed")
     for i,path in enumerate(paths): validate_bundle(json.loads(path.read_text()), identity, args.backbone, i)
     initial = len(paths)
-    state = dict(status="loading", backbone=args.backbone, method=args.backbone, task="vatex_test",
+    state = dict(status="loading", backbone=args.backbone, method=args.backbone, task=args.task,
         target_docs=args.limit, target_generations=2*args.limit, completed_docs=initial,
         completed_generations=2*initial, contract_sha256=identity, pid=os.getpid(), started_utc=timestamp())
     state_path=args.output/"run_state.json"; atomic_json(state_path,state)
@@ -169,7 +173,7 @@ def run(args):
         adapters=dict(native=StrictPruningAdapter(args.backbone,budget_ratio=.1),
                       kvrepack=Adapter("kvrepack",budget_ratio=.1,audit=False))
         kwargs=dict(eos_token_id=processor.tokenizer.eos_token_id,pad_token_id=processor.tokenizer.pad_token_id,
-            do_sample=False,temperature=None,top_p=None,num_beams=1,max_new_tokens=64,
+            do_sample=False,temperature=None,top_p=None,num_beams=1,max_new_tokens=max_new_tokens,
             repetition_penalty=1.05,use_cache=True,return_dict_in_generate=True,output_scores=False)
         atomic_json(args.output/"environment.json",dict(gpu=torch.cuda.get_device_name(),
             torch=torch.__version__,transformers=importlib.metadata.version("transformers"),generation_kwargs=kwargs))
@@ -184,7 +188,7 @@ def run(args):
             adapter=adapters[variant]
             attention=snap_forward(variant) if args.backbone=="snapkv" else nullcontext()
             with attention,adapter:
-                adapter.begin_sample("vatex_test",doc_id)
+                adapter.begin_sample(args.task,doc_id)
                 torch.cuda.synchronize();torch.cuda.reset_peak_memory_stats()
                 begin=time.perf_counter()
                 batch,metadata=prepare_input(data,doc_id,processor)
@@ -201,10 +205,10 @@ def run(args):
                 audit=adapter.finish_sample()
                 budget=active_prefill(result.past_key_values,len(ids),metadata["input_tokens"])
                 fingerprints=tensor_fingerprints(batch)
-                row=dict(status="completed",task="vatex_test",method=args.backbone if variant=="native" else args.backbone+"_kvrepack",
+                row=dict(status="completed",task=args.task,method=args.backbone if variant=="native" else args.backbone+"_kvrepack",
                     variant=variant,doc_id=doc_id,text=text,prediction=text,generated_ids=ids,generated_tokens=len(ids),
                     input_tokens=metadata["input_tokens"],eos_reached=bool(ids and ids[-1]==processor.tokenizer.eos_token_id),
-                    capped_without_eos=len(ids)==64 and ids[-1]!=processor.tokenizer.eos_token_id,
+                    capped_without_eos=len(ids)==max_new_tokens and ids[-1]!=processor.tokenizer.eos_token_id,
                     reference_metadata=metadata,source_video_id=metadata["source_video_id"],
                     input_fingerprints=fingerprints,audit=audit,budget=budget,fisher=None,
                     runtime=dict(preprocessing_seconds=prepared-begin,h2d_seconds=transferred-prepared,
@@ -248,6 +252,7 @@ def run(args):
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--backbone",choices=("snapkv","hybridkv"),required=True)
+    parser.add_argument("--task",choices=("vatex_test","nextqa_oe_test"),default="vatex_test")
     for name in ("pretrained","hf-home","output"):parser.add_argument("--"+name,type=Path,required=True)
     parser.add_argument("--limit",type=int,choices=(1,2,200),required=True)
     parser.add_argument("--warmup",type=int,choices=(0,1,2),default=2)

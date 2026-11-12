@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "created_utc": "2026-11-12T17:27:43.012018+00:00",
+  "task": "nextqa_oe_test",
+  "n": 1,
+  "expected_count": 1,
+  "metrics": {
+    "WUPS": 100.0
+  },
+  "metric_details": {
+    "metric_scale": "WUPS is 0-100; the task aggregate returns WUPS@0, including its original question-type/reference rules",
+    "execution": "Unchanged task function AST; deterministic remove_stop results memoized per exact text"
+  },
+  "reuse": {
+    "requested": false,
+    "reused": false
+  },
+  "scoring_identity": {
+    "task": "nextqa_oe_test",
+    "n": 1,
+    "prediction_corpus_sha256": "624a04c26c832726eff3f9c77bf4d094553259a87be5ff7f7701b728533cd28e",
+    "reference_arrow_sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+    "selected_reference_rows_sha256": "fee6fd4bd6497015e1a17fa6b94f982f9a8985f5d6f30a392958f047f7435a98",
+    "doc_ids_sha256": "d0bca111f8628137adc4c16f123496dcdd1d590d06cb5d9acd68b39fe656fb97",
+    "scorer_identity_sha256": "3f4b9cfd4d7695798371c8c4a1ee88587ad19a96f050e513dee0651eafc917c2"
+  },
+  "scoring_identity_sha256": "c732b0602be699459b57629613e0a2a905780e9247785cca065e81c0eae913a9",
+  "records": {
+    "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_nextqa_20261113_preflight/pilot1/report/scoring/hybridkv/asymkv/predictions.jsonl",
+    "file_sha256": "13930bf3f9ca605f5abbf489e1fbbdecb76cc8eaa360f8dfcd6b2856545c8405",
+    "canonical_prediction_corpus_sha256": "624a04c26c832726eff3f9c77bf4d094553259a87be5ff7f7701b728533cd28e",
+    "canonical_order": "ascending doc_id; hash includes task, doc_id and exact text"
+  },
+  "references": {
+    "path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/datasets/lmms-lab___n_ex_tqa/OE/0.0.0/a0d7729e38399da9c8a70c59aa4ad7f6996d3c00/n_ex_tqa-test.arrow",
+    "sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+    "split_rows": 9178,
+    "selected_rows": 1,
+    "full_split": false,
+    "doc_ids": [
+      0
+    ],
+    "doc_ids_sha256": "d0bca111f8628137adc4c16f123496dcdd1d590d06cb5d9acd68b39fe656fb97",
+    "selected_reference_rows_sha256": "fee6fd4bd6497015e1a17fa6b94f982f9a8985f5d6f30a392958f047f7435a98"
+  },
+  "scorers": {
+    "task_source": {
+      "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/vendor/lmms-eval/lmms_eval/tasks/nextqa/utils.py",
+      "source_sha256": "27c8baea98d4709e25c71484f01e6897e771c420072bff87f2be90deda72f2e4",
+      "function_ast_sha256": {
+        "remove_stop": "5e2bf5c0b02440b964f675b56a76b325163d06469a35aa75b1c28932670c3832",
+        "wup": "f88f9aef402b87d0a38af560a5cee83231da31e1fe6b7d5f71dc148232b4ac7e",
+        "wups": "21467c4241859c6a208e00fc1e32b897ecaf2248d06e694041cc037a14c59da9",
+        "get_wups": "cc94bcf6a89dffbbb068d12c1fe09e0ded97d702b5f668479039bd52162886c9",
+        "nextqa_process_results": "d764fd50606bdafc1de8fc2b3e228680388a39ac7086ccd48f9df9f484a3ef92",
+        "nextqa_aggregate_results": "3aa7ba090f78603a3f26f21a6cf133473350e50931fc2be3178ce60cd5d7a1a7"
+      }
+    },
+    "identity": {
+      "task": "nextqa_oe_test",
+      "task_source_sha256": "27c8baea98d4709e25c71484f01e6897e771c420072bff87f2be90deda72f2e4",
+      "function_ast_sha256": {
+        "remove_stop": "5e2bf5c0b02440b964f675b56a76b325163d06469a35aa75b1c28932670c3832",
+        "wup": "f88f9aef402b87d0a38af560a5cee83231da31e1fe6b7d5f71dc148232b4ac7e",
+        "wups": "21467c4241859c6a208e00fc1e32b897ecaf2248d06e694041cc037a14c59da9",
+        "get_wups": "cc94bcf6a89dffbbb068d12c1fe09e0ded97d702b5f668479039bd52162886c9",
+        "nextqa_process_results": "d764fd50606bdafc1de8fc2b3e228680388a39ac7086ccd48f9df9f484a3ef92",
+        "nextqa_aggregate_results": "3aa7ba090f78603a3f26f21a6cf133473350e50931fc2be3178ce60cd5d7a1a7"
+      },
+      "versions": {
+        "nltk": "3.9.4",
+        "pywsd": "1.2.5",
+        "wn": "0.0.23",
+        "pandas": "3.0.2",
+        "pyarrow": "23.0.1"
+      },
+      "resources": {
+        "nltk_python_tree": "383e3a9aa5b9f9ae55ad28d74482569d6710c1f1fb52e45ae3ea5e8042b0236b",
+        "pywsd_python_tree": "640d73b49b70e54368522bfa388868b68b4209d222102fc322c4375348e6ea4b",
+        "wn_python_tree": "9529f4a405f5ea7ebae6cdf89d914d1a2a4bba4afb01d6a574d73ba1451af814",
+        "pandas_python_tree": "c1f13ff9e38028fe81e79105bb2b37cc1858168efd43970e3e9c9dc65397b151",
+        "stopwords.csv": "13652df2a1ccf314a6b8a354a2adf1dc4e4b8cc5c7a25c6354e1a0182be743a3",
+        "nltk_data_tree": "3c843cb5ea6b251f8ab00dc41f077755cf3c7931089e838583f3032354050716"
+      },
+      "implementation": "unchanged_task_function_ast_v1",
+      "adapter_sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3",
+      "metric_set": [
+        "WUPS"
+      ]
+    },
+    "identity_sha256": "3f4b9cfd4d7695798371c8c4a1ee88587ad19a96f050e513dee0651eafc917c2"
+  },
+  "script": {
+    "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/provenance/full_video_retest_20261104/helpers/score_full_runs.py",
+    "sha256": "7cb946d0a14ce301ff4849d5f931c76dd2f4c4ed2fd7505818d25a3e48af9ab3"
+  },
+  "scope": {
+    "cpu_only": true,
+    "model_or_gpu_loaded": false,
+    "network_or_download_requested": false,
+    "python_networking_blocked": true,
+    "java": "Local PTBTokenizer/METEOR only; Python network block does not sandbox Java subprocesses"
+  },
+  "limitations": [
+    "Metrics describe exactly these doc_ids and this reference cache; compare methods only on identical task/reference/doc_id coverage.",
+    "CIDEr document frequencies are recomputed from the selected reference corpus; subset CIDEr is not comparable to full-corpus CIDEr.",
+    "This scores newly generated predictions; it does not recover missing historical predictions or reproduce historical 200-doc results automatically.",
+    "Metrics reuse, when explicitly requested, is documented and requires exact prediction/reference/scorer identity hashes; no scorer is silently skipped."
+  ],
+  "seconds": 7.582233302295208
+}

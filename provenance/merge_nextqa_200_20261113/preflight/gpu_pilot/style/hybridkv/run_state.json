@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "method": "hybridkv_kvrepack",
+  "target_docs": 1,
+  "completed_docs": 1,
+  "target_generations": 2,
+  "completed_generations": 2,
+  "reused_docs": 0,
+  "task": "nextqa_oe_test",
+  "started_utc": "2026-11-12T17:21:43.875102+00:00",
+  "pid": 31438,
+  "contract_sha256": "1cb5e40db988b5dc10b335b1f695cd31a0604af99d21540043b12b6d363daa63",
+  "model_load_seconds": 2.6658663898706436,
+  "warmup_per_arm": 1,
+  "warmup_seconds": 8.822089530527592,
+  "current_doc_id": 0,
+  "current_variant": "asymkv",
+  "updated_utc": "2026-11-12T17:21:59.585860+00:00",
+  "elapsed_formal_seconds": 7.798319738358259,
+  "estimated_remaining_seconds": 0,
+  "finished_utc": "2026-11-12T17:22:04.096068+00:00",
+  "process_seconds": 20.220512486994267
+}
