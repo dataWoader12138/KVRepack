@@ -1,0 +1,48 @@
+{
+  "status": "table_filled_from_existing_measurements",
+  "gpu_experiments_started": false,
+  "new_hybrid_style_source": "docs/merge_aggregation_vatex_200.csv",
+  "new_hybrid_asym_avg": 0.29606846821670596,
+  "new_hybrid_lookm_avg": 0.3342087481941095,
+  "vatEX_complete_e2e_seconds": {
+    "asym": 10.017877786830068,
+    "lookm": 8.173605326898397
+  },
+  "vatEX_model_e2e_seconds": {
+    "asym": 4.185450881067664,
+    "lookm": 2.357583662737161
+  },
+  "historical_accuracy": {
+    "hybridkv": 0.3426,
+    "hybridkv_kvrepack": 0.3447,
+    "asymkv_standalone": 0.3013,
+    "lookm_standalone": 0.32387492978444304
+  },
+  "old_style_value_provenance": {
+    ".3239": "Standalone strict LOOK-M VATEX200; moved to standalone row",
+    ".2936": "Historical HybridKV-selected-pair K/V Grouping; not relabeled as standalone AsymKV"
+  },
+  "vcg_figure_source": {
+    "path": "/root/autodl-tmp/HybridKV-artifact/overhead_v5_01_vs_fullkv.csv",
+    "sha256": "95c07b15228b7d85d45f946bbcbdfbd179c7300e8cd03a54562c24420309c968",
+    "fullkv_plot_seconds": 35.551,
+    "manuscript_reference_seconds": 35.55,
+    "hybridkv_plot_seconds": 23.757,
+    "hybridkv_kvrepack_plot_seconds": 23.834,
+    "delta_percent_as_provided": {
+      "hybridkv": -33.2,
+      "hybridkv_kvrepack": -33.0
+    },
+    "provenance": "Existing figure input, not a new GPU measurement"
+  },
+  "standalone_matching_e2e": {
+    "asymkv": null,
+    "lookm": null
+  },
+  "standalone_lookm_legacy_generation_only_seconds": 2.2864941669255496,
+  "notes": [
+    "VATEX and Video-ChatGPT timings are not combined into a common percentage.",
+    "Retained figure baseline 35.55 as supplied; original recovered-experiment FullKV differs and was not substituted.",
+    "Standalone legacy generation-only timing is not inserted into the complete E2E column."
+  ]
+}

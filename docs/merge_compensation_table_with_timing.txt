@@ -1,0 +1,53 @@
+% Requires booktabs and graphicx; \method is defined in the manuscript.
+% Historical 0.3239 belongs to standalone LOOK-M.
+% Historical 0.2936 was HybridKV + K/V Grouping, not standalone AsymKV.
+% Keep standalone AsymKV=0.3013 from the original manuscript.
+\begin{table}[t]
+  \centering
+  \begingroup
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{@{}lcccc@{}}
+    \toprule
+    \textbf{Method} & \textbf{VATEX Avg.}
+      & \multicolumn{2}{c}{$t_{\mathrm{E2E}}$ (s/sample)}
+      & $\Delta t_{\mathrm{E2E}}^{\mathrm{VCG}}$ (\%) \\
+    \cmidrule(lr){3-4}
+      & & \textbf{VATEX} & \textbf{VCG} & \\
+    \midrule
+    HybridKV
+      & 0.3426 & -- & 23.757 & $-33.2$ \\
+    \quad + AsymKV-style merging
+      & 0.2961 & 10.018 & -- & -- \\
+    \quad + LOOK-M-style merging
+      & 0.3342 & 8.174 & -- & -- \\
+    \quad + \method
+      & \textbf{0.3447} & -- & 23.834 & $-33.0$ \\
+    \midrule
+    AsymKV (standalone)
+      & 0.3013 & -- & -- & -- \\
+    LOOK-M (standalone)
+      & 0.3239 & -- & -- & -- \\
+    \bottomrule
+  \end{tabular}%
+  }
+  \endgroup
+
+  \caption{KV merging on Qwen2.5-VL-7B at the 10\% active-cache setting.
+    Indented rows apply the indicated merging rule to HybridKV.
+    The two style-merging rows report new results on the first 200 VATEX
+    samples; the other accuracy values follow the existing manuscript.
+    VATEX end-to-end latency includes video processing, transfer,
+    Fisher computation where required, generation, and text decoding,
+    excluding loading, warm-up, and post-run auditing.
+    VCG denotes the existing figure-derived timing on 20 Video-ChatGPT
+    samples; its percentage changes use Full KV at 35.55\,s/sample.
+    The timing columns use separate evaluation settings.
+    Dashes indicate that a matching latency measurement is unavailable.}
+  % Standalone LOOK-M has a legacy generation-only mean of 2.286494 s
+  % on VATEX200 (including lightweight metadata auditing). It excludes
+  % video processing/transfer/text decoding and is not an E2E measurement.
+  % Do not divide new VATEX times by the Video-ChatGPT Full-KV baseline.
+  \label{tab:kvrepack_asymkv}
+\end{table}
