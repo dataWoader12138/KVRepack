@@ -1,0 +1,29 @@
+{
+  "status": "launched",
+  "created_utc": "2026-11-12T16:40:33.599503+00:00",
+  "controller_pid": 5481,
+  "process_group": 5481,
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "-B",
+    "scripts/run_baseline_completion.py",
+    "--pretrained",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "--hf-home",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "--style-root",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_vatex_mergeonly_200_20261112",
+    "--output",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/baseline_completion_vatex_200_20261113",
+    "--limit",
+    "200",
+    "--warmup",
+    "2"
+  ],
+  "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/baseline_completion_vatex_200_20261113",
+  "controller_log": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/baseline_completion_vatex_200_20261113.controller.log",
+  "git_commit": "1d1edd1f535be33bc690a4ad91d15fcad6ef709e",
+  "new_formal_generations": 800,
+  "reused_style_generations": 800,
+  "final_comparison_generations": 1600
+}

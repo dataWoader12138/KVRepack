@@ -48,3 +48,5 @@ python scripts/run_baseline_completion.py \
 新worker：`kvrepack.ablations.run_baseline_completion`；原生预算适配器：`strict_pruning.py`；离线汇总：`baseline_completion_report.py`。控制器串行运行Snap／Hybrid，全部完成后自动评分并保存`report/comparison.csv`、`per_input_latency.csv`、`budget_comparison.csv`、`summary.json`和`RESULTS.md`。真实状态以`experiment_state.json`和各骨干的`run_state.json`为准。
 
 GPU联调已完成每骨干各1条原生／改进配对，不当成正式200条结果。Snap实际prefill位置均108976；Hybrid均108659（总cap108976）；输入指纹一致。Snap KVRepack与原严格前缀的token、选头mask及预算完全一致。原生Snap另有真实CPU逐元素oracle，保持原评分／top-k结果和recent token；不通过只刷新哈希掩盖算法变更。
+
+正式任务已启动，控制器PID/PG为5481，源版本`1d1edd1`；本机目录`outputs/ablations/baseline_completion_vatex_200_20261113/`，启动证据见`provenance/baseline_completion_vatex_200_20261113/formal_launch.json`。这是运行中状态，不是已完成结果。
