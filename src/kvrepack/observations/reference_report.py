@@ -282,9 +282,9 @@ def _plot(summary, output, *, raw=False):
     display_left = max(-1., min(-.2, math.floor((minimum-.1)*10)/10))
     with plt.rc_context({"font.family": "DejaVu Sans", "font.size": 9, "pdf.fonttype": 42,
                          "ps.fonttype": 42, "svg.fonttype": "none", "text.color": "#30343B",
-                         "axes.labelcolor": "#70747A", "xtick.color": "#70747A", "ytick.color": "#70747A",
+                         "axes.labelcolor": "#30343B", "xtick.color": "#70747A", "ytick.color": "#70747A",
                          "axes.edgecolor": "#C8CBD0", "axes.titleweight": "regular"}):
-        fig, axes = plt.subplots(2, 1, figsize=(6.8, 5.5), sharex=True)
+        fig, axes = plt.subplots(2, 1, figsize=(6.8, 4.8), sharex=True)
         for axis, (metric, label) in zip(axes, (("k_raw" if raw else "k_rope", "K before RoPE" if raw else "K after RoPE"), ("v", "V"))):
             for group, specification in GROUPS.items():
                 values = [row["mean"] for row in summary["head_table"] if row["group"] == group and row["metric"] == metric]
@@ -300,7 +300,7 @@ def _plot(summary, output, *, raw=False):
                     observed_min=min(values), observed_max=max(values), color=specification["color"]))
                 axis.fill_between(grid, 0, density, color=specification["color"], alpha=.16, linewidth=0)
                 axis.plot(grid, density, color=specification["color"], linewidth=2,
-                          label=specification["label"])
+                          label=specification["model_id"].split("/")[-1].removesuffix("-Instruct"))
                 axis.axvline(summary["groups"][group]["metrics"][metric]["mean"], color=specification["color"], linestyle="--", linewidth=1, alpha=.8)
             axis.set(ylabel="Density", title=label, xlim=(display_left, 1), ylim=(0, None))
             axis.set_xticks([x for x in (-1, -.5, -.2, 0, .2, .4, .6, .8, 1) if x >= display_left])
@@ -308,13 +308,8 @@ def _plot(summary, output, *, raw=False):
             axis.set_axisbelow(True)
             axis.grid(color="#E2E4E7", linewidth=.65, linestyle=(0, (2, 2)))
         axes[0].legend(frameon=False, fontsize=8, loc="upper left")
-        axes[-1].set_xlabel("Full-input, within-head mean cosine")
-        count = summary["sample_count"]
-        fig.suptitle(f"Qwen2.5-7B vs Qwen2.5-VL-7B: {count} + {count} full inputs", fontsize=10.5)
-        fig.text(.5, .015, f"112 layer/KV-head means per curve; equal weights for {count} full inputs/model. Dashed lines: means.\n"
-                 "Gaussian KDE; descriptive head distributions. Models, datasets and full context lengths differ.",
-                 ha="center", va="bottom", fontsize=7.4)
-        fig.subplots_adjust(left=.095, right=.985, bottom=.16, top=.88, hspace=.34)
+        axes[-1].set_xlabel("Mean cosine similarity")
+        fig.subplots_adjust(left=.095, right=.985, bottom=.12, top=.92, hspace=.34)
         name = "reference_raw" if raw else "reference_main"
         for extension in ("png", "pdf", "svg"):
             path = output/f"{name}.{extension}"

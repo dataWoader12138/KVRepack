@@ -223,15 +223,20 @@ class ReferenceReportTests(unittest.TestCase):
             self.assertNotIn("head_table", compact)
 
     @unittest.skipUnless(importlib.util.find_spec("matplotlib"), "optional matplotlib unavailable")
-    def test_200_plot_titles_and_footnotes_use_actual_sample_count(self):
+    def test_200_plot_keeps_count_in_metadata_and_uses_minimal_visible_labels(self):
         summary = build_summary(records(sample_count=200), sample_count=200, bootstrap_samples=20)
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             compact = write_report(summary, root)
             svg = (root/"reference_main.svg").read_text()
-            self.assertIn("200 + 200 full inputs", svg)
-            self.assertIn("200 full inputs/model", svg)
-            self.assertNotIn("5 full inputs/model", svg)
+            self.assertEqual(compact["sample_count"], 200)
+            self.assertIn("Qwen2.5-7B", svg)
+            self.assertIn("Qwen2.5-VL-7B", svg)
+            self.assertIn("Mean cosine similarity", svg)
+            self.assertNotIn("full inputs", svg)
+            self.assertNotIn("LongBench", svg)
+            self.assertNotIn("OCRBench", svg)
+            self.assertNotIn("Descriptive head distributions", svg)
             for curve in compact["artifacts"]["plots"]["main"]["curves"]:
                 self.assertEqual(curve["n_head_means"], 112)
 

@@ -1,0 +1,7 @@
+test_standalone_main_raw_figures_tables_and_descriptive_metadata (test_observation_reference_report.ReferenceReportTests.test_standalone_main_raw_figures_tables_and_descriptive_metadata) ... ok
+test_200_plot_keeps_count_in_metadata_and_uses_minimal_visible_labels (test_observation_reference_report.ReferenceReportTests.test_200_plot_keeps_count_in_metadata_and_uses_minimal_visible_labels) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 23.399s
+
+OK

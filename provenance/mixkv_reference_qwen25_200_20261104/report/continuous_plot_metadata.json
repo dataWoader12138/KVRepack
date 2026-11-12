@@ -450,6 +450,6 @@
       ]
     }
   },
-  "plotting_source_sha256": "1cece7f09d5ab2d70e468cbd21f30face0c454919dc1fe6082332342f7041ffc",
+  "plotting_source_sha256": "f133f802d9d29ce4a5389927e3e21fad5f0d39570c7f2912808109a747203f8e",
   "reference": "MixKV Figure 1(b) distribution appearance; KDE is an explicit plotting choice, not a claimed reproduction of undisclosed author code."
 }

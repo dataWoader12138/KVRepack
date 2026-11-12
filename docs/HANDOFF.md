@@ -1,5 +1,7 @@
 # KVRepack 项目交接（2026-11-04）
 
+**2026-11-12 图内文字精简：** 用户要求尽可能去掉不必要灰字，已删除200＋200 Qwen连续主图/补图的全局总标题与底部两行说明，legend仅模型名，横轴缩为Mean cosine similarity并用深色；保留K before/afterRoPE、V、Density、均值虚线。PNG/PDF/SVG与outputs副本均重绘。输入/统计文件SHA、全部密度metadata和_density_curve函数AST均不变，仅_plot可见文字/布局改变；2项现有render测试通过。证据minimal_labels_update_20261112.json，artifact_index同步；没有GPU或新实验。用户时延TXT改动和输入调色PDF仍未碰。
+
 **2026-11-12 Qwen2.5文本/VL观察图已按用户要求改成连续曲线：** 最终200＋200的 `provenance/mixkv_reference_qwen25_200_20261104/report/reference_main/raw.{png,pdf,svg}` 已重绘，outputs同名图同步。主图post-RoPEK/V、补图rawK/V不变；每曲线仍112真实head均值，ScottGaussianKDE、余弦边界反射，金棕text#B98A2F与深蓝VL#2F4373来自用户 `fullkv_k_head_envelope (1).pdf`。只改渲染，400raw、summary、所有CSV/均值/CI逐文件SHA不变；AST确认原统计函数全不变。重绘入口 `scripts/replot_reference_observation.py`；14项已有reportCPU测试及来源检查通过，未运行GPU。数据/旧新图SHA与密度积分验证见continuous_plot_update_20261112.json，artifact_index仅更新真实改动的六图并追加此次证据。用户原PDF与其修改的时延TXT保持不动，不将它们随此绘图更新提交。
 
 **原生 SnapKV 基线已补齐（2026-11-12）：** 用户要求自身质量/时延也写进原表，现 `merge_compensation_table_with_timing.{txt,tex}` 在Snap三个merge前加 `SnapKV .3313 / ≈7.20†`，其三merge改为与Hybrid相同的缩进行；总10数据行三列，其余分数/时延不变。精确Avg .331264461087091，旧完整响应循环200/20023:59（日志7.20s/it），均来自 `/tmp/run_qwen7b_common_decouple_sweep_20260706.log.stopped_20260706_095548` 首block；summary第1行同4指标独立核对一致。原记录是7B/64帧/前200/nominal.1、纯snapkv，不是3B或表示观察。完整gzip/summary/摘录及来源已随既有追溯证据保存；此前“未找到纯Snap基线”结论已补正。本次只恢复旧记录，没有GPU实验。

@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "updated_utc": "2026-11-12T11:34:50.859750+00:00",
+  "gpu_execution": false,
+  "change": "Remove global title and grey explanatory footnotes; shorten legend to model names and x-axis to Mean cosine similarity. Keep K/V panel titles and empirical mean markers.",
+  "original_statistics_unchanged": true,
+  "density_metadata_unchanged": true,
+  "kde_function_unchanged": true,
+  "palette_unchanged": true,
+  "prior_git_commit": "e2dfee3f0b5fa3c21b69cd0718ee07ebc428c185",
+  "plotting_source_sha256": "f133f802d9d29ce4a5389927e3e21fad5f0d39570c7f2912808109a747203f8e",
+  "existing_render_tests_passed": 2,
+  "unchanged_data_files": {
+    "provenance/mixkv_reference_qwen25_200_20261104/records.jsonl": "3bd570b07c037cc9e0d963f0afe2bc7640e4ee6ec5cb32f0c9336c182ef7473d",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/comparison_summary.csv": "21a212c1d56a78a6b1f27cfd557d71f51d47869dbe788d781e5053fa7bf01b69",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/group_summary.csv": "5dfb541978857a3651148b01da58a63c1fefb2e7b798e0fe4db66f6963bcaa8e",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/head_summary.csv": "d5da49fef247430a938dea71e45b90c3d25a4cd9c7ac22270c9e1d0dd28093ba",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/layer_summary.csv": "3f9e748fbe14c7658ecf53df233773b552b556b2112f9320c363c401ea994dc4",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/record_summary.csv": "2e8e1bc6c69f5da812453b2d5cc32c084ba300f01decb8c0d5eed18a5696318a",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/source_inputs.csv": "cd3662d37018db2760ffb618af0ed7a941f8cde11a450d6249f00495376b2441",
+    "provenance/mixkv_reference_qwen25_200_20261104/report/summary.json": "d95eff1f9327bb3da2fc771fdef1ec5ee879c19df88e9daaa933f754ea6c60bf"
+  },
+  "figure_updates": {
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_main.pdf": {
+      "before_sha256": "6affd9b0206da81c98865365b9899fa79e723dc109e0a87ff322d7d3c61e7233",
+      "after_sha256": "5c64d603ae1971368976ad53a49fd8d7953aa3b94081522c50c97f276cadfa86"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_main.png": {
+      "before_sha256": "030348d3db87e38b5795d9d661d682250c59f20f3e8db4a0567474e54707ff95",
+      "after_sha256": "64f18179345a0564572528a1759a258c79aa1599c7894c8a8d6ed1408771d715"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_main.svg": {
+      "before_sha256": "d68be62e151f10d53aa7a99814e2579f3afdfaf9b36debeb4a865bd6062c284a",
+      "after_sha256": "a6b6503f0301c55ad62b25f427369450533062d05c59f8a1ad8deaf5cff79936"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_raw.pdf": {
+      "before_sha256": "5c36c5ff104813fd7300fa9b274fe6500f2e7984655377a0fdb3751571cc250c",
+      "after_sha256": "9c31b5cf81f3ea1ad514bcd476d2a9768ea6444579c0b20d9eefea383c11bc75"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_raw.png": {
+      "before_sha256": "1cf826c7628d828859db46a303930b917ade2fd04490f7aa4e43812a5a3a7435",
+      "after_sha256": "2edd1b2e6ec6b29f2eb2ee5b5d5972f29473463136149f0a4a5c86bf293cf566"
+    },
+    "provenance/mixkv_reference_qwen25_200_20261104/report/reference_raw.svg": {
+      "before_sha256": "2a37e6e8da93a7fa89f3959152af3d4b8b34bfb03454cd4bd70dd42cfd991b9f",
+      "after_sha256": "3ad2b17fb9a0055c65a60842c636b9322b2bd5ddbb142afc4d1c7bd740e592d8"
+    }
+  },
+  "metadata_change": "Only plotting_source_sha256 changed; density/input metadata is identical to prior continuous plot."
+}
