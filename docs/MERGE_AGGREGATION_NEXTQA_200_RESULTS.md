@@ -1,5 +1,7 @@
 # NExTQA合并规则对照：前200条完整结果
 
+> **本轮预算与旧主实验不同。** 使用新worker及运行时严格总预算适配器，不是旧脚本原样复测。预算变化会传导到候选及部分选头，详见[新旧协议逐条核对](NEXTQA_PROTOCOL_DIFFERENCES_20261113.md)。
+
 **八组已全部完成：每组原始前200条，共1600次正式生成。** Qwen2.5-VL-7B、A800-SXM4-80GB、64帧、BF16/FlashAttention2、greedy、最多128个新token；严格总活跃prefill KV预算10%，recent/local位置包含其中。16次预热不计入下表。
 
 | 方法 | WUPS ↑ | 完整E2E（秒/条）↓ |
