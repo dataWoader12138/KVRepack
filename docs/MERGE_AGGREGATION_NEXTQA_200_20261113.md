@@ -44,4 +44,4 @@ python scripts/run_nextqa_merge_comparison.py \
 
 四个GPU进程串行运行，根`experiment_state.json`和`{style,baseline}/{snapkv,hybridkv}/run_state.json`记录实际进度。全部生成后控制器自动调用`nextqa_merge_report`，保存WUPS、逐样本完整E2E/模型E2E及预算比较。正式目录为`outputs/ablations/merge_nextqa_200_20261113/`；联调为`outputs/ablations/merge_nextqa_20261113_preflight/pilot1/`；来源与检查证据为`provenance/merge_nextqa_200_20261113/`。当前是否启动/完成以状态文件为准，不将联调称为200条结果。
 
-正式任务已启动，控制器PID/PG34513，源版本`baa323f`；实际UTC启动记录见`provenance/merge_nextqa_200_20261113/formal_launch.json`。先运行SnapKV的LOOK-M/AsymKV两臂各200条，后续三case及最终评分由同一控制器自动衔接；当前是运行中，尚未完成200条结果。
+正式任务已启动，控制器PID/PG34513，源版本`baa323f`；实际UTC启动记录见`provenance/merge_nextqa_200_20261113/formal_launch.json`。先运行SnapKV的LOOK-M/AsymKV两臂各200条，后续三case及最终评分由同一控制器自动衔接；现已全部完成并通过复核，见[结果表与完整E2E](MERGE_AGGREGATION_NEXTQA_200_RESULTS.md)。

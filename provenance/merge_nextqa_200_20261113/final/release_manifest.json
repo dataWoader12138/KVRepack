@@ -1,0 +1,19 @@
+{
+  "status": "completed_results_archived",
+  "task": "nextqa_oe_test",
+  "recorded_utc": "2026-11-13T02:51:43.556606+00:00",
+  "source_root": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/ablations/merge_nextqa_200_20261113",
+  "docs_per_arm": 200,
+  "arms": 8,
+  "formal_generations": 1600,
+  "warmup_generations": 16,
+  "started_utc": "2026-11-12T17:28:58.327513+00:00",
+  "finished_utc": "2026-11-12T19:16:25.779364+00:00",
+  "controller_seconds": 6447.37503805384,
+  "archive": "recorded_runs.tar.gz",
+  "archive_sha256": "d590f0ba1f18d48d8de0b635f80a5d26efae9b197fbf064bca395b31c39efeb2",
+  "archive_bytes": 14244107,
+  "recorded_files": 856,
+  "original_files_unchanged": true,
+  "source_protocol": "docs/MERGE_AGGREGATION_NEXTQA_200_20261113.md"
+}

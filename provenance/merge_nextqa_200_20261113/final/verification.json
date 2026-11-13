@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "task": "nextqa_oe_test",
+  "recorded_utc": "2026-11-13T02:53:07.151870+00:00",
+  "original_rows": 1600,
+  "original_source_index_entries": 808,
+  "archive_members_verified": 856,
+  "checks": [
+    "All four cases exact original prefix 0..199",
+    "Predictions equal their native WUPS scoring corpora",
+    "Source SHA and recorded 808 evidence SHA unchanged",
+    "Stored WUPS identical to eight native scorer outputs",
+    "Full and model E2E independently recomputed from original 1600 rows",
+    "Archived files individually SHA-equivalent to original records"
+  ],
+  "comparisons": [
+    {
+      "backbone": "snapkv",
+      "variant": "native",
+      "n": 200,
+      "WUPS": 33.19202762018623,
+      "end_to_end_seconds_mean": 3.2008516993932425,
+      "end_to_end_seconds_total": 640.1703398786485,
+      "model_end_to_end_seconds_mean": 1.4908503199368714,
+      "capped_without_eos": 0
+    },
+    {
+      "backbone": "snapkv",
+      "variant": "kvrepack",
+      "n": 200,
+      "WUPS": 32.8943847071468,
+      "end_to_end_seconds_mean": 3.253997341431677,
+      "end_to_end_seconds_total": 650.7994682863355,
+      "model_end_to_end_seconds_mean": 1.5429124985262752,
+      "capped_without_eos": 0
+    },
+    {
+      "backbone": "hybridkv",
+      "variant": "native",
+      "n": 200,
+      "WUPS": 32.64872738440367,
+      "end_to_end_seconds_mean": 3.3026529533043503,
+      "end_to_end_seconds_total": 660.5305906608701,
+      "model_end_to_end_seconds_mean": 1.5859619173035027,
+      "capped_without_eos": 0
+    },
+    {
+      "backbone": "hybridkv",
+      "variant": "kvrepack",
+      "n": 200,
+      "WUPS": 33.230671828848116,
+      "end_to_end_seconds_mean": 3.3942329230345787,
+      "end_to_end_seconds_total": 678.8465846069157,
+      "model_end_to_end_seconds_mean": 1.6848805437237024,
+      "capped_without_eos": 0
+    },
+    {
+      "backbone": "snapkv",
+      "variant": "lookm",
+      "n": 200,
+      "WUPS": 32.04994026270235,
+      "end_to_end_seconds_mean": 3.2785051685385405,
+      "end_to_end_seconds_total": 655.7010337077081,
+      "model_end_to_end_seconds_mean": 1.5665010435134172,
+      "capped_without_eos": 0
+    },
+    {
+      "backbone": "snapkv",
+      "variant": "asymkv",
+      "n": 200,
+      "WUPS": 30.610047557037863,
+      "end_to_end_seconds_mean": 4.7959969180822375,
+      "end_to_end_seconds_total": 959.1993836164474,
+      "model_end_to_end_seconds_mean": 3.0876405588537454,
+      "capped_without_eos": 2
+    },
+    {
+      "backbone": "hybridkv",
+      "variant": "lookm",
+      "n": 200,
+      "WUPS": 33.201505162181455,
+      "end_to_end_seconds_mean": 3.4760154955275357,
+      "end_to_end_seconds_total": 695.2030991055071,
+      "model_end_to_end_seconds_mean": 1.726664645448327,
+      "capped_without_eos": 0
+    },
+    {
+      "backbone": "hybridkv",
+      "variant": "asymkv",
+      "n": 200,
+      "WUPS": 31.857199314157185,
+      "end_to_end_seconds_mean": 5.0512360747158525,
+      "end_to_end_seconds_total": 1010.2472149431705,
+      "model_end_to_end_seconds_mean": 3.3001540964096785,
+      "capped_without_eos": 3
+    }
+  ],
+  "independent_agent_review": {
+    "agent": "/root/verify_nextqa_final_results",
+    "status": "passed",
+    "scope": "Read-only check of inputs, raw predictions, scoring corpus and identity, Arrow, task/scorer source, model metadata, workers, all 1600 runtimes; did not rerun GPU or quality scoring."
+  },
+  "gpu_run": false
+}

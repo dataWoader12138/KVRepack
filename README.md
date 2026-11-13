@@ -1,6 +1,6 @@
 # KVRepack
 
-当前用户指定 **NExTQA前200条** 的八条件合并规则/E2E对照，见[实验协议与启动命令](docs/MERGE_AGGREGATION_NEXTQA_200_20261113.md)。此前误启VATEX补跑已停止，当前进度以新目录状态为准。
+已完成：[NExTQA前200条八条件合并规则／完整E2E结果](docs/MERGE_AGGREGATION_NEXTQA_200_RESULTS.md) · [三列表TXT](docs/merge_aggregation_nextqa_200.txt) · [CSV](docs/merge_aggregation_nextqa_200.csv)。Qwen2.5-VL-7B、64帧、严格总KV10%，SnapKV/HybridKV各原版、KVRepack、LOOK-M/AsymKV式合并共1600条；质量／逐条时延／来源和完整归档复核通过。HybridKV+KVRepack WUPS33.230672、完整E2E3.394233秒，SnapKV+KVRepack32.894385／3.253997秒；Snap原版33.192028更高，此结果如实保留。[实验协议与启动命令](docs/MERGE_AGGREGATION_NEXTQA_200_20261113.md)。
 
 已完成：[VATEX前200条固定分组合并：质量、端到端时延与图表](docs/MERGE_AGGREGATION_VATEX_200_RESULTS.md)。Qwen2.5-VL-7B、A800-80GB，HybridKV/SnapKV各测LookM与AsymKV式聚合，共800个结果（228保留、572新增）；原KVRepack基线按用户要求停止于Snap114条，另列同输入配对对照。独立复算7组原生指标与时延、914个唯一生成解码均通过，数值最大误差0；GPU已释放。
 

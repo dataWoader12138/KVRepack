@@ -1,0 +1,17 @@
+NExTQA 原始前200条；Qwen2.5-VL-7B；64帧；严格总KV预算10%（含recent/local）；8组共1600次正式生成。
+
+方法	WUPS↑	完整E2E（秒/条）↓
+SnapKV 原版	33.192028	3.200852
+SnapKV + KVRepack	32.894385	3.253997
+SnapKV + LOOK-M-style merging	32.049940	3.278505
+SnapKV + AsymKV-style merging	30.610048	4.795997
+HybridKV 原版	32.648727	3.302653
+HybridKV + KVRepack	33.230672	3.394233
+HybridKV + LOOK-M-style merging	33.201505	3.476015
+HybridKV + AsymKV-style merging	31.857199	5.051236
+
+E2E：视频读取/解码、processor、H2D、Fisher（AsymKV适用）、模型生成和文本解码；CUDA同步。
+不包含模型加载、预热、审计哈希、写盘及评分。
+LOOK-M/AsymKV行仅迁入其合并规则，选头/候选/分组/anchor/插入点与KVRepack一致，不是standalone方法。
+SnapKV+KVRepack比原版WUPS低0.297643；HybridKV+KVRepack比原版高0.581944。
+AsymKV-style在SnapKV/HybridKV分别有2/3条达到128token上限，均保留并参与评分和时延统计。
