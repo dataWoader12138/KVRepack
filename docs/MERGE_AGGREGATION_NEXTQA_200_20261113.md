@@ -1,5 +1,7 @@
 # NExTQA 前200条：合并规则与完整端到端时延
 
+> 此页记录已完成的严格预算历史实验。当前控制器默认已恢复原预算；仅复现本页历史协议时显式指定`--budget-policy strict-total`。原预算默认命令见[恢复说明](ORIGINAL_BUDGET_RESTORE_20261113.md)。
+
 用户已明确纠正数据集为 **NExTQA**。此前误启的 VATEX 补跑已停止，原始记录保留，不计入此实验，不恢复旧停止任务。
 
 ## 实验矩阵
@@ -37,7 +39,7 @@ python scripts/run_nextqa_merge_comparison.py \
   --pretrained /path/to/Qwen2.5-VL-7B-Instruct/snapshot \
   --hf-home /path/to/huggingface_cache \
   --output outputs/ablations/merge_nextqa_200_20261113 \
-  --limit 200 --warmup 2
+  --limit 200 --warmup 2 --budget-policy strict-total
 ```
 
 新style worker为`kvrepack.ablations.run_style_comparison`，原版/KVRepack worker为`run_baseline_completion --task nextqa_oe_test`，二者共用`video_e2e_inputs.prepare_input`无offset/二次tokenization原生输入流程。原VATEX style worker保持冻结。三十份核心算法文件不修改。

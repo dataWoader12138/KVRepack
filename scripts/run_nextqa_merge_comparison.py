@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the eight matched NExTQA merge conditions, then score them offline.
+"""Run NExTQA with the original budget by default, then score offline.
 
 GPU processes are serialized. The four requested style conditions run first;
 native/KVRepack controls then supply the missing comparable clean E2E records.
@@ -30,7 +30,10 @@ def main():
     parser.add_argument("--limit", type=int, choices=(1, 200), required=True)
     parser.add_argument("--warmup", type=int, choices=(1, 2), default=2)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--budget-policy", choices=("original", "strict-total"), default="original",
+        help="Original source budget by default; strict-total is only for historical strict runs")
     args = parser.parse_args()
+    policy = "original_history_plus_local_v1" if args.budget_policy == "original" else "total_active_prefill_including_local_global_cap_v1"
     for name in ("pretrained", "hf_home", "output"):
         setattr(args, name, getattr(args, name).expanduser().resolve())
     args.output.mkdir(parents=True, exist_ok=True)
@@ -43,11 +46,17 @@ def main():
             raise ValueError("Stopped experiments require explicit new authorization")
         if old.get("task") != "nextqa_oe_test" or old.get("docs_per_condition") != args.limit:
             raise ValueError("Task or sample count changed")
+        if old.get("budget_policy", "total_active_prefill_including_local_global_cap_v1") != policy:
+            raise ValueError("Budget policy changed; use a fresh output root")
+        for kind, backbone in CASES:
+            path = args.output/kind/backbone/"run_contract.json"
+            if path.exists() and json.loads(path.read_text()).get("budget_policy") != policy:
+                raise ValueError("Case has a different frozen budget policy")
     env = dict(os.environ, PYTHONPATH=os.pathsep.join(str(ROOT/p) for p in
         ("src", "vendor/lmms-eval", "csrc")), PYTHONDONTWRITEBYTECODE="1",
         OMP_NUM_THREADS="4", MKL_NUM_THREADS="4", OPENBLAS_NUM_THREADS="4", CUDA_VISIBLE_DEVICES="0")
     env["LD_LIBRARY_PATH"] = str(Path(sys.prefix)/"lib")+os.pathsep+env.get("LD_LIBRARY_PATH", "")
-    state = dict(status="starting", task="nextqa_oe_test", started_utc=timestamp(),
+    state = dict(status="starting", task="nextqa_oe_test", budget_policy=policy, started_utc=timestamp(),
         controller_pid=os.getpid(), process_group=os.getpgrp(), docs_per_condition=args.limit,
         target_generations=8*args.limit, warmup_generations=8*args.warmup,
         mode="formal" if args.limit == 200 else "pilot_not_formal",
@@ -87,6 +96,8 @@ def main():
                 worker, selector, value = "run_style_comparison", "--method", backbone+"_kvrepack"
             else:
                 worker, selector, value = "run_baseline_completion", "--backbone", backbone
+            if args.budget_policy == "original":
+                worker = "run_original_merge_comparison" if kind == "style" else "run_original_baselines"
             command = [sys.executable, "-B", "-m", "kvrepack.ablations."+worker,
                 selector, value, "--task", "nextqa_oe_test", "--pretrained", str(args.pretrained),
                 "--hf-home", str(args.hf_home), "--output", str(case),
@@ -110,7 +121,8 @@ def main():
                     raise RuntimeError(kind+"/"+backbone+" generation failed")
             state["completed_cases"].append(kind+"/"+backbone)
             atomic_json(state_path, state)
-        command = [sys.executable, "-B", "-m", "kvrepack.ablations.nextqa_merge_report",
+        reporter = "original_nextqa_report" if args.budget_policy == "original" else "nextqa_merge_report"
+        command = [sys.executable, "-B", "-m", "kvrepack.ablations."+reporter,
             "--root", str(args.output), "--expected-count", str(args.limit),
             "--hf-home", str(args.hf_home), "--output", str(args.output/"report")]
         state.update(status="scoring", command=command, updated_utc=timestamp())

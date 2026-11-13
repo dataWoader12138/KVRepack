@@ -1,0 +1,42 @@
+{
+  "status": "original_budget_default_restored_cpu_verified",
+  "recorded_utc": "2026-11-13T03:26:35.384874+00:00",
+  "default_budget_policy": "original_history_plus_local_v1",
+  "cpu_tests": 30,
+  "core_files_unchanged": 30,
+  "old_completed_strict_runs_unchanged": true,
+  "recorded_old_kvrepack_cache_shapes_verified": 400,
+  "gpu_execution": false,
+  "gpu_reason": "No /dev/nvidia0 or /dev/nvidiactl mounted in the current environment",
+  "device_paths": {
+    "/dev/nvidia0": false,
+    "/dev/nvidiactl": false
+  },
+  "source_checks": {
+    "status": "passed",
+    "core_files": 30,
+    "local_modules_and_adapter": 77,
+    "vendor_python_files": 329,
+    "vendor_build_files": 2382,
+    "original_source_comparison": false
+  },
+  "files_sha256": {
+    "scripts/run_nextqa_merge_comparison.py": "f606fc1c4e38e2965a134022935a75ddbf30bcbd659e62b2514e3e671c5cab22",
+    "src/kvrepack/ablations/original_budget.py": "5952a88df65a06ff4e6758ec284f4e32ca48f95e98c307c7095ecbdd2258fcc2",
+    "src/kvrepack/ablations/run_original_baselines.py": "d85c9e345989e67034c79557f67c18e8e3148b5ab5e5ea3f6921246659f4b70f",
+    "src/kvrepack/ablations/run_original_merge_comparison.py": "5485b543b0cb0dbe8f3a584ae99dad874a490082b10176c2fd59e3231785d7b9",
+    "src/kvrepack/ablations/original_nextqa_report.py": "35509871175b5646bd2236f9fccacc4d4ad2670d57378d3b4c8966a0a3d32df8",
+    "tests/test_original_budget.py": "641bb4be7d11bec5454e65c41ff6ab40b603a8bc7b8b01701a7db76670e87bef",
+    "tests/test_original_budget_entrypoints.py": "3417fd6ce0f5bce74c5d00aed37ddfecd9d10b29761c555d5d63050dfded9457",
+    "tests/test_original_nextqa_report.py": "de937e9ae1d81f7943becb6c627f8f9168c2a5e237d2b47c9f1e23821f74f5c0"
+  },
+  "frozen_strict_controller_sha256": "25c2869631e504e6dbc7c0abfc871f0901e5eabec8ccf7257fa8962a015b42f0",
+  "native_snap_score_diagnosis": {
+    "old_WUPS": 32.91386535847134,
+    "strict_WUPS": 33.19202762018623,
+    "delta": 0.2781622617148898,
+    "one_question_full_range_change_at_n200": 0.5,
+    "old_native_predictions_available": false,
+    "causal_attribution": "not established; restoring the original budget does not by itself prove the source of all earlier differences"
+  }
+}
