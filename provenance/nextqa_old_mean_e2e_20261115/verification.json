@@ -1,0 +1,109 @@
+{
+  "status": "old_mean_e2e_reuse_confirmed",
+  "recorded_utc": "2026-11-15T13:52:17.770546+00:00",
+  "gpu_execution": false,
+  "task": "nextqa_oe_test",
+  "model": "Qwen2.5-VL-7B",
+  "frames": 64,
+  "budget_scope": "Original nominal historical10% plus each method original recent/local; not strict total10%",
+  "records": [
+    {
+      "method": "snapkv",
+      "WUPS": 32.91386535847134,
+      "n": 200,
+      "response_loop_seconds_display": 648,
+      "mean_response_e2e_seconds_approx": 3.24,
+      "source_path": "/tmp/run_qwen7b_common_decouple_sweep_20260706.log.stopped_20260706_095548",
+      "source_sha256": "013534210f7e3f014a3f219e4c9601ba61aaba6d0caa1d038e33cd4c666ef584",
+      "run_tag": "opensource_snapkv_nextqa_oe_test",
+      "final_progress_lines": [
+        "Model Responding: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 200/200 [10:48<00:00,  2.91s/it]",
+        "Model Responding: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 200/200 [10:48<00:00,  3.24s/it]"
+      ],
+      "usable_as_historical_mean_response_e2e": true,
+      "per_sample_latency_distribution_available": false
+    },
+    {
+      "method": "snapkv_kvrepack",
+      "WUPS": 33.16973324789186,
+      "n": 200,
+      "response_loop_seconds_display": 682,
+      "mean_response_e2e_seconds_approx": 3.41,
+      "source_path": "/tmp/run_qwen7b_common_decouple_sweep_20260706.log",
+      "source_sha256": "0dd89368e5001eb04f8268c92745395a87d47430b772fc93ace5926b18c233c3",
+      "run_tag": "artifact_snapkv_decouplekv_nextqa_oe_test_sim0.30_cr0.70_alpha2",
+      "final_progress_lines": [
+        "Model Responding: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:22<00:00,  3.02s/it]",
+        "Model Responding: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:22<00:00,  3.41s/it]"
+      ],
+      "usable_as_historical_mean_response_e2e": true,
+      "per_sample_latency_distribution_available": false
+    },
+    {
+      "method": "hybridkv",
+      "WUPS": 32.73871739439369,
+      "n": 200,
+      "response_loop_seconds_display": 670,
+      "mean_response_e2e_seconds_approx": 3.35,
+      "source_path": "/tmp/run_qwen7b_common_decouple_sweep_20260706.log.stopped_20260706_095548",
+      "source_sha256": "013534210f7e3f014a3f219e4c9601ba61aaba6d0caa1d038e33cd4c666ef584",
+      "run_tag": "opensource_hybridkv_nextqa_oe_test",
+      "final_progress_lines": [
+        "Model Responding: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:10<00:00,  3.04s/it]",
+        "Model Responding: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:10<00:00,  3.35s/it]"
+      ],
+      "usable_as_historical_mean_response_e2e": true,
+      "per_sample_latency_distribution_available": false
+    },
+    {
+      "method": "hybridkv_kvrepack",
+      "WUPS": 33.21990343057972,
+      "n": 200,
+      "response_loop_seconds_display": 698,
+      "mean_response_e2e_seconds_approx": 3.49,
+      "source_path": "/tmp/run_qwen7b_remaining_earlystop_20260707.log",
+      "source_sha256": "38b01485e18ed597220eec503884fb3f600366a270acf70a996a4b28eb11f24f",
+      "run_tag": "artifact_hybrid_decouplekv_nextqa_oe_test_sim0.50_cr0.50_alpha2",
+      "final_progress_lines": [
+        "Model Responding: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:38<00:00,  3.29s/it]",
+        "Model Responding: 100%|█████████████████████████████████████████████████████████████████████████████████████████| 200/200 [11:38<00:00,  3.49s/it]"
+      ],
+      "usable_as_historical_mean_response_e2e": true,
+      "per_sample_latency_distribution_available": false
+    }
+  ],
+  "timing_boundary_source": {
+    "path": "vendor/lmms-eval/lmms_eval/models/qwen2_5_vl.py",
+    "sha256": "c075e70eed14b71738b6f0528cb2c50a0f9ca9919f1961a5c2aa52948672551e",
+    "start": "Model Responding tqdm created before per-input video reading/preprocessing/H2D",
+    "end": "batch_decode and partial cache write completed before progress update",
+    "includes_model_load": false,
+    "explicit_per_sample_cuda_sync_required_for_mean_response_e2e": false
+  },
+  "correction": "Lack of synchronized per-sample measurements does not invalidate a completed response-loop elapsed/N mean. Four original control results and their same-run old mean E2E can be preserved; do not mandate rerunning all controls.",
+  "minimum_missing_conditions": {
+    "quality_and_response_e2e": [
+      "snapkv+lookm_style",
+      "snapkv+asymkv_style",
+      "hybridkv+lookm_style",
+      "hybridkv+asymkv_style",
+      "standalone_asymkv"
+    ],
+    "matching_response_e2e_only": [
+      "standalone_lookm"
+    ],
+    "generations_if_200_each": 1200
+  },
+  "lookm_worker_total": {
+    "seconds": 812.6588971354067,
+    "amortized_seconds_per_input": 4.063294485677034,
+    "includes_model_load_observation_offset_processing_audit_hashing_and_writes": true,
+    "interchangeable_with_response_loop_mean": false
+  },
+  "limitations": [
+    "Report approximate historical means; P50/P95 unavailable.",
+    "New measurements need matching hardware, inputs, budget, generation and timing boundaries; calibrate necessary controls if these differ.",
+    "LOOK-M implementation fixes and budget changes are separate interventions.",
+    "Do not pair July SnapKV+KVRepack mean3.410 with November WUPS32.917681; same-run WUPS is33.169733."
+  ]
+}
