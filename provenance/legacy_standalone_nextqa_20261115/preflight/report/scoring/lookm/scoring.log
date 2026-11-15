@@ -1,0 +1,2 @@
+Warming up PyWSD (takes ~10 secs)... took 3.6956093311309814 secs.
+{"status": "complete", "task": "nextqa_oe_test", "n": 1, "full_split": false, "metrics": {"WUPS": 100.0}, "reused": false, "seconds": 8.254163164645433, "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/benchmarks/legacy_standalone_nextqa_20261115_preflight/report_audit_child/scoring/lookm/metrics.json"}

@@ -1,0 +1,4080 @@
+{
+  "status": "completed",
+  "method": "asymkv",
+  "task": "nextqa_oe_test",
+  "doc_id": 0,
+  "contract_sha256": "9ff36148a81790f3824bbadbe9d018a7333e98a5ab9db63d094ec8e6aeb29f7e",
+  "text": "no",
+  "prediction": "no",
+  "generated_ids": [
+    2152,
+    151645
+  ],
+  "generated_tokens": 2,
+  "input_tokens": 9607,
+  "reference_metadata": {
+    "task": "nextqa_oe_test",
+    "doc_id": 0,
+    "video_id": "4924794333",
+    "source_video_id": "4924794333",
+    "video_path": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/nextqa/NExTVideo/4924794333.mp4",
+    "input_tokens": 9607,
+    "frame_indices": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      8,
+      9,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17,
+      19,
+      20,
+      22,
+      23,
+      24,
+      26,
+      27,
+      29,
+      30,
+      31,
+      33,
+      34,
+      35,
+      37,
+      38,
+      40,
+      41,
+      42,
+      44,
+      45,
+      46,
+      48,
+      49,
+      51,
+      52,
+      53,
+      55,
+      56,
+      58,
+      59,
+      60,
+      62,
+      63,
+      64,
+      66,
+      67,
+      69,
+      70,
+      71,
+      73,
+      74,
+      75,
+      77,
+      78,
+      80,
+      81,
+      82,
+      84,
+      85,
+      87
+    ],
+    "decoded_frames": 88,
+    "arrow_sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+    "original_row_sha256": "a394e39d39d9190a3aee7bd8ca6e182890f30faaf518d43b44dc8c200aa7cfb3"
+  },
+  "input_fingerprints": {
+    "input_hashes": {
+      "attention_mask": "1f3408477a4392babbd96e8b3dfadeccc001a04551b7a430f80324750ae1d0fd",
+      "input_ids": "cd59627f40c558b3300db000423b313f99664195e3d5535d98b8986321c7ee62",
+      "pixel_values_videos": "463d16a88962d8eec89be93d4309486cb4d88f6129bcb8db01f46d998f8e9591",
+      "second_per_grid_ts": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+      "video_grid_thw": "702f59ac8159a21fa3a67207055839dc895b11fb00addcc36f0557594983ec08"
+    },
+    "input_shapes": {
+      "attention_mask": [
+        1,
+        9607
+      ],
+      "input_ids": [
+        1,
+        9607
+      ],
+      "pixel_values_videos": [
+        38272,
+        1176
+      ],
+      "second_per_grid_ts": [
+        1
+      ],
+      "video_grid_thw": [
+        1,
+        3
+      ]
+    },
+    "input_dtypes": {
+      "attention_mask": "torch.int64",
+      "input_ids": "torch.int64",
+      "pixel_values_videos": "torch.float32",
+      "second_per_grid_ts": "torch.float32",
+      "video_grid_thw": "torch.int64"
+    }
+  },
+  "eos_reached": true,
+  "capped_without_eos": false,
+  "warmup": false,
+  "audit": {
+    "method": "AsymKV-official",
+    "upstream_commit": "771ce4db0292f7e8c9519edf37f7e161beb2c103",
+    "sample_index": 0,
+    "prompt_length": 9607,
+    "configured_cache_size": 960,
+    "prefill_physical_lengths": [
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863,
+      1863
+    ],
+    "prefill_logical_tokens": 9607,
+    "cache_physical_lengths_after_generation": [
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864,
+      1864
+    ],
+    "cache_logical_tokens_after_generation": 9608,
+    "generated_tokens": 2,
+    "compression_events": [
+      {
+        "before": [
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512
+        ],
+        "after": [
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512
+        ],
+        "layers": [],
+        "compressed": false,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 512,
+        "chunk_end": 1024
+      },
+      {
+        "before": [
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024,
+          1024
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 25,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 28,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 27,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 30,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 34,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 37,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 24,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 37,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 29,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 23,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 22,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 28,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 32,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 30,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 33,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 24,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 25,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 25,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 22,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 24,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 26,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 28,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 30,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 27,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 21,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 28,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 22,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 64,
+            "unique_removed": 64,
+            "overlapping_pair_boundaries": 22,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 1024,
+        "chunk_end": 1536
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 337,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 384,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 375,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 384,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 391,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 411,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 358,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 375,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 388,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 388,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 352,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 367,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 368,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 359,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 406,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 365,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 401,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 380,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 365,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 374,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 394,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 374,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 404,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 401,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 380,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 383,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 404,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 409,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 1536,
+        "chunk_end": 2048
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 368,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 360,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 380,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 367,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 417,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 351,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 385,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 397,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 381,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 364,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 380,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 378,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 379,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 379,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 397,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 388,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 366,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 411,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 399,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 400,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 407,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 410,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 406,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 391,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 421,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 411,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 2048,
+        "chunk_end": 2560
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 402,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 375,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 401,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 391,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 406,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 351,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 375,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 411,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 387,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 352,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 362,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 367,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 366,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 419,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 351,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 381,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 371,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 357,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 406,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 397,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 390,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 420,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 401,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 388,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 401,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 417,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 402,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 2560,
+        "chunk_end": 3072
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 429,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 411,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 403,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 448,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 424,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 390,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 436,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 436,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 434,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 410,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 424,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 406,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 446,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 402,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 425,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 419,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 403,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 418,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 432,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 434,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 430,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 422,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 435,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 431,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 3072,
+        "chunk_end": 3584
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 417,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 431,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 401,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 455,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 433,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 403,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 444,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 439,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 439,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 408,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 418,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 417,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 390,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 449,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 403,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 423,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 417,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 394,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 435,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 435,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 433,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 457,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 439,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 442,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 450,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 455,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 3584,
+        "chunk_end": 4096
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 445,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 425,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 433,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 448,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 444,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 421,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 443,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 446,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 451,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 440,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 430,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 463,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 454,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 435,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 438,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 455,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 444,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 445,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 450,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 453,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 444,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 439,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 433,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 4096,
+        "chunk_end": 4608
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 434,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 412,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 434,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 432,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 453,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 453,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 423,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 450,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 431,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 400,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 427,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 424,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 410,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 432,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 400,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 427,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 420,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 443,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 434,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 429,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 434,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 429,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 439,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 432,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 438,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 4608,
+        "chunk_end": 5120
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 454,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 430,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 434,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 434,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 425,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 436,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 410,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 412,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 430,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 405,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 415,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 396,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 401,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 393,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 395,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 395,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 400,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 410,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 415,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 395,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 417,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 382,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 388,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 390,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 393,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 407,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 5120,
+        "chunk_end": 5632
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 459,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 424,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 437,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 436,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 418,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 444,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 394,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 403,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 406,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 415,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 408,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 415,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 412,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 412,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 442,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 407,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 443,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 422,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 443,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 442,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 425,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 433,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 429,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 420,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 420,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 440,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 448,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 5632,
+        "chunk_end": 6144
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 442,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 413,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 410,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 440,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 433,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 402,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 394,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 413,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 391,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 388,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 364,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 363,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 401,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 384,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 403,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 378,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 373,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 414,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 388,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 417,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 407,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 409,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 421,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 392,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 411,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 409,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 6144,
+        "chunk_end": 6656
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 444,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 422,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 424,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 424,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 433,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 431,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 406,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 414,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 417,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 404,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 412,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 415,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 442,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 406,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 400,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 442,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 422,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 439,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 430,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 423,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 416,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 426,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 421,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 6656,
+        "chunk_end": 7168
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 448,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 436,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 453,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 452,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 462,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 452,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 438,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 455,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 456,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 458,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 457,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 431,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 448,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 439,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 465,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 448,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 449,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 419,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 420,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 453,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 425,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 447,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 455,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 445,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 445,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 436,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 449,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 459,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 7168,
+        "chunk_end": 7680
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 436,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 424,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 442,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 447,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 451,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 455,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 445,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 445,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 438,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 454,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 422,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 435,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 438,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 429,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 469,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 438,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 445,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 451,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 454,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 473,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 457,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 462,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 455,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 457,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 449,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 451,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 451,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 460,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 7680,
+        "chunk_end": 8192
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 451,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 439,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 461,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 451,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 452,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 472,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 433,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 454,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 463,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 450,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 440,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 417,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 451,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 434,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 463,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 425,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 446,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 430,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 453,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 441,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 450,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 457,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 457,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 439,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 455,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 470,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 464,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 8192,
+        "chunk_end": 8704
+      },
+      {
+        "before": [
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472,
+          1472
+        ],
+        "after": [
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960,
+          960
+        ],
+        "layers": [
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 459,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 457,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 467,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 462,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 477,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 464,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 442,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 465,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 459,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 471,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 456,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 441,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 458,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 445,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 458,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 448,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 465,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 451,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 428,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 472,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 456,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 458,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 461,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 464,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 469,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 468,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 474,
+            "physical_after": 960
+          },
+          {
+            "requested_merges": 512,
+            "unique_removed": 512,
+            "overlapping_pair_boundaries": 484,
+            "physical_after": 960
+          }
+        ],
+        "compressed": true,
+        "fisher_available": true,
+        "probe_chunk_length": 512,
+        "chunk_start": 8704,
+        "chunk_end": 9216
+      }
+    ],
+    "runtime": {
+      "budget_ratio": 0.1,
+      "absolute_cache_size": null,
+      "start_size": 32,
+      "chunk_size": 512,
+      "audit_path": null
+    }
+  },
+  "runtime": {
+    "preprocessing_seconds": 1.5880634486675262,
+    "h2d_seconds": 0.017839722335338593,
+    "generation_seconds": 7.168428003787994,
+    "text_decode_seconds": 0.000193033367395401,
+    "end_to_end_seconds": 8.774524208158255,
+    "peak_allocated_gib": 24.329461574554443
+  },
+  "completed_utc": "2026-11-15T14:33:15.934153+00:00"
+}

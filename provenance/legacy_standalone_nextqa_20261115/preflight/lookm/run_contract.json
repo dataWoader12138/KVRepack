@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "experiment": "legacy_standalone_response_e2e",
+  "method": "lookm",
+  "task": "nextqa_oe_test",
+  "target_docs": 1,
+  "target_generations": 1,
+  "model_snapshot": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "hf_home": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+  "frames": 64,
+  "min_pixels": 200704,
+  "max_pixels": 1605632,
+  "budget_ratio": 0.1,
+  "budget_policy": "original_lookm_history_plus_recent_v1",
+  "model_seed": 42,
+  "dtype": "bfloat16",
+  "do_sample": false,
+  "max_new_tokens": 128,
+  "repetition_penalty": 1.05,
+  "decoding_policy": "hf_greedy_repetition_penalty_1p05",
+  "algorithm_env": {
+    "BUDGET": "1024",
+    "BUDGET_RATIO": "0.1",
+    "RATIO": "0.1"
+  },
+  "source_sha256": {
+    "src/kvrepack/benchmarks/run_legacy_nextqa_e2e.py": "ca301d75016e85315af9921a127536ad0c30b1ed0a396d33eb9396bc87c585f9",
+    "src/kvrepack/benchmarks/legacy_lookm.py": "af8f640170ac4f88880ba9ebbb48f456239ba75e909ef5c73129810c97d75916",
+    "src/kvrepack/ablations/video_e2e_inputs.py": "cba3a8111c867d958d5fd146a0e4c47af667196e56975ca32f4e7fa85e518a1d",
+    "src/kvrepack/ablations/run_head_selection.py": "b275da91f83aac36654eb9cc5850e72cc1138c0d7d15198d5527bab1a6062814",
+    "src/kvrepack/ablations/run_head_selection_full.py": "f8cc31d8929cdb1898a3104604fe0b5a81350b6a8ced3ffb883b564850eb558c",
+    "src/kvrepack/ablations/run_baseline_completion.py": "0084869cb561b694c42ce309c19fa580add4fceb3536ad4257cccd46303f6d06",
+    "src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+    "src/kvrepack/experiments/runner.py": "240fe7425cca5adb94e360d63e68dc095389a3ef46ca6624fbf6b49f279d5dfa",
+    "src/kvrepack/experiments/registry.py": "72a7db239ad21d20c3fb6e7870bb60fe7d59c3d8974bc258bef7cf7ca50d6dfc",
+    "src/kvrepack/baseline_utils.py": "ee1baadace05c657f233f4b3f82624933b81b4a4fae018e2db4852fee6a275ff",
+    "src/kvrepack/monkeypatch.py": "3603889bbe2b29c3b8bbb601825f5892008eed6aeaeb7c7ff83e0b28da9fa1d5",
+    "src/kvrepack/qwen_model.py": "9e51319dfface797de12050a834c648a9d2586ca1098397dae73cb20a2bdaab7",
+    "src/kvrepack/qwen_model_croatt.py": "6f9d46f0d8a36ac842dc2e2beecccbc5be55194d5cfc47ff4379236f8dbf8cbf",
+    "src/kvrepack/_asymkv_helpers.py": "5e701e6451f05537f2f942969f389cccb82400c8546139451734c1cf1c885b22",
+    "src/kvrepack/asymkv_official/integration.py": "2da76a65644ada05675274ef929210c9684bc89e39e5d479d9cb5524a280098e",
+    "src/kvrepack/asymkv_official/generation.py": "f68dbd411938f9fef3fac74a57a9057e026ce1583667a5f23bdaef379d720508",
+    "src/kvrepack/asymkv_official/compression.py": "c10fa7442b1dcd7e8b9ff48098bb105545af691ceeb37cce0ba651039797a3f9",
+    "src/kvrepack/asymkv_official/attention.py": "f66c75f20b64304e9ea4cf799cd3a18ab2c3602a1c02784df4804029a7a3f865",
+    "src/kvrepack/asymkv_official/cache.py": "1d06c401a6febe85a622fb4b8544dc092c985d1a5210eaecfc0f8714f68cefb2",
+    "provenance/core_sources.json": "49d09af765d8a445aad2ba334eacdb5591405b1328462def3ebe3e14282834af",
+    "provenance/patches/lookm_strict_budget_v2.patch": "b57ec9b0124df5087bdc4a1043532d599505442f31fc3538deb28a9f3b979cdb"
+  },
+  "model_metadata_sha256": {
+    "chat_template.json": "ad60d90252ed0b0705ba14e2d0ad0fec0beac1ea955642b54059b36052d8bc96",
+    "config.json": "77d9ec7321cc572e3579e2c84799c9cadaded63c49ce93b101733349fc330c43",
+    "generation_config.json": "0a3aea82869fe29f20dc95ccf3e2bcff380eca1f5ad6447a4a4b37110b08e43e",
+    "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "model.safetensors.index.json": "73b333b0b16e5286ddba615d2caebcd495cf7e616f52eb217a81781393d79de9",
+    "preprocessor_config.json": "f2058c716eef96ccaed1cc1e2d0c08306b62586d535b28d9d08e691b2fab7ca0",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "4abd3520120e266da84c0864fee064d1fb10806f02225911a47253dd38dc5f56",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "arrow_sha256": "41abd6d60bfb1de371a942c6fe8eb42ba635b6287c902b12a31de9ac1fc272e3",
+  "dataset_rows": 9178,
+  "task_yaml_sha256": "c81a2b515f03261b77250491ef77a1391672a53687ad86940e4bef17c7183f20",
+  "task_utils_sha256": "27c8baea98d4709e25c71484f01e6897e771c420072bff87f2be90deda72f2e4",
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.52.3",
+    "flash-attn": "2.7.4.post1",
+    "qwen-vl-utils": "0.0.14",
+    "datasets": "2.19.2",
+    "decord": "0.6.0",
+    "numpy": "1.26.4"
+  },
+  "warmup_per_arm": 0,
+  "diagnostic_audit": false,
+  "timing_scope": "Original video first-frame read+decode/processor+H2D+complete native generate (including AsymKV Fisher)+text decode; excludes loading/scoring/audit hashing/writes",
+  "order_policy": "Original firstN IDs, executed in lmms descending-prompt-length order",
+  "legacy_lookm_identity": {
+    "policy": "archived_lookm_history10percent_plus_recent32_v1",
+    "target_path": "src/kvrepack/baseline_utils.py",
+    "current_module_sha256": "ee1baadace05c657f233f4b3f82624933b81b4a4fae018e2db4852fee6a275ff",
+    "archived_module_sha256": "a7219df197e13cd91e6aee0369bc1e0d8264a2f0fc65c3f863576d83df82722e",
+    "archived_module_ast_sha256": "f64ffd8d26f33fc3dea5193f9dbb718daf270bbc791bc1f6187109310efb6be6",
+    "manifest_sha256": "49d09af765d8a445aad2ba334eacdb5591405b1328462def3ebe3e14282834af",
+    "reversible_patch_path": "provenance/patches/lookm_strict_budget_v2.patch",
+    "reversible_patch_sha256": "b57ec9b0124df5087bdc4a1043532d599505442f31fc3538deb28a9f3b979cdb",
+    "transformation": "Replay the two exact pre-correction functions; no core source mutation",
+    "functions": {
+      "merge_kv": {
+        "archived_source": "def merge_kv(key_states, value_states, indices, window_size, merge):\n    # merge methods in LOOK-M\n\n    bsz, num_heads, k_len, head_dim = key_states.shape\n\n    # kv-selected\n    selected_keys = key_states.gather(dim=2, index=indices)  # [bsz, num_heads, topk_len, head_dim]\n    selected_values = value_states.gather(dim=2, index=indices)  # [bsz, num_heads, topk_len, head_dim]\n\n    # kv-drop\n    all_indices = torch.arange(k_len - window_size, device=key_states.device).unsqueeze(0).unsqueeze(0).expand(bsz, num_heads, k_len - window_size)\n    all_indices_flattened = all_indices.flatten()  # [bsz * num_heads * (k_len-window_size)]\n    selected_indices_flattened = indices.flatten()  # [bsz * num_heads * topk_len]\n    is_selected = torch.isin(all_indices_flattened, selected_indices_flattened)\n    drop_indices_flattened = all_indices_flattened[~is_selected]\n    drop_len = drop_indices_flattened.shape[0] // (all_indices.shape[0] * all_indices.shape[1])\n    drop_indices = drop_indices_flattened.reshape(all_indices.shape[0], all_indices.shape[1], drop_len) # [bsz * num_heads * (k_len-window_size-topk_len)]\n    drop_indices = drop_indices.unsqueeze(-1).expand(-1, -1, -1, head_dim)  # [bsz, num_heads, (k_len-window_size-topk_len), head_dim]\n    drop_keys = key_states.gather(dim=2, index=drop_indices)\n    drop_values = value_states.gather(dim=2, index=drop_indices)\n\n    ##### apply merge #####\n    # prepare for merge\n    k_hh_pruned = drop_keys  # [bsz, num_heads, k_len-topk_len-window_size, head_dim]\n    k_hh_recent = torch.cat([selected_keys, key_states[:, :, -window_size:, :], ], dim=2)  # [bsz, num_heads, topk_len+window_size, head_dim]\n    # k_hh_recent = selected_keys\n    v_hh_pruned = drop_values  # [bsz, num_heads, k_len-topk_len-window_size, head_dim]\n    v_hh_recent = torch.cat([selected_values, value_states[:, :, -window_size:, :]], dim=2)  # [bsz, num_heads, topk_len+window_size, head_dim]\n    # v_hh_recent = selected_values\n    # similarity matrix\n    similarity = (k_hh_pruned / torch.norm(k_hh_pruned, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128)) @ ((k_hh_recent / (torch.norm(k_hh_recent, dim=-1).unsqueeze(-1).repeat(1, 1, 1, 128))).transpose(-1, -2)) # cosin\n    max_values, max_indices = similarity.max(dim=-1)\n    # pivot merge\n    if merge==\"pivot\":\n        # print(\"Pivot merge\")\n        merged_indices = max_indices.unsqueeze(-1).repeat(1, 1, 1, 128)\n        k_hh_selected = torch.gather(input=k_hh_recent, dim=2, index=merged_indices)\n        k_hh_merged = (k_hh_pruned + k_hh_selected)/2\n        k_hh_recent = torch.scatter_reduce(input=k_hh_recent, dim=2, index=merged_indices, src=k_hh_merged, reduce='mean', include_self=True) # include_self=True seems decrease the performance\n        v_hh_selected = torch.gather(input=v_hh_recent, dim=2, index=merged_indices)\n        v_hh_merged = (v_hh_pruned + v_hh_selected)/2\n        v_hh_recent = torch.scatter_reduce(input=v_hh_recent, dim=2, index=merged_indices, src=v_hh_merged, reduce='mean', include_self=True)\n    elif merge==\"averaged\":\n        merged_indices = max_indices.unsqueeze(-1).repeat(1, 1, 1, 128)\n        k_hh_selected = torch.gather(input=k_hh_recent, dim=2, index=merged_indices)\n        k_hh_merged = k_hh_pruned\n        k_hh_recent = torch.scatter_reduce(input=k_hh_recent, dim=2, index=merged_indices, src=k_hh_merged, reduce='mean', include_self=True) # include_self=True seems decrease the performance\n        v_hh_selected = torch.gather(input=v_hh_recent, dim=2, index=merged_indices)\n        v_hh_merged = v_hh_pruned\n        v_hh_recent = torch.scatter_reduce(input=v_hh_recent, dim=2, index=merged_indices, src=v_hh_merged, reduce='mean', include_self=True)\n    else:\n        raise ValueError('Merge method not supported')\n\n    # TODO: other merge strategies\n    # weight merge\n\n    return k_hh_recent, v_hh_recent",
+        "archived_ast_sha256": "495704427e307ffa0018adba986e96e5e97365387c86d29999d8a1d8999eb39d",
+        "current_ast_sha256": "838fd0a09d544836ce9552159a262f44279d522c8f78da30629c66d24b5c0a6a"
+      },
+      "LookMCluster.update_kv": {
+        "archived_source": "def update_kv(self, origin_key_states, query_states, origin_value_states):\n        # support gqa\n        key_states = repeat_kv(origin_key_states, self.num_key_value_groups) #[bsz, heads, k_len, dim]\n        value_states = repeat_kv(origin_value_states, self.num_key_value_groups)\n        # check if prefix phase\n        assert key_states.shape[-2] == query_states.shape[-2]\n        bsz, num_heads, q_len, head_dim = query_states.shape\n        # self.select_num = int(q_len * self.budget_ratio - self.window_size)\n        self.select_num = int(q_len * self.budget_ratio)\n        if self.select_num <= 0:\n            return origin_key_states, origin_value_states\n        else:\n            # compute attention\n            # [bsz, heads, q_len, k_len]\n            attn_weights = torch.matmul(query_states[..., -self.window_size:, :], key_states.transpose(2, 3)) / math.sqrt(head_dim)\n            \n            mask = torch.full((self.window_size, self.window_size), torch.finfo(attn_weights.dtype).min, device=attn_weights.device)\n            mask_cond = torch.arange(mask.size(-1), device=attn_weights.device)\n            mask.masked_fill_(mask_cond < (mask_cond + 1).view(mask.size(-1), 1), 0)\n            mask = mask.to(attn_weights.device)\n            attention_mask = mask[None, None, :, :]\n            # 是否需要softmax？\n            attn_weights[:, :, -self.window_size:, -self.window_size:] += attention_mask\n            attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query_states.dtype)\n            # [LOOK-M]\n            attn_weights_sum = attn_weights[:, :, -self.window_size:, : -self.window_size].sum(dim = -2) #[bsz, heads, k_len]\n            attn_weights_sum = attn_weights_sum.view(attn_weights_sum.shape[0], num_heads//self.num_key_value_groups,self.num_key_value_groups, -1)\n            # [bsz, kv_heads, k_len]\n            if self.gqa_func == 'max':\n                attn_weights_sum = attn_weights_sum.max(dim=-2).values\n            elif self.gqa_func == 'mean':\n                attn_weights_sum = attn_weights_sum.mean(dim=-2)\n            else:\n                raise ValueError('gqa_func not supported')\n            \n            # Text token Add Max Score(Text Prefer)\n            attn_weights_max = attn_weights_sum.max(dim = -1).values #[bsz, kv_heads]\n            text_index = self.is_text_token_mask[:, :-self.window_size] #[bsz, k_len]  k_len = q_len - window_size\n            text_index = text_index.unsqueeze(1).expand(attn_weights_sum.shape) #[bsz, kv_heads, k_len]\n            text_index = text_index.to(attn_weights_sum.device)\n            assert text_index.shape[-1] == attn_weights_sum.shape[-1]\n            attn_weights_max = attn_weights_max.unsqueeze(-1).expand(attn_weights_sum.shape) #[bsz, kv_heads, k_len]\n            attn_cache = torch.where(\n                text_index, # text token\n                attn_weights_sum + attn_weights_max, # True: add the max\n                attn_weights_sum # False: the same\n            ) #[bsz, kv_heads, k_len]\n\n            indices = attn_cache.topk(self.select_num, dim=-1).indices\n            indices = indices.unsqueeze(-1).expand(-1, -1, -1, head_dim)\n            # merge kv \n            if self.layer_idx >= (self.num_hidden_layers * self.merge_layer_ratio):\n                key_states, value_states = merge_kv(origin_key_states, origin_value_states, indices, self.window_size, \"pivot\")\n            else:\n                k_past_compress = origin_key_states[:, :, :-self.window_size, :].gather(dim = 2, index = indices)\n                v_past_compress = origin_value_states[:, :, :-self.window_size, :].gather(dim = 2, index = indices)\n                k_cur = origin_key_states[:, :, -self.window_size:, :]\n                v_cur = origin_value_states[:, :, -self.window_size:, :]\n\n                key_states = torch.cat([k_past_compress, k_cur], dim = 2)\n                value_states = torch.cat([v_past_compress, v_cur], dim = 2)\n\n            return key_states, value_states",
+        "archived_ast_sha256": "843098ed570d97313bada4181b7a927f07a7ad360e80d491130affc8c055ad4c",
+        "current_ast_sha256": "0480d96c492e97e5413ccc5e1da8c56e948c60afbd912785251748f48ca4b362"
+      }
+    },
+    "historical_behavior": "Original history ratio plus recent; original cross-head complement and native-dtype cosine behavior retained"
+  },
+  "asymkv_runtime": null
+}

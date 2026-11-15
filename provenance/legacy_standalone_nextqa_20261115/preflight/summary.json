@@ -1,0 +1,13 @@
+{
+  "status": "preflight_passed_formal_not_started",
+  "recorded_utc": "2026-11-15T14:40:09.066037+00:00",
+  "cpu_tests": 27,
+  "pilot_generations": 2,
+  "formal_generations": 400,
+  "formal_docs_per_method": 200,
+  "formal_warmup": 0,
+  "primary_metric": "mean video-to-text response E2E; complete AsymKV Fisher included",
+  "scope": "Original standalone LOOK-M archived functions, original official AsymKV full pipeline; no style transplant or strict budget intervention",
+  "lookm_first_input_and_output_identical_to_legacy": true,
+  "gpu": "NVIDIA A800-SXM4-80GB"
+}

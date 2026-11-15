@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "method": "asymkv",
+  "task": "nextqa_oe_test",
+  "contract_sha256": "9ff36148a81790f3824bbadbe9d018a7333e98a5ab9db63d094ec8e6aeb29f7e",
+  "target_docs": 1,
+  "target_generations": 1,
+  "completed_docs": 1,
+  "completed_generations": 1,
+  "started_utc": "2026-11-15T14:33:01.401450+00:00",
+  "pid": 3198,
+  "warmup_per_arm": 0,
+  "response_loop_seconds": 8.933533649891615,
+  "timed_e2e_seconds_sum": 8.774524208158255,
+  "execution_order": [
+    0
+  ],
+  "current_doc_id": 0,
+  "updated_utc": "2026-11-15T14:33:15.940804+00:00",
+  "finished_utc": "2026-11-15T14:33:15.947697+00:00"
+}
