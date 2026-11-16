@@ -1,0 +1,19 @@
+NExTQA 原始前200条，Qwen2.5-VL-7B，64帧，A800-SXM4-80GB
+各方法保留原实现及预算；共400次正式生成，全部完成。
+
+Method                 WUPS          E2E (秒/条)
+LOOK-M (standalone)    33.539684     3.577198
+AsymKV (standalone)    29.164032     9.826410
+
+E2E：视频读取/解码、processor、H2D、完整生成、文本解码；AsymKV全部Fisher计入。
+模型加载、评分、审计哈希与写盘不在该逐题计时内。
+包含记录/审计/写盘间隙的完整响应循环均值另为：LOOK-M 3.784124、AsymKV 10.042068 秒/条。
+
+本轮重新评分：LOOK-M有3/200回答与旧run不同（doc28/44/150），不将旧33.857144与新时延拼接。
+原AsymKV名义预算10%，32为预算内sink；分块追加后实际prefill物理缓存平均18.1112%，并非严格总10%。
+LOOK-M仍为10%历史位置+32 recent，实际prefill平均10.2988%。
+LOOK-M 200条全EOS；AsymKV 194条EOS、6条达到128token上限，均计入分数/时延。
+
+原始记录：outputs/benchmarks/legacy_standalone_nextqa_200_20261115
+仓库归档：provenance/legacy_standalone_nextqa_20261115/final
+协议与启动代码：docs/LEGACY_STANDALONE_NEXTQA_E2E_20261115.md

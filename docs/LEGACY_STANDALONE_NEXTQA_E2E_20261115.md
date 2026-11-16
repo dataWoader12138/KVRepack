@@ -1,5 +1,7 @@
 # 旧设置独立LOOK-M／AsymKV：NExTQA200端到端复测
 
+正式任务已于UTC2026-11-15T15:28:05完成，两方法各200条。[最终分数、E2E、旧LOOK-M差异及归档](LEGACY_STANDALONE_NEXTQA_E2E_RESULTS_20261115.md)；[三列结果TXT](legacy_standalone_nextqa_200.txt)。以下保留实验协议与启动信息。
+
 用户授权仅重跑独立原版LOOK-M和独立原版AsymKV，各使用NExTQA开放式测试集原始doc0..199，共400次正式生成。模型Qwen2.5-VL-7B-Instruct、64帧、BF16、FlashAttention2、batch1、greedy、上限128token，原生prompt和视频处理。两个单条GPU联调及27项CPU检查已通过，联调不混入正式结果。正式任务是否完成以experiment_state.json为准。
 
 ## 原实现和原预算
@@ -30,4 +32,4 @@ python scripts/run_legacy_standalone_nextqa.py \
 
 控制器只串行运行LOOK-M和AsymKV，随后自动CPU原任务WUPS评分，并生成report/comparison.csv、per_input_latency.csv、summary.json和RESULTS.md。原分数与新时延成对保存，不把旧33.857的分数冒充本轮已重现。旧四个控制的历史平均E2E保留，不重跑，不恢复任何旧停止任务。
 
-本机正式ROOT为outputs/benchmarks/legacy_standalone_nextqa_200_20261115；pilot ROOT为outputs/benchmarks/legacy_standalone_nextqa_20261115_preflight；来源证据provenance/legacy_standalone_nextqa_20261115。正式源版本0b85f67，controller/PG3865，启动UTC2026-11-15T14:41:16，预计45–70分钟；真实状态以state文件为准，不能把pilot当成正式200结果。
+本机正式ROOT为outputs/benchmarks/legacy_standalone_nextqa_200_20261115；pilot ROOT为outputs/benchmarks/legacy_standalone_nextqa_20261115_preflight；来源证据provenance/legacy_standalone_nextqa_20261115。正式源版本0b85f67，controller/PG3865，启动UTC2026-11-15T14:41:16，完成15:28:05，控制器总墙钟2808.284秒（约46.8分钟，含加载与评分）。state为complete；pilot不混入正式200结果。
