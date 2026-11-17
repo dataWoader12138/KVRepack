@@ -21,6 +21,8 @@ Spot-the-Diff、MMCoQA采用官方MileBench v1子集全部标注。本机各200�
 
 8条件×2任务×200条=3200正式生成。每条件/任务独立进程，模型只加载一次；GPU进程串行，batch1。每组额外1条预热独立保存，不参与分数或正式时延。小批smoke目录也与正式结果隔离。
 
+图片附加依赖可用`python -m pip install -e '.[images]'`安装。模型权重、数据和另行编译的`kvrepack_kernel`仍须准备；当前在已有环境上验证，不将它称为全新机器的完整安装验证。
+
 ## 参数和原实现差异
 
 模型为本地Qwen2.5-VL-7B-Instruct snapshot `cc594898137f460bfe9f0759e9844b3ce807cfb5`，A800-SXM4-80GB、BF16、FlashAttention2、模型seed42。

@@ -1,0 +1,20 @@
+START_UTC 2026-11-17T00:35:16.138203+00:00
+test_archive_size_failure_is_explicit_atomic_and_does_not_drop_records (test_styled_milebench_export.StyledImageExportTests.test_archive_size_failure_is_explicit_atomic_and_does_not_drop_records) ... ok
+test_complete_archive_preserves_every_raw_file_and_report_without_source_writes (test_styled_milebench_export.StyledImageExportTests.test_complete_archive_preserves_every_raw_file_and_report_without_source_writes) ... ok
+test_controller_must_be_complete_and_exactly_sixteen_conditions (test_styled_milebench_export.StyledImageExportTests.test_controller_must_be_complete_and_exactly_sixteen_conditions) ... ok
+test_each_csv_score_and_timing_value_is_recomputed (test_styled_milebench_export.StyledImageExportTests.test_each_csv_score_and_timing_value_is_recomputed) ... ok
+test_evaluation_json_must_match_offline_original_metric (test_styled_milebench_export.StyledImageExportTests.test_evaluation_json_must_match_offline_original_metric) ... ok
+test_existing_output_and_symlinked_record_are_rejected (test_styled_milebench_export.StyledImageExportTests.test_existing_output_and_symlinked_record_are_rejected) ... ok
+test_partial_summary_or_missing_condition_cannot_be_exported (test_styled_milebench_export.StyledImageExportTests.test_partial_summary_or_missing_condition_cannot_be_exported) ... ok
+test_portable_rescore_rejects_changed_raw_or_annotation (test_styled_milebench_export.StyledImageExportTests.test_portable_rescore_rejects_changed_raw_or_annotation) ... ok
+test_portable_rescore_works_with_relocated_annotations_without_original_model_or_kernel (test_styled_milebench_export.StyledImageExportTests.test_portable_rescore_works_with_relocated_annotations_without_original_model_or_kernel) ... ok
+test_production_default_rejects_two_sample_synthetic_full_report (test_styled_milebench_export.StyledImageExportTests.test_production_default_rejects_two_sample_synthetic_full_report) ... ok
+test_provenance_allowlist_can_be_copied_to_new_child_release_directory (test_styled_milebench_export.StyledImageExportTests.test_provenance_allowlist_can_be_copied_to_new_child_release_directory) ... ok
+test_raw_changes_are_rejected_by_original_report_hash_evidence (test_styled_milebench_export.StyledImageExportTests.test_raw_changes_are_rejected_by_original_report_hash_evidence) ... ok
+test_source_mutation_during_archive_fails_final_check_before_publish (test_styled_milebench_export.StyledImageExportTests.test_source_mutation_during_archive_fails_final_check_before_publish) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 2.830s
+
+OK
+END_UTC 2026-11-17T00:35:19.104268+00:00

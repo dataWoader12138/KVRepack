@@ -75,7 +75,12 @@
       "vendor_build_files": 2382,
       "original_source_comparison": false
     },
-    "original_core_modified": false
+    "original_core_modified": false,
+    "additional_exporter_tests": {
+      "tests_run": 13,
+      "passed": 13,
+      "elapsed_seconds": 2.83
+    }
   },
   "gpu_smoke": {
     "completed_runs": 16,
