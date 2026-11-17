@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "arm": "hybridkv_kvrepack",
+  "task": "Spot-the-Diff",
+  "pid": 6851,
+  "target_samples": 200,
+  "completed_samples": 200,
+  "completed_generations": 200,
+  "target_generations": 200,
+  "contract_sha256": "2dd9c5a6a1a5de26e94823753b7367de19bd1bd48fb4105bd16af3be2bad8d6d",
+  "started_utc": "2026-11-17T00:44:13.096446+00:00",
+  "model_load_seconds": 4.303561020642519,
+  "warmup_per_arm": 1,
+  "current_sample_id": 199,
+  "current_sample_index": 199,
+  "updated_utc": "2026-11-17T00:47:45.523459+00:00",
+  "formal_loop_seconds": 206.5664743706584,
+  "finished_utc": "2026-11-17T00:47:46.089791+00:00",
+  "process_seconds": 212.99131329730153
+}

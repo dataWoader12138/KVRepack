@@ -1,6 +1,6 @@
 # KVRepack 工作约定
 
-2026-11-17当前任务：用户已明确授权以`b9104d8`为基础，在Qwen2.5-VL-7B上跑Spot-the-Diff、MMCoQA官方MileBench子集全量（本机各200条）。HybridKV/SnapKV各配KVRepack、LOOK-M-styled、AsymKV-styled三种聚合，另跑独立原版LOOK-M/AsymKV，共16运行、3200正式生成。真实E2E覆盖图片读取/JPEG/processor/H2D/Fisher（适用时）/生成/文本解码，模型加载、预热、审计散列、写盘与评分分开统计。保持来源原预算，不擅自改成strict-total。独立Asym保留原驱动并报告实际缓存及MMCoQA44/196的已知末token边界；不跳样、不改prompt规避。旧图片分支和旧已完成结果不修改。正式进度以新输出根的experiment_state.json为准；运行期间禁止更改绑定src源码。协议见`docs/STYLED_MILEBENCH_QWEN7B_E2E.md`。
+2026-11-17当前图像任务已完成：`b9104d8`来源，Qwen7B、Spot/MMCoQA官方完整各200条，Hybrid/Snap各三聚合与独立原版LOOK-M/AsymKV，16组3200正式生成+16预热排除。E2E与全部原始证据已独立复核、CPU重评分并归档；GPU已释放，不自动重跑或扩大。结果和参数见`docs/STYLED_MILEBENCH_QWEN7B_E2E.md`，发布在`provenance/styled_milebench_20261117/final`。保持来源原预算与30份核心，独立Asym Spot未压缩、MM44/196原边界遗漏如实报告；旧图片分支和旧结果不改，已停止视频任务不恢复。
 
 开始工作时阅读 `docs/HANDOFF.md`、`README.md` 和 `provenance/cpu_audit_summary.json`，再核对当前源码与用户的新指示。
 

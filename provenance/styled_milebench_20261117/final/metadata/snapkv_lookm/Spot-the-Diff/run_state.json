@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "arm": "snapkv_lookm",
+  "task": "Spot-the-Diff",
+  "pid": 8203,
+  "target_samples": 200,
+  "completed_samples": 200,
+  "completed_generations": 200,
+  "target_generations": 200,
+  "contract_sha256": "41738814407cfbb5d2d1ce6d756e0b75f923e697b97f2813686749bcd5ae3008",
+  "started_utc": "2026-11-17T01:05:15.980783+00:00",
+  "model_load_seconds": 4.1928253918886185,
+  "warmup_per_arm": 1,
+  "current_sample_id": 199,
+  "current_sample_index": 199,
+  "updated_utc": "2026-11-17T01:07:24.622703+00:00",
+  "formal_loop_seconds": 123.44660786539316,
+  "finished_utc": "2026-11-17T01:07:25.176918+00:00",
+  "process_seconds": 129.19412982836366
+}

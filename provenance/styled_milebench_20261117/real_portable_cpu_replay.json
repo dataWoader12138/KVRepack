@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "started_utc": "2026-11-17T01:39:35.522068+00:00",
+  "finished_utc": "2026-11-17T01:39:39.933180+00:00",
+  "formal_generations": 3200,
+  "warmup_excluded": 16,
+  "conditions": 16,
+  "actual_archived_cpu_bundle_used": true,
+  "relocated_annotation_only_data_root": true,
+  "images_and_model_weights_in_replay_directory": false,
+  "blocked_imports": [
+    "torch",
+    "transformers",
+    "kvrepack_kernel"
+  ],
+  "isolated_python_mode": true,
+  "all_16_scores_exactly_match_release": true,
+  "archive_sha256": "fa4ba895a0e648325d6de4bdaf9bff00e28fa83eb4e6aa3435e8a9cc7e6d695c",
+  "rescore_summary": {
+    "schema_version": 1,
+    "status": "passed",
+    "full_quality_rescore": true,
+    "created_utc": "2026-11-17T01:39:39.638517+00:00",
+    "formal_generations": 3200,
+    "warmup_generations_excluded": 16,
+    "conditions": 16,
+    "results": [
+      {
+        "arm": "hybridkv_asymkv",
+        "task": "Spot-the-Diff",
+        "metric": "Rouge-L f",
+        "score_percent": 27.099022826446966,
+        "sample_count": 200,
+        "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff",
+        "contract_sha256": "0e2ccbc9f4990392febc7088006b30c24e86b035dbbd5808eb38f1aa579c122c"
+      },
+      {
+        "arm": "hybridkv_asymkv",
+        "task": "MMCoQA",
+        "metric": "Accuracy",
+        "score_percent": 53.5,
+        "sample_count": 200,
+        "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6",
+        "contract_sha256": "3efab3a552b25220cb69b30e9752461275921bf5ca5cb69afc9faa4c4887fc04"
+      },
+      {
+        "arm": "hybridkv_lookm",
+        "task": "Spot-the-Diff",
+        "metric": "Rouge-L f",
+        "score_percent": 29.22959259918974,
+        "sample_count": 200,
+        "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff",
+        "contract_sha256": "a40be83a50f5dcf8e72099d44abce9b39bae55f386d22338fd307b4afc8c6d43"
+      },
+      {
+        "arm": "hybridkv_lookm",
+        "task": "MMCoQA",
+        "metric": "Accuracy",
+        "score_percent": 59.5,
+        "sample_count": 200,
+        "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6",
+        "contract_sha256": "21613bd897e36b8f10876eac589c9d4413f637c893b2db8d9921c8dd3f70b33f"
+      },
+      {
+        "arm": "hybridkv_kvrepack",
+        "task": "Spot-the-Diff",
+        "metric": "Rouge-L f",
+        "score_percent": 29.08625120979224,
+        "sample_count": 200,
+        "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff",
+        "contract_sha256": "2dd9c5a6a1a5de26e94823753b7367de19bd1bd48fb4105bd16af3be2bad8d6d"
+      },
+      {
+        "arm": "hybridkv_kvrepack",
+        "task": "MMCoQA",
+        "metric": "Accuracy",
+        "score_percent": 63.5,
+        "sample_count": 200,
+        "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6",
+        "contract_sha256": "4c84cb954feed35e8c6193a24a439f45df63d40657e9797e248415427012ae23"
+      },
+      {
+        "arm": "snapkv_asymkv",
+        "task": "Spot-the-Diff",
+        "metric": "Rouge-L f",
+        "score_percent": 27.781507197252676,
+        "sample_count": 200,
+        "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff",
+        "contract_sha256": "50c683abf11d8cef0ca63e9351478039485a15e09f27982637e6c3fca39728e6"
+      },
+      {
+        "arm": "snapkv_asymkv",
+        "task": "MMCoQA",
+        "metric": "Accuracy",
+        "score_percent": 48.0,
+        "sample_count": 200,
+        "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6",
+        "contract_sha256": "34e360d1b4c07cd2f7dbb5cc432b1d9591b8911774d8895534a6d39d3c3ce34d"
+      },
+      {
+        "arm": "snapkv_lookm",
+        "task": "Spot-the-Diff",
+        "metric": "Rouge-L f",
+        "score_percent": 29.071115793822415,
+        "sample_count": 200,
+        "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff",
+        "contract_sha256": "41738814407cfbb5d2d1ce6d756e0b75f923e697b97f2813686749bcd5ae3008"
+      },
+      {
+        "arm": "snapkv_lookm",
+        "task": "MMCoQA",
+        "metric": "Accuracy",
+        "score_percent": 57.49999999999999,
+        "sample_count": 200,
+        "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6",
+        "contract_sha256": "8c344787ce1136a670a0a391e99512bbba1d1802c7557530ba38d0ee68c65091"
+      },
+      {
+        "arm": "snapkv_kvrepack",
+        "task": "Spot-the-Diff",
+        "metric": "Rouge-L f",
+        "score_percent": 28.955760273444064,
+        "sample_count": 200,
+        "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff",
+        "contract_sha256": "7b177908545c8b75823ebc2cf25758866d0e6e7c2dea8a5ebbde1fe0d3fc699b"
+      },
+      {
+        "arm": "snapkv_kvrepack",
+        "task": "MMCoQA",
+        "metric": "Accuracy",
+        "score_percent": 59.0,
+        "sample_count": 200,
+        "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6",
+        "contract_sha256": "3e507a131caf3ce45cdebcf64abe691c337c1adb00aa994a544fdbb57bd48316"
+      },
+      {
+        "arm": "asymkv",
+        "task": "Spot-the-Diff",
+        "metric": "Rouge-L f",
+        "score_percent": 28.769158283973585,
+        "sample_count": 200,
+        "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff",
+        "contract_sha256": "72c6fa9af3f1a862d9cc81fad9c7ef8adf42e372b496e68e68f3f5d84bce0769"
+      },
+      {
+        "arm": "asymkv",
+        "task": "MMCoQA",
+        "metric": "Accuracy",
+        "score_percent": 49.0,
+        "sample_count": 200,
+        "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6",
+        "contract_sha256": "6e0f073de8428b918be05bda66dbb515ac277bbcf0ebad8309ecc90b47d1f30f"
+      },
+      {
+        "arm": "lookm",
+        "task": "Spot-the-Diff",
+        "metric": "Rouge-L f",
+        "score_percent": 28.73937700036621,
+        "sample_count": 200,
+        "annotation_sha256": "b06ec3e208b8a1b73658147ba9fa73a19ac562f9d67880cf93b0e5616125bfff",
+        "contract_sha256": "102164fe094d6080166151a588b6c2eb904839288592b4f289255eddbe62b79e"
+      },
+      {
+        "arm": "lookm",
+        "task": "MMCoQA",
+        "metric": "Accuracy",
+        "score_percent": 45.0,
+        "sample_count": 200,
+        "annotation_sha256": "9d309261f3f3ca833170ef09e26c7c6e6c8c3c09eb973020b11d09558667ace6",
+        "contract_sha256": "83d25bbd826ab230cf81992c5132830a5279ea13f94b0df8dd2ecb20906c65e8"
+      }
+    ],
+    "recorded_files_index_sha256": "d34922023fee59b12bb40c08266c77619a75c56be27d7ec262cd26a8320cbe6b",
+    "gpu_execution": false,
+    "latency_remeasured": false,
+    "scope": "original metrics only; archived raw hashes and exact annotation bytes/IDs verified"
+  },
+  "stdout": "{\"status\": \"passed\", \"formal_generations\": 3200, \"output\": \"/tmp/styled-real-cpu-replay-o2ly9pff/rescored\"}\n",
+  "stderr": ""
+}

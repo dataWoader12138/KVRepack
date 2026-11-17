@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "arm": "lookm",
+  "task": "MMCoQA",
+  "pid": 9809,
+  "target_samples": 200,
+  "completed_samples": 200,
+  "completed_generations": 200,
+  "target_generations": 200,
+  "contract_sha256": "83d25bbd826ab230cf81992c5132830a5279ea13f94b0df8dd2ecb20906c65e8",
+  "started_utc": "2026-11-17T01:32:46.803532+00:00",
+  "model_load_seconds": 4.236923232674599,
+  "warmup_per_arm": 1,
+  "current_sample_id": 174,
+  "current_sample_index": 199,
+  "updated_utc": "2026-11-17T01:37:27.663339+00:00",
+  "formal_loop_seconds": 276.29434675723314,
+  "finished_utc": "2026-11-17T01:37:30.294128+00:00",
+  "process_seconds": 283.4885270744562
+}

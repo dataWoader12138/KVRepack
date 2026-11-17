@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "status": "complete_and_independently_verified",
+  "completed_utc": "2026-11-17T01:42:22.348029+00:00",
+  "source_commit": "b9104d8e590d99581af39ea05fe2d4404e8c4b73",
+  "implementation_commits": [
+    "904639d",
+    "6abb8bf"
+  ],
+  "branch": "feat/qwen7b-styled-image-e2e",
+  "formal_scope": {
+    "model": "Qwen2.5-VL-7B-Instruct",
+    "tasks": [
+      "Spot-the-Diff",
+      "MMCoQA"
+    ],
+    "conditions": 16,
+    "samples_per_condition": 200,
+    "formal_generations": 3200,
+    "warmup_generations_excluded": 16,
+    "annotation_all_samples": true,
+    "budget_policy": "original_history_plus_local_v1"
+  },
+  "formal_controller": {
+    "started_utc": "2026-11-17T00:17:27.056026+00:00",
+    "finished_utc": "2026-11-17T01:37:37.350957+00:00",
+    "controller_seconds": 4810.2934800721705,
+    "source_directory": "/root/autodl-tmp/KVRepack-styled-images/outputs/benchmarks/styled_milebench_qwen7b_full_20261117",
+    "final_status": "complete",
+    "completed_runs": 16,
+    "gpu_released": true
+  },
+  "cpu_checks": {
+    "full_suite": {
+      "tests_run": 441,
+      "passed": 440,
+      "skipped": 1,
+      "elapsed_seconds": 42.071,
+      "skip_reason": "Original artifact numerical differential requires explicit source tree, not present."
+    },
+    "additional_reporter_tests": {
+      "tests_run": 10,
+      "passed": 10,
+      "elapsed_seconds": 0.426
+    },
+    "core_source_check": {
+      "status": "passed",
+      "core_files": 30,
+      "local_modules_and_adapter": 86,
+      "vendor_python_files": 329,
+      "vendor_build_files": 2382,
+      "original_source_comparison": false
+    },
+    "original_core_modified": false,
+    "additional_exporter_tests": {
+      "tests_run": 13,
+      "passed": 13,
+      "elapsed_seconds": 2.83
+    }
+  },
+  "test_invocations_note": "Full 441-case suite and additional 10-case reporter / 13-case exporter invocations are separate runs, not a claim of 464 distinct tests.",
+  "formal_cpu_overlap": {
+    "gpu_processes_serialized": true,
+    "other_gpu_workloads": false,
+    "exclusive_idle_cpu_not_claimed": true,
+    "reporter_tests_window_record": {
+      "start_utc": "2026-11-17T00:18:56.377036+00:00",
+      "end_utc": "2026-11-17T00:18:56.914873+00:00",
+      "exit_code": 0
+    },
+    "exporter_12_test_window_utc": [
+      "2026-11-17T00:31:10.616587+00:00",
+      "2026-11-17T00:31:13.197630+00:00"
+    ],
+    "exporter_13_test_window_utc": [
+      "2026-11-17T00:35:16.138203+00:00",
+      "2026-11-17T00:35:19.104268+00:00"
+    ],
+    "partial_decode_audit_created_utc": "2026-11-17T00:43:26.393652+00:00",
+    "hybrid_pairing_audit_created_utc": "2026-11-17T00:56:09.440175+00:00",
+    "full_pairing_window_utc": [
+      "2026-11-17T01:18:56.877259+00:00",
+      "2026-11-17T01:19:02.720658+00:00"
+    ],
+    "note": "Short CPU tests and read-only integrity checks overlapped formal GPU generation; no controlled fixed-frequency or repeated latency study is claimed."
+  },
+  "verification": {
+    "token_decode_formal_3200_and_warmup_16": "passed",
+    "five_stage_e2e_sum_max_error_seconds": 0.0,
+    "two_backbone_pairing_raw_records_checked": 2400,
+    "two_backbone_pairing_variant_pairs": 1600,
+    "all_caps_retained": 46,
+    "all_16_quality_scores_exact_real_portable_cpu_replay": true,
+    "all_release_raw_file_hashes_and_scores_verified": true,
+    "bound_sources_unchanged_through_generation_and_export": true,
+    "original_30_core_implementations_modified": false
+  },
+  "standalone_asymkv": {
+    "spot_actual_prefill_retained_ratio": 1.0,
+    "spot_compression_events": 0,
+    "mmcoqa_actual_prefill_retained_ratio_mean": 0.4562976231,
+    "mmcoqa_compression_events": 809,
+    "mmcoqa_no_compression_samples": 10,
+    "boundary_samples": [
+      {
+        "sample_id": 44,
+        "input_tokens": 3073,
+        "covered_tokens": 3072,
+        "missing_tokens": 1
+      },
+      {
+        "sample_id": 196,
+        "input_tokens": 1537,
+        "covered_tokens": 1536,
+        "missing_tokens": 1
+      }
+    ],
+    "boundary_samples_retained_in_quality_and_latency": true,
+    "fisher_time_in_generation_not_separately_measured": true
+  },
+  "release": {
+    "directory": "final",
+    "archive": "final/recorded_runs.tar.gz",
+    "archive_bytes": 27653481,
+    "archive_sha256": "fa4ba895a0e648325d6de4bdaf9bff00e28fa83eb4e6aa3435e8a9cc7e6d695c",
+    "raw_files": 3279,
+    "archive_members": 3280,
+    "recorded_file_hashes": "final/recorded_files_sha256.json",
+    "report": "final/report/summary.json",
+    "comparison_csv": "final/report/comparison.csv",
+    "per_input_csv": "final/report/per_input_latency.csv",
+    "wide_csv": "results_wide.csv"
+  },
+  "published_checks_sha256": {
+    "independent_decode_e2e_audit.json": "3ad3f81bdb14eacff66e3d4294676ecd611fb3f12954b7a560fed61c160ddecb",
+    "independent_pairing_audit.json": "e8a94e8929be007b7f403a7b7dbc8514f26d8325aaf932487f724553874551ca",
+    "independent_asymkv_cache_eos_audit.json": "9bf4c1d82322bc6b9186fe2beb8a9da88b34cbeaf6e291e6d592a3fd995a8b9a",
+    "real_portable_cpu_replay.json": "5b66fc1d396a19643dfa09eeeb6d44f9e1f1bc9824591f5d3ae7f0bced7dfa9f",
+    "release_audit.json": "fb7865ecfcc67b0814125bf8ca7909259979e22e40c5efc14f2ec202f239e35f",
+    "audit_decode_e2e.py": "f6897d142cee9b28533c63027039374d684f0ed4aa521cd045db34ec5414ac32",
+    "audit_pairing.py": "94ccca947b60460a92e6f720ffc76c6fb339a621e163d746d1a4315073ccaf49",
+    "audit_release.py": "9eb663e9026340fd8ed8cde9be2ec241cdf275273cb0d00e23ec2f4bcc6a7786"
+  },
+  "scope_limits": [
+    "Single fixed model and original official task annotations; no additional GPU runs or tuning.",
+    "Original standalone AsymKV cache policies and decoder differ from styled HF methods.",
+    "Response E2E includes output length, all original cap events and Fisher where applicable.",
+    "CPU score replay verifies recorded predictions; it does not reproduce GPU inference or timings."
+  ]
+}

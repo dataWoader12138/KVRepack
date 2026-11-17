@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "status": "complete_and_independently_verified",
+  "created_utc": "2026-11-17T01:38:33.094492+00:00",
+  "source_run": "/root/autodl-tmp/KVRepack-styled-images/outputs/benchmarks/styled_milebench_qwen7b_full_20261117",
+  "source_report": "/root/autodl-tmp/KVRepack-styled-images/outputs/benchmarks/styled_milebench_qwen7b_full_20261117/report",
+  "source_commit": "b9104d8",
+  "arms": [
+    "hybridkv_asymkv",
+    "hybridkv_lookm",
+    "hybridkv_kvrepack",
+    "snapkv_asymkv",
+    "snapkv_lookm",
+    "snapkv_kvrepack",
+    "asymkv",
+    "lookm"
+  ],
+  "tasks": [
+    "Spot-the-Diff",
+    "MMCoQA"
+  ],
+  "condition_count": 16,
+  "samples_per_condition": 200,
+  "formal_generations": 3200,
+  "warmup_generations_excluded": 16,
+  "archive_file": "recorded_runs.tar.gz",
+  "archive_files": 3280,
+  "raw_source_files": 3279,
+  "raw_source_uncompressed_bytes": 177055682,
+  "archive_bytes": 27653481,
+  "archive_max_bytes": 90000000,
+  "archive_sha256": "fa4ba895a0e648325d6de4bdaf9bff00e28fa83eb4e6aa3435e8a9cc7e6d695c",
+  "recorded_files_index_sha256": "d34922023fee59b12bb40c08266c77619a75c56be27d7ec262cd26a8320cbe6b",
+  "release_files_index_sha256": "353eaf64f9edee5573581edca16523e24ba279faa898903c6096bfef285d46d5",
+  "source_files_index_sha256": "f3d47fd7b00bfb8d23f5b6f1aebd985170877c03329e983692373ae28302cbd4",
+  "round_trip_every_archived_file_sha256_verified": true,
+  "all_sources_unchanged_at_end": true,
+  "report_summary_sha256": "62ab17453332cbb05a2b25bd00e1b7a4d23b316dc4c34f75407289e1d22364d7",
+  "exporter_sha256": "dacf4a8ac6bb60d95c2ec2ab06da2ca0f6b399daf65a5106fbb9733bf0f8b10f",
+  "reporter_sha256": "938eabacb89dadca49ad7dbb9e343790c007593ee8f7fc53e8360858c08373f7",
+  "gpu_execution_by_exporter": false,
+  "limits": [
+    "AsymKV released chunk-loop omissions, if any, are reported without dropping affected inputs.",
+    "End-to-end latency includes output-length differences and is not pure merge-operator time.",
+    "CPU rescore reproduces quality metrics from recorded predictions; it does not reproduce GPU timing.",
+    "Standalone AsymKV Fisher is included in official generation, not independently measured.",
+    "Cache ratios reflect original implementations; nominal 10% is not a shared strict physical cap.",
+    "Released AsymKV chunk omissions and post-initial-EOS generation are preserved, with affected counts reported."
+  ]
+}

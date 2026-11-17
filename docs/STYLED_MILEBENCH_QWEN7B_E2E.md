@@ -2,7 +2,7 @@
 
 用户于2026-11-17明确授权本轮GPU实验。来源固定为GitHub提交`b9104d8`，工作分支`feat/qwen7b-styled-image-e2e`。旧图片分支与旧结果保持不动，视频实验分数/时延不转录为本轮图片结果。
 
-当前状态：16组独立单条GPU联调及离线重审全部通过（16条评测、16条预热明确区分）。441项CPU suite为440通过、1个原artifact数值差分跳过；新增reporter的10项CPU测试全部通过。正式控制器PID/PG4922于UTC2026-11-17T00:17:26启动，输出根`outputs/benchmarks/styled_milebench_qwen7b_full_20261117`，实际进度见其中`experiment_state.json`与各`run_state.json`。正式3200条尚在运行，不将联调分数当作正式全量结果。准备、启动与检查证据在`provenance/styled_milebench_20261117/`。
+当前状态：**16/16组、3200条正式生成及评分全部完成并独立核验通过**，另16条预热明确排除。正式UTC 2026-11-17 00:17:27–01:37:37，控制器4810.293秒（约80分钟），GPU已释放。441项CPU suite为440通过、1个原artifact数值差分跳过；另reporter10项、exporter13项测试通过。完整结果和原始证据见下方，准备与启动证据保留于`provenance/styled_milebench_20261117/`，其中`preparation.json`记录的是启动时状态。
 
 ## 范围
 
@@ -46,3 +46,52 @@ AsymKV-styled的独立Fisher探测计入E2E并提供真实分阶段时延。独�
 每组合同冻结源码/模型元数据/标注SHA、完整样本ID、图像参数、算法环境及解码参数。结果保留完整预测、token/EOS/截断、输入指纹、实际merge/group/预算审计、Asym实际token覆盖。按同骨干/任务/输入跨三个merge条件核对输入指纹和原生head/candidates/groups/anchors签名一致。
 
 Spot沿用原ROUGE-L F，MMCoQA沿用原答案子串Accuracy。离线评分要求全部对应样本完整；smoke不能混称全量。最终输出比较CSV、逐输入时延CSV、原评分JSON、完整总结及来源证据。
+
+
+## 正式结果（2026-11-17）
+
+各组均为完整官方标注200条。分数为0–100，E2E为每请求秒数；这是本轮新运行的分数，不能用历史论文表中的分数替换。
+
+| 方法 | Spot ROUGE-L | E2E均值(s) | MMCoQA Acc. | E2E均值(s) |
+|---|---:|---:|---:|---:|
+| HybridKV + AsymKV-styled | 27.10 | 1.514 | 53.50 | 2.898 |
+| HybridKV + LookM-styled | 29.23 | 0.799 | 59.50 | 2.294 |
+| HybridKV + KVRepack | 29.09 | 0.987 | 63.50 | 1.500 |
+| SnapKV + AsymKV-styled | 27.78 | 0.979 | 48.00 | 2.355 |
+| SnapKV + LookM-styled | 29.07 | 0.578 | 57.50 | 1.121 |
+| SnapKV + KVRepack | 28.96 | 0.557 | 59.00 | 1.111 |
+| AsymKV (original) | 28.77 | 0.719 | 49.00 | 2.688 |
+| LookM (original) | 28.74 | 0.740 | 45.00 | 1.323 |
+
+MMCoQA上Hybrid + KVRepack分别比LookM-styled、AsymKV-styled高4.0和10.0分；Snap + KVRepack分别高1.5和11.0分。Spot上LookM-styled比KVRepack略高（Hybrid约0.143分，Snap约0.115分），本轮不能宣称KVRepack在所有条件中最好。E2E受生成长度与达到512上限的样本影响，不能据此直接推算纯合并算子加速比。
+
+[8行双任务CSV](../provenance/styled_milebench_20261117/results_wide.csv)；[16行完整统计CSV](../provenance/styled_milebench_20261117/final/report/comparison.csv)；[3200条逐输入时延](../provenance/styled_milebench_20261117/final/report/per_input_latency.csv)；[完整机器可读报告](../provenance/styled_milebench_20261117/final/report/summary.json)。
+
+### 实际缓存与原实现差异
+
+同骨干的三种聚合逐输入的选头、候选、group、anchor和实际prefill容量完全一致。平均物理保留率：Hybrid Spot16.368%、MMCoQA11.694%；Snap Spot15.720%、MMCoQA11.493%。独立LookM分别为15.720%、11.493%。
+
+独立原Asym在Spot全部200条均未触发压缩，物理保留率100%；MMCoQA平均45.630%（16.098%–100%），809次压缩事件，10条未压缩。原MMCoQA样本44和196分别覆盖3072/3073、1536/1537输入token；各遗漏末token1个，两条均保留在完整评分中。该原驱动与HF解码参数也有前述差异，不能把独立Asym当成与styled方法严格等物理预算、等decoder的对照。
+
+达到512上限且无EOS的数量如下，全部保留，无删样或调参重跑；所有组均无early EOS/post-EOS生成。
+
+| 条件 | Spot | MMCoQA |
+|---|---:|---:|
+| Hybrid + AsymKV-styled | 4 | 8 |
+| Hybrid + LookM-styled | 0 | 8 |
+| Hybrid + KVRepack | 1 | 0 |
+| Snap + AsymKV-styled | 4 | 11 |
+| Snap + LookM-styled | 0 | 0 |
+| Snap + KVRepack | 0 | 0 |
+| 原AsymKV | 1 | 6 |
+| 原LookM | 3 | 0 |
+
+### 核验与归档
+
+[完整发布](../provenance/styled_milebench_20261117/final/README.txt)含每条预测、生成token、合同、状态、环境、转换审计、原评分JSON和逐文件SHA；[归档](../provenance/styled_milebench_20261117/final/recorded_runs.tar.gz)为27,653,481 bytes，保留3279个原始文件及一个内置SHA索引，不含图片、权重或凭证。SHA256：`fa4ba895a0e648325d6de4bdaf9bff00e28fa83eb4e6aa3435e8a9cc7e6d695c`。
+
+独立CPU核验3200正式+16预热的token重解码、合同/ID/EOS、五阶段E2E与模型E2E求和全部通过，求和最大误差0；12个styled组的2400条原始记录逐sample_id配对、1600对variant比较通过。原Asym另从28层物理长度重算容量与覆盖。证据分别为[decode/E2E](../provenance/styled_milebench_20261117/independent_decode_e2e_audit.json)、[分组配对](../provenance/styled_milebench_20261117/independent_pairing_audit.json)、[Asym缓存与EOS](../provenance/styled_milebench_20261117/independent_asymkv_cache_eos_audit.json)。
+
+发布流程重新核验源码、kernel、标注与原记录，并重新评分全部16组。随后将真实归档解压到新临时目录，仅复制两份标注、禁止导入torch/transformers/kvrepack_kernel，以隔离Python执行归档内CPU评分脚本；16组分数与发布CSV逐项精确一致。见[真实可迁移重评分记录](../provenance/styled_milebench_20261117/real_portable_cpu_replay.json)。该验证不重新测量GPU时延。
+
+GPU任务串行且无其他GPU负载；正式期间有少量CPU测试与只读完整性核验，并未做受控锁频/重复多轮时延实验。详见completion.json中的并行CPU窗口；E2E用于描述本次实际请求耗时。

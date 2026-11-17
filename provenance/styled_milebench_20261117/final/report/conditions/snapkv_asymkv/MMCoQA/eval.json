@@ -1,0 +1,22 @@
+{
+  "Accuracy": 0.48,
+  "image_quantity_level-Accuracy": {
+    "Few": 0.4895833333333333,
+    "Medium": 0.47115384615384615,
+    "Many": 0
+  },
+  "image_quantity_level-Result": {
+    "Few": [
+      47,
+      96
+    ],
+    "Medium": [
+      49,
+      104
+    ],
+    "Many": [
+      0,
+      0
+    ]
+  }
+}

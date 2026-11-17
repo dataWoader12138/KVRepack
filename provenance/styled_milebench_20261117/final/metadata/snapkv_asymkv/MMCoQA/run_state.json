@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "arm": "snapkv_asymkv",
+  "task": "MMCoQA",
+  "pid": 7517,
+  "target_samples": 200,
+  "completed_samples": 200,
+  "completed_generations": 200,
+  "target_generations": 200,
+  "contract_sha256": "34e360d1b4c07cd2f7dbb5cc432b1d9591b8911774d8895534a6d39d3c3ce34d",
+  "started_utc": "2026-11-17T00:56:56.046341+00:00",
+  "model_load_seconds": 4.255446542054415,
+  "warmup_per_arm": 1,
+  "current_sample_id": 174,
+  "current_sample_index": 199,
+  "updated_utc": "2026-11-17T01:05:08.027475+00:00",
+  "formal_loop_seconds": 487.3836707212031,
+  "finished_utc": "2026-11-17T01:05:11.105988+00:00",
+  "process_seconds": 495.0581999011338
+}

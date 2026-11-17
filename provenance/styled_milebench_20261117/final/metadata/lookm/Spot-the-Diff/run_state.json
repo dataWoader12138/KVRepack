@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "arm": "lookm",
+  "task": "Spot-the-Diff",
+  "pid": 9636,
+  "target_samples": 200,
+  "completed_samples": 200,
+  "completed_generations": 200,
+  "target_generations": 200,
+  "contract_sha256": "102164fe094d6080166151a588b6c2eb904839288592b4f289255eddbe62b79e",
+  "started_utc": "2026-11-17T01:30:02.045690+00:00",
+  "model_load_seconds": 4.241960398852825,
+  "warmup_per_arm": 1,
+  "current_sample_id": 199,
+  "current_sample_index": 199,
+  "updated_utc": "2026-11-17T01:32:41.402531+00:00",
+  "formal_loop_seconds": 153.83276449516416,
+  "finished_utc": "2026-11-17T01:32:41.783927+00:00",
+  "process_seconds": 159.73633577674627
+}

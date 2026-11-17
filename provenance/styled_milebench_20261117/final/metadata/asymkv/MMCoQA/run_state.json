@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "arm": "asymkv",
+  "task": "MMCoQA",
+  "pid": 9219,
+  "target_samples": 200,
+  "completed_samples": 200,
+  "completed_generations": 200,
+  "target_generations": 200,
+  "contract_sha256": "6e0f073de8428b918be05bda66dbb515ac277bbcf0ebad8309ecc90b47d1f30f",
+  "started_utc": "2026-11-17T01:20:38.611555+00:00",
+  "model_load_seconds": 4.197668489068747,
+  "warmup_per_arm": 1,
+  "current_sample_id": 174,
+  "current_sample_index": 199,
+  "updated_utc": "2026-11-17T01:29:51.357082+00:00",
+  "formal_loop_seconds": 549.6979712322354,
+  "finished_utc": "2026-11-17T01:29:57.126631+00:00",
+  "process_seconds": 558.5132272467017
+}

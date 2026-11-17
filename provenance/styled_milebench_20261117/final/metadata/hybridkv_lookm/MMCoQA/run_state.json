@@ -1,0 +1,20 @@
+{
+  "status": "complete",
+  "arm": "hybridkv_lookm",
+  "task": "MMCoQA",
+  "pid": 6288,
+  "target_samples": 200,
+  "completed_samples": 200,
+  "completed_generations": 200,
+  "target_generations": 200,
+  "contract_sha256": "21613bd897e36b8f10876eac589c9d4413f637c893b2db8d9921c8dd3f70b33f",
+  "started_utc": "2026-11-17T00:36:06.358223+00:00",
+  "model_load_seconds": 4.343077912926674,
+  "warmup_per_arm": 1,
+  "current_sample_id": 174,
+  "current_sample_index": 199,
+  "updated_utc": "2026-11-17T00:44:05.825512+00:00",
+  "formal_loop_seconds": 474.4589662849903,
+  "finished_utc": "2026-11-17T00:44:08.214495+00:00",
+  "process_seconds": 481.8547956869006
+}
