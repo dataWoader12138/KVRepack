@@ -1,0 +1,39 @@
+{
+  "status": "resume_started",
+  "pid": 6809,
+  "process_group": 6809,
+  "launched_utc": "2026-11-17T01:15:28.694764+00:00",
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "-B",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/scripts/run_vatex_longbench_top_adjacent.py",
+    "--inputs",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/inputs/reference_samples.json",
+    "--text-model",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+    "--video-model",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "--hf-home",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "--text-reference",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/text/records.jsonl",
+    "--video-reference",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen7b_adjacent_first200_20261104/records.jsonl",
+    "--output",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_200_20261117",
+    "--sample-count",
+    "200",
+    "--device",
+    "0",
+    "--resume"
+  ],
+  "launch_mode": "detached new session with independent file logging",
+  "numerical_source_commit": "48df172",
+  "controller_change": "signal-safe child reaping; validate and skip complete groups",
+  "controller_regression_tests": {
+    "run": 2,
+    "passed": 2,
+    "gpu_execution": false
+  },
+  "preserved_complete_text_inputs": 200
+}

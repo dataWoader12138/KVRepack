@@ -1,0 +1,57 @@
+{
+  "status": "interrupted_before_first_video_result",
+  "recorded_utc": "2026-11-17T01:10:50.262996+00:00",
+  "worker_pid": 6070,
+  "worker_exit_wait_status": 15,
+  "worker_signal": "SIGTERM",
+  "signal_sender": "not_determined",
+  "controller_pid": 5877,
+  "controller_state": {
+    "status": "running",
+    "spec": {
+      "inputs": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/inputs/reference_samples.json",
+      "text_model": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+      "video_model": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+      "hf_home": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+      "text_reference": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/text/records.jsonl",
+      "video_reference": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen7b_adjacent_first200_20261104/records.jsonl",
+      "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_200_20261117",
+      "sample_count": 200,
+      "device": "0"
+    },
+    "pid": 5877,
+    "started_utc": "2026-11-17T01:02:02.754289+00:00",
+    "target_inputs": 400,
+    "completed_groups": [
+      "text"
+    ],
+    "gpu_execution": true,
+    "current_group": "video",
+    "command": [
+      "/root/miniconda3/envs/hybridkv/bin/python",
+      "-B",
+      "-m",
+      "kvrepack.observations.top_adjacent",
+      "--group",
+      "video",
+      "--pretrained",
+      "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+      "--hf-home",
+      "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+      "--reference-records",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen7b_adjacent_first200_20261104/records.jsonl",
+      "--sample-count",
+      "200",
+      "--device",
+      "0",
+      "--output",
+      "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_200_20261117/video"
+    ],
+    "updated_utc": "2026-11-17T01:03:49.753985+00:00",
+    "worker_pid": 6070
+  },
+  "completed_text_preserved": 200,
+  "completed_video": 0,
+  "observed_controller_wait": "futex with defunct child; stop handler calls wait while the main wait lock is held",
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\n"
+}
