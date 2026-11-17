@@ -10,7 +10,7 @@ import unittest
 
 from kvrepack.observations.top_adjacent_report import (
     CAPTURES, GROUPS, METRICS, PRIMARY_METRIC, STATISTICS_KIND, TOP_K,
-    build_summary, expected_ids, main, verify_selected_pairs, write_report,
+    _plot, build_summary, expected_ids, main, verify_selected_pairs, write_report,
 )
 
 
@@ -210,6 +210,7 @@ class TopAdjacentReportTests(unittest.TestCase):
             compact = write_report(summary, root)
             for extension in ('png', 'pdf', 'svg'):
                 self.assertGreater((root/f'raw_k_top200.{extension}').stat().st_size, 20)
+                self.assertGreater((root/f'raw_k_all_adjacent.{extension}').stat().st_size, 20)
             self.assertEqual(sentinel.read_bytes(), b'old-plot')
             metadata = compact['artifacts']['plot']
             self.assertEqual(metadata['metric'], PRIMARY_METRIC)
@@ -217,6 +218,18 @@ class TopAdjacentReportTests(unittest.TestCase):
             self.assertEqual({r['color'] for r in metadata['curves']}, {'#B98A2F', '#2F4373'})
             self.assertGreater(metadata['legend']['bounds_in_axes_coordinates'][1], 1)
             for curve in metadata['curves']: self.assertAlmostEqual(curve['density_area'], 1)
+            all_adjacent = compact['artifacts']['all_adjacent_plot']
+            self.assertEqual(all_adjacent['metric'], 'k_raw_all_adjacent')
+            self.assertEqual({r['n_head_means'] for r in all_adjacent['curves']}, {112})
+            self.assertEqual({r['observed_min'] for r in all_adjacent['curves']}, {.4})
+            self.assertEqual({r['observed_max'] for r in all_adjacent['curves']}, {.4})
+            self.assertGreater(all_adjacent['legend']['bounds_in_axes_coordinates'][1], 1)
+            for curve in all_adjacent['curves']: self.assertAlmostEqual(curve['density_area'], 1)
+            preserved = {extension: (root/f'raw_k_top200.{extension}').read_bytes() for extension in ('png', 'pdf', 'svg')}
+            _plot(summary, root, metric='k_raw_all_adjacent')
+            self.assertEqual(preserved, {extension: (root/f'raw_k_top200.{extension}').read_bytes() for extension in preserved})
+            with self.assertRaisesRegex(ValueError, 'pre-RoPE raw K'):
+                _plot(summary, root, metric='v_all_adjacent')
             svg = (root/'raw_k_top200.svg').read_text()
             for text in ('Before RoPE', 'Cosine Similarity', 'VATEX', 'LongBench'):
                 self.assertIn(text, svg)

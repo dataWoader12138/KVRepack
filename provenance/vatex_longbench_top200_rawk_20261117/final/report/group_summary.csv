@@ -1,0 +1,9 @@
+group,model_id,model_revision,task,n_inputs,n_source_clusters,metric,mean,input_tokens_min,input_tokens_max,input_tokens_mean,candidate_adjacent_pairs_total,selected_pairs_total_per_head_layer
+text,Qwen/Qwen2.5-7B-Instruct,a09a35458c702b33eeacc393d103063234e8bc28,qasper,200,148,raw_k_top200,0.951487840129316,2094,22064,5211.42,1042084,40000
+text,Qwen/Qwen2.5-7B-Instruct,a09a35458c702b33eeacc393d103063234e8bc28,qasper,200,148,k_raw_all_adjacent,0.8436581916400959,2094,22064,5211.42,1042084,40000
+text,Qwen/Qwen2.5-7B-Instruct,a09a35458c702b33eeacc393d103063234e8bc28,qasper,200,148,k_rope_all_adjacent,0.8355412433318428,2094,22064,5211.42,1042084,40000
+text,Qwen/Qwen2.5-7B-Instruct,a09a35458c702b33eeacc393d103063234e8bc28,qasper,200,148,v_all_adjacent,0.37791370181191175,2094,22064,5211.42,1042084,40000
+video,Qwen/Qwen2.5-VL-7B-Instruct,cc594898137f460bfe9f0759e9844b3ce807cfb5,vatex_test,200,200,raw_k_top200,0.971906715618304,8360,24744,11901.76,2380152,40000
+video,Qwen/Qwen2.5-VL-7B-Instruct,cc594898137f460bfe9f0759e9844b3ce807cfb5,vatex_test,200,200,k_raw_all_adjacent,0.7402282007476729,8360,24744,11901.76,2380152,40000
+video,Qwen/Qwen2.5-VL-7B-Instruct,cc594898137f460bfe9f0759e9844b3ce807cfb5,vatex_test,200,200,k_rope_all_adjacent,0.7400386429268654,8360,24744,11901.76,2380152,40000
+video,Qwen/Qwen2.5-VL-7B-Instruct,cc594898137f460bfe9f0759e9844b3ce807cfb5,vatex_test,200,200,v_all_adjacent,0.31223213179508913,8360,24744,11901.76,2380152,40000

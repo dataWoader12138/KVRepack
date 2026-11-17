@@ -1,0 +1,57 @@
+{
+  "status": "complete",
+  "spec": {
+    "inputs": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/inputs/reference_samples.json",
+    "text_model": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+    "video_model": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "hf_home": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "text_reference": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/text/records.jsonl",
+    "video_reference": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen7b_adjacent_first200_20261104/records.jsonl",
+    "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_200_20261117",
+    "sample_count": 200,
+    "device": "0"
+  },
+  "pid": 6809,
+  "started_utc": "2026-11-17T01:15:28.760101+00:00",
+  "target_inputs": 400,
+  "completed_groups": [
+    "text",
+    "video"
+  ],
+  "gpu_execution": true,
+  "original_started_utc": "2026-11-17T01:02:02.754289+00:00",
+  "previous_attempts": [
+    {
+      "pid": 5877,
+      "started_utc": "2026-11-17T01:02:02.754289+00:00",
+      "finished_utc": null,
+      "elapsed_seconds": null,
+      "status": "interrupted_by_signal",
+      "completed_groups": [
+        "text"
+      ]
+    }
+  ],
+  "reused_completed_groups": [
+    "text"
+  ],
+  "current_group": "video",
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "-B",
+    "-m",
+    "kvrepack.observations.top_adjacent_report",
+    "--text-input",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_200_20261117/text/records.jsonl",
+    "--video-input",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_200_20261117/video/records.jsonl",
+    "--sample-count",
+    "200",
+    "--output",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_200_20261117/report"
+  ],
+  "updated_utc": "2026-11-17T01:15:28.927378+00:00",
+  "worker_pid": 6838,
+  "finished_utc": "2026-11-17T01:41:33.120195+00:00",
+  "elapsed_seconds": 1564.3584385477006
+}

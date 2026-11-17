@@ -1,6 +1,8 @@
 # KVRepack
 
-正在运行：[VATEX与LongBench各200条、RoPE前raw K的top200相邻对](docs/VATEX_LONGBENCH_TOP200_RAWK_20261117.md)。用户将图文侧明确为VATEX视频；每输入/层/原生KV头从全部`N−1`相邻对中精确取最高200，不再使用OCRBench。两模型各2条真实GPU检查与23项CPU检查通过，正式400条状态以输出state为准；预计30–45分钟，原OCRBench结果保持原样。
+正在运行：[其他LongBench子集的全部邻接raw K对照](docs/LONGBENCH_ADJACENT_CONTROLS_20261117.md)。Qwen2.5-7B固定，HotpotQA、TriviaQA、LCC各原前200，共600；额外事后中心/去bias诊断，不改变模型前向。状态以run_state为准，预计10–15分钟。
+
+已完成：[VATEX与LongBench各200条RoPE前K结果与图](docs/VATEX_LONGBENCH_RAW_K_200_RESULTS_20261117.md) · [TXT](docs/vatex_longbench_raw_k_200.txt)。全部相邻均值VATEX0.740228、LongBench0.843658；每输入/层/头top200为0.971907/0.951488，分别保存。400输入、896万选中分数与来源独立复核通过，39分30秒含中断恢复；LongBench未重跑。
 
 已完成：[Qwen2.5两模型各200条完整序列相邻token观察](docs/REFERENCE_ADJACENT_200_RESULTS_20261117.md) · [TXT](docs/reference_adjacent_qwen25_200.txt)。此轮是全部`N−1`个`(i,i+1)`对、无抽样；post-RoPE K纯文本/图文0.835541/0.749498，V为0.377914/0.368567。400条输入与旧全配对图逐项一致；相邻图与此前所有`i≠j`全配对图分开保留。[启动协议](docs/REFERENCE_ADJACENT_200_20261117.md)。
 

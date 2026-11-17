@@ -1,0 +1,17 @@
+VATEX / LongBench，各原始前200条，RoPE前raw K余弦相似度
+
+数据集与模型                         全部相邻对均值       每输入/层/头top200均值
+VATEX / Qwen2.5-VL-7B                0.740228200748       0.971906715618
+LongBench Qasper / Qwen2.5-7B        0.843658191640       0.951487840129
+
+全部相邻：每条完整输入所有(i,i+1)，共N-1对，未抽样。
+Top200：每输入/层/原生KV头按raw K独立选最高200对，不是全数据只取200。
+两种指标均先在每输入/层/头求均值，再对200条输入、28层、4KV头等权。
+VATEX包含完整视频prompt中的视频/文本/结构及边界token，64帧。
+曲线是112个层/头均值的KDE，不是原始pair余弦的密度。
+
+正式400输入全部完成，400NPZ、896万选中分数独立复核，误差<=2.22e-16。
+VATEX top200选中对99.203527%两端均为视频token；占位ID相同不表示K相同。
+初次启动至报告完成2370.365906秒（39分30秒），包含一次SIGTERM中断恢复；LongBench未重跑。
+完整记录/分组压缩/图/PDF/逐文件SHA：provenance/vatex_longbench_top200_rawk_20261117/final
+协议：docs/VATEX_LONGBENCH_TOP200_RAWK_20261117.md

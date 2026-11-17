@@ -218,14 +218,17 @@ def _csv(path, rows, fields):
         writer.writerows(rows)
 
 
-def _plot(summary, output):
+def _plot(summary, output, *, metric=PRIMARY_METRIC):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     import numpy as np
 
+    names = {PRIMARY_METRIC: 'raw_k_top200', 'k_raw_all_adjacent': 'raw_k_all_adjacent'}
+    if metric not in names:
+        raise ValueError('Plot only pre-RoPE raw K: top200 or all immediate adjacent pairs')
     grid = np.linspace(-1, 1, 2049)
-    selected = {g: [r['mean'] for r in summary['head_table'] if r['group'] == g and r['metric'] == PRIMARY_METRIC] for g in GROUPS}
+    selected = {g: [r['mean'] for r in summary['head_table'] if r['group'] == g and r['metric'] == metric] for g in GROUPS}
     if any(len(v) != LAYERS*HEADS for v in selected.values()):
         raise ValueError('Complete plot requires112 layer/native-head means per group')
     display_left = max(-1., math.floor((min(min(v) for v in selected.values())-.03)*100)/100)
@@ -239,7 +242,7 @@ def _plot(summary, output):
             density, bandwidth = _density_curve(selected[group], grid)
             axis.fill_between(grid, 0, density, color=spec['color'], alpha=.12, linewidth=0, zorder=1)
             axis.plot(grid, density, color=spec['color'], linewidth=2, label=spec['label'], zorder=3)
-            curves.append(dict(group=group, metric=PRIMARY_METRIC, n_head_means=len(selected[group]),
+            curves.append(dict(group=group, metric=metric, n_head_means=len(selected[group]),
                                observed_min=min(selected[group]), observed_max=max(selected[group]),
                                bandwidth=bandwidth, color=spec['color'],
                                density_area=float(np.trapz(density, grid))))
@@ -255,12 +258,12 @@ def _plot(summary, output):
         if bounds[1] <= 1 or title.get_window_extent(renderer).y0 <= legend.get_window_extent(renderer).y1:
             raise ValueError('Legend must lie above the data axes and below the title')
         for extension in ('png', 'pdf', 'svg'):
-            path = Path(output)/f'raw_k_top200.{extension}'
+            path = Path(output)/f'{names[metric]}.{extension}'
             fig.savefig(path, dpi=300, bbox_inches='tight')
             if extension == 'svg':
                 path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines())+'\n')
         plt.close(fig)
-    return dict(statistics_kind=STATISTICS_KIND, metric=PRIMARY_METRIC, representation='boundary-reflected Gaussian KDE',
+    return dict(statistics_kind=STATISTICS_KIND, metric=metric, representation='boundary-reflected Gaussian KDE',
                 bandwidth_rule='Scott; minimum0.01', grid_points=len(grid), full_density_domain=[-1, 1], display_range=[display_left, 1],
                 curves=curves, legend=dict(location='outside_above_data_axes', bounds_in_axes_coordinates=list(bounds), below_title=True))
 
@@ -288,6 +291,7 @@ def write_report(summary, output, *, plots=True):
     compact['artifacts'] = dict(tables=['record_summary.csv', 'head_summary.csv', 'source_inputs.csv', 'group_summary.csv', 'comparison_summary.csv'], plot='disabled')
     if plots and summary['status'] == 'complete':
         compact['artifacts']['plot'] = _plot(summary, output)
+        compact['artifacts']['all_adjacent_plot'] = _plot(summary, output, metric='k_raw_all_adjacent')
     lines = ['# Raw-K top200 adjacent-token comparison: VATEX versus LongBench', '', f"Status: **{summary['status']}**.", '',
              summary['statistic'], '', summary['selection_scope'], '', summary['aggregation'], '',
              '| Metric | Qwen2.5-7B / LongBench | Qwen2.5-VL-7B / VATEX | Video minus text |', '|---|---:|---:|---:|']

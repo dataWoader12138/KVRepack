@@ -1,0 +1,9 @@
+{
+  "status": "passed_gpu_pilot_and_cpu_checks",
+  "pilot_inputs": 6,
+  "pilot_per_subset": 2,
+  "included_in_formal": false,
+  "cpu_diagnostic_tests": 9,
+  "cpu_input_tests": 3,
+  "gpu_execution": true
+}

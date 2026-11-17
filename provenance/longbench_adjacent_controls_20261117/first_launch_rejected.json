@@ -1,0 +1,37 @@
+{
+  "source_commit": "02985fd",
+  "pid": 26699,
+  "process_group": 26699,
+  "launched_utc": "2026-11-17T01:57:38.328570+00:00",
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "-B",
+    "-m",
+    "kvrepack.observations.longbench_controls",
+    "--hf-home",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "--pretrained",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+    "--subsets",
+    "hotpotqa",
+    "triviaqa",
+    "lcc",
+    "--sample-count",
+    "200",
+    "--output",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/longbench_adjacent_controls_200_20261117"
+  ],
+  "formal_inputs": 600,
+  "subsets": [
+    "hotpotqa",
+    "triviaqa",
+    "lcc"
+  ],
+  "estimated_minutes": [
+    10,
+    15
+  ],
+  "launch_mode": "detached new session",
+  "status": "rejected_before_model_inference",
+  "reason": "Launcher log pre-created inside fresh-output guard"
+}

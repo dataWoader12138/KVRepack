@@ -1,0 +1,2 @@
+usage: longbench_controls.py [-h] --hf-home HF_HOME --pretrained PRETRAINED [--subsets {hotpotqa,triviaqa,lcc,2wikimqa,musique,qmsum} [{hotpotqa,triviaqa,lcc,2wikimqa,musique,qmsum} ...]] [--sample-count {2,200}] --output OUTPUT [--device DEVICE] [--resume]
+longbench_controls.py: error: Use a fresh output directory or explicit --resume

@@ -1,0 +1,50 @@
+{
+  "status": "passed_render_only_all_adjacent_addition",
+  "recorded_utc": "2026-11-17T01:48:04.900965+00:00",
+  "gpu_execution": false,
+  "statistics_recomputed": false,
+  "bootstrap_recomputed": false,
+  "selected_pair_selection_recomputed": false,
+  "metric": "k_raw_all_adjacent",
+  "source_head_table_sha256": "a11e452e0047276e618ef3b90cc70bc5c65de533b5c3cbb8b166f4fe1a5f6194",
+  "nonartifacts_sha256_before": "6ae19ac9c5d8b02082d8f6c314c573933344efe07a00233a315ea4c7ce541548",
+  "nonartifacts_sha256_after": "6ae19ac9c5d8b02082d8f6c314c573933344efe07a00233a315ea4c7ce541548",
+  "nonartifacts_sha256_algorithm": "sha256(json.dumps(non_artifacts,sort_keys=True,separators=(comma,colon),ensure_ascii=False,allow_nan=False).encode())",
+  "csv_and_raw_sha256_unchanged": {
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/record_summary.csv": "5ca2a66ad0fc4cae3402b9398ae0b4a534344f76535fef879dfad989d21844df",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/head_summary.csv": "a11e452e0047276e618ef3b90cc70bc5c65de533b5c3cbb8b166f4fe1a5f6194",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/source_inputs.csv": "0b87851cc4d3409d55d7df9ca1171249792de370f221fa7e2bfc788c7e878489",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/group_summary.csv": "53ac6c57c699af3bc27ef1e5599d21a693188f93dddd23e4249db40f199f009f",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/comparison_summary.csv": "4d9e9404a66701cb116e598f27f0aede20ef0bdaa990774d2576ca1eda87f95e",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/text/records.jsonl": "cf2d61342af51d81e8754d9c4f3cab1012af7018946ea77e107b04790a2a6510",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/video/records.jsonl": "0d7389caa736a4634e18ed98fc5ead5c126aeed780362d532485511fc14a264b"
+  },
+  "original_top200_metadata_unchanged": true,
+  "original_top200_plots_sha256_unchanged": {
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/raw_k_top200.png": "24f5b4a93e63cba01a97b56c7d10c24858509f7bb7dde675ad50056c9c661e12",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/raw_k_top200.pdf": "4649c451ad8dac700f6e721f8989f9125041775800fb7c5bdc4a69184c85a480",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/raw_k_top200.svg": "4ccddf4b3b6e9e7f07891ae327c4d7336f1351e830ffe275962278ecfe05cffa"
+  },
+  "changed_existing_files": {
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/summary.json": {
+      "before": "e6ef9fa598ce254282bbbbf187366c32d9550a5c2f2e4a942fab9488278b3b91",
+      "after": "07e2b584f2632261f9c737a4b9003b1b94739c84c5b673b723ca07f827c5170e"
+    }
+  },
+  "new_plot_files": {
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/raw_k_all_adjacent.png": "fda18fbe5cdf449920a167b60f8df7343044d7ed616e5e36ac6fc986ae43d780",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/raw_k_all_adjacent.pdf": "fc0ab528f277d8176f3096f2cd4971f6aac95f564460778513cee7a4c44a08b8",
+    "outputs/observations/vatex_longbench_top200_rawk_200_20261117/report/raw_k_all_adjacent.svg": "b94419b6824b37677d0519f163c378ea1baf456ea7e9bbb349f4d725c50b587e"
+  },
+  "rendering_source_sha256": "cab70530f7395081c277da6921dee57792a9abe9818a1d1b7030c1ae56e49b21",
+  "legend": {
+    "location": "outside_above_data_axes",
+    "bounds_in_axes_coordinates": [
+      0.21342723373090602,
+      1.051684447913956,
+      0.5731455325381879,
+      0.07372712290745076
+    ],
+    "below_title": true
+  }
+}

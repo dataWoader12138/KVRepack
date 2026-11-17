@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "pid": 26517,
+  "started_utc": "2026-11-17T01:54:59.708454+00:00",
+  "completed": 6,
+  "target": 6,
+  "subsets": [
+    "hotpotqa",
+    "triviaqa",
+    "lcc"
+  ],
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "statistics_kind": "longbench_full_adjacent_key_controls_v1",
+  "model_load_seconds": 3.3156858682632446,
+  "counts_by_subset": {
+    "triviaqa": 2,
+    "lcc": 2,
+    "hotpotqa": 2
+  },
+  "current_subset": "lcc",
+  "current_doc_id": 1,
+  "elapsed_seconds": 9.45043346658349,
+  "updated_utc": "2026-11-17T01:55:09.156346+00:00",
+  "finished_utc": "2026-11-17T01:55:09.158868+00:00"
+}

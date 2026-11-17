@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "complete_and_independently_verified",
+  "recorded_utc": "2026-11-17T01:56:04.075907+00:00",
+  "statistics_kind": "raw_k_top200_sequence_adjacent_v1",
+  "total_inputs": 400,
+  "inputs_per_dataset": 200,
+  "top_k_per_input_layer_head": 200,
+  "primary_completed_statistics": {
+    "raw_k_top200": {
+      "text": 0.951487840129316,
+      "video": 0.971906715618304,
+      "video_minus_text": 0.02041887548898802
+    },
+    "k_raw_all_adjacent": {
+      "text": 0.8436581916400959,
+      "video": 0.7402282007476729,
+      "video_minus_text": -0.103429990892423
+    },
+    "k_rope_all_adjacent": {
+      "text": 0.8355412433318428,
+      "video": 0.7400386429268654,
+      "video_minus_text": -0.09550260040497738
+    },
+    "v_all_adjacent": {
+      "text": 0.37791370181191175,
+      "video": 0.31223213179508913,
+      "video_minus_text": -0.06568157001682262
+    }
+  },
+  "collection_source_commit": "48df172",
+  "controller_fix_commit": "dd1c797",
+  "formal_gpu_execution": true,
+  "postprocess_gpu_execution": false,
+  "original_input_matches": 400,
+  "selected_score_slots_verified": 8960000,
+  "archive_file_count": 428,
+  "uncompressed_bytes": 97884427,
+  "archives": [
+    {
+      "file": "run_metadata.tar.gz",
+      "files": 20,
+      "bytes": 563310,
+      "sha256": "e71b3ccde9ca92d438248f286405a05600ebf103766a7ea49d6633cb3ff4d530"
+    },
+    {
+      "file": "text_000_099.tar.gz",
+      "files": 104,
+      "bytes": 26516509,
+      "sha256": "7d347e8e76d8514452c4dcf2a7a3ed8a845b669542f7a2103ca2484400fb35ff"
+    },
+    {
+      "file": "text_100_199.tar.gz",
+      "files": 100,
+      "bytes": 25401582,
+      "sha256": "abe778ce2fdcc3f83ec926c535f2f8e534ef554233d5721671aa9d521767521a"
+    },
+    {
+      "file": "video_000_099.tar.gz",
+      "files": 104,
+      "bytes": 19840325,
+      "sha256": "111ff4526bb3daaadd7e4fc9b1c9335a00dc9fc5c1d5c395511b301523ef41e8"
+    },
+    {
+      "file": "video_100_199.tar.gz",
+      "files": 100,
+      "bytes": 18952255,
+      "sha256": "aec02ee09b6011c644b3ee96e6ba02df8493f761aedde52524e29ec7c8465959"
+    }
+  ],
+  "round_trip_every_archived_file_sha_verified": true,
+  "independent_verification_sha256": "9ab37695dccb49acaa3a7913d1c5dc222d61dc09835fb2a3c606f0dc49c46dab",
+  "raw_file_index_sha256": "5a40119dd87e46b55a0ace88b6ee505e76494032577d8d79227d7dc6c2b84eb2",
+  "report_summary_sha256": "07e2b584f2632261f9c737a4b9003b1b94739c84c5b673b723ca07f827c5170e",
+  "wall_seconds_including_interruption": 2370.365906,
+  "resume_controller_seconds": 1564.3584385477006,
+  "selected_pair_video_fraction": 0.9920352678571429
+}
