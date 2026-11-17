@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "statistics_kind": "longbench_full_adjacent_key_controls_v1",
+  "status": "complete",
+  "sample_count": 2,
+  "subsets": [
+    "hotpotqa",
+    "triviaqa",
+    "lcc"
+  ],
+  "expected_total_inputs": 6,
+  "primary_metric": "k_raw",
+  "model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "dimensions": {
+    "layers": 28,
+    "native_kv_heads": 4,
+    "head_dim": 128
+  },
+  "groups": {
+    "hotpotqa": {
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "n_inputs": 2,
+      "n_source_contexts": 2,
+      "valid_doc_ids": [
+        0,
+        1
+      ],
+      "missing_doc_ids": [],
+      "input_tokens": {
+        "min": 11777,
+        "max": 17312,
+        "mean": 14544.5
+      },
+      "adjacent_pairs_total_per_head_layer": 29087,
+      "metrics": {
+        "k_raw": {
+          "mean": 0.8518080435507911
+        },
+        "k_rope": {
+          "mean": 0.8434176393208832
+        },
+        "v": {
+          "mean": 0.38569248540681544
+        },
+        "k_raw_all_pairs": {
+          "mean": 0.6936598063472244
+        },
+        "k_raw_centered_adjacent": {
+          "mean": 0.45973794771535886
+        },
+        "k_raw_without_bias_adjacent": {
+          "mean": 0.6917707792931977
+        }
+      }
+    },
+    "triviaqa": {
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "n_inputs": 2,
+      "n_source_contexts": 2,
+      "valid_doc_ids": [
+        0,
+        1
+      ],
+      "missing_doc_ids": [],
+      "input_tokens": {
+        "min": 5695,
+        "max": 16896,
+        "mean": 11295.5
+      },
+      "adjacent_pairs_total_per_head_layer": 22589,
+      "metrics": {
+        "k_raw": {
+          "mean": 0.8488493290014532
+        },
+        "k_rope": {
+          "mean": 0.8404136255109762
+        },
+        "v": {
+          "mean": 0.37077266909488427
+        },
+        "k_raw_all_pairs": {
+          "mean": 0.6905183474942871
+        },
+        "k_raw_centered_adjacent": {
+          "mean": 0.45861502691369926
+        },
+        "k_raw_without_bias_adjacent": {
+          "mean": 0.6827461933699621
+        }
+      }
+    },
+    "lcc": {
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "n_inputs": 2,
+      "n_source_contexts": 2,
+      "valid_doc_ids": [
+        0,
+        1
+      ],
+      "missing_doc_ids": [],
+      "input_tokens": {
+        "min": 2814,
+        "max": 11500,
+        "mean": 7157.0
+      },
+      "adjacent_pairs_total_per_head_layer": 14312,
+      "metrics": {
+        "k_raw": {
+          "mean": 0.8352189014622677
+        },
+        "k_rope": {
+          "mean": 0.8277281645852819
+        },
+        "v": {
+          "mean": 0.32920729557278994
+        },
+        "k_raw_all_pairs": {
+          "mean": 0.6871068672211971
+        },
+        "k_raw_centered_adjacent": {
+          "mean": 0.4197364497795428
+        },
+        "k_raw_without_bias_adjacent": {
+          "mean": 0.6661542237669671
+        }
+      }
+    }
+  },
+  "statistic": "Primary: cosine over every original sequence-adjacent pair (i,i+1), exactly N-1 per complete input/head/layer, before current-layer RoPE",
+  "aggregation": "Equal adjacent-pair weights within each input/head/layer, then equal native-head/layer and prescribed-input weights; no input-length weighting",
+  "distribution_unit": "112 decoder-layer/native-KV-head means over the prescribed inputs per subset, not individual pair cosines or independent observations",
+  "diagnostics": "Raw non-self all-pairs; sequence-mean-subtracted raw-K adjacency; projection-bias-subtracted raw-K adjacency. Transformations operate only on captured FP32 copies of native BF16 outputs and never change the model forward.",
+  "interpretation": "Dataset controls use the same fixed model and prescribed original inputs. Centering is a post-hoc geometry probe; subtracting projection bias from rounded native outputs is not a forward pass with the bias disabled. These measurements do not prove merge safety or isolate a unique causal mechanism.",
+  "bootstrap": false,
+  "token_or_pair_sampling": false,
+  "validation_issues": [],
+  "provenance": {
+    "input_file": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/longbench_adjacent_controls_20261117_preflight/records.jsonl",
+    "input_sha256": "76a96a7528e7718cc170f4a3220c131b560433d61deaefcca2c95d64d06275e4",
+    "contract_file": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/longbench_adjacent_controls_20261117_preflight/contract.json",
+    "contract_sha256": "1c8045201b47a2761d13a52d94ae67da58511e5c42b9cce051da14f60f14459e"
+  },
+  "artifacts": {
+    "tables": [
+      "record_summary.csv",
+      "head_summary.csv",
+      "source_inputs.csv",
+      "group_summary.csv"
+    ],
+    "plot": {
+      "metric": "k_raw",
+      "representation": "boundary-reflected Gaussian KDE",
+      "bandwidth_rule": "Scott; minimum0.01",
+      "grid_points": 2049,
+      "display_range": [
+        0.5,
+        1
+      ],
+      "curves": [
+        {
+          "subset": "hotpotqa",
+          "metric": "k_raw",
+          "n_head_means": 112,
+          "observed_min": 0.5362595068014366,
+          "observed_max": 0.9999077677404424,
+          "bandwidth": 0.02842046495789408,
+          "color": "#B98A2F",
+          "density_area": 0.9999999999999999
+        },
+        {
+          "subset": "triviaqa",
+          "metric": "k_raw",
+          "n_head_means": 112,
+          "observed_min": 0.540217385963771,
+          "observed_max": 0.9999091685173704,
+          "bandwidth": 0.028813543023434317,
+          "color": "#805823",
+          "density_area": 1.0
+        },
+        {
+          "subset": "lcc",
+          "metric": "k_raw",
+          "n_head_means": 112,
+          "observed_min": 0.5369055846797606,
+          "observed_max": 0.9999060456476987,
+          "bandwidth": 0.030957983548286865,
+          "color": "#D0A353",
+          "density_area": 1.0
+        }
+      ],
+      "legend": {
+        "location": "outside_above_data_axes",
+        "bounds_in_axes_coordinates": [
+          0.2894760933249634,
+          1.051684447913956,
+          0.42104781335007335,
+          0.07372712290745076
+        ]
+      }
+    }
+  }
+}

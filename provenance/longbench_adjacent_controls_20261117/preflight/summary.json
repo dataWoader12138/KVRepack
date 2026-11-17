@@ -5,5 +5,7 @@
   "included_in_formal": false,
   "cpu_diagnostic_tests": 9,
   "cpu_input_tests": 3,
-  "gpu_execution": true
+  "gpu_execution": true,
+  "cpu_report_tests": 10,
+  "real_pilot_report": "complete"
 }
