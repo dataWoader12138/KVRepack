@@ -1,0 +1,39 @@
+{
+  "status": "passed_render_only_update",
+  "recorded_utc": "2026-11-17T00:39:22.822204+00:00",
+  "gpu_execution": false,
+  "statistics_recomputed": false,
+  "bootstrap_recomputed": false,
+  "statistics_sha256_unchanged": "71fef07df63693917aaf222097141c153d6fd02065ac6fe28c6a541468adb541",
+  "kde_curve_metadata_unchanged": true,
+  "legend": {
+    "location": "outside_above_data_axes",
+    "bounds_in_axes_coordinates": [
+      0.24450339852961583,
+      1.0409248796819417,
+      0.5109932029407684,
+      0.1297342540280393
+    ],
+    "entirely_above_data_axes": true,
+    "below_title": true
+  },
+  "changed_files": {
+    "adjacent_combined.png": {
+      "before": "18982e75d815590bc9ecacb1d1c5d9530aa46e297afcd7095a56b76ce4f7eb61",
+      "after": "b95bc6f622766a1529bcb5b81bc0129d7006700f3dd46e5061d77ffce6ed08df"
+    },
+    "adjacent_combined.pdf": {
+      "before": "f3859b4a61abfe32ee2badb12a5ee5e0aa4bce14d713e975940dd4ce8b62a73d",
+      "after": "cd798f19f2db5ac3e8d375f5258af6c590347b822ed35aa555ea0a831fbdc996"
+    },
+    "adjacent_combined.svg": {
+      "before": "f731b093784023c171c27c9af0351eead0161b38bdcf0fd54008bd0e15c40f6c",
+      "after": "3381e830c482fc9c71cb56be17fbc696835cf3cd18f06709ce80b17e005b8e7c"
+    },
+    "summary.json": {
+      "before": "3f2fce4b06199886150a2d12fe14600b75fa84d2e0f426dc8c628eb3f53a9f08",
+      "after": "2ec2475c6c7f1d254fa6ac277652c2c644d57768ffc5e738f274fb218c812c7d"
+    }
+  },
+  "render_source_sha256": "61a6539f5a7320fedfe29601115c091440798f6320c5f3110f33166f3ff32cf6"
+}

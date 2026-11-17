@@ -1,0 +1,23 @@
+{
+  "source_commit": "ba70c1a",
+  "controller_pid": 2769,
+  "started_utc": "2026-11-17T00:33:12.100044+00:00",
+  "target_inputs": 400,
+  "spec": {
+    "inputs": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/inputs/reference_samples.json",
+    "text_model": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+    "vision_model": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "hf_home": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "reference_root": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104",
+    "sample_count": 200,
+    "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_sequence_adjacent_200_20261117",
+    "device": "0"
+  },
+  "statistics_kind": "all_sequence_adjacent_v1",
+  "all_n_minus_one_pairs": true,
+  "no_token_or_pair_sampling": true,
+  "estimate_announced_minutes": [
+    5,
+    10
+  ]
+}

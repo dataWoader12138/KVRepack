@@ -1,0 +1,7 @@
+group,model_id,model_revision,n_inputs,n_source_clusters,metric,mean,ci95_low,ci95_high,input_tokens_min,input_tokens_max,input_tokens_mean,adjacent_pairs_total,adjacent_pairs_min,adjacent_pairs_max,adjacent_pairs_mean
+text,Qwen/Qwen2.5-7B-Instruct,a09a35458c702b33eeacc393d103063234e8bc28,2,,k_raw,0.8451943211998476,,,3428,4091,3759.5,7517,3427,4090,3758.5
+text,Qwen/Qwen2.5-7B-Instruct,a09a35458c702b33eeacc393d103063234e8bc28,2,,k_rope,0.8372099617539331,,,3428,4091,3759.5,7517,3427,4090,3758.5
+text,Qwen/Qwen2.5-7B-Instruct,a09a35458c702b33eeacc393d103063234e8bc28,2,,v,0.3838621071917276,,,3428,4091,3759.5,7517,3427,4090,3758.5
+vision,Qwen/Qwen2.5-VL-7B-Instruct,cc594898137f460bfe9f0759e9844b3ce807cfb5,2,,k_raw,0.7708271179084711,,,64,72,68.0,134,63,71,67.0
+vision,Qwen/Qwen2.5-VL-7B-Instruct,cc594898137f460bfe9f0759e9844b3ce807cfb5,2,,k_rope,0.7676895199605795,,,64,72,68.0,134,63,71,67.0
+vision,Qwen/Qwen2.5-VL-7B-Instruct,cc594898137f460bfe9f0759e9844b3ce807cfb5,2,,v,0.4037732400396985,,,64,72,68.0,134,63,71,67.0

@@ -1,0 +1,48 @@
+{
+  "status": "complete",
+  "spec": {
+    "inputs": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/inputs/reference_samples.json",
+    "text_model": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+    "vision_model": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "hf_home": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "reference_root": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104",
+    "sample_count": 2,
+    "output": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_sequence_adjacent_20261117_preflight",
+    "device": "0"
+  },
+  "pid": 2576,
+  "started_utc": "2026-11-17T00:31:30.100417+00:00",
+  "target_inputs": 4,
+  "completed_groups": [
+    "text",
+    "vision"
+  ],
+  "gpu_execution": true,
+  "current_group": "vision",
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "-B",
+    "-m",
+    "kvrepack.observations.reference_adjacent",
+    "--group",
+    "vision",
+    "--sample-count",
+    "2",
+    "--pretrained",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "--hf-home",
+    "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache",
+    "--inputs",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/inputs/reference_samples.json",
+    "--output",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_sequence_adjacent_20261117_preflight/vision",
+    "--device",
+    "0",
+    "--reference-records",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104/vision/records.jsonl"
+  ],
+  "updated_utc": "2026-11-17T00:31:42.446635+00:00",
+  "worker_pid": 2636,
+  "finished_utc": "2026-11-17T00:31:53.005489+00:00",
+  "elapsed_seconds": 22.904234509915113
+}

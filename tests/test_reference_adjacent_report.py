@@ -203,6 +203,16 @@ class ReferenceAdjacentReportTests(unittest.TestCase):
                 for curve in metadata["curves"]:
                     self.assertEqual(curve["n_head_means"], 112)
                     self.assertAlmostEqual(curve["density_area"], 1)
+            combined = compact["artifacts"]["plots"]["combined"]
+            self.assertEqual(combined["legend"]["location"], "outside_above_data_axes")
+            self.assertGreater(combined["legend"]["bounds_in_axes_coordinates"][1], 1.)
+            self.assertTrue(combined["legend"]["below_title"])
+            # The independent layout must retain exactly the KDE values used
+            # in the existing key/value views for the same 112 points.
+            for metric, view in (("k_rope", "key"), ("v", "value")):
+                original = compact["artifacts"]["plots"][view]["curves"]
+                actual = [curve for curve in combined["curves"] if curve["metric"] == metric]
+                self.assertEqual(actual, original)
             svg = (root/"adjacent_main.svg").read_text()
             for label in ("Key Similarity Distribution Comparison", "Value Similarity Distribution Comparison", "Qwen2.5-7B", "Qwen2.5-VL-7B", "Cosine Similarity"):
                 self.assertIn(label, svg)

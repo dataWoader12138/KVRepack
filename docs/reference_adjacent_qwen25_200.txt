@@ -1,0 +1,17 @@
+Qwen2.5两模型各200条：完整序列相邻token余弦相似度
+
+纯文本：Qwen2.5-7B-Instruct，LongBench/qasper原始0..199。
+图文：Qwen2.5-VL-7B-Instruct，OCRBench固定0、5..995。
+每输入完整全部N-1对(i,i+1)，无token/pair抽样；各输入等权。
+
+Metric           Qwen2.5-7B      Qwen2.5-VL-7B      VL minus text
+k_raw           0.843658192      0.751110787       -0.092547404
+k_rope          0.835541243      0.749498238       -0.086043006
+v               0.377913702      0.368566503       -0.009347199
+
+主图使用post-RoPE K（k_rope）和V。图文组含完整prompt的图像/文本/结构token与边界。
+112个层/KV头均值做连续KDE，不是原始pair余弦密度。
+相邻位置对累计：text1042084，vision215056；各28层×4原生KV头均测量。
+正式400条已完成，含加载/采集/首次统计绘图172.093519秒；旧全配对与早期抽样近邻保持原样。
+来源：provenance/reference_adjacent_qwen25_200_20261117/final/report
+运行入口：scripts/run_reference_adjacent.py；协议：docs/REFERENCE_ADJACENT_200_20261117.md

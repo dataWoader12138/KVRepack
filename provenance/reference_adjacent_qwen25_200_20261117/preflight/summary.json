@@ -1,0 +1,29 @@
+{
+  "status": "passed_gpu_pilot_and_cpu_observer_checks",
+  "recorded_utc": "2026-11-17T00:34:12.687068+00:00",
+  "gpu_execution": true,
+  "inputs_per_group": 2,
+  "total_pilot_inputs": 4,
+  "formal_samples_included": false,
+  "original_input_hash_match_all": true,
+  "cpu_observer_tests": {
+    "run": 14,
+    "passed": 14,
+    "failed": 0,
+    "provider": "independent sub-agent adjacent_observer_cpu_tests"
+  },
+  "source_checks": {
+    "status": "passed",
+    "core_files": 30,
+    "local_modules_and_adapter": 83
+  },
+  "formal_source_commit": "ba70c1a",
+  "cpu_report_tests": {
+    "run": 11,
+    "passed": 11,
+    "failed": 0,
+    "elapsed_seconds": 3.483,
+    "includes_15_plot_rendering": true,
+    "render_only_layout_fix": true
+  }
+}

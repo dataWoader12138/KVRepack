@@ -1,5 +1,7 @@
 # KVRepack
 
+已完成：[Qwen2.5两模型各200条完整序列相邻token观察](docs/REFERENCE_ADJACENT_200_RESULTS_20261117.md) · [TXT](docs/reference_adjacent_qwen25_200.txt)。此轮是全部`N−1`个`(i,i+1)`对、无抽样；post-RoPE K纯文本/图文0.835541/0.749498，V为0.377914/0.368567。400条输入与旧全配对图逐项一致；相邻图与此前所有`i≠j`全配对图分开保留。[启动协议](docs/REFERENCE_ADJACENT_200_20261117.md)。
+
 已完成：[旧设置独立LOOK-M与AsymKV：NExTQA各200条结果与E2E](docs/LEGACY_STANDALONE_NEXTQA_E2E_RESULTS_20261115.md) · [TXT](docs/legacy_standalone_nextqa_200.txt) · [CSV](docs/legacy_standalone_nextqa_200.csv)。Qwen2.5-VL-7B、64帧、各自原实现与预算，共400条；LOOK-M WUPS33.539684、视频至文本E2E3.577198秒/条，AsymKV29.164032、9.826410秒/条（计入全部Fisher）。完整循环含记录开销均值另为3.784124／10.042068秒。400条、原生评分语料和404项来源索引独立复核通过；LOOK-M与旧记录有3条回答不同，不拼接旧33.857144分数。原AsymKV分块后的物理缓存平均18.1112%，不标成严格总10%。[协议及启动命令](docs/LEGACY_STANDALONE_NEXTQA_E2E_20261115.md)。
 
 **已按用户要求恢复原预算默认行为。** 新增NExTQA比较入口默认使用原作者的历史预算加recent/local，不再自动改为严格总10%；通用主实验入口和30份核心算法保持原实现。[恢复内容、验证范围与启动命令](docs/ORIGINAL_BUDGET_RESTORE_20261113.md)。以下严格预算数据为已完成的独立历史实验，不替代原主实验。

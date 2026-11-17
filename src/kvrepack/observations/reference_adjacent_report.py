@@ -188,8 +188,92 @@ def build_summary(records, *, sample_count=200, bootstrap_samples=5000, seed=202
                 record_table=record_rows, head_table=heads, layer_table=layers)
 
 
+def _combined_plot(summary, output, *, raw=False):
+    """Keep the full four-curve legend above the data axes, below the title."""
+    import math
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.colors import to_rgba
+    from matplotlib.legend_handler import HandlerTuple
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+    import numpy as np
+    from .reference_report import _density_curve
+
+    key_metric = "k_raw" if raw else "k_rope"
+    channel_styles = {key_metric: dict(linestyle="-", hatch="/", label="Key"),
+                      "v": dict(linestyle=(0, (4, 2)), hatch=".", label="Value")}
+    grid = np.linspace(-1, 1, 2049)
+    minimum = min(row["mean"] for row in summary["head_table"] if row["metric"] in channel_styles)
+    display_left = max(-1., min(-.2, math.floor((minimum-.1)*10)/10))
+    curve_metadata, legend_handles, legend_labels = [], [], []
+    with plt.rc_context({"font.family": "DejaVu Sans", "font.size": 9, "pdf.fonttype": 42,
+                         "ps.fonttype": 42, "svg.fonttype": "none", "text.color": "#30343B",
+                         "axes.labelcolor": "#30343B", "xtick.color": "#70747A", "ytick.color": "#70747A",
+                         "axes.edgecolor": "#C8CBD0", "hatch.linewidth": .4}):
+        fig, axis = plt.subplots(figsize=(7.2, 4.5))
+        fig.subplots_adjust(left=.095, right=.985, bottom=.14, top=.73)
+        for metric, style in channel_styles.items():
+            for group, specification in GROUPS.items():
+                values = [row["mean"] for row in summary["head_table"] if row["group"] == group and row["metric"] == metric]
+                if len(values) != LAYERS*HEADS:
+                    raise ValueError("Complete figures require all 112 native layer/head means per model")
+                counts, edges = np.histogram(values, bins=np.linspace(-1, 1, 31))
+                density, bandwidth = _density_curve(values, grid)
+                color = specification["color"]
+                curve_metadata.append(dict(group=group, metric=metric, n_head_means=len(values),
+                    bin_counts=counts.tolist(), bandwidth=bandwidth,
+                    density_area=float(np.sum((density[:-1]+density[1:])*np.diff(grid))/2),
+                    observed_min=min(values), observed_max=max(values), color=color))
+                axis.fill_between(grid, 0, density, facecolor=to_rgba(color, .025),
+                                  edgecolor=to_rgba(color, .28), hatch=style["hatch"], linewidth=0, zorder=1)
+                axis.plot(grid, density, color=color, linewidth=2.1, linestyle=style["linestyle"], zorder=4)
+                legend_handles.append((Patch(facecolor=to_rgba(color, .04), edgecolor=to_rgba(color, .45),
+                                             hatch=style["hatch"], linewidth=.4),
+                                       Line2D([], [], color=color, linewidth=2.1, linestyle=style["linestyle"])))
+                model_label = specification["model_id"].split("/")[-1].removesuffix("-Instruct")
+                legend_labels.append(model_label+" · "+style["label"])
+        axis.set(ylabel="Density", xlabel="Cosine Similarity", xlim=(display_left, 1), ylim=(0, None))
+        axis.set_xticks([x for x in (-1, -.5, -.2, 0, .2, .4, .6, .8, 1) if x >= display_left])
+        axis.spines[["top", "right"]].set_visible(False)
+        axis.set_axisbelow(True)
+        axis.grid(color="#E2E4E7", linewidth=.65, linestyle=(0, (2, 2)))
+        legend = axis.legend(legend_handles, legend_labels, handler_map={tuple: HandlerTuple(ndivide=1)},
+                             frameon=False, fontsize=8, loc="lower center", bbox_to_anchor=(.5, 1.02),
+                             ncol=2, columnspacing=1.2)
+        title = fig.suptitle("Key and Value Similarity Distribution Comparison", y=.97, fontsize=10)
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        axes_bounds = axis.get_window_extent(renderer)
+        legend_bounds = legend.get_window_extent(renderer)
+        title_bounds = title.get_window_extent(renderer)
+        # Save measured display positions so a layout test can check this
+        # property using actual rendered text, rather than just anchor values.
+        legend_axis_bounds = legend_bounds.transformed(axis.transAxes.inverted()).bounds
+        if legend_bounds.y0 <= axes_bounds.y1 or title_bounds.y0 <= legend_bounds.y1:
+            raise ValueError("Combined legend must sit above the data axes and below the title")
+        name = "adjacent_raw_combined" if raw else "adjacent_combined"
+        for extension in ("png", "pdf", "svg"):
+            path = Path(output)/f"{name}.{extension}"
+            fig.savefig(path, dpi=300, bbox_inches="tight")
+            if extension == "svg":
+                path.write_text("\n".join(line.rstrip() for line in path.read_text().splitlines())+"\n")
+        plt.close(fig)
+    return dict(representation="boundary-reflected Gaussian KDE", bandwidth_rule="Scott; minimum 0.01",
+                bin_edges=edges.tolist(), bins=30, range=[-1, 1], display_range=[display_left, 1],
+                grid_points=len(grid), histogram_counts="audit only; no histogram drawn", curves=curve_metadata,
+                view="combined", cache_styles=channel_styles, statistics_kind=STATISTICS_KIND,
+                legend=dict(location="outside_above_data_axes", bounds_in_axes_coordinates=list(legend_axis_bounds),
+                            entirely_above_data_axes=True, below_title=True),
+                overlapping_fills=dict(face_alpha=.025, hatch_alpha=.28, hatch_linewidth=.4,
+                                       fills_zorder=1, curves_zorder=4, mean_markers=False))
+
+
 def _plot(summary, output, *, raw=False, view="panels"):
     """Reuse the unchanged reference KDE renderer, keeping adjacent names separate."""
+    if view == "combined":
+        return _combined_plot(summary, output, raw=raw)
     with tempfile.TemporaryDirectory(prefix=".adjacent-plots-", dir=output) as directory:
         temporary = Path(directory)
         metadata = _reference_plot(summary, temporary, raw=raw, view=view)

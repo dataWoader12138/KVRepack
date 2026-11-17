@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "status": "complete_and_independently_verified",
+  "recorded_utc": "2026-11-17T00:40:36.757996+00:00",
+  "statistics_kind": "all_sequence_adjacent_v1",
+  "formal_gpu_execution": true,
+  "postprocess_gpu_execution": false,
+  "collection_source_commit": "ba70c1a",
+  "report_initial_commit": "c4d77c1",
+  "total_inputs": 400,
+  "inputs_per_group": 200,
+  "pilot_inputs_excluded": 4,
+  "every_n_minus_one_adjacent_pair": true,
+  "token_or_pair_sampling": false,
+  "original_all_pairs_input_match_count": 400,
+  "comparisons": {
+    "k_raw": {
+      "text": 0.8436581916400959,
+      "vision": 0.7511107872899584,
+      "vision_minus_text": -0.09254740435013753,
+      "text_inputs": 200,
+      "vision_inputs": 200,
+      "ci95": [
+        -0.09611405024198663,
+        -0.08892604832374304
+      ]
+    },
+    "k_rope": {
+      "text": 0.8355412433318428,
+      "vision": 0.7494982377601593,
+      "vision_minus_text": -0.08604300557168343,
+      "text_inputs": 200,
+      "vision_inputs": 200,
+      "ci95": [
+        -0.08952548760335452,
+        -0.0825135252697234
+      ]
+    },
+    "v": {
+      "text": 0.37791370181191175,
+      "vision": 0.36856650315978695,
+      "vision_minus_text": -0.0093471986521248,
+      "text_inputs": 200,
+      "vision_inputs": 200,
+      "ci95": [
+        -0.014843593243719241,
+        -0.0037459902458544234
+      ]
+    }
+  },
+  "adjacent_pairs_per_head_layer": {
+    "text": 1042084,
+    "vision": 215056
+  },
+  "archive_files": 37,
+  "uncompressed_bytes": 11722113,
+  "archive_bytes": 3358457,
+  "archive_sha256": "c89f2df7cf2915a5a8ed93c990ee723670fade7a9787d6d17b0592ca58f0f4dd",
+  "round_trip_every_file_sha256_verified": true,
+  "recorded_files_sha256": "df534f9e4d0f28813bf8b9d8ee9a02c8af990f418099c9d68a42ed33a0cb3d1f",
+  "independent_verification_sha256": "d68f6d46f0853f1f78148b38d5153f453c801dff54e89a85ba4b13c36d717076",
+  "report_summary_sha256": "2ec2475c6c7f1d254fa6ac277652c2c644d57768ffc5e738f274fb218c812c7d",
+  "collection_timing_seconds": 172.09351893514395,
+  "new_source_sha256": {
+    "src/kvrepack/observations/native_adjacent.py": "6650919859b82a23577f407d0b9e8ea9e4cc8b4b60a8cf2ad94788d9edef0de6",
+    "src/kvrepack/observations/reference_adjacent.py": "fe61ea5ee256d6073359b93caac51848ae9adc36d639cab356a1b179d8b4f61a",
+    "src/kvrepack/observations/reference_adjacent_report.py": "61a6539f5a7320fedfe29601115c091440798f6320c5f3110f33166f3ff32cf6",
+    "scripts/run_reference_adjacent.py": "a5788562f3ef7286ab5db342fed5cb681534919a32d5a757a381c5cbf0907d5c"
+  },
+  "limitations": [
+    "Whole sequence includes image/text/structural and boundary pairs, not only visual positions.",
+    "Curves summarize112 head/layer means; they are not distributions of individual pair cosines.",
+    "Different models/datasets/sequence lengths; no causal modality claim.",
+    "Raw vectors not saved; independent audit reconstructs summaries, not cosine from original vectors."
+  ]
+}

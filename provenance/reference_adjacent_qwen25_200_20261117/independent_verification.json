@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "status": "passed_independent_read_only_verification",
+  "recorded_utc": "2026-11-17T00:37:12.188689+00:00",
+  "gpu_execution": false,
+  "bootstrap_rerun": false,
+  "original_files_changed": false,
+  "source_commit": "ba70c1a",
+  "formal_root": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_sequence_adjacent_200_20261117",
+  "old_all_pairs_root": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/qwen25_mixkv_reference_200_20261104",
+  "rows_verified": 400,
+  "original_input_matches": 400,
+  "table_row_counts": {
+    "record_summary.csv": 1200,
+    "source_inputs.csv": 400,
+    "head_summary.csv": 672,
+    "layer_summary.csv": 168,
+    "group_summary.csv": 6,
+    "comparison_summary.csv": 3
+  },
+  "max_numeric_mean_absolute_error": 2.220446049250313e-16,
+  "group_means": {
+    "text": {
+      "k_raw": 0.8436581916400959,
+      "v": 0.37791370181191175,
+      "k_rope": 0.8355412433318428
+    },
+    "vision": {
+      "k_raw": 0.7511107872899584,
+      "v": 0.36856650315978695,
+      "k_rope": 0.7494982377601593
+    }
+  },
+  "total_adjacent_pairs_per_head_layer": {
+    "text": 1042084,
+    "vision": 215056
+  },
+  "source_review": {
+    "reduction": "FP32 normalization then FP64 elementwise products of unit[:, :-1, :] and unit[:, 1:, :], summed over feature dimension and averaged over all N-1 consecutive pairs",
+    "native_capture": "K/V projection outputs and original native rotary-returned K, before GQA repeat; unchanged native forward outputs",
+    "aggregation": "Equal prescribed inputs for each native layer/head, then equal112 head/layer cells; not input-length weighted",
+    "whole_sequence_boundaries": true
+  },
+  "limitations": [
+    "This audit independently recomputes aggregates from saved per-input/per-layer/per-native-head adjacent means; full token vectors were not saved, so original per-token cosine dot products were not recomputed.",
+    "Recorded source-cluster bootstrap confidence intervals were checked for consistency between JSON and CSV but bootstrap was not rerun.",
+    "Input equality verifies stored processor tensor hashes and metadata against the original all-pairs records; it is not a fresh model/data regeneration or complete dependency/weight payload proof.",
+    "All N-1 original-sequence adjacent pairs include text/image/structural boundaries and image-grid row wraps; this is not restricted horizontal visual adjacency."
+  ],
+  "errors": [],
+  "files_sha256": {
+    "src/kvrepack/observations/reference_adjacent.py": "fe61ea5ee256d6073359b93caac51848ae9adc36d639cab356a1b179d8b4f61a",
+    "src/kvrepack/observations/native_adjacent.py": "6650919859b82a23577f407d0b9e8ea9e4cc8b4b60a8cf2ad94788d9edef0de6",
+    "src/kvrepack/observations/native_all_pairs.py": "0e67b16e20cc132eb9fd0a0ec62cfdbf4c54aa91946055d78f519406ac7e24d2",
+    "src/kvrepack/observations/reference.py": "a37335fb9d2488ced4dcd10257c51dfe649cbfb84a6505c76021406d97ac30a6",
+    "src/kvrepack/observations/reference_inputs.py": "395e6039f6459c77275ed9f8a4ca39f82b3da92c4c72209e87f5add476ed1d3d",
+    "src/kvrepack/observations/adjacent.py": "7436799cd91e54fbefc385e46430199be8260257088c2e992ac568c923954af3",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/text/records.jsonl": "a8a7b9578e5edc8c3dc4da1c0c69c3f8048c4e67c716e4ff435ce18eb1671204",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/text/contract.json": "f81de3994269058d6aa24e21deda7b92bf4197283669406e38205787e1941545",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/text/run_state.json": "83fd66292d6d15ace4a6754ef4b96864d62085607ef7c7ac617942c152b2aedc",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/vision/records.jsonl": "ad431de5aa7aa0bb97dd38c34762142fc457354a52cd77f3a1e6ff0a519de71c",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/vision/contract.json": "6f9e193226bd34f136feb42e88ca80f351c44b50b0be6aee39d5d5f3ca8b36bb",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/vision/run_state.json": "ea8b3b244ad70406f2cbd1a536cb83311534fc3e5fdc268c92731d1d1984e6dd",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/record_summary.csv": "b05d20665134cdbc93a55a94264cfa50e1e29815232b89566f40defbd9ca0d6c",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/source_inputs.csv": "658364c76f67fafec82df3fe6f1fdd3ae167c3c3d2b5d86ba134d066f2c2b3cf",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/head_summary.csv": "659d6cc44d6463e75f151abf2f4b2a188ea2e5afcae712cea722f956facab8b1",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/layer_summary.csv": "0aaf29282164bf4cd43c988cae0549bc97b6730373eecea0303cbe40ab62f010",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/group_summary.csv": "72677f4b03b889529dc27f6362104a23bc9bf3c719982269553d48875200b7dd",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/comparison_summary.csv": "e07b9cc7847c5899b42b1bb6956ae7d291c29aae61c3392c882b821be649fc42",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_main.png": "04f7bf1f83fe646e475dc4714551d54f9a3f126ec298db1935f06c6b107e5d8c",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_main.pdf": "114cce7ea8ef987110955026c2f9b7565e956830aa784856b44364d565fc798c",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_main.svg": "9380947feb0fc7f3383925af4248778c1432d93b81af9845fe66a76442a46d2f",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_raw.png": "eec87569c3254d90b22bb4a92f1843e996436121b455439a1d4b6e24c5da3442",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_raw.pdf": "b30ee20c5b1df06010416b9b433640170d3b4bbf66462befe1f82e31fcde944b",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_raw.svg": "f6aaee8e15516f9be6df5461ac2ada72290418748b0185773f70d891efd43da9",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_key.png": "4901dafaa1f1b2f8609f592bda59b6ec61d39a1c6f77047603655f6998006f89",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_key.pdf": "1ec596598d55cd236bccee5623230b002408258e2938b31ef1bd451066723dd0",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_key.svg": "fec63acd54a78b453ec9df7c695343373e5ee90bb98325f7c1f4c1c076cae861",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_value.png": "a16bed33efe0b9e7c513dbbf2cc8fb39d25c3c7c27399b5a14d1ef76f758392f",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_value.pdf": "3801b5e6a41f96efd2e0fea78541ed2f251ba665aa4b5c0ed4011514a08604de",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_value.svg": "9d0cb79e6eee9b453882f6f7b8cac5c0d29aa75099e474e1bbf78ee263c5da1d",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_combined.png": "b95bc6f622766a1529bcb5b81bc0129d7006700f3dd46e5061d77ffce6ed08df",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_combined.pdf": "cd798f19f2db5ac3e8d375f5258af6c590347b822ed35aa555ea0a831fbdc996",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_combined.svg": "3381e830c482fc9c71cb56be17fbc696835cf3cd18f06709ce80b17e005b8e7c",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/summary.json": "2ec2475c6c7f1d254fa6ac277652c2c644d57768ffc5e738f274fb218c812c7d",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/RESULTS.md": "ce24b0290654d434c098a67b7fe9e65a27351a2adcb6d564fffe7207da7230a9",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/experiment_state.json": "8a35125035ee2a1f42b1e34022cdd83df86e49893d5247b402dde4440cdaa8b1",
+    "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/combined_layout_update.json": "e235b0e6a68d3b919082d6a661a2b5278acae689c2e3930574ca36ddbcd69dce",
+    "src/kvrepack/observations/reference_adjacent_report.py": "61a6539f5a7320fedfe29601115c091440798f6320c5f3110f33166f3ff32cf6",
+    "src/kvrepack/observations/reference_report.py": "2e2432b5baa3ebc3d6220d5799b7da60434675d97f2df710d34a4e705e3eeb4f"
+  },
+  "render_only_update_verified": {
+    "status": "passed",
+    "recorded_utc": "2026-11-17T00:40:04.326668+00:00",
+    "gpu_execution": false,
+    "bootstrap_rerun": false,
+    "changed_files": [
+      "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_combined.png",
+      "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_combined.pdf",
+      "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/adjacent_combined.svg",
+      "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/summary.json"
+    ],
+    "all_original_raw_and_csv_sha256_unchanged": true,
+    "all_other_previously_hashed_files_unchanged": true,
+    "statistics_excluding_artifacts_sha256": "71fef07df63693917aaf222097141c153d6fd02065ac6fe28c6a541468adb541",
+    "statistics_checksum_encoding": {
+      "ensure_ascii": false,
+      "sort_keys": true,
+      "indent": null
+    },
+    "layout_metadata_file": "outputs/observations/qwen25_sequence_adjacent_200_20261117/report/combined_layout_update.json",
+    "scope": "Checked update before/after hashes against the previous independent audit; raw/CSV and all non-combined figure files remain byte-identical. Rechecked current JSON means from raw after the rendering update."
+  },
+  "final_hashes_recorded_utc": "2026-11-17T00:40:04.328687+00:00"
+}
