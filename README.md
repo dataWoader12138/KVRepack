@@ -1,6 +1,6 @@
 # KVRepack
 
-正在运行：[其他LongBench子集的全部邻接raw K对照](docs/LONGBENCH_ADJACENT_CONTROLS_20261117.md)。Qwen2.5-7B固定，HotpotQA、TriviaQA、LCC各原前200，共600；额外事后中心/去bias诊断，不改变模型前向。状态以run_state为准，预计10–15分钟。
+已完成：[其他LongBench子集的全部邻接raw K对照及诊断](docs/LONGBENCH_ADJACENT_CONTROLS_RESULTS_20261117.md) · [TXT](docs/longbench_adjacent_controls_200.txt)。Qwen2.5-7B固定，HotpotQA/TriviaQA/LCC各200，均值0.850863/0.849428/0.831356；高值不是Qasper独有。事后减序列均值后约0.439–0.456、减投影bias约0.660–0.691，支持共同方向影响余弦，未修改模型前向。600输入哈希重建和全部统计独立复核通过，采集8分36秒。
 
 已完成：[VATEX与LongBench各200条RoPE前K结果与图](docs/VATEX_LONGBENCH_RAW_K_200_RESULTS_20261117.md) · [TXT](docs/vatex_longbench_raw_k_200.txt)。全部相邻均值VATEX0.740228、LongBench0.843658；每输入/层/头top200为0.971907/0.951488，分别保存。400输入、896万选中分数与来源独立复核通过，39分30秒含中断恢复；LongBench未重跑。
 

@@ -1,5 +1,7 @@
 # LongBench其他文本子集的相邻K对照
 
+**600条已全部完成并独立复核。** 新三组raw K邻接均值为HotpotQA0.850863、TriviaQA0.849428、LCC0.831356，采集约8分36秒。[完整结果、几何诊断与图](LONGBENCH_ADJACENT_CONTROLS_RESULTS_20261117.md)。以下保留协议。
+
 用户希望检查Qasper的高raw-K邻接相似度是否特有。保持Qwen2.5-7B-Instruct、原生完整chat、BF16、FlashAttention2、batch1与全部N−1相邻对不变，增加HotpotQA、TriviaQA和LCC原始前200条，共600次完整未压缩前向。主结果为当前层RoPE前raw K，不按top200选取；全28层×4原生KV头、每输入等权。
 
 ## 输入预检

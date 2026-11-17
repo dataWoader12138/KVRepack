@@ -1,0 +1,6 @@
+dataset,model,n,k_raw_adjacent,source
+Qasper,Qwen2.5-7B,200,0.8436581916400959,previous full adjacent200
+VATEX,Qwen2.5-VL-7B,200,0.7402282007476729,previous video full adjacent200
+hotpotqa,Qwen2.5-7B,200,0.850862760057534,new600 controls
+triviaqa,Qwen2.5-7B,200,0.8494275823369051,new600 controls
+lcc,Qwen2.5-7B,200,0.831355667706656,new600 controls

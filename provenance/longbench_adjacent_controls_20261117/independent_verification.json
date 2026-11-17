@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "status": "passed_independent_read_only_verification",
+  "recorded_utc": "2026-11-17T02:11:27.067165+00:00",
+  "source_commit": "02985fd",
+  "gpu_execution": false,
+  "model_forward_rerun": false,
+  "bootstrap_rerun": false,
+  "original_files_changed": false,
+  "rows_verified": 600,
+  "official_zip_template_native_chat_input_hash_matches": 600,
+  "independent_cpu_input_reconstruction_sha256": "3646193b524f73d94e29bdc9ba7ffb9f66f5b6a7ca55879bee459227fc2bc9eb",
+  "dataset_revision": "5e628be450b7e67fb7ae6e201bd6d8f7056f7672",
+  "official_zip_sha256": "cb45b11a4133c6bc1d6a44b0f8e701335ff1e543195db1103472e575857f7f64",
+  "official_prompt_sha256": "56d22ad4f382169c2b8a11ff4c982a4a1bea096c8152b0f0b85b64686b157c30",
+  "native_context_max": 32768,
+  "no_input_filtering_substitution_or_truncation": true,
+  "input_lengths": {
+    "hotpotqa": {
+      "min": 1917,
+      "max": 17674,
+      "mean": 13465.455
+    },
+    "triviaqa": {
+      "min": 1565,
+      "max": 24353,
+      "mean": 12227.04
+    },
+    "lcc": {
+      "min": 1023,
+      "max": 14240,
+      "mean": 3071.49
+    }
+  },
+  "metrics": [
+    "k_raw",
+    "k_rope",
+    "v",
+    "k_raw_all_pairs",
+    "k_raw_centered_adjacent",
+    "k_raw_without_bias_adjacent"
+  ],
+  "group_means": {
+    "hotpotqa": {
+      "k_raw": 0.850862760057534,
+      "k_rope": 0.8423690503163567,
+      "v": 0.3849823525470322,
+      "k_raw_all_pairs": 0.6962238962832329,
+      "k_raw_centered_adjacent": 0.45304583128853276,
+      "k_raw_without_bias_adjacent": 0.69090326096725
+    },
+    "triviaqa": {
+      "k_raw": 0.8494275823369051,
+      "k_rope": 0.8409590522412563,
+      "v": 0.37447960791406204,
+      "k_raw_all_pairs": 0.6931123629466552,
+      "k_raw_centered_adjacent": 0.45575932367445404,
+      "k_raw_without_bias_adjacent": 0.6842554663175971
+    },
+    "lcc": {
+      "k_raw": 0.831355667706656,
+      "k_rope": 0.823289997763712,
+      "v": 0.3388179325973023,
+      "k_raw_all_pairs": 0.6725031117100707,
+      "k_raw_centered_adjacent": 0.43937347378577485,
+      "k_raw_without_bias_adjacent": 0.65969476126259
+    }
+  },
+  "adjacent_pairs_total_per_head_layer": {
+    "hotpotqa": 2692891,
+    "triviaqa": 2445208,
+    "lcc": 614098
+  },
+  "table_row_counts": {
+    "record_summary.csv": 3600,
+    "head_summary.csv": 2016,
+    "source_inputs.csv": 600,
+    "group_summary.csv": 18
+  },
+  "max_cosine_mean_absolute_error": 2.220446049250313e-16,
+  "max_norm_mean_absolute_error": 0.0,
+  "model_metadata_and_common_versions_match_original_qasper": true,
+  "projection_bias_norm_identical_across_all_inputs": true,
+  "projection_bias_present_head_count": 112,
+  "source_review": {
+    "original_adjacent": "Every N-1 original-sequence pair; native raw K before current-layer RoPE, plus post-RoPE K and V; native28 layers*4 KV heads before GQA repetition",
+    "raw_all_pairs": "Non-self all-pair cosine using normalized-vector sum identity; same complete input per head",
+    "centering": "Per-input/per-head sequence mean of raw projected vectors in FP32 subtracted from captured copy, then renormalize and measure all adjacent pairs",
+    "bias": "FP32 post-hoc subtraction of k_proj.bias from captured already-rounded BF16 raw output; original model forward and attention/cache unchanged",
+    "aggregation": "Equal pair weights within each input/head/layer, then equal input/layer/native-head weights"
+  },
+  "limitations": [
+    "Original token vectors were not saved. This audit independently reconstructs the original inputs and all stored summaries; it cannot recompute actual raw/all-pair/centered/bias-subtracted cosines from absent vectors.",
+    "Formula correctness and untouched native output are supported by separately executed CPU oracles and reviewed collection source; they are not independent replay of these600 GPU activations.",
+    "Bias-subtracted observations are geometric probes on rounded outputs, not experiments with projection bias disabled and not unique causal evidence.",
+    "Fixed model metadata and original common software versions were checked; weight payloads and full dependency closure were not rehashed."
+  ],
+  "errors": [],
+  "files_sha256": {
+    "src/kvrepack/observations/longbench_controls.py": "a04fdeb1efd55680f2fd8fd4989ec85c33cfc8dee4880d5aa0be58faff374625",
+    "src/kvrepack/observations/native_key_diagnostics.py": "43674d7145f8dcaddb7428d19e3d04f319efd959b9c67b39cf801130c6a5248a",
+    "src/kvrepack/observations/native_adjacent.py": "6650919859b82a23577f407d0b9e8ea9e4cc8b4b60a8cf2ad94788d9edef0de6",
+    "src/kvrepack/observations/native_all_pairs.py": "0e67b16e20cc132eb9fd0a0ec62cfdbf4c54aa91946055d78f519406ac7e24d2",
+    "src/kvrepack/observations/all_pairs.py": "ab42cca6a37caa126c6d584d210cd70c1d6ceeb3e24e0a9ac263b4eb9b62f1f1",
+    "src/kvrepack/observations/reference.py": "a37335fb9d2488ced4dcd10257c51dfe649cbfb84a6505c76021406d97ac30a6",
+    "src/kvrepack/observations/reference_inputs.py": "395e6039f6459c77275ed9f8a4ca39f82b3da92c4c72209e87f5add476ed1d3d",
+    "src/kvrepack/observations/adjacent.py": "7436799cd91e54fbefc385e46430199be8260257088c2e992ac568c923954af3",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/report/record_summary.csv": "192eba257f48338488a2d39fef4b8de0a8e9e670a12050c4ec6a7abfbdf4fa17",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/report/head_summary.csv": "99cf45c7fcb4650aa6e4d1ea7795e6c91a6781abc6fa394877922f7f6b124348",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/report/source_inputs.csv": "62e3c02fb18da8bc63ebf2d35ba7e65d739502fed33c1863fc4abd4bb34540f5",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/report/group_summary.csv": "d51aa46c81bd67d2e102c3e2f79ac8a9e9983fc568ed5d0e625614dc1dadbe5a",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/contract.json": "5f4ab82cc7afb64ff5296e2ed96ca3a06a2e930d6e3f745fe04375a06e119ee9",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/run_state.json": "99144a2c8763a61548bb21420cae091b65adf2e9e8e951c2fd6173f4283f6062",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/records.jsonl": "8018e80b3567ecdb1a0800f472b67217de628a6a69bad95af853eb7f0eab8887",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/report/summary.json": "0b4bf90e442f3a71ae70271d67ee582036b9a994042bf7dad228bc80012c9a8d",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/report/RESULTS.md": "3bd8ecc12761024a0573dbb16730fc0382fd88c5423627fb603457bbf61d40e4",
+    "outputs/observations/qwen25_mixkv_reference_200_20261104/text/contract.json": "4a10effe97ceda5141c22124bd3766e6c7a8537cdc06ca806e752b025e3df7cf",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/report/raw_k_adjacent_controls.png": "d91a214ab9d5366c34cf59814ba0d65c30d84e711d33c35547012f9464b8f3ba",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/report/raw_k_adjacent_controls.pdf": "2c200ce0468327c8d32154cf6cec85f962c4039699441276035906875c7e16da",
+    "outputs/observations/longbench_adjacent_controls_200_20261117/report/raw_k_adjacent_controls.svg": "91080e66b8fd3e86a6ef0e932aac8c8bf0ca05b1b0b84a394ff2248fca5f050d",
+    "provenance/longbench_adjacent_controls_20261117/first_launch_rejected.log": "e118a1822e04eb5af75a977b8fd2a75edcd67e368e68efbf0ba323a5169954ef",
+    "provenance/longbench_adjacent_controls_20261117/first_launch_rejected.json": "42e541c523bc5acc7f135b6cf7e66c90de8910cc8c9804fb4f01c639a360f2f4",
+    "provenance/longbench_adjacent_controls_20261117/formal_launch.json": "c819199f9ca0448f533234eb7b61b22a8d81e01eb0b0456a573945e32d5d9fa1"
+  },
+  "execution_context": {
+    "actual_completed_worker_pid": 26885,
+    "started_utc": "2026-11-17T02:00:37.951025+00:00",
+    "finished_utc": "2026-11-17T02:09:13.943695+00:00",
+    "elapsed_seconds": 515.9927387647331,
+    "completed_inputs": 600,
+    "first_launch": {
+      "pid": 26699,
+      "log": "provenance/longbench_adjacent_controls_20261117/first_launch_rejected.log",
+      "status": "argument_parser_rejected_nonempty_output_directory",
+      "gpu_model_inference": false,
+      "reason": "The launcher created worker.log inside the fresh output directory before the worker freshness check; collection did not reach model loading or record generation."
+    },
+    "numerical_source_commit": "02985fd",
+    "first_launch_and_actual_launch_records_preserved": true
+  }
+}

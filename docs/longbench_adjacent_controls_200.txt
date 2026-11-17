@@ -1,0 +1,20 @@
+RoPE前raw K：完整序列全部N-1相邻对，各数据集原始前200条
+
+Dataset       Model               Mean adjacent cosine
+Qasper        Qwen2.5-7B          0.843658192
+VATEX         Qwen2.5-VL-7B       0.740228201
+hotpotqa      Qwen2.5-7B          0.850862760
+triviaqa      Qwen2.5-7B          0.849427582
+lcc           Qwen2.5-7B          0.831355668
+
+新子集的同向量事后诊断（不是修改模型/关闭bias）：
+Subset        All-pair raw K    Mean-subtracted adjacent    Bias-subtracted adjacent
+hotpotqa      0.696223896       0.453045831                 0.690903261
+triviaqa      0.693112363       0.455759324                 0.684255466
+lcc           0.672503112       0.439373474                 0.659694761
+
+新600条采集515.992739秒，22项CPU检查通过；600输入哈希独立重建匹配，最大汇总误差2.22e-16。
+Qasper/VATEX复用此前200条结果，本轮未重跑视频；未截断、过滤或抽样token/pair。
+每层4个原生KV头，28层，共112个层/头均值；每输入等权，不按长度加权。
+文献背景（不能代替本模型的机制证据）：https://aclanthology.org/2024.eacl-long.3/
+完整报告及图：provenance/longbench_adjacent_controls_20261117/final/report

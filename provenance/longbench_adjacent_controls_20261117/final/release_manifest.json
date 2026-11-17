@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "status": "complete_and_independently_verified",
+  "recorded_utc": "2026-11-17T02:13:38.613915+00:00",
+  "total_inputs": 600,
+  "inputs_per_subset": 200,
+  "subsets": [
+    "hotpotqa",
+    "triviaqa",
+    "lcc"
+  ],
+  "statistics_kind": "longbench_full_adjacent_key_controls_v1",
+  "source_commit": "02985fd",
+  "report_commit": "2701b4a",
+  "gpu_execution_during_collection": true,
+  "gpu_execution_during_audit": false,
+  "independent_cpu_reconstructed_input_hash_matches": 600,
+  "archive_files": 13,
+  "uncompressed_bytes": 19693545,
+  "archive_bytes": 5456186,
+  "archive_sha256": "a55b1ee6566a22446718ca6b6ffe4c393369d815a26bb2c98e65a4e6af76f9d4",
+  "round_trip_every_file_sha256_verified": true,
+  "independent_verification_sha256": "cb038f4b317bcc95ee70177a7987dada0d53175b4ab1c17d5e0b71b238b35703",
+  "report_summary_sha256": "0b4bf90e442f3a71ae70271d67ee582036b9a994042bf7dad228bc80012c9a8d",
+  "raw_index_sha256": "c6e2e273dacb4aa10436381340cca600bfcbf3fa019b9d6104291bfb0cb28f57",
+  "elapsed_collection_seconds": 515.9927387647331,
+  "mean_metrics": {
+    "hotpotqa": {
+      "k_raw": {
+        "mean": 0.850862760057534
+      },
+      "k_rope": {
+        "mean": 0.8423690503163567
+      },
+      "v": {
+        "mean": 0.3849823525470322
+      },
+      "k_raw_all_pairs": {
+        "mean": 0.6962238962832329
+      },
+      "k_raw_centered_adjacent": {
+        "mean": 0.45304583128853276
+      },
+      "k_raw_without_bias_adjacent": {
+        "mean": 0.69090326096725
+      }
+    },
+    "triviaqa": {
+      "k_raw": {
+        "mean": 0.8494275823369051
+      },
+      "k_rope": {
+        "mean": 0.8409590522412563
+      },
+      "v": {
+        "mean": 0.37447960791406204
+      },
+      "k_raw_all_pairs": {
+        "mean": 0.6931123629466552
+      },
+      "k_raw_centered_adjacent": {
+        "mean": 0.45575932367445404
+      },
+      "k_raw_without_bias_adjacent": {
+        "mean": 0.6842554663175971
+      }
+    },
+    "lcc": {
+      "k_raw": {
+        "mean": 0.831355667706656
+      },
+      "k_rope": {
+        "mean": 0.823289997763712
+      },
+      "v": {
+        "mean": 0.3388179325973023
+      },
+      "k_raw_all_pairs": {
+        "mean": 0.6725031117100707
+      },
+      "k_raw_centered_adjacent": {
+        "mean": 0.43937347378577485
+      },
+      "k_raw_without_bias_adjacent": {
+        "mean": 0.65969476126259
+      }
+    }
+  },
+  "caveat": "Centering/bias subtraction are post-hoc geometry on captured copies, not changed model forwards; models and datasets differ for the VATEX reference."
+}

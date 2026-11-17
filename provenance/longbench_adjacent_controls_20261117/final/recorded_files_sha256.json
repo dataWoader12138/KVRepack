@@ -1,0 +1,15 @@
+{
+  ".run.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "contract.json": "5f4ab82cc7afb64ff5296e2ed96ca3a06a2e930d6e3f745fe04375a06e119ee9",
+  "records.jsonl": "8018e80b3567ecdb1a0800f472b67217de628a6a69bad95af853eb7f0eab8887",
+  "report/RESULTS.md": "3bd8ecc12761024a0573dbb16730fc0382fd88c5423627fb603457bbf61d40e4",
+  "report/group_summary.csv": "d51aa46c81bd67d2e102c3e2f79ac8a9e9983fc568ed5d0e625614dc1dadbe5a",
+  "report/head_summary.csv": "99cf45c7fcb4650aa6e4d1ea7795e6c91a6781abc6fa394877922f7f6b124348",
+  "report/raw_k_adjacent_controls.pdf": "2c200ce0468327c8d32154cf6cec85f962c4039699441276035906875c7e16da",
+  "report/raw_k_adjacent_controls.png": "d91a214ab9d5366c34cf59814ba0d65c30d84e711d33c35547012f9464b8f3ba",
+  "report/raw_k_adjacent_controls.svg": "91080e66b8fd3e86a6ef0e932aac8c8bf0ca05b1b0b84a394ff2248fca5f050d",
+  "report/record_summary.csv": "192eba257f48338488a2d39fef4b8de0a8e9e670a12050c4ec6a7abfbdf4fa17",
+  "report/source_inputs.csv": "62e3c02fb18da8bc63ebf2d35ba7e65d739502fed33c1863fc4abd4bb34540f5",
+  "report/summary.json": "0b4bf90e442f3a71ae70271d67ee582036b9a994042bf7dad228bc80012c9a8d",
+  "run_state.json": "99144a2c8763a61548bb21420cae091b65adf2e9e8e951c2fd6173f4283f6062"
+}
