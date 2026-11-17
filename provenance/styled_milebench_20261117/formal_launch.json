@@ -1,0 +1,35 @@
+{
+  "started_utc": "2026-11-17T00:17:26.961889+00:00",
+  "pid": 4922,
+  "process_group": 4922,
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "scripts/run_styled_milebench.py",
+    "--data-root",
+    "/root/autodl-tmp/HybridKV-opensource/data/milebench",
+    "--pretrained",
+    "/root/autodl-tmp/HybridKV-opensource/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "--hf-home",
+    "/root/autodl-tmp/HybridKV-opensource/data/huggingface_cache",
+    "--output",
+    "/root/autodl-tmp/KVRepack-styled-images/outputs/benchmarks/styled_milebench_qwen7b_full_20261117",
+    "--warmup",
+    "1",
+    "--execute"
+  ],
+  "controller_log": "/root/autodl-tmp/KVRepack-styled-images/outputs/preflight/styled_milebench_full_controller_20261117.log",
+  "reference_commit": "b9104d8e590d99581af39ea05fe2d4404e8c4b73",
+  "output_root": "/root/autodl-tmp/KVRepack-styled-images/outputs/benchmarks/styled_milebench_qwen7b_full_20261117",
+  "mode": "full_annotations",
+  "target_runs": 16,
+  "target_generations": 3200,
+  "warmup_per_run": 1,
+  "preconditions": {
+    "all_16_gpu_pilots_complete": true,
+    "cpu_suite_tests": 441,
+    "cpu_skipped": 1,
+    "source_check_passed": true
+  },
+  "worker_sha256": "ef8511498a4784d1087c26f2a68c96ee1f72542306cc3e9759645b2856a9c806",
+  "controller_sha256": "aa7b0637b402eb83cdda397ef285c81521bdb98b52a6a8ddc44293c5b9af5a14"
+}

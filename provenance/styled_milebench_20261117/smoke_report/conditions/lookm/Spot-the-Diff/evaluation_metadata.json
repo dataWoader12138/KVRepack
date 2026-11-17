@@ -1,0 +1,9 @@
+{
+  "task": "Spot-the-Diff",
+  "sample_ids": [
+    0
+  ],
+  "sample_count": 1,
+  "annotation_total_samples": 200,
+  "full_task": false
+}

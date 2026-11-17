@@ -1,0 +1,24 @@
+{
+  "started_utc": "2026-11-17T00:11:04.472009+00:00",
+  "pid": 4107,
+  "process_group": 4107,
+  "command": [
+    "/root/miniconda3/envs/hybridkv/bin/python",
+    "scripts/run_styled_milebench.py",
+    "--data-root",
+    "/root/autodl-tmp/HybridKV-opensource/data/milebench",
+    "--pretrained",
+    "/root/autodl-tmp/HybridKV-opensource/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "--hf-home",
+    "/root/autodl-tmp/HybridKV-opensource/data/huggingface_cache",
+    "--output",
+    "/root/autodl-tmp/KVRepack-styled-images/outputs/pilots/styled_milebench_qwen7b_smoke1_20261117",
+    "--limit",
+    "1",
+    "--warmup",
+    "1",
+    "--execute"
+  ],
+  "log": "/root/autodl-tmp/KVRepack-styled-images/outputs/preflight/styled_milebench_smoke1_controller.log",
+  "mode": "smoke_not_formal"
+}

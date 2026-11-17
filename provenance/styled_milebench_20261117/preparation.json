@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "prepared_utc": "2026-11-17T00:21:31.889548+00:00",
+  "status": "all_16_gpu_smokes_passed_full_generation_running",
+  "base_commit": "b9104d8e590d99581af39ea05fe2d4404e8c4b73",
+  "branch": "feat/qwen7b-styled-image-e2e",
+  "scope": {
+    "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "snapshot": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+    "tasks": [
+      "Spot-the-Diff",
+      "MMCoQA"
+    ],
+    "samples_per_task": 200,
+    "selection": "complete annotations, no prefix cap",
+    "arms": [
+      "hybridkv_asymkv",
+      "hybridkv_lookm",
+      "hybridkv_kvrepack",
+      "snapkv_asymkv",
+      "snapkv_lookm",
+      "snapkv_kvrepack",
+      "asymkv",
+      "lookm"
+    ],
+    "planned_runs": 16,
+    "planned_formal_generations": 3200,
+    "warmup_per_run": 1
+  },
+  "runtime": {
+    "gpu": "NVIDIA A800-SXM4-80GB",
+    "versions": {
+      "torch": "2.6.0+cu124",
+      "transformers": "4.52.3",
+      "flash-attn": "2.7.4.post1",
+      "numpy": "1.26.4",
+      "Pillow": "12.1.1",
+      "rouge": "1.0.1",
+      "qwen-vl-utils": "0.0.14"
+    },
+    "python_executable": "/root/miniconda3/envs/hybridkv/bin/python",
+    "omp_threads": 4,
+    "bf16": true,
+    "attention": "flash_attention_2",
+    "offline": true
+  },
+  "implementation_sha256": {
+    "scripts/run_styled_milebench.py": "aa7b0637b402eb83cdda397ef285c81521bdb98b52a6a8ddc44293c5b9af5a14",
+    "scripts/summarize_styled_milebench.py": "938eabacb89dadca49ad7dbb9e343790c007593ee8f7fc53e8360858c08373f7",
+    "src/kvrepack/ablations/styled_milebench_worker.py": "ef8511498a4784d1087c26f2a68c96ee1f72542306cc3e9759645b2856a9c806",
+    "src/kvrepack/benchmarks/milebench/__init__.py": "bf47db1838ddeda80d1af53b1643ae39744582601ce8820c11319ad2a2991aa0",
+    "src/kvrepack/benchmarks/milebench/dataset.py": "1eae65499c9aa4f8c4fb5ca70d5e7f6b83d9916a0dea63577a909dff52ceb55c",
+    "src/kvrepack/benchmarks/milebench/evaluate.py": "ce724b94ec19a42a0d388a42c9c269395183cd2cf6ea68d0a8271d2bc63c3e96",
+    "src/kvrepack/benchmarks/milebench/protocol.py": "4cd8d71ebb21bdca7e3ee2e9909795bdc203d1c6331a5d7159e6af8a6dceea66",
+    "src/kvrepack/benchmarks/milebench/score.py": "c8b4624f423de3cfd6e5cd1f7328fd5e9aa2ab89c92346bddc7ba49c74371b00"
+  },
+  "cpu_checks": {
+    "full_suite": {
+      "tests_run": 441,
+      "passed": 440,
+      "skipped": 1,
+      "elapsed_seconds": 42.071,
+      "skip_reason": "Original artifact numerical differential requires explicit source tree, not present."
+    },
+    "additional_reporter_tests": {
+      "tests_run": 10,
+      "passed": 10,
+      "elapsed_seconds": 0.426
+    },
+    "core_source_check": {
+      "status": "passed",
+      "core_files": 30,
+      "local_modules_and_adapter": 86,
+      "vendor_python_files": 329,
+      "vendor_build_files": 2382,
+      "original_source_comparison": false
+    },
+    "original_core_modified": false
+  },
+  "gpu_smoke": {
+    "completed_runs": 16,
+    "formal_rows_excluding_warmup": 16,
+    "warmup_rows_excluded": 16,
+    "report_status": "passed",
+    "independently_reaudited": true
+  },
+  "formal_launch": {
+    "started_utc": "2026-11-17T00:17:26.961889+00:00",
+    "pid": 4922,
+    "process_group": 4922,
+    "command": [
+      "/root/miniconda3/envs/hybridkv/bin/python",
+      "scripts/run_styled_milebench.py",
+      "--data-root",
+      "/root/autodl-tmp/HybridKV-opensource/data/milebench",
+      "--pretrained",
+      "/root/autodl-tmp/HybridKV-opensource/data/huggingface_cache/hub/models--Qwen--Qwen2.5-VL-7B-Instruct/snapshots/cc594898137f460bfe9f0759e9844b3ce807cfb5",
+      "--hf-home",
+      "/root/autodl-tmp/HybridKV-opensource/data/huggingface_cache",
+      "--output",
+      "/root/autodl-tmp/KVRepack-styled-images/outputs/benchmarks/styled_milebench_qwen7b_full_20261117",
+      "--warmup",
+      "1",
+      "--execute"
+    ],
+    "controller_log": "/root/autodl-tmp/KVRepack-styled-images/outputs/preflight/styled_milebench_full_controller_20261117.log",
+    "reference_commit": "b9104d8e590d99581af39ea05fe2d4404e8c4b73",
+    "output_root": "/root/autodl-tmp/KVRepack-styled-images/outputs/benchmarks/styled_milebench_qwen7b_full_20261117",
+    "mode": "full_annotations",
+    "target_runs": 16,
+    "target_generations": 3200,
+    "warmup_per_run": 1,
+    "preconditions": {
+      "all_16_gpu_pilots_complete": true,
+      "cpu_suite_tests": 441,
+      "cpu_skipped": 1,
+      "source_check_passed": true
+    },
+    "worker_sha256": "ef8511498a4784d1087c26f2a68c96ee1f72542306cc3e9759645b2856a9c806",
+    "controller_sha256": "aa7b0637b402eb83cdda397ef285c81521bdb98b52a6a8ddc44293c5b9af5a14"
+  },
+  "original_asymkv_image_findings": {
+    "Spot_input_tokens_minmax": [
+      545,
+      551
+    ],
+    "MMCoQA_input_tokens_minmax": [
+      595,
+      12657
+    ],
+    "expected_missing_final_token_mm_ids": [
+      44,
+      196
+    ],
+    "known_boundary_preserved": true,
+    "short_prompt_original_asym_no_compression_smoke_observed": true,
+    "Spot_smoke_actual_retention": 1.0
+  },
+  "limits": [
+    "Original budget policies retained, not a strict equal-total-10-percent-cache comparison.",
+    "Standalone official AsymKV uses its own decoder; its Fisher time is included in generation rather than separately instrumented.",
+    "E2E is warm service response latency from image read through decoded text, excluding model loading/warmup/hash/scoring/writes.",
+    "Reported peak memory includes the timed region and later audit work, not a controlled generation-only memory peak.",
+    "Input preflight and later methods can hit filesystem cache; this is not a cold-storage latency benchmark."
+  ]
+}

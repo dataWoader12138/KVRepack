@@ -1,5 +1,7 @@
 # KVRepack
 
+新增[Qwen7B图片合并与端到端实验](docs/STYLED_MILEBENCH_QWEN7B_E2E.md)：基于`b9104d8`，Spot/MMCoQA官方子集全量各200条，Hybrid/Snap各配三种聚合，加独立原版LOOK-M/AsymKV，共16组3200正式生成。16组GPU联调和独立离线重审已通过，正式运行进度见`outputs/benchmarks/styled_milebench_qwen7b_full_20261117/experiment_state.json`。记录从图片读取到文本可用的完整E2E，保留原预算及原实现差异，不能将名义10%视为各方法严格等物理缓存。
+
 已完成：[旧设置独立LOOK-M与AsymKV：NExTQA各200条结果与E2E](docs/LEGACY_STANDALONE_NEXTQA_E2E_RESULTS_20261115.md) · [TXT](docs/legacy_standalone_nextqa_200.txt) · [CSV](docs/legacy_standalone_nextqa_200.csv)。Qwen2.5-VL-7B、64帧、各自原实现与预算，共400条；LOOK-M WUPS33.539684、视频至文本E2E3.577198秒/条，AsymKV29.164032、9.826410秒/条（计入全部Fisher）。完整循环含记录开销均值另为3.784124／10.042068秒。400条、原生评分语料和404项来源索引独立复核通过；LOOK-M与旧记录有3条回答不同，不拼接旧33.857144分数。原AsymKV分块后的物理缓存平均18.1112%，不标成严格总10%。[协议及启动命令](docs/LEGACY_STANDALONE_NEXTQA_E2E_20261115.md)。
 
 **已按用户要求恢复原预算默认行为。** 新增NExTQA比较入口默认使用原作者的历史预算加recent/local，不再自动改为严格总10%；通用主实验入口和30份核心算法保持原实现。[恢复内容、验证范围与启动命令](docs/ORIGINAL_BUDGET_RESTORE_20261113.md)。以下严格预算数据为已完成的独立历史实验，不替代原主实验。

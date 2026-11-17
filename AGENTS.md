@@ -1,5 +1,7 @@
 # KVRepack 工作约定
 
+2026-11-17当前任务：用户已明确授权以`b9104d8`为基础，在Qwen2.5-VL-7B上跑Spot-the-Diff、MMCoQA官方MileBench子集全量（本机各200条）。HybridKV/SnapKV各配KVRepack、LOOK-M-styled、AsymKV-styled三种聚合，另跑独立原版LOOK-M/AsymKV，共16运行、3200正式生成。真实E2E覆盖图片读取/JPEG/processor/H2D/Fisher（适用时）/生成/文本解码，模型加载、预热、审计散列、写盘与评分分开统计。保持来源原预算，不擅自改成strict-total。独立Asym保留原驱动并报告实际缓存及MMCoQA44/196的已知末token边界；不跳样、不改prompt规避。旧图片分支和旧已完成结果不修改。正式进度以新输出根的experiment_state.json为准；运行期间禁止更改绑定src源码。协议见`docs/STYLED_MILEBENCH_QWEN7B_E2E.md`。
+
 开始工作时阅读 `docs/HANDOFF.md`、`README.md` 和 `provenance/cpu_audit_summary.json`，再核对当前源码与用户的新指示。
 
 - 当前支持 Qwen2.5-VL 的13种组合及 LLaVA-OneVision 的6种基线。四种已有 LLaVA 改进源码尚未迁入。

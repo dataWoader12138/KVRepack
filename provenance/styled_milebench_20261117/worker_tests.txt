@@ -1,0 +1,12 @@
+test_explicit_smoke_and_invalid_prefix_are_not_silent_full_runs (test_styled_milebench_worker.FullData.test_explicit_smoke_and_invalid_prefix_are_not_silent_full_runs) ... ok
+test_full_annotations_above_200_have_no_implicit_cap (test_styled_milebench_worker.FullData.test_full_annotations_above_200_have_no_implicit_cap) ... ok
+test_all_algorithm_environments_keep_image_budget_and_method_specific_gates (test_styled_milebench_worker.Policies.test_all_algorithm_environments_keep_image_budget_and_method_specific_gates) ... ok
+test_exact_eight_arm_matrix_distinguishes_originals_and_aggregators (test_styled_milebench_worker.Policies.test_exact_eight_arm_matrix_distinguishes_originals_and_aggregators) ... ok
+test_first_eos_is_preserved_even_if_original_asym_continues (test_styled_milebench_worker.Policies.test_first_eos_is_preserved_even_if_original_asym_continues) ... ok
+test_original_asym_decoder_does_not_receive_rejected_hf_controls (test_styled_milebench_worker.Policies.test_original_asym_decoder_does_not_receive_rejected_hf_controls) ... ok
+test_resource_hash_freeze_covers_head_calibration (test_styled_milebench_worker.Policies.test_resource_hash_freeze_covers_head_calibration) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.101s
+
+OK
