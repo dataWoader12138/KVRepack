@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "pid": 5213,
+  "group": "text",
+  "started_utc": "2026-11-17T00:59:25.399682+00:00",
+  "target": 2,
+  "completed": 2,
+  "gpu": "NVIDIA A800-SXM4-80GB",
+  "statistics_kind": "raw_k_top200_sequence_adjacent_v1",
+  "model_load_seconds": 2.70048089325428,
+  "current_doc_id": 1,
+  "updated_utc": "2026-11-17T00:59:29.268062+00:00",
+  "elapsed_seconds": 3.8703261092305183,
+  "finished_utc": "2026-11-17T00:59:29.269988+00:00"
+}

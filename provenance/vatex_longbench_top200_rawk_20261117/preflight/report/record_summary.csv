@@ -1,0 +1,17 @@
+group,doc_id,model_id,task,input_tokens,adjacent_pair_count,selected_pair_count,source_id,metric,mean
+text,0,Qwen/Qwen2.5-7B-Instruct,qasper,4091,4090,200,4ba1808cd160ee0d9def7a11cf1cb6199e40f64d53e815309d6651fd952beb94,raw_k_top200,0.9509227390969135
+text,0,Qwen/Qwen2.5-7B-Instruct,qasper,4091,4090,200,4ba1808cd160ee0d9def7a11cf1cb6199e40f64d53e815309d6651fd952beb94,k_raw_all_adjacent,0.8449883164381529
+text,0,Qwen/Qwen2.5-7B-Instruct,qasper,4091,4090,200,4ba1808cd160ee0d9def7a11cf1cb6199e40f64d53e815309d6651fd952beb94,k_rope_all_adjacent,0.8370491607357569
+text,0,Qwen/Qwen2.5-7B-Instruct,qasper,4091,4090,200,4ba1808cd160ee0d9def7a11cf1cb6199e40f64d53e815309d6651fd952beb94,v_all_adjacent,0.3845652408501729
+text,1,Qwen/Qwen2.5-7B-Instruct,qasper,3428,3427,200,1704f1d50b2554aebd4feef979b444ef2634aca15e51d3608364aaf7b146ae43,raw_k_top200,0.9478045221629868
+text,1,Qwen/Qwen2.5-7B-Instruct,qasper,3428,3427,200,1704f1d50b2554aebd4feef979b444ef2634aca15e51d3608364aaf7b146ae43,k_raw_all_adjacent,0.8454003259615422
+text,1,Qwen/Qwen2.5-7B-Instruct,qasper,3428,3427,200,1704f1d50b2554aebd4feef979b444ef2634aca15e51d3608364aaf7b146ae43,k_rope_all_adjacent,0.8373707627721094
+text,1,Qwen/Qwen2.5-7B-Instruct,qasper,3428,3427,200,1704f1d50b2554aebd4feef979b444ef2634aca15e51d3608364aaf7b146ae43,v_all_adjacent,0.38315897353328227
+video,0,Qwen/Qwen2.5-VL-7B-Instruct,vatex_test,9736,9735,200,5-xGskbsBgI,raw_k_top200,0.9683534611851228
+video,0,Qwen/Qwen2.5-VL-7B-Instruct,vatex_test,9736,9735,200,5-xGskbsBgI,k_raw_all_adjacent,0.7489561321790531
+video,0,Qwen/Qwen2.5-VL-7B-Instruct,vatex_test,9736,9735,200,5-xGskbsBgI,k_rope_all_adjacent,0.7487589842621392
+video,0,Qwen/Qwen2.5-VL-7B-Instruct,vatex_test,9736,9735,200,5-xGskbsBgI,v_all_adjacent,0.3163313435839657
+video,1,Qwen/Qwen2.5-VL-7B-Instruct,vatex_test,9000,8999,200,uaoC__dKucA,raw_k_top200,0.9699578499703919
+video,1,Qwen/Qwen2.5-VL-7B-Instruct,vatex_test,9000,8999,200,uaoC__dKucA,k_raw_all_adjacent,0.7393106639759038
+video,1,Qwen/Qwen2.5-VL-7B-Instruct,vatex_test,9000,8999,200,uaoC__dKucA,k_rope_all_adjacent,0.739102551434782
+video,1,Qwen/Qwen2.5-VL-7B-Instruct,vatex_test,9000,8999,200,uaoC__dKucA,v_all_adjacent,0.3133138744982108

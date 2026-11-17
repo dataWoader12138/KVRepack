@@ -1,0 +1,232 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "statistics_kind": "raw_k_top200_sequence_adjacent_v1",
+  "sample_count": 2,
+  "expected_total_inputs": 4,
+  "top_k": 200,
+  "primary_metric": "raw_k_top200",
+  "dimensions": {
+    "layers": 28,
+    "native_kv_heads": 4,
+    "head_dim": 128
+  },
+  "groups": {
+    "text": {
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "task": "qasper",
+      "n_inputs": 2,
+      "n_source_clusters": 2,
+      "valid_doc_ids": [
+        0,
+        1
+      ],
+      "missing_doc_ids": [],
+      "input_tokens": {
+        "min": 3428,
+        "max": 4091,
+        "mean": 3759.5
+      },
+      "candidate_adjacent_pairs_total": 7517,
+      "selected_pairs_total_per_head_layer": 400,
+      "metrics": {
+        "raw_k_top200": {
+          "mean": 0.9493636306299502
+        },
+        "k_raw_all_adjacent": {
+          "mean": 0.8451943211998476
+        },
+        "k_rope_all_adjacent": {
+          "mean": 0.8372099617539331
+        },
+        "v_all_adjacent": {
+          "mean": 0.3838621071917276
+        }
+      }
+    },
+    "video": {
+      "model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+      "model_revision": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+      "task": "vatex_test",
+      "n_inputs": 2,
+      "n_source_clusters": 2,
+      "valid_doc_ids": [
+        0,
+        1
+      ],
+      "missing_doc_ids": [],
+      "input_tokens": {
+        "min": 9000,
+        "max": 9736,
+        "mean": 9368.0
+      },
+      "candidate_adjacent_pairs_total": 18734,
+      "selected_pairs_total_per_head_layer": 400,
+      "metrics": {
+        "raw_k_top200": {
+          "mean": 0.9691556555777574
+        },
+        "k_raw_all_adjacent": {
+          "mean": 0.7441333980774785
+        },
+        "k_rope_all_adjacent": {
+          "mean": 0.7439307678484606
+        },
+        "v_all_adjacent": {
+          "mean": 0.3148226090410883
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "raw_k_top200": {
+      "text": 0.9493636306299502,
+      "video": 0.9691556555777574,
+      "video_minus_text": 0.019792024947807185
+    },
+    "k_raw_all_adjacent": {
+      "text": 0.8451943211998476,
+      "video": 0.7441333980774785,
+      "video_minus_text": -0.10106092312236914
+    },
+    "k_rope_all_adjacent": {
+      "text": 0.8372099617539331,
+      "video": 0.7439307678484606,
+      "video_minus_text": -0.09327919390547257
+    },
+    "v_all_adjacent": {
+      "text": 0.3838621071917276,
+      "video": 0.3148226090410883,
+      "video_minus_text": -0.06903949815063931
+    }
+  },
+  "statistic": "Per input/layer/native KV head: rank all N-1 immediate sequence-pair raw-K cosines before RoPE; take exactly the highest200 and average them",
+  "selection_scope": "All consecutive positions in each original complete prefill sequence, including text/video/structural and sequence-boundary pairs; no pairing across inputs",
+  "selection_tie_rule": "Descending cosine, ascending original pair-start position for exact ties",
+  "aggregation": "Equal weights for the200 selected pairs within each input/head/layer, then equal head/layer and 2 input weights; no length weighting",
+  "distribution_unit": "112 layer/native-KV-head means over the prescribed inputs per model, not individual pair cosines or independent observations",
+  "supplemental_metrics": "k_raw_all_adjacent, k_rope_all_adjacent and v_all_adjacent cover all N-1 pairs; neither post-RoPE K nor V is measured on the raw-K-selected200 positions",
+  "interpretation": "Selected upper-tail raw-K similarity, not the average over all token pairs. Equal selected counts do not equalize candidate-pool sizes. Models, datasets, lengths and token roles differ; no isolated modality or merge-safety claim.",
+  "bootstrap": false,
+  "validation_issues": [],
+  "provenance": {
+    "input_files": {
+      "text": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_20261117_preflight/text/records.jsonl",
+        "sha256": "3f126b44743780480e94657a95d73f687b16b0ac885f11279faf764ffd9febd0"
+      },
+      "video": {
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_20261117_preflight/video/records.jsonl",
+        "sha256": "e7bf484b808f483fc1be359e999ca0b2b683b42cb128419fc74f341145c49f21"
+      }
+    },
+    "selected_artifacts": [
+      {
+        "group": "text",
+        "doc_id": 0,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_20261117_preflight/text/selected_pairs/000000.npz",
+        "sha256": "faf59440cf27643890a4c2294be1ab19f6cb4e159c2cd523615884d121d896c2",
+        "shape": [
+          28,
+          4,
+          200
+        ],
+        "scores_verified": true
+      },
+      {
+        "group": "text",
+        "doc_id": 1,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_20261117_preflight/text/selected_pairs/000001.npz",
+        "sha256": "16fa9a4ce5c51b7ac315008f60e34a547336ad1151bdf54f87260c7daec19707",
+        "shape": [
+          28,
+          4,
+          200
+        ],
+        "scores_verified": true
+      },
+      {
+        "group": "video",
+        "doc_id": 0,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_20261117_preflight/video/selected_pairs/000000.npz",
+        "sha256": "1d2a66e1346a4ff19bd7fbf3e7441ebefcab61b518544871c0bdbf29d39386a7",
+        "shape": [
+          28,
+          4,
+          200
+        ],
+        "scores_verified": true
+      },
+      {
+        "group": "video",
+        "doc_id": 1,
+        "path": "/root/autodl-tmp/HybridKV-artifact/KVRepack/outputs/observations/vatex_longbench_top200_rawk_20261117_preflight/video/selected_pairs/000001.npz",
+        "sha256": "4aba5ca64dedcb7b2efa680482061244f5371d48da65ff8ad319ae66b95a6249",
+        "shape": [
+          28,
+          4,
+          200
+        ],
+        "scores_verified": true
+      }
+    ],
+    "selection_artifact_verification": "SHA, shape, signed bounds, unique positions, stable descending order, mean and minimum"
+  },
+  "artifacts": {
+    "tables": [
+      "record_summary.csv",
+      "head_summary.csv",
+      "source_inputs.csv",
+      "group_summary.csv",
+      "comparison_summary.csv"
+    ],
+    "plot": {
+      "statistics_kind": "raw_k_top200_sequence_adjacent_v1",
+      "metric": "raw_k_top200",
+      "representation": "boundary-reflected Gaussian KDE",
+      "bandwidth_rule": "Scott; minimum0.01",
+      "grid_points": 2049,
+      "full_density_domain": [
+        -1,
+        1
+      ],
+      "display_range": [
+        0.76,
+        1
+      ],
+      "curves": [
+        {
+          "group": "text",
+          "metric": "raw_k_top200",
+          "n_head_means": 112,
+          "observed_min": 0.7965392535768783,
+          "observed_max": 0.9999784352942046,
+          "bandwidth": 0.011755925981855654,
+          "color": "#B98A2F",
+          "density_area": 1.0
+        },
+        {
+          "group": "video",
+          "metric": "raw_k_top200",
+          "n_head_means": 112,
+          "observed_min": 0.932591535067782,
+          "observed_max": 0.9999869193687252,
+          "bandwidth": 0.01,
+          "color": "#2F4373",
+          "density_area": 1.0
+        }
+      ],
+      "legend": {
+        "location": "outside_above_data_axes",
+        "bounds_in_axes_coordinates": [
+          0.21342723373090602,
+          1.051684447913956,
+          0.5731455325381879,
+          0.07372712290745076
+        ],
+        "below_title": true
+      }
+    }
+  }
+}

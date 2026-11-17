@@ -1,0 +1,19 @@
+{
+  "status": "passed_gpu_pilot_and_cpu_observer_checks",
+  "gpu_execution": true,
+  "inputs_per_group": 2,
+  "total_pilot_inputs": 4,
+  "formal_samples_included": false,
+  "all_inputs_match_original": true,
+  "cpu_observer_tests": 13,
+  "cpu_observer_passed": 13,
+  "source_checks": {
+    "status": "passed",
+    "core_files": 30
+  },
+  "source_commit": "48df172",
+  "recorded_utc": "2026-11-17T01:02:47.218775+00:00",
+  "cpu_report_tests": 10,
+  "cpu_report_passed": 10,
+  "real_pilot_report": "complete"
+}

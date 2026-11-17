@@ -1,0 +1,4 @@
+# Scientific figures and compressed selections must retain their exact bytes.
+*.pdf binary
+*.npz binary
+*.tar.gz binary

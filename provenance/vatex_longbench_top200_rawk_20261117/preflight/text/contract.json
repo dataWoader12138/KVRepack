@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "statistics_kind": "raw_k_top200_sequence_adjacent_v1",
+  "group": "text",
+  "task": "qasper",
+  "model_id": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "pretrained": "/root/autodl-tmp/HybridKV-artifact/HybridKV-artifact/scripts/data/huggingface_cache/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+  "sample_count": 2,
+  "doc_ids": [
+    0,
+    1
+  ],
+  "top_k": 200,
+  "ranking_metric": "k_raw_before_rope",
+  "selection": "For each input/layer/native KV head, top200 among every (i,i+1); exact descending cosine then increasing pair index",
+  "pair_pool": "Complete unpadded input including text, video and structural tokens and boundaries",
+  "aggregation": "Equal inputs, layers and native KV heads; no length weighting",
+  "dtype": "bfloat16",
+  "statistics": "FP32 normalization; FP64 adjacent products/reductions",
+  "frames": null,
+  "min_pixels": null,
+  "max_pixels": null,
+  "generation": false,
+  "compression": false,
+  "use_cache": false,
+  "seed": 42,
+  "reference_records_sha256": "a50e788002d21c9d8ef6079d6ba437054b9dbbcfe55c33ad9c43270aefcb5348",
+  "inputs_sha256": "2bb8748736ec2b2630313df6381184683029572f9df4ad8809f71a221ee610f3",
+  "model_metadata_sha256": {
+    "config.json": "7463bb0ea78315365e6c6b74de4e73bbcc8359dfb0c5a737584e077d42c0b03c",
+    "generation_config.json": "3a8f9087e486054c8a4a08dae2e5a3ba62e23da212b5b8c08bc42cb983c3459f",
+    "merges.txt": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3",
+    "model.safetensors.index.json": "624bf7c47cd12468fdc16e38a47cf4f19e0415b859a223ba3c027eed2f0e1028",
+    "tokenizer.json": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539",
+    "tokenizer_config.json": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583",
+    "vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+  },
+  "sources_sha256": {
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/top_adjacent.py": "0c8969e4c4e50309bb76940b23bbf95647f266baca4eac1044a8210ef366de7b",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/native_top_adjacent.py": "f6ea28a207132b302309bbcd98d561c774df76cd2cb9661e938998820607ad0d",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/native_adjacent.py": "6650919859b82a23577f407d0b9e8ea9e4cc8b4b60a8cf2ad94788d9edef0de6",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/native_all_pairs.py": "0e67b16e20cc132eb9fd0a0ec62cfdbf4c54aa91946055d78f519406ac7e24d2",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/reference.py": "a37335fb9d2488ced4dcd10257c51dfe649cbfb84a6505c76021406d97ac30a6",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/inputs.py": "1e365497e4268a7b44c37505e82fef8ccae98e416515baf17a0d220e1eb59543",
+    "/root/autodl-tmp/HybridKV-artifact/KVRepack/src/kvrepack/observations/adjacent.py": "7436799cd91e54fbefc385e46430199be8260257088c2e992ac568c923954af3"
+  },
+  "dataset_metadata": {},
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.52.3",
+    "flash-attn": "2.7.4.post1",
+    "numpy": "1.26.4",
+    "qwen-vl-utils": "0.0.14"
+  }
+}
